@@ -11,11 +11,11 @@ namespace ppt_arrange_addin {
     public partial class ThisAddIn {
 
         private void ThisAddIn_Startup(object sender, System.EventArgs e) {
-            Application.WindowSelectionChange += (obj) => {
-                Globals.Ribbons.ArrangeRibbon.AdjustButtonsAvailability(); // <<<
+            Application.WindowSelectionChange += (obj) => { // TODO not all the time invoked
+                Globals.Ribbons.ArrangeRibbon.AdjustButtonsEnabled();
             };
             Application.SlideSelectionChanged += (obj) => {
-                Globals.Ribbons.ArrangeRibbon.AdjustButtonsAvailability();
+                Globals.Ribbons.ArrangeRibbon.AdjustButtonsEnabled();
             };
         }
 

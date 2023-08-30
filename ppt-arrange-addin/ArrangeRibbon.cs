@@ -10,7 +10,7 @@ namespace ppt_arrange_addin {
     public partial class ArrangeRibbon {
 
         private void ArrangeRibbon_Load(object sender, RibbonUIEventArgs e) {
-            AdjustButtonsAvailability();
+            AdjustButtonsEnabled(); // TODO useless, how to initialize ???
             btnAlignLeft.Click += new RibbonControlEventHandler(BtnAlign_Click);
             btnAlignCenter.Click += new RibbonControlEventHandler(BtnAlign_Click);
             btnAlignRight.Click += new RibbonControlEventHandler(BtnAlign_Click);
@@ -42,13 +42,13 @@ namespace ppt_arrange_addin {
             btnSnapBottom.Click += new RibbonControlEventHandler(BtnSnap_Click);
         }
 
-        public void AdjustButtonsAvailability() {
+        public void AdjustButtonsEnabled() {
             Shape[] shapeRange;
             int selectedCount;
             try {
                 shapeRange = Globals.ThisAddIn.Application.ActiveWindow.Selection.ShapeRange.OfType<Shape>().ToArray();
                 selectedCount = shapeRange.Count();
-            } catch (Exception ex) {
+            } catch (Exception) {
                 return;
             }
             btnAlignLeft.Enabled = selectedCount >= 1;
@@ -76,7 +76,7 @@ namespace ppt_arrange_addin {
             btnMoveFront.Enabled = selectedCount >= 1;
             btnMoveBack.Enabled = selectedCount >= 1;
             btnGroup.Enabled = selectedCount >= 2;
-            btnUngroup.Enabled = selectedCount >= 1; // <<<
+            btnUngroup.Enabled = selectedCount >= 1; // TODO check ungroup enabled ???
             //System.Diagnostics.Debug.WriteLine($"shapeRange: {shapeRange.Count()}");
             //System.Diagnostics.Debug.WriteLine($"=> {string.Join(",", shapeRange.Select((s) => s.GroupItems))}");
             //btnUngroup.Enabled = selectedCount >= 1 && shapeRange.Any((s) => s.GroupItems.Count >= 2); // <<<
@@ -299,13 +299,13 @@ namespace ppt_arrange_addin {
                 if (shapeRange.Count >= 2) {
                     var grouped = shapeRange.Group();
                     grouped.Select();
-                    AdjustButtonsAvailability();
+                    AdjustButtonsEnabled();
                 }
                 break;
             case "btnUngroup":
                 var ungrouped = shapeRange.Ungroup();
                 ungrouped.Select();
-                AdjustButtonsAvailability();
+                AdjustButtonsEnabled();
                 break;
             }
         }
