@@ -10,7 +10,14 @@ namespace ppt_arrange_addin {
 
     public partial class ThisAddIn {
 
-        private void ThisAddIn_Startup(object sender, System.EventArgs e) { }
+        private void ThisAddIn_Startup(object sender, System.EventArgs e) {
+            Application.WindowSelectionChange += (obj) => {
+                Globals.Ribbons.ArrangeRibbon.AdjustButtonsAvailability(); // <<<
+            };
+            Application.SlideSelectionChanged += (obj) => {
+                Globals.Ribbons.ArrangeRibbon.AdjustButtonsAvailability();
+            };
+        }
 
         private void ThisAddIn_Shutdown(object sender, System.EventArgs e) { }
 

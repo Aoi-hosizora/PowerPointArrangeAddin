@@ -156,6 +156,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="ppt-arrange-addin_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
@@ -176,6 +177,60 @@
       <DependentUpon>ThisAddIn.Designer.xml</DependentUpon>
     </Compile>
     <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AlignDistributeHorizontally.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AlignDistributeVertically.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ObjectsAlignBottom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ObjectsAlignCenterHorizontal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ObjectsAlignLeft.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ObjectsAlignMiddleVertical.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ObjectsAlignRight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ObjectsAlignTop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ObjectsGroup.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ObjectsUngroup.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ObjectBringForward.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ObjectBringToFront.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ObjectSendBackward.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ObjectSendToBack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ObjectFlipHorizontal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ObjectFlipVertical.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ObjectRotateLeft90.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ObjectRotateRight90.png" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
