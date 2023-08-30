@@ -3,3 +3,13 @@
 .ionide/
 .history/
 .idea/
+.vs/
+
+### Build ###
+[Bb]uild/
+[Dd]ebug/
+[Rr]elease/
+[Bb]in/
+[Oo]bj/
+[Xx]86/
+[Xx]64/
