@@ -203,12 +203,6 @@
     <None Include="Resources\ObjectsAlignTop.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\ObjectsGroup.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\ObjectsUngroup.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\ObjectBringForward.png" />
   </ItemGroup>
   <ItemGroup>
@@ -270,6 +264,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ScaleFromLeftTop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ObjectsGroup.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ObjectsUngroup.png" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -20,38 +20,36 @@ namespace ppt_arrange_addin {
             btnAlignBottom.Click += new RibbonControlEventHandler(BtnAlign_Click);
             btnDistributeHorizontal.Click += new RibbonControlEventHandler(BtnDistribute_Click);
             btnDistributeVertical.Click += new RibbonControlEventHandler(BtnDistribute_Click);
-            btnRotateLeft90.Click += new RibbonControlEventHandler(BtnRotate_Click);
-            btnRotateRight90.Click += new RibbonControlEventHandler(BtnRotate_Click);
-            btnFlipHorizontal.Click += new RibbonControlEventHandler(BtnFlip_Click);
-            btnFlipVertical.Click += new RibbonControlEventHandler(BtnFlip_Click);
-            btnScalePosition.Click += new RibbonControlEventHandler(BtnScalePosition_Click);
             btnScaleSameWidth.Click += new RibbonControlEventHandler(BtnScale_Click);
             btnScaleSameHeight.Click += new RibbonControlEventHandler(BtnScale_Click);
             btnScaleSameSize.Click += new RibbonControlEventHandler(BtnScale_Click);
+            btnScalePosition.Click += new RibbonControlEventHandler(BtnScalePosition_Click);
             btnExtendSameLeft.Click += new RibbonControlEventHandler(BtnExtend_Click);
             btnExtendSameRight.Click += new RibbonControlEventHandler(BtnExtend_Click);
             btnExtendSameTop.Click += new RibbonControlEventHandler(BtnExtend_Click);
             btnExtendSameBottom.Click += new RibbonControlEventHandler(BtnExtend_Click);
-            btnMoveForward.Click += new RibbonControlEventHandler(BtnMove_Click);
-            btnMoveBackward.Click += new RibbonControlEventHandler(BtnMove_Click);
-            btnMoveFront.Click += new RibbonControlEventHandler(BtnMove_Click);
-            btnMoveBack.Click += new RibbonControlEventHandler(BtnMove_Click);
-            btnGroup.Click += new RibbonControlEventHandler(BtnGroup_Click);
-            btnUngroup.Click += new RibbonControlEventHandler(BtnGroup_Click);
             btnSnapLeft.Click += new RibbonControlEventHandler(BtnSnap_Click);
             btnSnapRight.Click += new RibbonControlEventHandler(BtnSnap_Click);
             btnSnapTop.Click += new RibbonControlEventHandler(BtnSnap_Click);
             btnSnapBottom.Click += new RibbonControlEventHandler(BtnSnap_Click);
+            btnMoveForward.Click += new RibbonControlEventHandler(BtnMove_Click);
+            btnMoveBackward.Click += new RibbonControlEventHandler(BtnMove_Click);
+            btnMoveFront.Click += new RibbonControlEventHandler(BtnMove_Click);
+            btnMoveBack.Click += new RibbonControlEventHandler(BtnMove_Click);
+            btnRotateLeft90.Click += new RibbonControlEventHandler(BtnRotate_Click);
+            btnRotateRight90.Click += new RibbonControlEventHandler(BtnRotate_Click);
+            btnFlipHorizontal.Click += new RibbonControlEventHandler(BtnFlip_Click);
+            btnFlipVertical.Click += new RibbonControlEventHandler(BtnFlip_Click);
+            btnGroup.Click += new RibbonControlEventHandler(BtnGroup_Click);
+            btnUngroup.Click += new RibbonControlEventHandler(BtnGroup_Click);
         }
 
         public void AdjustButtonsAccessibility() {
-            PowerPoint.Shape[] shapeRange;
             int selectedCount;
             try {
-                shapeRange = Globals.ThisAddIn.Application.ActiveWindow.Selection.ShapeRange.OfType<PowerPoint.Shape>().ToArray();
+                var shapeRange = Globals.ThisAddIn.Application.ActiveWindow.Selection.ShapeRange.OfType<PowerPoint.Shape>().ToArray();
                 selectedCount = shapeRange.Count();
             } catch (Exception) {
-                shapeRange = new PowerPoint.Shape[] { };
                 selectedCount = 0;
             }
             btnAlignLeft.Enabled = selectedCount >= 1;
@@ -62,7 +60,6 @@ namespace ppt_arrange_addin {
             btnAlignBottom.Enabled = selectedCount >= 1;
             btnDistributeHorizontal.Enabled = selectedCount >= 3;
             btnDistributeVertical.Enabled = selectedCount >= 3;
-            mnuRotate.Enabled = selectedCount >= 1;
             btnRotateLeft90.Enabled = selectedCount >= 1;
             btnRotateRight90.Enabled = selectedCount >= 1;
             btnFlipHorizontal.Enabled = selectedCount >= 1;
@@ -80,16 +77,12 @@ namespace ppt_arrange_addin {
             btnMoveBackward.Enabled = selectedCount >= 1;
             btnMoveFront.Enabled = selectedCount >= 1;
             btnMoveBack.Enabled = selectedCount >= 1;
-            // System.Diagnostics.Debug.WriteLine($"shapeRange: {shapeRange.Count()}");
-            // System.Diagnostics.Debug.WriteLine($"=> {string.Join(",", shapeRange.Select((s) => s.GroupItems))}");
-            // btnGroup.Enabled = selectedCount >= 2;
-            // btnUngroup.Enabled = selectedCount >= 1 && shapeRange.Any((s) => s.GroupItems.Count >= 2); // <<<
-            btnGroup.Enabled = selectedCount >= 1;
-            btnUngroup.Enabled = selectedCount >= 1;
             btnSnapLeft.Enabled = selectedCount >= 2;
             btnSnapRight.Enabled = selectedCount >= 2;
             btnSnapTop.Enabled = selectedCount >= 2;
             btnSnapBottom.Enabled = selectedCount >= 2;
+            btnGroup.Enabled = selectedCount >= 1;
+            btnUngroup.Enabled = selectedCount >= 1;
         }
 
         private PowerPoint.ShapeRange GetShapeRange(int mustMoreThanOrEqualTo = 1) {
@@ -324,31 +317,6 @@ namespace ppt_arrange_addin {
             shapeRange.ZOrder(cmd);
         }
 
-        private void BtnGroup_Click(object sender, RibbonControlEventArgs e) {
-            var shapeRange = GetShapeRange();
-            if (shapeRange == null) {
-                return;
-            }
-
-            switch (e.Control.Id) {
-            case "btnGroup":
-                if (shapeRange.Count >= 2) {
-                    StartNewUndoEntry();
-                    var grouped = shapeRange.Group();
-                    grouped.Select();
-                    AdjustButtonsAccessibility();
-                }
-                break;
-            case "btnUngroup":
-                StartNewUndoEntry();
-                var ungrouped = shapeRange.Ungroup();
-                ungrouped.Select();
-                AdjustButtonsAccessibility();
-                break;
-            }
-        }
-
-
         private void BtnSnap_Click(object sender, RibbonControlEventArgs e) {
             var shapeRange = GetShapeRange(mustMoreThanOrEqualTo: 2);
             if (shapeRange == null) {
@@ -391,6 +359,29 @@ namespace ppt_arrange_addin {
                 break;
             default:
                 return;
+            }
+        }
+        private void BtnGroup_Click(object sender, RibbonControlEventArgs e) {
+            var shapeRange = GetShapeRange();
+            if (shapeRange == null) {
+                return;
+            }
+
+            switch (e.Control.Id) {
+            case "btnGroup":
+                if (shapeRange.Count >= 2) {
+                    StartNewUndoEntry();
+                    var grouped = shapeRange.Group();
+                    grouped.Select();
+                    AdjustButtonsAccessibility();
+                }
+                break;
+            case "btnUngroup":
+                StartNewUndoEntry();
+                var ungrouped = shapeRange.Ungroup();
+                ungrouped.Select();
+                AdjustButtonsAccessibility();
+                break;
             }
         }
 

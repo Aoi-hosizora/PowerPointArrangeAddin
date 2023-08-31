@@ -29,21 +29,19 @@ namespace ppt_arrange_addin {
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ArrangeRibbon));
             this.tabHome = this.Factory.CreateRibbonTab();
             this.grpArrange = this.Factory.CreateRibbonGroup();
             this.grpAlignLR = this.Factory.CreateRibbonButtonGroup();
             this.grpAlignTB = this.Factory.CreateRibbonButtonGroup();
-            this.grpDistributeAndRotate = this.Factory.CreateRibbonButtonGroup();
+            this.grpDistribute = this.Factory.CreateRibbonButtonGroup();
             this.separator1 = this.Factory.CreateRibbonSeparator();
-            this.grpScaleWH = this.Factory.CreateRibbonButtonGroup();
-            this.grpExtendLR = this.Factory.CreateRibbonButtonGroup();
-            this.grpExtendTB = this.Factory.CreateRibbonButtonGroup();
+            this.grpScaleSize = this.Factory.CreateRibbonButtonGroup();
+            this.grpExtendSize = this.Factory.CreateRibbonButtonGroup();
             this.separator2 = this.Factory.CreateRibbonSeparator();
-            this.grpSnapLR = this.Factory.CreateRibbonButtonGroup();
-            this.grpSnapTB = this.Factory.CreateRibbonButtonGroup();
-            this.separator4 = this.Factory.CreateRibbonSeparator();
-            this.grpMoveF = this.Factory.CreateRibbonButtonGroup();
-            this.grpMoveB = this.Factory.CreateRibbonButtonGroup();
+            this.grpSnapObjects = this.Factory.CreateRibbonButtonGroup();
+            this.grpRotate = this.Factory.CreateRibbonButtonGroup();
+            this.grpMoveLayers = this.Factory.CreateRibbonButtonGroup();
             this.grpGroup = this.Factory.CreateRibbonButtonGroup();
             this.btnAlignLeft = this.Factory.CreateRibbonButton();
             this.btnAlignCenter = this.Factory.CreateRibbonButton();
@@ -53,17 +51,12 @@ namespace ppt_arrange_addin {
             this.btnAlignBottom = this.Factory.CreateRibbonButton();
             this.btnDistributeHorizontal = this.Factory.CreateRibbonButton();
             this.btnDistributeVertical = this.Factory.CreateRibbonButton();
-            this.mnuRotate = this.Factory.CreateRibbonMenu();
-            this.btnRotateRight90 = this.Factory.CreateRibbonButton();
-            this.btnRotateLeft90 = this.Factory.CreateRibbonButton();
-            this.btnFlipVertical = this.Factory.CreateRibbonButton();
-            this.btnFlipHorizontal = this.Factory.CreateRibbonButton();
             this.btnScaleSameWidth = this.Factory.CreateRibbonButton();
             this.btnScaleSameHeight = this.Factory.CreateRibbonButton();
             this.btnScaleSameSize = this.Factory.CreateRibbonButton();
+            this.btnScalePosition = this.Factory.CreateRibbonButton();
             this.btnExtendSameLeft = this.Factory.CreateRibbonButton();
             this.btnExtendSameRight = this.Factory.CreateRibbonButton();
-            this.btnScalePosition = this.Factory.CreateRibbonButton();
             this.btnExtendSameTop = this.Factory.CreateRibbonButton();
             this.btnExtendSameBottom = this.Factory.CreateRibbonButton();
             this.btnSnapLeft = this.Factory.CreateRibbonButton();
@@ -74,20 +67,22 @@ namespace ppt_arrange_addin {
             this.btnMoveFront = this.Factory.CreateRibbonButton();
             this.btnMoveBackward = this.Factory.CreateRibbonButton();
             this.btnMoveBack = this.Factory.CreateRibbonButton();
+            this.btnRotateRight90 = this.Factory.CreateRibbonButton();
+            this.btnRotateLeft90 = this.Factory.CreateRibbonButton();
+            this.btnFlipVertical = this.Factory.CreateRibbonButton();
+            this.btnFlipHorizontal = this.Factory.CreateRibbonButton();
             this.btnGroup = this.Factory.CreateRibbonButton();
             this.btnUngroup = this.Factory.CreateRibbonButton();
             this.tabHome.SuspendLayout();
             this.grpArrange.SuspendLayout();
             this.grpAlignLR.SuspendLayout();
             this.grpAlignTB.SuspendLayout();
-            this.grpDistributeAndRotate.SuspendLayout();
-            this.grpScaleWH.SuspendLayout();
-            this.grpExtendLR.SuspendLayout();
-            this.grpExtendTB.SuspendLayout();
-            this.grpSnapLR.SuspendLayout();
-            this.grpSnapTB.SuspendLayout();
-            this.grpMoveF.SuspendLayout();
-            this.grpMoveB.SuspendLayout();
+            this.grpDistribute.SuspendLayout();
+            this.grpScaleSize.SuspendLayout();
+            this.grpExtendSize.SuspendLayout();
+            this.grpSnapObjects.SuspendLayout();
+            this.grpRotate.SuspendLayout();
+            this.grpMoveLayers.SuspendLayout();
             this.grpGroup.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -103,17 +98,14 @@ namespace ppt_arrange_addin {
             // 
             this.grpArrange.Items.Add(this.grpAlignLR);
             this.grpArrange.Items.Add(this.grpAlignTB);
-            this.grpArrange.Items.Add(this.grpDistributeAndRotate);
+            this.grpArrange.Items.Add(this.grpDistribute);
             this.grpArrange.Items.Add(this.separator1);
-            this.grpArrange.Items.Add(this.grpScaleWH);
-            this.grpArrange.Items.Add(this.grpExtendLR);
-            this.grpArrange.Items.Add(this.grpExtendTB);
+            this.grpArrange.Items.Add(this.grpScaleSize);
+            this.grpArrange.Items.Add(this.grpExtendSize);
+            this.grpArrange.Items.Add(this.grpSnapObjects);
             this.grpArrange.Items.Add(this.separator2);
-            this.grpArrange.Items.Add(this.grpSnapLR);
-            this.grpArrange.Items.Add(this.grpSnapTB);
-            this.grpArrange.Items.Add(this.separator4);
-            this.grpArrange.Items.Add(this.grpMoveF);
-            this.grpArrange.Items.Add(this.grpMoveB);
+            this.grpArrange.Items.Add(this.grpMoveLayers);
+            this.grpArrange.Items.Add(this.grpRotate);
             this.grpArrange.Items.Add(this.grpGroup);
             this.grpArrange.Label = "Arrange";
             this.grpArrange.Name = "grpArrange";
@@ -132,68 +124,59 @@ namespace ppt_arrange_addin {
             this.grpAlignTB.Items.Add(this.btnAlignBottom);
             this.grpAlignTB.Name = "grpAlignTB";
             // 
-            // grpDistributeAndRotate
+            // grpDistribute
             // 
-            this.grpDistributeAndRotate.Items.Add(this.btnDistributeHorizontal);
-            this.grpDistributeAndRotate.Items.Add(this.btnDistributeVertical);
-            this.grpDistributeAndRotate.Items.Add(this.mnuRotate);
-            this.grpDistributeAndRotate.Name = "grpDistributeAndRotate";
+            this.grpDistribute.Items.Add(this.btnDistributeHorizontal);
+            this.grpDistribute.Items.Add(this.btnDistributeVertical);
+            this.grpDistribute.Name = "grpDistribute";
             // 
             // separator1
             // 
             this.separator1.Name = "separator1";
             // 
-            // grpScaleWH
+            // grpScaleSize
             // 
-            this.grpScaleWH.Items.Add(this.btnScaleSameWidth);
-            this.grpScaleWH.Items.Add(this.btnScaleSameHeight);
-            this.grpScaleWH.Items.Add(this.btnScaleSameSize);
-            this.grpScaleWH.Name = "grpScaleWH";
+            this.grpScaleSize.Items.Add(this.btnScaleSameWidth);
+            this.grpScaleSize.Items.Add(this.btnScaleSameHeight);
+            this.grpScaleSize.Items.Add(this.btnScaleSameSize);
+            this.grpScaleSize.Items.Add(this.btnScalePosition);
+            this.grpScaleSize.Name = "grpScaleSize";
             // 
-            // grpExtendLR
+            // grpExtendSize
             // 
-            this.grpExtendLR.Items.Add(this.btnExtendSameLeft);
-            this.grpExtendLR.Items.Add(this.btnExtendSameRight);
-            this.grpExtendLR.Items.Add(this.btnScalePosition);
-            this.grpExtendLR.Name = "grpExtendLR";
-            // 
-            // grpExtendTB
-            // 
-            this.grpExtendTB.Items.Add(this.btnExtendSameTop);
-            this.grpExtendTB.Items.Add(this.btnExtendSameBottom);
-            this.grpExtendTB.Name = "grpExtendTB";
+            this.grpExtendSize.Items.Add(this.btnExtendSameLeft);
+            this.grpExtendSize.Items.Add(this.btnExtendSameRight);
+            this.grpExtendSize.Items.Add(this.btnExtendSameTop);
+            this.grpExtendSize.Items.Add(this.btnExtendSameBottom);
+            this.grpExtendSize.Name = "grpExtendSize";
             // 
             // separator2
             // 
             this.separator2.Name = "separator2";
             // 
-            // grpSnapLR
+            // grpSnapObjects
             // 
-            this.grpSnapLR.Items.Add(this.btnSnapLeft);
-            this.grpSnapLR.Items.Add(this.btnSnapRight);
-            this.grpSnapLR.Name = "grpSnapLR";
+            this.grpSnapObjects.Items.Add(this.btnSnapLeft);
+            this.grpSnapObjects.Items.Add(this.btnSnapRight);
+            this.grpSnapObjects.Items.Add(this.btnSnapTop);
+            this.grpSnapObjects.Items.Add(this.btnSnapBottom);
+            this.grpSnapObjects.Name = "grpSnapObjects";
             // 
-            // grpSnapTB
+            // grpRotate
             // 
-            this.grpSnapTB.Items.Add(this.btnSnapTop);
-            this.grpSnapTB.Items.Add(this.btnSnapBottom);
-            this.grpSnapTB.Name = "grpSnapTB";
+            this.grpRotate.Items.Add(this.btnRotateRight90);
+            this.grpRotate.Items.Add(this.btnRotateLeft90);
+            this.grpRotate.Items.Add(this.btnFlipVertical);
+            this.grpRotate.Items.Add(this.btnFlipHorizontal);
+            this.grpRotate.Name = "grpRotate";
             // 
-            // separator4
+            // grpMoveLayers
             // 
-            this.separator4.Name = "separator4";
-            // 
-            // grpMoveF
-            // 
-            this.grpMoveF.Items.Add(this.btnMoveForward);
-            this.grpMoveF.Items.Add(this.btnMoveFront);
-            this.grpMoveF.Name = "grpMoveF";
-            // 
-            // grpMoveB
-            // 
-            this.grpMoveB.Items.Add(this.btnMoveBackward);
-            this.grpMoveB.Items.Add(this.btnMoveBack);
-            this.grpMoveB.Name = "grpMoveB";
+            this.grpMoveLayers.Items.Add(this.btnMoveForward);
+            this.grpMoveLayers.Items.Add(this.btnMoveFront);
+            this.grpMoveLayers.Items.Add(this.btnMoveBackward);
+            this.grpMoveLayers.Items.Add(this.btnMoveBack);
+            this.grpMoveLayers.Name = "grpMoveLayers";
             // 
             // grpGroup
             // 
@@ -273,47 +256,6 @@ namespace ppt_arrange_addin {
             this.btnDistributeVertical.ShowImage = true;
             this.btnDistributeVertical.ShowLabel = false;
             // 
-            // mnuRotate
-            // 
-            this.mnuRotate.Image = global::ppt_arrange_addin.Properties.Resources.ObjectRotateRight90;
-            this.mnuRotate.Items.Add(this.btnRotateRight90);
-            this.mnuRotate.Items.Add(this.btnRotateLeft90);
-            this.mnuRotate.Items.Add(this.btnFlipVertical);
-            this.mnuRotate.Items.Add(this.btnFlipHorizontal);
-            this.mnuRotate.Label = "Rotate Shape";
-            this.mnuRotate.Name = "mnuRotate";
-            this.mnuRotate.ScreenTip = "Rotate Shape";
-            this.mnuRotate.ShowImage = true;
-            this.mnuRotate.ShowLabel = false;
-            // 
-            // btnRotateRight90
-            // 
-            this.btnRotateRight90.Image = global::ppt_arrange_addin.Properties.Resources.ObjectRotateRight90;
-            this.btnRotateRight90.Label = "Rotate right with 90 degrees";
-            this.btnRotateRight90.Name = "btnRotateRight90";
-            this.btnRotateRight90.ShowImage = true;
-            // 
-            // btnRotateLeft90
-            // 
-            this.btnRotateLeft90.Image = global::ppt_arrange_addin.Properties.Resources.ObjectRotateLeft90;
-            this.btnRotateLeft90.Label = "Rorate left with 90 degrees";
-            this.btnRotateLeft90.Name = "btnRotateLeft90";
-            this.btnRotateLeft90.ShowImage = true;
-            // 
-            // btnFlipVertical
-            // 
-            this.btnFlipVertical.Image = global::ppt_arrange_addin.Properties.Resources.ObjectFlipVertical;
-            this.btnFlipVertical.Label = "Flip vertically";
-            this.btnFlipVertical.Name = "btnFlipVertical";
-            this.btnFlipVertical.ShowImage = true;
-            // 
-            // btnFlipHorizontal
-            // 
-            this.btnFlipHorizontal.Image = global::ppt_arrange_addin.Properties.Resources.ObjectFlipHorizontal;
-            this.btnFlipHorizontal.Label = "Flip horizontally";
-            this.btnFlipHorizontal.Name = "btnFlipHorizontal";
-            this.btnFlipHorizontal.ShowImage = true;
-            // 
             // btnScaleSameWidth
             // 
             this.btnScaleSameWidth.Image = global::ppt_arrange_addin.Properties.Resources.ScaleSameWidth;
@@ -341,6 +283,15 @@ namespace ppt_arrange_addin {
             this.btnScaleSameSize.ShowImage = true;
             this.btnScaleSameSize.ShowLabel = false;
             // 
+            // btnScalePosition
+            // 
+            this.btnScalePosition.Image = global::ppt_arrange_addin.Properties.Resources.ScaleFromMiddle;
+            this.btnScalePosition.Label = "Scale from middle";
+            this.btnScalePosition.Name = "btnScalePosition";
+            this.btnScalePosition.ScreenTip = "Scale from middle";
+            this.btnScalePosition.ShowImage = true;
+            this.btnScalePosition.ShowLabel = false;
+            // 
             // btnExtendSameLeft
             // 
             this.btnExtendSameLeft.Image = global::ppt_arrange_addin.Properties.Resources.ExtendSameLeft;
@@ -358,15 +309,6 @@ namespace ppt_arrange_addin {
             this.btnExtendSameRight.ScreenTip = "Extend to same right";
             this.btnExtendSameRight.ShowImage = true;
             this.btnExtendSameRight.ShowLabel = false;
-            // 
-            // btnScalePosition
-            // 
-            this.btnScalePosition.Image = global::ppt_arrange_addin.Properties.Resources.ScaleFromMiddle;
-            this.btnScalePosition.Label = "Scale from middle";
-            this.btnScalePosition.Name = "btnScalePosition";
-            this.btnScalePosition.ScreenTip = "Scale from middle";
-            this.btnScalePosition.ShowImage = true;
-            this.btnScalePosition.ShowLabel = false;
             // 
             // btnExtendSameTop
             // 
@@ -458,21 +400,57 @@ namespace ppt_arrange_addin {
             this.btnMoveBack.ShowImage = true;
             this.btnMoveBack.ShowLabel = false;
             // 
+            // btnRotateRight90
+            // 
+            this.btnRotateRight90.Image = global::ppt_arrange_addin.Properties.Resources.ObjectRotateRight90;
+            this.btnRotateRight90.Label = "Rotate right with 90 degrees";
+            this.btnRotateRight90.Name = "btnRotateRight90";
+            this.btnRotateRight90.ScreenTip = "Rotate right with 90 degrees";
+            this.btnRotateRight90.ShowImage = true;
+            this.btnRotateRight90.ShowLabel = false;
+            // 
+            // btnRotateLeft90
+            // 
+            this.btnRotateLeft90.Image = global::ppt_arrange_addin.Properties.Resources.ObjectRotateLeft90;
+            this.btnRotateLeft90.Label = "Rorate left with 90 degrees";
+            this.btnRotateLeft90.Name = "btnRotateLeft90";
+            this.btnRotateLeft90.ScreenTip = "Rorate left with 90 degrees";
+            this.btnRotateLeft90.ShowImage = true;
+            this.btnRotateLeft90.ShowLabel = false;
+            // 
+            // btnFlipVertical
+            // 
+            this.btnFlipVertical.Image = global::ppt_arrange_addin.Properties.Resources.ObjectFlipVertical;
+            this.btnFlipVertical.Label = "Flip vertically";
+            this.btnFlipVertical.Name = "btnFlipVertical";
+            this.btnFlipVertical.ScreenTip = "Flip vertically";
+            this.btnFlipVertical.ShowImage = true;
+            this.btnFlipVertical.ShowLabel = false;
+            // 
+            // btnFlipHorizontal
+            // 
+            this.btnFlipHorizontal.Image = global::ppt_arrange_addin.Properties.Resources.ObjectFlipHorizontal;
+            this.btnFlipHorizontal.Label = "Flip horizontally";
+            this.btnFlipHorizontal.Name = "btnFlipHorizontal";
+            this.btnFlipHorizontal.ScreenTip = "Flip horizontally";
+            this.btnFlipHorizontal.ShowImage = true;
+            this.btnFlipHorizontal.ShowLabel = false;
+            // 
             // btnGroup
             // 
-            this.btnGroup.Image = global::ppt_arrange_addin.Properties.Resources.ObjectsGroup;
-            this.btnGroup.Label = "Group shapes";
+            this.btnGroup.Image = ((System.Drawing.Image)(resources.GetObject("btnGroup.Image")));
+            this.btnGroup.Label = "Group Shapes";
             this.btnGroup.Name = "btnGroup";
-            this.btnGroup.ScreenTip = "Group shapes";
+            this.btnGroup.ScreenTip = "Group Shapes";
             this.btnGroup.ShowImage = true;
             this.btnGroup.ShowLabel = false;
             // 
             // btnUngroup
             // 
-            this.btnUngroup.Image = global::ppt_arrange_addin.Properties.Resources.ObjectsUngroup;
-            this.btnUngroup.Label = "Ungroup shapes";
+            this.btnUngroup.Image = ((System.Drawing.Image)(resources.GetObject("btnUngroup.Image")));
+            this.btnUngroup.Label = "Ungroup Shapes";
             this.btnUngroup.Name = "btnUngroup";
-            this.btnUngroup.ScreenTip = "Ungroup shapes";
+            this.btnUngroup.ScreenTip = "Ungroup Shapes";
             this.btnUngroup.ShowImage = true;
             this.btnUngroup.ShowLabel = false;
             // 
@@ -490,22 +468,18 @@ namespace ppt_arrange_addin {
             this.grpAlignLR.PerformLayout();
             this.grpAlignTB.ResumeLayout(false);
             this.grpAlignTB.PerformLayout();
-            this.grpDistributeAndRotate.ResumeLayout(false);
-            this.grpDistributeAndRotate.PerformLayout();
-            this.grpScaleWH.ResumeLayout(false);
-            this.grpScaleWH.PerformLayout();
-            this.grpExtendLR.ResumeLayout(false);
-            this.grpExtendLR.PerformLayout();
-            this.grpExtendTB.ResumeLayout(false);
-            this.grpExtendTB.PerformLayout();
-            this.grpSnapLR.ResumeLayout(false);
-            this.grpSnapLR.PerformLayout();
-            this.grpSnapTB.ResumeLayout(false);
-            this.grpSnapTB.PerformLayout();
-            this.grpMoveF.ResumeLayout(false);
-            this.grpMoveF.PerformLayout();
-            this.grpMoveB.ResumeLayout(false);
-            this.grpMoveB.PerformLayout();
+            this.grpDistribute.ResumeLayout(false);
+            this.grpDistribute.PerformLayout();
+            this.grpScaleSize.ResumeLayout(false);
+            this.grpScaleSize.PerformLayout();
+            this.grpExtendSize.ResumeLayout(false);
+            this.grpExtendSize.PerformLayout();
+            this.grpSnapObjects.ResumeLayout(false);
+            this.grpSnapObjects.PerformLayout();
+            this.grpRotate.ResumeLayout(false);
+            this.grpRotate.PerformLayout();
+            this.grpMoveLayers.ResumeLayout(false);
+            this.grpMoveLayers.PerformLayout();
             this.grpGroup.ResumeLayout(false);
             this.grpGroup.PerformLayout();
             this.ResumeLayout(false);
@@ -533,34 +507,30 @@ namespace ppt_arrange_addin {
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnScaleSameHeight;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnScaleSameSize;
         internal Microsoft.Office.Tools.Ribbon.RibbonSeparator separator2;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnGroup;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnUngroup;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnMoveForward;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnMoveBackward;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnMoveFront;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnMoveBack;
-        internal Microsoft.Office.Tools.Ribbon.RibbonSeparator separator4;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnSnapLeft;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnSnapRight;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnSnapTop;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnSnapBottom;
         internal Microsoft.Office.Tools.Ribbon.RibbonButtonGroup grpAlignLR;
         internal Microsoft.Office.Tools.Ribbon.RibbonButtonGroup grpAlignTB;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButtonGroup grpDistributeAndRotate;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButtonGroup grpMoveF;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButtonGroup grpMoveB;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButtonGroup grpGroup;
-        internal Microsoft.Office.Tools.Ribbon.RibbonMenu mnuRotate;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButtonGroup grpDistribute;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButtonGroup grpMoveLayers;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnRotateRight90;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnRotateLeft90;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnFlipVertical;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnFlipHorizontal;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButtonGroup grpExtendLR;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButtonGroup grpExtendTB;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButtonGroup grpSnapLR;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButtonGroup grpSnapTB;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButtonGroup grpScaleWH;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButtonGroup grpExtendSize;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButtonGroup grpSnapObjects;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButtonGroup grpRotate;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButtonGroup grpScaleSize;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton btnScalePosition;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButtonGroup grpGroup;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnGroup;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton btnUngroup;
     }
 
     partial class ThisRibbonCollection {
