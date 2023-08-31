@@ -118,58 +118,97 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="AlignDistributeVertically" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AlignDistributeVertically.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ObjectsUngroup" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ObjectsUngroup.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ObjectSendBackward" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ObjectSendBackward.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ObjectsAlignTop" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ObjectsAlignTop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="AlignDistributeHorizontally" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\AlignDistributeHorizontally.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="ObjectsAlignLeft" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ObjectsAlignLeft.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ObjectsAlignMiddleVertical" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ObjectsAlignMiddleVertical.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ObjectSendToBack" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ObjectSendToBack.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ObjectsAlignRight" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ObjectsAlignRight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ObjectsGroup" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ObjectsGroup.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ObjectBringToFront" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ObjectBringToFront.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ObjectsAlignCenterHorizontal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ObjectsAlignCenterHorizontal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="AlignDistributeVertically" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AlignDistributeVertically.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ObjectBringForward" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ObjectBringForward.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ObjectsAlignBottom" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ObjectsAlignBottom.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ObjectBringToFront" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ObjectBringToFront.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ObjectFlipHorizontal" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ObjectFlipHorizontal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ObjectRotateRight90" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ObjectRotateRight90.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ObjectFlipVertical" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ObjectFlipVertical.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="SnapToLeft" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SnapToLeft.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ObjectRotateLeft90" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ObjectRotateLeft90.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ObjectRotateRight90" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ObjectRotateRight90.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ObjectSendBackward" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ObjectSendBackward.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ExtendSameLeft" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ExtendSameLeft.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ObjectsAlignBottom" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ObjectsAlignBottom.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ObjectsGroup" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ObjectsGroup.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ObjectsAlignMiddleVertical" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ObjectsAlignMiddleVertical.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ObjectFlipHorizontal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ObjectFlipHorizontal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AlignDistributeHorizontally" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AlignDistributeHorizontally.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ObjectsAlignCenterHorizontal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ObjectsAlignCenterHorizontal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ObjectSendToBack" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ObjectSendToBack.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ScaleFromMiddle" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ScaleFromMiddle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ExtendSameTop" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ExtendSameTop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ObjectFlipVertical" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ObjectFlipVertical.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SnapToTop" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SnapToTop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ObjectsUngroup" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ObjectsUngroup.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ExtendSameRight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ExtendSameRight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ExtendSameBottom" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ExtendSameBottom.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ScaleSameWidth" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ScaleSameWidth.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ObjectsAlignRight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ObjectsAlignRight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ScaleSameHeight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ScaleSameHeight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ScaleSameSize" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ScaleSameSize.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SnapToRight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SnapToRight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ObjectsAlignTop" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ObjectsAlignTop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SnapToBottom" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SnapToBottom.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ScaleFromLeftTop" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ScaleFromLeftTop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -232,6 +232,45 @@
   <ItemGroup>
     <None Include="Resources\ObjectRotateRight90.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ExtendSameBottom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ExtendSameLeft.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ExtendSameRight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ExtendSameTop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ScaleSameHeight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ScaleSameSize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ScaleSameWidth.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SnapToBottom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SnapToLeft.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SnapToRight.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SnapToTop.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ScaleFromMiddle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ScaleFromLeftTop.png" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
