@@ -20,14 +20,18 @@ namespace ppt_arrange_addin {
 
             // ribbon accessibility
             Application.WindowSelectionChange += (obj) => {
-                Globals.Ribbons.ArrangeRibbon.AdjustButtonsAccessibility();
+                // Globals.Ribbons.ArrangeRibbon.AdjustButtonsAccessibility();
             };
             Application.SlideSelectionChanged += (obj) => {
-                Globals.Ribbons.ArrangeRibbon.AdjustButtonsAccessibility();
+                // Globals.Ribbons.ArrangeRibbon.AdjustButtonsAccessibility();
             };
         }
 
         private void ThisAddIn_Shutdown(object sender, EventArgs e) { }
+
+        protected override Office.IRibbonExtensibility CreateRibbonExtensibilityObject() {
+            return new Ribbon();
+        }
 
         #region VSTO generated code
 

@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<customUI onLoad="Ribbon_Load" xmlns="http://schemas.microsoft.com/office/2006/01/customui" loadImage="GetImage">
+    <ribbon>
+        <tabs>
+            <tab idMso="TabHome">
+                <group id="grpArrange" label="Arrange">
+                    <buttonGroup id="grpAlignLR">
+                        <button id="btnAlignLeft" screentip="Align left" label="Align left" showLabel="false" image="ObjectsAlignLeft" onAction="BtnAlignLeft_Click" />
+                        <button id="btnAlignCenter" screentip="Align center" label="Align center" showLabel="false" image="ObjectsAlignCenter" />
+                        <button id="btnAlignRight" screentip="Align right" label="Align right" showLabel="false" image="ObjectsAlignRight" />
+                    </buttonGroup>
+                    <buttonGroup id="grpAlignTB">
+                        <button id="btnAlignTop" screentip="Align top" label="Align top" showLabel="false" image="ObjectsAlignTop" />
+                        <button id="btnAlignMiddle" screentip="Align middle" label="Align middle" showLabel="false" image="ObjectsAlignMiddle" />
+                        <button id="btnAlignBottom" screentip="Align bottom" label="Align bottom" showLabel="false" image="ObjectsAlignBottom" />
+                    </buttonGroup>
+                    <buttonGroup id="grpDistribute">
+                        <button id="btnDistributeHorizontal" screentip="Distribute horizontally" label="Distribute horizontally" showLabel="false" />
+                        <button id="btnDistributeVertical" screentip="Distribute vertically" label="Distribute vertically" showLabel="false" />
+                    </buttonGroup>
+                    <separator id="separator1" />
+                    <buttonGroup id="grpScaleSize">
+                        <button id="btnScaleSameWidth" screentip="Scale to same width" label="Scale to same width" showLabel="false" />
+                        <button id="btnScaleSameHeight" screentip="Scale to same height" label="Scale to same height" showLabel="false" />
+                        <button id="btnScaleSameSize" screentip="Scale to same size" label="Scale to same size" showLabel="false" />
+                        <button id="btnScalePosition" screentip="Scale from middle" label="Scale from middle" showLabel="false" />
+                    </buttonGroup>
+                    <buttonGroup id="grpExtendSize">
+                        <button id="btnExtendSameLeft" screentip="Extend to same left" label="Extend to same left" showLabel="false" />
+                        <button id="btnExtendSameRight" screentip="Extend to same right" label="Extend to same right" showLabel="false" />
+                        <button id="btnExtendSameTop" screentip="Extend to same top" label="Extend to same top" showLabel="false" />
+                        <button id="btnExtendSameBottom" screentip="Extend to same bottom" label="Extend to same bottom" showLabel="false" />
+                    </buttonGroup>
+                    <buttonGroup id="grpSnapObjects">
+                        <button id="btnSnapLeft" screentip="Snap to Left" label="Snap to Left" showLabel="false" />
+                        <button id="btnSnapRight" screentip="Snap to right" label="Snap to right" showLabel="false" />
+                        <button id="btnSnapTop" screentip="Snap to top" label="Snap to top" showLabel="false" />
+                        <button id="btnSnapBottom" screentip="Snap to bottom" label="Snap to bottom" showLabel="false" />
+                    </buttonGroup>
+                    <separator id="separator2" />
+                    <buttonGroup id="grpMoveLayers">
+                        <button id="btnMoveForward" screentip="Move forward" label="Move forward" showLabel="false" />
+                        <button id="btnMoveFront" screentip="Move to front" label="Move to front" showLabel="false" />
+                        <button id="btnMoveBackward" screentip="Move backward" label="Move backward" showLabel="false" />
+                        <button id="btnMoveBack" screentip="Move to back" label="Move to back" showLabel="false" />
+                    </buttonGroup>
+                    <buttonGroup id="grpRotate">
+                        <button id="btnRotateRight90" screentip="Rotate right with 90 degrees" label="Rotate right with 90 degrees" showLabel="false" />
+                        <button id="btnRotateLeft90" screentip="Rorate left with 90 degrees" label="Rorate left with 90 degrees" showLabel="false" />
+                        <button id="btnFlipVertical" screentip="Flip vertically" label="Flip vertically" showLabel="false" />
+                        <button id="btnFlipHorizontal" screentip="Flip horizontally" label="Flip horizontally" showLabel="false" />
+                    </buttonGroup>
+                    <buttonGroup id="grpGroup">
+                        <button id="btnGroup" screentip="Group Shapes" label="Group Shapes" showLabel="false" />
+                        <button id="btnUngroup" screentip="Ungroup Shapes" label="Ungroup Shapes" showLabel="false" />
+                    </buttonGroup>
+                </group>
+            </tab>
+        </tabs>
+
+        <contextualTabs>
+            <tabSet idMso="TabSetDrawingTools">
+                <tab idMso="TabDrawingToolsFormat">
+                    <group id="grpTextbox" label="Textbox">
+                        <buttonGroup id="buttonGroup1">
+                            <toggleButton id="btnAutofitOff" label="Autofit off" showImage="false" />
+                            <toggleButton id="btnAutofitText" label="Autofit text" showImage="false" />
+                            <toggleButton id="btnResizeShape" label="Resize shape" showImage="false" />
+                        </buttonGroup>
+                        <checkBox id="cbxWrapTextInTextbox" label="Wrap text in textbox" />
+                        <button id="btnResetShape" label="Reset shape" showImage="false" />
+                        <separator id="separator3" />
+                        <box id="box1" boxStyle="vertical">
+                            <editBox id="editBox1" label="Left Margin:" showImage="false" />
+                            <editBox id="editBox2" label="Right Margin:" showImage="false" />
+                        </box>
+                        <box id="box2" boxStyle="vertical">
+                            <editBox id="editBox3" label="Top Margin:" showImage="false" />
+                            <editBox id="editBox4" label="Bottom Margin:" showImage="false" />
+                        </box>
+                    </group>
+                </tab>
+            </tabSet>
+        </contextualTabs>
+    </ribbon>
+</customUI>

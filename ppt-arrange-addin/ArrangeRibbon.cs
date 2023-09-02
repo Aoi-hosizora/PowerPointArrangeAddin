@@ -45,12 +45,14 @@ namespace ppt_arrange_addin {
         }
 
         public void AdjustButtonsAccessibility() {
-            int selectedCount;
+            int selectedCount = 0;
             try {
-                var shapeRange = Globals.ThisAddIn.Application.ActiveWindow.Selection.ShapeRange.OfType<PowerPoint.Shape>().ToArray();
-                selectedCount = shapeRange.Count();
-            } catch (Exception) {
-                selectedCount = 0;
+                var selection = Globals.ThisAddIn.Application.ActiveWindow.Selection;
+                if (selection != null) {
+                    selectedCount = selection.ShapeRange.Count;
+                }
+            } catch (Exception e) {
+                System.Diagnostics.Debug.WriteLine(e);
             }
             btnAlignLeft.Enabled = selectedCount >= 1;
             btnAlignCenter.Enabled = selectedCount >= 1;

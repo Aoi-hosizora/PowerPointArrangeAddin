@@ -16,3 +16,6 @@
 *.exe
 *.dll
 *.pfx
+
+### Doc ###
+Office UI Help Files/
