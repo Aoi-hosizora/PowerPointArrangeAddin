@@ -133,9 +133,6 @@
   <data name="ObjectRotateRight90" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ObjectRotateRight90.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ScaleFromLeftTop" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ScaleFromLeftTop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="SnapToLeft" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SnapToLeft.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -210,5 +207,8 @@
   </data>
   <data name="ObjectsUngroup" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ObjectsUngroup.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ScaleFromTopLeft" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ScaleFromTopLeft.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

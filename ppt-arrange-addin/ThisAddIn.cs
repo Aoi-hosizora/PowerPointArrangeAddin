@@ -14,23 +14,32 @@ namespace ppt_arrange_addin {
 
         private void ThisAddIn_Startup(object sender, EventArgs e) {
             // localized add-in
-            PowerPoint.Application app = GetHostItem<PowerPoint.Application>(typeof(PowerPoint.Application), "Application");
-            int lcid = app.LanguageSettings.get_LanguageID(Office.MsoAppLanguageID.msoLanguageIDUI);
-            Thread.CurrentThread.CurrentUICulture = new CultureInfo(lcid);
+            var languageId = Application.LanguageSettings.get_LanguageID(Office.MsoAppLanguageID.msoLanguageIDUI);
+            // System.Diagnostics.Debug.WriteLine(languageId);
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(languageId);
+            Properties.Resources.Culture = new CultureInfo(languageId);
+            ArrangeRibbonResources.Culture = new CultureInfo(languageId); // TODO zh-CN
 
             // ribbon accessibility
             Application.WindowSelectionChange += (obj) => {
                 // Globals.Ribbons.ArrangeRibbon.AdjustButtonsAccessibility();
+                ribbon.AdjustRibbonButtonsAvailability();
             };
             Application.SlideSelectionChanged += (obj) => {
                 // Globals.Ribbons.ArrangeRibbon.AdjustButtonsAccessibility();
+                ribbon.AdjustRibbonButtonsAvailability();
             };
         }
 
         private void ThisAddIn_Shutdown(object sender, EventArgs e) { }
 
+        private ArrangeRibbon ribbon;
+
         protected override Office.IRibbonExtensibility CreateRibbonExtensibilityObject() {
-            return new ArrangeRibbon();
+            if (ribbon == null) {
+                ribbon = new ArrangeRibbon();
+            }
+            return ribbon;
         }
 
         #region VSTO generated code
@@ -40,8 +49,8 @@ namespace ppt_arrange_addin {
         /// the contents of this method with the code editor.
         /// </summary>
         private void InternalStartup() {
-            this.Startup += new System.EventHandler(ThisAddIn_Startup);
-            this.Shutdown += new System.EventHandler(ThisAddIn_Shutdown);
+            Startup += new EventHandler(ThisAddIn_Startup);
+            Shutdown += new EventHandler(ThisAddIn_Shutdown);
         }
 
         #endregion

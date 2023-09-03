@@ -137,21 +137,57 @@
   -->
   <ItemGroup>
     <Compile Include="ArrangeRibbon.cs" />
-    <Compile Include="Ribbon.cs">
-      <XmlRibbon>true</XmlRibbon>
+    <EmbeddedResource Include="ArrangeRibbon.xml" />
+    <Compile Include="ArrangeRibbon.Internal.cs">
+      <DependentUpon>ArrangeRibbon.cs</DependentUpon>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ArrangeRibbonResources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ArrangeRibbonResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ArrangeRibbonResources.ja-JP.resx">
+      <DependentUpon>ArrangeRibbonResources.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ArrangeRibbonResources.zh-CN.resx">
+      <DependentUpon>ArrangeRibbonResources.resx</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="ArrangeRibbonResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ArrangeRibbonResources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="TempRibbon.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="TempRibbon.Designer.cs">
       <DependentUpon>TempRibbon.cs</DependentUpon>
     </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <EmbeddedResource Include="TempRibbon.resx">
       <DependentUpon>TempRibbon.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="TempRibbon.xml">
+      <DependentUpon>TempRibbon.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ThisAddIn.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <None Include="ThisAddIn.Designer.xml">
+      <DependentUpon>ThisAddIn.cs</DependentUpon>
+    </None>
+    <Compile Include="ThisAddIn.Designer.cs">
+      <DependentUpon>ThisAddIn.Designer.xml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -162,7 +198,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="ppt-arrange-addin_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -171,15 +206,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="ThisAddIn.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <None Include="ThisAddIn.Designer.xml">
-      <DependentUpon>ThisAddIn.cs</DependentUpon>
-    </None>
-    <Compile Include="ThisAddIn.Designer.cs">
-      <DependentUpon>ThisAddIn.Designer.xml</DependentUpon>
-    </Compile>
+    <None Include="ppt-arrange-addin_TemporaryKey.pfx" />
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
@@ -267,19 +294,13 @@
     <None Include="Resources\ScaleFromMiddle.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\ScaleFromLeftTop.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\ObjectsGroup.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ObjectsUngroup.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ArrangeRibbon.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Ribbon.xml" />
+    <None Include="Resources\ScaleFromTopLeft.png" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

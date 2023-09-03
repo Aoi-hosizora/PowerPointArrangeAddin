@@ -283,9 +283,9 @@ namespace ppt_arrange_addin.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ScaleFromLeftTop {
+        internal static System.Drawing.Bitmap ScaleFromMiddle {
             get {
-                object obj = ResourceManager.GetObject("ScaleFromLeftTop", resourceCulture);
+                object obj = ResourceManager.GetObject("ScaleFromMiddle", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -293,9 +293,9 @@ namespace ppt_arrange_addin.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ScaleFromMiddle {
+        internal static System.Drawing.Bitmap ScaleFromTopLeft {
             get {
-                object obj = ResourceManager.GetObject("ScaleFromMiddle", resourceCulture);
+                object obj = ResourceManager.GetObject("ScaleFromTopLeft", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
