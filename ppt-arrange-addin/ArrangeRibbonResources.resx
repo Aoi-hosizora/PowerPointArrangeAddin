@@ -210,6 +210,12 @@
   <data name="btnScaleSameWidth" xml:space="preserve">
     <value>Stretch to same width</value>
   </data>
+  <data name="btnShapePositionCopy" xml:space="preserve">
+    <value>Copy position</value>
+  </data>
+  <data name="btnShapePositionPaste" xml:space="preserve">
+    <value>Paste position</value>
+  </data>
   <data name="btnSnapBottom" xml:space="preserve">
     <value>Snap to bottom</value>
   </data>
@@ -225,7 +231,7 @@
   <data name="btnUngroup" xml:space="preserve">
     <value>Ungroup shapes</value>
   </data>
-  <data name="cbxWrapTextbox" xml:space="preserve">
+  <data name="btnWrapText" xml:space="preserve">
     <value>Wrap text</value>
   </data>
   <data name="edtMarginBottom" xml:space="preserve">
@@ -240,13 +246,19 @@
   <data name="edtMarginTop" xml:space="preserve">
     <value>Top margin:</value>
   </data>
+  <data name="edtShapePositionX" xml:space="preserve">
+    <value>Horizontal:</value>
+  </data>
+  <data name="edtShapePositionY" xml:space="preserve">
+    <value>Vertical:</value>
+  </data>
   <data name="grpArrange" xml:space="preserve">
     <value>Arrange</value>
   </data>
+  <data name="grpShapePosition" xml:space="preserve">
+    <value>Position</value>
+  </data>
   <data name="grpTextbox" xml:space="preserve">
     <value>Textbox</value>
-  </data>
-  <data name="lblTextboxAutofit" xml:space="preserve">
-    <value>Autofit:</value>
   </data>
 </root>

@@ -83,6 +83,16 @@ namespace ppt_arrange_addin.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Copy {
+            get {
+                object obj = ResourceManager.GetObject("Copy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ExtendSameBottom {
             get {
                 object obj = ResourceManager.GetObject("ExtendSameBottom", resourceCulture);
@@ -283,6 +293,16 @@ namespace ppt_arrange_addin.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Paste {
+            get {
+                object obj = ResourceManager.GetObject("Paste", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ScaleFromMiddle {
             get {
                 object obj = ResourceManager.GetObject("ScaleFromMiddle", resourceCulture);
@@ -403,9 +423,9 @@ namespace ppt_arrange_addin.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap TextBoxFormat {
+        internal static System.Drawing.Bitmap TextboxResetMargin {
             get {
-                object obj = ResourceManager.GetObject("TextBoxFormat", resourceCulture);
+                object obj = ResourceManager.GetObject("TextboxResetMargin", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -416,6 +436,16 @@ namespace ppt_arrange_addin.Properties {
         internal static System.Drawing.Bitmap TextboxWrapText {
             get {
                 object obj = ResourceManager.GetObject("TextboxWrapText", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap TextboxWrapText_32 {
+            get {
+                object obj = ResourceManager.GetObject("TextboxWrapText_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -136,19 +136,21 @@
     <value>顶端对齐</value>
   </data>
   <data name="btnAutofitOff" xml:space="preserve">
-    <value>Autofit off</value>
+    <value>不自动调整</value>
   </data>
   <data name="btnAutofitText" xml:space="preserve">
-    <value>Autofit text</value>
+    <value>适当缩排文字</value>
+    <comment>溢出时缩排文字</comment>
   </data>
   <data name="btnAutoResize" xml:space="preserve">
-    <value>Auto  resize</value>
+    <value>自动调整形状</value>
+    <comment>根据文字调整形状大小</comment>
   </data>
   <data name="btnDistributeHorizontal" xml:space="preserve">
     <value>左右横向分布</value>
   </data>
   <data name="btnDistributeVertical" xml:space="preserve">
-    <value>上下纵向分补</value>
+    <value>上下纵向分布</value>
   </data>
   <data name="btnExtendSameBottom" xml:space="preserve">
     <value>延伸至底部</value>
@@ -184,10 +186,10 @@
     <value>移动至顶层</value>
   </data>
   <data name="btnResetMarginHorizontal" xml:space="preserve">
-    <value>Reset horizontal margin</value>
+    <value>重置横向内边距</value>
   </data>
   <data name="btnResetMarginVertical" xml:space="preserve">
-    <value>Reset vertical margin</value>
+    <value>重置纵向内边距</value>
   </data>
   <data name="btnRotateLeft90" xml:space="preserve">
     <value>向左旋转 90 度</value>
@@ -210,6 +212,12 @@
   <data name="btnScaleSameWidth" xml:space="preserve">
     <value>等宽</value>
   </data>
+  <data name="btnShapePositionCopy" xml:space="preserve">
+    <value>复制位置</value>
+  </data>
+  <data name="btnShapePositionPaste" xml:space="preserve">
+    <value>粘贴位置</value>
+  </data>
   <data name="btnSnapBottom" xml:space="preserve">
     <value>向下吸附</value>
   </data>
@@ -225,28 +233,37 @@
   <data name="btnUngroup" xml:space="preserve">
     <value>解除组合形状</value>
   </data>
-  <data name="cbxWrapTextbox" xml:space="preserve">
-    <value>Wrap text</value>
+  <data name="btnWrapText" xml:space="preserve">
+    <value>文字自动换行</value>
   </data>
   <data name="edtMarginBottom" xml:space="preserve">
-    <value>Bottom margin:</value>
+    <value>下边距:</value>
   </data>
   <data name="edtMarginLeft" xml:space="preserve">
-    <value>Left margin:</value>
+    <value>左边距:</value>
   </data>
   <data name="edtMarginRight" xml:space="preserve">
-    <value>Right margin:</value>
+    <value>右边距:</value>
   </data>
   <data name="edtMarginTop" xml:space="preserve">
-    <value>Top margin:</value>
+    <value>上边距:</value>
+  </data>
+  <data name="edtShapePositionX" xml:space="preserve">
+    <value>水平:</value>
+  </data>
+  <data name="edtShapePositionY" xml:space="preserve">
+    <value>垂直:</value>
   </data>
   <data name="grpArrange" xml:space="preserve">
     <value>排列</value>
   </data>
-  <data name="grpTextbox" xml:space="preserve">
-    <value>Textbox</value>
+  <data name="grpShapePosition" xml:space="preserve">
+    <value>位置</value>
   </data>
-  <data name="lblTextboxAutofit" xml:space="preserve">
-    <value>Autofit:</value>
+  <data name="grpTextbox" xml:space="preserve">
+    <value>文本框</value>
+  </data>
+  <data name="lblShapePosition" xml:space="preserve">
+    <value>幻灯片上的位置</value>
   </data>
 </root>

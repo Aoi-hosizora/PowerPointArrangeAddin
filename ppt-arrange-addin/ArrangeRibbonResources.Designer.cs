@@ -340,6 +340,24 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Copy position.
+        /// </summary>
+        public static string btnShapePositionCopy {
+            get {
+                return ResourceManager.GetString("btnShapePositionCopy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Paste position.
+        /// </summary>
+        public static string btnShapePositionPaste {
+            get {
+                return ResourceManager.GetString("btnShapePositionPaste", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Snap to bottom.
         /// </summary>
         public static string btnSnapBottom {
@@ -387,9 +405,9 @@ namespace ppt_arrange_addin {
         /// <summary>
         ///   Looks up a localized string similar to Wrap text.
         /// </summary>
-        public static string cbxWrapTextbox {
+        public static string btnWrapText {
             get {
-                return ResourceManager.GetString("cbxWrapTextbox", resourceCulture);
+                return ResourceManager.GetString("btnWrapText", resourceCulture);
             }
         }
         
@@ -430,6 +448,24 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Horizontal:.
+        /// </summary>
+        public static string edtShapePositionX {
+            get {
+                return ResourceManager.GetString("edtShapePositionX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vertical:.
+        /// </summary>
+        public static string edtShapePositionY {
+            get {
+                return ResourceManager.GetString("edtShapePositionY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Arrange.
         /// </summary>
         public static string grpArrange {
@@ -439,20 +475,20 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Position.
+        /// </summary>
+        public static string grpShapePosition {
+            get {
+                return ResourceManager.GetString("grpShapePosition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Textbox.
         /// </summary>
         public static string grpTextbox {
             get {
                 return ResourceManager.GetString("grpTextbox", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Autofit:.
-        /// </summary>
-        public static string lblTextboxAutofit {
-            get {
-                return ResourceManager.GetString("lblTextboxAutofit", resourceCulture);
             }
         }
     }

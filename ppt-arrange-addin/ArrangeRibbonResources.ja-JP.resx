@@ -139,10 +139,12 @@
     <value>自動調整なし</value>
   </data>
   <data name="btnAutofitText" xml:space="preserve">
-    <value>はみ出す場合だけ自動調整</value>
+    <value>テキストを自動調整</value>
+    <comment>はみ出す場合だけ自動調整</comment>
   </data>
   <data name="btnAutoResize" xml:space="preserve">
-    <value>テキストに合わせて図形のサイズを調整</value>
+    <value>図形を自動調整</value>
+    <comment>テキストに合わせて図形のサイズを調整</comment>
   </data>
   <data name="btnDistributeHorizontal" xml:space="preserve">
     <value>左右に整列</value>
@@ -210,6 +212,12 @@
   <data name="btnScaleSameWidth" xml:space="preserve">
     <value>同じ幅に伸ばす</value>
   </data>
+  <data name="btnShapePositionCopy" xml:space="preserve">
+    <value>位置をコピー</value>
+  </data>
+  <data name="btnShapePositionPaste" xml:space="preserve">
+    <value>位置を貼付</value>
+  </data>
   <data name="btnSnapBottom" xml:space="preserve">
     <value>下にスナップ</value>
   </data>
@@ -225,7 +233,7 @@
   <data name="btnUngroup" xml:space="preserve">
     <value>グループ解除</value>
   </data>
-  <data name="cbxWrapTextbox" xml:space="preserve">
+  <data name="btnWrapText" xml:space="preserve">
     <value>テキストを折り返す</value>
   </data>
   <data name="edtMarginBottom" xml:space="preserve">
@@ -240,13 +248,22 @@
   <data name="edtMarginTop" xml:space="preserve">
     <value>上余白:</value>
   </data>
+  <data name="edtShapePositionX" xml:space="preserve">
+    <value>横:</value>
+  </data>
+  <data name="edtShapePositionY" xml:space="preserve">
+    <value>縦:</value>
+  </data>
   <data name="grpArrange" xml:space="preserve">
     <value>配置</value>
+  </data>
+  <data name="grpShapePosition" xml:space="preserve">
+    <value>位置</value>
   </data>
   <data name="grpTextbox" xml:space="preserve">
     <value>テキストボックス</value>
   </data>
-  <data name="lblTextboxAutofit" xml:space="preserve">
-    <value>自動調整:</value>
+  <data name="lblShapePosition" xml:space="preserve">
+    <value>スライド上の位置</value>
   </data>
 </root>

@@ -62,22 +62,27 @@
         <contextualTabs>
             <tabSet idMso="TabSetDrawingTools">
                 <tab idMso="TabDrawingToolsFormat">
-                    <group id="grpTextbox" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage">
-                        <labelControl id="lblTextboxAutofit" getLabel="GetLabel" />
-                        <buttonGroup id="grpAutofit">
-                            <toggleButton id="btnAutofitOff" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getPressed="GetBtnAutofitPressed" onAction="BtnAutofit_Click" />
-                            <toggleButton id="btnAutofitText" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getPressed="GetBtnAutofitPressed" onAction="BtnAutofit_Click" />
-                            <toggleButton id="btnAutoResize" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getPressed="GetBtnAutofitPressed" onAction="BtnAutofit_Click" />
+                    <group id="grpShapePosition" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage">
+                        <editBox id="edtShapePositionX" showImage="false" getLabel="GetLabel" getScreentip="GetLabel" getText="GetEdtShapePositionText" getEnabled="GetEnabled" onChange="EdtShapePosition_TextChanged" />
+                        <editBox id="edtShapePositionY" showImage="false" getLabel="GetLabel" getScreentip="GetLabel" getText="GetEdtShapePositionText" getEnabled="GetEnabled" onChange="EdtShapePosition_TextChanged" />
+                        <buttonGroup id="grpShapePositionCopyPaste">
+                            <button id="btnShapePositionCopy" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnShapePositionCopy_Click" />
+                            <button id="btnShapePositionPaste" showLabel="true" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnShapePositionPaste_Click" />
                         </buttonGroup>
-                        <checkBox id="cbxWrapTextbox" getLabel="GetLabel" getScreentip="GetLabel" getPressed="GetCbxWrapTextboxChecked" onAction="CbxWrapTextbox_Click" />
+                    </group>
+                    <group id="grpTextbox" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage">
+                        <toggleButton id="btnAutofitOff" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" getPressed="GetBtnAutofitPressed" onAction="BtnAutofit_Click" />
+                        <toggleButton id="btnAutofitText" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" getPressed="GetBtnAutofitPressed" onAction="BtnAutofit_Click" />
+                        <toggleButton id="btnAutoResize" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" getPressed="GetBtnAutofitPressed" onAction="BtnAutofit_Click" />
+                        <toggleButton id="btnWrapText" size="large" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" getPressed="GetBtnWrapTextPressed" onAction="BtnWrapText_Click" />
                         <separator id="separator3" />
-                        <editBox id="edtMarginLeft" showImage="false" getLabel="GetLabel" getScreentip="GetLabel" getText="GetEdtMarginText" onChange="EdtMargin_TextChanged" />
-                        <editBox id="edtMarginRight" showImage="false" getLabel="GetLabel" getScreentip="GetLabel" getText="GetEdtMarginText" onChange="EdtMargin_TextChanged" />
-                        <button id="btnResetMarginHorizontal" showImage="false" getLabel="GetLabel" getScreentip="GetLabel" onAction="BtnResetMargin_Click" />
+                        <editBox id="edtMarginLeft" showImage="false" getLabel="GetLabel" getScreentip="GetLabel" getEnabled="GetEnabled" getText="GetEdtMarginText" onChange="EdtMargin_TextChanged" />
+                        <editBox id="edtMarginRight" showImage="false" getLabel="GetLabel" getScreentip="GetLabel" getEnabled="GetEnabled" getText="GetEdtMarginText" onChange="EdtMargin_TextChanged" />
+                        <button id="btnResetMarginHorizontal" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnResetMargin_Click" />
                         <separator id="separator4" />
-                        <editBox id="edtMarginTop" showImage="false" getLabel="GetLabel" getScreentip="GetLabel" getText="GetEdtMarginText" onChange="EdtMargin_TextChanged" />
-                        <editBox id="edtMarginBottom" showImage="false" getLabel="GetLabel" getScreentip="GetLabel" getText="GetEdtMarginText" onChange="EdtMargin_TextChanged" />
-                        <button id="btnResetMarginVertical" showImage="false" getLabel="GetLabel" getScreentip="GetLabel" onAction="BtnResetMargin_Click" />
+                        <editBox id="edtMarginTop" showImage="false" getLabel="GetLabel" getScreentip="GetLabel" getEnabled="GetEnabled" getText="GetEdtMarginText" onChange="EdtMargin_TextChanged" />
+                        <editBox id="edtMarginBottom" showImage="false" getLabel="GetLabel" getScreentip="GetLabel" getEnabled="GetEnabled" getText="GetEdtMarginText" onChange="EdtMargin_TextChanged" />
+                        <button id="btnResetMarginVertical" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnResetMargin_Click" />
                     </group>
                 </tab>
             </tabSet>

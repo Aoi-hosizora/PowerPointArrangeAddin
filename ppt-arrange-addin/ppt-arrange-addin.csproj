@@ -309,16 +309,22 @@
     <None Include="Resources\TextboxAutofitText.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\TextboxAutoShape.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\TextboxWrapText.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\TextboxAutoResize.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\TextBoxFormat.png" />
+    <None Include="Resources\TextboxWrapText_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TextboxResetMargin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Copy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Paste.png" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
