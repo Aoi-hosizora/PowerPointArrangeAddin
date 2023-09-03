@@ -30,7 +30,7 @@ namespace ppt_arrange_addin {
         private void ThisAddIn_Shutdown(object sender, EventArgs e) { }
 
         protected override Office.IRibbonExtensibility CreateRibbonExtensibilityObject() {
-            return new Ribbon();
+            return new ArrangeRibbon();
         }
 
         #region VSTO generated code

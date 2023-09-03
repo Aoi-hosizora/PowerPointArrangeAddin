@@ -1,18 +1,18 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<customUI onLoad="Ribbon_Load" xmlns="http://schemas.microsoft.com/office/2006/01/customui" loadImage="GetImage">
+<customUI onLoad="Ribbon_Load" xmlns="http://schemas.microsoft.com/office/2006/01/customui">
     <ribbon>
         <tabs>
             <tab idMso="TabHome">
                 <group id="grpArrange" label="Arrange">
                     <buttonGroup id="grpAlignLR">
-                        <button id="btnAlignLeft" screentip="Align left" label="Align left" showLabel="false" image="ObjectsAlignLeft" onAction="BtnAlignLeft_Click" />
-                        <button id="btnAlignCenter" screentip="Align center" label="Align center" showLabel="false" image="ObjectsAlignCenter" />
-                        <button id="btnAlignRight" screentip="Align right" label="Align right" showLabel="false" image="ObjectsAlignRight" />
+                        <button id="btnAlignLeft" screentip="Align left" label="Align left" showLabel="false" />
+                        <button id="btnAlignCenter" screentip="Align center" label="Align center" showLabel="false" />
+                        <button id="btnAlignRight" screentip="Align right" label="Align right" showLabel="false" />
                     </buttonGroup>
                     <buttonGroup id="grpAlignTB">
-                        <button id="btnAlignTop" screentip="Align top" label="Align top" showLabel="false" image="ObjectsAlignTop" />
-                        <button id="btnAlignMiddle" screentip="Align middle" label="Align middle" showLabel="false" image="ObjectsAlignMiddle" />
-                        <button id="btnAlignBottom" screentip="Align bottom" label="Align bottom" showLabel="false" image="ObjectsAlignBottom" />
+                        <button id="btnAlignTop" screentip="Align top" label="Align top" showLabel="false" />
+                        <button id="btnAlignMiddle" screentip="Align middle" label="Align middle" showLabel="false" />
+                        <button id="btnAlignBottom" screentip="Align bottom" label="Align bottom" showLabel="false" />
                     </buttonGroup>
                     <buttonGroup id="grpDistribute">
                         <button id="btnDistributeHorizontal" screentip="Distribute horizontally" label="Distribute horizontally" showLabel="false" />
@@ -56,31 +56,26 @@
                     </buttonGroup>
                 </group>
             </tab>
+            <tab idMso="TabDrawingToolsFormat">
+                <group id="grpTextbox" label="Textbox">
+                    <buttonGroup id="buttonGroup1">
+                        <toggleButton id="btnAutofitOff" label="Autofit off" showImage="false" />
+                        <toggleButton id="btnAutofitText" label="Autofit text" showImage="false" />
+                        <toggleButton id="btnResizeShape" label="Resize shape" showImage="false" />
+                    </buttonGroup>
+                    <checkBox id="cbxWrapTextInTextbox" label="Wrap text in textbox" />
+                    <button id="btnResetShape" label="Reset shape" showImage="false" />
+                    <separator id="separator3" />
+                    <box id="box1" boxStyle="vertical">
+                        <editBox id="editBox1" label="Left Margin:" showImage="false" />
+                        <editBox id="editBox2" label="Right Margin:" showImage="false" />
+                    </box>
+                    <box id="box2" boxStyle="vertical">
+                        <editBox id="editBox3" label="Top Margin:" showImage="false" />
+                        <editBox id="editBox4" label="Bottom Margin:" showImage="false" />
+                    </box>
+                </group>
+            </tab>
         </tabs>
-
-        <contextualTabs>
-            <tabSet idMso="TabSetDrawingTools">
-                <tab idMso="TabDrawingToolsFormat">
-                    <group id="grpTextbox" label="Textbox">
-                        <buttonGroup id="buttonGroup1">
-                            <toggleButton id="btnAutofitOff" label="Autofit off" showImage="false" />
-                            <toggleButton id="btnAutofitText" label="Autofit text" showImage="false" />
-                            <toggleButton id="btnResizeShape" label="Resize shape" showImage="false" />
-                        </buttonGroup>
-                        <checkBox id="cbxWrapTextInTextbox" label="Wrap text in textbox" />
-                        <button id="btnResetShape" label="Reset shape" showImage="false" />
-                        <separator id="separator3" />
-                        <box id="box1" boxStyle="vertical">
-                            <editBox id="editBox1" label="Left Margin:" showImage="false" />
-                            <editBox id="editBox2" label="Right Margin:" showImage="false" />
-                        </box>
-                        <box id="box2" boxStyle="vertical">
-                            <editBox id="editBox3" label="Top Margin:" showImage="false" />
-                            <editBox id="editBox4" label="Bottom Margin:" showImage="false" />
-                        </box>
-                    </group>
-                </tab>
-            </tabSet>
-        </contextualTabs>
     </ribbon>
 </customUI>

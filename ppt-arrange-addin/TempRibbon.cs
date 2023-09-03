@@ -8,7 +8,7 @@ using System.Text;
 
 namespace ppt_arrange_addin {
 
-    public partial class ArrangeRibbon {
+    public partial class TempRibbon {
 
         private void ArrangeRibbon_Load(object sender, RibbonUIEventArgs e) {
             AdjustButtonsAccessibility();

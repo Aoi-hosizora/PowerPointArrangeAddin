@@ -1,12 +1,12 @@
 ﻿
 namespace ppt_arrange_addin {
-    partial class ArrangeRibbon : Microsoft.Office.Tools.Ribbon.RibbonBase {
+    partial class TempRibbon : Microsoft.Office.Tools.Ribbon.RibbonBase {
         /// <summary>
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        public ArrangeRibbon()
+        public TempRibbon()
             : base(Globals.Factory.GetRibbonFactory()) {
             InitializeComponent();
         }
@@ -29,7 +29,7 @@ namespace ppt_arrange_addin {
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ArrangeRibbon));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TempRibbon));
             this.tabHome = this.Factory.CreateRibbonTab();
             this.grpArrange = this.Factory.CreateRibbonGroup();
             this.grpAlignLR = this.Factory.CreateRibbonButtonGroup();
@@ -569,9 +569,9 @@ namespace ppt_arrange_addin {
             this.tabDrawingToolsFormat.Label = "TabDrawingToolsFormat";
             this.tabDrawingToolsFormat.Name = "tabDrawingToolsFormat";
             // 
-            // ArrangeRibbon
+            // TempRibbon
             // 
-            this.Name = "ArrangeRibbon";
+            this.Name = "TempRibbon";
             this.RibbonType = "Microsoft.PowerPoint.Presentation";
             this.Tabs.Add(this.tabHome);
             this.Tabs.Add(this.tabDrawingToolsFormat);
@@ -675,8 +675,8 @@ namespace ppt_arrange_addin {
     }
 
     partial class ThisRibbonCollection {
-        internal ArrangeRibbon ArrangeRibbon {
-            get { return this.GetRibbon<ArrangeRibbon>(); }
+        internal TempRibbon ArrangeRibbon {
+            get { return this.GetRibbon<TempRibbon>(); }
         }
     }
 }

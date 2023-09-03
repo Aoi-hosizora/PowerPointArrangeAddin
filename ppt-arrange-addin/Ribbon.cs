@@ -6,7 +6,6 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using Office = Microsoft.Office.Core;
-using PowerPoint = Microsoft.Office.Interop.PowerPoint;
 
 // TODO:  Follow these steps to enable the Ribbon (XML) item:
 
@@ -28,17 +27,31 @@ using PowerPoint = Microsoft.Office.Interop.PowerPoint;
 
 
 namespace ppt_arrange_addin {
-
     [ComVisible(true)]
     public class Ribbon : Office.IRibbonExtensibility {
+        private Office.IRibbonUI ribbon;
 
-        public Ribbon() { }
+        public Ribbon() {
+        }
 
         #region IRibbonExtensibility Members
 
         public string GetCustomUI(string ribbonID) {
             return GetResourceText("ppt_arrange_addin.Ribbon.xml");
         }
+
+        #endregion
+
+        #region Ribbon Callbacks
+        //Create callback methods here. For more information about adding callback methods, visit https://go.microsoft.com/fwlink/?LinkID=271226
+
+        public void Ribbon_Load(Office.IRibbonUI ribbonUI) {
+            this.ribbon = ribbonUI;
+        }
+
+        #endregion
+
+        #region Helpers
 
         private static string GetResourceText(string resourceName) {
             Assembly asm = Assembly.GetExecutingAssembly();
@@ -55,39 +68,6 @@ namespace ppt_arrange_addin {
             return null;
         }
 
-
         #endregion
-
-        private Office.IRibbonUI ribbon;
-
-        public void Ribbon_Load(Office.IRibbonUI ribbonUI) {
-            ribbon = ribbonUI;
-        }
-
-        private PowerPoint.ShapeRange GetShapeRange(int mustMoreThanOrEqualTo = 1) {
-            var shapeRange = Globals.ThisAddIn.Application.ActiveWindow.Selection.ShapeRange;
-            if (shapeRange.Count < mustMoreThanOrEqualTo) {
-                return null;
-            }
-            return shapeRange;
-        }
-
-        private void StartNewUndoEntry() {
-            Globals.ThisAddIn.Application.StartNewUndoEntry();
-        }
-
-        public void BtnAlignLeft_Click(Office.IRibbonControl ribbonControl) {
-            var shapeRange = GetShapeRange();
-            if (shapeRange == null) {
-                return;
-            }
-            StartNewUndoEntry();
-            var flag = shapeRange.Count == 1 ? Office.MsoTriState.msoTrue : Office.MsoTriState.msoFalse;
-            shapeRange.Align(Office.MsoAlignCmd.msoAlignLefts, flag);
-        }
-
-        public System.Drawing.Image GetImage(string ImageName) {
-            return Properties.Resources.ResourceManager.GetObject(ImageName) as System.Drawing.Image;
-        }
     }
 }

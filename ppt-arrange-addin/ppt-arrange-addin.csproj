@@ -136,17 +136,21 @@
     can be found.
   -->
   <ItemGroup>
-    <Compile Include="ArrangeRibbon.cs">
+    <Compile Include="ArrangeRibbon.cs" />
+    <Compile Include="Ribbon.cs">
+      <XmlRibbon>true</XmlRibbon>
+    </Compile>
+    <Compile Include="TempRibbon.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ArrangeRibbon.Designer.cs">
-      <DependentUpon>ArrangeRibbon.cs</DependentUpon>
+    <Compile Include="TempRibbon.Designer.cs">
+      <DependentUpon>TempRibbon.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <EmbeddedResource Include="ArrangeRibbon.resx">
-      <DependentUpon>ArrangeRibbon.cs</DependentUpon>
+    <EmbeddedResource Include="TempRibbon.resx">
+      <DependentUpon>TempRibbon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -166,9 +170,6 @@
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
-    <Compile Include="Ribbon.cs">
-      <XmlRibbon>true</XmlRibbon>
     </Compile>
     <Compile Include="ThisAddIn.cs">
       <SubType>Code</SubType>
@@ -273,6 +274,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ObjectsUngroup.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ArrangeRibbon.xml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Ribbon.xml" />
