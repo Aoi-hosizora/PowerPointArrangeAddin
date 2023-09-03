@@ -302,6 +302,24 @@
   <ItemGroup>
     <None Include="Resources\ScaleFromTopLeft.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TextboxAutofitOff.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TextboxAutofitText.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TextboxAutoShape.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TextboxWrapText.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TextboxAutoResize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TextBoxFormat.png" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

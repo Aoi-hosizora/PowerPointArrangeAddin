@@ -135,6 +135,15 @@
   <data name="btnAlignTop" xml:space="preserve">
     <value>上揃え</value>
   </data>
+  <data name="btnAutofitOff" xml:space="preserve">
+    <value>自動調整なし</value>
+  </data>
+  <data name="btnAutofitText" xml:space="preserve">
+    <value>はみ出す場合だけ自動調整</value>
+  </data>
+  <data name="btnAutoResize" xml:space="preserve">
+    <value>テキストに合わせて図形のサイズを調整</value>
+  </data>
   <data name="btnDistributeHorizontal" xml:space="preserve">
     <value>左右に整列</value>
   </data>
@@ -174,6 +183,12 @@
   <data name="btnMoveFront" xml:space="preserve">
     <value>最前面へ移動</value>
   </data>
+  <data name="btnResetMarginHorizontal" xml:space="preserve">
+    <value>左右余白をリセット</value>
+  </data>
+  <data name="btnResetMarginVertical" xml:space="preserve">
+    <value>上下余白をリセット</value>
+  </data>
   <data name="btnRotateLeft90" xml:space="preserve">
     <value>左へ 90 度回転</value>
   </data>
@@ -210,7 +225,28 @@
   <data name="btnUngroup" xml:space="preserve">
     <value>グループ解除</value>
   </data>
+  <data name="cbxWrapTextbox" xml:space="preserve">
+    <value>テキストを折り返す</value>
+  </data>
+  <data name="edtMarginBottom" xml:space="preserve">
+    <value>下余白:</value>
+  </data>
+  <data name="edtMarginLeft" xml:space="preserve">
+    <value>左余白:</value>
+  </data>
+  <data name="edtMarginRight" xml:space="preserve">
+    <value>右余白:</value>
+  </data>
+  <data name="edtMarginTop" xml:space="preserve">
+    <value>上余白:</value>
+  </data>
   <data name="grpArrange" xml:space="preserve">
     <value>配置</value>
+  </data>
+  <data name="grpTextbox" xml:space="preserve">
+    <value>テキストボックス</value>
+  </data>
+  <data name="lblTextboxAutofit" xml:space="preserve">
+    <value>自動調整:</value>
   </data>
 </root>

@@ -79,6 +79,18 @@ namespace ppt_arrange_addin {
         private const string btnFlipHorizontal = "btnFlipHorizontal";
         private const string btnGroup = "btnGroup";
         private const string btnUngroup = "btnUngroup";
+        private const string grpTextbox = "grpTextbox";
+        private const string lblTextboxAutofit = "lblTextboxAutofit";
+        private const string btnAutofitOff = "btnAutofitOff";
+        private const string btnAutofitText = "btnAutofitText";
+        private const string btnAutoResize = "btnAutoResize";
+        private const string cbxWrapTextbox = "cbxWrapTextbox";
+        private const string edtMarginLeft = "edtMarginLeft";
+        private const string edtMarginRight = "edtMarginRight";
+        private const string edtMarginTop= "edtMarginTop";
+        private const string edtMarginBottom = "edtMarginBottom";
+        private const string btnResetMarginHorizontal = "btnResetMarginHorizontal";
+        private const string btnResetMarginVertical = "btnResetMarginVertical";
 
         private readonly Dictionary<string, ElementUi> elementLabels = new Dictionary<string, ElementUi>() {
             { grpArrange, new ElementUi { Label= ARES.grpArrange, Image = RES.ObjectSendToBack } },
@@ -112,6 +124,18 @@ namespace ppt_arrange_addin {
             { btnFlipHorizontal, new ElementUi { Label = ARES.btnFlipHorizontal, Image = RES.ObjectFlipHorizontal } },
             { btnGroup, new ElementUi { Label = ARES.btnGroup, Image = RES.ObjectsGroup } },
             { btnUngroup, new ElementUi { Label = ARES.btnUngroup, Image = RES.ObjectsUngroup } },
+            { grpTextbox, new ElementUi { Label = ARES.grpTextbox, Image = RES.TextboxWrapText } },
+            { lblTextboxAutofit, new ElementUi { Label = ARES.lblTextboxAutofit } },
+            { btnAutofitOff, new ElementUi { Label = ARES.btnAutofitOff, Image = RES.TextboxAutofitOff } },
+            { btnAutofitText, new ElementUi { Label = ARES.btnAutofitText, Image = RES.TextboxAutofitText } },
+            { btnAutoResize, new ElementUi { Label = ARES.btnAutoResize, Image = RES.TextboxAutoResize } },
+            { cbxWrapTextbox, new ElementUi { Label = ARES.cbxWrapTextbox, Image = RES.TextboxWrapText } },
+            { edtMarginLeft, new ElementUi { Label = ARES.edtMarginLeft } },
+            { edtMarginRight, new ElementUi { Label = ARES.edtMarginRight } },
+            { edtMarginTop, new ElementUi { Label = ARES.edtMarginTop } },
+            { edtMarginBottom, new ElementUi { Label = ARES.edtMarginBottom } },
+            { btnResetMarginHorizontal, new ElementUi { Label = ARES.btnResetMarginHorizontal } },
+            { btnResetMarginVertical, new ElementUi { Label = ARES.btnResetMarginVertical } },
         };
 
         public string GetLabel(Office.IRibbonControl ribbonControl) {

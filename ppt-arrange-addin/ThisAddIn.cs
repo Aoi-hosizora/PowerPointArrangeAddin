@@ -15,18 +15,12 @@ namespace ppt_arrange_addin {
         private void ThisAddIn_Startup(object sender, EventArgs e) {
             // localized add-in
             var languageId = Application.LanguageSettings.get_LanguageID(Office.MsoAppLanguageID.msoLanguageIDUI);
-            // System.Diagnostics.Debug.WriteLine(languageId);
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(languageId);
             Properties.Resources.Culture = new CultureInfo(languageId);
             ArrangeRibbonResources.Culture = new CultureInfo(languageId); // TODO zh-CN
 
-            // ribbon accessibility
+            // ribbon availability
             Application.WindowSelectionChange += (obj) => {
-                // Globals.Ribbons.ArrangeRibbon.AdjustButtonsAccessibility();
-                ribbon.AdjustRibbonButtonsAvailability();
-            };
-            Application.SlideSelectionChanged += (obj) => {
-                // Globals.Ribbons.ArrangeRibbon.AdjustButtonsAccessibility();
                 ribbon.AdjustRibbonButtonsAvailability();
             };
         }

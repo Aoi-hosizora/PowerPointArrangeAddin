@@ -66,9 +66,12 @@ namespace ppt_arrange_addin {
             ribbon.Invalidate();
         }
 
-        private PowerPoint.ShapeRange GetShapeRange(int mustMoreThanOrEqualTo = 1) {
+        private PowerPoint.ShapeRange GetShapeRange(int mustMoreThanOrEqualTo = 1, bool mustHasTextFrame = false) {
             var shapeRange = Globals.ThisAddIn.Application.ActiveWindow.Selection.ShapeRange;
             if (shapeRange.Count < mustMoreThanOrEqualTo) {
+                return null;
+            }
+            if (mustHasTextFrame && shapeRange.HasTextFrame != Office.MsoTriState.msoTrue) {
                 return null;
             }
             return shapeRange;
@@ -371,6 +374,151 @@ namespace ppt_arrange_addin {
                 break;
             }
         }
+
+        public void BtnAutofit_Click(Office.IRibbonControl ribbonControl, bool pressed) {
+            var shapeRange = GetShapeRange(mustHasTextFrame: true);
+            if (shapeRange == null) {
+                return;
+            }
+
+            switch (ribbonControl.Id) {
+            case btnAutofitOff:
+                shapeRange.TextFrame2.AutoSize = Office.MsoAutoSize.msoAutoSizeNone;
+                break;
+            case btnAutofitText:
+                shapeRange.TextFrame2.AutoSize = Office.MsoAutoSize.msoAutoSizeTextToFitShape;
+                break;
+            case btnAutoResize:
+                shapeRange.TextFrame2.AutoSize = Office.MsoAutoSize.msoAutoSizeShapeToFitText;
+                break;
+            }
+            ribbon.InvalidateControl(btnAutofitOff);
+            ribbon.InvalidateControl(btnAutofitText);
+            ribbon.InvalidateControl(btnAutoResize);
+        }
+
+        public bool GetBtnAutofitPressed(Office.IRibbonControl ribbonControl) {
+            var shapeRange = GetShapeRange(mustHasTextFrame: true);
+            if (shapeRange == null) {
+                return false;
+            }
+
+            switch (ribbonControl.Id) {
+            case btnAutofitOff:
+                return shapeRange.TextFrame2.AutoSize == Office.MsoAutoSize.msoAutoSizeNone;
+            case btnAutofitText:
+                return shapeRange.TextFrame2.AutoSize == Office.MsoAutoSize.msoAutoSizeTextToFitShape;
+            case btnAutoResize:
+                return shapeRange.TextFrame2.AutoSize == Office.MsoAutoSize.msoAutoSizeShapeToFitText;
+            }
+            return false;
+        }
+
+        public void CbxWrapTextbox_Click(Office.IRibbonControl ribbonControl, bool pressed) {
+            var shapeRange = GetShapeRange(mustHasTextFrame: true);
+            if (shapeRange == null) {
+                return;
+            }
+
+            shapeRange.TextFrame.WordWrap = pressed ? Office.MsoTriState.msoTrue : Office.MsoTriState.msoFalse;
+            ribbon.InvalidateControl(ribbonControl.Id);
+        }
+
+        public bool GetCbxWrapTextboxChecked(Office.IRibbonControl ribbonControl) {
+            var shapeRange = GetShapeRange(mustHasTextFrame: true);
+            if (shapeRange == null) {
+                return false;
+            }
+
+            return shapeRange.TextFrame.WordWrap == Office.MsoTriState.msoTrue;
+        }
+
+        private float CmToPt(float cm) => (float) (cm * 720 / 25.4);
+
+        private float PtToCm(float pt) => (float) (pt * 25.4 / 720);
+
+        private const float defaultMarginHorizontalPt = 7.2F;
+        private const float defaultMarginVerticalPt = 3.6F;
+
+        public void EdtMargin_TextChanged(Office.IRibbonControl ribbonControl, string text) {
+            var shapeRange = GetShapeRange(mustHasTextFrame: true);
+            if (shapeRange == null) {
+                return;
+            }
+
+            text = text.Replace("cm", "").Trim();
+            if (text.Length == 0) text = "0";
+            if (float.TryParse(text, out float input)) {
+                var pt = CmToPt(input);
+                switch (ribbonControl.Id) {
+                case edtMarginLeft:
+                    shapeRange.TextFrame.MarginLeft = pt;
+                    break;
+                case edtMarginRight:
+                    shapeRange.TextFrame.MarginRight = pt;
+                    break;
+                case edtMarginTop:
+                    shapeRange.TextFrame.MarginTop = pt;
+                    break;
+                case edtMarginBottom:
+                    shapeRange.TextFrame.MarginBottom = pt;
+                    break;
+                }
+            }
+
+            ribbon.InvalidateControl(ribbonControl.Id);
+        }
+
+        public string GetEdtMarginText(Office.IRibbonControl ribbonControl) {
+            var shapeRange = GetShapeRange(mustHasTextFrame: true);
+            if (shapeRange == null) {
+                return "";
+            }
+
+            float pt = 0;
+            switch (ribbonControl.Id) {
+            case edtMarginLeft:
+                pt = shapeRange.TextFrame.MarginLeft;
+                break;
+            case edtMarginRight:
+                pt = shapeRange.TextFrame.MarginRight;
+                break;
+            case edtMarginTop:
+                pt = shapeRange.TextFrame.MarginTop;
+                break;
+            case edtMarginBottom:
+                pt = shapeRange.TextFrame.MarginBottom;
+                break;
+            }
+            if (pt < 0) {
+                return "";
+            }
+            return $"{Math.Round(PtToCm(pt), 2)} cm";
+        }
+
+        public void BtnResetMargin_Click(Office.IRibbonControl ribbonControl) {
+            var shapeRange = GetShapeRange(mustHasTextFrame: true);
+            if (shapeRange == null) {
+                return;
+            }
+
+            switch (ribbonControl.Id) {
+            case btnResetMarginHorizontal:
+                shapeRange.TextFrame.MarginLeft = defaultMarginHorizontalPt;
+                shapeRange.TextFrame.MarginRight = defaultMarginHorizontalPt;
+                break;
+            case btnResetMarginVertical:
+                shapeRange.TextFrame.MarginTop = defaultMarginVerticalPt;
+                shapeRange.TextFrame.MarginBottom = defaultMarginVerticalPt;
+                break;
+            }
+
+            ribbon.InvalidateControl(edtMarginLeft);
+            ribbon.InvalidateControl(edtMarginRight);
+            ribbon.InvalidateControl(edtMarginTop);
+            ribbon.InvalidateControl(edtMarginBottom);
+        }
+
     }
 
 }

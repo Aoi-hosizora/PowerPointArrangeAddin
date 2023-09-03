@@ -115,6 +115,33 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Autofit off.
+        /// </summary>
+        public static string btnAutofitOff {
+            get {
+                return ResourceManager.GetString("btnAutofitOff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Autofit text.
+        /// </summary>
+        public static string btnAutofitText {
+            get {
+                return ResourceManager.GetString("btnAutofitText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Auto  resize.
+        /// </summary>
+        public static string btnAutoResize {
+            get {
+                return ResourceManager.GetString("btnAutoResize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Distribute horizontally.
         /// </summary>
         public static string btnDistributeHorizontal {
@@ -232,6 +259,24 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reset horizontal margin.
+        /// </summary>
+        public static string btnResetMarginHorizontal {
+            get {
+                return ResourceManager.GetString("btnResetMarginHorizontal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset vertical margin.
+        /// </summary>
+        public static string btnResetMarginVertical {
+            get {
+                return ResourceManager.GetString("btnResetMarginVertical", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Rotate left with 90 degrees.
         /// </summary>
         public static string btnRotateLeft90 {
@@ -340,11 +385,74 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Wrap text.
+        /// </summary>
+        public static string cbxWrapTextbox {
+            get {
+                return ResourceManager.GetString("cbxWrapTextbox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bottom margin:.
+        /// </summary>
+        public static string edtMarginBottom {
+            get {
+                return ResourceManager.GetString("edtMarginBottom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Left margin:.
+        /// </summary>
+        public static string edtMarginLeft {
+            get {
+                return ResourceManager.GetString("edtMarginLeft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Right margin:.
+        /// </summary>
+        public static string edtMarginRight {
+            get {
+                return ResourceManager.GetString("edtMarginRight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Top margin:.
+        /// </summary>
+        public static string edtMarginTop {
+            get {
+                return ResourceManager.GetString("edtMarginTop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Arrange.
         /// </summary>
         public static string grpArrange {
             get {
                 return ResourceManager.GetString("grpArrange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Textbox.
+        /// </summary>
+        public static string grpTextbox {
+            get {
+                return ResourceManager.GetString("grpTextbox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Autofit:.
+        /// </summary>
+        public static string lblTextboxAutofit {
+            get {
+                return ResourceManager.GetString("lblTextboxAutofit", resourceCulture);
             }
         }
     }

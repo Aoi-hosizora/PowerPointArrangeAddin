@@ -135,6 +135,15 @@
   <data name="btnAlignTop" xml:space="preserve">
     <value>顶端对齐</value>
   </data>
+  <data name="btnAutofitOff" xml:space="preserve">
+    <value>Autofit off</value>
+  </data>
+  <data name="btnAutofitText" xml:space="preserve">
+    <value>Autofit text</value>
+  </data>
+  <data name="btnAutoResize" xml:space="preserve">
+    <value>Auto  resize</value>
+  </data>
   <data name="btnDistributeHorizontal" xml:space="preserve">
     <value>左右横向分布</value>
   </data>
@@ -174,6 +183,12 @@
   <data name="btnMoveFront" xml:space="preserve">
     <value>移动至顶层</value>
   </data>
+  <data name="btnResetMarginHorizontal" xml:space="preserve">
+    <value>Reset horizontal margin</value>
+  </data>
+  <data name="btnResetMarginVertical" xml:space="preserve">
+    <value>Reset vertical margin</value>
+  </data>
   <data name="btnRotateLeft90" xml:space="preserve">
     <value>向左旋转 90 度</value>
   </data>
@@ -210,7 +225,28 @@
   <data name="btnUngroup" xml:space="preserve">
     <value>解除组合形状</value>
   </data>
+  <data name="cbxWrapTextbox" xml:space="preserve">
+    <value>Wrap text</value>
+  </data>
+  <data name="edtMarginBottom" xml:space="preserve">
+    <value>Bottom margin:</value>
+  </data>
+  <data name="edtMarginLeft" xml:space="preserve">
+    <value>Left margin:</value>
+  </data>
+  <data name="edtMarginRight" xml:space="preserve">
+    <value>Right margin:</value>
+  </data>
+  <data name="edtMarginTop" xml:space="preserve">
+    <value>Top margin:</value>
+  </data>
   <data name="grpArrange" xml:space="preserve">
     <value>排列</value>
+  </data>
+  <data name="grpTextbox" xml:space="preserve">
+    <value>Textbox</value>
+  </data>
+  <data name="lblTextboxAutofit" xml:space="preserve">
+    <value>Autofit:</value>
   </data>
 </root>

@@ -62,23 +62,22 @@
         <contextualTabs>
             <tabSet idMso="TabSetDrawingTools">
                 <tab idMso="TabDrawingToolsFormat">
-                    <group id="grpTextbox" label="Textbox">
-                        <buttonGroup id="buttonGroup1">
-                            <toggleButton id="btnAutofitOff" label="Autofit off" showImage="false" />
-                            <toggleButton id="btnAutofitText" label="Autofit text" showImage="false" />
-                            <toggleButton id="btnResizeShape" label="Resize shape" showImage="false" />
+                    <group id="grpTextbox" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage">
+                        <labelControl id="lblTextboxAutofit" getLabel="GetLabel" />
+                        <buttonGroup id="grpAutofit">
+                            <toggleButton id="btnAutofitOff" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getPressed="GetBtnAutofitPressed" onAction="BtnAutofit_Click" />
+                            <toggleButton id="btnAutofitText" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getPressed="GetBtnAutofitPressed" onAction="BtnAutofit_Click" />
+                            <toggleButton id="btnAutoResize" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getPressed="GetBtnAutofitPressed" onAction="BtnAutofit_Click" />
                         </buttonGroup>
-                        <checkBox id="cbxWrapTextInTextbox" label="Wrap text in textbox" />
-                        <button id="btnResetShape" label="Reset shape" showImage="false" />
+                        <checkBox id="cbxWrapTextbox" getLabel="GetLabel" getScreentip="GetLabel" getPressed="GetCbxWrapTextboxChecked" onAction="CbxWrapTextbox_Click" />
                         <separator id="separator3" />
-                        <box id="box1" boxStyle="vertical">
-                            <editBox id="editBox1" label="Left Margin:" showImage="false" />
-                            <editBox id="editBox2" label="Right Margin:" showImage="false" />
-                        </box>
-                        <box id="box2" boxStyle="vertical">
-                            <editBox id="editBox3" label="Top Margin:" showImage="false" />
-                            <editBox id="editBox4" label="Bottom Margin:" showImage="false" />
-                        </box>
+                        <editBox id="edtMarginLeft" showImage="false" getLabel="GetLabel" getScreentip="GetLabel" getText="GetEdtMarginText" onChange="EdtMargin_TextChanged" />
+                        <editBox id="edtMarginRight" showImage="false" getLabel="GetLabel" getScreentip="GetLabel" getText="GetEdtMarginText" onChange="EdtMargin_TextChanged" />
+                        <button id="btnResetMarginHorizontal" showImage="false" getLabel="GetLabel" getScreentip="GetLabel" onAction="BtnResetMargin_Click" />
+                        <separator id="separator4" />
+                        <editBox id="edtMarginTop" showImage="false" getLabel="GetLabel" getScreentip="GetLabel" getText="GetEdtMarginText" onChange="EdtMargin_TextChanged" />
+                        <editBox id="edtMarginBottom" showImage="false" getLabel="GetLabel" getScreentip="GetLabel" getText="GetEdtMarginText" onChange="EdtMargin_TextChanged" />
+                        <button id="btnResetMarginVertical" showImage="false" getLabel="GetLabel" getScreentip="GetLabel" onAction="BtnResetMargin_Click" />
                     </group>
                 </tab>
             </tabSet>
