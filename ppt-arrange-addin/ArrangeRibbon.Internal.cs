@@ -16,7 +16,7 @@ namespace ppt_arrange_addin {
     public partial class ArrangeRibbon : Office.IRibbonExtensibility {
 
         public ArrangeRibbon() {
-            InitializeInConstructor();
+            InitializeAvailabilityRules();
         }
 
         #region IRibbonExtensibility Members
@@ -130,7 +130,7 @@ namespace ppt_arrange_addin {
             { btnFlipHorizontal, new ElementUi { Label = ARES.btnFlipHorizontal, Image = RES.ObjectFlipHorizontal } },
             { btnGroup, new ElementUi { Label = ARES.btnGroup, Image = RES.ObjectsGroup } },
             { btnUngroup, new ElementUi { Label = ARES.btnUngroup, Image = RES.ObjectsUngroup } },
-            { grpShapePosition, new ElementUi { Label = ARES.grpShapePosition } },
+            { grpShapePosition, new ElementUi { Label = ARES.grpShapePosition, Image = RES.ObjectPosition } },
             { edtShapePositionX, new ElementUi { Label = ARES.edtShapePositionX } },
             { edtShapePositionY, new ElementUi { Label = ARES.edtShapePositionY } },
             { btnShapePositionCopy, new ElementUi { Label = ARES.btnShapePositionCopy, Image = RES.Copy } },

@@ -54,6 +54,7 @@
                     <buttonGroup id="grpGroup">
                         <button id="btnGroup" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnGroup_Click" />
                         <button id="btnUngroup" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnGroup_Click" />
+                        <toggleButton idMso="SelectionPane" showLabel="false" />
                     </buttonGroup>
                 </group>
             </tab>
@@ -69,6 +70,10 @@
                             <button id="btnShapePositionCopy" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnShapePositionCopy_Click" />
                             <button id="btnShapePositionPaste" showLabel="true" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnShapePositionPaste_Click" />
                         </buttonGroup>
+                        <dialogBoxLauncher>
+                            <button idMso="ObjectSizeAndPositionDialog" />
+                            <!-- TODO show exact dialog -->
+                        </dialogBoxLauncher>
                     </group>
                     <group id="grpTextbox" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage">
                         <toggleButton id="btnAutofitOff" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" getPressed="GetBtnAutofitPressed" onAction="BtnAutofit_Click" />
@@ -83,6 +88,10 @@
                         <editBox id="edtMarginTop" showImage="false" getLabel="GetLabel" getScreentip="GetLabel" getEnabled="GetEnabled" getText="GetEdtMarginText" onChange="EdtMargin_TextChanged" />
                         <editBox id="edtMarginBottom" showImage="false" getLabel="GetLabel" getScreentip="GetLabel" getEnabled="GetEnabled" getText="GetEdtMarginText" onChange="EdtMargin_TextChanged" />
                         <button id="btnResetMarginVertical" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnResetMargin_Click" />
+                        <dialogBoxLauncher>
+                            <button idMso="ObjectSizeAndPositionDialog" />
+                            <!-- TODO show exact dialog -->
+                        </dialogBoxLauncher>
                     </group>
                 </tab>
             </tabSet>

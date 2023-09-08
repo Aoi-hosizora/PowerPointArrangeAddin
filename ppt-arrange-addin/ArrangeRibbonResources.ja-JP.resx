@@ -263,7 +263,4 @@
   <data name="grpTextbox" xml:space="preserve">
     <value>テキストボックス</value>
   </data>
-  <data name="lblShapePosition" xml:space="preserve">
-    <value>スライド上の位置</value>
-  </data>
 </root>

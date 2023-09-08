@@ -263,7 +263,4 @@
   <data name="grpTextbox" xml:space="preserve">
     <value>文本框</value>
   </data>
-  <data name="lblShapePosition" xml:space="preserve">
-    <value>幻灯片上的位置</value>
-  </data>
 </root>

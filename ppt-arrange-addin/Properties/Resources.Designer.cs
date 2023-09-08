@@ -173,6 +173,16 @@ namespace ppt_arrange_addin.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ObjectPosition {
+            get {
+                object obj = ResourceManager.GetObject("ObjectPosition", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ObjectRotateLeft90 {
             get {
                 object obj = ResourceManager.GetObject("ObjectRotateLeft90", resourceCulture);

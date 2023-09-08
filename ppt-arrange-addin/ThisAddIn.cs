@@ -19,9 +19,15 @@ namespace ppt_arrange_addin {
             Properties.Resources.Culture = new CultureInfo(languageId);
             ArrangeRibbonResources.Culture = new CultureInfo(languageId); // TODO zh-CN
 
-            // ribbon availability
-            Application.WindowSelectionChange += (obj) => {
+            // ribbon controls status
+            Application.WindowSelectionChange += (selection) => {
                 ribbon.AdjustRibbonButtonsAvailability();
+            };
+            Application.AfterDragDropOnSlide += (slide, x, y) => {
+                ribbon.AdjustRibbonButtonsAvailability(onlyForDrag: true);
+            };
+            Application.AfterShapeSizeChange += (shape) => {
+                ribbon.AdjustRibbonButtonsAvailability(onlyForDrag: true);
             };
         }
 
