@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<menu xmlns="http://schemas.microsoft.com/office/2006/01/customui">
+    <menuSeparator id="mnuArrangement_sepAlignmentAndResize" title="Alignment and resize" />
+    <menu id="mnuArrangement_mnuAlignment" label="Alignment" imageMso="HappyFace">
+        <button id="btnAlignLeft" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnAlign_Click" />
+        <button id="btnAlignCenter" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnAlign_Click" />
+        <button id="btnAlignRight" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnAlign_Click" />
+        <menuSeparator id="separator1" />
+        <button id="btnAlignTop" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnAlign_Click" />
+        <button id="btnAlignMiddle" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" onAction="BtnAlign_Click" />
+        <button id="btnAlignBottom" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnAlign_Click" />
+        <menuSeparator id="separator2" />
+        <button id="btnDistributeHorizontal" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnDistribute_Click" />
+        <button id="btnDistributeVertical" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnDistribute_Click" />
+        <menuSeparator id="separator3" />
+        <button idMso="GridSettings" />
+    </menu>
+
+    <menu id="mnuArrangement_mnuResizing" label="Resizing" imageMso="HappyFace">
+        <button id="btnScalePosition" getLabel="GetBtnScalePositionLabel" getScreentip="GetBtnScalePositionLabel" getImage="GetBtnScalePositionImage" onAction="BtnScalePosition_Click" />
+        <menuSeparator id="separator4" />
+        <button id="btnScaleSameWidth" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnScale_Click" />
+        <button id="btnScaleSameHeight" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnScale_Click" />
+        <button id="btnScaleSameSize" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnScale_Click" />
+        <menuSeparator id="separator5" />
+        <button id="btnExtendSameLeft" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnExtend_Click" />
+        <button id="btnExtendSameRight" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnExtend_Click" />
+        <button id="btnExtendSameTop" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnExtend_Click" />
+        <button id="btnExtendSameBottom" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnExtend_Click" />
+    </menu>
+
+    <menu id="mnuArrangement_mnuSnapping" label="Snapping" imageMso="HappyFace">
+        <button id="btnSnapLeft" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnSnap_Click" />
+        <button id="btnSnapRight" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnSnap_Click" />
+        <button id="btnSnapTop" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnSnap_Click" />
+        <button id="btnSnapBottom" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnSnap_Click" />
+    </menu>
+
+    <menuSeparator id="mnuArrangement_sepLayerOrderAndRotationAndGrouping" title="Layer order, rotation and grouping" />
+    <menu id="mnuArrangement_mnuLayerOrder" label="Layer order" imageMso="HappyFace">
+        <button id="btnMoveForward" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnMove_Click" />
+        <button id="btnMoveFront" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnMove_Click" />
+        <button id="btnMoveBackward" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnMove_Click" />
+        <button id="btnMoveBack" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnMove_Click" />
+    </menu>
+
+    <menu id="mnuArrangement_mnuRotation" label="Rotation" imageMso="HappyFace">
+        <button id="btnRotateRight90" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnRotate_Click" />
+        <button id="btnRotateLeft90" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnRotate_Click" />
+        <button id="btnFlipVertical" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnFlip_Click" />
+        <button id="btnFlipHorizontal" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnFlip_Click" />
+    </menu>
+
+    <menu id="mnuArrangement_mnuGrouping" label="Grouping" imageMso="HappyFace">
+        <button id="btnGroup" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnGroup_Click" />
+        <button id="btnUngroup" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnGroup_Click" />
+    </menu>
+
+    <menuSeparator id="mnuArrangement_seqSelectionPane" title="Objects in slide" />
+    <button idMso="ObjectSizeAndPositionDialog" imageMso="ShapeStylesGallery" />
+    <toggleButton idMso="SelectionPane" />
+</menu>

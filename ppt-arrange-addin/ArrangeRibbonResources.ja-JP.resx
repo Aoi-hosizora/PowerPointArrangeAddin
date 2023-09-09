@@ -143,7 +143,7 @@
     <comment>はみ出す場合だけ自動調整</comment>
   </data>
   <data name="btnAutoResize" xml:space="preserve">
-    <value>図形を自動調整</value>
+    <value>図形のサイズを調整</value>
     <comment>テキストに合わせて図形のサイズを調整</comment>
   </data>
   <data name="btnDistributeHorizontal" xml:space="preserve">
@@ -204,13 +204,16 @@
     <value>左上をアンカーとして伸ばす</value>
   </data>
   <data name="btnScaleSameHeight" xml:space="preserve">
-    <value>同じ高さに伸ばす</value>
+    <value>同じ高さに伸ばす (最初に選択した図形を基準とする)</value>
   </data>
   <data name="btnScaleSameSize" xml:space="preserve">
-    <value>同じサイズに伸ばす</value>
+    <value>同じサイズに伸ばす (最初に選択した図形を基準とする)</value>
   </data>
   <data name="btnScaleSameWidth" xml:space="preserve">
-    <value>同じ幅に伸ばす</value>
+    <value>同じ幅に伸ばす (最初に選択した図形を基準とする)</value>
+  </data>
+  <data name="btnShapeLockAspectRatio" xml:space="preserve">
+    <value>縦横比を固定</value>
   </data>
   <data name="btnShapePositionCopy" xml:space="preserve">
     <value>位置をコピー</value>
@@ -218,17 +221,23 @@
   <data name="btnShapePositionPaste" xml:space="preserve">
     <value>位置を貼付</value>
   </data>
+  <data name="btnShapeSizeCopy" xml:space="preserve">
+    <value>サイズをコピー</value>
+  </data>
+  <data name="btnShapeSizePaste" xml:space="preserve">
+    <value>サイズを貼付</value>
+  </data>
   <data name="btnSnapBottom" xml:space="preserve">
-    <value>下にスナップ</value>
+    <value>下端を上にスナップ</value>
   </data>
   <data name="btnSnapLeft" xml:space="preserve">
-    <value>左にスナップ</value>
+    <value>左端を右にスナップ</value>
   </data>
   <data name="btnSnapRight" xml:space="preserve">
-    <value>右にスナップ</value>
+    <value>右端を左にスナップ</value>
   </data>
   <data name="btnSnapTop" xml:space="preserve">
-    <value>上にスナップ</value>
+    <value>上端を下にスナップ</value>
   </data>
   <data name="btnUngroup" xml:space="preserve">
     <value>グループ解除</value>
@@ -257,10 +266,13 @@
   <data name="grpArrange" xml:space="preserve">
     <value>配置</value>
   </data>
-  <data name="grpShapePosition" xml:space="preserve">
-    <value>位置</value>
+  <data name="grpShapeSizeAndPosition" xml:space="preserve">
+    <value>サイズと位置</value>
   </data>
   <data name="grpTextbox" xml:space="preserve">
     <value>テキストボックス</value>
+  </data>
+  <data name="mnuShapeArrangement" xml:space="preserve">
+    <value>配置</value>
   </data>
 </root>

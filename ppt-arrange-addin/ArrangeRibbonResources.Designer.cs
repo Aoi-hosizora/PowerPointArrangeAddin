@@ -313,7 +313,7 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Stretch to same height.
+        ///   Looks up a localized string similar to Stretch to same height (as the first shape).
         /// </summary>
         public static string btnScaleSameHeight {
             get {
@@ -322,7 +322,7 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Stretch to same size.
+        ///   Looks up a localized string similar to Stretch to same size (as the first shape).
         /// </summary>
         public static string btnScaleSameSize {
             get {
@@ -331,11 +331,20 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Stretch to same width.
+        ///   Looks up a localized string similar to Stretch to same width (as the first shape).
         /// </summary>
         public static string btnScaleSameWidth {
             get {
                 return ResourceManager.GetString("btnScaleSameWidth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lock aspect ratio.
+        /// </summary>
+        public static string btnShapeLockAspectRatio {
+            get {
+                return ResourceManager.GetString("btnShapeLockAspectRatio", resourceCulture);
             }
         }
         
@@ -354,6 +363,24 @@ namespace ppt_arrange_addin {
         public static string btnShapePositionPaste {
             get {
                 return ResourceManager.GetString("btnShapePositionPaste", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy size.
+        /// </summary>
+        public static string btnShapeSizeCopy {
+            get {
+                return ResourceManager.GetString("btnShapeSizeCopy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Paste size.
+        /// </summary>
+        public static string btnShapeSizePaste {
+            get {
+                return ResourceManager.GetString("btnShapeSizePaste", resourceCulture);
             }
         }
         
@@ -475,11 +502,11 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Position.
+        ///   Looks up a localized string similar to Size and position.
         /// </summary>
-        public static string grpShapePosition {
+        public static string grpShapeSizeAndPosition {
             get {
-                return ResourceManager.GetString("grpShapePosition", resourceCulture);
+                return ResourceManager.GetString("grpShapeSizeAndPosition", resourceCulture);
             }
         }
         
@@ -489,6 +516,15 @@ namespace ppt_arrange_addin {
         public static string grpTextbox {
             get {
                 return ResourceManager.GetString("grpTextbox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Arrangement.
+        /// </summary>
+        public static string mnuShapeArrangement {
+            get {
+                return ResourceManager.GetString("mnuShapeArrangement", resourceCulture);
             }
         }
     }

@@ -202,19 +202,28 @@
     <value>Stretch from top left</value>
   </data>
   <data name="btnScaleSameHeight" xml:space="preserve">
-    <value>Stretch to same height</value>
+    <value>Stretch to same height (as the first shape)</value>
   </data>
   <data name="btnScaleSameSize" xml:space="preserve">
-    <value>Stretch to same size</value>
+    <value>Stretch to same size (as the first shape)</value>
   </data>
   <data name="btnScaleSameWidth" xml:space="preserve">
-    <value>Stretch to same width</value>
+    <value>Stretch to same width (as the first shape)</value>
+  </data>
+  <data name="btnShapeLockAspectRatio" xml:space="preserve">
+    <value>Lock aspect ratio</value>
   </data>
   <data name="btnShapePositionCopy" xml:space="preserve">
     <value>Copy position</value>
   </data>
   <data name="btnShapePositionPaste" xml:space="preserve">
     <value>Paste position</value>
+  </data>
+  <data name="btnShapeSizeCopy" xml:space="preserve">
+    <value>Copy size</value>
+  </data>
+  <data name="btnShapeSizePaste" xml:space="preserve">
+    <value>Paste size</value>
   </data>
   <data name="btnSnapBottom" xml:space="preserve">
     <value>Snap to bottom</value>
@@ -255,10 +264,13 @@
   <data name="grpArrange" xml:space="preserve">
     <value>Arrange</value>
   </data>
-  <data name="grpShapePosition" xml:space="preserve">
-    <value>Position</value>
+  <data name="grpShapeSizeAndPosition" xml:space="preserve">
+    <value>Size and position</value>
   </data>
   <data name="grpTextbox" xml:space="preserve">
     <value>Textbox</value>
+  </data>
+  <data name="mnuShapeArrangement" xml:space="preserve">
+    <value>Arrangement</value>
   </data>
 </root>

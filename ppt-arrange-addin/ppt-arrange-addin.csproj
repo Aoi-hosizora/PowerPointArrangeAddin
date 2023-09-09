@@ -329,7 +329,28 @@
     <None Include="Resources\Paste.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\ObjectPosition.png" />
+    <None Include="Resources\SelectionPane.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ObjectArrangement.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TextboxSetting.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GridSettings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ObjectLockAspectRatio.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SizeAndPosition.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ArrangeRibbon.ArrangeMenu.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ShapeStylesGallery.png" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

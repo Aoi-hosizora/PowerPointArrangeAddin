@@ -14,3 +14,4 @@
 + [Playlist: VBA to .NET / VSTO](https://www.youtube.com/playlist?list=PLo0aMPtFIFDqaRyd0KZ0DLXFD3rfhI4SU)
 + [Walkthrough: Update the controls on a ribbon at run time](https://learn.microsoft.com/en-us/visualstudio/vsto/walkthrough-updating-the-controls-on-a-ribbon-at-run-time)
 + [C# 8/9の言語機能を.NET Frameworkで使う](https://qiita.com/kenichiuda/items/fada6068ea265fd6a389)
++ [Custom UI XML Markup Specification](https://learn.microsoft.com/en-us/openspecs/office_standards/ms-customui/31f152d6-2a5d-4b50-a867-9dbc6d01aa43)

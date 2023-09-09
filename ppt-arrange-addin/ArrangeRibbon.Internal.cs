@@ -79,7 +79,11 @@ namespace ppt_arrange_addin {
         private const string btnFlipHorizontal = "btnFlipHorizontal";
         private const string btnGroup = "btnGroup";
         private const string btnUngroup = "btnUngroup";
-        private const string grpShapePosition = "grpShapePosition";
+        private const string grpShapeSizeAndPosition = "grpShapeSizeAndPosition";
+        private const string mnuShapeArrangement = "mnuShapeArrangement";
+        private const string btnShapeLockAspectRatio = "btnShapeLockAspectRatio";
+        private const string btnShapeSizeCopy = "btnShapeSizeCopy";
+        private const string btnShapeSizePaste = "btnShapeSizePaste";
         private const string edtShapePositionX = "edtShapePositionX";
         private const string edtShapePositionY = "edtShapePositionY";
         private const string btnShapePositionCopy = "btnShapePositionCopy";
@@ -98,7 +102,7 @@ namespace ppt_arrange_addin {
         // ReSharper restore InconsistentNaming
 
         private readonly Dictionary<string, ElementUi> _elementLabels = new() {
-            { grpArrange, new ElementUi { Label = ARES.grpArrange, Image = RES.ObjectSendToBack } },
+            { grpArrange, new ElementUi { Label = ARES.grpArrange, Image = RES.ObjectArrangement } },
             { btnAlignLeft, new ElementUi { Label = ARES.btnAlignLeft, Image = RES.ObjectsAlignLeft } },
             { btnAlignCenter, new ElementUi { Label = ARES.btnAlignCenter, Image = RES.ObjectsAlignCenterHorizontal } },
             { btnAlignRight, new ElementUi { Label = ARES.btnAlignRight, Image = RES.ObjectsAlignRight } },
@@ -129,12 +133,16 @@ namespace ppt_arrange_addin {
             { btnFlipHorizontal, new ElementUi { Label = ARES.btnFlipHorizontal, Image = RES.ObjectFlipHorizontal } },
             { btnGroup, new ElementUi { Label = ARES.btnGroup, Image = RES.ObjectsGroup } },
             { btnUngroup, new ElementUi { Label = ARES.btnUngroup, Image = RES.ObjectsUngroup } },
-            { grpShapePosition, new ElementUi { Label = ARES.grpShapePosition, Image = RES.ObjectPosition } },
+            { grpShapeSizeAndPosition, new ElementUi { Label = ARES.grpShapeSizeAndPosition, Image = RES.SizeAndPosition } },
+            { mnuShapeArrangement, new ElementUi { Label = ARES.mnuShapeArrangement, Image = RES.ObjectArrangement } },
+            { btnShapeLockAspectRatio, new ElementUi { Label = ARES.btnShapeLockAspectRatio, Image = RES.ObjectLockAspectRatio } },
+            { btnShapeSizeCopy, new ElementUi { Label = ARES.btnShapeSizeCopy, Image = RES.Copy } },
+            { btnShapeSizePaste, new ElementUi { Label = ARES.btnShapeSizePaste, Image = RES.Paste } },
             { edtShapePositionX, new ElementUi { Label = ARES.edtShapePositionX } },
             { edtShapePositionY, new ElementUi { Label = ARES.edtShapePositionY } },
             { btnShapePositionCopy, new ElementUi { Label = ARES.btnShapePositionCopy, Image = RES.Copy } },
             { btnShapePositionPaste, new ElementUi { Label = ARES.btnShapePositionPaste, Image = RES.Paste } },
-            { grpTextbox, new ElementUi { Label = ARES.grpTextbox, Image = RES.TextboxWrapText } },
+            { grpTextbox, new ElementUi { Label = ARES.grpTextbox, Image = RES.TextboxSetting } },
             { btnAutofitOff, new ElementUi { Label = ARES.btnAutofitOff, Image = RES.TextboxAutofitOff } },
             { btnAutofitText, new ElementUi { Label = ARES.btnAutofitText, Image = RES.TextboxAutofitText } },
             { btnAutoResize, new ElementUi { Label = ARES.btnAutoResize, Image = RES.TextboxAutoResize } },
@@ -144,7 +152,7 @@ namespace ppt_arrange_addin {
             { edtMarginTop, new ElementUi { Label = ARES.edtMarginTop } },
             { edtMarginBottom, new ElementUi { Label = ARES.edtMarginBottom } },
             { btnResetMarginHorizontal, new ElementUi { Label = ARES.btnResetMarginHorizontal, Image = RES.TextboxResetMargin } },
-            { btnResetMarginVertical, new ElementUi { Label = ARES.btnResetMarginVertical, Image = RES.TextboxResetMargin } },
+            { btnResetMarginVertical, new ElementUi { Label = ARES.btnResetMarginVertical, Image = RES.TextboxResetMargin } }
         };
 
         public string GetLabel(Office.IRibbonControl ribbonControl) {

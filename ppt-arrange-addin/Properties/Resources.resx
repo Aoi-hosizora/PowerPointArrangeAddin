@@ -133,6 +133,9 @@
   <data name="ObjectBringForward" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ObjectBringForward.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="TextboxSetting" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\TextboxSetting.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ObjectBringToFront" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ObjectBringToFront.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -148,6 +151,9 @@
   <data name="ObjectRotateLeft90" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ObjectRotateLeft90.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Copy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ObjectSendBackward" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ObjectSendBackward.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -159,6 +165,9 @@
   </data>
   <data name="ObjectsGroup" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ObjectsGroup.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SelectionPane" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SelectionPane.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ObjectsAlignMiddleVertical" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ObjectsAlignMiddleVertical.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -184,6 +193,9 @@
   <data name="TextboxWrapText_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\TextboxWrapText_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Paste" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Paste.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ExtendSameTop" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ExtendSameTop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -198,6 +210,9 @@
   </data>
   <data name="TextboxResetMargin" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\TextboxResetMargin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ObjectArrangement" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ObjectArrangement.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ExtendSameRight" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ExtendSameRight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -229,13 +244,16 @@
   <data name="SnapToBottom" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SnapToBottom.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Copy" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Copy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="GridSettings" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GridSettings.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Paste" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Paste.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ObjectLockAspectRatio" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ObjectLockAspectRatio.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ObjectPosition" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ObjectPosition.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ShapeStylesGallery" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ShapeStylesGallery.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SizeAndPosition" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SizeAndPosition.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

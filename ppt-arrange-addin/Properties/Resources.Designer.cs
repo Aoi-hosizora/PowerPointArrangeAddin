@@ -133,6 +133,26 @@ namespace ppt_arrange_addin.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap GridSettings {
+            get {
+                object obj = ResourceManager.GetObject("GridSettings", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ObjectArrangement {
+            get {
+                object obj = ResourceManager.GetObject("ObjectArrangement", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ObjectBringForward {
             get {
                 object obj = ResourceManager.GetObject("ObjectBringForward", resourceCulture);
@@ -173,9 +193,9 @@ namespace ppt_arrange_addin.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ObjectPosition {
+        internal static System.Drawing.Bitmap ObjectLockAspectRatio {
             get {
-                object obj = ResourceManager.GetObject("ObjectPosition", resourceCulture);
+                object obj = ResourceManager.GetObject("ObjectLockAspectRatio", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -363,6 +383,36 @@ namespace ppt_arrange_addin.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap SelectionPane {
+            get {
+                object obj = ResourceManager.GetObject("SelectionPane", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ShapeStylesGallery {
+            get {
+                object obj = ResourceManager.GetObject("ShapeStylesGallery", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SizeAndPosition {
+            get {
+                object obj = ResourceManager.GetObject("SizeAndPosition", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap SnapToBottom {
             get {
                 object obj = ResourceManager.GetObject("SnapToBottom", resourceCulture);
@@ -436,6 +486,16 @@ namespace ppt_arrange_addin.Properties {
         internal static System.Drawing.Bitmap TextboxResetMargin {
             get {
                 object obj = ResourceManager.GetObject("TextboxResetMargin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap TextboxSetting {
+            get {
+                object obj = ResourceManager.GetObject("TextboxSetting", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
