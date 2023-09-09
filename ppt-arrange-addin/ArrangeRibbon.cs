@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
 using Office = Microsoft.Office.Core;
 using PowerPoint = Microsoft.Office.Interop.PowerPoint;
 
@@ -10,21 +9,21 @@ namespace ppt_arrange_addin {
 
     public partial class ArrangeRibbon {
 
-        private Office.IRibbonUI ribbon;
+        private Office.IRibbonUI _ribbon;
 
-        public void Ribbon_Load(Office.IRibbonUI ribbonUI) {
-            ribbon = ribbonUI;
+        public void Ribbon_Load(Office.IRibbonUI ribbonUi) {
+            _ribbon = ribbonUi;
         }
 
         [DllImport("user32.dll")]
         private static extern IntPtr GetForegroundWindow();
 
         private struct Selection {
-            public PowerPoint.ShapeRange ShapeRange { get; set; }
-            public PowerPoint.Shape TextShape { get; set; }
-            public PowerPoint.TextRange TextRange { get; set; }
-            public PowerPoint.TextFrame TextFrame { get; set; }
-            public PowerPoint.TextFrame2 TextFrame2 { get; set; }
+            public PowerPoint.ShapeRange ShapeRange { get; init; }
+            public PowerPoint.Shape TextShape { get; init; }
+            public PowerPoint.TextRange TextRange { get; init; }
+            public PowerPoint.TextFrame TextFrame { get; init; }
+            public PowerPoint.TextFrame2 TextFrame2 { get; init; }
         }
 
         private Selection GetSelection(bool onlyShapeRange) {
@@ -35,9 +34,7 @@ namespace ppt_arrange_addin {
                 if (application.Windows.Count > 0 && GetForegroundWindow().ToInt32() == application.HWND) {
                     selection = application.ActiveWindow.Selection;
                 }
-            } catch (Exception e) {
-                System.Diagnostics.Debug.WriteLine(e);
-            }
+            } catch (Exception) { /* ignored */ }
             if (selection == null) {
                 return new Selection();
             }
@@ -49,10 +46,10 @@ namespace ppt_arrange_addin {
             } else if (selection.Type == PowerPoint.PpSelectionType.ppSelectionText) {
                 try {
                     shapeRange = selection.ShapeRange;
-                } catch (Exception) { }
+                } catch (Exception) { /* ignored */ }
             }
             if (onlyShapeRange) {
-                return new Selection() { ShapeRange = shapeRange };
+                return new Selection { ShapeRange = shapeRange };
             }
 
             // 3. text range
@@ -62,22 +59,21 @@ namespace ppt_arrange_addin {
             PowerPoint.TextFrame2 textFrame2 = null;
             if (selection.Type == PowerPoint.PpSelectionType.ppSelectionText) {
                 textRange = selection.TextRange;
-                if (textRange.Parent is PowerPoint.TextFrame textFrame_) {
-                    textFrame = textFrame_;
-                    if (textFrame.Parent is PowerPoint.Shape textShape_) {
-                        textShape = textShape_;
-                        textFrame2 = textShape.TextFrame2;
+                if (textRange.Parent is PowerPoint.TextFrame frame) {
+                    textFrame = frame;
+                    if (textFrame.Parent is PowerPoint.Shape shape) {
+                        textShape = shape;
+                        textFrame2 = shape.TextFrame2;
                     }
                 }
             } else if (shapeRange != null && shapeRange.HasTextFrame != Office.MsoTriState.msoFalse) {
                 textFrame = shapeRange.TextFrame;
                 textRange = textFrame.TextRange;
                 textFrame2 = shapeRange.TextFrame2;
-                textShape = null;
             }
 
             // 4. return selection
-            return new Selection() {
+            return new Selection {
                 ShapeRange = shapeRange,
                 TextRange = textRange,
                 TextShape = textShape,
@@ -86,45 +82,45 @@ namespace ppt_arrange_addin {
             };
         }
 
-        private delegate bool AvailabilityRule(bool hasShape, int shapesCount, bool hasTextFrame);
-        private Dictionary<string, AvailabilityRule> availabilityRules;
+        private delegate bool AvailabilityRule(bool hasShapeRange, int shapesCount, bool hasTextFrame);
+        private Dictionary<string, AvailabilityRule> _availabilityRules;
 
         private void InitializeAvailabilityRules() {
-            availabilityRules = new Dictionary<string, AvailabilityRule>() {
-                { btnAlignLeft, (_, cnt, __) => cnt >= 1 },
-                { btnAlignCenter, (_, cnt, __) => cnt >= 1 },
-                { btnAlignRight, (_, cnt, __) => cnt >= 1 },
-                { btnAlignTop, (_, cnt, __) => cnt >= 1 },
-                { btnAlignMiddle, (_, cnt, __) => cnt >= 1 },
-                { btnAlignBottom, (_, cnt, __) => cnt >= 1 },
-                { btnDistributeHorizontal, (_, cnt, __) => cnt >= 3 },
-                { btnDistributeVertical, (_, cnt, __) => cnt >= 3 },
-                { btnScaleSameWidth, (_, cnt, __) => cnt >= 2 },
-                { btnScaleSameHeight, (_, cnt, __) => cnt >= 2 },
-                { btnScaleSameSize, (_, cnt, __) => cnt >= 2 },
-                { btnScalePosition, (_, cnt, __) => cnt >= 1 },
-                { btnExtendSameLeft, (_, cnt, __) => cnt >= 2 },
-                { btnExtendSameRight, (_, cnt, __) => cnt >= 2 },
-                { btnExtendSameTop, (_, cnt, __) => cnt >= 2 },
-                { btnExtendSameBottom, (_, cnt, __) => cnt >= 2 },
-                { btnSnapLeft, (_, cnt, __) => cnt >= 2 },
-                { btnSnapRight, (_, cnt, __) => cnt >= 2 },
-                { btnSnapTop, (_, cnt, __) => cnt >= 2 },
-                { btnSnapBottom, (_, cnt, __) => cnt >= 2 },
-                { btnMoveForward, (_, cnt, __) => cnt >= 1 },
-                { btnMoveFront, (_, cnt, __) => cnt >= 1 },
-                { btnMoveBackward, (_, cnt, __) => cnt >= 1 },
-                { btnMoveBack, (_, cnt, __) => cnt >= 1 },
-                { btnRotateRight90, (_, cnt, __) => cnt >= 1 },
-                { btnRotateLeft90, (_, cnt, __) => cnt >= 1 },
-                { btnFlipVertical, (_, cnt, __) => cnt >= 1 },
-                { btnFlipHorizontal, (_, cnt, __) => cnt >= 1 },
-                { btnGroup, (_, cnt, __) => cnt >= 2 },
-                { btnUngroup, (_, cnt, __) => cnt >= 1 },
-                { edtShapePositionX, (_, cnt, __) => cnt >= 1 },
-                { edtShapePositionY, (_, cnt, __) => cnt >= 1 },
-                { btnShapePositionCopy, (_, cnt, __) => cnt == 1 },
-                { btnShapePositionPaste, (_, cnt, __) => cnt >= 1 && copiedPositionXPt >= 0 && copiedPositionYPt >= 0 },
+            _availabilityRules = new Dictionary<string, AvailabilityRule> {
+                { btnAlignLeft, (_, cnt, _) => cnt >= 1 },
+                { btnAlignCenter, (_, cnt, _) => cnt >= 1 },
+                { btnAlignRight, (_, cnt, _) => cnt >= 1 },
+                { btnAlignTop, (_, cnt, _) => cnt >= 1 },
+                { btnAlignMiddle, (_, cnt, _) => cnt >= 1 },
+                { btnAlignBottom, (_, cnt, _) => cnt >= 1 },
+                { btnDistributeHorizontal, (_, cnt, _) => cnt >= 3 },
+                { btnDistributeVertical, (_, cnt, _) => cnt >= 3 },
+                { btnScaleSameWidth, (_, cnt, _) => cnt >= 2 },
+                { btnScaleSameHeight, (_, cnt, _) => cnt >= 2 },
+                { btnScaleSameSize, (_, cnt, _) => cnt >= 2 },
+                { btnScalePosition, (_, cnt, _) => cnt >= 1 },
+                { btnExtendSameLeft, (_, cnt, _) => cnt >= 2 },
+                { btnExtendSameRight, (_, cnt, _) => cnt >= 2 },
+                { btnExtendSameTop, (_, cnt, _) => cnt >= 2 },
+                { btnExtendSameBottom, (_, cnt, _) => cnt >= 2 },
+                { btnSnapLeft, (_, cnt, _) => cnt >= 2 },
+                { btnSnapRight, (_, cnt, _) => cnt >= 2 },
+                { btnSnapTop, (_, cnt, _) => cnt >= 2 },
+                { btnSnapBottom, (_, cnt, _) => cnt >= 2 },
+                { btnMoveForward, (_, cnt, _) => cnt >= 1 },
+                { btnMoveFront, (_, cnt, _) => cnt >= 1 },
+                { btnMoveBackward, (_, cnt, _) => cnt >= 1 },
+                { btnMoveBack, (_, cnt, _) => cnt >= 1 },
+                { btnRotateRight90, (_, cnt, _) => cnt >= 1 },
+                { btnRotateLeft90, (_, cnt, _) => cnt >= 1 },
+                { btnFlipVertical, (_, cnt, _) => cnt >= 1 },
+                { btnFlipHorizontal, (_, cnt, _) => cnt >= 1 },
+                { btnGroup, (_, cnt, _) => cnt >= 2 },
+                { btnUngroup, (_, cnt, _) => cnt >= 1 },
+                { edtShapePositionX, (_, cnt, _) => cnt >= 1 },
+                { edtShapePositionY, (_, cnt, _) => cnt >= 1 },
+                { btnShapePositionCopy, (_, cnt, _) => cnt == 1 },
+                { btnShapePositionPaste, (_, cnt, _) => cnt >= 1 && _copiedPositionXPt >= 0 && _copiedPositionYPt >= 0 },
                 { btnAutofitOff, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame },
                 { btnAutofitText, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame },
                 { btnAutoResize, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame },
@@ -143,17 +139,17 @@ namespace ppt_arrange_addin {
             var hasShape = selection.ShapeRange != null;
             var shapesCount = selection.ShapeRange?.Count ?? 0;
             var hasTextFrame = selection.TextFrame != null;
-            availabilityRules.TryGetValue(ribbonControl.Id, out AvailabilityRule checker);
+            _availabilityRules.TryGetValue(ribbonControl.Id, out var checker);
             return checker?.Invoke(hasShape, shapesCount, hasTextFrame) ?? true;
         }
 
         public void AdjustRibbonButtonsAvailability(bool onlyForDrag = false) {
             if (!onlyForDrag) {
-                ribbon.Invalidate();
+                _ribbon.Invalidate();
             } else {
-                // TODO
-                ribbon.InvalidateControl(edtShapePositionX);
-                ribbon.InvalidateControl(edtShapePositionY);
+                // currently callback that only for dragging to change the position is unavailable
+                _ribbon.InvalidateControl(edtShapePositionX);
+                _ribbon.InvalidateControl(edtShapePositionY);
             }
         }
 
@@ -181,29 +177,15 @@ namespace ppt_arrange_addin {
                 return;
             }
 
-            Office.MsoAlignCmd cmd;
-            switch (ribbonControl.Id) {
-            case btnAlignLeft:
-                cmd = Office.MsoAlignCmd.msoAlignLefts;
-                break;
-            case btnAlignCenter:
-                cmd = Office.MsoAlignCmd.msoAlignCenters;
-                break;
-            case btnAlignRight:
-                cmd = Office.MsoAlignCmd.msoAlignRights;
-                break;
-            case btnAlignTop:
-                cmd = Office.MsoAlignCmd.msoAlignTops;
-                break;
-            case btnAlignMiddle:
-                cmd = Office.MsoAlignCmd.msoAlignMiddles;
-                break;
-            case btnAlignBottom:
-                cmd = Office.MsoAlignCmd.msoAlignBottoms;
-                break;
-            default:
-                return;
-            }
+            var cmd = ribbonControl.Id switch {
+                btnAlignLeft => Office.MsoAlignCmd.msoAlignLefts,
+                btnAlignCenter => Office.MsoAlignCmd.msoAlignCenters,
+                btnAlignRight => Office.MsoAlignCmd.msoAlignRights,
+                btnAlignTop => Office.MsoAlignCmd.msoAlignTops,
+                btnAlignMiddle => Office.MsoAlignCmd.msoAlignMiddles,
+                btnAlignBottom => Office.MsoAlignCmd.msoAlignBottoms,
+                _ => throw new ArgumentException(nameof(BtnAlign_Click), nameof(ribbonControl.Id))
+            };
 
             StartNewUndoEntry();
             var flag = shapeRange.Count == 1 ? Office.MsoTriState.msoTrue : Office.MsoTriState.msoFalse;
@@ -216,39 +198,35 @@ namespace ppt_arrange_addin {
                 return;
             }
 
-            Office.MsoDistributeCmd cmd;
-            switch (ribbonControl.Id) {
-            case btnDistributeHorizontal:
-                cmd = Office.MsoDistributeCmd.msoDistributeHorizontally;
-                break;
-            case btnDistributeVertical:
-                cmd = Office.MsoDistributeCmd.msoDistributeVertically;
-                break;
-            default:
-                return;
-            }
+            var cmd = ribbonControl.Id switch {
+                btnDistributeHorizontal => Office.MsoDistributeCmd.msoDistributeHorizontally,
+                btnDistributeVertical => Office.MsoDistributeCmd.msoDistributeVertically,
+                _ => throw new ArgumentException(nameof(BtnDistribute_Click), nameof(ribbonControl.Id))
+            };
 
             StartNewUndoEntry();
             shapeRange.Distribute(cmd, Office.MsoTriState.msoFalse);
         }
 
-        private Office.MsoScaleFrom scaleFromFlag = Office.MsoScaleFrom.msoScaleFromMiddle;
+        private Office.MsoScaleFrom _scaleFromFlag = Office.MsoScaleFrom.msoScaleFromMiddle; // used by BtnScale_Click
 
-        public void BtnScalePosition_Click(Office.IRibbonControl _) {
-            if (scaleFromFlag == Office.MsoScaleFrom.msoScaleFromMiddle) {
-                scaleFromFlag = Office.MsoScaleFrom.msoScaleFromTopLeft;
-            } else {
-                scaleFromFlag = Office.MsoScaleFrom.msoScaleFromMiddle;
-            }
-            ribbon.Invalidate();
+        public void BtnScalePosition_Click(Office.IRibbonControl ribbonControl) {
+            _scaleFromFlag = _scaleFromFlag == Office.MsoScaleFrom.msoScaleFromMiddle
+                ? Office.MsoScaleFrom.msoScaleFromTopLeft
+                : Office.MsoScaleFrom.msoScaleFromMiddle;
+            _ribbon.InvalidateControl(btnScalePosition);
         }
 
-        public string GetBtnScalePositionLabel(Office.IRibbonControl _) {
-            return scaleFromFlag == Office.MsoScaleFrom.msoScaleFromMiddle ? ArrangeRibbonResources.btnScalePosition_Middle : ArrangeRibbonResources.btnScalePosition_TopLeft;
+        public string GetBtnScalePositionLabel(Office.IRibbonControl ribbonControl) {
+            return _scaleFromFlag == Office.MsoScaleFrom.msoScaleFromMiddle
+                ? ArrangeRibbonResources.btnScalePosition_Middle
+                : ArrangeRibbonResources.btnScalePosition_TopLeft;
         }
 
-        public System.Drawing.Image GetBtnScalePositionImage(Office.IRibbonControl _) {
-            return scaleFromFlag == Office.MsoScaleFrom.msoScaleFromMiddle ? Properties.Resources.ScaleFromMiddle : Properties.Resources.ScaleFromTopLeft;
+        public System.Drawing.Image GetBtnScalePositionImage(Office.IRibbonControl ribbonControl) {
+            return _scaleFromFlag == Office.MsoScaleFrom.msoScaleFromMiddle
+                ? Properties.Resources.ScaleFromMiddle
+                : Properties.Resources.ScaleFromTopLeft;
         }
 
         public void BtnScale_Click(Office.IRibbonControl ribbonControl) {
@@ -258,8 +236,8 @@ namespace ppt_arrange_addin {
             }
 
             var shapes = shapeRange.OfType<PowerPoint.Shape>().ToArray();
-            var (firstWidth, firstHeight) = (shapes[0].Width, shapes[0].Height);
-            var scaleFrom = scaleFromFlag;
+            var (firstWidth, firstHeight) = (shapes[0].Width, shapes[0].Height); // select the first shape as final size
+            var scaleFrom = _scaleFromFlag;
 
             StartNewUndoEntry();
             switch (ribbonControl.Id) {
@@ -344,37 +322,37 @@ namespace ppt_arrange_addin {
             }
 
             var shapes = shapeRange.OfType<PowerPoint.Shape>().ToArray();
-            var (lastLeft, lastTop) = (shapes[0].Left, shapes[0].Top);
-            var (lastWidth, lastHeight) = (shapes[0].Width, shapes[0].Height);
+            var (previousLeft, previousTop) = (shapes[0].Left, shapes[0].Top);
+            var (previousWidth, previousHeight) = (shapes[0].Width, shapes[0].Height);
 
             StartNewUndoEntry();
             switch (ribbonControl.Id) {
             case btnSnapLeft:
-                for (var i = 1; i < shapes.Count(); i++) {
-                    shapes[i].Left = lastLeft + lastWidth;
-                    lastLeft = shapes[i].Left;
-                    lastWidth = shapes[i].Width;
+                for (var i = 1; i < shapes.Length; i++) {
+                    shapes[i].Left = previousLeft + previousWidth;
+                    previousLeft = shapes[i].Left;
+                    previousWidth = shapes[i].Width;
                 }
                 break;
             case btnSnapRight:
-                for (var i = 1; i < shapes.Count(); i++) {
-                    lastWidth = shapes[i].Width;
-                    shapes[i].Left = lastLeft - lastWidth;
-                    lastLeft = shapes[i].Left;
+                for (var i = 1; i < shapes.Length; i++) {
+                    previousWidth = shapes[i].Width;
+                    shapes[i].Left = previousLeft - previousWidth;
+                    previousLeft = shapes[i].Left;
                 }
                 break;
             case btnSnapTop:
-                for (var i = 1; i < shapes.Count(); i++) {
-                    shapes[i].Top = lastTop + lastHeight;
-                    lastTop = shapes[i].Top;
-                    lastHeight = shapes[i].Height;
+                for (var i = 1; i < shapes.Length; i++) {
+                    shapes[i].Top = previousTop + previousHeight;
+                    previousTop = shapes[i].Top;
+                    previousHeight = shapes[i].Height;
                 }
                 break;
             case btnSnapBottom:
-                for (var i = 1; i < shapes.Count(); i++) {
-                    lastHeight = shapes[i].Height;
-                    shapes[i].Top = lastTop - lastHeight;
-                    lastTop = shapes[i].Top;
+                for (var i = 1; i < shapes.Length; i++) {
+                    previousHeight = shapes[i].Height;
+                    shapes[i].Top = previousTop - previousHeight;
+                    previousTop = shapes[i].Top;
                 }
                 break;
             default:
@@ -388,23 +366,13 @@ namespace ppt_arrange_addin {
                 return;
             }
 
-            Office.MsoZOrderCmd cmd;
-            switch (ribbonControl.Id) {
-            case btnMoveForward:
-                cmd = Office.MsoZOrderCmd.msoBringForward;
-                break;
-            case btnMoveBackward:
-                cmd = Office.MsoZOrderCmd.msoSendBackward;
-                break;
-            case btnMoveFront:
-                cmd = Office.MsoZOrderCmd.msoBringToFront;
-                break;
-            case btnMoveBack:
-                cmd = Office.MsoZOrderCmd.msoSendToBack;
-                break;
-            default:
-                return;
-            }
+            var cmd = ribbonControl.Id switch {
+                btnMoveForward => Office.MsoZOrderCmd.msoBringForward,
+                btnMoveBackward => Office.MsoZOrderCmd.msoSendBackward,
+                btnMoveFront => Office.MsoZOrderCmd.msoBringToFront,
+                btnMoveBack => Office.MsoZOrderCmd.msoSendToBack,
+                _ => throw new ArgumentException(nameof(BtnMove_Click), nameof(ribbonControl))
+            };
 
             StartNewUndoEntry();
             shapeRange.ZOrder(cmd);
@@ -444,7 +412,6 @@ namespace ppt_arrange_addin {
             }
         }
 
-
         public void BtnGroup_Click(Office.IRibbonControl ribbonControl) {
             var shapeRange = GetShapeRange();
             if (shapeRange == null) {
@@ -482,10 +449,12 @@ namespace ppt_arrange_addin {
             }
 
             text = text.Replace("cm", "").Trim();
-            if (text.Length == 0) text = "0";
+            if (text.Length == 0) {
+                text = "0";
+            }
 
             StartNewUndoEntry();
-            if (float.TryParse(text, out float input)) {
+            if (float.TryParse(text, out var input)) {
                 var pt = CmToPt(input);
                 switch (ribbonControl.Id) {
                 case edtShapePositionX:
@@ -497,7 +466,7 @@ namespace ppt_arrange_addin {
                 }
             }
 
-            ribbon.InvalidateControl(ribbonControl.Id);
+            _ribbon.InvalidateControl(ribbonControl.Id);
         }
 
         public string GetEdtShapePositionText(Office.IRibbonControl ribbonControl) {
@@ -506,71 +475,61 @@ namespace ppt_arrange_addin {
                 return "";
             }
 
-            // TODO call this callback when drag the shape to change it's position
-            float pt = 0;
-            switch (ribbonControl.Id) {
-            case edtShapePositionX:
-                pt = shapeRange.Left;
-                break;
-            case edtShapePositionY:
-                pt = shapeRange.Top;
-                break;
-            }
-            if (pt < 0) {
-                return "";
-            }
-            return $"{Math.Round(PtToCm(pt), 2)} cm";
+            var pt = ribbonControl.Id switch {
+                edtShapePositionX => shapeRange.Left,
+                edtShapePositionY => shapeRange.Top,
+                _ => -1
+            };
+
+            return pt < 0
+                ? ""
+                : $"{Math.Round(PtToCm(pt), 2)} cm";
         }
 
-        private float copiedPositionXPt = -1; // for shape and image
-        private float copiedPositionYPt = -1; // for shape and image
+        private float _copiedPositionXPt = -1; // for shape and image
+        private float _copiedPositionYPt = -1; // for shape and image
 
-        public void BtnShapePositionCopy_Click(Office.IRibbonControl _) {
+        public void BtnShapePositionCopy_Click(Office.IRibbonControl ribbonControl) {
             var shapeRange = GetShapeRange();
             if (shapeRange == null || shapeRange.Count > 1) {
                 return;
             }
 
-            copiedPositionXPt = shapeRange.Left;
-            copiedPositionYPt = shapeRange.Top;
-            ribbon.InvalidateControl(btnShapePositionPaste);
+            _copiedPositionXPt = shapeRange.Left;
+            _copiedPositionYPt = shapeRange.Top;
+            _ribbon.InvalidateControl(btnShapePositionPaste);
         }
 
-        public void BtnShapePositionPaste_Click(Office.IRibbonControl _) {
+        public void BtnShapePositionPaste_Click(Office.IRibbonControl ribbonControl) {
             var shapeRange = GetShapeRange();
             if (shapeRange == null) {
                 return;
             }
 
-            if (copiedPositionXPt >= 0 && copiedPositionYPt >= 0) {
-                shapeRange.Left = copiedPositionXPt;
-                shapeRange.Top = copiedPositionYPt;
+            if (_copiedPositionXPt >= 0 && _copiedPositionYPt >= 0) {
+                shapeRange.Left = _copiedPositionXPt;
+                shapeRange.Top = _copiedPositionYPt;
             }
-            ribbon.InvalidateControl(edtShapePositionX);
-            ribbon.InvalidateControl(edtShapePositionY);
+            _ribbon.InvalidateControl(edtShapePositionX);
+            _ribbon.InvalidateControl(edtShapePositionY);
         }
 
-        public void BtnAutofit_Click(Office.IRibbonControl ribbonControl, bool _) {
+        public void BtnAutofit_Click(Office.IRibbonControl ribbonControl, bool pressed) {
             var (_, textFrame) = GetTextFrame();
             if (textFrame == null) {
                 return;
             }
 
             StartNewUndoEntry();
-            switch (ribbonControl.Id) {
-            case btnAutofitOff:
-                textFrame.AutoSize = Office.MsoAutoSize.msoAutoSizeNone;
-                break;
-            case btnAutofitText:
-                textFrame.AutoSize = Office.MsoAutoSize.msoAutoSizeTextToFitShape;
-                break;
-            case btnAutoResize:
-                textFrame.AutoSize = Office.MsoAutoSize.msoAutoSizeShapeToFitText;
-                break;
-            }
-            ribbon.InvalidateControl(btnAutofitOff);
-            ribbon.InvalidateControl(btnAutofitText);
-            ribbon.InvalidateControl(btnAutoResize);
+            textFrame.AutoSize = ribbonControl.Id switch {
+                btnAutofitOff => Office.MsoAutoSize.msoAutoSizeNone,
+                btnAutofitText => Office.MsoAutoSize.msoAutoSizeTextToFitShape,
+                btnAutoResize => Office.MsoAutoSize.msoAutoSizeShapeToFitText,
+                _ => textFrame.AutoSize
+            };
+            _ribbon.InvalidateControl(btnAutofitOff);
+            _ribbon.InvalidateControl(btnAutofitText);
+            _ribbon.InvalidateControl(btnAutoResize);
         }
 
         public bool GetBtnAutofitPressed(Office.IRibbonControl ribbonControl) {
@@ -579,33 +538,28 @@ namespace ppt_arrange_addin {
                 return false;
             }
 
-            switch (ribbonControl.Id) {
-            case btnAutofitOff:
-                return textFrame.AutoSize == Office.MsoAutoSize.msoAutoSizeNone;
-            case btnAutofitText:
-                return textFrame.AutoSize == Office.MsoAutoSize.msoAutoSizeTextToFitShape;
-            case btnAutoResize:
-                return textFrame.AutoSize == Office.MsoAutoSize.msoAutoSizeShapeToFitText;
-            }
-            return false;
+            return ribbonControl.Id switch {
+                btnAutofitOff => textFrame.AutoSize == Office.MsoAutoSize.msoAutoSizeNone,
+                btnAutofitText => textFrame.AutoSize == Office.MsoAutoSize.msoAutoSizeTextToFitShape,
+                btnAutoResize => textFrame.AutoSize == Office.MsoAutoSize.msoAutoSizeShapeToFitText,
+                _ => false
+            };
         }
 
-        public void BtnWrapText_Click(Office.IRibbonControl ribbonControl, bool _) {
+        public void BtnWrapText_Click(Office.IRibbonControl ribbonControl, bool pressed) {
             var (textFrame, _) = GetTextFrame();
             if (textFrame == null) {
                 return;
             }
 
             StartNewUndoEntry();
-            if (textFrame.WordWrap != Office.MsoTriState.msoTrue) {
-                textFrame.WordWrap = Office.MsoTriState.msoTrue;
-            } else {
-                textFrame.WordWrap = Office.MsoTriState.msoFalse;
-            }
-            ribbon.InvalidateControl(ribbonControl.Id);
+            textFrame.WordWrap = textFrame.WordWrap != Office.MsoTriState.msoTrue
+                ? Office.MsoTriState.msoTrue
+                : Office.MsoTriState.msoFalse;
+            _ribbon.InvalidateControl(ribbonControl.Id);
         }
 
-        public bool GetBtnWrapTextPressed(Office.IRibbonControl _) {
+        public bool GetBtnWrapTextPressed(Office.IRibbonControl ribbonControl) {
             var (textFrame, _) = GetTextFrame();
             if (textFrame == null) {
                 return false;
@@ -614,8 +568,8 @@ namespace ppt_arrange_addin {
             return textFrame.WordWrap == Office.MsoTriState.msoTrue;
         }
 
-        private const float defaultMarginHorizontalPt = 7.2F;
-        private const float defaultMarginVerticalPt = 3.6F;
+        private readonly float _defaultMarginHorizontalPt = 7.2F; // used by BtnResetMargin_Click
+        private readonly float _defaultMarginVerticalPt = 3.6F;// used by BtnResetMargin_Click
 
         public void EdtMargin_TextChanged(Office.IRibbonControl ribbonControl, string text) {
             var (textFrame, _) = GetTextFrame();
@@ -627,7 +581,7 @@ namespace ppt_arrange_addin {
             if (text.Length == 0) text = "0";
 
             StartNewUndoEntry();
-            if (float.TryParse(text, out float input)) {
+            if (float.TryParse(text, out var input)) {
                 var pt = CmToPt(input);
                 switch (ribbonControl.Id) {
                 case edtMarginLeft:
@@ -645,7 +599,7 @@ namespace ppt_arrange_addin {
                 }
             }
 
-            ribbon.InvalidateControl(ribbonControl.Id);
+            _ribbon.InvalidateControl(ribbonControl.Id);
         }
 
         public string GetEdtMarginText(Office.IRibbonControl ribbonControl) {
@@ -654,25 +608,16 @@ namespace ppt_arrange_addin {
                 return "";
             }
 
-            float pt = 0;
-            switch (ribbonControl.Id) {
-            case edtMarginLeft:
-                pt = textFrame.MarginLeft;
-                break;
-            case edtMarginRight:
-                pt = textFrame.MarginRight;
-                break;
-            case edtMarginTop:
-                pt = textFrame.MarginTop;
-                break;
-            case edtMarginBottom:
-                pt = textFrame.MarginBottom;
-                break;
-            }
-            if (pt < 0) {
-                return "";
-            }
-            return $"{Math.Round(PtToCm(pt), 2)} cm";
+            var pt = ribbonControl.Id switch {
+                edtMarginLeft => textFrame.MarginLeft,
+                edtMarginRight => textFrame.MarginRight,
+                edtMarginTop => textFrame.MarginTop,
+                edtMarginBottom => textFrame.MarginBottom,
+                _ => -1
+            };
+            return pt < 0
+                ? ""
+                : $"{Math.Round(PtToCm(pt), 2)} cm";
         }
 
         public void BtnResetMargin_Click(Office.IRibbonControl ribbonControl) {
@@ -684,19 +629,19 @@ namespace ppt_arrange_addin {
             StartNewUndoEntry();
             switch (ribbonControl.Id) {
             case btnResetMarginHorizontal:
-                textFrame.MarginLeft = defaultMarginHorizontalPt;
-                textFrame.MarginRight = defaultMarginHorizontalPt;
+                textFrame.MarginLeft = _defaultMarginHorizontalPt;
+                textFrame.MarginRight = _defaultMarginHorizontalPt;
                 break;
             case btnResetMarginVertical:
-                textFrame.MarginTop = defaultMarginVerticalPt;
-                textFrame.MarginBottom = defaultMarginVerticalPt;
+                textFrame.MarginTop = _defaultMarginVerticalPt;
+                textFrame.MarginBottom = _defaultMarginVerticalPt;
                 break;
             }
 
-            ribbon.InvalidateControl(edtMarginLeft);
-            ribbon.InvalidateControl(edtMarginRight);
-            ribbon.InvalidateControl(edtMarginTop);
-            ribbon.InvalidateControl(edtMarginBottom);
+            _ribbon.InvalidateControl(edtMarginLeft);
+            _ribbon.InvalidateControl(edtMarginRight);
+            _ribbon.InvalidateControl(edtMarginTop);
+            _ribbon.InvalidateControl(edtMarginBottom);
         }
 
     }

@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
-using System.Text;
 using Office = Microsoft.Office.Core;
 
 namespace ppt_arrange_addin {
@@ -21,19 +19,19 @@ namespace ppt_arrange_addin {
 
         #region IRibbonExtensibility Members
 
-        public string GetCustomUI(string ribbonID) {
+        public string GetCustomUI(string ribbonId) {
             return GetResourceText("ppt_arrange_addin.ArrangeRibbon.xml");
         }
 
         private static string GetResourceText(string resourceName) {
-            Assembly asm = Assembly.GetExecutingAssembly();
-            string[] resourceNames = asm.GetManifestResourceNames();
-            for (int i = 0; i < resourceNames.Length; ++i) {
-                if (string.Compare(resourceName, resourceNames[i], StringComparison.OrdinalIgnoreCase) == 0) {
-                    using (StreamReader resourceReader = new StreamReader(asm.GetManifestResourceStream(resourceNames[i]))) {
-                        if (resourceReader != null) {
-                            return resourceReader.ReadToEnd();
-                        }
+            var asm = Assembly.GetExecutingAssembly();
+            var resourceNames = asm.GetManifestResourceNames();
+            foreach (var name in resourceNames) {
+                if (string.Compare(resourceName, name, StringComparison.OrdinalIgnoreCase) == 0) {
+                    var stream = asm.GetManifestResourceStream(name);
+                    if (stream != null) {
+                        using var resourceReader = new StreamReader(stream);
+                        return resourceReader.ReadToEnd();
                     }
                 }
             }
@@ -45,11 +43,11 @@ namespace ppt_arrange_addin {
         #region UI Callbacks For Ribbon Xml
 
         private class ElementUi {
-            public ElementUi() { }
-            public string Label { get; set; }
-            public System.Drawing.Image Image { get; set; }
+            public string Label { get; init; }
+            public System.Drawing.Image Image { get; init; }
         }
 
+        // ReSharper disable InconsistentNaming
         private const string grpArrange = "grpArrange";
         private const string btnAlignLeft = "btnAlignLeft";
         private const string btnAlignCenter = "btnAlignCenter";
@@ -93,13 +91,14 @@ namespace ppt_arrange_addin {
         private const string btnWrapText = "btnWrapText";
         private const string edtMarginLeft = "edtMarginLeft";
         private const string edtMarginRight = "edtMarginRight";
-        private const string edtMarginTop= "edtMarginTop";
+        private const string edtMarginTop = "edtMarginTop";
         private const string edtMarginBottom = "edtMarginBottom";
         private const string btnResetMarginHorizontal = "btnResetMarginHorizontal";
         private const string btnResetMarginVertical = "btnResetMarginVertical";
+        // ReSharper restore InconsistentNaming
 
-        private readonly Dictionary<string, ElementUi> elementLabels = new Dictionary<string, ElementUi>() {
-            { grpArrange, new ElementUi { Label= ARES.grpArrange, Image = RES.ObjectSendToBack } },
+        private readonly Dictionary<string, ElementUi> _elementLabels = new() {
+            { grpArrange, new ElementUi { Label = ARES.grpArrange, Image = RES.ObjectSendToBack } },
             { btnAlignLeft, new ElementUi { Label = ARES.btnAlignLeft, Image = RES.ObjectsAlignLeft } },
             { btnAlignCenter, new ElementUi { Label = ARES.btnAlignCenter, Image = RES.ObjectsAlignCenterHorizontal } },
             { btnAlignRight, new ElementUi { Label = ARES.btnAlignRight, Image = RES.ObjectsAlignRight } },
@@ -149,12 +148,12 @@ namespace ppt_arrange_addin {
         };
 
         public string GetLabel(Office.IRibbonControl ribbonControl) {
-            elementLabels.TryGetValue(ribbonControl.Id, out ElementUi eui);
+            _elementLabels.TryGetValue(ribbonControl.Id, out var eui);
             return eui?.Label ?? "<Unknown>";
         }
 
         public System.Drawing.Image GetImage(Office.IRibbonControl ribbonControl) {
-            elementLabels.TryGetValue(ribbonControl.Id, out ElementUi eui);
+            _elementLabels.TryGetValue(ribbonControl.Id, out var eui);
             return eui?.Image;
         }
 

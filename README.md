@@ -1,7 +1,7 @@
 # ppt-arrange-addin
 
 + An Ribbon Add-in for arrangement for Microsoft Powerpoint.
-+ Development envrionment: Visual Studio 2022, .NET Framework 4.8, PowerPoint 2010.
++ Development envrionment: Visual Studio 2022, .NET Framework 4.8, C# 9.0 / C# 7.3, PowerPoint 2010.
 
 ### References
 
@@ -13,3 +13,4 @@
 + [C# VSTO Add-in Excel: What is the name of this Excel Super-Tab Control and how to make it?](https://stackoverflow.com/questions/61189402/c-sharp-vsto-add-in-excel-what-is-the-name-of-this-excel-super-tab-control-and)
 + [Playlist: VBA to .NET / VSTO](https://www.youtube.com/playlist?list=PLo0aMPtFIFDqaRyd0KZ0DLXFD3rfhI4SU)
 + [Walkthrough: Update the controls on a ribbon at run time](https://learn.microsoft.com/en-us/visualstudio/vsto/walkthrough-updating-the-controls-on-a-ribbon-at-run-time)
++ [C# 8/9の言語機能を.NET Frameworkで使う](https://qiita.com/kenichiuda/items/fada6068ea265fd6a389)
