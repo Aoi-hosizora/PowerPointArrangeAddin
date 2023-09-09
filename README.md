@@ -1,7 +1,15 @@
 # ppt-arrange-addin
 
-+ An Ribbon Add-in for arrangement for Microsoft Powerpoint.
-+ Development envrionment: Visual Studio 2022, .NET Framework 4.8, C# 9.0 / C# 7.3, PowerPoint 2010.
++ A VSTO add-in for arrangement operations for Microsoft Powerpoint.
++ Development envrionment: Visual Studio 2022, .NET Framework 4.8 (C# 7.3 / C# 9.0), PowerPoint 2010.
+
+### Build
+
+```bat
+cd ppt-arrange-addin
+call vsdevcmd.bat
+msbuild ppt-arrange-addin.csproj /p:Configuration=Debug /p:Platform=x64
+```
 
 ### References
 
