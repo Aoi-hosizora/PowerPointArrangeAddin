@@ -66,7 +66,7 @@
             <tabSet idMso="TabSetDrawingTools">
                 <tab idMso="TabDrawingToolsFormat">
                     <group id="grpShapeSizeAndPosition" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage">
-                        <dynamicMenu id="mnuShapeArrangement" showLabel="true" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" getContent="GetMnuShapeArrangementContent" />
+                        <dynamicMenu id="mnuShapeArrangement" showLabel="true" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" getContent="GetMnuArrangementContent" />
                         <toggleButton id="btnShapeLockAspectRatio" showLabel="true" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" getPressed="GetBtnShapeLockAspectRatio" onAction="BtnShapeLockAspectRatio_Click" />
                         <buttonGroup id="grpShapeSizeCopyPaste">
                             <button id="btnShapeSizeCopy" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnShapeSizeCopyPaste_Click" />
@@ -98,6 +98,30 @@
                         <button id="btnResetMarginVertical" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnResetMargin_Click" />
                         <dialogBoxLauncher>
                             <button idMso="WordArtFormatDialog" />
+                        </dialogBoxLauncher>
+                    </group>
+                </tab>
+            </tabSet>
+            <tabSet idMso="TabSetPictureTools">
+                <tab idMso="TabPictureToolsFormat">
+                    <group id="grpPictureSizeAndPosition" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage">
+                        <button id="btnPictureResetSize" size="large" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnPictureResetSize_Click" />
+                        <separator id="separator6" />
+                        <dynamicMenu id="mnuPictureArrangement" showLabel="true" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" getContent="GetMnuArrangementContent" />
+                        <toggleButton id="btnPictureLockAspectRatio" showLabel="true" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" getPressed="GetBtnPictureLockAspectRatio" onAction="BtnPictureLockAspectRatio_Click" />
+                        <buttonGroup id="grpPictureSizeCopyPaste">
+                            <button id="btnPictureSizeCopy" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnPictureSizeCopyPaste_Click" />
+                            <button id="btnPictureSizePaste" showLabel="true" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnPictureSizeCopyPaste_Click" />
+                        </buttonGroup>
+                        <separator id="separator7" />
+                        <editBox id="edtPicturePositionX" showImage="false" sizeString="wwwwwww" getLabel="GetLabel" getScreentip="GetLabel" getText="GetEdtPicturePositionText" getEnabled="GetEnabled" onChange="EdtPicturePosition_TextChanged" />
+                        <editBox id="edtPicturePositionY" showImage="false" sizeString="wwwwwww" getLabel="GetLabel" getScreentip="GetLabel" getText="GetEdtPicturePositionText" getEnabled="GetEnabled" onChange="EdtPicturePosition_TextChanged" />
+                        <buttonGroup id="grpPicturePositionCopyPaste">
+                            <button id="btnPicturePositionCopy" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnPicturePositionCopyPaste_Click" />
+                            <button id="btnPicturePositionPaste" showLabel="true" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnPicturePositionCopyPaste_Click" />
+                        </buttonGroup>
+                        <dialogBoxLauncher>
+                            <button idMso="ObjectSizeAndPositionDialog" />
                         </dialogBoxLauncher>
                     </group>
                 </tab>

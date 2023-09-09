@@ -352,6 +352,12 @@
   <ItemGroup>
     <None Include="Resources\ShapeStylesGallery.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PictureResetSize.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PictureResetSize_32.png" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

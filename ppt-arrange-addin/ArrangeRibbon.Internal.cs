@@ -81,6 +81,15 @@ namespace ppt_arrange_addin {
         private const string btnUngroup = "btnUngroup";
         private const string grpShapeSizeAndPosition = "grpShapeSizeAndPosition";
         private const string mnuShapeArrangement = "mnuShapeArrangement";
+        private const string mnuArrangement_sepAlignmentAndResizing = "mnuArrangement_sepAlignmentAndResizing";
+        private const string mnuArrangement_mnuAlignment = "mnuArrangement_mnuAlignment";
+        private const string mnuArrangement_mnuResizing = "mnuArrangement_mnuResizing";
+        private const string mnuArrangement_mnuSnapping = "mnuArrangement_mnuSnapping";
+        private const string mnuArrangement_mnuRotation = "mnuArrangement_mnuRotation";
+        private const string mnuArrangement_sepLayerOrderAndGrouping = "mnuArrangement_sepLayerOrderAndGrouping";
+        private const string mnuArrangement_mnuLayerOrder = "mnuArrangement_mnuLayerOrder";
+        private const string mnuArrangement_mnuGrouping = "mnuArrangement_mnuGrouping";
+        private const string mnuArrangement_sepObjectsInSlide = "mnuArrangement_sepObjectsInSlide";
         private const string btnShapeLockAspectRatio = "btnShapeLockAspectRatio";
         private const string btnShapeSizeCopy = "btnShapeSizeCopy";
         private const string btnShapeSizePaste = "btnShapeSizePaste";
@@ -99,6 +108,16 @@ namespace ppt_arrange_addin {
         private const string edtMarginBottom = "edtMarginBottom";
         private const string btnResetMarginHorizontal = "btnResetMarginHorizontal";
         private const string btnResetMarginVertical = "btnResetMarginVertical";
+        private const string grpPictureSizeAndPosition = "grpPictureSizeAndPosition";
+        private const string btnPictureResetSize = "btnPictureResetSize";
+        private const string mnuPictureArrangement = "mnuPictureArrangement";
+        private const string btnPictureLockAspectRatio = "btnPictureLockAspectRatio";
+        private const string btnPictureSizeCopy = "btnPictureSizeCopy";
+        private const string btnPictureSizePaste = "btnPictureSizePaste";
+        private const string edtPicturePositionX = "edtPicturePositionX";
+        private const string edtPicturePositionY = "edtPicturePositionY";
+        private const string btnPicturePositionCopy = "btnPicturePositionCopy";
+        private const string btnPicturePositionPaste = "btnPicturePositionPaste";
         // ReSharper restore InconsistentNaming
 
         private readonly Dictionary<string, ElementUi> _elementLabels = new() {
@@ -135,6 +154,15 @@ namespace ppt_arrange_addin {
             { btnUngroup, new ElementUi { Label = ARES.btnUngroup, Image = RES.ObjectsUngroup } },
             { grpShapeSizeAndPosition, new ElementUi { Label = ARES.grpShapeSizeAndPosition, Image = RES.SizeAndPosition } },
             { mnuShapeArrangement, new ElementUi { Label = ARES.mnuShapeArrangement, Image = RES.ObjectArrangement } },
+            { mnuArrangement_sepAlignmentAndResizing, new ElementUi { Label = ARES.mnuArrangement_sepAlignmentAndResizing } },
+            { mnuArrangement_mnuAlignment, new ElementUi { Label = ARES.mnuArrangement_mnuAlignment, Image = RES.ObjectArrangement } },
+            { mnuArrangement_mnuResizing, new ElementUi { Label = ARES.mnuArrangement_mnuResizing, Image = RES.ScaleSameWidth } },
+            { mnuArrangement_mnuSnapping, new ElementUi { Label = ARES.mnuArrangement_mnuSnapping, Image = RES.SnapToLeft } },
+            { mnuArrangement_mnuRotation, new ElementUi { Label = ARES.mnuArrangement_mnuRotation, Image = RES.ObjectRotateRight90 } },
+            { mnuArrangement_sepLayerOrderAndGrouping, new ElementUi { Label = ARES.mnuArrangement_sepLayerOrderAndGrouping } },
+            { mnuArrangement_mnuLayerOrder, new ElementUi { Label = ARES.mnuArrangement_mnuLayerOrder, Image = RES.ObjectSendToBack } },
+            { mnuArrangement_mnuGrouping, new ElementUi { Label = ARES.mnuArrangement_mnuGrouping, Image = RES.ObjectsGroup } },
+            { mnuArrangement_sepObjectsInSlide, new ElementUi { Label = ARES.mnuArrangement_sepObjectsInSlide } },
             { btnShapeLockAspectRatio, new ElementUi { Label = ARES.btnShapeLockAspectRatio, Image = RES.ObjectLockAspectRatio } },
             { btnShapeSizeCopy, new ElementUi { Label = ARES.btnShapeSizeCopy, Image = RES.Copy } },
             { btnShapeSizePaste, new ElementUi { Label = ARES.btnShapeSizePaste, Image = RES.Paste } },
@@ -152,7 +180,17 @@ namespace ppt_arrange_addin {
             { edtMarginTop, new ElementUi { Label = ARES.edtMarginTop } },
             { edtMarginBottom, new ElementUi { Label = ARES.edtMarginBottom } },
             { btnResetMarginHorizontal, new ElementUi { Label = ARES.btnResetMarginHorizontal, Image = RES.TextboxResetMargin } },
-            { btnResetMarginVertical, new ElementUi { Label = ARES.btnResetMarginVertical, Image = RES.TextboxResetMargin } }
+            { btnResetMarginVertical, new ElementUi { Label = ARES.btnResetMarginVertical, Image = RES.TextboxResetMargin } },
+            { grpPictureSizeAndPosition, new ElementUi { Label = ARES.grpPictureSizeAndPosition, Image = RES.SizeAndPosition } },
+            { btnPictureResetSize, new ElementUi { Label = ARES.btnPictureResetSize, Image = RES.PictureResetSize_32 } },
+            { mnuPictureArrangement, new ElementUi { Label = ARES.mnuPictureArrangement, Image = RES.ObjectArrangement } },
+            { btnPictureLockAspectRatio, new ElementUi { Label = ARES.btnPictureLockAspectRatio, Image = RES.ObjectLockAspectRatio } },
+            { btnPictureSizeCopy, new ElementUi { Label = ARES.btnPictureSizeCopy, Image = RES.Copy } },
+            { btnPictureSizePaste, new ElementUi { Label = ARES.btnPictureSizePaste, Image = RES.Paste } },
+            { edtPicturePositionX, new ElementUi { Label = ARES.edtPicturePositionX } },
+            { edtPicturePositionY, new ElementUi { Label = ARES.edtPicturePositionY } },
+            { btnPicturePositionCopy, new ElementUi { Label = ARES.btnPicturePositionCopy, Image = RES.Copy } },
+            { btnPicturePositionPaste, new ElementUi { Label = ARES.btnPicturePositionPaste, Image = RES.Paste } }
         };
 
         public string GetLabel(Office.IRibbonControl ribbonControl) {

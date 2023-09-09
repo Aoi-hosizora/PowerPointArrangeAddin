@@ -259,6 +259,60 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Lock aspect ratio.
+        /// </summary>
+        public static string btnPictureLockAspectRatio {
+            get {
+                return ResourceManager.GetString("btnPictureLockAspectRatio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy position.
+        /// </summary>
+        public static string btnPicturePositionCopy {
+            get {
+                return ResourceManager.GetString("btnPicturePositionCopy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Paste position.
+        /// </summary>
+        public static string btnPicturePositionPaste {
+            get {
+                return ResourceManager.GetString("btnPicturePositionPaste", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset size.
+        /// </summary>
+        public static string btnPictureResetSize {
+            get {
+                return ResourceManager.GetString("btnPictureResetSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy size.
+        /// </summary>
+        public static string btnPictureSizeCopy {
+            get {
+                return ResourceManager.GetString("btnPictureSizeCopy", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Paste size.
+        /// </summary>
+        public static string btnPictureSizePaste {
+            get {
+                return ResourceManager.GetString("btnPictureSizePaste", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Reset horizontal margin.
         /// </summary>
         public static string btnResetMarginHorizontal {
@@ -477,6 +531,24 @@ namespace ppt_arrange_addin {
         /// <summary>
         ///   Looks up a localized string similar to Horizontal:.
         /// </summary>
+        public static string edtPicturePositionX {
+            get {
+                return ResourceManager.GetString("edtPicturePositionX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vertical:.
+        /// </summary>
+        public static string edtPicturePositionY {
+            get {
+                return ResourceManager.GetString("edtPicturePositionY", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Horizontal:.
+        /// </summary>
         public static string edtShapePositionX {
             get {
                 return ResourceManager.GetString("edtShapePositionX", resourceCulture);
@@ -504,6 +576,15 @@ namespace ppt_arrange_addin {
         /// <summary>
         ///   Looks up a localized string similar to Size and position.
         /// </summary>
+        public static string grpPictureSizeAndPosition {
+            get {
+                return ResourceManager.GetString("grpPictureSizeAndPosition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Size and position.
+        /// </summary>
         public static string grpShapeSizeAndPosition {
             get {
                 return ResourceManager.GetString("grpShapeSizeAndPosition", resourceCulture);
@@ -516,6 +597,96 @@ namespace ppt_arrange_addin {
         public static string grpTextbox {
             get {
                 return ResourceManager.GetString("grpTextbox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Alignment.
+        /// </summary>
+        public static string mnuArrangement_mnuAlignment {
+            get {
+                return ResourceManager.GetString("mnuArrangement_mnuAlignment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grouping.
+        /// </summary>
+        public static string mnuArrangement_mnuGrouping {
+            get {
+                return ResourceManager.GetString("mnuArrangement_mnuGrouping", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Layer order.
+        /// </summary>
+        public static string mnuArrangement_mnuLayerOrder {
+            get {
+                return ResourceManager.GetString("mnuArrangement_mnuLayerOrder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resizing.
+        /// </summary>
+        public static string mnuArrangement_mnuResizing {
+            get {
+                return ResourceManager.GetString("mnuArrangement_mnuResizing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rotation.
+        /// </summary>
+        public static string mnuArrangement_mnuRotation {
+            get {
+                return ResourceManager.GetString("mnuArrangement_mnuRotation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Snapping.
+        /// </summary>
+        public static string mnuArrangement_mnuSnapping {
+            get {
+                return ResourceManager.GetString("mnuArrangement_mnuSnapping", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Object alignment and resizing.
+        /// </summary>
+        public static string mnuArrangement_sepAlignmentAndResizing {
+            get {
+                return ResourceManager.GetString("mnuArrangement_sepAlignmentAndResizing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Layer order and grouping.
+        /// </summary>
+        public static string mnuArrangement_sepLayerOrderAndGrouping {
+            get {
+                return ResourceManager.GetString("mnuArrangement_sepLayerOrderAndGrouping", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Objects in the slide.
+        /// </summary>
+        public static string mnuArrangement_sepObjectsInSlide {
+            get {
+                return ResourceManager.GetString("mnuArrangement_sepObjectsInSlide", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Arrangement.
+        /// </summary>
+        public static string mnuPictureArrangement {
+            get {
+                return ResourceManager.GetString("mnuPictureArrangement", resourceCulture);
             }
         }
         

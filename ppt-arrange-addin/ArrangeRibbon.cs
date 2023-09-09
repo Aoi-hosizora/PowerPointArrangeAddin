@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Runtime.InteropServices;
 using Office = Microsoft.Office.Core;
 using PowerPoint = Microsoft.Office.Interop.PowerPoint;
@@ -86,7 +85,7 @@ namespace ppt_arrange_addin {
             };
         }
 
-        private delegate bool AvailabilityRule(bool hasShapeRange, int shapesCount, bool hasTextFrame);
+        private delegate bool AvailabilityRule(PowerPoint.ShapeRange shapeRange, int shapesCount, bool hasTextFrame);
         private Dictionary<string, AvailabilityRule> _availabilityRules;
 
         private void InitializeAvailabilityRules() {
@@ -97,8 +96,8 @@ namespace ppt_arrange_addin {
                 { btnAlignTop, (_, cnt, _) => cnt >= 1 },
                 { btnAlignMiddle, (_, cnt, _) => cnt >= 1 },
                 { btnAlignBottom, (_, cnt, _) => cnt >= 1 },
-                { btnDistributeHorizontal, (_, cnt, _) => cnt >= 3 },
-                { btnDistributeVertical, (_, cnt, _) => cnt >= 3 },
+                { btnDistributeHorizontal, (_, cnt, _) => cnt is 1 or >= 3 },
+                { btnDistributeVertical, (_, cnt, _) => cnt is 1 or >= 3 },
                 { btnScaleSameWidth, (_, cnt, _) => cnt >= 2 },
                 { btnScaleSameHeight, (_, cnt, _) => cnt >= 2 },
                 { btnScaleSameSize, (_, cnt, _) => cnt >= 2 },
@@ -120,7 +119,7 @@ namespace ppt_arrange_addin {
                 { btnFlipVertical, (_, cnt, _) => cnt >= 1 },
                 { btnFlipHorizontal, (_, cnt, _) => cnt >= 1 },
                 { btnGroup, (_, cnt, _) => cnt >= 2 },
-                { btnUngroup, (_, cnt, _) => cnt >= 1 },
+                { btnUngroup, (shapeRange, cnt, _) => cnt >= 1 && IsUngroupable(shapeRange) },
                 { mnuShapeArrangement, (_,cnt, _) => cnt >= 1 },
                 { btnShapeLockAspectRatio, (_, cnt, _) => cnt >= 1 },
                 { btnShapeSizeCopy, (_, cnt, _) => cnt == 1 },
@@ -139,16 +138,24 @@ namespace ppt_arrange_addin {
                 { edtMarginBottom, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame },
                 { btnResetMarginHorizontal, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame },
                 { btnResetMarginVertical, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame },
+                { btnPictureResetSize, (_,cnt, _) => cnt >= 1 },
+                { mnuPictureArrangement, (_,cnt, _) => cnt >= 1 },
+                { btnPictureLockAspectRatio, (_, cnt, _) => cnt >= 1 },
+                { btnPictureSizeCopy, (_, cnt, _) => cnt == 1 },
+                { btnPictureSizePaste, (_, cnt, _) => cnt >= 1 && IsValidCopiedSizeValue() },
+                { edtPicturePositionX, (_, cnt, _) => cnt >= 1 },
+                { edtPicturePositionY, (_, cnt, _) => cnt >= 1 },
+                { btnPicturePositionCopy, (_, cnt, _) => cnt == 1 },
+                { btnPicturePositionPaste, (_, cnt, _) => cnt >= 1 && IsValidCopiedPositionValue() }
             };
         }
 
         public bool GetEnabled(Office.IRibbonControl ribbonControl) {
             var selection = GetSelection(onlyShapeRange: false);
-            var hasShape = selection.ShapeRange != null;
             var shapesCount = selection.ShapeRange?.Count ?? 0;
             var hasTextFrame = selection.TextFrame != null;
             _availabilityRules.TryGetValue(ribbonControl.Id, out var checker);
-            return checker?.Invoke(hasShape, shapesCount, hasTextFrame) ?? true;
+            return checker?.Invoke(selection.ShapeRange, shapesCount, hasTextFrame) ?? true;
         }
 
         public void AdjustRibbonButtonsAvailability(bool onlyForDrag = false) {
@@ -204,8 +211,8 @@ namespace ppt_arrange_addin {
         }
 
         public void BtnDistribute_Click(Office.IRibbonControl ribbonControl) {
-            var shapeRange = GetShapeRange(mustMoreThanOrEqualTo: 3);
-            if (shapeRange == null) {
+            var shapeRange = GetShapeRange();
+            if (shapeRange == null || shapeRange.Count == 2) {
                 return;
             }
 
@@ -216,7 +223,8 @@ namespace ppt_arrange_addin {
             };
 
             StartNewUndoEntry();
-            shapeRange.Distribute(cmd, Office.MsoTriState.msoFalse);
+            var flag = shapeRange.Count == 1 ? Office.MsoTriState.msoTrue : Office.MsoTriState.msoFalse;
+            shapeRange.Distribute(cmd, flag);
         }
 
         private Office.MsoScaleFrom _scaleFromFlag = Office.MsoScaleFrom.msoScaleFromMiddle; // used by BtnScale_Click
@@ -423,6 +431,10 @@ namespace ppt_arrange_addin {
             }
         }
 
+        private bool IsUngroupable(PowerPoint.ShapeRange shapeRange) {
+            return shapeRange != null && shapeRange.OfType<PowerPoint.Shape>().Any(s => s.Type == Office.MsoShapeType.msoGroup);
+        }
+
         public void BtnGroup_Click(Office.IRibbonControl ribbonControl) {
             var shapeRange = GetShapeRange();
             if (shapeRange == null) {
@@ -439,7 +451,7 @@ namespace ppt_arrange_addin {
                 }
                 break;
             case btnUngroup:
-                if (shapeRange.OfType<PowerPoint.Shape>().Any((s) => s.Type == Office.MsoShapeType.msoGroup)) {
+                if (IsUngroupable(shapeRange)) {
                     StartNewUndoEntry();
                     var ungrouped = shapeRange.Ungroup();
                     ungrouped.Select();
@@ -449,7 +461,7 @@ namespace ppt_arrange_addin {
             }
         }
 
-        public string GetMnuShapeArrangementContent(Office.IRibbonControl ribbonControl) {
+        public string GetMnuArrangementContent(Office.IRibbonControl ribbonControl) {
             return GetResourceText("ppt_arrange_addin.ArrangeRibbon.ArrangeMenu.xml");
         }
 
