@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 using Office = Microsoft.Office.Core;
 using PowerPoint = Microsoft.Office.Interop.PowerPoint;
 
@@ -90,6 +93,7 @@ namespace ppt_arrange_addin {
 
         private void InitializeAvailabilityRules() {
             _availabilityRules = new Dictionary<string, AvailabilityRule> {
+                // grpArrange
                 { btnAlignLeft, (_, cnt, _) => cnt >= 1 },
                 { btnAlignCenter, (_, cnt, _) => cnt >= 1 },
                 { btnAlignRight, (_, cnt, _) => cnt >= 1 },
@@ -101,6 +105,7 @@ namespace ppt_arrange_addin {
                 { btnScaleSameWidth, (_, cnt, _) => cnt >= 2 },
                 { btnScaleSameHeight, (_, cnt, _) => cnt >= 2 },
                 { btnScaleSameSize, (_, cnt, _) => cnt >= 2 },
+                { btnScalePosition, (_, _, _) => true },
                 { btnExtendSameLeft, (_, cnt, _) => cnt >= 2 },
                 { btnExtendSameRight, (_, cnt, _) => cnt >= 2 },
                 { btnExtendSameTop, (_, cnt, _) => cnt >= 2 },
@@ -119,14 +124,7 @@ namespace ppt_arrange_addin {
                 { btnFlipHorizontal, (_, cnt, _) => cnt >= 1 },
                 { btnGroup, (_, cnt, _) => cnt >= 2 },
                 { btnUngroup, (shapeRange, cnt, _) => cnt >= 1 && IsUngroupable(shapeRange) },
-                { mnuShapeArrangement, (_,cnt, _) => cnt >= 1 },
-                { btnLockShapeAspectRatio, (_, cnt, _) => cnt >= 1 },
-                { btnCopyShapeSize, (_, cnt, _) => cnt == 1 },
-                { btnPasteShapeSize, (_, cnt, _) => cnt >= 1 && IsValidCopiedSizeValue() },
-                { edtShapePositionX, (_, cnt, _) => cnt >= 1 },
-                { edtShapePositionY, (_, cnt, _) => cnt >= 1 },
-                { btnCopyShapePosition, (_, cnt, _) => cnt == 1 },
-                { btnPasteShapePosition, (_, cnt, _) => cnt >= 1 && IsValidCopiedPositionValue() },
+                // grpTextbox
                 { btnAutofitOff, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame },
                 { btnAutofitText, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame },
                 { btnAutoResize, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame },
@@ -137,9 +135,26 @@ namespace ppt_arrange_addin {
                 { edtMarginBottom, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame },
                 { btnResetMarginHorizontal, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame },
                 { btnResetMarginVertical, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame },
-                { btnResetPictureSize, (_,cnt, _) => cnt >= 1 },
+                // grpShapeSizeAndPosition
+                { mnuShapeArrangement, (_,cnt, _) => cnt >= 1 },
+                { btnLockShapeAspectRatio, (_, cnt, _) => cnt >= 1 },
+                { btnShapeScalePosition, (_, _, _) => true },
+                { btnCopyShapeSize, (_, cnt, _) => cnt == 1 },
+                { btnPasteShapeSize, (_, cnt, _) => cnt >= 1 && IsValidCopiedSizeValue() },
+                { edtShapePositionX, (_, cnt, _) => cnt >= 1 },
+                { edtShapePositionY, (_, cnt, _) => cnt >= 1 },
+                { btnCopyShapePosition, (_, cnt, _) => cnt == 1 },
+                { btnPasteShapePosition, (_, cnt, _) => cnt >= 1 && IsValidCopiedPositionValue() },
+                // grpReplacePicture
+                { btnReplaceWithClipboard, (_, cnt, _) => cnt >= 1 },
+                { btnReplaceWithFile, (_, cnt, _) => cnt >= 1 },
+                { cbxReserveOriginalSize, (_, _, _) => true },
+                { cbxReplaceToMiddle, (_, _, _) => true },
+                // grpPictureSizeAndPosition
                 { mnuPictureArrangement, (_,cnt, _) => cnt >= 1 },
+                { btnResetPictureSize, (_,cnt, _) => cnt >= 1 },
                 { btnLockPictureAspectRatio, (_, cnt, _) => cnt >= 1 },
+                { btnPictureScalePosition, (_, _, _) => true },
                 { btnCopyPictureSize, (_, cnt, _) => cnt == 1 },
                 { btnPastePictureSize, (_, cnt, _) => cnt >= 1 && IsValidCopiedSizeValue() },
                 { edtPicturePositionX, (_, cnt, _) => cnt >= 1 },
@@ -375,8 +390,6 @@ namespace ppt_arrange_addin {
                     previousTop = shapes[i].Top;
                 }
                 break;
-            default:
-                return;
             }
         }
 
@@ -462,6 +475,146 @@ namespace ppt_arrange_addin {
             }
         }
 
+        public void BtnArrangementLauncher_Click(Office.IRibbonControl ribbonControl) {
+            var form = new Form();
+            // TODO
+            form.ShowDialog();
+        }
+
+        public void BtnAutofit_Click(Office.IRibbonControl ribbonControl, bool pressed) {
+            var (_, textFrame) = GetTextFrame();
+            if (textFrame == null) {
+                return;
+            }
+
+            StartNewUndoEntry();
+            textFrame.AutoSize = ribbonControl.Id switch {
+                btnAutofitOff => Office.MsoAutoSize.msoAutoSizeNone,
+                btnAutofitText => Office.MsoAutoSize.msoAutoSizeTextToFitShape,
+                btnAutoResize => Office.MsoAutoSize.msoAutoSizeShapeToFitText,
+                _ => textFrame.AutoSize
+            };
+            _ribbon.InvalidateControl(btnAutofitOff);
+            _ribbon.InvalidateControl(btnAutofitText);
+            _ribbon.InvalidateControl(btnAutoResize);
+        }
+
+        public bool GetBtnAutofitPressed(Office.IRibbonControl ribbonControl) {
+            var (_, textFrame) = GetTextFrame();
+            if (textFrame == null) {
+                return false;
+            }
+
+            return ribbonControl.Id switch {
+                btnAutofitOff => textFrame.AutoSize == Office.MsoAutoSize.msoAutoSizeNone,
+                btnAutofitText => textFrame.AutoSize == Office.MsoAutoSize.msoAutoSizeTextToFitShape,
+                btnAutoResize => textFrame.AutoSize == Office.MsoAutoSize.msoAutoSizeShapeToFitText,
+                _ => false
+            };
+        }
+
+        public void BtnWrapText_Click(Office.IRibbonControl ribbonControl, bool pressed) {
+            var (textFrame, _) = GetTextFrame();
+            if (textFrame == null) {
+                return;
+            }
+
+            StartNewUndoEntry();
+            textFrame.WordWrap = textFrame.WordWrap != Office.MsoTriState.msoTrue
+                ? Office.MsoTriState.msoTrue
+                : Office.MsoTriState.msoFalse;
+            _ribbon.InvalidateControl(ribbonControl.Id);
+        }
+
+        public bool GetBtnWrapTextPressed(Office.IRibbonControl ribbonControl) {
+            var (textFrame, _) = GetTextFrame();
+            if (textFrame == null) {
+                return false;
+            }
+
+            return textFrame.WordWrap == Office.MsoTriState.msoTrue;
+        }
+
+        private float CmToPt(float cm) => (float) (cm * 720 / 25.4);
+
+        private float PtToCm(float pt) => (float) (pt * 25.4 / 720);
+
+        private readonly float _defaultMarginHorizontalPt = 7.2F; // used by BtnResetMargin_Click
+        private readonly float _defaultMarginVerticalPt = 3.6F; // used by BtnResetMargin_Click
+
+        public void EdtMargin_TextChanged(Office.IRibbonControl ribbonControl, string text) {
+            var (textFrame, _) = GetTextFrame();
+            if (textFrame == null) {
+                return;
+            }
+
+            text = text.Replace("cm", "").Trim();
+            if (text.Length == 0) text = "0";
+
+            StartNewUndoEntry();
+            if (float.TryParse(text, out var input)) {
+                var pt = CmToPt(input);
+                switch (ribbonControl.Id) {
+                case edtMarginLeft:
+                    textFrame.MarginLeft = pt;
+                    break;
+                case edtMarginRight:
+                    textFrame.MarginRight = pt;
+                    break;
+                case edtMarginTop:
+                    textFrame.MarginTop = pt;
+                    break;
+                case edtMarginBottom:
+                    textFrame.MarginBottom = pt;
+                    break;
+                }
+            }
+
+            _ribbon.InvalidateControl(ribbonControl.Id);
+        }
+
+        public string GetEdtMarginText(Office.IRibbonControl ribbonControl) {
+            var (textFrame, _) = GetTextFrame();
+            if (textFrame == null) {
+                return "";
+            }
+
+            var pt = ribbonControl.Id switch {
+                edtMarginLeft => textFrame.MarginLeft,
+                edtMarginRight => textFrame.MarginRight,
+                edtMarginTop => textFrame.MarginTop,
+                edtMarginBottom => textFrame.MarginBottom,
+                _ => -1
+            };
+            return pt < 0
+                ? ""
+                : $"{Math.Round(PtToCm(pt), 2)} cm";
+        }
+
+        public void BtnResetMargin_Click(Office.IRibbonControl ribbonControl) {
+            var (textFrame, _) = GetTextFrame();
+            if (textFrame == null) {
+                return;
+            }
+
+            StartNewUndoEntry();
+            switch (ribbonControl.Id) {
+            case btnResetMarginHorizontal:
+                textFrame.MarginLeft = _defaultMarginHorizontalPt;
+                textFrame.MarginRight = _defaultMarginHorizontalPt;
+                break;
+            case btnResetMarginVertical:
+                textFrame.MarginTop = _defaultMarginVerticalPt;
+                textFrame.MarginBottom = _defaultMarginVerticalPt;
+                break;
+            }
+
+            _ribbon.InvalidateControl(edtMarginLeft);
+            _ribbon.InvalidateControl(edtMarginRight);
+            _ribbon.InvalidateControl(edtMarginTop);
+            _ribbon.InvalidateControl(edtMarginBottom);
+        }
+
         public string GetMnuArrangementContent(Office.IRibbonControl ribbonControl) {
             return GetResourceText("ppt_arrange_addin.ArrangeRibbon.ArrangeMenu.xml");
         }
@@ -530,10 +683,6 @@ namespace ppt_arrange_addin {
                 break;
             }
         }
-
-        private float CmToPt(float cm) => (float) (cm * 720 / 25.4);
-
-        private float PtToCm(float pt) => (float) (pt * 25.4 / 720);
 
         public void EdtPosition_TextChanged(Office.IRibbonControl ribbonControl, string text) {
             var shapeRange = GetShapeRange();
@@ -620,136 +769,6 @@ namespace ppt_arrange_addin {
             }
         }
 
-        public void BtnAutofit_Click(Office.IRibbonControl ribbonControl, bool pressed) {
-            var (_, textFrame) = GetTextFrame();
-            if (textFrame == null) {
-                return;
-            }
-
-            StartNewUndoEntry();
-            textFrame.AutoSize = ribbonControl.Id switch {
-                btnAutofitOff => Office.MsoAutoSize.msoAutoSizeNone,
-                btnAutofitText => Office.MsoAutoSize.msoAutoSizeTextToFitShape,
-                btnAutoResize => Office.MsoAutoSize.msoAutoSizeShapeToFitText,
-                _ => textFrame.AutoSize
-            };
-            _ribbon.InvalidateControl(btnAutofitOff);
-            _ribbon.InvalidateControl(btnAutofitText);
-            _ribbon.InvalidateControl(btnAutoResize);
-        }
-
-        public bool GetBtnAutofitPressed(Office.IRibbonControl ribbonControl) {
-            var (_, textFrame) = GetTextFrame();
-            if (textFrame == null) {
-                return false;
-            }
-
-            return ribbonControl.Id switch {
-                btnAutofitOff => textFrame.AutoSize == Office.MsoAutoSize.msoAutoSizeNone,
-                btnAutofitText => textFrame.AutoSize == Office.MsoAutoSize.msoAutoSizeTextToFitShape,
-                btnAutoResize => textFrame.AutoSize == Office.MsoAutoSize.msoAutoSizeShapeToFitText,
-                _ => false
-            };
-        }
-
-        public void BtnWrapText_Click(Office.IRibbonControl ribbonControl, bool pressed) {
-            var (textFrame, _) = GetTextFrame();
-            if (textFrame == null) {
-                return;
-            }
-
-            StartNewUndoEntry();
-            textFrame.WordWrap = textFrame.WordWrap != Office.MsoTriState.msoTrue
-                ? Office.MsoTriState.msoTrue
-                : Office.MsoTriState.msoFalse;
-            _ribbon.InvalidateControl(ribbonControl.Id);
-        }
-
-        public bool GetBtnWrapTextPressed(Office.IRibbonControl ribbonControl) {
-            var (textFrame, _) = GetTextFrame();
-            if (textFrame == null) {
-                return false;
-            }
-
-            return textFrame.WordWrap == Office.MsoTriState.msoTrue;
-        }
-
-        private readonly float _defaultMarginHorizontalPt = 7.2F; // used by BtnResetMargin_Click
-        private readonly float _defaultMarginVerticalPt = 3.6F;// used by BtnResetMargin_Click
-
-        public void EdtMargin_TextChanged(Office.IRibbonControl ribbonControl, string text) {
-            var (textFrame, _) = GetTextFrame();
-            if (textFrame == null) {
-                return;
-            }
-
-            text = text.Replace("cm", "").Trim();
-            if (text.Length == 0) text = "0";
-
-            StartNewUndoEntry();
-            if (float.TryParse(text, out var input)) {
-                var pt = CmToPt(input);
-                switch (ribbonControl.Id) {
-                case edtMarginLeft:
-                    textFrame.MarginLeft = pt;
-                    break;
-                case edtMarginRight:
-                    textFrame.MarginRight = pt;
-                    break;
-                case edtMarginTop:
-                    textFrame.MarginTop = pt;
-                    break;
-                case edtMarginBottom:
-                    textFrame.MarginBottom = pt;
-                    break;
-                }
-            }
-
-            _ribbon.InvalidateControl(ribbonControl.Id);
-        }
-
-        public string GetEdtMarginText(Office.IRibbonControl ribbonControl) {
-            var (textFrame, _) = GetTextFrame();
-            if (textFrame == null) {
-                return "";
-            }
-
-            var pt = ribbonControl.Id switch {
-                edtMarginLeft => textFrame.MarginLeft,
-                edtMarginRight => textFrame.MarginRight,
-                edtMarginTop => textFrame.MarginTop,
-                edtMarginBottom => textFrame.MarginBottom,
-                _ => -1
-            };
-            return pt < 0
-                ? ""
-                : $"{Math.Round(PtToCm(pt), 2)} cm";
-        }
-
-        public void BtnResetMargin_Click(Office.IRibbonControl ribbonControl) {
-            var (textFrame, _) = GetTextFrame();
-            if (textFrame == null) {
-                return;
-            }
-
-            StartNewUndoEntry();
-            switch (ribbonControl.Id) {
-            case btnResetMarginHorizontal:
-                textFrame.MarginLeft = _defaultMarginHorizontalPt;
-                textFrame.MarginRight = _defaultMarginHorizontalPt;
-                break;
-            case btnResetMarginVertical:
-                textFrame.MarginTop = _defaultMarginVerticalPt;
-                textFrame.MarginBottom = _defaultMarginVerticalPt;
-                break;
-            }
-
-            _ribbon.InvalidateControl(edtMarginLeft);
-            _ribbon.InvalidateControl(edtMarginRight);
-            _ribbon.InvalidateControl(edtMarginTop);
-            _ribbon.InvalidateControl(edtMarginBottom);
-        }
-
         private bool _reserveOriginalSize = true; // used by replacing picture
         private bool _replaceToMiddle = true; // used by replacing picture
 
@@ -771,19 +790,102 @@ namespace ppt_arrange_addin {
             return _replaceToMiddle;
         }
 
-        public void BtnReplace_Click(Office.IRibbonControl ribbonControl) {
+        public void BtnReplacePicture_Click(Office.IRibbonControl ribbonControl) {
             var shapeRange = GetShapeRange();
             if (shapeRange == null) {
                 return;
             }
+            var pictures = shapeRange.OfType<PowerPoint.Shape>().Where(shape => shape.Type == Office.MsoShapeType.msoPicture).ToArray();
+            if (pictures.Length == 0) {
+                return;
+            }
 
+            PowerPoint.Shapes slideShapes = null;
+            if (shapeRange.Parent is PowerPoint.Slide slide) {
+                slideShapes = slide.Shapes;
+            }
+            if (slideShapes == null) {
+                return;
+            }
+
+            var (path, needCleanup) = ("", false);
             switch (ribbonControl.Id) {
             case btnReplaceWithClipboard:
-                // TODO
+                var image = Clipboard.GetImage();
+                if (image == null) {
+                    MessageBox.Show(ArrangeRibbonResources.dlgNoPictureInClipboard, ArrangeRibbonResources.dlgReplacePicture,
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                path = Path.GetTempFileName();
+                needCleanup = true;
+                try {
+                    image.Save(path, ImageFormat.Png);
+                } catch (Exception) {
+                    return;
+                }
                 break;
             case btnReplaceWithFile:
-                // TODO
+                var dlg = Globals.ThisAddIn.Application.FileDialog[Office.MsoFileDialogType.msoFileDialogFilePicker];
+                dlg.Title = ArrangeRibbonResources.dlgSelectPictureToReplace;
+                dlg.AllowMultiSelect = false;
+                dlg.Filters.Add("Image files", "*.jpg; *.jpeg; *.png; *.bmp");
+                dlg.Filters.Add("All files", "*.*");
+                if (dlg.Show() != -1 && dlg.SelectedItems.Count != 0) {
+                    return;
+                }
+                path = dlg.SelectedItems.Item(1);
                 break;
+            }
+            if (path.Length == 0) {
+                return;
+            }
+
+            StartNewUndoEntry();
+            var newShapes = new List<PowerPoint.Shape>();
+            foreach (var shape in pictures) {
+                try {
+                    var (toLink, toSaveWith) = (Office.MsoTriState.msoFalse, Office.MsoTriState.msoTrue);
+                    var newShape = slideShapes.AddPicture(path, toLink, toSaveWith, shape.Left, shape.Top);
+                    newShape.LockAspectRatio = shape.LockAspectRatio;
+                    // TODO apply old format
+                    var (oldWidth, oldHeight) = (shape.Width, shape.Height);
+                    var (oldLeft, oldTop) = (shape.Left, shape.Top);
+                    var (newWidth, newHeight) = (newShape.Width, newShape.Height);
+                    if (_reserveOriginalSize) {
+                        var widthHeightRate = newWidth / newHeight;
+                        if (oldHeight * widthHeightRate <= oldWidth) {
+                            newHeight = oldHeight;
+                            newWidth = oldHeight * widthHeightRate;
+                        } else {
+                            newWidth = oldWidth;
+                            newHeight = oldWidth / widthHeightRate;
+                        }
+                        newShape.Width = newWidth;
+                        newShape.Height = newHeight;
+                    }
+                    if (_replaceToMiddle) {
+                        newShape.Left = oldLeft - (newWidth - oldWidth) / 2;
+                        newShape.Top = oldTop - (newHeight - oldHeight) / 2;
+                    }
+                    newShapes.Add(newShape);
+                    shape.Delete();
+                } catch (Exception) {
+                    // ignored
+                }
+            }
+
+            Globals.ThisAddIn.Application.ActiveWindow.Selection.Unselect();
+            foreach (var shape in newShapes) {
+                shape.Select(Office.MsoTriState.msoFalse);
+            }
+
+            if (needCleanup) {
+                try {
+                    File.Delete(path);
+                } catch (Exception) {
+                    // ignored
+                }
             }
         }
 
@@ -793,6 +895,7 @@ namespace ppt_arrange_addin {
                 return;
             }
 
+            StartNewUndoEntry();
             shapeRange.ScaleWidth(1F, Office.MsoTriState.msoTrue); // scale from top right always
             shapeRange.ScaleHeight(1F, Office.MsoTriState.msoTrue);
         }

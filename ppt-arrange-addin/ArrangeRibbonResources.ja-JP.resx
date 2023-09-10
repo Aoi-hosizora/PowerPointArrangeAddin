@@ -273,7 +273,16 @@
     <value>元の中央点に置換</value>
   </data>
   <data name="cbxReserveOriginalSize" xml:space="preserve">
-    <value>元のサイズを保持</value>
+    <value>図のサイズを保持</value>
+  </data>
+  <data name="dlgNoPictureInClipboard" xml:space="preserve">
+    <value>クリップボードに図がありませんので、図の置換はできません。</value>
+  </data>
+  <data name="dlgReplacePicture" xml:space="preserve">
+    <value>図を置換</value>
+  </data>
+  <data name="dlgSelectPictureToReplace" xml:space="preserve">
+    <value>置換用の図を選択</value>
   </data>
   <data name="edtMarginBottom" xml:space="preserve">
     <value>下:</value>
@@ -313,6 +322,9 @@
   </data>
   <data name="grpTextbox" xml:space="preserve">
     <value>テキストボックス</value>
+  </data>
+  <data name="grpWordArt" xml:space="preserve">
+    <value>ワードアート</value>
   </data>
   <data name="mnuArrangement_mnuAlignment" xml:space="preserve">
     <value>位置合わせ</value>

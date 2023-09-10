@@ -529,6 +529,33 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There is no picture in clipboard..
+        /// </summary>
+        public static string dlgNoPictureInClipboard {
+            get {
+                return ResourceManager.GetString("dlgNoPictureInClipboard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Replace picture.
+        /// </summary>
+        public static string dlgReplacePicture {
+            get {
+                return ResourceManager.GetString("dlgReplacePicture", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select picture for replacement.
+        /// </summary>
+        public static string dlgSelectPictureToReplace {
+            get {
+                return ResourceManager.GetString("dlgSelectPictureToReplace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bottom margin:.
         /// </summary>
         public static string edtMarginBottom {
@@ -642,6 +669,15 @@ namespace ppt_arrange_addin {
         public static string grpTextbox {
             get {
                 return ResourceManager.GetString("grpTextbox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Word art.
+        /// </summary>
+        public static string grpWordArt {
+            get {
+                return ResourceManager.GetString("grpWordArt", resourceCulture);
             }
         }
         

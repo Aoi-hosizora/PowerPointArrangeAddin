@@ -273,7 +273,16 @@
     <value>替换到中心点</value>
   </data>
   <data name="cbxReserveOriginalSize" xml:space="preserve">
-    <value>保持原来的大小</value>
+    <value>保持图片的大小</value>
+  </data>
+  <data name="dlgNoPictureInClipboard" xml:space="preserve">
+    <value>剪贴板里不存在图片，所以无法替换图片。</value>
+  </data>
+  <data name="dlgReplacePicture" xml:space="preserve">
+    <value>替换图片</value>
+  </data>
+  <data name="dlgSelectPictureToReplace" xml:space="preserve">
+    <value>选择用于替换的图片</value>
   </data>
   <data name="edtMarginBottom" xml:space="preserve">
     <value>下边距:</value>
@@ -313,6 +322,9 @@
   </data>
   <data name="grpTextbox" xml:space="preserve">
     <value>文本框</value>
+  </data>
+  <data name="grpWordArt" xml:space="preserve">
+    <value>艺术字</value>
   </data>
   <data name="mnuArrangement_mnuAlignment" xml:space="preserve">
     <value>对齐</value>

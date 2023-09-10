@@ -273,6 +273,15 @@
   <data name="cbxReserveOriginalSize" xml:space="preserve">
     <value>Reserve original size</value>
   </data>
+  <data name="dlgNoPictureInClipboard" xml:space="preserve">
+    <value>There is no picture in clipboard.</value>
+  </data>
+  <data name="dlgReplacePicture" xml:space="preserve">
+    <value>Replace picture</value>
+  </data>
+  <data name="dlgSelectPictureToReplace" xml:space="preserve">
+    <value>Select picture for replacement</value>
+  </data>
   <data name="edtMarginBottom" xml:space="preserve">
     <value>Bottom margin:</value>
   </data>
@@ -311,6 +320,9 @@
   </data>
   <data name="grpTextbox" xml:space="preserve">
     <value>Textbox</value>
+  </data>
+  <data name="grpWordArt" xml:space="preserve">
+    <value>Word art</value>
   </data>
   <data name="mnuArrangement_mnuAlignment" xml:space="preserve">
     <value>Alignment</value>

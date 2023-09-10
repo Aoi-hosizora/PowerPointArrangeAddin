@@ -162,9 +162,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CompilerServices.cs" />
-    <Compile Include="Ribbon.cs">
-      <XmlRibbon>true</XmlRibbon>
-    </Compile>
     <Compile Include="TempRibbon.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -374,7 +371,7 @@
     <None Include="Resources\PictureChangeFromClipboard_32.png" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Ribbon.xml" />
+    <None Include="Resources\TextEffectsMenu.png" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

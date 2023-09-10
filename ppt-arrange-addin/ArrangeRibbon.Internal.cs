@@ -43,6 +43,8 @@ namespace ppt_arrange_addin {
         #region Ribbon Elements ID
 
         // ReSharper disable InconsistentNaming
+        // grpWordArt
+        private const string grpWordArt = "grpWordArt";
         // grpArrange
         private const string grpArrange = "grpArrange";
         private const string btnAlignLeft = "btnAlignLeft";
@@ -138,6 +140,8 @@ namespace ppt_arrange_addin {
         }
 
         private readonly Dictionary<string, Func<ElementUi>> _elementLabels = new() {
+            // grpWordArt
+            { grpWordArt, () => new ElementUi { Label = ARES.grpWordArt, Image = RES.TextEffectsMenu } },
             // grpArrange
             { grpArrange, () => new ElementUi { Label = ARES.grpArrange, Image = RES.ObjectArrangement } },
             { btnAlignLeft, () => new ElementUi { Label = ARES.btnAlignLeft, Image = RES.ObjectsAlignLeft } },

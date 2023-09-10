@@ -4,6 +4,15 @@
 
         <tabs>
             <tab idMso="TabHome">
+                <group id="grpWordArt" insertAfterMso="GroupParagraph" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage">
+                    <gallery idMso="TextStylesGallery" size="large" />
+                    <control idMso="TextFillColorPicker" size="normal" />
+                    <control idMso="TextOutlineColorPicker" size="normal" />
+                    <control idMso="TextEffectsMenu" size="normal" />
+                    <dialogBoxLauncher>
+                        <button idMso="WordArtFormatDialog" />
+                    </dialogBoxLauncher>
+                </group>
                 <group id="grpArrange" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage">
                     <buttonGroup id="grpAlignLR">
                         <button id="btnAlignLeft" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnAlign_Click" />
@@ -58,6 +67,9 @@
                         <button idMso="ObjectSizeAndPositionDialog" showLabel="false" imageMso="ShapeStylesGallery" />
                         <toggleButton idMso="SelectionPane" showLabel="false" />
                     </buttonGroup>
+                    <dialogBoxLauncher>
+                        <button id="btnArrangementLauncher" onAction="BtnArrangementLauncher_Click" />
+                    </dialogBoxLauncher>
                 </group>
             </tab>
         </tabs>
@@ -107,9 +119,8 @@
             <tabSet idMso="TabSetPictureTools">
                 <tab idMso="TabPictureToolsFormat">
                     <group id="grpReplacePicture" insertAfterMso="GroupPictureTools" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage">
-                        <!-- TODO -->
-                        <button id="btnReplaceWithClipboard" size="large" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" onAction="BtnReplace_Click" />
-                        <button id="btnReplaceWithFile" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" onAction="BtnReplace_Click" />
+                        <button id="btnReplaceWithClipboard" size="large" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnReplacePicture_Click" />
+                        <button id="btnReplaceWithFile" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnReplacePicture_Click" />
                         <checkBox id="cbxReserveOriginalSize" getLabel="GetLabel" getScreentip="GetLabel" getPressed="GetCbxReserveOriginalSize" onAction="CbxReserveOriginalSize_Click" />
                         <checkBox id="cbxReplaceToMiddle" getLabel="GetLabel" getScreentip="GetLabel" getPressed="GetCbxReplaceToMiddlePressed" onAction="CbxReplaceToMiddle_Click" />
                     </group>
