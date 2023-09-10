@@ -101,7 +101,6 @@ namespace ppt_arrange_addin {
                 { btnScaleSameWidth, (_, cnt, _) => cnt >= 2 },
                 { btnScaleSameHeight, (_, cnt, _) => cnt >= 2 },
                 { btnScaleSameSize, (_, cnt, _) => cnt >= 2 },
-                { btnScalePosition, (_, cnt, _) => cnt >= 1 },
                 { btnExtendSameLeft, (_, cnt, _) => cnt >= 2 },
                 { btnExtendSameRight, (_, cnt, _) => cnt >= 2 },
                 { btnExtendSameTop, (_, cnt, _) => cnt >= 2 },
@@ -121,13 +120,13 @@ namespace ppt_arrange_addin {
                 { btnGroup, (_, cnt, _) => cnt >= 2 },
                 { btnUngroup, (shapeRange, cnt, _) => cnt >= 1 && IsUngroupable(shapeRange) },
                 { mnuShapeArrangement, (_,cnt, _) => cnt >= 1 },
-                { btnShapeLockAspectRatio, (_, cnt, _) => cnt >= 1 },
-                { btnShapeSizeCopy, (_, cnt, _) => cnt == 1 },
-                { btnShapeSizePaste, (_, cnt, _) => cnt >= 1 && IsValidCopiedSizeValue() },
+                { btnLockShapeAspectRatio, (_, cnt, _) => cnt >= 1 },
+                { btnCopyShapeSize, (_, cnt, _) => cnt == 1 },
+                { btnPasteShapeSize, (_, cnt, _) => cnt >= 1 && IsValidCopiedSizeValue() },
                 { edtShapePositionX, (_, cnt, _) => cnt >= 1 },
                 { edtShapePositionY, (_, cnt, _) => cnt >= 1 },
-                { btnShapePositionCopy, (_, cnt, _) => cnt == 1 },
-                { btnShapePositionPaste, (_, cnt, _) => cnt >= 1 && IsValidCopiedPositionValue() },
+                { btnCopyShapePosition, (_, cnt, _) => cnt == 1 },
+                { btnPasteShapePosition, (_, cnt, _) => cnt >= 1 && IsValidCopiedPositionValue() },
                 { btnAutofitOff, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame },
                 { btnAutofitText, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame },
                 { btnAutoResize, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame },
@@ -138,15 +137,15 @@ namespace ppt_arrange_addin {
                 { edtMarginBottom, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame },
                 { btnResetMarginHorizontal, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame },
                 { btnResetMarginVertical, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame },
-                { btnPictureResetSize, (_,cnt, _) => cnt >= 1 },
+                { btnResetPictureSize, (_,cnt, _) => cnt >= 1 },
                 { mnuPictureArrangement, (_,cnt, _) => cnt >= 1 },
-                { btnPictureLockAspectRatio, (_, cnt, _) => cnt >= 1 },
-                { btnPictureSizeCopy, (_, cnt, _) => cnt == 1 },
-                { btnPictureSizePaste, (_, cnt, _) => cnt >= 1 && IsValidCopiedSizeValue() },
+                { btnLockPictureAspectRatio, (_, cnt, _) => cnt >= 1 },
+                { btnCopyPictureSize, (_, cnt, _) => cnt == 1 },
+                { btnPastePictureSize, (_, cnt, _) => cnt >= 1 && IsValidCopiedSizeValue() },
                 { edtPicturePositionX, (_, cnt, _) => cnt >= 1 },
                 { edtPicturePositionY, (_, cnt, _) => cnt >= 1 },
-                { btnPicturePositionCopy, (_, cnt, _) => cnt == 1 },
-                { btnPicturePositionPaste, (_, cnt, _) => cnt >= 1 && IsValidCopiedPositionValue() }
+                { btnCopyPicturePosition, (_, cnt, _) => cnt == 1 },
+                { btnPastePicturePosition, (_, cnt, _) => cnt >= 1 && IsValidCopiedPositionValue() }
             };
         }
 
@@ -227,13 +226,15 @@ namespace ppt_arrange_addin {
             shapeRange.Distribute(cmd, flag);
         }
 
-        private Office.MsoScaleFrom _scaleFromFlag = Office.MsoScaleFrom.msoScaleFromMiddle; // used by BtnScale_Click
+        private Office.MsoScaleFrom _scaleFromFlag = Office.MsoScaleFrom.msoScaleFromMiddle; // used by BtnScale_Click and BtnCopyAndPasteSize_Click
 
         public void BtnScalePosition_Click(Office.IRibbonControl ribbonControl) {
             _scaleFromFlag = _scaleFromFlag == Office.MsoScaleFrom.msoScaleFromMiddle
                 ? Office.MsoScaleFrom.msoScaleFromTopLeft
                 : Office.MsoScaleFrom.msoScaleFromMiddle;
             _ribbon.InvalidateControl(btnScalePosition);
+            _ribbon.InvalidateControl(btnShapeScalePosition);
+            _ribbon.InvalidateControl(btnPictureScalePosition);
         }
 
         public string GetBtnScalePositionLabel(Office.IRibbonControl ribbonControl) {
@@ -465,7 +466,7 @@ namespace ppt_arrange_addin {
             return GetResourceText("ppt_arrange_addin.ArrangeRibbon.ArrangeMenu.xml");
         }
 
-        public void BtnShapeLockAspectRatio_Click(Office.IRibbonControl ribbonControl, bool pressed) {
+        public void BtnLockAspectRatio_Click(Office.IRibbonControl ribbonControl, bool pressed) {
             var shapeRange = GetShapeRange();
             if (shapeRange == null) {
                 return;
@@ -478,7 +479,7 @@ namespace ppt_arrange_addin {
             _ribbon.InvalidateControl(ribbonControl.Id);
         }
 
-        public bool GetBtnShapeLockAspectRatio(Office.IRibbonControl ribbonControl) {
+        public bool GetBtnLockAspectRatio(Office.IRibbonControl ribbonControl) {
             var shapeRange = GetShapeRange();
             if (shapeRange == null) {
                 return false;
@@ -495,22 +496,25 @@ namespace ppt_arrange_addin {
             return !_copiedSizeWPt.Equals(InvalidCopiedValue) && !_copiedSizeHPt.Equals(InvalidCopiedValue);
         }
 
-        public void BtnShapeSizeCopyPaste_Click(Office.IRibbonControl ribbonControl) {
+        public void BtnCopyAndPasteSize_Click(Office.IRibbonControl ribbonControl) {
             var shapeRange = GetShapeRange();
             if (shapeRange == null) {
                 return;
             }
 
             switch (ribbonControl.Id) {
-            case btnShapeSizeCopy:
+            case btnCopyShapeSize:
+            case btnCopyPictureSize:
                 if (shapeRange.Count == 1) {
                     StartNewUndoEntry();
                     _copiedSizeWPt = shapeRange.Width;
                     _copiedSizeHPt = shapeRange.Height;
-                    _ribbon.InvalidateControl(btnShapeSizePaste);
+                    _ribbon.InvalidateControl(btnPasteShapeSize);
+                    _ribbon.InvalidateControl(btnPastePictureSize);
                 }
                 break;
-            case btnShapeSizePaste:
+            case btnPasteShapeSize:
+            case btnPastePictureSize:
                 if (IsValidCopiedSizeValue()) {
                     StartNewUndoEntry();
                     foreach (var shape in shapeRange.OfType<PowerPoint.Shape>().ToArray()) {
@@ -531,7 +535,7 @@ namespace ppt_arrange_addin {
 
         private float PtToCm(float pt) => (float) (pt * 25.4 / 720);
 
-        public void EdtShapePosition_TextChanged(Office.IRibbonControl ribbonControl, string text) {
+        public void EdtPosition_TextChanged(Office.IRibbonControl ribbonControl, string text) {
             var shapeRange = GetShapeRange();
             if (shapeRange == null) {
                 return;
@@ -547,9 +551,11 @@ namespace ppt_arrange_addin {
                 var pt = CmToPt(input);
                 switch (ribbonControl.Id) {
                 case edtShapePositionX:
+                case edtPicturePositionX:
                     shapeRange.Left = pt;
                     break;
                 case edtShapePositionY:
+                case edtPicturePositionY:
                     shapeRange.Top = pt;
                     break;
                 }
@@ -558,15 +564,15 @@ namespace ppt_arrange_addin {
             _ribbon.InvalidateControl(ribbonControl.Id);
         }
 
-        public string GetEdtShapePositionText(Office.IRibbonControl ribbonControl) {
+        public string GetEdtPositionText(Office.IRibbonControl ribbonControl) {
             var shapeRange = GetShapeRange();
             if (shapeRange == null) {
                 return "";
             }
 
             var pt = ribbonControl.Id switch {
-                edtShapePositionX => shapeRange.Left,
-                edtShapePositionY => shapeRange.Top,
+                edtShapePositionX or edtPicturePositionX => shapeRange.Left,
+                edtShapePositionY or edtPicturePositionY => shapeRange.Top,
                 _ => -1
             };
 
@@ -582,28 +588,33 @@ namespace ppt_arrange_addin {
             return !_copiedPositionXPt.Equals(InvalidCopiedValue) && !_copiedPositionYPt.Equals(InvalidCopiedValue);
         }
 
-        public void BtnShapePositionCopyPaste_Click(Office.IRibbonControl ribbonControl) {
+        public void BtnCopyAndPastePosition_Click(Office.IRibbonControl ribbonControl) {
             var shapeRange = GetShapeRange();
             if (shapeRange == null) {
                 return;
             }
 
             switch (ribbonControl.Id) {
-            case btnShapePositionCopy:
+            case btnCopyShapePosition:
+            case btnCopyPicturePosition:
                 if (shapeRange.Count == 1) {
                     StartNewUndoEntry();
                     _copiedPositionXPt = shapeRange.Left;
                     _copiedPositionYPt = shapeRange.Top;
-                    _ribbon.InvalidateControl(btnShapePositionPaste);
+                    _ribbon.InvalidateControl(btnPasteShapePosition);
+                    _ribbon.InvalidateControl(btnPastePicturePosition);
                 }
                 break;
-            case btnShapePositionPaste:
+            case btnPasteShapePosition:
+            case btnPastePicturePosition:
                 if (IsValidCopiedPositionValue()) {
                     StartNewUndoEntry();
                     shapeRange.Left = _copiedPositionXPt;
                     shapeRange.Top = _copiedPositionYPt;
                     _ribbon.InvalidateControl(edtShapePositionX);
                     _ribbon.InvalidateControl(edtShapePositionY);
+                    _ribbon.InvalidateControl(edtPicturePositionX);
+                    _ribbon.InvalidateControl(edtPicturePositionY);
                 }
                 break;
             }
@@ -737,6 +748,53 @@ namespace ppt_arrange_addin {
             _ribbon.InvalidateControl(edtMarginRight);
             _ribbon.InvalidateControl(edtMarginTop);
             _ribbon.InvalidateControl(edtMarginBottom);
+        }
+
+        private bool _reserveOriginalSize = true; // used by replacing picture
+        private bool _replaceToMiddle = true; // used by replacing picture
+
+        public void CbxReserveOriginalSize_Click(Office.IRibbonControl ribbonControl, bool pressed) {
+            _reserveOriginalSize = !_reserveOriginalSize;
+            _ribbon.InvalidateControl(ribbonControl.Id);
+        }
+
+        public bool GetCbxReserveOriginalSize(Office.IRibbonControl ribbonControl) {
+            return _reserveOriginalSize;
+        }
+
+        public void CbxReplaceToMiddle_Click(Office.IRibbonControl ribbonControl, bool pressed) {
+            _replaceToMiddle = !_replaceToMiddle;
+            _ribbon.InvalidateControl(ribbonControl.Id);
+        }
+
+        public bool GetCbxReplaceToMiddlePressed(Office.IRibbonControl ribbonControl) {
+            return _replaceToMiddle;
+        }
+
+        public void BtnReplace_Click(Office.IRibbonControl ribbonControl) {
+            var shapeRange = GetShapeRange();
+            if (shapeRange == null) {
+                return;
+            }
+
+            switch (ribbonControl.Id) {
+            case btnReplaceWithClipboard:
+                // TODO
+                break;
+            case btnReplaceWithFile:
+                // TODO
+                break;
+            }
+        }
+
+        public void BtnResetPictureSize_Click(Office.IRibbonControl ribbonControl) {
+            var shapeRange = GetShapeRange();
+            if (shapeRange == null) {
+                return;
+            }
+
+            shapeRange.ScaleWidth(1F, Office.MsoTriState.msoTrue); // scale from top right always
+            shapeRange.ScaleHeight(1F, Office.MsoTriState.msoTrue);
         }
 
     }

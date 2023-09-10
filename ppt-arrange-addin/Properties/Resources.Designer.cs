@@ -153,6 +153,16 @@ namespace ppt_arrange_addin.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ObjectArrangement_32 {
+            get {
+                object obj = ResourceManager.GetObject("ObjectArrangement_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ObjectBringForward {
             get {
                 object obj = ResourceManager.GetObject("ObjectBringForward", resourceCulture);
@@ -326,6 +336,36 @@ namespace ppt_arrange_addin.Properties {
         internal static System.Drawing.Bitmap Paste {
             get {
                 object obj = ResourceManager.GetObject("Paste", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PictureChange {
+            get {
+                object obj = ResourceManager.GetObject("PictureChange", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PictureChangeFromClipboard {
+            get {
+                object obj = ResourceManager.GetObject("PictureChangeFromClipboard", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap PictureChangeFromClipboard_32 {
+            get {
+                object obj = ResourceManager.GetObject("PictureChangeFromClipboard_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -144,6 +144,18 @@
   <data name="btnAutoResize" xml:space="preserve">
     <value>Auto  resize</value>
   </data>
+  <data name="btnCopyPicturePosition" xml:space="preserve">
+    <value>Copy position</value>
+  </data>
+  <data name="btnCopyPictureSize" xml:space="preserve">
+    <value>Copy size</value>
+  </data>
+  <data name="btnCopyShapePosition" xml:space="preserve">
+    <value>Copy position</value>
+  </data>
+  <data name="btnCopyShapeSize" xml:space="preserve">
+    <value>Copy size</value>
+  </data>
   <data name="btnDistributeHorizontal" xml:space="preserve">
     <value>Distribute horizontally</value>
   </data>
@@ -171,6 +183,12 @@
   <data name="btnGroup" xml:space="preserve">
     <value>Group shapes</value>
   </data>
+  <data name="btnLockPictureAspectRatio" xml:space="preserve">
+    <value>Lock aspect ratio</value>
+  </data>
+  <data name="btnLockShapeAspectRatio" xml:space="preserve">
+    <value>Lock aspect ratio</value>
+  </data>
   <data name="btnMoveBack" xml:space="preserve">
     <value>Move to back</value>
   </data>
@@ -183,29 +201,32 @@
   <data name="btnMoveFront" xml:space="preserve">
     <value>Move to front</value>
   </data>
-  <data name="btnPictureLockAspectRatio" xml:space="preserve">
-    <value>Lock aspect ratio</value>
-  </data>
-  <data name="btnPicturePositionCopy" xml:space="preserve">
-    <value>Copy position</value>
-  </data>
-  <data name="btnPicturePositionPaste" xml:space="preserve">
+  <data name="btnPastePicturePosition" xml:space="preserve">
     <value>Paste position</value>
   </data>
-  <data name="btnPictureResetSize" xml:space="preserve">
-    <value>Reset size</value>
-  </data>
-  <data name="btnPictureSizeCopy" xml:space="preserve">
-    <value>Copy size</value>
-  </data>
-  <data name="btnPictureSizePaste" xml:space="preserve">
+  <data name="btnPastePictureSize" xml:space="preserve">
     <value>Paste size</value>
+  </data>
+  <data name="btnPasteShapePosition" xml:space="preserve">
+    <value>Paste position</value>
+  </data>
+  <data name="btnPasteShapeSize" xml:space="preserve">
+    <value>Paste size</value>
+  </data>
+  <data name="btnReplaceWithClipboard" xml:space="preserve">
+    <value>Replace with clipboard</value>
+  </data>
+  <data name="btnReplaceWithFile" xml:space="preserve">
+    <value>Replace with file</value>
   </data>
   <data name="btnResetMarginHorizontal" xml:space="preserve">
     <value>Reset horizontal margin</value>
   </data>
   <data name="btnResetMarginVertical" xml:space="preserve">
     <value>Reset vertical margin</value>
+  </data>
+  <data name="btnResetPictureSize" xml:space="preserve">
+    <value>Reset size</value>
   </data>
   <data name="btnRotateLeft90" xml:space="preserve">
     <value>Rotate left with 90 degrees</value>
@@ -214,34 +235,19 @@
     <value>Rotate right with 90 degrees</value>
   </data>
   <data name="btnScalePosition_Middle" xml:space="preserve">
-    <value>Stretch from middle</value>
+    <value>Scale from middle</value>
   </data>
   <data name="btnScalePosition_TopLeft" xml:space="preserve">
-    <value>Stretch from top left</value>
+    <value>Scale from top left</value>
   </data>
   <data name="btnScaleSameHeight" xml:space="preserve">
-    <value>Stretch to same height (as the first shape)</value>
+    <value>Scale to same height (as the first shape)</value>
   </data>
   <data name="btnScaleSameSize" xml:space="preserve">
-    <value>Stretch to same size (as the first shape)</value>
+    <value>Scale to same size (as the first shape)</value>
   </data>
   <data name="btnScaleSameWidth" xml:space="preserve">
-    <value>Stretch to same width (as the first shape)</value>
-  </data>
-  <data name="btnShapeLockAspectRatio" xml:space="preserve">
-    <value>Lock aspect ratio</value>
-  </data>
-  <data name="btnShapePositionCopy" xml:space="preserve">
-    <value>Copy position</value>
-  </data>
-  <data name="btnShapePositionPaste" xml:space="preserve">
-    <value>Paste position</value>
-  </data>
-  <data name="btnShapeSizeCopy" xml:space="preserve">
-    <value>Copy size</value>
-  </data>
-  <data name="btnShapeSizePaste" xml:space="preserve">
-    <value>Paste size</value>
+    <value>Scale to same width (as the first shape)</value>
   </data>
   <data name="btnSnapBottom" xml:space="preserve">
     <value>Snap to bottom</value>
@@ -260,6 +266,12 @@
   </data>
   <data name="btnWrapText" xml:space="preserve">
     <value>Wrap text</value>
+  </data>
+  <data name="cbxReplaceToMiddle" xml:space="preserve">
+    <value>Replace to middle</value>
+  </data>
+  <data name="cbxReserveOriginalSize" xml:space="preserve">
+    <value>Reserve original size</value>
   </data>
   <data name="edtMarginBottom" xml:space="preserve">
     <value>Bottom margin:</value>
@@ -290,6 +302,9 @@
   </data>
   <data name="grpPictureSizeAndPosition" xml:space="preserve">
     <value>Size and position</value>
+  </data>
+  <data name="grpReplacePicture" xml:space="preserve">
+    <value>Replace</value>
   </data>
   <data name="grpShapeSizeAndPosition" xml:space="preserve">
     <value>Size and position</value>

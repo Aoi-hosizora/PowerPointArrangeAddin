@@ -142,6 +142,42 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Copy position.
+        /// </summary>
+        public static string btnCopyPicturePosition {
+            get {
+                return ResourceManager.GetString("btnCopyPicturePosition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy size.
+        /// </summary>
+        public static string btnCopyPictureSize {
+            get {
+                return ResourceManager.GetString("btnCopyPictureSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy position.
+        /// </summary>
+        public static string btnCopyShapePosition {
+            get {
+                return ResourceManager.GetString("btnCopyShapePosition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy size.
+        /// </summary>
+        public static string btnCopyShapeSize {
+            get {
+                return ResourceManager.GetString("btnCopyShapeSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Distribute horizontally.
         /// </summary>
         public static string btnDistributeHorizontal {
@@ -223,6 +259,24 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Lock aspect ratio.
+        /// </summary>
+        public static string btnLockPictureAspectRatio {
+            get {
+                return ResourceManager.GetString("btnLockPictureAspectRatio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lock aspect ratio.
+        /// </summary>
+        public static string btnLockShapeAspectRatio {
+            get {
+                return ResourceManager.GetString("btnLockShapeAspectRatio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Move to back.
         /// </summary>
         public static string btnMoveBack {
@@ -259,56 +313,56 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lock aspect ratio.
-        /// </summary>
-        public static string btnPictureLockAspectRatio {
-            get {
-                return ResourceManager.GetString("btnPictureLockAspectRatio", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Copy position.
-        /// </summary>
-        public static string btnPicturePositionCopy {
-            get {
-                return ResourceManager.GetString("btnPicturePositionCopy", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Paste position.
         /// </summary>
-        public static string btnPicturePositionPaste {
+        public static string btnPastePicturePosition {
             get {
-                return ResourceManager.GetString("btnPicturePositionPaste", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Reset size.
-        /// </summary>
-        public static string btnPictureResetSize {
-            get {
-                return ResourceManager.GetString("btnPictureResetSize", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Copy size.
-        /// </summary>
-        public static string btnPictureSizeCopy {
-            get {
-                return ResourceManager.GetString("btnPictureSizeCopy", resourceCulture);
+                return ResourceManager.GetString("btnPastePicturePosition", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Paste size.
         /// </summary>
-        public static string btnPictureSizePaste {
+        public static string btnPastePictureSize {
             get {
-                return ResourceManager.GetString("btnPictureSizePaste", resourceCulture);
+                return ResourceManager.GetString("btnPastePictureSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Paste position.
+        /// </summary>
+        public static string btnPasteShapePosition {
+            get {
+                return ResourceManager.GetString("btnPasteShapePosition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Paste size.
+        /// </summary>
+        public static string btnPasteShapeSize {
+            get {
+                return ResourceManager.GetString("btnPasteShapeSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Replace with clipboard.
+        /// </summary>
+        public static string btnReplaceWithClipboard {
+            get {
+                return ResourceManager.GetString("btnReplaceWithClipboard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Replace with file.
+        /// </summary>
+        public static string btnReplaceWithFile {
+            get {
+                return ResourceManager.GetString("btnReplaceWithFile", resourceCulture);
             }
         }
         
@@ -331,6 +385,15 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reset size.
+        /// </summary>
+        public static string btnResetPictureSize {
+            get {
+                return ResourceManager.GetString("btnResetPictureSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Rotate left with 90 degrees.
         /// </summary>
         public static string btnRotateLeft90 {
@@ -349,7 +412,7 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Stretch from middle.
+        ///   Looks up a localized string similar to Scale from middle.
         /// </summary>
         public static string btnScalePosition_Middle {
             get {
@@ -358,7 +421,7 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Stretch from top left.
+        ///   Looks up a localized string similar to Scale from top left.
         /// </summary>
         public static string btnScalePosition_TopLeft {
             get {
@@ -367,7 +430,7 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Stretch to same height (as the first shape).
+        ///   Looks up a localized string similar to Scale to same height (as the first shape).
         /// </summary>
         public static string btnScaleSameHeight {
             get {
@@ -376,7 +439,7 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Stretch to same size (as the first shape).
+        ///   Looks up a localized string similar to Scale to same size (as the first shape).
         /// </summary>
         public static string btnScaleSameSize {
             get {
@@ -385,56 +448,11 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Stretch to same width (as the first shape).
+        ///   Looks up a localized string similar to Scale to same width (as the first shape).
         /// </summary>
         public static string btnScaleSameWidth {
             get {
                 return ResourceManager.GetString("btnScaleSameWidth", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Lock aspect ratio.
-        /// </summary>
-        public static string btnShapeLockAspectRatio {
-            get {
-                return ResourceManager.GetString("btnShapeLockAspectRatio", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Copy position.
-        /// </summary>
-        public static string btnShapePositionCopy {
-            get {
-                return ResourceManager.GetString("btnShapePositionCopy", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Paste position.
-        /// </summary>
-        public static string btnShapePositionPaste {
-            get {
-                return ResourceManager.GetString("btnShapePositionPaste", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Copy size.
-        /// </summary>
-        public static string btnShapeSizeCopy {
-            get {
-                return ResourceManager.GetString("btnShapeSizeCopy", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Paste size.
-        /// </summary>
-        public static string btnShapeSizePaste {
-            get {
-                return ResourceManager.GetString("btnShapeSizePaste", resourceCulture);
             }
         }
         
@@ -489,6 +507,24 @@ namespace ppt_arrange_addin {
         public static string btnWrapText {
             get {
                 return ResourceManager.GetString("btnWrapText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Replace to middle.
+        /// </summary>
+        public static string cbxReplaceToMiddle {
+            get {
+                return ResourceManager.GetString("cbxReplaceToMiddle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reserve original size.
+        /// </summary>
+        public static string cbxReserveOriginalSize {
+            get {
+                return ResourceManager.GetString("cbxReserveOriginalSize", resourceCulture);
             }
         }
         
@@ -579,6 +615,15 @@ namespace ppt_arrange_addin {
         public static string grpPictureSizeAndPosition {
             get {
                 return ResourceManager.GetString("grpPictureSizeAndPosition", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Replace.
+        /// </summary>
+        public static string grpReplacePicture {
+            get {
+                return ResourceManager.GetString("grpReplacePicture", resourceCulture);
             }
         }
         

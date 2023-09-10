@@ -162,6 +162,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CompilerServices.cs" />
+    <Compile Include="Ribbon.cs">
+      <XmlRibbon>true</XmlRibbon>
+    </Compile>
     <Compile Include="TempRibbon.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -357,6 +360,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\PictureResetSize_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PictureChange.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PictureChangeFromClipboard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ObjectArrangement_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PictureChangeFromClipboard_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Ribbon.xml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

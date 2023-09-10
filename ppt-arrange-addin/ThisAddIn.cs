@@ -12,7 +12,7 @@ namespace ppt_arrange_addin {
             var languageId = Application.LanguageSettings.LanguageID[Office.MsoAppLanguageID.msoLanguageIDUI];
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(languageId);
             Properties.Resources.Culture = new CultureInfo(languageId);
-            ArrangeRibbonResources.Culture = new CultureInfo(languageId); // TODO zh-CN
+            ArrangeRibbonResources.Culture = new CultureInfo(languageId);
 
             // ribbon controls status
             Application.WindowSelectionChange += _ => {

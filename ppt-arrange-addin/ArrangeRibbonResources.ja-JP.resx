@@ -139,12 +139,24 @@
     <value>自動調整なし</value>
   </data>
   <data name="btnAutofitText" xml:space="preserve">
-    <value>テキストを自動調整</value>
+    <value>テキストを調整</value>
     <comment>はみ出す場合だけ自動調整</comment>
   </data>
   <data name="btnAutoResize" xml:space="preserve">
-    <value>図形のサイズを調整</value>
+    <value>図形を調整</value>
     <comment>テキストに合わせて図形のサイズを調整</comment>
+  </data>
+  <data name="btnCopyPicturePosition" xml:space="preserve">
+    <value>位置をコピー</value>
+  </data>
+  <data name="btnCopyPictureSize" xml:space="preserve">
+    <value>サイズをコピー</value>
+  </data>
+  <data name="btnCopyShapePosition" xml:space="preserve">
+    <value>位置をコピー</value>
+  </data>
+  <data name="btnCopyShapeSize" xml:space="preserve">
+    <value>サイズをコピー</value>
   </data>
   <data name="btnDistributeHorizontal" xml:space="preserve">
     <value>左右に整列</value>
@@ -173,6 +185,12 @@
   <data name="btnGroup" xml:space="preserve">
     <value>グループ化</value>
   </data>
+  <data name="btnLockPictureAspectRatio" xml:space="preserve">
+    <value>縦横比を固定</value>
+  </data>
+  <data name="btnLockShapeAspectRatio" xml:space="preserve">
+    <value>縦横比を固定</value>
+  </data>
   <data name="btnMoveBack" xml:space="preserve">
     <value>最背面へ移動</value>
   </data>
@@ -185,29 +203,32 @@
   <data name="btnMoveFront" xml:space="preserve">
     <value>最前面へ移動</value>
   </data>
-  <data name="btnPictureLockAspectRatio" xml:space="preserve">
-    <value>縦横比を固定</value>
-  </data>
-  <data name="btnPicturePositionCopy" xml:space="preserve">
-    <value>位置をコピー</value>
-  </data>
-  <data name="btnPicturePositionPaste" xml:space="preserve">
+  <data name="btnPastePicturePosition" xml:space="preserve">
     <value>位置を貼付</value>
   </data>
-  <data name="btnPictureResetSize" xml:space="preserve">
-    <value>サイズをリセット</value>
-  </data>
-  <data name="btnPictureSizeCopy" xml:space="preserve">
-    <value>サイズをコピー</value>
-  </data>
-  <data name="btnPictureSizePaste" xml:space="preserve">
+  <data name="btnPastePictureSize" xml:space="preserve">
     <value>サイズを貼付</value>
   </data>
+  <data name="btnPasteShapePosition" xml:space="preserve">
+    <value>位置を貼付</value>
+  </data>
+  <data name="btnPasteShapeSize" xml:space="preserve">
+    <value>サイズを貼付</value>
+  </data>
+  <data name="btnReplaceWithClipboard" xml:space="preserve">
+    <value>クリップボードに置換</value>
+  </data>
+  <data name="btnReplaceWithFile" xml:space="preserve">
+    <value>ファイルに置換</value>
+  </data>
   <data name="btnResetMarginHorizontal" xml:space="preserve">
-    <value>左右余白をリセット</value>
+    <value>横余白をリセット</value>
   </data>
   <data name="btnResetMarginVertical" xml:space="preserve">
-    <value>上下余白をリセット</value>
+    <value>縦余白をリセット</value>
+  </data>
+  <data name="btnResetPictureSize" xml:space="preserve">
+    <value>サイズをリセット</value>
   </data>
   <data name="btnRotateLeft90" xml:space="preserve">
     <value>左へ 90 度回転</value>
@@ -216,34 +237,19 @@
     <value>右へ 90 度回転</value>
   </data>
   <data name="btnScalePosition_Middle" xml:space="preserve">
-    <value>中央をアンカーとして伸ばす</value>
+    <value>中央点から変形</value>
   </data>
   <data name="btnScalePosition_TopLeft" xml:space="preserve">
-    <value>左上をアンカーとして伸ばす</value>
+    <value>左上端から変形</value>
   </data>
   <data name="btnScaleSameHeight" xml:space="preserve">
-    <value>同じ高さに伸ばす (最初に選択した図形を基準とする)</value>
+    <value>同じ高さに変形 (最初に選択した図形を基準とする)</value>
   </data>
   <data name="btnScaleSameSize" xml:space="preserve">
-    <value>同じサイズに伸ばす (最初に選択した図形を基準とする)</value>
+    <value>同じサイズに変形 (最初に選択した図形を基準とする)</value>
   </data>
   <data name="btnScaleSameWidth" xml:space="preserve">
-    <value>同じ幅に伸ばす (最初に選択した図形を基準とする)</value>
-  </data>
-  <data name="btnShapeLockAspectRatio" xml:space="preserve">
-    <value>縦横比を固定</value>
-  </data>
-  <data name="btnShapePositionCopy" xml:space="preserve">
-    <value>位置をコピー</value>
-  </data>
-  <data name="btnShapePositionPaste" xml:space="preserve">
-    <value>位置を貼付</value>
-  </data>
-  <data name="btnShapeSizeCopy" xml:space="preserve">
-    <value>サイズをコピー</value>
-  </data>
-  <data name="btnShapeSizePaste" xml:space="preserve">
-    <value>サイズを貼付</value>
+    <value>同じ幅に変形 (最初に選択した図形を基準とする)</value>
   </data>
   <data name="btnSnapBottom" xml:space="preserve">
     <value>下端を上にスナップ</value>
@@ -263,17 +269,23 @@
   <data name="btnWrapText" xml:space="preserve">
     <value>テキストを折り返す</value>
   </data>
+  <data name="cbxReplaceToMiddle" xml:space="preserve">
+    <value>元の中央点に置換</value>
+  </data>
+  <data name="cbxReserveOriginalSize" xml:space="preserve">
+    <value>元のサイズを保持</value>
+  </data>
   <data name="edtMarginBottom" xml:space="preserve">
-    <value>下余白:</value>
+    <value>下:</value>
   </data>
   <data name="edtMarginLeft" xml:space="preserve">
-    <value>左余白:</value>
+    <value>左:</value>
   </data>
   <data name="edtMarginRight" xml:space="preserve">
-    <value>右余白:</value>
+    <value>右:</value>
   </data>
   <data name="edtMarginTop" xml:space="preserve">
-    <value>上余白:</value>
+    <value>上:</value>
   </data>
   <data name="edtPicturePositionX" xml:space="preserve">
     <value>横:</value>
@@ -292,6 +304,9 @@
   </data>
   <data name="grpPictureSizeAndPosition" xml:space="preserve">
     <value>サイズと位置</value>
+  </data>
+  <data name="grpReplacePicture" xml:space="preserve">
+    <value>置換</value>
   </data>
   <data name="grpShapeSizeAndPosition" xml:space="preserve">
     <value>サイズと位置</value>

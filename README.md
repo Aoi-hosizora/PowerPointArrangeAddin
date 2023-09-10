@@ -8,7 +8,7 @@
 ```bat
 cd ppt-arrange-addin
 call vsdevcmd.bat
-msbuild ppt-arrange-addin.csproj /p:Configuration=Debug /p:Platform=x64
+msbuild ppt-arrange-addin.csproj /p:Configuration=Release /p:Platform=x64
 ```
 
 ### References
