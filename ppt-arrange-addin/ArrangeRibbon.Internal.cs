@@ -77,6 +77,7 @@ namespace ppt_arrange_addin {
         private const string btnFlipHorizontal = "btnFlipHorizontal";
         private const string btnGroup = "btnGroup";
         private const string btnUngroup = "btnUngroup";
+        private const string mnuArrangement = "mnuArrangement";
         // grpTextbox
         private const string grpTextbox = "grpTextbox";
         private const string btnAutofitOff = "btnAutofitOff";
@@ -174,6 +175,7 @@ namespace ppt_arrange_addin {
             { btnFlipHorizontal, () => new ElementUi { Label = ARES.btnFlipHorizontal, Image = RES.ObjectFlipHorizontal } },
             { btnGroup, () => new ElementUi { Label = ARES.btnGroup, Image = RES.ObjectsGroup } },
             { btnUngroup, () => new ElementUi { Label = ARES.btnUngroup, Image = RES.ObjectsUngroup } },
+            { mnuArrangement, () => new ElementUi { Label = ARES.mnuArrangement, Image = RES.ObjectArrangement_32 } },
             // grpTextbox
             { grpTextbox, () => new ElementUi { Label = ARES.grpTextbox, Image = RES.TextboxSetting } },
             { btnAutofitOff, () => new ElementUi { Label = ARES.btnAutofitOff, Image = RES.TextboxAutofitOff } },

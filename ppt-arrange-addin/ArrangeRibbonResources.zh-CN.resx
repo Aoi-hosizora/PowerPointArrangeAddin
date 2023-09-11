@@ -326,6 +326,9 @@
   <data name="grpWordArt" xml:space="preserve">
     <value>艺术字</value>
   </data>
+  <data name="mnuArrangement" xml:space="preserve">
+    <value>排列一览</value>
+  </data>
   <data name="mnuArrangement_mnuAlignment" xml:space="preserve">
     <value>对齐</value>
   </data>

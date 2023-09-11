@@ -324,6 +324,9 @@
   <data name="grpWordArt" xml:space="preserve">
     <value>Word art</value>
   </data>
+  <data name="mnuArrangement" xml:space="preserve">
+    <value>Arrangement</value>
+  </data>
   <data name="mnuArrangement_mnuAlignment" xml:space="preserve">
     <value>Alignment</value>
   </data>

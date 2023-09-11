@@ -326,6 +326,9 @@
   <data name="grpWordArt" xml:space="preserve">
     <value>ワードアート</value>
   </data>
+  <data name="mnuArrangement" xml:space="preserve">
+    <value>配置一覧</value>
+  </data>
   <data name="mnuArrangement_mnuAlignment" xml:space="preserve">
     <value>位置合わせ</value>
   </data>

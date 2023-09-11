@@ -162,12 +162,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CompilerServices.cs" />
+    <Compile Include="SettingDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SettingDialog.Designer.cs">
+      <DependentUpon>SettingDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="TempRibbon.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="TempRibbon.Designer.cs">
       <DependentUpon>TempRibbon.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SettingDialog.resx">
+      <DependentUpon>SettingDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TempRibbon.resx">
       <DependentUpon>TempRibbon.cs</DependentUpon>
     </EmbeddedResource>
@@ -179,6 +188,7 @@
     <Compile Include="ThisAddIn.cs">
       <SubType>Code</SubType>
     </Compile>
+    <None Include="app.config" />
     <None Include="ThisAddIn.Designer.xml">
       <DependentUpon>ThisAddIn.cs</DependentUpon>
     </None>
@@ -207,6 +217,7 @@
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="ppt-arrange-addin_TemporaryKey.pfx" />
     <AppDesigner Include="Properties\" />

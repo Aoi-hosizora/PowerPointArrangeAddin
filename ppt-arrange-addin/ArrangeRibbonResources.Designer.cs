@@ -682,6 +682,15 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Arrangement.
+        /// </summary>
+        public static string mnuArrangement {
+            get {
+                return ResourceManager.GetString("mnuArrangement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Alignment.
         /// </summary>
         public static string mnuArrangement_mnuAlignment {

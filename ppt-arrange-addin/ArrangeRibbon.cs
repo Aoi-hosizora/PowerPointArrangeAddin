@@ -4,7 +4,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.Windows.Forms;
+using Forms = System.Windows.Forms;
 using Office = Microsoft.Office.Core;
 using PowerPoint = Microsoft.Office.Interop.PowerPoint;
 
@@ -124,6 +124,7 @@ namespace ppt_arrange_addin {
                 { btnFlipHorizontal, (_, cnt, _) => cnt >= 1 },
                 { btnGroup, (_, cnt, _) => cnt >= 2 },
                 { btnUngroup, (shapeRange, cnt, _) => cnt >= 1 && IsUngroupable(shapeRange) },
+                { mnuArrangement, (_, _, _) => true },
                 // grpTextbox
                 { btnAutofitOff, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame },
                 { btnAutofitText, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame },
@@ -136,7 +137,7 @@ namespace ppt_arrange_addin {
                 { btnResetMarginHorizontal, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame },
                 { btnResetMarginVertical, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame },
                 // grpShapeSizeAndPosition
-                { mnuShapeArrangement, (_,cnt, _) => cnt >= 1 },
+                { mnuShapeArrangement, (_, _, _) => true },
                 { btnLockShapeAspectRatio, (_, cnt, _) => cnt >= 1 },
                 { btnShapeScalePosition, (_, _, _) => true },
                 { btnCopyShapeSize, (_, cnt, _) => cnt == 1 },
@@ -151,7 +152,7 @@ namespace ppt_arrange_addin {
                 { cbxReserveOriginalSize, (_, _, _) => true },
                 { cbxReplaceToMiddle, (_, _, _) => true },
                 // grpPictureSizeAndPosition
-                { mnuPictureArrangement, (_,cnt, _) => cnt >= 1 },
+                { mnuPictureArrangement, (_, _, _) => true },
                 { btnResetPictureSize, (_,cnt, _) => cnt >= 1 },
                 { btnLockPictureAspectRatio, (_, cnt, _) => cnt >= 1 },
                 { btnPictureScalePosition, (_, _, _) => true },
@@ -183,6 +184,18 @@ namespace ppt_arrange_addin {
                 _ribbon.InvalidateControl(edtShapePositionX);
                 _ribbon.InvalidateControl(edtShapePositionY);
             }
+        }
+
+        public bool GetGroupVisible(Office.IRibbonControl ribbonControl) {
+            return ribbonControl.Id switch {
+                grpWordArt => Properties.Settings.Default.showWordArtGroup,
+                grpArrange => true,
+                grpTextbox => Properties.Settings.Default.showShapeTextboxGroup,
+                grpShapeSizeAndPosition => Properties.Settings.Default.showShapeSizeAndPositionGroup,
+                grpReplacePicture => Properties.Settings.Default.showReplacePictureGroup,
+                grpPictureSizeAndPosition => Properties.Settings.Default.showPictureSizeAndPositionGroup,
+                _ => true
+            };
         }
 
         private PowerPoint.ShapeRange GetShapeRange(int mustMoreThanOrEqualTo = 1) {
@@ -475,10 +488,16 @@ namespace ppt_arrange_addin {
             }
         }
 
+        public string GetMnuArrangementContent(Office.IRibbonControl ribbonControl) {
+            return GetResourceText("ppt_arrange_addin.ArrangeRibbon.ArrangeMenu.xml");
+        }
+
         public void BtnArrangementLauncher_Click(Office.IRibbonControl ribbonControl) {
-            var form = new Form();
-            // TODO
-            form.ShowDialog();
+            var dlg = new SettingDialog();
+            var result = dlg.ShowDialog();
+            if (result == Forms.DialogResult.OK) {
+                _ribbon.Invalidate();
+            }
         }
 
         public void BtnAutofit_Click(Office.IRibbonControl ribbonControl, bool pressed) {
@@ -613,10 +632,6 @@ namespace ppt_arrange_addin {
             _ribbon.InvalidateControl(edtMarginRight);
             _ribbon.InvalidateControl(edtMarginTop);
             _ribbon.InvalidateControl(edtMarginBottom);
-        }
-
-        public string GetMnuArrangementContent(Office.IRibbonControl ribbonControl) {
-            return GetResourceText("ppt_arrange_addin.ArrangeRibbon.ArrangeMenu.xml");
         }
 
         public void BtnLockAspectRatio_Click(Office.IRibbonControl ribbonControl, bool pressed) {
@@ -811,10 +826,10 @@ namespace ppt_arrange_addin {
             var (path, needCleanup) = ("", false);
             switch (ribbonControl.Id) {
             case btnReplaceWithClipboard:
-                var image = Clipboard.GetImage();
+                var image = Forms.Clipboard.GetImage();
                 if (image == null) {
-                    MessageBox.Show(ArrangeRibbonResources.dlgNoPictureInClipboard, ArrangeRibbonResources.dlgReplacePicture,
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Forms.MessageBox.Show(ArrangeRibbonResources.dlgNoPictureInClipboard, ArrangeRibbonResources.dlgReplacePicture,
+                        Forms.MessageBoxButtons.OK, Forms.MessageBoxIcon.Error);
                     return;
                 }
                 path = Path.GetTempFileName();
