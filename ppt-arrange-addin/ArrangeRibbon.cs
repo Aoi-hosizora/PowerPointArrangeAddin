@@ -173,7 +173,7 @@ namespace ppt_arrange_addin {
             return checker?.Invoke(selection.ShapeRange, shapesCount, hasTextFrame) ?? true;
         }
 
-        public void AdjustRibbonButtonsAvailability(bool onlyForDrag = false) {
+        public void InvalidateRibbon(bool onlyForDrag = false) {
             if (_ribbon == null) {
                 return;
             }
@@ -188,12 +188,12 @@ namespace ppt_arrange_addin {
 
         public bool GetGroupVisible(Office.IRibbonControl ribbonControl) {
             return ribbonControl.Id switch {
-                grpWordArt => Properties.Settings.Default.showWordArtGroup,
+                grpWordArt => AddInSetting.Instance.ShowWordArtGroup,
                 grpArrange => true,
-                grpTextbox => Properties.Settings.Default.showShapeTextboxGroup,
-                grpShapeSizeAndPosition => Properties.Settings.Default.showShapeSizeAndPositionGroup,
-                grpReplacePicture => Properties.Settings.Default.showReplacePictureGroup,
-                grpPictureSizeAndPosition => Properties.Settings.Default.showPictureSizeAndPositionGroup,
+                grpTextbox => AddInSetting.Instance.ShowShapeTextboxGroup,
+                grpShapeSizeAndPosition => AddInSetting.Instance.ShowShapeSizeAndPositionGroup,
+                grpReplacePicture => AddInSetting.Instance.ShowReplacePictureGroup,
+                grpPictureSizeAndPosition => AddInSetting.Instance.ShowPictureSizeAndPositionGroup,
                 _ => true
             };
         }
@@ -474,7 +474,7 @@ namespace ppt_arrange_addin {
                     StartNewUndoEntry();
                     var grouped = shapeRange.Group();
                     grouped.Select();
-                    AdjustRibbonButtonsAvailability();
+                    InvalidateRibbon();
                 }
                 break;
             case btnUngroup:
@@ -482,7 +482,7 @@ namespace ppt_arrange_addin {
                     StartNewUndoEntry();
                     var ungrouped = shapeRange.Ungroup();
                     ungrouped.Select();
-                    AdjustRibbonButtonsAvailability();
+                    InvalidateRibbon();
                 }
                 break;
             }

@@ -143,7 +143,7 @@
     <comment>溢出时缩排文字</comment>
   </data>
   <data name="btnAutoResize" xml:space="preserve">
-    <value>自动调整形状大小</value>
+    <value>自动调整形状</value>
     <comment>根据文字调整形状大小</comment>
   </data>
   <data name="btnCopyPicturePosition" xml:space="preserve">

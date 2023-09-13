@@ -137,6 +137,8 @@
     can be found.
   -->
   <ItemGroup>
+    <Compile Include="AddInLanguage.cs" />
+    <Compile Include="AddInSetting.cs" />
     <Compile Include="ArrangeRibbon.cs" />
     <EmbeddedResource Include="ArrangeRibbon.xml" />
     <Compile Include="ArrangeRibbon.Internal.cs">
@@ -148,10 +150,13 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ArrangeRibbonResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="ArrangeRibbonResources.ja-JP.resx">
+    <EmbeddedResource Include="ArrangeRibbonResources.ja.resx">
       <DependentUpon>ArrangeRibbonResources.resx</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ArrangeRibbonResources.zh-CN.resx">
+    <EmbeddedResource Include="ArrangeRibbonResources.zh-Hans.resx">
+      <DependentUpon>ArrangeRibbonResources.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ArrangeRibbonResources.zh-Hant.resx">
       <DependentUpon>ArrangeRibbonResources.resx</DependentUpon>
     </EmbeddedResource>
     <Compile Include="ArrangeRibbonResources.Designer.cs">
@@ -174,7 +179,16 @@
     <Compile Include="TempRibbon.Designer.cs">
       <DependentUpon>TempRibbon.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SettingDialog.ja.resx">
+      <DependentUpon>SettingDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SettingDialog.resx">
+      <DependentUpon>SettingDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingDialog.zh-Hans.resx">
+      <DependentUpon>SettingDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SettingDialog.zh-Hant.resx">
       <DependentUpon>SettingDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TempRibbon.resx">

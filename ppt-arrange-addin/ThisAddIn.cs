@@ -1,22 +1,22 @@
 ﻿using System;
 using Office = Microsoft.Office.Core;
-using System.Threading;
-using System.Globalization;
 
 namespace ppt_arrange_addin {
 
     public partial class ThisAddIn {
 
         private void ThisAddIn_Startup(object sender, EventArgs e) {
-            // localized add-in
-            var languageId = Application.LanguageSettings.LanguageID[Office.MsoAppLanguageID.msoLanguageIDUI];
-            Thread.CurrentThread.CurrentUICulture = new CultureInfo(languageId);
-            Properties.Resources.Culture = new CultureInfo(languageId);
-            ArrangeRibbonResources.Culture = new CultureInfo(languageId);
+            // load add-in setting
+            AddInSetting.Instance.Load();
 
-            // ribbon controls status
+            // localize add-in
+            var defaultLanguageId = Application.LanguageSettings.LanguageID[Office.MsoAppLanguageID.msoLanguageIDUI];
+            AddInLanguageChanger.RegisterAddIn(defaultLanguageId: defaultLanguageId, uiInvalidater: () => _ribbon.InvalidateRibbon());
+            AddInLanguageChanger.ChangeLanguage(AddInSetting.Instance.Language);
+
+            // callback for ribbon controls status
             Application.WindowSelectionChange += _ => {
-                _ribbon.AdjustRibbonButtonsAvailability();
+                _ribbon.InvalidateRibbon();
             };
         }
 

@@ -1,6 +1,6 @@
 # ppt-arrange-addin
 
-+ A VSTO add-in for arrangement operations for Microsoft Powerpoint.
++ A Powerpoint add-in (VSTO) for assisting arrangement operations, which is inspired by [iSlide Addin](https://www.islide.cc/).
 + Development envrionment: Visual Studio 2022, .NET Framework 4.8 (C# 7.3 / C# 9.0), PowerPoint 2010.
 
 ### Build
