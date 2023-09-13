@@ -12,24 +12,7 @@ namespace ppt_arrange_addin {
 
             Font = SystemFonts.MessageBoxFont;
             tlpMain.Dock = DockStyle.Fill;
-
-            var title = GetResourceString(key: "_title", defaultValue: "\"Arrangement Assistant Add-in\"");
-            var version = $"{GetResourceString(key: "_version", defaultValue: "Version")}: {Assembly.GetExecutingAssembly().GetName().Version}";
-            var author = $"{GetResourceString(key: "_author", defaultValue: "Author")}: AoiHosizora (https://github.com/Aoi-hosizora)";
-            var homepage = $"{GetResourceString(key: "_homepage", defaultValue: "Homepage")}: https://github.com/Aoi-hosizora/ppt-arrange-addin";
-            var copyright = GetAttributeFromAssembly<AssemblyCopyrightAttribute>()?.Copyright ?? "";
-            var description = $"{title}\r\n\r\n{version}\r\n\r\n{author}\r\n\r\n{homepage}\r\n\r\n{copyright}";
-            tbxDescription.Text = description;
-        }
-
-        private static T GetAttributeFromAssembly<T>(T defaultValue = default) {
-            var attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(T), false);
-            return attributes.Length > 0 ? (T) attributes[0] : defaultValue;
-        }
-
-        private static string GetResourceString(string key, string defaultValue) {
-            var resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingDialog));
-            return resources.GetString(key) ?? defaultValue;
+            LoadDescription();
         }
 
         private void SettingDialog_Load(object sender, EventArgs e) {
@@ -57,6 +40,31 @@ namespace ppt_arrange_addin {
         private void BtnCancel_Click(object sender, EventArgs e) {
             DialogResult = DialogResult.Cancel;
             Close();
+        }
+
+        private readonly string _addInTitle = "\"Arrangement Assistant Add-in\"";
+        private readonly string _addInVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+        private readonly string _addInAuthor = "AoiHosizora (https://github.com/Aoi-hosizora)";
+        private readonly string _addInHomepage = "https://github.com/Aoi-hosizora/ppt-arrange-addin";
+
+        private void LoadDescription() {
+            var title = GetResourceString(key: "_title", defaultValue: _addInTitle);
+            var version = $"{GetResourceString(key: "_version", defaultValue: "Version")}: {_addInVersion}";
+            var author = $"{GetResourceString(key: "_author", defaultValue: "Author")}: {_addInAuthor}";
+            var homepage = $"{GetResourceString(key: "_homepage", defaultValue: "Homepage")}: {_addInHomepage}";
+            var copyright = GetAttributeFromAssembly<AssemblyCopyrightAttribute>()?.Copyright ?? "";
+            var description = $"{title}\r\n\r\n{version}\r\n\r\n{author}\r\n\r\n{homepage}\r\n\r\n{copyright}";
+            tbxDescription.Text = description;
+        }
+
+        private static T GetAttributeFromAssembly<T>(T defaultValue = default) {
+            var attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(T), false);
+            return attributes.Length > 0 ? (T) attributes[0] : defaultValue;
+        }
+
+        private static string GetResourceString(string key, string defaultValue) {
+            var resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingDialog));
+            return resources.GetString(key) ?? defaultValue;
         }
 
     }

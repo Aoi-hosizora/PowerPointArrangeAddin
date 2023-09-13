@@ -22,7 +22,6 @@ namespace ppt_arrange_addin {
         private static extern IntPtr GetForegroundWindow();
 
         private struct Selection {
-            public PowerPoint.Selection PptSelection { get; init; }
             public PowerPoint.ShapeRange ShapeRange { get; init; }
             public PowerPoint.Shape TextShape { get; init; }
             public PowerPoint.TextRange TextRange { get; init; }
@@ -54,7 +53,7 @@ namespace ppt_arrange_addin {
                 } catch (Exception) { /* ignored */ }
             }
             if (onlyShapeRange) {
-                return new Selection { PptSelection = selection, ShapeRange = shapeRange };
+                return new Selection { ShapeRange = shapeRange };
             }
 
             // 3. text range
@@ -79,12 +78,11 @@ namespace ppt_arrange_addin {
 
             // 4. return selection
             return new Selection {
-                PptSelection = selection,
                 ShapeRange = shapeRange,
                 TextRange = textRange,
                 TextShape = textShape,
                 TextFrame = textFrame,
-                TextFrame2 = textFrame2,
+                TextFrame2 = textFrame2
             };
         }
 
@@ -125,6 +123,7 @@ namespace ppt_arrange_addin {
                 { btnGroup, (_, cnt, _) => cnt >= 2 },
                 { btnUngroup, (shapeRange, cnt, _) => cnt >= 1 && IsUngroupable(shapeRange) },
                 { mnuArrangement, (_, _, _) => true },
+                { btnAddInSetting, (_, _, _) => true },
                 // grpTextbox
                 { btnAutofitOff, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame },
                 { btnAutofitText, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame },
@@ -492,7 +491,7 @@ namespace ppt_arrange_addin {
             return GetResourceText("ppt_arrange_addin.ArrangeRibbon.ArrangeMenu.xml");
         }
 
-        public void BtnArrangementLauncher_Click(Office.IRibbonControl ribbonControl) {
+        public void BtnAddInSetting_Click(Office.IRibbonControl ribbonControl) {
             var dlg = new SettingDialog();
             var result = dlg.ShowDialog();
             if (result == Forms.DialogResult.OK) {

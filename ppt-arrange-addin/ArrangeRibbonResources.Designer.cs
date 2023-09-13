@@ -61,6 +61,15 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add-in setting....
+        /// </summary>
+        public static string btnAddInSetting {
+            get {
+                return ResourceManager.GetString("btnAddInSetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Align bottom.
         /// </summary>
         public static string btnAlignBottom {
@@ -646,7 +655,7 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Replace.
+        ///   Looks up a localized string similar to Replace picture.
         /// </summary>
         public static string grpReplacePicture {
             get {
@@ -741,6 +750,15 @@ namespace ppt_arrange_addin {
         public static string mnuArrangement_mnuSnapping {
             get {
                 return ResourceManager.GetString("mnuArrangement_mnuSnapping", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add-in setting.
+        /// </summary>
+        public static string mnuArrangement_sepAddInSetting {
+            get {
+                return ResourceManager.GetString("mnuArrangement_sepAddInSetting", resourceCulture);
             }
         }
         

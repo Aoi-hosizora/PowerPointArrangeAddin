@@ -78,6 +78,7 @@ namespace ppt_arrange_addin {
         private const string btnGroup = "btnGroup";
         private const string btnUngroup = "btnUngroup";
         private const string mnuArrangement = "mnuArrangement";
+        private const string btnAddInSetting = "btnAddInSetting";
         // grpTextbox
         private const string grpTextbox = "grpTextbox";
         private const string btnAutofitOff = "btnAutofitOff";
@@ -93,8 +94,8 @@ namespace ppt_arrange_addin {
         // grpShapeSizeAndPosition
         private const string grpShapeSizeAndPosition = "grpShapeSizeAndPosition";
         private const string mnuShapeArrangement = "mnuShapeArrangement";
-        private const string btnShapeScalePosition = "btnShapeScalePosition";
         private const string btnLockShapeAspectRatio = "btnLockShapeAspectRatio";
+        private const string btnShapeScalePosition = "btnShapeScalePosition";
         private const string btnCopyShapeSize = "btnCopyShapeSize";
         private const string btnPasteShapeSize = "btnPasteShapeSize";
         private const string edtShapePositionX = "edtShapePositionX";
@@ -111,8 +112,8 @@ namespace ppt_arrange_addin {
         private const string grpPictureSizeAndPosition = "grpPictureSizeAndPosition";
         private const string mnuPictureArrangement = "mnuPictureArrangement";
         private const string btnResetPictureSize = "btnResetPictureSize";
-        private const string btnPictureScalePosition = "btnPictureScalePosition";
         private const string btnLockPictureAspectRatio = "btnLockPictureAspectRatio";
+        private const string btnPictureScalePosition = "btnPictureScalePosition";
         private const string btnCopyPictureSize = "btnCopyPictureSize";
         private const string btnPastePictureSize = "btnPastePictureSize";
         private const string edtPicturePositionX = "edtPicturePositionX";
@@ -129,6 +130,7 @@ namespace ppt_arrange_addin {
         private const string mnuArrangement_mnuLayerOrder = "mnuArrangement_mnuLayerOrder";
         private const string mnuArrangement_mnuGrouping = "mnuArrangement_mnuGrouping";
         private const string mnuArrangement_sepObjectsInSlide = "mnuArrangement_sepObjectsInSlide";
+        private const string mnuArrangement_sepAddInSetting = "mnuArrangement_sepAddInSetting";
         // ReSharper restore InconsistentNaming
 
         #endregion
@@ -176,6 +178,7 @@ namespace ppt_arrange_addin {
             { btnGroup, () => new ElementUi { Label = ARES.btnGroup, Image = RES.ObjectsGroup } },
             { btnUngroup, () => new ElementUi { Label = ARES.btnUngroup, Image = RES.ObjectsUngroup } },
             { mnuArrangement, () => new ElementUi { Label = ARES.mnuArrangement, Image = RES.ObjectArrangement_32 } },
+            { btnAddInSetting, () => new ElementUi { Label = ARES.btnAddInSetting, Image = RES.AddInOptions } },
             // grpTextbox
             { grpTextbox, () => new ElementUi { Label = ARES.grpTextbox, Image = RES.TextboxSetting } },
             { btnAutofitOff, () => new ElementUi { Label = ARES.btnAutofitOff, Image = RES.TextboxAutofitOff } },
@@ -227,6 +230,7 @@ namespace ppt_arrange_addin {
             { mnuArrangement_mnuLayerOrder, () => new ElementUi { Label = ARES.mnuArrangement_mnuLayerOrder, Image = RES.ObjectSendToBack } },
             { mnuArrangement_mnuGrouping, () => new ElementUi { Label = ARES.mnuArrangement_mnuGrouping, Image = RES.ObjectsGroup } },
             { mnuArrangement_sepObjectsInSlide, () => new ElementUi { Label = ARES.mnuArrangement_sepObjectsInSlide } },
+            { mnuArrangement_sepAddInSetting, () => new ElementUi { Label = ARES.mnuArrangement_sepAddInSetting } }
         };
 
         public string GetLabel(Office.IRibbonControl ribbonControl) {

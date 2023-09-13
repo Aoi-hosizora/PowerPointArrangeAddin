@@ -1,8 +1,4 @@
-﻿using System;
-using System.Globalization;
-using System.Threading;
-
-namespace ppt_arrange_addin {
+﻿namespace ppt_arrange_addin {
 
     public class AddInSetting {
 

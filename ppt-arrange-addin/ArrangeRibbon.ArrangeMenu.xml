@@ -7,7 +7,7 @@
         <button id="btnAlignRight" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnAlign_Click" />
         <menuSeparator id="separator1" />
         <button id="btnAlignTop" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnAlign_Click" />
-        <button id="btnAlignMiddle" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" onAction="BtnAlign_Click" />
+        <button id="btnAlignMiddle" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnAlign_Click" />
         <button id="btnAlignBottom" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnAlign_Click" />
         <menuSeparator id="separator2" />
         <button id="btnDistributeHorizontal" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnDistribute_Click" />
@@ -67,4 +67,7 @@
     <menuSeparator id="mnuArrangement_sepObjectsInSlide" getTitle="GetLabel" />
     <button idMso="ObjectSizeAndPositionDialog" imageMso="ShapeStylesGallery" />
     <toggleButton idMso="SelectionPane" />
+
+    <menuSeparator id="mnuArrangement_sepAddInSetting" getTitle="GetLabel" />
+    <button id="btnAddInSetting" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" onAction="BtnAddInSetting_Click" />
 </menu>

@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="btnAddInSetting" xml:space="preserve">
+    <value>加载项设置...</value>
+  </data>
   <data name="btnAlignBottom" xml:space="preserve">
     <value>底端对齐</value>
   </data>
@@ -237,19 +240,19 @@
     <value>向右旋转 90 度</value>
   </data>
   <data name="btnScalePosition_Middle" xml:space="preserve">
-    <value>从中心点开始伸缩</value>
+    <value>从中心点开始变形</value>
   </data>
   <data name="btnScalePosition_TopLeft" xml:space="preserve">
-    <value>从左上角开始伸缩</value>
+    <value>从左上角开始变形</value>
   </data>
   <data name="btnScaleSameHeight" xml:space="preserve">
-    <value>等高 (以最初选择的形状为基准)</value>
+    <value>等高度 (以最初选择的形状为基准)</value>
   </data>
   <data name="btnScaleSameSize" xml:space="preserve">
     <value>等大小 (以最初选择的形状为基准)</value>
   </data>
   <data name="btnScaleSameWidth" xml:space="preserve">
-    <value>等宽 (以最初选择的形状为基准)</value>
+    <value>等宽度 (以最初选择的形状为基准)</value>
   </data>
   <data name="btnSnapBottom" xml:space="preserve">
     <value>向下吸附</value>
@@ -315,7 +318,7 @@
     <value>大小和位置</value>
   </data>
   <data name="grpReplacePicture" xml:space="preserve">
-    <value>替换</value>
+    <value>替换图片</value>
   </data>
   <data name="grpShapeSizeAndPosition" xml:space="preserve">
     <value>大小和位置</value>
@@ -339,7 +342,7 @@
     <value>重叠顺序</value>
   </data>
   <data name="mnuArrangement_mnuResizing" xml:space="preserve">
-    <value>尺寸变更</value>
+    <value>大小变更</value>
   </data>
   <data name="mnuArrangement_mnuRotation" xml:space="preserve">
     <value>旋转</value>
@@ -347,11 +350,14 @@
   <data name="mnuArrangement_mnuSnapping" xml:space="preserve">
     <value>吸附</value>
   </data>
+  <data name="mnuArrangement_sepAddInSetting" xml:space="preserve">
+    <value>加载项设置</value>
+  </data>
   <data name="mnuArrangement_sepAlignmentAndResizing" xml:space="preserve">
     <value>对象的位置和大小</value>
   </data>
   <data name="mnuArrangement_sepLayerOrderAndGrouping" xml:space="preserve">
-    <value>对象的排列和组合</value>
+    <value>对象的顺序和组合</value>
   </data>
   <data name="mnuArrangement_sepObjectsInSlide" xml:space="preserve">
     <value>幻灯片上的对象</value>

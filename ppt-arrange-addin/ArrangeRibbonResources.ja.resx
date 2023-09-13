@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="btnAddInSetting" xml:space="preserve">
+    <value>アドインの設定...</value>
+  </data>
   <data name="btnAlignBottom" xml:space="preserve">
     <value>下揃え</value>
   </data>
@@ -270,13 +273,13 @@
     <value>テキストを折り返す</value>
   </data>
   <data name="cbxReplaceToMiddle" xml:space="preserve">
-    <value>元の中央点に置換</value>
+    <value>元の中央点に変更</value>
   </data>
   <data name="cbxReserveOriginalSize" xml:space="preserve">
     <value>図のサイズを保持</value>
   </data>
   <data name="dlgNoPictureInClipboard" xml:space="preserve">
-    <value>クリップボードに図がありませんので、図の置換はできません。</value>
+    <value>クリップボードに図がありませんので、置換できません。</value>
   </data>
   <data name="dlgReplacePicture" xml:space="preserve">
     <value>図を置換</value>
@@ -315,7 +318,7 @@
     <value>サイズと位置</value>
   </data>
   <data name="grpReplacePicture" xml:space="preserve">
-    <value>置換</value>
+    <value>図の置換</value>
   </data>
   <data name="grpShapeSizeAndPosition" xml:space="preserve">
     <value>サイズと位置</value>
@@ -346,6 +349,9 @@
   </data>
   <data name="mnuArrangement_mnuSnapping" xml:space="preserve">
     <value>スナップ</value>
+  </data>
+  <data name="mnuArrangement_sepAddInSetting" xml:space="preserve">
+    <value>アドインの設定</value>
   </data>
   <data name="mnuArrangement_sepAlignmentAndResizing" xml:space="preserve">
     <value>オブジェクトの位置とサイズ</value>

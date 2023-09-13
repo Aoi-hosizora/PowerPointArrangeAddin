@@ -4,6 +4,8 @@
 
 namespace System.Runtime.CompilerServices {
 
+    // ReSharper disable UnusedMember.Global
+
     internal static class IsExternalInit { }
 
     [AttributeUsage(AttributeTargets.Class |

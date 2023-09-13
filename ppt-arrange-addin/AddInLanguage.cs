@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Threading;
 
@@ -24,14 +23,9 @@ namespace ppt_arrange_addin {
         }
 
         public static void ChangeLanguage(AddInLanguage language) {
-            var cultureInfo = language switch {
-                AddInLanguage.Default => new CultureInfo(_defaultLanguageId),
-                AddInLanguage.English => new CultureInfo("en"),
-                AddInLanguage.SimplifiedChinese => new CultureInfo("zh-hans"),
-                AddInLanguage.TraditionalChinese => new CultureInfo("zh-hant"),
-                AddInLanguage.Japanese => new CultureInfo("ja"),
-                _ => new CultureInfo(_defaultLanguageId)
-            };
+            var cultureInfo = language == AddInLanguage.Default
+                ? new CultureInfo(_defaultLanguageId)
+                : new CultureInfo(language.ToLanguageString());
             Thread.CurrentThread.CurrentCulture = cultureInfo;
             Thread.CurrentThread.CurrentUICulture = cultureInfo;
             Properties.Resources.Culture = cultureInfo;

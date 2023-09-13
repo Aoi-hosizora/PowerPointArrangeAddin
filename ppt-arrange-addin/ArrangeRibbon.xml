@@ -13,6 +13,7 @@
                         <button idMso="WordArtFormatDialog" />
                     </dialogBoxLauncher>
                 </group>
+
                 <group id="grpArrange" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage">
                     <buttonGroup id="grpAlignLR">
                         <button id="btnAlignLeft" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnAlign_Click" />
@@ -70,7 +71,7 @@
                     <separator id="separator3" />
                     <dynamicMenu id="mnuArrangement" size="large" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" getContent="GetMnuArrangementContent" />
                     <dialogBoxLauncher>
-                        <button id="btnArrangementLauncher" onAction="BtnArrangementLauncher_Click" />
+                        <button id="btnAddInSetting" getLabel="GetLabel" getScreentip="GetLabel" onAction="BtnAddInSetting_Click" />
                     </dialogBoxLauncher>
                 </group>
             </tab>
@@ -96,6 +97,7 @@
                             <button idMso="WordArtFormatDialog" />
                         </dialogBoxLauncher>
                     </group>
+
                     <group id="grpShapeSizeAndPosition" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getVisible="GetGroupVisible">
                         <dynamicMenu id="mnuShapeArrangement" size="large" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" getContent="GetMnuArrangementContent" />
                         <separator id="separator6" />
@@ -118,6 +120,7 @@
                     </group>
                 </tab>
             </tabSet>
+
             <tabSet idMso="TabSetPictureTools">
                 <tab idMso="TabPictureToolsFormat">
                     <group id="grpReplacePicture" insertAfterMso="GroupPictureTools" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getVisible="GetGroupVisible">
@@ -126,6 +129,7 @@
                         <checkBox id="cbxReserveOriginalSize" getLabel="GetLabel" getScreentip="GetLabel" getPressed="GetCbxReserveOriginalSize" onAction="CbxReserveOriginalSize_Click" />
                         <checkBox id="cbxReplaceToMiddle" getLabel="GetLabel" getScreentip="GetLabel" getPressed="GetCbxReplaceToMiddlePressed" onAction="CbxReplaceToMiddle_Click" />
                     </group>
+
                     <group id="grpPictureSizeAndPosition" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getVisible="GetGroupVisible">
                         <dynamicMenu id="mnuPictureArrangement" size="large" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" getContent="GetMnuArrangementContent" />
                         <separator id="separator8" />
