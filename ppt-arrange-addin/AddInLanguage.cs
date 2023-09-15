@@ -15,11 +15,11 @@ namespace ppt_arrange_addin {
     public static class AddInLanguageChanger {
 
         private static int _defaultLanguageId;
-        private static Action _uiInvalidater;
+        private static Action _uiInvalidator;
 
-        public static void RegisterAddIn(int defaultLanguageId, Action uiInvalidater) {
+        public static void RegisterAddIn(int defaultLanguageId, Action uiInvalidator) {
             _defaultLanguageId = defaultLanguageId;
-            _uiInvalidater = uiInvalidater;
+            _uiInvalidator = uiInvalidator;
         }
 
         public static void ChangeLanguage(AddInLanguage language) {
@@ -30,7 +30,7 @@ namespace ppt_arrange_addin {
             Thread.CurrentThread.CurrentUICulture = cultureInfo;
             Properties.Resources.Culture = cultureInfo;
             ArrangeRibbonResources.Culture = cultureInfo;
-            _uiInvalidater?.Invoke();
+            _uiInvalidator?.Invoke();
         }
 
         #region Extensions

@@ -145,7 +145,7 @@
     <value>テキストを調整</value>
     <comment>はみ出す場合だけ自動調整</comment>
   </data>
-  <data name="btnAutoResize" xml:space="preserve">
+  <data name="btnAutofitShape" xml:space="preserve">
     <value>図形を調整</value>
     <comment>テキストに合わせて図形のサイズを調整</comment>
   </data>

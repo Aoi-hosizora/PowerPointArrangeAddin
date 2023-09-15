@@ -83,7 +83,7 @@ namespace ppt_arrange_addin {
         private const string grpTextbox = "grpTextbox";
         private const string btnAutofitOff = "btnAutofitOff";
         private const string btnAutofitText = "btnAutofitText";
-        private const string btnAutoResize = "btnAutoResize";
+        private const string btnAutofitShape = "btnAutofitShape";
         private const string btnWrapText = "btnWrapText";
         private const string edtMarginLeft = "edtMarginLeft";
         private const string edtMarginRight = "edtMarginRight";
@@ -183,7 +183,7 @@ namespace ppt_arrange_addin {
             { grpTextbox, () => new ElementUi { Label = ARES.grpTextbox, Image = RES.TextboxSetting } },
             { btnAutofitOff, () => new ElementUi { Label = ARES.btnAutofitOff, Image = RES.TextboxAutofitOff } },
             { btnAutofitText, () => new ElementUi { Label = ARES.btnAutofitText, Image = RES.TextboxAutofitText } },
-            { btnAutoResize, () => new ElementUi { Label = ARES.btnAutoResize, Image = RES.TextboxAutoResize } },
+            { btnAutofitShape, () => new ElementUi { Label = ARES.btnAutofitShape, Image = RES.TextboxAutoResize } },
             { btnWrapText, () => new ElementUi { Label = ARES.btnWrapText, Image = RES.TextboxWrapText_32 } },
             { edtMarginLeft, () => new ElementUi { Label = ARES.edtMarginLeft } },
             { edtMarginRight, () => new ElementUi { Label = ARES.edtMarginRight } },

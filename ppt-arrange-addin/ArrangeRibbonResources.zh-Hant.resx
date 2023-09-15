@@ -145,7 +145,7 @@
     <value>縮小溢出文字</value>
     <comment>縮小溢出文字</comment>
   </data>
-  <data name="btnAutoResize" xml:space="preserve">
+  <data name="btnAutofitShape" xml:space="preserve">
     <value>自動調整圖案</value>
     <comment>依照文字調整圖案的大小</comment>
   </data>

@@ -167,6 +167,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CompilerServices.cs" />
+    <Compile Include="Helper\Arrangement.cs" />
+    <Compile Include="Helper\ReplacePicture.cs" />
+    <Compile Include="Helper\SizeAndPosition.cs" />
+    <Compile Include="Helper\Textbox.cs" />
+    <Compile Include="Helper\UnitConverter.cs" />
     <Compile Include="SettingDialog.cs">
       <SubType>Form</SubType>
     </Compile>

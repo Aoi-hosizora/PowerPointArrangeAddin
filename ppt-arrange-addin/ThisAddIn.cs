@@ -11,7 +11,7 @@ namespace ppt_arrange_addin {
 
             // localize add-in
             var defaultLanguageId = Application.LanguageSettings.LanguageID[Office.MsoAppLanguageID.msoLanguageIDUI];
-            AddInLanguageChanger.RegisterAddIn(defaultLanguageId: defaultLanguageId, uiInvalidater: () => _ribbon.InvalidateRibbon());
+            AddInLanguageChanger.RegisterAddIn(defaultLanguageId: defaultLanguageId, uiInvalidator: () => _ribbon.InvalidateRibbon());
             AddInLanguageChanger.ChangeLanguage(AddInSetting.Instance.Language);
 
             // callback for ribbon controls status

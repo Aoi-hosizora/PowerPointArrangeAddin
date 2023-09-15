@@ -144,9 +144,9 @@ namespace ppt_arrange_addin {
         /// <summary>
         ///   Looks up a localized string similar to Auto  resize.
         /// </summary>
-        public static string btnAutoResize {
+        public static string btnAutofitShape {
             get {
-                return ResourceManager.GetString("btnAutoResize", resourceCulture);
+                return ResourceManager.GetString("btnAutofitShape", resourceCulture);
             }
         }
         

@@ -144,8 +144,8 @@
   <data name="btnAutofitText" xml:space="preserve">
     <value>Autofit text</value>
   </data>
-  <data name="btnAutoResize" xml:space="preserve">
-    <value>Auto  resize</value>
+  <data name="btnAutofitShape" xml:space="preserve">
+    <value>Auto resize</value>
   </data>
   <data name="btnCopyPicturePosition" xml:space="preserve">
     <value>Copy position</value>

@@ -25,6 +25,7 @@ namespace ppt_arrange_addin {
         }
 
         private void BtnOK_Click(object sender, EventArgs e) {
+            var oldLanguage = AddInSetting.Instance.Language;
             AddInSetting.Instance.ShowWordArtGroup = cbxArtWord.Checked;
             AddInSetting.Instance.ShowShapeTextboxGroup = cbxShapeTextbox.Checked;
             AddInSetting.Instance.ShowShapeSizeAndPositionGroup = cbxShapeSizeAndPosition.Checked;
@@ -32,7 +33,11 @@ namespace ppt_arrange_addin {
             AddInSetting.Instance.ShowPictureSizeAndPositionGroup = cbxPictureSizeAndPosition.Checked;
             AddInSetting.Instance.Language = cboLanguage.SelectedIndex.ToAddInLanguage();
             AddInSetting.Instance.Save();
-            AddInLanguageChanger.ChangeLanguage(AddInSetting.Instance.Language);
+
+            if (AddInSetting.Instance.Language != oldLanguage) {
+                AddInLanguageChanger.ChangeLanguage(AddInSetting.Instance.Language);
+            }
+
             DialogResult = DialogResult.OK;
             Close();
         }

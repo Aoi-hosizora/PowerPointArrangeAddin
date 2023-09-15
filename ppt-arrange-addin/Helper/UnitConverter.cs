@@ -1,0 +1,43 @@
+using System;
+using System.Text.RegularExpressions;
+
+namespace ppt_arrange_addin.Helper {
+
+    public static class UnitConverter {
+
+        public static float CmToPt(float cm) => cm * 720F / 25.4F;
+
+        public static float PtToCm(float pt) => pt * 25.4F / 720F;
+
+        private static readonly Regex Re = new(@"^\s*(\d*)\s*(?:mm|cm)?\s*$", RegexOptions.IgnoreCase);
+
+        public static (float, bool) ParseStringToPtValue(string text) {
+            var matched = Re.Match(text);
+            if (!matched.Success) {
+                return (0, false);
+            }
+
+            var isMm = text.ToLower().Contains("mm");
+            text = matched.Groups[1].Value;
+            if (!float.TryParse(text, out var valueInCm)) {
+                return (0, false);
+            }
+
+            if (text.Length == 0) {
+                valueInCm = 0;
+            }
+            if (isMm) {
+                valueInCm /= 10.0F;
+            }
+            var valueInPt = CmToPt(valueInCm);
+            return (valueInPt, true);
+        }
+
+        public static string FormatPtValueToString(float pt) {
+            var valueInCm = PtToCm(pt);
+            return $"{Math.Round(valueInCm, 2)} cm";
+        }
+
+    }
+
+}
