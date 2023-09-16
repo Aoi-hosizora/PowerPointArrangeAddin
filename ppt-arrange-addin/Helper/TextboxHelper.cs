@@ -10,12 +10,12 @@ namespace ppt_arrange_addin.Helper {
 
         public enum TextboxStatusCmd {
             AutofitOff,
-            AutofitText,
-            AutofitShape,
+            AutoShrinkText,
+            AutoResizeShape,
             WrapTextOnOff,
         }
 
-        public static void ChangeAutofitStatus(PowerPoint.TextFrame2? textFrame, TextboxStatusCmd? cmd, Action? uiInvalidator) {
+        public static void ChangeAutofitStatus(PowerPoint.TextFrame2? textFrame, TextboxStatusCmd? cmd, Action? uiInvalidator = null) {
             if (textFrame == null) {
                 return;
             }
@@ -25,20 +25,20 @@ namespace ppt_arrange_addin.Helper {
 
             Globals.ThisAddIn.Application.StartNewUndoEntry();
             switch (cmd!) {
-                case TextboxStatusCmd.AutofitOff:
-                    textFrame.AutoSize = Office.MsoAutoSize.msoAutoSizeNone;
-                    break;
-                case TextboxStatusCmd.AutofitText:
-                    textFrame.AutoSize = Office.MsoAutoSize.msoAutoSizeTextToFitShape;
-                    break;
-                case TextboxStatusCmd.AutofitShape:
-                    textFrame.AutoSize = Office.MsoAutoSize.msoAutoSizeShapeToFitText;
-                    break;
-                case TextboxStatusCmd.WrapTextOnOff:
-                    textFrame.WordWrap = textFrame.WordWrap != Office.MsoTriState.msoTrue
-                        ? Office.MsoTriState.msoTrue
-                        : Office.MsoTriState.msoFalse;
-                    break;
+            case TextboxStatusCmd.AutofitOff:
+                textFrame.AutoSize = Office.MsoAutoSize.msoAutoSizeNone;
+                break;
+            case TextboxStatusCmd.AutoShrinkText:
+                textFrame.AutoSize = Office.MsoAutoSize.msoAutoSizeTextToFitShape;
+                break;
+            case TextboxStatusCmd.AutoResizeShape:
+                textFrame.AutoSize = Office.MsoAutoSize.msoAutoSizeShapeToFitText;
+                break;
+            case TextboxStatusCmd.WrapTextOnOff:
+                textFrame.WordWrap = textFrame.WordWrap != Office.MsoTriState.msoTrue
+                    ? Office.MsoTriState.msoTrue
+                    : Office.MsoTriState.msoFalse;
+                break;
             }
             uiInvalidator?.Invoke();
         }
@@ -53,8 +53,8 @@ namespace ppt_arrange_addin.Helper {
 
             return cmd! switch {
                 TextboxStatusCmd.AutofitOff => textFrame.AutoSize == Office.MsoAutoSize.msoAutoSizeNone,
-                TextboxStatusCmd.AutofitText => textFrame.AutoSize == Office.MsoAutoSize.msoAutoSizeTextToFitShape,
-                TextboxStatusCmd.AutofitShape => textFrame.AutoSize == Office.MsoAutoSize.msoAutoSizeShapeToFitText,
+                TextboxStatusCmd.AutoShrinkText => textFrame.AutoSize == Office.MsoAutoSize.msoAutoSizeTextToFitShape,
+                TextboxStatusCmd.AutoResizeShape => textFrame.AutoSize == Office.MsoAutoSize.msoAutoSizeShapeToFitText,
                 TextboxStatusCmd.WrapTextOnOff => textFrame.WordWrap == Office.MsoTriState.msoTrue,
                 _ => false
             };
@@ -67,7 +67,7 @@ namespace ppt_arrange_addin.Helper {
             Bottom,
         }
 
-        public static void ChangeMarginOfString(PowerPoint.TextFrame? textFrame, MarginKind? marginKind, string? input, Action? uiInvalidator) {
+        public static void ChangeMarginOfString(PowerPoint.TextFrame? textFrame, MarginKind? marginKind, string? input, Action? uiInvalidator = null) {
             if (textFrame == null) {
                 return;
             }
@@ -76,23 +76,24 @@ namespace ppt_arrange_addin.Helper {
             }
             var (valueInPt, ok) = UnitConverter.ParseStringToPtValue(input);
             if (!ok) {
+                uiInvalidator?.Invoke(); // reset input
                 return;
             }
 
             Globals.ThisAddIn.Application.StartNewUndoEntry();
             switch (marginKind) {
-                case MarginKind.Left:
-                    textFrame.MarginLeft = valueInPt;
-                    break;
-                case MarginKind.Right:
-                    textFrame.MarginRight = valueInPt;
-                    break;
-                case MarginKind.Top:
-                    textFrame.MarginTop = valueInPt;
-                    break;
-                case MarginKind.Bottom:
-                    textFrame.MarginBottom = valueInPt;
-                    break;
+            case MarginKind.Left:
+                textFrame.MarginLeft = valueInPt;
+                break;
+            case MarginKind.Right:
+                textFrame.MarginRight = valueInPt;
+                break;
+            case MarginKind.Top:
+                textFrame.MarginTop = valueInPt;
+                break;
+            case MarginKind.Bottom:
+                textFrame.MarginBottom = valueInPt;
+                break;
             }
             uiInvalidator?.Invoke();
         }
@@ -110,10 +111,10 @@ namespace ppt_arrange_addin.Helper {
                 MarginKind.Right => textFrame.MarginRight,
                 MarginKind.Top => textFrame.MarginTop,
                 MarginKind.Bottom => textFrame.MarginBottom,
-                _ => -1,
+                _ => -1
             };
 
-            string text = "";
+            var text = "";
             if (valueInPt >= 0) {
                 text = UnitConverter.FormatPtValueToString(valueInPt);
             }
@@ -128,7 +129,7 @@ namespace ppt_arrange_addin.Helper {
         private static readonly float DefaultMarginHorizontalPt = 7.2F;
         private static readonly float DefaultMarginVerticalPt = 3.6F;
 
-        public static void ResetMargin(PowerPoint.TextFrame? textFrame, ResetMarginCmd? cmd, Action? uiInvalidator) {
+        public static void ResetMargin(PowerPoint.TextFrame? textFrame, ResetMarginCmd? cmd, Action? uiInvalidator = null) {
             if (textFrame == null) {
                 return;
             }
@@ -138,14 +139,14 @@ namespace ppt_arrange_addin.Helper {
 
             Globals.ThisAddIn.Application.StartNewUndoEntry();
             switch (cmd!) {
-                case ResetMarginCmd.Horizontal:
-                    textFrame.MarginLeft = DefaultMarginHorizontalPt;
-                    textFrame.MarginRight = DefaultMarginHorizontalPt;
-                    break;
-                case ResetMarginCmd.Vertical:
-                    textFrame.MarginTop = DefaultMarginVerticalPt;
-                    textFrame.MarginBottom = DefaultMarginVerticalPt;
-                    break;
+            case ResetMarginCmd.Horizontal:
+                textFrame.MarginLeft = DefaultMarginHorizontalPt;
+                textFrame.MarginRight = DefaultMarginHorizontalPt;
+                break;
+            case ResetMarginCmd.Vertical:
+                textFrame.MarginTop = DefaultMarginVerticalPt;
+                textFrame.MarginBottom = DefaultMarginVerticalPt;
+                break;
             }
             uiInvalidator?.Invoke();
         }

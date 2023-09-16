@@ -124,34 +124,34 @@
     <value>取消</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="cbxArtWord.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="chkArtWord.Size" type="System.Drawing.Size, System.Drawing">
     <value>160, 17</value>
   </data>
-  <data name="cbxArtWord.Text" xml:space="preserve">
+  <data name="chkArtWord.Text" xml:space="preserve">
     <value>顯示｢文字藝術師｣群組 (常用 索引標簽)</value>
   </data>
-  <data name="cbxShapeTextbox.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="chkShapeTextbox.Size" type="System.Drawing.Size, System.Drawing">
     <value>224, 17</value>
   </data>
-  <data name="cbxShapeTextbox.Text" xml:space="preserve">
+  <data name="chkShapeTextbox.Text" xml:space="preserve">
     <value>顯示｢文字方塊｣群組 (繪圖格式 索引標簽)</value>
   </data>
-  <data name="cbxShapeSizeAndPosition.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="chkShapeSizeAndPosition.Size" type="System.Drawing.Size, System.Drawing">
     <value>248, 17</value>
   </data>
-  <data name="cbxShapeSizeAndPosition.Text" xml:space="preserve">
+  <data name="chkShapeSizeAndPosition.Text" xml:space="preserve">
     <value>顯示｢大小和位置｣群組 (繪圖格式 索引標簽)</value>
   </data>
-  <data name="cbxReplacePicture.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="chkReplacePicture.Size" type="System.Drawing.Size, System.Drawing">
     <value>212, 17</value>
   </data>
-  <data name="cbxReplacePicture.Text" xml:space="preserve">
+  <data name="chkReplacePicture.Text" xml:space="preserve">
     <value>顯示｢置換圖片｣群組 (圖片格式 索引標簽)</value>
   </data>
-  <data name="cbxPictureSizeAndPosition.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="chkPictureSizeAndPosition.Size" type="System.Drawing.Size, System.Drawing">
     <value>248, 17</value>
   </data>
-  <data name="cbxPictureSizeAndPosition.Text" xml:space="preserve">
+  <data name="chkPictureSizeAndPosition.Text" xml:space="preserve">
     <value>顯示｢大小和位置｣群組 (圖片格式 索引標簽)</value>
   </data>
   <data name="grpGroupVisibility.Text" xml:space="preserve">
@@ -179,16 +179,16 @@
     <value>符合顯示語言</value>
   </data>
   <data name="cboLanguage.Items1" xml:space="preserve">
-    <value>英文</value>
+    <value>英文 [English]</value>
   </data>
   <data name="cboLanguage.Items2" xml:space="preserve">
-    <value>簡體中文</value>
+    <value>簡體中文 [简体中文]</value>
   </data>
   <data name="cboLanguage.Items3" xml:space="preserve">
     <value>正體中文</value>
   </data>
   <data name="cboLanguage.Items4" xml:space="preserve">
-    <value>日文</value>
+    <value>日文 [日本語]</value>
   </data>
   <data name="_author" xml:space="preserve">
     <value>作者</value>

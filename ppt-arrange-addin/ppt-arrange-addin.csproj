@@ -167,10 +167,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CompilerServices.cs" />
-    <Compile Include="Helper\Arrangement.cs" />
-    <Compile Include="Helper\ReplacePicture.cs" />
-    <Compile Include="Helper\SizeAndPosition.cs" />
-    <Compile Include="Helper\Textbox.cs" />
+    <Compile Include="Helper\ArrangementHelper.cs" />
+    <Compile Include="Helper\ReplacePictureHelper.cs" />
+    <Compile Include="Helper\SelectionGetter.cs" />
+    <Compile Include="Helper\SizeAndPositionHelper.cs" />
+    <Compile Include="Helper\TextboxHelper.cs" />
     <Compile Include="Helper\UnitConverter.cs" />
     <Compile Include="SettingDialog.cs">
       <SubType>Form</SubType>
@@ -338,13 +339,13 @@
     <None Include="Resources\TextboxAutofitOff.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\TextboxAutofitText.png" />
+    <None Include="Resources\TextboxAutoShrinkText.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\TextboxWrapText.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\TextboxAutoResize.png" />
+    <None Include="Resources\TextboxAutoResizeShape.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\TextboxWrapText_32.png" />

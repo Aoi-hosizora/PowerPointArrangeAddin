@@ -133,20 +133,20 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Autofit text.
+        ///   Looks up a localized string similar to Resize shape.
         /// </summary>
-        public static string btnAutofitText {
+        public static string btnAutoResizeShape {
             get {
-                return ResourceManager.GetString("btnAutofitText", resourceCulture);
+                return ResourceManager.GetString("btnAutoResizeShape", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Auto  resize.
+        ///   Looks up a localized string similar to Shrink text.
         /// </summary>
-        public static string btnAutofitShape {
+        public static string btnAutoShrinkText {
             get {
-                return ResourceManager.GetString("btnAutofitShape", resourceCulture);
+                return ResourceManager.GetString("btnAutoShrinkText", resourceCulture);
             }
         }
         
@@ -378,18 +378,9 @@ namespace ppt_arrange_addin {
         /// <summary>
         ///   Looks up a localized string similar to Reset horizontal margin.
         /// </summary>
-        public static string btnResetMarginHorizontal {
+        public static string btnResetHorizontalMargin {
             get {
-                return ResourceManager.GetString("btnResetMarginHorizontal", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Reset vertical margin.
-        /// </summary>
-        public static string btnResetMarginVertical {
-            get {
-                return ResourceManager.GetString("btnResetMarginVertical", resourceCulture);
+                return ResourceManager.GetString("btnResetHorizontalMargin", resourceCulture);
             }
         }
         
@@ -399,6 +390,15 @@ namespace ppt_arrange_addin {
         public static string btnResetPictureSize {
             get {
                 return ResourceManager.GetString("btnResetPictureSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset vertical margin.
+        /// </summary>
+        public static string btnResetVerticalMargin {
+            get {
+                return ResourceManager.GetString("btnResetVerticalMargin", resourceCulture);
             }
         }
         
@@ -421,20 +421,20 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Scale from middle.
+        ///   Looks up a localized string similar to Scale objects from middle.
         /// </summary>
-        public static string btnScalePosition_Middle {
+        public static string btnScaleAnchor_Middle {
             get {
-                return ResourceManager.GetString("btnScalePosition_Middle", resourceCulture);
+                return ResourceManager.GetString("btnScaleAnchor_Middle", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Scale from top left.
+        ///   Looks up a localized string similar to Scale objects from top left.
         /// </summary>
-        public static string btnScalePosition_TopLeft {
+        public static string btnScaleAnchor_TopLeft {
             get {
-                return ResourceManager.GetString("btnScalePosition_TopLeft", resourceCulture);
+                return ResourceManager.GetString("btnScaleAnchor_TopLeft", resourceCulture);
             }
         }
         
@@ -522,18 +522,36 @@ namespace ppt_arrange_addin {
         /// <summary>
         ///   Looks up a localized string similar to Replace to middle.
         /// </summary>
-        public static string cbxReplaceToMiddle {
+        public static string chkReplaceToMiddle {
             get {
-                return ResourceManager.GetString("cbxReplaceToMiddle", resourceCulture);
+                return ResourceManager.GetString("chkReplaceToMiddle", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Reserve original size.
         /// </summary>
-        public static string cbxReserveOriginalSize {
+        public static string chkReserveOriginalSize {
             get {
-                return ResourceManager.GetString("cbxReserveOriginalSize", resourceCulture);
+                return ResourceManager.GetString("chkReserveOriginalSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to All files.
+        /// </summary>
+        public static string dlgAllFilesFilter {
+            get {
+                return ResourceManager.GetString("dlgAllFilesFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Image files.
+        /// </summary>
+        public static string dlgImageFilesFilter {
+            get {
+                return ResourceManager.GetString("dlgImageFilesFilter", resourceCulture);
             }
         }
         

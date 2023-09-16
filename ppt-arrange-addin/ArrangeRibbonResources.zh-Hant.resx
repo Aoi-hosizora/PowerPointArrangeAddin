@@ -141,11 +141,11 @@
   <data name="btnAutofitOff" xml:space="preserve">
     <value>不自動調整</value>
   </data>
-  <data name="btnAutofitText" xml:space="preserve">
+  <data name="btnAutoShrinkText" xml:space="preserve">
     <value>縮小溢出文字</value>
     <comment>縮小溢出文字</comment>
   </data>
-  <data name="btnAutofitShape" xml:space="preserve">
+  <data name="btnAutoResizeShape" xml:space="preserve">
     <value>自動調整圖案</value>
     <comment>依照文字調整圖案的大小</comment>
   </data>
@@ -224,11 +224,11 @@
   <data name="btnReplaceWithFile" xml:space="preserve">
     <value>變更為檔案</value>
   </data>
-  <data name="btnResetMarginHorizontal" xml:space="preserve">
-    <value>復原水平内邊界</value>
+  <data name="btnResetHorizontalMargin" xml:space="preserve">
+    <value>復原水平邊界</value>
   </data>
-  <data name="btnResetMarginVertical" xml:space="preserve">
-    <value>復原垂直内邊界</value>
+  <data name="btnResetVerticalMargin" xml:space="preserve">
+    <value>復原垂直邊界</value>
   </data>
   <data name="btnResetPictureSize" xml:space="preserve">
     <value>復原大小</value>
@@ -239,11 +239,11 @@
   <data name="btnRotateRight90" xml:space="preserve">
     <value>向左旋轉 90 度</value>
   </data>
-  <data name="btnScalePosition_Middle" xml:space="preserve">
-    <value>從中心點開始變形</value>
+  <data name="btnScaleAnchor_Middle" xml:space="preserve">
+    <value>從中心點變形</value><comment>將中心點視爲錨點來變形圖案</comment>
   </data>
-  <data name="btnScalePosition_TopLeft" xml:space="preserve">
-    <value>從左上端開始變形</value>
+  <data name="btnScaleAnchor_TopLeft" xml:space="preserve">
+    <value>從左上端變形</value><comment>將左上端視爲錨點來變形圖案</comment>
   </data>
   <data name="btnScaleSameHeight" xml:space="preserve">
     <value>等高度 (以最開始選擇的圖案為基準)</value>
@@ -272,10 +272,10 @@
   <data name="btnWrapText" xml:space="preserve">
     <value>文字自動換行</value>
   </data>
-  <data name="cbxReplaceToMiddle" xml:space="preserve">
+  <data name="chkReplaceToMiddle" xml:space="preserve">
     <value>置換到中心點</value>
   </data>
-  <data name="cbxReserveOriginalSize" xml:space="preserve">
+  <data name="chkReserveOriginalSize" xml:space="preserve">
     <value>保持圖片的大小</value>
   </data>
   <data name="dlgNoPictureInClipboard" xml:space="preserve">
@@ -288,16 +288,16 @@
     <value>選擇用於置換的圖片</value>
   </data>
   <data name="edtMarginBottom" xml:space="preserve">
-    <value>下邊界:</value>
+    <value>下:</value>
   </data>
   <data name="edtMarginLeft" xml:space="preserve">
-    <value>左邊界:</value>
+    <value>左:</value>
   </data>
   <data name="edtMarginRight" xml:space="preserve">
-    <value>右邊界:</value>
+    <value>右:</value>
   </data>
   <data name="edtMarginTop" xml:space="preserve">
-    <value>上邊界:</value>
+    <value>上:</value>
   </data>
   <data name="edtPicturePositionX" xml:space="preserve">
     <value>水平:</value>
@@ -367,5 +367,11 @@
   </data>
   <data name="mnuShapeArrangement" xml:space="preserve">
     <value>圖案排列</value>
+  </data>
+  <data name="dlgImageFilesFilter" xml:space="preserve">
+    <value>所有圖片</value>
+  </data>
+  <data name="dlgAllFilesFilter" xml:space="preserve">
+    <value>所有檔案</value>
   </data>
 </root>

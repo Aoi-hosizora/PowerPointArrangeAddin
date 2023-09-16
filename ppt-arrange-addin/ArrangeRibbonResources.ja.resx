@@ -141,11 +141,11 @@
   <data name="btnAutofitOff" xml:space="preserve">
     <value>自動調整なし</value>
   </data>
-  <data name="btnAutofitText" xml:space="preserve">
-    <value>テキストを調整</value>
+  <data name="btnAutoShrinkText" xml:space="preserve">
+    <value>文字を縮小</value>
     <comment>はみ出す場合だけ自動調整</comment>
   </data>
-  <data name="btnAutofitShape" xml:space="preserve">
+  <data name="btnAutoResizeShape" xml:space="preserve">
     <value>図形を調整</value>
     <comment>テキストに合わせて図形のサイズを調整</comment>
   </data>
@@ -224,10 +224,10 @@
   <data name="btnReplaceWithFile" xml:space="preserve">
     <value>ファイルに置換</value>
   </data>
-  <data name="btnResetMarginHorizontal" xml:space="preserve">
+  <data name="btnResetHorizontalMargin" xml:space="preserve">
     <value>横余白をリセット</value>
   </data>
-  <data name="btnResetMarginVertical" xml:space="preserve">
+  <data name="btnResetVerticalMargin" xml:space="preserve">
     <value>縦余白をリセット</value>
   </data>
   <data name="btnResetPictureSize" xml:space="preserve">
@@ -239,11 +239,11 @@
   <data name="btnRotateRight90" xml:space="preserve">
     <value>右へ 90 度回転</value>
   </data>
-  <data name="btnScalePosition_Middle" xml:space="preserve">
-    <value>中央点から変形</value>
+  <data name="btnScaleAnchor_Middle" xml:space="preserve">
+    <value>中央点から変形</value><comment>中央点をアンカーとして図形を変形</comment>
   </data>
-  <data name="btnScalePosition_TopLeft" xml:space="preserve">
-    <value>左上端から変形</value>
+  <data name="btnScaleAnchor_TopLeft" xml:space="preserve">
+    <value>左上端から変形</value><comment>左上端をアンカーとして図形を変形</comment>
   </data>
   <data name="btnScaleSameHeight" xml:space="preserve">
     <value>同じ高さに変形 (最初に選択した図形を基準とする)</value>
@@ -272,10 +272,10 @@
   <data name="btnWrapText" xml:space="preserve">
     <value>テキストを折り返す</value>
   </data>
-  <data name="cbxReplaceToMiddle" xml:space="preserve">
+  <data name="chkReplaceToMiddle" xml:space="preserve">
     <value>元の中央点に変更</value>
   </data>
-  <data name="cbxReserveOriginalSize" xml:space="preserve">
+  <data name="chkReserveOriginalSize" xml:space="preserve">
     <value>図のサイズを保持</value>
   </data>
   <data name="dlgNoPictureInClipboard" xml:space="preserve">
@@ -367,5 +367,11 @@
   </data>
   <data name="mnuShapeArrangement" xml:space="preserve">
     <value>図形の配置</value>
+  </data>
+  <data name="dlgImageFilesFilter" xml:space="preserve">
+    <value>すべての図</value>
+  </data>
+  <data name="dlgAllFilesFilter" xml:space="preserve">
+    <value>すべてのファイル</value>
   </data>
 </root>

@@ -45,6 +45,7 @@ namespace ppt_arrange_addin {
         // ReSharper disable InconsistentNaming
         // grpWordArt
         private const string grpWordArt = "grpWordArt";
+
         // grpArrange
         private const string grpArrange = "grpArrange";
         private const string btnAlignLeft = "btnAlignLeft";
@@ -58,7 +59,7 @@ namespace ppt_arrange_addin {
         private const string btnScaleSameWidth = "btnScaleSameWidth";
         private const string btnScaleSameHeight = "btnScaleSameHeight";
         private const string btnScaleSameSize = "btnScaleSameSize";
-        private const string btnScalePosition = "btnScalePosition";
+        private const string btnScaleAnchor = "btnScaleAnchor";
         private const string btnExtendSameLeft = "btnExtendSameLeft";
         private const string btnExtendSameRight = "btnExtendSameRight";
         private const string btnExtendSameTop = "btnExtendSameTop";
@@ -78,48 +79,58 @@ namespace ppt_arrange_addin {
         private const string btnGroup = "btnGroup";
         private const string btnUngroup = "btnUngroup";
         private const string mnuArrangement = "mnuArrangement";
+
         private const string btnAddInSetting = "btnAddInSetting";
+
         // grpTextbox
         private const string grpTextbox = "grpTextbox";
         private const string btnAutofitOff = "btnAutofitOff";
-        private const string btnAutofitText = "btnAutofitText";
-        private const string btnAutofitShape = "btnAutofitShape";
+        private const string btnAutoShrinkText = "btnAutoShrinkText";
+        private const string btnAutoResizeShape = "btnAutoResizeShape";
         private const string btnWrapText = "btnWrapText";
         private const string edtMarginLeft = "edtMarginLeft";
         private const string edtMarginRight = "edtMarginRight";
         private const string edtMarginTop = "edtMarginTop";
         private const string edtMarginBottom = "edtMarginBottom";
-        private const string btnResetMarginHorizontal = "btnResetMarginHorizontal";
-        private const string btnResetMarginVertical = "btnResetMarginVertical";
+        private const string btnResetHorizontalMargin = "btnResetHorizontalMargin";
+
+        private const string btnResetVerticalMargin = "btnResetVerticalMargin";
+
         // grpShapeSizeAndPosition
         private const string grpShapeSizeAndPosition = "grpShapeSizeAndPosition";
         private const string mnuShapeArrangement = "mnuShapeArrangement";
         private const string btnLockShapeAspectRatio = "btnLockShapeAspectRatio";
-        private const string btnShapeScalePosition = "btnShapeScalePosition";
+        private const string btnShapeScaleAnchor = "btnShapeScaleAnchor";
         private const string btnCopyShapeSize = "btnCopyShapeSize";
         private const string btnPasteShapeSize = "btnPasteShapeSize";
         private const string edtShapePositionX = "edtShapePositionX";
         private const string edtShapePositionY = "edtShapePositionY";
         private const string btnCopyShapePosition = "btnCopyShapePosition";
+
         private const string btnPasteShapePosition = "btnPasteShapePosition";
+
         // grpReplacePicture
         private const string grpReplacePicture = "grpReplacePicture";
         private const string btnReplaceWithClipboard = "btnReplaceWithClipboard";
         private const string btnReplaceWithFile = "btnReplaceWithFile";
-        private const string cbxReserveOriginalSize = "cbxReserveOriginalSize";
-        private const string cbxReplaceToMiddle = "cbxReplaceToMiddle";
+        private const string chkReserveOriginalSize = "chkReserveOriginalSize";
+
+        private const string chkReplaceToMiddle = "chkReplaceToMiddle";
+
         // grpPictureSizeAndPosition
         private const string grpPictureSizeAndPosition = "grpPictureSizeAndPosition";
         private const string mnuPictureArrangement = "mnuPictureArrangement";
         private const string btnResetPictureSize = "btnResetPictureSize";
         private const string btnLockPictureAspectRatio = "btnLockPictureAspectRatio";
-        private const string btnPictureScalePosition = "btnPictureScalePosition";
+        private const string btnPictureScaleAnchor = "btnPictureScaleAnchor";
         private const string btnCopyPictureSize = "btnCopyPictureSize";
         private const string btnPastePictureSize = "btnPastePictureSize";
         private const string edtPicturePositionX = "edtPicturePositionX";
         private const string edtPicturePositionY = "edtPicturePositionY";
         private const string btnCopyPicturePosition = "btnCopyPicturePosition";
+
         private const string btnPastePicturePosition = "btnPastePicturePosition";
+
         // mnuArrangement
         private const string mnuArrangement_sepAlignmentAndResizing = "mnuArrangement_sepAlignmentAndResizing";
         private const string mnuArrangement_mnuAlignment = "mnuArrangement_mnuAlignment";
@@ -130,6 +141,7 @@ namespace ppt_arrange_addin {
         private const string mnuArrangement_mnuLayerOrder = "mnuArrangement_mnuLayerOrder";
         private const string mnuArrangement_mnuGrouping = "mnuArrangement_mnuGrouping";
         private const string mnuArrangement_sepObjectsInSlide = "mnuArrangement_sepObjectsInSlide";
+
         private const string mnuArrangement_sepAddInSetting = "mnuArrangement_sepAddInSetting";
         // ReSharper restore InconsistentNaming
 
@@ -158,7 +170,7 @@ namespace ppt_arrange_addin {
             { btnScaleSameWidth, () => new ElementUi { Label = ARES.btnScaleSameWidth, Image = RES.ScaleSameWidth } },
             { btnScaleSameHeight, () => new ElementUi { Label = ARES.btnScaleSameHeight, Image = RES.ScaleSameHeight } },
             { btnScaleSameSize, () => new ElementUi { Label = ARES.btnScaleSameSize, Image = RES.ScaleSameSize } },
-            { btnScalePosition, () => new ElementUi { Label = ARES.btnScalePosition_Middle, Image = RES.ScaleFromMiddle } },
+            { btnScaleAnchor, () => new ElementUi { Label = ARES.btnScaleAnchor_Middle, Image = RES.ScaleFromMiddle } },
             { btnExtendSameLeft, () => new ElementUi { Label = ARES.btnExtendSameLeft, Image = RES.ExtendSameLeft } },
             { btnExtendSameRight, () => new ElementUi { Label = ARES.btnExtendSameRight, Image = RES.ExtendSameRight } },
             { btnExtendSameTop, () => new ElementUi { Label = ARES.btnExtendSameTop, Image = RES.ExtendSameTop } },
@@ -182,19 +194,19 @@ namespace ppt_arrange_addin {
             // grpTextbox
             { grpTextbox, () => new ElementUi { Label = ARES.grpTextbox, Image = RES.TextboxSetting } },
             { btnAutofitOff, () => new ElementUi { Label = ARES.btnAutofitOff, Image = RES.TextboxAutofitOff } },
-            { btnAutofitText, () => new ElementUi { Label = ARES.btnAutofitText, Image = RES.TextboxAutofitText } },
-            { btnAutofitShape, () => new ElementUi { Label = ARES.btnAutofitShape, Image = RES.TextboxAutoResize } },
+            { btnAutoShrinkText, () => new ElementUi { Label = ARES.btnAutoShrinkText, Image = RES.TextboxAutoShrinkText } },
+            { btnAutoResizeShape, () => new ElementUi { Label = ARES.btnAutoResizeShape, Image = RES.TextboxAutoResizeShape } },
             { btnWrapText, () => new ElementUi { Label = ARES.btnWrapText, Image = RES.TextboxWrapText_32 } },
             { edtMarginLeft, () => new ElementUi { Label = ARES.edtMarginLeft } },
             { edtMarginRight, () => new ElementUi { Label = ARES.edtMarginRight } },
             { edtMarginTop, () => new ElementUi { Label = ARES.edtMarginTop } },
             { edtMarginBottom, () => new ElementUi { Label = ARES.edtMarginBottom } },
-            { btnResetMarginHorizontal, () => new ElementUi { Label = ARES.btnResetMarginHorizontal, Image = RES.TextboxResetMargin } },
-            { btnResetMarginVertical, () => new ElementUi { Label = ARES.btnResetMarginVertical, Image = RES.TextboxResetMargin } },
+            { btnResetHorizontalMargin, () => new ElementUi { Label = ARES.btnResetHorizontalMargin, Image = RES.TextboxResetMargin } },
+            { btnResetVerticalMargin, () => new ElementUi { Label = ARES.btnResetVerticalMargin, Image = RES.TextboxResetMargin } },
             // grpShapeSizeAndPosition
             { grpShapeSizeAndPosition, () => new ElementUi { Label = ARES.grpShapeSizeAndPosition, Image = RES.SizeAndPosition } },
             { mnuShapeArrangement, () => new ElementUi { Label = ARES.mnuShapeArrangement, Image = RES.ObjectArrangement_32 } },
-            { btnShapeScalePosition, () => new ElementUi { Label = ARES.btnScalePosition_Middle, Image = RES.ScaleFromMiddle } },
+            { btnShapeScaleAnchor, () => new ElementUi { Label = ARES.btnScaleAnchor_Middle, Image = RES.ScaleFromMiddle } },
             { btnLockShapeAspectRatio, () => new ElementUi { Label = ARES.btnLockShapeAspectRatio, Image = RES.ObjectLockAspectRatio } },
             { btnCopyShapeSize, () => new ElementUi { Label = ARES.btnCopyShapeSize, Image = RES.Copy } },
             { btnPasteShapeSize, () => new ElementUi { Label = ARES.btnPasteShapeSize, Image = RES.Paste } },
@@ -206,12 +218,12 @@ namespace ppt_arrange_addin {
             { grpReplacePicture, () => new ElementUi { Label = ARES.grpReplacePicture, Image = RES.PictureChangeFromClipboard } },
             { btnReplaceWithClipboard, () => new ElementUi { Label = ARES.btnReplaceWithClipboard, Image = RES.PictureChangeFromClipboard_32 } },
             { btnReplaceWithFile, () => new ElementUi { Label = ARES.btnReplaceWithFile, Image = RES.PictureChange } },
-            { cbxReserveOriginalSize, () => new ElementUi { Label = ARES.cbxReserveOriginalSize } },
-            { cbxReplaceToMiddle, () => new ElementUi { Label = ARES.cbxReplaceToMiddle } },
+            { chkReserveOriginalSize, () => new ElementUi { Label = ARES.chkReserveOriginalSize } },
+            { chkReplaceToMiddle, () => new ElementUi { Label = ARES.chkReplaceToMiddle } },
             // grpPictureSizeAndPosition
             { grpPictureSizeAndPosition, () => new ElementUi { Label = ARES.grpPictureSizeAndPosition, Image = RES.SizeAndPosition } },
             { mnuPictureArrangement, () => new ElementUi { Label = ARES.mnuPictureArrangement, Image = RES.ObjectArrangement_32 } },
-            { btnPictureScalePosition, () => new ElementUi { Label = ARES.btnScalePosition_Middle, Image = RES.ScaleFromMiddle } },
+            { btnPictureScaleAnchor, () => new ElementUi { Label = ARES.btnScaleAnchor_Middle, Image = RES.ScaleFromMiddle } },
             { btnResetPictureSize, () => new ElementUi { Label = ARES.btnResetPictureSize, Image = RES.PictureResetSize_32 } },
             { btnLockPictureAspectRatio, () => new ElementUi { Label = ARES.btnLockPictureAspectRatio, Image = RES.ObjectLockAspectRatio } },
             { btnCopyPictureSize, () => new ElementUi { Label = ARES.btnCopyPictureSize, Image = RES.Copy } },

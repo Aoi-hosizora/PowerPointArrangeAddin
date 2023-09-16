@@ -263,8 +263,8 @@ namespace ppt_arrange_addin.Helper {
             return shapeRange.OfType<PowerPoint.Shape>().Any(s => s.Type == Office.MsoShapeType.msoGroup);
         }
 
-        public static void Group(PowerPoint.ShapeRange? shapeRange, GroupCmd? cmd, Action? uiInvalidator) {
-            if (shapeRange == null) {
+        public static void Group(PowerPoint.ShapeRange? shapeRange, GroupCmd? cmd, Action? uiInvalidator = null) {
+            if (shapeRange == null || shapeRange.Count <= 0) {
                 return;
             }
             if (cmd == null) {

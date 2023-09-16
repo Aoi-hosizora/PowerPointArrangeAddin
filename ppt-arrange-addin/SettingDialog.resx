@@ -180,169 +180,169 @@
   <data name="&gt;&gt;btnCancel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="cbxArtWord.AutoSize" type="System.Boolean, mscorlib">
+  <data name="chkArtWord.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="cbxArtWord.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+  <data name="chkArtWord.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>System</value>
   </data>
-  <data name="cbxArtWord.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="chkArtWord.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 3</value>
   </data>
-  <data name="cbxArtWord.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="chkArtWord.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 3</value>
   </data>
-  <data name="cbxArtWord.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="chkArtWord.Size" type="System.Drawing.Size, System.Drawing">
     <value>210, 17</value>
   </data>
-  <data name="cbxArtWord.TabIndex" type="System.Int32, mscorlib">
+  <data name="chkArtWord.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="cbxArtWord.Text" xml:space="preserve">
+  <data name="chkArtWord.Text" xml:space="preserve">
     <value>Show "&amp;Art word" group (Home tab)</value>
   </data>
-  <data name="&gt;&gt;cbxArtWord.Name" xml:space="preserve">
-    <value>cbxArtWord</value>
+  <data name="&gt;&gt;chkArtWord.Name" xml:space="preserve">
+    <value>chkArtWord</value>
   </data>
-  <data name="&gt;&gt;cbxArtWord.Type" xml:space="preserve">
+  <data name="&gt;&gt;chkArtWord.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;cbxArtWord.Parent" xml:space="preserve">
+  <data name="&gt;&gt;chkArtWord.Parent" xml:space="preserve">
     <value>tlpGroupVisibility</value>
   </data>
-  <data name="&gt;&gt;cbxArtWord.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;chkArtWord.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="cbxShapeTextbox.AutoSize" type="System.Boolean, mscorlib">
+  <data name="chkShapeTextbox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="cbxShapeTextbox.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+  <data name="chkShapeTextbox.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>System</value>
   </data>
-  <data name="cbxShapeTextbox.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="chkShapeTextbox.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 26</value>
   </data>
-  <data name="cbxShapeTextbox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="chkShapeTextbox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 3</value>
   </data>
-  <data name="cbxShapeTextbox.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="chkShapeTextbox.Size" type="System.Drawing.Size, System.Drawing">
     <value>246, 17</value>
   </data>
-  <data name="cbxShapeTextbox.TabIndex" type="System.Int32, mscorlib">
+  <data name="chkShapeTextbox.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="cbxShapeTextbox.Text" xml:space="preserve">
+  <data name="chkShapeTextbox.Text" xml:space="preserve">
     <value>Show "&amp;Textbox" group (Shape format tab)</value>
   </data>
-  <data name="&gt;&gt;cbxShapeTextbox.Name" xml:space="preserve">
-    <value>cbxShapeTextbox</value>
+  <data name="&gt;&gt;chkShapeTextbox.Name" xml:space="preserve">
+    <value>chkShapeTextbox</value>
   </data>
-  <data name="&gt;&gt;cbxShapeTextbox.Type" xml:space="preserve">
+  <data name="&gt;&gt;chkShapeTextbox.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;cbxShapeTextbox.Parent" xml:space="preserve">
+  <data name="&gt;&gt;chkShapeTextbox.Parent" xml:space="preserve">
     <value>tlpGroupVisibility</value>
   </data>
-  <data name="&gt;&gt;cbxShapeTextbox.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;chkShapeTextbox.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="cbxShapeSizeAndPosition.AutoSize" type="System.Boolean, mscorlib">
+  <data name="chkShapeSizeAndPosition.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="cbxShapeSizeAndPosition.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+  <data name="chkShapeSizeAndPosition.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>System</value>
   </data>
-  <data name="cbxShapeSizeAndPosition.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="chkShapeSizeAndPosition.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 49</value>
   </data>
-  <data name="cbxShapeSizeAndPosition.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="chkShapeSizeAndPosition.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 3</value>
   </data>
-  <data name="cbxShapeSizeAndPosition.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="chkShapeSizeAndPosition.Size" type="System.Drawing.Size, System.Drawing">
     <value>292, 17</value>
   </data>
-  <data name="cbxShapeSizeAndPosition.TabIndex" type="System.Int32, mscorlib">
+  <data name="chkShapeSizeAndPosition.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="cbxShapeSizeAndPosition.Text" xml:space="preserve">
+  <data name="chkShapeSizeAndPosition.Text" xml:space="preserve">
     <value>Show "&amp;Size and position" group (Shape format tab)</value>
   </data>
-  <data name="&gt;&gt;cbxShapeSizeAndPosition.Name" xml:space="preserve">
-    <value>cbxShapeSizeAndPosition</value>
+  <data name="&gt;&gt;chkShapeSizeAndPosition.Name" xml:space="preserve">
+    <value>chkShapeSizeAndPosition</value>
   </data>
-  <data name="&gt;&gt;cbxShapeSizeAndPosition.Type" xml:space="preserve">
+  <data name="&gt;&gt;chkShapeSizeAndPosition.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;cbxShapeSizeAndPosition.Parent" xml:space="preserve">
+  <data name="&gt;&gt;chkShapeSizeAndPosition.Parent" xml:space="preserve">
     <value>tlpGroupVisibility</value>
   </data>
-  <data name="&gt;&gt;cbxShapeSizeAndPosition.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;chkShapeSizeAndPosition.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="cbxReplacePicture.AutoSize" type="System.Boolean, mscorlib">
+  <data name="chkReplacePicture.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="cbxReplacePicture.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+  <data name="chkReplacePicture.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>System</value>
   </data>
-  <data name="cbxReplacePicture.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="chkReplacePicture.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 72</value>
   </data>
-  <data name="cbxReplacePicture.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="chkReplacePicture.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 3</value>
   </data>
-  <data name="cbxReplacePicture.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="chkReplacePicture.Size" type="System.Drawing.Size, System.Drawing">
     <value>290, 17</value>
   </data>
-  <data name="cbxReplacePicture.TabIndex" type="System.Int32, mscorlib">
+  <data name="chkReplacePicture.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="cbxReplacePicture.Text" xml:space="preserve">
+  <data name="chkReplacePicture.Text" xml:space="preserve">
     <value>Show "&amp;Replace picture" group (Picture format tab)</value>
   </data>
-  <data name="&gt;&gt;cbxReplacePicture.Name" xml:space="preserve">
-    <value>cbxReplacePicture</value>
+  <data name="&gt;&gt;chkReplacePicture.Name" xml:space="preserve">
+    <value>chkReplacePicture</value>
   </data>
-  <data name="&gt;&gt;cbxReplacePicture.Type" xml:space="preserve">
+  <data name="&gt;&gt;chkReplacePicture.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;cbxReplacePicture.Parent" xml:space="preserve">
+  <data name="&gt;&gt;chkReplacePicture.Parent" xml:space="preserve">
     <value>tlpGroupVisibility</value>
   </data>
-  <data name="&gt;&gt;cbxReplacePicture.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;chkReplacePicture.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="cbxPictureSizeAndPosition.AutoSize" type="System.Boolean, mscorlib">
+  <data name="chkPictureSizeAndPosition.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="cbxPictureSizeAndPosition.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+  <data name="chkPictureSizeAndPosition.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>System</value>
   </data>
-  <data name="cbxPictureSizeAndPosition.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="chkPictureSizeAndPosition.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 95</value>
   </data>
-  <data name="cbxPictureSizeAndPosition.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="chkPictureSizeAndPosition.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 3</value>
   </data>
-  <data name="cbxPictureSizeAndPosition.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="chkPictureSizeAndPosition.Size" type="System.Drawing.Size, System.Drawing">
     <value>297, 17</value>
   </data>
-  <data name="cbxPictureSizeAndPosition.TabIndex" type="System.Int32, mscorlib">
+  <data name="chkPictureSizeAndPosition.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
-  <data name="cbxPictureSizeAndPosition.Text" xml:space="preserve">
+  <data name="chkPictureSizeAndPosition.Text" xml:space="preserve">
     <value>Show "Size and &amp;position" group (Picture format tab)</value>
   </data>
-  <data name="&gt;&gt;cbxPictureSizeAndPosition.Name" xml:space="preserve">
-    <value>cbxPictureSizeAndPosition</value>
+  <data name="&gt;&gt;chkPictureSizeAndPosition.Name" xml:space="preserve">
+    <value>chkPictureSizeAndPosition</value>
   </data>
-  <data name="&gt;&gt;cbxPictureSizeAndPosition.Type" xml:space="preserve">
+  <data name="&gt;&gt;chkPictureSizeAndPosition.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;cbxPictureSizeAndPosition.Parent" xml:space="preserve">
+  <data name="&gt;&gt;chkPictureSizeAndPosition.Parent" xml:space="preserve">
     <value>tlpGroupVisibility</value>
   </data>
-  <data name="&gt;&gt;cbxPictureSizeAndPosition.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;chkPictureSizeAndPosition.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="tlpMain.AutoSize" type="System.Boolean, mscorlib">
@@ -373,7 +373,7 @@
     <value>0</value>
   </data>
   <data name="tlpGroupVisibility.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="cbxArtWord" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="cbxShapeTextbox" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="cbxPictureSizeAndPosition" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="cbxReplacePicture" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="cbxShapeSizeAndPosition" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="chkArtWord" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="chkShapeTextbox" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="chkPictureSizeAndPosition" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="chkReplacePicture" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="chkShapeSizeAndPosition" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="grpGroupVisibility.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -472,13 +472,13 @@
     <value>English</value>
   </data>
   <data name="cboLanguage.Items2" xml:space="preserve">
-    <value>Simplified Chinese</value>
+    <value>Simplified Chinese [简体中文]</value>
   </data>
   <data name="cboLanguage.Items3" xml:space="preserve">
-    <value>Traditional Chinese</value>
+    <value>Traditional Chinese [正體中文]</value>
   </data>
   <data name="cboLanguage.Items4" xml:space="preserve">
-    <value>Japanese</value>
+    <value>Japanese [日本語]</value>
   </data>
   <data name="cboLanguage.Location" type="System.Drawing.Point, System.Drawing">
     <value>59, 4</value>

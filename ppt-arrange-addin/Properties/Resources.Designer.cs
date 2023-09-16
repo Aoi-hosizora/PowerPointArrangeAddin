@@ -533,9 +533,9 @@ namespace ppt_arrange_addin.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap TextboxAutofitText {
+        internal static System.Drawing.Bitmap TextboxAutoResizeShape {
             get {
-                object obj = ResourceManager.GetObject("TextboxAutofitText", resourceCulture);
+                object obj = ResourceManager.GetObject("TextboxAutoResizeShape", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -543,9 +543,9 @@ namespace ppt_arrange_addin.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap TextboxAutoResize {
+        internal static System.Drawing.Bitmap TextboxAutoShrinkText {
             get {
-                object obj = ResourceManager.GetObject("TextboxAutoResize", resourceCulture);
+                object obj = ResourceManager.GetObject("TextboxAutoShrinkText", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

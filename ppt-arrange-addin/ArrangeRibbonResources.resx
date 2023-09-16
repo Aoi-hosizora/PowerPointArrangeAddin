@@ -141,11 +141,11 @@
   <data name="btnAutofitOff" xml:space="preserve">
     <value>Autofit off</value>
   </data>
-  <data name="btnAutofitText" xml:space="preserve">
-    <value>Autofit text</value>
+  <data name="btnAutoShrinkText" xml:space="preserve">
+    <value>Shrink text</value>
   </data>
-  <data name="btnAutofitShape" xml:space="preserve">
-    <value>Auto resize</value>
+  <data name="btnAutoResizeShape" xml:space="preserve">
+    <value>Resize shape</value>
   </data>
   <data name="btnCopyPicturePosition" xml:space="preserve">
     <value>Copy position</value>
@@ -222,10 +222,10 @@
   <data name="btnReplaceWithFile" xml:space="preserve">
     <value>Replace with file</value>
   </data>
-  <data name="btnResetMarginHorizontal" xml:space="preserve">
+  <data name="btnResetHorizontalMargin" xml:space="preserve">
     <value>Reset horizontal margin</value>
   </data>
-  <data name="btnResetMarginVertical" xml:space="preserve">
+  <data name="btnResetVerticalMargin" xml:space="preserve">
     <value>Reset vertical margin</value>
   </data>
   <data name="btnResetPictureSize" xml:space="preserve">
@@ -237,11 +237,11 @@
   <data name="btnRotateRight90" xml:space="preserve">
     <value>Rotate right with 90 degrees</value>
   </data>
-  <data name="btnScalePosition_Middle" xml:space="preserve">
-    <value>Scale from middle</value>
+  <data name="btnScaleAnchor_Middle" xml:space="preserve">
+    <value>Scale objects from middle</value>
   </data>
-  <data name="btnScalePosition_TopLeft" xml:space="preserve">
-    <value>Scale from top left</value>
+  <data name="btnScaleAnchor_TopLeft" xml:space="preserve">
+    <value>Scale objects from top left</value>
   </data>
   <data name="btnScaleSameHeight" xml:space="preserve">
     <value>Scale to same height (as the first shape)</value>
@@ -270,10 +270,10 @@
   <data name="btnWrapText" xml:space="preserve">
     <value>Wrap text</value>
   </data>
-  <data name="cbxReplaceToMiddle" xml:space="preserve">
+  <data name="chkReplaceToMiddle" xml:space="preserve">
     <value>Replace to middle</value>
   </data>
-  <data name="cbxReserveOriginalSize" xml:space="preserve">
+  <data name="chkReserveOriginalSize" xml:space="preserve">
     <value>Reserve original size</value>
   </data>
   <data name="dlgNoPictureInClipboard" xml:space="preserve">
@@ -365,5 +365,11 @@
   </data>
   <data name="mnuShapeArrangement" xml:space="preserve">
     <value>Arrangement</value>
+  </data>
+  <data name="dlgImageFilesFilter" xml:space="preserve">
+    <value>Image files</value>
+  </data>
+  <data name="dlgAllFilesFilter" xml:space="preserve">
+    <value>All files</value>
   </data>
 </root>

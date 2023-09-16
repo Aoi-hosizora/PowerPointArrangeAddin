@@ -13,12 +13,12 @@
         <button id="btnDistributeHorizontal" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnDistribute_Click" />
         <button id="btnDistributeVertical" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnDistribute_Click" />
         <menuSeparator id="separator3" />
-        <checkBox idMso="ViewGridlinesPowerPoint" />
-        <button idMso="GridSettings" />
+        <control idMso="ViewGridlinesPowerPoint" />
+        <control idMso="GridSettings" />
     </menu>
 
     <menu id="mnuArrangement_mnuResizing" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage">
-        <button id="btnScalePosition" getLabel="GetBtnScalePositionLabel" getScreentip="GetBtnScalePositionLabel" getImage="GetBtnScalePositionImage" onAction="BtnScalePosition_Click" />
+        <button id="btnScaleAnchor" getLabel="BtnScaleAnchor_GetLabel" getScreentip="BtnScaleAnchor_GetLabel" getImage="BtnScaleAnchor_GetImage" onAction="BtnScaleAnchor_Click" />
         <menuSeparator id="separator4" />
         <button id="btnScaleSameWidth" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnScale_Click" />
         <button id="btnScaleSameHeight" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnScale_Click" />

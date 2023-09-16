@@ -27,11 +27,11 @@ namespace ppt_arrange_addin {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingDialog));
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.cbxArtWord = new System.Windows.Forms.CheckBox();
-            this.cbxShapeTextbox = new System.Windows.Forms.CheckBox();
-            this.cbxShapeSizeAndPosition = new System.Windows.Forms.CheckBox();
-            this.cbxReplacePicture = new System.Windows.Forms.CheckBox();
-            this.cbxPictureSizeAndPosition = new System.Windows.Forms.CheckBox();
+            this.chkArtWord = new System.Windows.Forms.CheckBox();
+            this.chkShapeTextbox = new System.Windows.Forms.CheckBox();
+            this.chkShapeSizeAndPosition = new System.Windows.Forms.CheckBox();
+            this.chkReplacePicture = new System.Windows.Forms.CheckBox();
+            this.chkPictureSizeAndPosition = new System.Windows.Forms.CheckBox();
             this.tlpMain = new System.Windows.Forms.TableLayoutPanel();
             this.grpGroupVisibility = new System.Windows.Forms.GroupBox();
             this.tlpGroupVisibility = new System.Windows.Forms.TableLayoutPanel();
@@ -65,35 +65,35 @@ namespace ppt_arrange_addin {
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
             // 
-            // cbxArtWord
+            // chkArtWord
             // 
-            resources.ApplyResources(this.cbxArtWord, "cbxArtWord");
-            this.cbxArtWord.Name = "cbxArtWord";
-            this.cbxArtWord.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.chkArtWord, "chkArtWord");
+            this.chkArtWord.Name = "chkArtWord";
+            this.chkArtWord.UseVisualStyleBackColor = true;
             // 
-            // cbxShapeTextbox
+            // chkShapeTextbox
             // 
-            resources.ApplyResources(this.cbxShapeTextbox, "cbxShapeTextbox");
-            this.cbxShapeTextbox.Name = "cbxShapeTextbox";
-            this.cbxShapeTextbox.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.chkShapeTextbox, "chkShapeTextbox");
+            this.chkShapeTextbox.Name = "chkShapeTextbox";
+            this.chkShapeTextbox.UseVisualStyleBackColor = true;
             // 
-            // cbxShapeSizeAndPosition
+            // chkShapeSizeAndPosition
             // 
-            resources.ApplyResources(this.cbxShapeSizeAndPosition, "cbxShapeSizeAndPosition");
-            this.cbxShapeSizeAndPosition.Name = "cbxShapeSizeAndPosition";
-            this.cbxShapeSizeAndPosition.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.chkShapeSizeAndPosition, "chkShapeSizeAndPosition");
+            this.chkShapeSizeAndPosition.Name = "chkShapeSizeAndPosition";
+            this.chkShapeSizeAndPosition.UseVisualStyleBackColor = true;
             // 
-            // cbxReplacePicture
+            // chkReplacePicture
             // 
-            resources.ApplyResources(this.cbxReplacePicture, "cbxReplacePicture");
-            this.cbxReplacePicture.Name = "cbxReplacePicture";
-            this.cbxReplacePicture.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.chkReplacePicture, "chkReplacePicture");
+            this.chkReplacePicture.Name = "chkReplacePicture";
+            this.chkReplacePicture.UseVisualStyleBackColor = true;
             // 
-            // cbxPictureSizeAndPosition
+            // chkPictureSizeAndPosition
             // 
-            resources.ApplyResources(this.cbxPictureSizeAndPosition, "cbxPictureSizeAndPosition");
-            this.cbxPictureSizeAndPosition.Name = "cbxPictureSizeAndPosition";
-            this.cbxPictureSizeAndPosition.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.chkPictureSizeAndPosition, "chkPictureSizeAndPosition");
+            this.chkPictureSizeAndPosition.Name = "chkPictureSizeAndPosition";
+            this.chkPictureSizeAndPosition.UseVisualStyleBackColor = true;
             // 
             // tlpMain
             // 
@@ -116,11 +116,11 @@ namespace ppt_arrange_addin {
             // 
             resources.ApplyResources(this.tlpGroupVisibility, "tlpGroupVisibility");
             this.tlpGroupVisibility.BackColor = System.Drawing.SystemColors.Control;
-            this.tlpGroupVisibility.Controls.Add(this.cbxArtWord, 0, 0);
-            this.tlpGroupVisibility.Controls.Add(this.cbxShapeTextbox, 0, 1);
-            this.tlpGroupVisibility.Controls.Add(this.cbxPictureSizeAndPosition, 0, 4);
-            this.tlpGroupVisibility.Controls.Add(this.cbxReplacePicture, 0, 3);
-            this.tlpGroupVisibility.Controls.Add(this.cbxShapeSizeAndPosition, 0, 2);
+            this.tlpGroupVisibility.Controls.Add(this.chkArtWord, 0, 0);
+            this.tlpGroupVisibility.Controls.Add(this.chkShapeTextbox, 0, 1);
+            this.tlpGroupVisibility.Controls.Add(this.chkPictureSizeAndPosition, 0, 4);
+            this.tlpGroupVisibility.Controls.Add(this.chkReplacePicture, 0, 3);
+            this.tlpGroupVisibility.Controls.Add(this.chkShapeSizeAndPosition, 0, 2);
             this.tlpGroupVisibility.Name = "tlpGroupVisibility";
             // 
             // grpOtherSetting
@@ -203,11 +203,11 @@ namespace ppt_arrange_addin {
 
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.CheckBox cbxArtWord;
-        private System.Windows.Forms.CheckBox cbxShapeTextbox;
-        private System.Windows.Forms.CheckBox cbxShapeSizeAndPosition;
-        private System.Windows.Forms.CheckBox cbxReplacePicture;
-        private System.Windows.Forms.CheckBox cbxPictureSizeAndPosition;
+        private System.Windows.Forms.CheckBox chkArtWord;
+        private System.Windows.Forms.CheckBox chkShapeTextbox;
+        private System.Windows.Forms.CheckBox chkShapeSizeAndPosition;
+        private System.Windows.Forms.CheckBox chkReplacePicture;
+        private System.Windows.Forms.CheckBox chkPictureSizeAndPosition;
         private System.Windows.Forms.TableLayoutPanel tlpMain;
         private System.Windows.Forms.GroupBox grpGroupVisibility;
         private System.Windows.Forms.GroupBox grpOtherSetting;

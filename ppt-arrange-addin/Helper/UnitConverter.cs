@@ -9,7 +9,7 @@ namespace ppt_arrange_addin.Helper {
 
         public static float PtToCm(float pt) => pt * 25.4F / 720F;
 
-        private static readonly Regex Re = new(@"^\s*(\d*)\s*(?:mm|cm)?\s*$", RegexOptions.IgnoreCase);
+        private static readonly Regex Re = new(@"^\s*(\d*\.?\d*)\s*(?:mm|cm)?\s*$", RegexOptions.IgnoreCase);
 
         public static (float, bool) ParseStringToPtValue(string text) {
             var matched = Re.Match(text);
@@ -19,13 +19,13 @@ namespace ppt_arrange_addin.Helper {
 
             var isMm = text.ToLower().Contains("mm");
             text = matched.Groups[1].Value;
+            if (text.Length == 0) {
+                text = "0";
+            }
             if (!float.TryParse(text, out var valueInCm)) {
                 return (0, false);
             }
 
-            if (text.Length == 0) {
-                valueInCm = 0;
-            }
             if (isMm) {
                 valueInCm /= 10.0F;
             }

@@ -137,34 +137,34 @@
   <data name="btnCancel.Text" xml:space="preserve">
     <value>キャンセル</value>
   </data>
-  <data name="cbxArtWord.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="chkArtWord.Size" type="System.Drawing.Size, System.Drawing">
     <value>231, 17</value>
   </data>
-  <data name="cbxArtWord.Text" xml:space="preserve">
+  <data name="chkArtWord.Text" xml:space="preserve">
     <value>「アートワード」グループを表示 (ホーム タブ)</value>
   </data>
-  <data name="cbxShapeTextbox.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="chkShapeTextbox.Size" type="System.Drawing.Size, System.Drawing">
     <value>278, 17</value>
   </data>
-  <data name="cbxShapeTextbox.Text" xml:space="preserve">
+  <data name="chkShapeTextbox.Text" xml:space="preserve">
     <value>「テキストボックス」グループを表示 (描図の書式 タブ)</value>
   </data>
-  <data name="cbxShapeSizeAndPosition.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="chkShapeSizeAndPosition.Size" type="System.Drawing.Size, System.Drawing">
     <value>269, 17</value>
   </data>
-  <data name="cbxShapeSizeAndPosition.Text" xml:space="preserve">
+  <data name="chkShapeSizeAndPosition.Text" xml:space="preserve">
     <value>「サイズと位置」グループを表示 (描図の書式 タブ)</value>
   </data>
-  <data name="cbxReplacePicture.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="chkReplacePicture.Size" type="System.Drawing.Size, System.Drawing">
     <value>216, 17</value>
   </data>
-  <data name="cbxReplacePicture.Text" xml:space="preserve">
+  <data name="chkReplacePicture.Text" xml:space="preserve">
     <value>「図の置換」グループを表示 (図の書式 タブ)</value>
   </data>
-  <data name="cbxPictureSizeAndPosition.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="chkPictureSizeAndPosition.Size" type="System.Drawing.Size, System.Drawing">
     <value>257, 17</value>
   </data>
-  <data name="cbxPictureSizeAndPosition.Text" xml:space="preserve">
+  <data name="chkPictureSizeAndPosition.Text" xml:space="preserve">
     <value>「サイズと位置」グループを表示 (図の書式 タブ)</value>
   </data>
   <data name="tlpMain.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -228,13 +228,13 @@
     <value>表示言語と同じにする</value>
   </data>
   <data name="cboLanguage.Items1" xml:space="preserve">
-    <value>英語</value>
+    <value>英語 [English]</value>
   </data>
   <data name="cboLanguage.Items2" xml:space="preserve">
-    <value>簡体字中国語</value>
+    <value>簡体字中国語 [简体中文]</value>
   </data>
   <data name="cboLanguage.Items3" xml:space="preserve">
-    <value>繁体字中国語</value>
+    <value>繁体字中国語 [正體中文]</value>
   </data>
   <data name="cboLanguage.Items4" xml:space="preserve">
     <value>日本語</value>

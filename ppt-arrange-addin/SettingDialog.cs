@@ -16,21 +16,21 @@ namespace ppt_arrange_addin {
         }
 
         private void SettingDialog_Load(object sender, EventArgs e) {
-            cbxArtWord.Checked = AddInSetting.Instance.ShowWordArtGroup;
-            cbxShapeTextbox.Checked = AddInSetting.Instance.ShowShapeTextboxGroup;
-            cbxShapeSizeAndPosition.Checked = AddInSetting.Instance.ShowShapeSizeAndPositionGroup;
-            cbxReplacePicture.Checked = AddInSetting.Instance.ShowReplacePictureGroup;
-            cbxPictureSizeAndPosition.Checked = AddInSetting.Instance.ShowPictureSizeAndPositionGroup;
+            chkArtWord.Checked = AddInSetting.Instance.ShowWordArtGroup;
+            chkShapeTextbox.Checked = AddInSetting.Instance.ShowShapeTextboxGroup;
+            chkShapeSizeAndPosition.Checked = AddInSetting.Instance.ShowShapeSizeAndPositionGroup;
+            chkReplacePicture.Checked = AddInSetting.Instance.ShowReplacePictureGroup;
+            chkPictureSizeAndPosition.Checked = AddInSetting.Instance.ShowPictureSizeAndPositionGroup;
             cboLanguage.SelectedIndex = AddInSetting.Instance.Language.ToLanguageIndex();
         }
 
         private void BtnOK_Click(object sender, EventArgs e) {
             var oldLanguage = AddInSetting.Instance.Language;
-            AddInSetting.Instance.ShowWordArtGroup = cbxArtWord.Checked;
-            AddInSetting.Instance.ShowShapeTextboxGroup = cbxShapeTextbox.Checked;
-            AddInSetting.Instance.ShowShapeSizeAndPositionGroup = cbxShapeSizeAndPosition.Checked;
-            AddInSetting.Instance.ShowReplacePictureGroup = cbxReplacePicture.Checked;
-            AddInSetting.Instance.ShowPictureSizeAndPositionGroup = cbxPictureSizeAndPosition.Checked;
+            AddInSetting.Instance.ShowWordArtGroup = chkArtWord.Checked;
+            AddInSetting.Instance.ShowShapeTextboxGroup = chkShapeTextbox.Checked;
+            AddInSetting.Instance.ShowShapeSizeAndPositionGroup = chkShapeSizeAndPosition.Checked;
+            AddInSetting.Instance.ShowReplacePictureGroup = chkReplacePicture.Checked;
+            AddInSetting.Instance.ShowPictureSizeAndPositionGroup = chkPictureSizeAndPosition.Checked;
             AddInSetting.Instance.Language = cboLanguage.SelectedIndex.ToAddInLanguage();
             AddInSetting.Instance.Save();
 
