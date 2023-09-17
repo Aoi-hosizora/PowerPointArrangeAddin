@@ -483,9 +483,9 @@ namespace ppt_arrange_addin.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap SnapToBottom {
+        internal static System.Drawing.Bitmap SnapBottomToTop {
             get {
-                object obj = ResourceManager.GetObject("SnapToBottom", resourceCulture);
+                object obj = ResourceManager.GetObject("SnapBottomToTop", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -493,9 +493,9 @@ namespace ppt_arrange_addin.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap SnapToLeft {
+        internal static System.Drawing.Bitmap SnapLeftToRight {
             get {
-                object obj = ResourceManager.GetObject("SnapToLeft", resourceCulture);
+                object obj = ResourceManager.GetObject("SnapLeftToRight", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -503,9 +503,9 @@ namespace ppt_arrange_addin.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap SnapToRight {
+        internal static System.Drawing.Bitmap SnapRightToLeft {
             get {
-                object obj = ResourceManager.GetObject("SnapToRight", resourceCulture);
+                object obj = ResourceManager.GetObject("SnapRightToLeft", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -513,9 +513,9 @@ namespace ppt_arrange_addin.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap SnapToTop {
+        internal static System.Drawing.Bitmap SnapTopToBottom {
             get {
-                object obj = ResourceManager.GetObject("SnapToTop", resourceCulture);
+                object obj = ResourceManager.GetObject("SnapTopToBottom", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

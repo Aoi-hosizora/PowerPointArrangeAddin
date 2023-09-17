@@ -118,25 +118,25 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="btnAddInSetting" xml:space="preserve">
-    <value>アドインの設定...</value>
+    <value>アドインの設定(&amp;T)...</value>
   </data>
   <data name="btnAlignBottom" xml:space="preserve">
-    <value>下揃え</value>
+    <value>下揃え(&amp;B)</value>
   </data>
   <data name="btnAlignCenter" xml:space="preserve">
-    <value>左右中央揃え</value>
+    <value>左右中央揃え(&amp;C)</value>
   </data>
   <data name="btnAlignLeft" xml:space="preserve">
-    <value>左揃え</value>
+    <value>左揃え(&amp;L)</value>
   </data>
   <data name="btnAlignMiddle" xml:space="preserve">
-    <value>上下中央揃え</value>
+    <value>上下中央揃え(&amp;M)</value>
   </data>
   <data name="btnAlignRight" xml:space="preserve">
-    <value>右揃え</value>
+    <value>右揃え(&amp;R)</value>
   </data>
   <data name="btnAlignTop" xml:space="preserve">
-    <value>上揃え</value>
+    <value>上揃え(&amp;T)</value>
   </data>
   <data name="btnAutofitOff" xml:space="preserve">
     <value>自動調整なし</value>
@@ -162,31 +162,31 @@
     <value>サイズをコピー</value>
   </data>
   <data name="btnDistributeHorizontal" xml:space="preserve">
-    <value>左右に整列</value>
+    <value>左右に整列(&amp;H)</value>
   </data>
   <data name="btnDistributeVertical" xml:space="preserve">
-    <value>上下に整列</value>
+    <value>上下に整列(&amp;V)</value>
   </data>
   <data name="btnExtendSameBottom" xml:space="preserve">
-    <value>同じ下端に伸ばす</value>
+    <value>同じ下端に伸ばす(&amp;B)</value>
   </data>
   <data name="btnExtendSameLeft" xml:space="preserve">
-    <value>同じ左端に伸ばす</value>
+    <value>同じ左端に伸ばす(&amp;L)</value>
   </data>
   <data name="btnExtendSameRight" xml:space="preserve">
-    <value>同じ右端に伸ばす</value>
+    <value>同じ右端に伸ばす(&amp;R)</value>
   </data>
   <data name="btnExtendSameTop" xml:space="preserve">
-    <value>同じ上端に伸ばす</value>
+    <value>同じ上端に伸ばす(&amp;T)</value>
   </data>
   <data name="btnFlipHorizontal" xml:space="preserve">
-    <value>左右反転</value>
+    <value>左右反転(&amp;H)</value>
   </data>
   <data name="btnFlipVertical" xml:space="preserve">
-    <value>上下反転</value>
+    <value>上下反転(&amp;V)</value>
   </data>
   <data name="btnGroup" xml:space="preserve">
-    <value>グループ化</value>
+    <value>グループ化(&amp;G)</value>
   </data>
   <data name="btnLockPictureAspectRatio" xml:space="preserve">
     <value>縦横比を固定</value>
@@ -195,16 +195,16 @@
     <value>縦横比を固定</value>
   </data>
   <data name="btnMoveBack" xml:space="preserve">
-    <value>最背面へ移動</value>
+    <value>最背面へ移動(&amp;K)</value>
   </data>
   <data name="btnMoveBackward" xml:space="preserve">
-    <value>背面へ移動</value>
+    <value>背面へ移動(&amp;B)</value>
   </data>
   <data name="btnMoveForward" xml:space="preserve">
-    <value>前面へ移動</value>
+    <value>前面へ移動(&amp;F)</value>
   </data>
   <data name="btnMoveFront" xml:space="preserve">
-    <value>最前面へ移動</value>
+    <value>最前面へ移動(&amp;R)</value>
   </data>
   <data name="btnPastePicturePosition" xml:space="preserve">
     <value>位置を貼付</value>
@@ -234,40 +234,40 @@
     <value>サイズをリセット</value>
   </data>
   <data name="btnRotateLeft90" xml:space="preserve">
-    <value>左へ 90 度回転</value>
+    <value>左へ 90 度回転(&amp;L)</value>
   </data>
   <data name="btnRotateRight90" xml:space="preserve">
-    <value>右へ 90 度回転</value>
+    <value>右へ 90 度回転(&amp;R)</value>
   </data>
   <data name="btnScaleAnchor_Middle" xml:space="preserve">
-    <value>中央点から変形</value><comment>中央点をアンカーとして図形を変形</comment>
+    <value>中央点から変形 (&amp;F)</value><comment>中央点をアンカーとして図形を変形</comment>
   </data>
   <data name="btnScaleAnchor_TopLeft" xml:space="preserve">
-    <value>左上端から変形</value><comment>左上端をアンカーとして図形を変形</comment>
+    <value>左上端から変形 (&amp;F)</value><comment>左上端をアンカーとして図形を変形</comment>
   </data>
   <data name="btnScaleSameHeight" xml:space="preserve">
-    <value>同じ高さに変形 (最初に選択した図形を基準とする)</value>
+    <value>最初に選択した図形と同じ高さに変形(&amp;H)</value>
   </data>
   <data name="btnScaleSameSize" xml:space="preserve">
-    <value>同じサイズに変形 (最初に選択した図形を基準とする)</value>
+    <value>最初に選択した図形と同じサイズに変形(&amp;S)</value>
   </data>
   <data name="btnScaleSameWidth" xml:space="preserve">
-    <value>同じ幅に変形 (最初に選択した図形を基準とする)</value>
+    <value>最初に選択した図形と同じ幅に変形(&amp;W)</value>
   </data>
   <data name="btnSnapBottom" xml:space="preserve">
-    <value>下端を上にスナップ</value>
+    <value>下端を上にスナップ(&amp;B)</value>
   </data>
   <data name="btnSnapLeft" xml:space="preserve">
-    <value>左端を右にスナップ</value>
+    <value>左端を右にスナップ(&amp;L)</value>
   </data>
   <data name="btnSnapRight" xml:space="preserve">
-    <value>右端を左にスナップ</value>
+    <value>右端を左にスナップ(&amp;R)</value>
   </data>
   <data name="btnSnapTop" xml:space="preserve">
-    <value>上端を下にスナップ</value>
+    <value>上端を下にスナップ(&amp;T)</value>
   </data>
   <data name="btnUngroup" xml:space="preserve">
-    <value>グループ解除</value>
+    <value>グループ解除(&amp;U)</value>
   </data>
   <data name="btnWrapText" xml:space="preserve">
     <value>テキストを折り返す</value>
@@ -333,22 +333,22 @@
     <value>配置一覧</value>
   </data>
   <data name="mnuArrangement_mnuAlignment" xml:space="preserve">
-    <value>位置合わせ</value>
+    <value>位置合わせ(&amp;A)</value>
   </data>
   <data name="mnuArrangement_mnuGrouping" xml:space="preserve">
-    <value>グループ</value>
+    <value>グループ(&amp;G)</value>
   </data>
   <data name="mnuArrangement_mnuLayerOrder" xml:space="preserve">
-    <value>重ね順</value>
+    <value>重ね順(&amp;L)</value>
   </data>
   <data name="mnuArrangement_mnuResizing" xml:space="preserve">
-    <value>サイズ変更</value>
+    <value>サイズ変更(&amp;R)</value>
   </data>
   <data name="mnuArrangement_mnuRotation" xml:space="preserve">
-    <value>回転</value>
+    <value>回転(&amp;O)</value>
   </data>
   <data name="mnuArrangement_mnuSnapping" xml:space="preserve">
-    <value>スナップ</value>
+    <value>スナップ(&amp;S)</value>
   </data>
   <data name="mnuArrangement_sepAddInSetting" xml:space="preserve">
     <value>アドインの設定</value>

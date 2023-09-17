@@ -27,7 +27,7 @@ namespace ppt_arrange_addin {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingDialog));
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.chkArtWord = new System.Windows.Forms.CheckBox();
+            this.chkWordArt = new System.Windows.Forms.CheckBox();
             this.chkShapeTextbox = new System.Windows.Forms.CheckBox();
             this.chkShapeSizeAndPosition = new System.Windows.Forms.CheckBox();
             this.chkReplacePicture = new System.Windows.Forms.CheckBox();
@@ -35,6 +35,7 @@ namespace ppt_arrange_addin {
             this.tlpMain = new System.Windows.Forms.TableLayoutPanel();
             this.grpGroupVisibility = new System.Windows.Forms.GroupBox();
             this.tlpGroupVisibility = new System.Windows.Forms.TableLayoutPanel();
+            this.chkArrangement = new System.Windows.Forms.CheckBox();
             this.grpOtherSetting = new System.Windows.Forms.GroupBox();
             this.tlpOtherSetting = new System.Windows.Forms.TableLayoutPanel();
             this.lblLanguage = new System.Windows.Forms.Label();
@@ -65,11 +66,11 @@ namespace ppt_arrange_addin {
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
             // 
-            // chkArtWord
+            // chkWordArt
             // 
-            resources.ApplyResources(this.chkArtWord, "chkArtWord");
-            this.chkArtWord.Name = "chkArtWord";
-            this.chkArtWord.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.chkWordArt, "chkWordArt");
+            this.chkWordArt.Name = "chkWordArt";
+            this.chkWordArt.UseVisualStyleBackColor = true;
             // 
             // chkShapeTextbox
             // 
@@ -116,12 +117,21 @@ namespace ppt_arrange_addin {
             // 
             resources.ApplyResources(this.tlpGroupVisibility, "tlpGroupVisibility");
             this.tlpGroupVisibility.BackColor = System.Drawing.SystemColors.Control;
-            this.tlpGroupVisibility.Controls.Add(this.chkArtWord, 0, 0);
-            this.tlpGroupVisibility.Controls.Add(this.chkShapeTextbox, 0, 1);
-            this.tlpGroupVisibility.Controls.Add(this.chkPictureSizeAndPosition, 0, 4);
-            this.tlpGroupVisibility.Controls.Add(this.chkReplacePicture, 0, 3);
-            this.tlpGroupVisibility.Controls.Add(this.chkShapeSizeAndPosition, 0, 2);
+            this.tlpGroupVisibility.Controls.Add(this.chkPictureSizeAndPosition, 0, 5);
+            this.tlpGroupVisibility.Controls.Add(this.chkReplacePicture, 0, 4);
+            this.tlpGroupVisibility.Controls.Add(this.chkShapeSizeAndPosition, 0, 3);
+            this.tlpGroupVisibility.Controls.Add(this.chkShapeTextbox, 0, 2);
+            this.tlpGroupVisibility.Controls.Add(this.chkArrangement, 0, 1);
+            this.tlpGroupVisibility.Controls.Add(this.chkWordArt, 0, 0);
             this.tlpGroupVisibility.Name = "tlpGroupVisibility";
+            // 
+            // chkArrangement
+            // 
+            resources.ApplyResources(this.chkArrangement, "chkArrangement");
+            this.chkArrangement.Checked = true;
+            this.chkArrangement.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkArrangement.Name = "chkArrangement";
+            this.chkArrangement.UseVisualStyleBackColor = true;
             // 
             // grpOtherSetting
             // 
@@ -203,7 +213,7 @@ namespace ppt_arrange_addin {
 
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.CheckBox chkArtWord;
+        private System.Windows.Forms.CheckBox chkWordArt;
         private System.Windows.Forms.CheckBox chkShapeTextbox;
         private System.Windows.Forms.CheckBox chkShapeSizeAndPosition;
         private System.Windows.Forms.CheckBox chkReplacePicture;
@@ -217,5 +227,6 @@ namespace ppt_arrange_addin {
         private System.Windows.Forms.TableLayoutPanel tlpOtherSetting;
         private System.Windows.Forms.TextBox tbxDescription;
         private System.Windows.Forms.TableLayoutPanel tlpButton;
+        private System.Windows.Forms.CheckBox chkArrangement;
     }
 }

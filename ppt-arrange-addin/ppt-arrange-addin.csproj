@@ -312,16 +312,16 @@
     <None Include="Resources\ScaleSameWidth.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\SnapToBottom.png" />
+    <None Include="Resources\SnapBottomToTop.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\SnapToLeft.png" />
+    <None Include="Resources\SnapLeftToRight.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\SnapToRight.png" />
+    <None Include="Resources\SnapRightToLeft.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\SnapToTop.png" />
+    <None Include="Resources\SnapTopToBottom.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ScaleFromMiddle.png" />

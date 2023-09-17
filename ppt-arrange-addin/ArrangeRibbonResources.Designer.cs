@@ -61,7 +61,7 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add-in setting....
+        ///   Looks up a localized string similar to Add-in se&amp;tting....
         /// </summary>
         public static string btnAddInSetting {
             get {
@@ -70,7 +70,7 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Align bottom.
+        ///   Looks up a localized string similar to Align &amp;bottom.
         /// </summary>
         public static string btnAlignBottom {
             get {
@@ -79,7 +79,7 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Align center.
+        ///   Looks up a localized string similar to Align &amp;center.
         /// </summary>
         public static string btnAlignCenter {
             get {
@@ -88,7 +88,7 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Align left.
+        ///   Looks up a localized string similar to Align &amp;left.
         /// </summary>
         public static string btnAlignLeft {
             get {
@@ -97,7 +97,7 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Align middle.
+        ///   Looks up a localized string similar to Align &amp;middle.
         /// </summary>
         public static string btnAlignMiddle {
             get {
@@ -106,7 +106,7 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Align right.
+        ///   Looks up a localized string similar to Align &amp;right.
         /// </summary>
         public static string btnAlignRight {
             get {
@@ -115,7 +115,7 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Align top.
+        ///   Looks up a localized string similar to Align &amp;top.
         /// </summary>
         public static string btnAlignTop {
             get {
@@ -187,7 +187,7 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Distribute horizontally.
+        ///   Looks up a localized string similar to Distribute &amp;horizontally.
         /// </summary>
         public static string btnDistributeHorizontal {
             get {
@@ -196,7 +196,7 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Distribute vertically.
+        ///   Looks up a localized string similar to Distribute &amp;vertically.
         /// </summary>
         public static string btnDistributeVertical {
             get {
@@ -205,7 +205,7 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Extend to same bottom.
+        ///   Looks up a localized string similar to Extend to same &amp;bottom.
         /// </summary>
         public static string btnExtendSameBottom {
             get {
@@ -214,7 +214,7 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Extend to same left.
+        ///   Looks up a localized string similar to Extend to same &amp;left.
         /// </summary>
         public static string btnExtendSameLeft {
             get {
@@ -223,7 +223,7 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Extend to same right.
+        ///   Looks up a localized string similar to Extend to same &amp;right.
         /// </summary>
         public static string btnExtendSameRight {
             get {
@@ -232,7 +232,7 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Extend to same top.
+        ///   Looks up a localized string similar to Extend to same &amp;top.
         /// </summary>
         public static string btnExtendSameTop {
             get {
@@ -241,7 +241,7 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Flip horizontally.
+        ///   Looks up a localized string similar to Flip &amp;horizontally.
         /// </summary>
         public static string btnFlipHorizontal {
             get {
@@ -250,7 +250,7 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Flip vertically.
+        ///   Looks up a localized string similar to Flip &amp;vertically.
         /// </summary>
         public static string btnFlipVertical {
             get {
@@ -259,7 +259,7 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Group shapes.
+        ///   Looks up a localized string similar to &amp;Group shapes.
         /// </summary>
         public static string btnGroup {
             get {
@@ -286,7 +286,7 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Move to back.
+        ///   Looks up a localized string similar to Move to bac&amp;k.
         /// </summary>
         public static string btnMoveBack {
             get {
@@ -295,7 +295,7 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Move backward.
+        ///   Looks up a localized string similar to Move &amp;backward.
         /// </summary>
         public static string btnMoveBackward {
             get {
@@ -304,7 +304,7 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Move forward.
+        ///   Looks up a localized string similar to Move &amp;forward.
         /// </summary>
         public static string btnMoveForward {
             get {
@@ -313,7 +313,7 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Move to front.
+        ///   Looks up a localized string similar to Move to f&amp;ront.
         /// </summary>
         public static string btnMoveFront {
             get {
@@ -403,7 +403,7 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Rotate left with 90 degrees.
+        ///   Looks up a localized string similar to Rotate &amp;left with 90 degrees.
         /// </summary>
         public static string btnRotateLeft90 {
             get {
@@ -412,7 +412,7 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Rotate right with 90 degrees.
+        ///   Looks up a localized string similar to Rotate &amp;right with 90 degrees.
         /// </summary>
         public static string btnRotateRight90 {
             get {
@@ -421,7 +421,7 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Scale objects from middle.
+        ///   Looks up a localized string similar to Scale objects &amp;from middle.
         /// </summary>
         public static string btnScaleAnchor_Middle {
             get {
@@ -430,7 +430,7 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Scale objects from top left.
+        ///   Looks up a localized string similar to Scale objects &amp;from top left.
         /// </summary>
         public static string btnScaleAnchor_TopLeft {
             get {
@@ -439,7 +439,7 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Scale to same height (as the first shape).
+        ///   Looks up a localized string similar to Scale to same &amp;height (as the first shape).
         /// </summary>
         public static string btnScaleSameHeight {
             get {
@@ -448,7 +448,7 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Scale to same size (as the first shape).
+        ///   Looks up a localized string similar to Scale to same &amp;size (as the first shape).
         /// </summary>
         public static string btnScaleSameSize {
             get {
@@ -457,7 +457,7 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Scale to same width (as the first shape).
+        ///   Looks up a localized string similar to Scale to same &amp;width (as the first shape).
         /// </summary>
         public static string btnScaleSameWidth {
             get {
@@ -466,7 +466,7 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Snap to bottom.
+        ///   Looks up a localized string similar to Snap &amp;bottom to top.
         /// </summary>
         public static string btnSnapBottom {
             get {
@@ -475,7 +475,7 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Snap to left.
+        ///   Looks up a localized string similar to Snap &amp;left to right.
         /// </summary>
         public static string btnSnapLeft {
             get {
@@ -484,7 +484,7 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Snap to right.
+        ///   Looks up a localized string similar to Snap &amp;right to left.
         /// </summary>
         public static string btnSnapRight {
             get {
@@ -493,7 +493,7 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Snap to top.
+        ///   Looks up a localized string similar to Snap &amp;top to bottom.
         /// </summary>
         public static string btnSnapTop {
             get {
@@ -502,7 +502,7 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Ungroup shapes.
+        ///   Looks up a localized string similar to &amp;Ungroup shapes.
         /// </summary>
         public static string btnUngroup {
             get {
@@ -718,7 +718,7 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Alignment.
+        ///   Looks up a localized string similar to &amp;Alignment.
         /// </summary>
         public static string mnuArrangement_mnuAlignment {
             get {
@@ -727,7 +727,7 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Grouping.
+        ///   Looks up a localized string similar to &amp;Grouping.
         /// </summary>
         public static string mnuArrangement_mnuGrouping {
             get {
@@ -745,7 +745,7 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Resizing.
+        ///   Looks up a localized string similar to &amp;Resizing.
         /// </summary>
         public static string mnuArrangement_mnuResizing {
             get {
@@ -754,7 +754,7 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Rotation.
+        ///   Looks up a localized string similar to R&amp;otation.
         /// </summary>
         public static string mnuArrangement_mnuRotation {
             get {
@@ -763,7 +763,7 @@ namespace ppt_arrange_addin {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Snapping.
+        ///   Looks up a localized string similar to &amp;Snapping.
         /// </summary>
         public static string mnuArrangement_mnuSnapping {
             get {

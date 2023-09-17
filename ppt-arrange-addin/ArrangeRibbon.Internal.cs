@@ -20,6 +20,7 @@ namespace ppt_arrange_addin {
         #region IRibbonExtensibility Members
 
         public string GetCustomUI(string ribbonId) {
+        // TODO https://stackoverflow.com/questions/72091747/vsto-ribbon-xml-set-callback-attribute-in-template-for-each-control-type
             return GetResourceText("ppt_arrange_addin.ArrangeRibbon.xml");
         }
 
@@ -152,6 +153,7 @@ namespace ppt_arrange_addin {
         private class ElementUi {
             public string Label { get; init; }
             public System.Drawing.Image Image { get; init; }
+            public string KeyTip { get; init; }
         }
 
         private readonly Dictionary<string, Func<ElementUi>> _elementLabels = new() {
@@ -175,10 +177,10 @@ namespace ppt_arrange_addin {
             { btnExtendSameRight, () => new ElementUi { Label = ARES.btnExtendSameRight, Image = RES.ExtendSameRight } },
             { btnExtendSameTop, () => new ElementUi { Label = ARES.btnExtendSameTop, Image = RES.ExtendSameTop } },
             { btnExtendSameBottom, () => new ElementUi { Label = ARES.btnExtendSameBottom, Image = RES.ExtendSameBottom } },
-            { btnSnapLeft, () => new ElementUi { Label = ARES.btnSnapLeft, Image = RES.SnapToLeft } },
-            { btnSnapRight, () => new ElementUi { Label = ARES.btnSnapRight, Image = RES.SnapToRight } },
-            { btnSnapTop, () => new ElementUi { Label = ARES.btnSnapTop, Image = RES.SnapToTop } },
-            { btnSnapBottom, () => new ElementUi { Label = ARES.btnSnapBottom, Image = RES.SnapToBottom } },
+            { btnSnapLeft, () => new ElementUi { Label = ARES.btnSnapLeft, Image = RES.SnapLeftToRight } },
+            { btnSnapRight, () => new ElementUi { Label = ARES.btnSnapRight, Image = RES.SnapRightToLeft } },
+            { btnSnapTop, () => new ElementUi { Label = ARES.btnSnapTop, Image = RES.SnapTopToBottom } },
+            { btnSnapBottom, () => new ElementUi { Label = ARES.btnSnapBottom, Image = RES.SnapBottomToTop } },
             { btnMoveForward, () => new ElementUi { Label = ARES.btnMoveForward, Image = RES.ObjectBringForward } },
             { btnMoveFront, () => new ElementUi { Label = ARES.btnMoveFront, Image = RES.ObjectBringToFront } },
             { btnMoveBackward, () => new ElementUi { Label = ARES.btnMoveBackward, Image = RES.ObjectSendBackward } },
@@ -236,7 +238,7 @@ namespace ppt_arrange_addin {
             { mnuArrangement_sepAlignmentAndResizing, () => new ElementUi { Label = ARES.mnuArrangement_sepAlignmentAndResizing } },
             { mnuArrangement_mnuAlignment, () => new ElementUi { Label = ARES.mnuArrangement_mnuAlignment, Image = RES.ObjectArrangement } },
             { mnuArrangement_mnuResizing, () => new ElementUi { Label = ARES.mnuArrangement_mnuResizing, Image = RES.ScaleSameWidth } },
-            { mnuArrangement_mnuSnapping, () => new ElementUi { Label = ARES.mnuArrangement_mnuSnapping, Image = RES.SnapToLeft } },
+            { mnuArrangement_mnuSnapping, () => new ElementUi { Label = ARES.mnuArrangement_mnuSnapping, Image = RES.SnapLeftToRight } },
             { mnuArrangement_mnuRotation, () => new ElementUi { Label = ARES.mnuArrangement_mnuRotation, Image = RES.ObjectRotateRight90 } },
             { mnuArrangement_sepLayerOrderAndGrouping, () => new ElementUi { Label = ARES.mnuArrangement_sepLayerOrderAndGrouping } },
             { mnuArrangement_mnuLayerOrder, () => new ElementUi { Label = ARES.mnuArrangement_mnuLayerOrder, Image = RES.ObjectSendToBack } },
@@ -253,6 +255,17 @@ namespace ppt_arrange_addin {
         public System.Drawing.Image GetImage(Office.IRibbonControl ribbonControl) {
             _elementLabels.TryGetValue(ribbonControl.Id, out var eui);
             return eui?.Invoke().Image;
+        }
+
+        public string GetKeyTip(Office.IRibbonControl ribbonControl) {
+            return ribbonControl.Id switch {
+                "TextStylesGallery" => "WS",
+                "TextFillColorPicker" => "WF",
+                "TextOutlineColorPicker" => "WO",
+                "TextEffectsMenu" => "WE",
+                "WordArtFormatDialog" => "WD",
+                _ => ""
+            };
         }
 
         #endregion

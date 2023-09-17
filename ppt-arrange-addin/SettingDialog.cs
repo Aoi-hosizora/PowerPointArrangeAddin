@@ -16,7 +16,8 @@ namespace ppt_arrange_addin {
         }
 
         private void SettingDialog_Load(object sender, EventArgs e) {
-            chkArtWord.Checked = AddInSetting.Instance.ShowWordArtGroup;
+            chkWordArt.Checked = AddInSetting.Instance.ShowWordArtGroup;
+            chkArrangement.Checked = true;
             chkShapeTextbox.Checked = AddInSetting.Instance.ShowShapeTextboxGroup;
             chkShapeSizeAndPosition.Checked = AddInSetting.Instance.ShowShapeSizeAndPositionGroup;
             chkReplacePicture.Checked = AddInSetting.Instance.ShowReplacePictureGroup;
@@ -26,7 +27,7 @@ namespace ppt_arrange_addin {
 
         private void BtnOK_Click(object sender, EventArgs e) {
             var oldLanguage = AddInSetting.Instance.Language;
-            AddInSetting.Instance.ShowWordArtGroup = chkArtWord.Checked;
+            AddInSetting.Instance.ShowWordArtGroup = chkWordArt.Checked;
             AddInSetting.Instance.ShowShapeTextboxGroup = chkShapeTextbox.Checked;
             AddInSetting.Instance.ShowShapeSizeAndPositionGroup = chkShapeSizeAndPosition.Checked;
             AddInSetting.Instance.ShowReplacePictureGroup = chkReplacePicture.Checked;

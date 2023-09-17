@@ -118,25 +118,25 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="btnAddInSetting" xml:space="preserve">
-    <value>Add-in setting...</value>
+    <value>Add-in se&amp;tting...</value>
   </data>
   <data name="btnAlignBottom" xml:space="preserve">
-    <value>Align bottom</value>
+    <value>Align &amp;bottom</value>
   </data>
   <data name="btnAlignCenter" xml:space="preserve">
-    <value>Align center</value>
+    <value>Align &amp;center</value>
   </data>
   <data name="btnAlignLeft" xml:space="preserve">
-    <value>Align left</value>
+    <value>Align &amp;left</value>
   </data>
   <data name="btnAlignMiddle" xml:space="preserve">
-    <value>Align middle</value>
+    <value>Align &amp;middle</value>
   </data>
   <data name="btnAlignRight" xml:space="preserve">
-    <value>Align right</value>
+    <value>Align &amp;right</value>
   </data>
   <data name="btnAlignTop" xml:space="preserve">
-    <value>Align top</value>
+    <value>Align &amp;top</value>
   </data>
   <data name="btnAutofitOff" xml:space="preserve">
     <value>Autofit off</value>
@@ -160,31 +160,31 @@
     <value>Copy size</value>
   </data>
   <data name="btnDistributeHorizontal" xml:space="preserve">
-    <value>Distribute horizontally</value>
+    <value>Distribute &amp;horizontally</value>
   </data>
   <data name="btnDistributeVertical" xml:space="preserve">
-    <value>Distribute vertically</value>
+    <value>Distribute &amp;vertically</value>
   </data>
   <data name="btnExtendSameBottom" xml:space="preserve">
-    <value>Extend to same bottom</value>
+    <value>Extend to same &amp;bottom</value>
   </data>
   <data name="btnExtendSameLeft" xml:space="preserve">
-    <value>Extend to same left</value>
+    <value>Extend to same &amp;left</value>
   </data>
   <data name="btnExtendSameRight" xml:space="preserve">
-    <value>Extend to same right</value>
+    <value>Extend to same &amp;right</value>
   </data>
   <data name="btnExtendSameTop" xml:space="preserve">
-    <value>Extend to same top</value>
+    <value>Extend to same &amp;top</value>
   </data>
   <data name="btnFlipHorizontal" xml:space="preserve">
-    <value>Flip horizontally</value>
+    <value>Flip &amp;horizontally</value>
   </data>
   <data name="btnFlipVertical" xml:space="preserve">
-    <value>Flip vertically</value>
+    <value>Flip &amp;vertically</value>
   </data>
   <data name="btnGroup" xml:space="preserve">
-    <value>Group shapes</value>
+    <value>&amp;Group shapes</value>
   </data>
   <data name="btnLockPictureAspectRatio" xml:space="preserve">
     <value>Lock aspect ratio</value>
@@ -193,16 +193,16 @@
     <value>Lock aspect ratio</value>
   </data>
   <data name="btnMoveBack" xml:space="preserve">
-    <value>Move to back</value>
+    <value>Move to bac&amp;k</value>
   </data>
   <data name="btnMoveBackward" xml:space="preserve">
-    <value>Move backward</value>
+    <value>Move &amp;backward</value>
   </data>
   <data name="btnMoveForward" xml:space="preserve">
-    <value>Move forward</value>
+    <value>Move &amp;forward</value>
   </data>
   <data name="btnMoveFront" xml:space="preserve">
-    <value>Move to front</value>
+    <value>Move to f&amp;ront</value>
   </data>
   <data name="btnPastePicturePosition" xml:space="preserve">
     <value>Paste position</value>
@@ -232,40 +232,40 @@
     <value>Reset size</value>
   </data>
   <data name="btnRotateLeft90" xml:space="preserve">
-    <value>Rotate left with 90 degrees</value>
+    <value>Rotate &amp;left with 90 degrees</value>
   </data>
   <data name="btnRotateRight90" xml:space="preserve">
-    <value>Rotate right with 90 degrees</value>
+    <value>Rotate &amp;right with 90 degrees</value>
   </data>
   <data name="btnScaleAnchor_Middle" xml:space="preserve">
-    <value>Scale objects from middle</value>
+    <value>Scale objects &amp;from middle</value>
   </data>
   <data name="btnScaleAnchor_TopLeft" xml:space="preserve">
-    <value>Scale objects from top left</value>
+    <value>Scale objects &amp;from top left</value>
   </data>
   <data name="btnScaleSameHeight" xml:space="preserve">
-    <value>Scale to same height (as the first shape)</value>
+    <value>Scale to same &amp;height (as the first shape)</value>
   </data>
   <data name="btnScaleSameSize" xml:space="preserve">
-    <value>Scale to same size (as the first shape)</value>
+    <value>Scale to same &amp;size (as the first shape)</value>
   </data>
   <data name="btnScaleSameWidth" xml:space="preserve">
-    <value>Scale to same width (as the first shape)</value>
+    <value>Scale to same &amp;width (as the first shape)</value>
   </data>
   <data name="btnSnapBottom" xml:space="preserve">
-    <value>Snap to bottom</value>
+    <value>Snap &amp;bottom to top</value>
   </data>
   <data name="btnSnapLeft" xml:space="preserve">
-    <value>Snap to left</value>
+    <value>Snap &amp;left to right</value>
   </data>
   <data name="btnSnapRight" xml:space="preserve">
-    <value>Snap to right</value>
+    <value>Snap &amp;right to left</value>
   </data>
   <data name="btnSnapTop" xml:space="preserve">
-    <value>Snap to top</value>
+    <value>Snap &amp;top to bottom</value>
   </data>
   <data name="btnUngroup" xml:space="preserve">
-    <value>Ungroup shapes</value>
+    <value>&amp;Ungroup shapes</value>
   </data>
   <data name="btnWrapText" xml:space="preserve">
     <value>Wrap text</value>
@@ -331,22 +331,22 @@
     <value>Arrangement</value>
   </data>
   <data name="mnuArrangement_mnuAlignment" xml:space="preserve">
-    <value>Alignment</value>
+    <value>&amp;Alignment</value>
   </data>
   <data name="mnuArrangement_mnuGrouping" xml:space="preserve">
-    <value>Grouping</value>
+    <value>&amp;Grouping</value>
   </data>
   <data name="mnuArrangement_mnuLayerOrder" xml:space="preserve">
     <value>Layer order</value>
   </data>
   <data name="mnuArrangement_mnuResizing" xml:space="preserve">
-    <value>Resizing</value>
+    <value>&amp;Resizing</value>
   </data>
   <data name="mnuArrangement_mnuRotation" xml:space="preserve">
-    <value>Rotation</value>
+    <value>R&amp;otation</value>
   </data>
   <data name="mnuArrangement_mnuSnapping" xml:space="preserve">
-    <value>Snapping</value>
+    <value>&amp;Snapping</value>
   </data>
   <data name="mnuArrangement_sepAddInSetting" xml:space="preserve">
     <value>Add-in setting</value>

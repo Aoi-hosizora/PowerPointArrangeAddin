@@ -180,38 +180,38 @@
   <data name="&gt;&gt;btnCancel.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="chkArtWord.AutoSize" type="System.Boolean, mscorlib">
+  <data name="chkWordArt.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="chkArtWord.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+  <data name="chkWordArt.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>System</value>
   </data>
-  <data name="chkArtWord.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="chkWordArt.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 3</value>
   </data>
-  <data name="chkArtWord.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="chkWordArt.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 3</value>
   </data>
-  <data name="chkArtWord.Size" type="System.Drawing.Size, System.Drawing">
-    <value>210, 17</value>
+  <data name="chkWordArt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>240, 17</value>
   </data>
-  <data name="chkArtWord.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="chkWordArt.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
-  <data name="chkArtWord.Text" xml:space="preserve">
-    <value>Show "&amp;Art word" group (Home tab)</value>
+  <data name="chkWordArt.Text" xml:space="preserve">
+    <value>Show "&amp;Word art" group from "Home" tab</value>
   </data>
-  <data name="&gt;&gt;chkArtWord.Name" xml:space="preserve">
-    <value>chkArtWord</value>
+  <data name="&gt;&gt;chkWordArt.Name" xml:space="preserve">
+    <value>chkWordArt</value>
   </data>
-  <data name="&gt;&gt;chkArtWord.Type" xml:space="preserve">
+  <data name="&gt;&gt;chkWordArt.Type" xml:space="preserve">
     <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;chkArtWord.Parent" xml:space="preserve">
+  <data name="&gt;&gt;chkWordArt.Parent" xml:space="preserve">
     <value>tlpGroupVisibility</value>
   </data>
-  <data name="&gt;&gt;chkArtWord.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;chkWordArt.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
   <data name="chkShapeTextbox.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -220,19 +220,19 @@
     <value>System</value>
   </data>
   <data name="chkShapeTextbox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 26</value>
+    <value>0, 49</value>
   </data>
   <data name="chkShapeTextbox.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 3</value>
   </data>
   <data name="chkShapeTextbox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>246, 17</value>
+    <value>250, 17</value>
   </data>
   <data name="chkShapeTextbox.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
   <data name="chkShapeTextbox.Text" xml:space="preserve">
-    <value>Show "&amp;Textbox" group (Shape format tab)</value>
+    <value>Show "&amp;Textbox" group "Shape format" tab</value>
   </data>
   <data name="&gt;&gt;chkShapeTextbox.Name" xml:space="preserve">
     <value>chkShapeTextbox</value>
@@ -244,7 +244,7 @@
     <value>tlpGroupVisibility</value>
   </data>
   <data name="&gt;&gt;chkShapeTextbox.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="chkShapeSizeAndPosition.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -253,19 +253,19 @@
     <value>System</value>
   </data>
   <data name="chkShapeSizeAndPosition.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 49</value>
+    <value>0, 72</value>
   </data>
   <data name="chkShapeSizeAndPosition.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 3</value>
   </data>
   <data name="chkShapeSizeAndPosition.Size" type="System.Drawing.Size, System.Drawing">
-    <value>292, 17</value>
+    <value>323, 17</value>
   </data>
   <data name="chkShapeSizeAndPosition.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="chkShapeSizeAndPosition.Text" xml:space="preserve">
-    <value>Show "&amp;Size and position" group (Shape format tab)</value>
+    <value>Show "&amp;Size and position" group from "Shape format" tab</value>
   </data>
   <data name="&gt;&gt;chkShapeSizeAndPosition.Name" xml:space="preserve">
     <value>chkShapeSizeAndPosition</value>
@@ -277,7 +277,7 @@
     <value>tlpGroupVisibility</value>
   </data>
   <data name="&gt;&gt;chkShapeSizeAndPosition.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>2</value>
   </data>
   <data name="chkReplacePicture.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -286,19 +286,19 @@
     <value>System</value>
   </data>
   <data name="chkReplacePicture.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 72</value>
+    <value>0, 95</value>
   </data>
   <data name="chkReplacePicture.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 3</value>
   </data>
   <data name="chkReplacePicture.Size" type="System.Drawing.Size, System.Drawing">
-    <value>290, 17</value>
+    <value>321, 17</value>
   </data>
   <data name="chkReplacePicture.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="chkReplacePicture.Text" xml:space="preserve">
-    <value>Show "&amp;Replace picture" group (Picture format tab)</value>
+    <value>Show "&amp;Replace picture" group from "Picture format" tab</value>
   </data>
   <data name="&gt;&gt;chkReplacePicture.Name" xml:space="preserve">
     <value>chkReplacePicture</value>
@@ -310,7 +310,7 @@
     <value>tlpGroupVisibility</value>
   </data>
   <data name="&gt;&gt;chkReplacePicture.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>1</value>
   </data>
   <data name="chkPictureSizeAndPosition.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -319,19 +319,19 @@
     <value>System</value>
   </data>
   <data name="chkPictureSizeAndPosition.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 95</value>
+    <value>0, 118</value>
   </data>
   <data name="chkPictureSizeAndPosition.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 3</value>
   </data>
   <data name="chkPictureSizeAndPosition.Size" type="System.Drawing.Size, System.Drawing">
-    <value>297, 17</value>
+    <value>328, 17</value>
   </data>
   <data name="chkPictureSizeAndPosition.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>5</value>
   </data>
   <data name="chkPictureSizeAndPosition.Text" xml:space="preserve">
-    <value>Show "Size and &amp;position" group (Picture format tab)</value>
+    <value>Show "Size and &amp;position" group from "Picture format" tab</value>
   </data>
   <data name="&gt;&gt;chkPictureSizeAndPosition.Name" xml:space="preserve">
     <value>chkPictureSizeAndPosition</value>
@@ -343,7 +343,7 @@
     <value>tlpGroupVisibility</value>
   </data>
   <data name="&gt;&gt;chkPictureSizeAndPosition.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>0</value>
   </data>
   <data name="tlpMain.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -360,6 +360,66 @@
   <data name="grpGroupVisibility.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
+  <data name="tlpGroupVisibility.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="tlpGroupVisibility.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="tlpGroupVisibility.ColumnCount" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="chkArrangement.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkArrangement.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="chkArrangement.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>System</value>
+  </data>
+  <data name="chkArrangement.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 26</value>
+  </data>
+  <data name="chkArrangement.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 3</value>
+  </data>
+  <data name="chkArrangement.Size" type="System.Drawing.Size, System.Drawing">
+    <value>262, 17</value>
+  </data>
+  <data name="chkArrangement.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="chkArrangement.Text" xml:space="preserve">
+    <value>Show "&amp;Arrangement" group from "Home" tab</value>
+  </data>
+  <data name="&gt;&gt;chkArrangement.Name" xml:space="preserve">
+    <value>chkArrangement</value>
+  </data>
+  <data name="&gt;&gt;chkArrangement.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkArrangement.Parent" xml:space="preserve">
+    <value>tlpGroupVisibility</value>
+  </data>
+  <data name="&gt;&gt;chkArrangement.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="tlpGroupVisibility.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tlpGroupVisibility.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 14</value>
+  </data>
+  <data name="tlpGroupVisibility.RowCount" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="tlpGroupVisibility.Size" type="System.Drawing.Size, System.Drawing">
+    <value>328, 138</value>
+  </data>
+  <data name="tlpGroupVisibility.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
   <data name="&gt;&gt;tlpGroupVisibility.Name" xml:space="preserve">
     <value>tlpGroupVisibility</value>
   </data>
@@ -373,7 +433,7 @@
     <value>0</value>
   </data>
   <data name="tlpGroupVisibility.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="chkArtWord" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="chkShapeTextbox" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="chkPictureSizeAndPosition" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="chkReplacePicture" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="chkShapeSizeAndPosition" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="chkPictureSizeAndPosition" Row="5" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="chkReplacePicture" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="chkShapeSizeAndPosition" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="chkShapeTextbox" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="chkArrangement" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="chkWordArt" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="grpGroupVisibility.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -388,10 +448,10 @@
     <value>10, 2, 10, 5</value>
   </data>
   <data name="grpGroupVisibility.Size" type="System.Drawing.Size, System.Drawing">
-    <value>336, 134</value>
+    <value>348, 157</value>
   </data>
   <data name="grpGroupVisibility.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>0</value>
   </data>
   <data name="grpGroupVisibility.Text" xml:space="preserve">
     <value>Group visibility</value>
@@ -439,10 +499,10 @@
     <value>55, 20</value>
   </data>
   <data name="lblLanguage.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="lblLanguage.Text" xml:space="preserve">
-    <value>Language:</value>
+    <value>&amp;Language:</value>
   </data>
   <data name="lblLanguage.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleLeft</value>
@@ -487,10 +547,10 @@
     <value>0, 4, 0, 4</value>
   </data>
   <data name="cboLanguage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>257, 20</value>
+    <value>269, 20</value>
   </data>
   <data name="cboLanguage.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;cboLanguage.Name" xml:space="preserve">
     <value>cboLanguage</value>
@@ -514,10 +574,10 @@
     <value>1</value>
   </data>
   <data name="tlpOtherSetting.Size" type="System.Drawing.Size, System.Drawing">
-    <value>316, 28</value>
+    <value>328, 28</value>
   </data>
   <data name="tlpOtherSetting.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;tlpOtherSetting.Name" xml:space="preserve">
     <value>tlpOtherSetting</value>
@@ -538,7 +598,7 @@
     <value>Fill</value>
   </data>
   <data name="grpOtherSetting.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 150</value>
+    <value>8, 173</value>
   </data>
   <data name="grpOtherSetting.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>8, 8, 8, 0</value>
@@ -547,10 +607,10 @@
     <value>10, 2, 10, 5</value>
   </data>
   <data name="grpOtherSetting.Size" type="System.Drawing.Size, System.Drawing">
-    <value>336, 47</value>
+    <value>348, 47</value>
   </data>
   <data name="grpOtherSetting.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>1</value>
   </data>
   <data name="grpOtherSetting.Text" xml:space="preserve">
     <value>Other setting</value>
@@ -571,7 +631,7 @@
     <value>Fill</value>
   </data>
   <data name="tbxDescription.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 205</value>
+    <value>8, 228</value>
   </data>
   <data name="tbxDescription.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>8, 8, 8, 0</value>
@@ -583,10 +643,10 @@
     <value>Both</value>
   </data>
   <data name="tbxDescription.Size" type="System.Drawing.Size, System.Drawing">
-    <value>336, 120</value>
+    <value>348, 120</value>
   </data>
   <data name="tbxDescription.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>2</value>
   </data>
   <data name="tbxDescription.Text" xml:space="preserve">
     <value>Description ...</value>
@@ -616,7 +676,7 @@
     <value>Right</value>
   </data>
   <data name="tlpButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>183, 328</value>
+    <value>195, 351</value>
   </data>
   <data name="tlpButton.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>5, 5, 5, 5</value>
@@ -628,7 +688,7 @@
     <value>166, 32</value>
   </data>
   <data name="tlpButton.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;tlpButton.Name" xml:space="preserve">
     <value>tlpButton</value>
@@ -652,10 +712,10 @@
     <value>4</value>
   </data>
   <data name="tlpMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>352, 363</value>
+    <value>364, 386</value>
   </data>
   <data name="tlpMain.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;tlpMain.Name" xml:space="preserve">
     <value>tlpMain</value>
@@ -672,33 +732,9 @@
   <data name="tlpMain.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="grpGroupVisibility" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="grpOtherSetting" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="tbxDescription" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="tlpButton" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
-  <data name="tlpGroupVisibility.AutoSize" type="System.Boolean, mscorlib">
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
-  </data>
-  <data name="tlpGroupVisibility.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="tlpGroupVisibility.ColumnCount" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="tlpGroupVisibility.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="tlpGroupVisibility.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 14</value>
-  </data>
-  <data name="tlpGroupVisibility.RowCount" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="tlpGroupVisibility.Size" type="System.Drawing.Size, System.Drawing">
-    <value>316, 115</value>
-  </data>
-  <data name="tlpGroupVisibility.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="$this.Localizable" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
+  </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
     <value>6, 12</value>
   </data>

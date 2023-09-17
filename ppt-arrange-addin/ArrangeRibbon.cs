@@ -233,10 +233,10 @@ namespace ppt_arrange_addin {
                 return;
             }
             ArrangementHelper.SnapCmd? cmd = ribbonControl.Id switch {
-                btnSnapLeft => ArrangementHelper.SnapCmd.SnapToLeft,
-                btnSnapRight => ArrangementHelper.SnapCmd.SnapToRight,
-                btnSnapTop => ArrangementHelper.SnapCmd.SnapToTop,
-                btnSnapBottom => ArrangementHelper.SnapCmd.SnapToBottom,
+                btnSnapLeft => ArrangementHelper.SnapCmd.SnapLeftToRight,
+                btnSnapRight => ArrangementHelper.SnapCmd.SnapRightToLeft,
+                btnSnapTop => ArrangementHelper.SnapCmd.SnapTopToBottom,
+                btnSnapBottom => ArrangementHelper.SnapCmd.SnapBottomToTop,
                 _ => null
             };
             ArrangementHelper.Snap(shapeRange, cmd);

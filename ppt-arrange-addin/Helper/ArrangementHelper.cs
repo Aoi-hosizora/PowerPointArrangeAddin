@@ -151,10 +151,10 @@ namespace ppt_arrange_addin.Helper {
         }
 
         public enum SnapCmd {
-            SnapToLeft,
-            SnapToRight,
-            SnapToTop,
-            SnapToBottom
+            SnapLeftToRight,
+            SnapRightToLeft,
+            SnapTopToBottom,
+            SnapBottomToTop
         }
 
         public static void Snap(PowerPoint.ShapeRange? shapeRange, SnapCmd? cmd) {
@@ -171,28 +171,28 @@ namespace ppt_arrange_addin.Helper {
 
             Globals.ThisAddIn.Application.StartNewUndoEntry();
             switch (cmd!) {
-            case SnapCmd.SnapToLeft:
+            case SnapCmd.SnapLeftToRight:
                 for (var i = 1; i < shapes.Length; i++) {
                     shapes[i].Left = previousLeft + previousWidth;
                     previousLeft = shapes[i].Left;
                     previousWidth = shapes[i].Width;
                 }
                 break;
-            case SnapCmd.SnapToRight:
+            case SnapCmd.SnapRightToLeft:
                 for (var i = 1; i < shapes.Length; i++) {
                     previousWidth = shapes[i].Width;
                     shapes[i].Left = previousLeft - previousWidth;
                     previousLeft = shapes[i].Left;
                 }
                 break;
-            case SnapCmd.SnapToTop:
+            case SnapCmd.SnapTopToBottom:
                 for (var i = 1; i < shapes.Length; i++) {
                     shapes[i].Top = previousTop + previousHeight;
                     previousTop = shapes[i].Top;
                     previousHeight = shapes[i].Height;
                 }
                 break;
-            case SnapCmd.SnapToBottom:
+            case SnapCmd.SnapBottomToTop:
                 for (var i = 1; i < shapes.Length; i++) {
                     previousHeight = shapes[i].Height;
                     shapes[i].Top = previousTop - previousHeight;

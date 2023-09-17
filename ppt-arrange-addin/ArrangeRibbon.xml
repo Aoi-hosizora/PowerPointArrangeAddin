@@ -5,73 +5,73 @@
         <tabs>
             <tab idMso="TabHome">
                 <group id="grpWordArt" insertAfterMso="GroupParagraph" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getVisible="GetGroupVisible">
-                    <gallery idMso="TextStylesGallery" size="large" />
-                    <control idMso="TextFillColorPicker" size="normal" />
-                    <control idMso="TextOutlineColorPicker" size="normal" />
-                    <menu idMso="TextEffectsMenu" size="normal" />
+                    <control idMso="TextStylesGallery" size="large" keytip="AQ" />
+                    <control idMso="TextFillColorPicker" keytip="AF" />
+                    <control idMso="TextOutlineColorPicker" keytip="AU" />
+                    <menu idMso="TextEffectsMenu" keytip="AE" />
                     <dialogBoxLauncher>
-                        <button idMso="WordArtFormatDialog" />
+                        <button idMso="WordArtFormatDialog" keytip="AG" />
                     </dialogBoxLauncher>
                 </group> <!-- end of grpWordArt -->
 
                 <group id="grpArrange" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage">
                     <buttonGroup id="grpAlignLR">
-                        <button id="btnAlignLeft" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnAlign_Click" />
-                        <button id="btnAlignCenter" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnAlign_Click" />
-                        <button id="btnAlignRight" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnAlign_Click" />
+                        <button id="btnAlignLeft" keytip="D1" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnAlign_Click" />
+                        <button id="btnAlignCenter" keytip="D2" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnAlign_Click" />
+                        <button id="btnAlignRight" keytip="D3" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnAlign_Click" />
                     </buttonGroup>
                     <buttonGroup id="grpAlignTB">
-                        <button id="btnAlignTop" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnAlign_Click" />
-                        <button id="btnAlignMiddle" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnAlign_Click" />
-                        <button id="btnAlignBottom" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnAlign_Click" />
+                        <button id="btnAlignTop" keytip="D4" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnAlign_Click" />
+                        <button id="btnAlignMiddle" keytip="D5" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnAlign_Click" />
+                        <button id="btnAlignBottom" keytip="D6" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnAlign_Click" />
                     </buttonGroup>
                     <buttonGroup id="grpDistribute">
-                        <button id="btnDistributeHorizontal" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnDistribute_Click" />
-                        <button id="btnDistributeVertical" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnDistribute_Click" />
-                        <button idMso="GridSettings" showLabel="false" />
+                        <button id="btnDistributeHorizontal" keytip="D7" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnDistribute_Click" />
+                        <button id="btnDistributeVertical" keytip="D8" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnDistribute_Click" />
+                        <button idMso="GridSettings" keytip="DG" showLabel="false" />
                     </buttonGroup>
                     <separator id="separator1" />
                     <buttonGroup id="grpScaleSize">
-                        <button id="btnScaleSameWidth" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnScale_Click" />
-                        <button id="btnScaleSameHeight" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnScale_Click" />
-                        <button id="btnScaleSameSize" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnScale_Click" />
-                        <button id="btnScaleAnchor" showLabel="false" getLabel="BtnScaleAnchor_GetLabel" getScreentip="BtnScaleAnchor_GetLabel" getImage="BtnScaleAnchor_GetImage" onAction="BtnScaleAnchor_Click" />
+                        <button id="btnScaleSameWidth" keytip="PW" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnScale_Click" />
+                        <button id="btnScaleSameHeight" keytip="PH" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnScale_Click" />
+                        <button id="btnScaleSameSize" keytip="PS" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnScale_Click" />
+                        <button id="btnScaleAnchor" keytip="PA" showLabel="false" getLabel="BtnScaleAnchor_GetLabel" getScreentip="BtnScaleAnchor_GetLabel" getImage="BtnScaleAnchor_GetImage" onAction="BtnScaleAnchor_Click" />
                     </buttonGroup>
                     <buttonGroup id="grpExtendSize">
-                        <button id="btnExtendSameLeft" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnExtend_Click" />
-                        <button id="btnExtendSameRight" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnExtend_Click" />
-                        <button id="btnExtendSameTop" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnExtend_Click" />
-                        <button id="btnExtendSameBottom" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnExtend_Click" />
+                        <button id="btnExtendSameLeft" keytip="PL" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnExtend_Click" />
+                        <button id="btnExtendSameRight" keytip="PR" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnExtend_Click" />
+                        <button id="btnExtendSameTop" keytip="PT" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnExtend_Click" />
+                        <button id="btnExtendSameBottom" keytip="PB" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnExtend_Click" />
                     </buttonGroup>
                     <buttonGroup id="grpSnapObjects">
-                        <button id="btnSnapLeft" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnSnap_Click" />
-                        <button id="btnSnapRight" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnSnap_Click" />
-                        <button id="btnSnapTop" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnSnap_Click" />
-                        <button id="btnSnapBottom" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnSnap_Click" />
+                        <button id="btnSnapLeft" keytip="PE" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnSnap_Click" />
+                        <button id="btnSnapRight" keytip="PI" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnSnap_Click" />
+                        <button id="btnSnapTop" keytip="PO" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnSnap_Click" />
+                        <button id="btnSnapBottom" keytip="PM" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnSnap_Click" />
                     </buttonGroup>
                     <separator id="separator2" />
                     <buttonGroup id="grpMoveLayers">
-                        <button id="btnMoveForward" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnMove_Click" />
-                        <button id="btnMoveFront" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnMove_Click" />
-                        <button id="btnMoveBackward" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnMove_Click" />
-                        <button id="btnMoveBack" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnMove_Click" />
+                        <button id="btnMoveForward" keytip="HF" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnMove_Click" />
+                        <button id="btnMoveFront" keytip="HO" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnMove_Click" />
+                        <button id="btnMoveBackward" keytip="HB" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnMove_Click" />
+                        <button id="btnMoveBack" keytip="HK" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnMove_Click" />
                     </buttonGroup>
                     <buttonGroup id="grpRotate">
-                        <button id="btnRotateRight90" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnRotate_Click" />
-                        <button id="btnRotateLeft90" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnRotate_Click" />
-                        <button id="btnFlipVertical" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnFlip_Click" />
-                        <button id="btnFlipHorizontal" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnFlip_Click" />
+                        <button id="btnRotateRight90" keytip="HR" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnRotate_Click" />
+                        <button id="btnRotateLeft90" keytip="HL" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnRotate_Click" />
+                        <button id="btnFlipVertical" keytip="HV" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnFlip_Click" />
+                        <button id="btnFlipHorizontal" keytip="HH" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnFlip_Click" />
                     </buttonGroup>
                     <buttonGroup id="grpGroupObjects">
-                        <button id="btnGroup" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnGroup_Click" />
-                        <button id="btnUngroup" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnGroup_Click" />
-                        <button idMso="ObjectSizeAndPositionDialog" showLabel="false" imageMso="ShapeStylesGallery" />
-                        <toggleButton idMso="SelectionPane" showLabel="false" />
+                        <button id="btnGroup" keytip="HG" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnGroup_Click" />
+                        <button id="btnUngroup" keytip="HU" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnGroup_Click" />
+                        <button idMso="ObjectSizeAndPositionDialog" keytip="HD" showLabel="false" imageMso="ShapeStylesGallery" />
+                        <toggleButton idMso="SelectionPane" keytip="HP" showLabel="false" />
                     </buttonGroup>
                     <separator id="separator3" />
-                    <dynamicMenu id="mnuArrangement" size="large" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" getContent="MnuArrangement_GetContent" />
+                    <dynamicMenu id="mnuArrangement" keytip="B" size="large" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" getContent="MnuArrangement_GetContent" />
                     <dialogBoxLauncher>
-                        <button id="btnAddInSetting" getLabel="GetLabel" getScreentip="GetLabel" onAction="BtnAddInSetting_Click" />
+                        <button id="btnAddInSetting" keytip="HT" getLabel="GetLabel" getScreentip="GetLabel" onAction="BtnAddInSetting_Click" />
                     </dialogBoxLauncher>
                 </group> <!-- end of grpArrange -->
             </tab> <!-- end of TabHome -->
@@ -81,41 +81,41 @@
             <tabSet idMso="TabSetDrawingTools">
                 <tab idMso="TabDrawingToolsFormat">
                     <group id="grpTextbox" insertAfterMso="GroupWordArtStyles" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getVisible="GetGroupVisible">
-                        <toggleButton id="btnAutofitOff" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" getPressed="BtnAutofit_GetPressed" onAction="BtnAutofit_Click" />
-                        <toggleButton id="btnAutoShrinkText" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" getPressed="BtnAutofit_GetPressed" onAction="BtnAutofit_Click" />
-                        <toggleButton id="btnAutoResizeShape" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" getPressed="BtnAutofit_GetPressed" onAction="BtnAutofit_Click" />
-                        <toggleButton id="btnWrapText" size="large" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" getPressed="BtnWrapText_GetPressed" onAction="BtnWrapText_Click" />
+                        <toggleButton keytip="TF" id="btnAutofitOff" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" getPressed="BtnAutofit_GetPressed" onAction="BtnAutofit_Click" />
+                        <toggleButton keytip="TS" id="btnAutoShrinkText" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" getPressed="BtnAutofit_GetPressed" onAction="BtnAutofit_Click" />
+                        <toggleButton keytip="TR" id="btnAutoResizeShape" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" getPressed="BtnAutofit_GetPressed" onAction="BtnAutofit_Click" />
+                        <toggleButton keytip="TW" id="btnWrapText" size="large" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" getPressed="BtnWrapText_GetPressed" onAction="BtnWrapText_Click" />
                         <separator id="separator4" />
-                        <editBox id="edtMarginLeft" showImage="false" sizeString="wwwwwww" getLabel="GetLabel" getScreentip="GetLabel" getEnabled="GetEnabled" getText="EdtMargin_GetText" onChange="EdtMargin_TextChanged" />
-                        <editBox id="edtMarginRight" showImage="false" sizeString="wwwwwww" getLabel="GetLabel" getScreentip="GetLabel" getEnabled="GetEnabled" getText="EdtMargin_GetText" onChange="EdtMargin_TextChanged" />
-                        <button id="btnResetHorizontalMargin" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnResetMargin_Click" />
+                        <editBox keytip="ML" id="edtMarginLeft" showImage="false" sizeString="wwwwwww" getLabel="GetLabel" getScreentip="GetLabel" getEnabled="GetEnabled" getText="EdtMargin_GetText" onChange="EdtMargin_TextChanged" />
+                        <editBox keytip="MR" id="edtMarginRight" showImage="false" sizeString="wwwwwww" getLabel="GetLabel" getScreentip="GetLabel" getEnabled="GetEnabled" getText="EdtMargin_GetText" onChange="EdtMargin_TextChanged" />
+                        <button keytip="MH" id="btnResetHorizontalMargin" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnResetMargin_Click" />
                         <separator id="separator5" />
-                        <editBox id="edtMarginTop" showImage="false" sizeString="wwwwwww" getLabel="GetLabel" getScreentip="GetLabel" getEnabled="GetEnabled" getText="EdtMargin_GetText" onChange="EdtMargin_TextChanged" />
-                        <editBox id="edtMarginBottom" showImage="false" sizeString="wwwwwww" getLabel="GetLabel" getScreentip="GetLabel" getEnabled="GetEnabled" getText="EdtMargin_GetText" onChange="EdtMargin_TextChanged" />
-                        <button id="btnResetVerticalMargin" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnResetMargin_Click" />
+                        <editBox keytip="MT" id="edtMarginTop" showImage="false" sizeString="wwwwwww" getLabel="GetLabel" getScreentip="GetLabel" getEnabled="GetEnabled" getText="EdtMargin_GetText" onChange="EdtMargin_TextChanged" />
+                        <editBox keytip="MB" id="edtMarginBottom" showImage="false" sizeString="wwwwwww" getLabel="GetLabel" getScreentip="GetLabel" getEnabled="GetEnabled" getText="EdtMargin_GetText" onChange="EdtMargin_TextChanged" />
+                        <button keytip="MV" id="btnResetVerticalMargin" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnResetMargin_Click" />
                         <dialogBoxLauncher>
-                            <button idMso="WordArtFormatDialog" />
+                            <button keytip="TG" idMso="WordArtFormatDialog" />
                         </dialogBoxLauncher>
                     </group> <!-- end of grpTextbox -->
 
                     <group id="grpShapeSizeAndPosition" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getVisible="GetGroupVisible">
-                        <dynamicMenu id="mnuShapeArrangement" size="large" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" getContent="MnuArrangement_GetContent" />
+                        <dynamicMenu keytip="B" id="mnuShapeArrangement" size="large" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" getContent="MnuArrangement_GetContent" />
                         <separator id="separator6" />
-                        <toggleButton id="btnLockShapeAspectRatio" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" getPressed="BtnLockAspectRatio_GetPressed" onAction="BtnLockAspectRatio_Click" />
-                        <button id="btnShapeScaleAnchor" getLabel="BtnScaleAnchor_GetLabel" getScreentip="BtnScaleAnchor_GetLabel" getImage="BtnScaleAnchor_GetImage" onAction="BtnScaleAnchor_Click" />
+                        <toggleButton keytip="L" id="btnLockShapeAspectRatio" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" getPressed="BtnLockAspectRatio_GetPressed" onAction="BtnLockAspectRatio_Click" />
+                        <button keytip="PA" id="btnShapeScaleAnchor" getLabel="BtnScaleAnchor_GetLabel" getScreentip="BtnScaleAnchor_GetLabel" getImage="BtnScaleAnchor_GetImage" onAction="BtnScaleAnchor_Click" />
                         <buttonGroup id="grpCopyAndPasteShapeSize">
-                            <button id="btnCopyShapeSize" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnCopyAndPasteSize_Click" />
-                            <button id="btnPasteShapeSize" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnCopyAndPasteSize_Click" />
+                            <button keytip="SC" id="btnCopyShapeSize" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnCopyAndPasteSize_Click" />
+                            <button keytip="SP" id="btnPasteShapeSize" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnCopyAndPasteSize_Click" />
                         </buttonGroup>
                         <separator id="separator7" />
-                        <editBox id="edtShapePositionX" showImage="false" sizeString="wwwwwww" getLabel="GetLabel" getScreentip="GetLabel" getEnabled="GetEnabled" getText="EdtPosition_GetText" onChange="EdtPosition_TextChanged" />
-                        <editBox id="edtShapePositionY" showImage="false" sizeString="wwwwwww" getLabel="GetLabel" getScreentip="GetLabel" getEnabled="GetEnabled" getText="EdtPosition_GetText" onChange="EdtPosition_TextChanged" />
+                        <editBox keytip="PX" id="edtShapePositionX" showImage="false" sizeString="wwwwwww" getLabel="GetLabel" getScreentip="GetLabel" getEnabled="GetEnabled" getText="EdtPosition_GetText" onChange="EdtPosition_TextChanged" />
+                        <editBox keytip="PY" id="edtShapePositionY" showImage="false" sizeString="wwwwwww" getLabel="GetLabel" getScreentip="GetLabel" getEnabled="GetEnabled" getText="EdtPosition_GetText" onChange="EdtPosition_TextChanged" />
                         <buttonGroup id="grpCopyAndPasteShapePosition">
-                            <button id="btnCopyShapePosition" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnCopyAndPastePosition_Click" />
-                            <button id="btnPasteShapePosition" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnCopyAndPastePosition_Click" />
+                            <button keytip="PC" id="btnCopyShapePosition" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnCopyAndPastePosition_Click" />
+                            <button keytip="PP" id="btnPasteShapePosition" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnCopyAndPastePosition_Click" />
                         </buttonGroup>
                         <dialogBoxLauncher>
-                            <button idMso="ObjectSizeAndPositionDialog" />
+                            <button keytip="SN" idMso="ObjectSizeAndPositionDialog" />
                         </dialogBoxLauncher>
                     </group> <!-- end of grpShapeSizeAndPosition -->
                 </tab> <!-- end of TabDrawingToolsFormat -->
@@ -124,31 +124,31 @@
             <tabSet idMso="TabSetPictureTools">
                 <tab idMso="TabPictureToolsFormat">
                     <group id="grpReplacePicture" insertAfterMso="GroupPictureTools" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getVisible="GetGroupVisible">
-                        <button id="btnReplaceWithClipboard" size="large" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnReplacePicture_Click" />
-                        <button id="btnReplaceWithFile" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnReplacePicture_Click" />
-                        <checkBox id="chkReserveOriginalSize" getLabel="GetLabel" getScreentip="GetLabel" getPressed="ChkReserveOriginalSize_GetPressed" onAction="ChkReserveOriginalSize_Click" />
-                        <checkBox id="chkReplaceToMiddle" getLabel="GetLabel" getScreentip="GetLabel" getPressed="ChkReplaceToMiddle_GetPressed" onAction="ChkReplaceToMiddle_Click" />
+                        <button keytip="TC" id="btnReplaceWithClipboard" size="large" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnReplacePicture_Click" />
+                        <button keytip="TF" id="btnReplaceWithFile" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnReplacePicture_Click" />
+                        <checkBox keytip="TR" id="chkReserveOriginalSize" getLabel="GetLabel" getScreentip="GetLabel" getPressed="ChkReserveOriginalSize_GetPressed" onAction="ChkReserveOriginalSize_Click" />
+                        <checkBox keytip="TM" id="chkReplaceToMiddle" getLabel="GetLabel" getScreentip="GetLabel" getPressed="ChkReplaceToMiddle_GetPressed" onAction="ChkReplaceToMiddle_Click" />
                     </group> <!-- end of grpReplacePicture -->
 
                     <group id="grpPictureSizeAndPosition" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getVisible="GetGroupVisible">
-                        <dynamicMenu id="mnuPictureArrangement" size="large" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" getContent="MnuArrangement_GetContent" />
+                        <dynamicMenu keytip="B" id="mnuPictureArrangement" size="large" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" getContent="MnuArrangement_GetContent" />
                         <separator id="separator8" />
-                        <button id="btnResetPictureSize" size="large" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnResetPictureSize_Click" />
-                        <toggleButton id="btnLockPictureAspectRatio" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" getPressed="BtnLockAspectRatio_GetPressed" onAction="BtnLockAspectRatio_Click" />
-                        <button id="btnPictureScaleAnchor" getLabel="BtnScaleAnchor_GetLabel" getScreentip="BtnScaleAnchor_GetLabel" getImage="BtnScaleAnchor_GetImage" onAction="BtnScaleAnchor_Click" />
+                        <button keytip="SR" id="btnResetPictureSize" size="large" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnResetPictureSize_Click" />
+                        <toggleButton keytip="L" id="btnLockPictureAspectRatio" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" getPressed="BtnLockAspectRatio_GetPressed" onAction="BtnLockAspectRatio_Click" />
+                        <button keytip="PA" id="btnPictureScaleAnchor" getLabel="BtnScaleAnchor_GetLabel" getScreentip="BtnScaleAnchor_GetLabel" getImage="BtnScaleAnchor_GetImage" onAction="BtnScaleAnchor_Click" />
                         <buttonGroup id="grpCopyAndPastePictureSize">
-                            <button id="btnCopyPictureSize" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnCopyAndPasteSize_Click" />
-                            <button id="btnPastePictureSize" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnCopyAndPasteSize_Click" />
+                            <button keytip="SC" id="btnCopyPictureSize" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnCopyAndPasteSize_Click" />
+                            <button keytip="SP" id="btnPastePictureSize" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnCopyAndPasteSize_Click" />
                         </buttonGroup>
                         <separator id="separator9" />
-                        <editBox id="edtPicturePositionX" showImage="false" sizeString="wwwwwww" getLabel="GetLabel" getScreentip="GetLabel" getText="EdtPosition_GetText" getEnabled="GetEnabled" onChange="EdtPosition_TextChanged" />
-                        <editBox id="edtPicturePositionY" showImage="false" sizeString="wwwwwww" getLabel="GetLabel" getScreentip="GetLabel" getText="EdtPosition_GetText" getEnabled="GetEnabled" onChange="EdtPosition_TextChanged" />
+                        <editBox keytip="PX" id="edtPicturePositionX" showImage="false" sizeString="wwwwwww" getLabel="GetLabel" getScreentip="GetLabel" getText="EdtPosition_GetText" getEnabled="GetEnabled" onChange="EdtPosition_TextChanged" />
+                        <editBox keytip="PY" id="edtPicturePositionY" showImage="false" sizeString="wwwwwww" getLabel="GetLabel" getScreentip="GetLabel" getText="EdtPosition_GetText" getEnabled="GetEnabled" onChange="EdtPosition_TextChanged" />
                         <buttonGroup id="grpCopyAndPastePicturePosition">
-                            <button id="btnCopyPicturePosition" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnCopyAndPastePosition_Click" />
-                            <button id="btnPastePicturePosition" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnCopyAndPastePosition_Click" />
+                            <button keytip="PC" id="btnCopyPicturePosition" showLabel="false" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnCopyAndPastePosition_Click" />
+                            <button keytip="PP" id="btnPastePicturePosition" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnCopyAndPastePosition_Click" />
                         </buttonGroup>
                         <dialogBoxLauncher>
-                            <button idMso="ObjectSizeAndPositionDialog" />
+                            <button keytip="SN" idMso="ObjectSizeAndPositionDialog" />
                         </dialogBoxLauncher>
                     </group> <!-- end of grpPictureSizeAndPosition -->
                 </tab> <!-- end of TabPictureToolsFormat -->
