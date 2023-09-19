@@ -29,7 +29,7 @@ namespace ppt_arrange_addin {
             Thread.CurrentThread.CurrentCulture = cultureInfo;
             Thread.CurrentThread.CurrentUICulture = cultureInfo;
             Properties.Resources.Culture = cultureInfo;
-            ArrangeRibbonResources.Culture = cultureInfo;
+            Ribbon.ArrangeRibbonResources.Culture = cultureInfo;
             _uiInvalidator?.Invoke();
         }
 

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ppt_arrange_addin {
+namespace ppt_arrange_addin.Ribbon {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace ppt_arrange_addin {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ppt_arrange_addin.ArrangeRibbonResources", typeof(ArrangeRibbonResources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ppt_arrange_addin.Ribbon.ArrangeRibbonResources", typeof(ArrangeRibbonResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

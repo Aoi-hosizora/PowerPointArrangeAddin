@@ -5,9 +5,9 @@ namespace ppt_arrange_addin.Helper {
 
     public static class UnitConverter {
 
-        public static float CmToPt(float cm) => cm * 720F / 25.4F;
+        private static float CmToPt(float cm) => cm * 720F / 25.4F;
 
-        public static float PtToCm(float pt) => pt * 25.4F / 720F;
+        private static float PtToCm(float pt) => pt * 25.4F / 720F;
 
         private static readonly Regex Re = new(@"^\s*(\d*\.?\d*)\s*(?:mm|cm)?\s*$", RegexOptions.IgnoreCase);
 

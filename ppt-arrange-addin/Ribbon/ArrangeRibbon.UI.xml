@@ -6,16 +6,16 @@
         <__template name="K" getKeytip="GetKeytip" />
         <__template name="E" getEnabled="GetEnabled" />
         <__template name="I" getImage="GetImage" />
-        <__template name="SS" sizeString="wwwwwww" />
+        <__template name="Z" sizeString="wwwwwww" />
         <__template name="GV" getVisible="GetGroupVisible" />
-        <__template name="LSIV_Group" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getVisible="GetGroupVisible" />
-        <__template name="LSKI_Anchor" getLabel="BtnScaleAnchor_GetLabel" getScreentip="BtnScaleAnchor_GetLabel" getKeytip="GetKeytip" getImage="BtnScaleAnchor_GetImage" />
+        <__template name="GROUP" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getVisible="GetGroupVisible" />
+        <__template name="LSKEI_Anchor" getLabel="BtnScaleAnchor_GetLabel" getScreentip="BtnScaleAnchor_GetLabel" getKeytip="GetKeytip" getEnabled="GetEnabled" getImage="BtnScaleAnchor_GetImage" />
     </__templates>
 
     <ribbon>
         <tabs>
             <tab idMso="TabHome">
-                <group id="grpWordArt" insertAfterMso="GroupParagraph" __template="LSIV_Group">
+                <group id="grpWordArt" insertAfterMso="GroupParagraph" __template="GROUP">
                     <control idMso="TextStylesGallery" size="large" __template="K" />
                     <control idMso="TextFillColorPicker" __template="K" />
                     <control idMso="TextOutlineColorPicker" __template="K" />
@@ -25,7 +25,7 @@
                     </dialogBoxLauncher>
                 </group> <!-- end of grpWordArt -->
 
-                <group id="grpArrange" insertAfterMso="GroupEditing" __template="LSIV_Group">
+                <group id="grpArrange" insertAfterMso="GroupEditing" __template="GROUP">
                     <buttonGroup id="grpAlignLR">
                         <button id="btnAlignLeft" showLabel="false" __template="L,S,K,E,I" onAction="BtnAlign_Click" />
                         <button id="btnAlignCenter" showLabel="false" __template="L,S,K,E,I" onAction="BtnAlign_Click" />
@@ -91,25 +91,25 @@
         <contextualTabs>
             <tabSet idMso="TabSetDrawingTools">
                 <tab idMso="TabDrawingToolsFormat">
-                    <group id="grpTextbox" insertAfterMso="GroupWordArtStyles" __template="LSIV_Group">
+                    <group id="grpTextbox" insertAfterMso="GroupWordArtStyles" __template="GROUP">
                         <toggleButton id="btnAutofitOff" __template="L,S,K,E,I" getPressed="BtnAutofit_GetPressed" onAction="BtnAutofit_Click" />
                         <toggleButton id="btnAutoShrinkText" __template="L,S,K,E,I" getPressed="BtnAutofit_GetPressed" onAction="BtnAutofit_Click" />
                         <toggleButton id="btnAutoResizeShape" __template="L,S,K,E,I" getPressed="BtnAutofit_GetPressed" onAction="BtnAutofit_Click" />
                         <toggleButton id="btnWrapText" size="large" __template="L,S,K,E,I" getPressed="BtnWrapText_GetPressed" onAction="BtnWrapText_Click" />
                         <separator id="separator4" />
-                        <editBox id="edtMarginLeft" showImage="false" __template="L,S,K,E,SS" getText="EdtMargin_GetText" onChange="EdtMargin_TextChanged" />
-                        <editBox id="edtMarginRight" showImage="false" __template="L,S,K,E,SS" getText="EdtMargin_GetText" onChange="EdtMargin_TextChanged" />
+                        <editBox id="edtMarginLeft" showImage="false" __template="L,S,K,E,Z" getText="EdtMargin_GetText" onChange="EdtMargin_TextChanged" />
+                        <editBox id="edtMarginRight" showImage="false" __template="L,S,K,E,Z" getText="EdtMargin_GetText" onChange="EdtMargin_TextChanged" />
                         <button id="btnResetHorizontalMargin" __template="L,S,K,E,I" onAction="BtnResetMargin_Click" />
                         <separator id="separator5" />
-                        <editBox id="edtMarginTop" showImage="false" __template="L,S,K,E,SS" getText="EdtMargin_GetText" onChange="EdtMargin_TextChanged" />
-                        <editBox id="edtMarginBottom" showImage="false" __template="L,S,K,E,SS" getText="EdtMargin_GetText" onChange="EdtMargin_TextChanged" />
+                        <editBox id="edtMarginTop" showImage="false" __template="L,S,K,E,Z" getText="EdtMargin_GetText" onChange="EdtMargin_TextChanged" />
+                        <editBox id="edtMarginBottom" showImage="false" __template="L,S,K,E,Z" getText="EdtMargin_GetText" onChange="EdtMargin_TextChanged" />
                         <button id="btnResetVerticalMargin" __template="L,S,K,E,I" onAction="BtnResetMargin_Click" />
                         <dialogBoxLauncher>
                             <button idMso="WordArtFormatDialog" __template="K" />
                         </dialogBoxLauncher>
                     </group> <!-- end of grpTextbox -->
 
-                    <group id="grpShapeSizeAndPosition" insertAfterMso="GroupSize" __template="LSIV_Group">
+                    <group id="grpShapeSizeAndPosition" insertAfterMso="GroupSize" __template="GROUP">
                         <dynamicMenu id="mnuShapeArrangement" size="large" __template="L,S,K,E,I" getContent="MnuArrangement_GetContent" />
                         <separator id="separator6" />
                         <toggleButton id="btnLockShapeAspectRatio" __template="L,S,K,E,I" getPressed="BtnLockAspectRatio_GetPressed" onAction="BtnLockAspectRatio_Click" />
@@ -119,8 +119,8 @@
                             <button id="btnPasteShapeSize" __template="L,S,K,E,I" onAction="BtnCopyAndPasteSize_Click" />
                         </buttonGroup>
                         <separator id="separator7" />
-                        <editBox id="edtShapePositionX" showImage="false" __template="L,S,K,E,SS" getText="EdtPosition_GetText" onChange="EdtPosition_TextChanged" />
-                        <editBox id="edtShapePositionY" showImage="false" __template="L,S,K,E,SS" getText="EdtPosition_GetText" onChange="EdtPosition_TextChanged" />
+                        <editBox id="edtShapePositionX" showImage="false" __template="L,S,K,E,Z" getText="EdtPosition_GetText" onChange="EdtPosition_TextChanged" />
+                        <editBox id="edtShapePositionY" showImage="false" __template="L,S,K,E,Z" getText="EdtPosition_GetText" onChange="EdtPosition_TextChanged" />
                         <buttonGroup id="grpCopyAndPasteShapePosition">
                             <button id="btnCopyShapePosition" showLabel="false" __template="L,S,K,E,I" onAction="BtnCopyAndPastePosition_Click" />
                             <button id="btnPasteShapePosition" __template="L,S,K,E,I" onAction="BtnCopyAndPastePosition_Click" />
@@ -134,14 +134,14 @@
 
             <tabSet idMso="TabSetPictureTools">
                 <tab idMso="TabPictureToolsFormat">
-                    <group id="grpReplacePicture" insertAfterMso="GroupPictureTools" __template="LSIV_Group">
+                    <group id="grpReplacePicture" insertAfterMso="GroupPictureTools" __template="GROUP">
                         <button id="btnReplaceWithClipboard" size="large" __template="L,S,K,E,I" onAction="BtnReplacePicture_Click" />
                         <button id="btnReplaceWithFile" __template="L,S,K,E,I" onAction="BtnReplacePicture_Click" />
-                        <checkBox id="chkReserveOriginalSize" __template="L,S,K" getPressed="ChkReserveOriginalSize_GetPressed" onAction="ChkReserveOriginalSize_Click" />
-                        <checkBox id="chkReplaceToMiddle" __template="L,S,K" getPressed="ChkReplaceToMiddle_GetPressed" onAction="ChkReplaceToMiddle_Click" />
+                        <checkBox id="chkReserveOriginalSize" __template="L,S,K,E" getPressed="ChkReserveOriginalSize_GetPressed" onAction="ChkReserveOriginalSize_Click" />
+                        <checkBox id="chkReplaceToMiddle" __template="L,S,K,E" getPressed="ChkReplaceToMiddle_GetPressed" onAction="ChkReplaceToMiddle_Click" />
                     </group> <!-- end of grpReplacePicture -->
 
-                    <group id="grpPictureSizeAndPosition" insertAfterMso="GroupPictureSize" __template="LSIV_Group">
+                    <group id="grpPictureSizeAndPosition" insertAfterMso="GroupPictureSize" __template="GROUP">
                         <dynamicMenu id="mnuPictureArrangement" size="large" __template="L,S,K,E,I" getContent="MnuArrangement_GetContent" />
                         <separator id="separator8" />
                         <button id="btnResetPictureSize" size="large" __template="L,S,K,E,I" onAction="BtnResetPictureSize_Click" />
@@ -152,8 +152,8 @@
                             <button id="btnPastePictureSize" __template="L,S,K,E,I" onAction="BtnCopyAndPasteSize_Click" />
                         </buttonGroup>
                         <separator id="separator9" />
-                        <editBox id="edtPicturePositionX" showImage="false" __template="L,S,K,E,SS" getText="EdtPosition_GetText" onChange="EdtPosition_TextChanged" />
-                        <editBox id="edtPicturePositionY" showImage="false" __template="L,S,K,E,SS" getText="EdtPosition_GetText" onChange="EdtPosition_TextChanged" />
+                        <editBox id="edtPicturePositionX" showImage="false" __template="L,S,K,E,Z" getText="EdtPosition_GetText" onChange="EdtPosition_TextChanged" />
+                        <editBox id="edtPicturePositionY" showImage="false" __template="L,S,K,E,Z" getText="EdtPosition_GetText" onChange="EdtPosition_TextChanged" />
                         <buttonGroup id="grpCopyAndPastePicturePosition">
                             <button id="btnCopyPicturePosition" showLabel="false" __template="L,S,K,E,I" onAction="BtnCopyAndPastePosition_Click" />
                             <button id="btnPastePicturePosition" __template="L,S,K,E,I" onAction="BtnCopyAndPastePosition_Click" />

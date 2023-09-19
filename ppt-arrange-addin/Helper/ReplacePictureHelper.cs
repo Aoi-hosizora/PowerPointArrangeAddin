@@ -5,6 +5,7 @@ using System.Linq;
 using Forms = System.Windows.Forms;
 using Office = Microsoft.Office.Core;
 using PowerPoint = Microsoft.Office.Interop.PowerPoint;
+using ppt_arrange_addin.Ribbon;
 
 
 #nullable enable

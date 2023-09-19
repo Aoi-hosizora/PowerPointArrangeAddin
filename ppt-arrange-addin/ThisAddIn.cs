@@ -15,17 +15,15 @@ namespace ppt_arrange_addin {
             AddInLanguageChanger.ChangeLanguage(AddInSetting.Instance.Language);
 
             // callback for ribbon controls status
-            Application.WindowSelectionChange += _ => {
-                _ribbon.InvalidateRibbon();
-            };
+            Application.WindowSelectionChange += _ => _ribbon.InvalidateRibbon();
         }
 
         private void ThisAddIn_Shutdown(object sender, EventArgs e) { }
 
-        private ArrangeRibbon _ribbon;
+        private Ribbon.ArrangeRibbon _ribbon;
 
         protected override Office.IRibbonExtensibility CreateRibbonExtensibilityObject() {
-            _ribbon ??= new ArrangeRibbon();
+            _ribbon ??= new Ribbon.ArrangeRibbon();
             return _ribbon;
         }
 

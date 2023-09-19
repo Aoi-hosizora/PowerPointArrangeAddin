@@ -118,144 +118,144 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="btnAddInSetting" xml:space="preserve">
-    <value>增益集選項(&amp;T)...</value>
+    <value>加载项设置(&amp;T)...</value>
   </data>
   <data name="btnAlignBottom" xml:space="preserve">
-    <value>靠下對齊(&amp;B)</value>
+    <value>底端对齐(&amp;B)</value>
   </data>
   <data name="btnAlignCenter" xml:space="preserve">
-    <value>水平置中(&amp;C)</value>
+    <value>左右居中对齐(&amp;C)</value>
   </data>
   <data name="btnAlignLeft" xml:space="preserve">
-    <value>靠左對齊(&amp;L)</value>
+    <value>左对齐(&amp;L)</value>
   </data>
   <data name="btnAlignMiddle" xml:space="preserve">
-    <value>垂直置中(&amp;M)</value>
+    <value>上下居中对齐(&amp;M)</value>
   </data>
   <data name="btnAlignRight" xml:space="preserve">
-    <value>靠右對齊(&amp;R)</value>
+    <value>右对齐(&amp;R)</value>
   </data>
   <data name="btnAlignTop" xml:space="preserve">
-    <value>靠上對齊(&amp;T)</value>
+    <value>顶端对齐(&amp;T)</value>
   </data>
   <data name="btnAutofitOff" xml:space="preserve">
-    <value>不自動調整</value>
+    <value>不自动调整</value>
   </data>
   <data name="btnAutoShrinkText" xml:space="preserve">
-    <value>縮小溢出文字</value>
-    <comment>縮小溢出文字</comment>
+    <value>缩排溢出文字</value>
+    <comment>溢出时缩排文字</comment>
   </data>
   <data name="btnAutoResizeShape" xml:space="preserve">
-    <value>自動調整圖案</value>
-    <comment>依照文字調整圖案的大小</comment>
+    <value>自动调整形状</value>
+    <comment>根据文字调整形状大小</comment>
   </data>
   <data name="btnCopyPicturePosition" xml:space="preserve">
-    <value>複製位置</value>
+    <value>复制位置</value>
   </data>
   <data name="btnCopyPictureSize" xml:space="preserve">
-    <value>複製大小</value>
+    <value>复制大小</value>
   </data>
   <data name="btnCopyShapePosition" xml:space="preserve">
-    <value>複製位置</value>
+    <value>复制位置</value>
   </data>
   <data name="btnCopyShapeSize" xml:space="preserve">
-    <value>複製大小</value>
+    <value>复制大小</value>
   </data>
   <data name="btnDistributeHorizontal" xml:space="preserve">
-    <value>水平均分(&amp;H)</value>
+    <value>左右横向分布(&amp;H)</value>
   </data>
   <data name="btnDistributeVertical" xml:space="preserve">
-    <value>垂直均分(&amp;V)</value>
+    <value>上下纵向分布(&amp;V)</value>
   </data>
   <data name="btnExtendSameBottom" xml:space="preserve">
-    <value>延伸至底端(&amp;B)</value>
+    <value>延伸至底部(&amp;B)</value>
   </data>
   <data name="btnExtendSameLeft" xml:space="preserve">
-    <value>延伸至左端(&amp;L)</value>
+    <value>延伸至左侧(&amp;L)</value>
   </data>
   <data name="btnExtendSameRight" xml:space="preserve">
-    <value>延伸至右端(&amp;R)</value>
+    <value>延伸至右侧(&amp;R)</value>
   </data>
   <data name="btnExtendSameTop" xml:space="preserve">
-    <value>延伸至頂端(&amp;T)</value>
+    <value>延伸至顶部(&amp;T)</value>
   </data>
   <data name="btnFlipHorizontal" xml:space="preserve">
-    <value>水平翻轉(&amp;H)</value>
+    <value>左右翻转(&amp;H)</value>
   </data>
   <data name="btnFlipVertical" xml:space="preserve">
-    <value>垂直翻轉(&amp;V)</value>
+    <value>上下翻转(&amp;V)</value>
   </data>
   <data name="btnGroup" xml:space="preserve">
-    <value>群組圖案(&amp;G)</value>
+    <value>组合形状(&amp;G)</value>
   </data>
   <data name="btnLockPictureAspectRatio" xml:space="preserve">
-    <value>鎖定橫寬比</value>
+    <value>固定纵横比</value>
   </data>
   <data name="btnLockShapeAspectRatio" xml:space="preserve">
-    <value>鎖定橫寬比</value>
+    <value>固定纵横比</value>
   </data>
   <data name="btnMoveBack" xml:space="preserve">
-    <value>移到最下層(&amp;K)</value>
+    <value>移动至底层(&amp;K)</value>
   </data>
   <data name="btnMoveBackward" xml:space="preserve">
-    <value>下移一層(&amp;B)</value>
+    <value>下移一层(&amp;B)</value>
   </data>
   <data name="btnMoveForward" xml:space="preserve">
-    <value>上移一層(&amp;F)</value>
+    <value>上移一层(&amp;F)</value>
   </data>
   <data name="btnMoveFront" xml:space="preserve">
-    <value>移到最上層(&amp;R)</value>
+    <value>移动至顶层(&amp;R)</value>
   </data>
   <data name="btnPastePicturePosition" xml:space="preserve">
-    <value>貼上位置</value>
+    <value>粘贴位置</value>
   </data>
   <data name="btnPastePictureSize" xml:space="preserve">
-    <value>貼上大小</value>
+    <value>粘贴大小</value>
   </data>
   <data name="btnPasteShapePosition" xml:space="preserve">
-    <value>貼上位置</value>
+    <value>粘贴位置</value>
   </data>
   <data name="btnPasteShapeSize" xml:space="preserve">
-    <value>貼上大小</value>
+    <value>粘贴大小</value>
   </data>
   <data name="btnReplaceWithClipboard" xml:space="preserve">
-    <value>變更為剪貼簿</value>
+    <value>替换为剪贴板</value>
   </data>
   <data name="btnReplaceWithFile" xml:space="preserve">
-    <value>變更為檔案</value>
+    <value>替换为文件</value>
   </data>
   <data name="btnResetHorizontalMargin" xml:space="preserve">
-    <value>復原水平邊界</value>
+    <value>重置横向边距</value>
   </data>
   <data name="btnResetVerticalMargin" xml:space="preserve">
-    <value>復原垂直邊界</value>
+    <value>重置纵向边距</value>
   </data>
   <data name="btnResetPictureSize" xml:space="preserve">
-    <value>復原大小</value>
+    <value>重置大小</value>
   </data>
   <data name="btnRotateLeft90" xml:space="preserve">
-    <value>向左旋轉 90 度(&amp;L)</value>
+    <value>向左旋转 90 度(&amp;L)</value>
   </data>
   <data name="btnRotateRight90" xml:space="preserve">
-    <value>向左旋轉 90 度(&amp;R)</value>
+    <value>向右旋转 90 度(&amp;R)</value>
   </data>
   <data name="btnScaleAnchor_Middle" xml:space="preserve">
-    <value>從中心點變形 (&amp;F)</value><comment>將中心點視爲錨點來變形圖案</comment>
+    <value>从中心点变形 (&amp;F)</value><comment>将中心点视为锚点来变形图像</comment>
   </data>
   <data name="btnScaleAnchor_TopLeft" xml:space="preserve">
-    <value>從左上端變形 (&amp;F)</value><comment>將左上端視爲錨點來變形圖案</comment>
+    <value>从左上角变形 (&amp;F)</value><comment>将左上点视为锚点来变形图像</comment>
   </data>
   <data name="btnScaleSameHeight" xml:space="preserve">
-    <value>變形為與最開始選擇的圖案相同高度(&amp;H)</value>
+    <value>变形为与最初选择的形状相同高度(&amp;H)</value>
   </data>
   <data name="btnScaleSameSize" xml:space="preserve">
-    <value>變形為與最開始選擇的圖案相同大小(&amp;S)</value>
+    <value>变形为与最初选择的形状相同大小(&amp;S)</value>
   </data>
   <data name="btnScaleSameWidth" xml:space="preserve">
-    <value>變形為與最開始選擇的圖案相同寬度(&amp;W)</value>
+    <value>变形为与最初选择的形状相同宽度(&amp;W)</value>
   </data>
   <data name="btnSnapBottom" xml:space="preserve">
-    <value>下端向上吸附(&amp;B)</value>
+    <value>底端向上吸附(&amp;B)</value>
   </data>
   <data name="btnSnapLeft" xml:space="preserve">
     <value>左端向右吸附(&amp;L)</value>
@@ -264,28 +264,28 @@
     <value>右端向左吸附(&amp;R)</value>
   </data>
   <data name="btnSnapTop" xml:space="preserve">
-    <value>上端向下吸附(&amp;T)</value>
+    <value>顶端向下吸附(&amp;T)</value>
   </data>
   <data name="btnUngroup" xml:space="preserve">
-    <value>取消群組圖案(&amp;U)</value>
+    <value>解除组合形状(&amp;U)</value>
   </data>
   <data name="btnWrapText" xml:space="preserve">
-    <value>文字自動換行</value>
+    <value>文本自动换行</value>
   </data>
   <data name="chkReplaceToMiddle" xml:space="preserve">
-    <value>置換到中心點</value>
+    <value>替换到中心点</value>
   </data>
   <data name="chkReserveOriginalSize" xml:space="preserve">
-    <value>保持圖片的大小</value>
+    <value>保持图片的大小</value>
   </data>
   <data name="dlgNoPictureInClipboard" xml:space="preserve">
-    <value>剪貼簿内不存在圖片，所以無法置換圖片。</value>
+    <value>剪贴板里不存在图片，所以无法替换图片。</value>
   </data>
   <data name="dlgReplacePicture" xml:space="preserve">
-    <value>置換圖片</value>
+    <value>替换图片</value>
   </data>
   <data name="dlgSelectPictureToReplace" xml:space="preserve">
-    <value>選擇用於置換的圖片</value>
+    <value>选择用于替换的图片</value>
   </data>
   <data name="edtMarginBottom" xml:space="preserve">
     <value>下:</value>
@@ -318,60 +318,60 @@
     <value>大小和位置</value>
   </data>
   <data name="grpReplacePicture" xml:space="preserve">
-    <value>置換圖片</value>
+    <value>替换图片</value>
   </data>
   <data name="grpShapeSizeAndPosition" xml:space="preserve">
     <value>大小和位置</value>
   </data>
   <data name="grpTextbox" xml:space="preserve">
-    <value>文字方塊</value>
+    <value>文本框</value>
   </data>
   <data name="grpWordArt" xml:space="preserve">
-    <value>文字藝術師</value>
+    <value>艺术字</value>
   </data>
   <data name="mnuArrangement" xml:space="preserve">
-    <value>排列一覽</value>
+    <value>排列一览</value>
   </data>
   <data name="mnuArrangement_mnuAlignment" xml:space="preserve">
-    <value>對齊(&amp;A)</value>
+    <value>对齐(&amp;A)</value>
   </data>
   <data name="mnuArrangement_mnuGrouping" xml:space="preserve">
-    <value>群組(&amp;G)</value>
+    <value>组合(&amp;G)</value>
   </data>
   <data name="mnuArrangement_mnuLayerOrder" xml:space="preserve">
-    <value>重叠順序(&amp;L)</value>
+    <value>重叠顺序(&amp;L)</value>
   </data>
   <data name="mnuArrangement_mnuResizing" xml:space="preserve">
-    <value>大小變更(&amp;R)</value>
+    <value>大小变更(&amp;R)</value>
   </data>
   <data name="mnuArrangement_mnuRotation" xml:space="preserve">
-    <value>旋轉(&amp;O)</value>
+    <value>旋转(&amp;O)</value>
   </data>
   <data name="mnuArrangement_mnuSnapping" xml:space="preserve">
     <value>吸附(&amp;S)</value>
   </data>
   <data name="mnuArrangement_sepAddInSetting" xml:space="preserve">
-    <value>增益集選項</value>
+    <value>加载项设置</value>
   </data>
   <data name="mnuArrangement_sepAlignmentAndResizing" xml:space="preserve">
-    <value>圖案的位置和大小</value>
+    <value>对象的位置和大小</value>
   </data>
   <data name="mnuArrangement_sepLayerOrderAndGrouping" xml:space="preserve">
-    <value>圖案的順序和群組</value>
+    <value>对象的顺序和组合</value>
   </data>
   <data name="mnuArrangement_sepObjectsInSlide" xml:space="preserve">
-    <value>投影片上的圖案</value>
+    <value>幻灯片上的对象</value>
   </data>
   <data name="mnuPictureArrangement" xml:space="preserve">
-    <value>圖片排列</value>
+    <value>图片排列</value>
   </data>
   <data name="mnuShapeArrangement" xml:space="preserve">
-    <value>圖案排列</value>
+    <value>形状排列</value>
   </data>
   <data name="dlgImageFilesFilter" xml:space="preserve">
-    <value>所有圖片</value>
+    <value>所有图片</value>
   </data>
   <data name="dlgAllFilesFilter" xml:space="preserve">
-    <value>所有檔案</value>
+    <value>所有文件</value>
   </data>
 </root>

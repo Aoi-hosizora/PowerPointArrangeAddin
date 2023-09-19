@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace ppt_arrange_addin {
+namespace ppt_arrange_addin.Dialog {
 
     public sealed partial class SettingDialog : Form {
 

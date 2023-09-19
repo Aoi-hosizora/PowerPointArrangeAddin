@@ -139,69 +139,59 @@
   <ItemGroup>
     <Compile Include="AddInLanguage.cs" />
     <Compile Include="AddInSetting.cs" />
-    <Compile Include="ArrangeRibbon.cs" />
-    <EmbeddedResource Include="ArrangeRibbon.xml" />
-    <Compile Include="ArrangeRibbon.Internal.cs">
-      <DependentUpon>ArrangeRibbon.cs</DependentUpon>
-    </Compile>
+    <Compile Include="CompilerServices.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ArrangeRibbonResources.resx">
+    <Compile Include="Ribbon\ArrangeRibbon.cs" />
+    <Compile Include="Ribbon\ArrangeRibbon.Internal.cs" />
+    <EmbeddedResource Include="Ribbon\ArrangeRibbon.UI.xml" />
+    <EmbeddedResource Include="Ribbon\ArrangeRibbon.Menu.xml" />
+    <EmbeddedResource Include="Ribbon\ArrangeRibbonResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ArrangeRibbonResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="ArrangeRibbonResources.ja.resx">
+    <EmbeddedResource Include="Ribbon\ArrangeRibbonResources.ja.resx">
       <DependentUpon>ArrangeRibbonResources.resx</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ArrangeRibbonResources.zh-Hans.resx">
+    <EmbeddedResource Include="Ribbon\ArrangeRibbonResources.zh-Hans.resx">
       <DependentUpon>ArrangeRibbonResources.resx</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ArrangeRibbonResources.zh-Hant.resx">
+    <EmbeddedResource Include="Ribbon\ArrangeRibbonResources.zh-Hant.resx">
       <DependentUpon>ArrangeRibbonResources.resx</DependentUpon>
     </EmbeddedResource>
-    <Compile Include="ArrangeRibbonResources.Designer.cs">
+    <Compile Include="Ribbon\ArrangeRibbonResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ArrangeRibbonResources.resx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CompilerServices.cs" />
     <Compile Include="Helper\ArrangementHelper.cs" />
     <Compile Include="Helper\ReplacePictureHelper.cs" />
     <Compile Include="Helper\SelectionGetter.cs" />
     <Compile Include="Helper\SizeAndPositionHelper.cs" />
     <Compile Include="Helper\TextboxHelper.cs" />
     <Compile Include="Helper\UnitConverter.cs" />
-    <Compile Include="SettingDialog.cs">
+    <Compile Include="Helper\XmlResourceHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Dialog\SettingDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SettingDialog.Designer.cs">
+    <Compile Include="Dialog\SettingDialog.Designer.cs">
       <DependentUpon>SettingDialog.cs</DependentUpon>
     </Compile>
-    <Compile Include="TempRibbon.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="TempRibbon.Designer.cs">
-      <DependentUpon>TempRibbon.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="SettingDialog.ja.resx">
+    <EmbeddedResource Include="Dialog\SettingDialog.ja.resx">
       <DependentUpon>SettingDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SettingDialog.resx">
+    <EmbeddedResource Include="Dialog\SettingDialog.resx">
       <DependentUpon>SettingDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SettingDialog.zh-Hans.resx">
+    <EmbeddedResource Include="Dialog\SettingDialog.zh-Hans.resx">
       <DependentUpon>SettingDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SettingDialog.zh-Hant.resx">
+    <EmbeddedResource Include="Dialog\SettingDialog.zh-Hant.resx">
       <DependentUpon>SettingDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TempRibbon.resx">
-      <DependentUpon>TempRibbon.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TempRibbon.xml">
-      <DependentUpon>TempRibbon.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -376,9 +366,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\SizeAndPosition.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="ArrangeRibbon.ArrangeMenu.xml" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ShapeStylesGallery.png" />
