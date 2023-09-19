@@ -1,6 +1,6 @@
 # ppt-arrange-addin
 
-+ A Powerpoint add-in (VSTO) for assisting arrangement operations, which is inspired by [iSlide Addin](https://www.islide.cc/).
++ A PowerPoint add-in (VSTO) for assisting arrangement operations, which is inspired by [iSlide Addin](https://www.islide.cc/).
 + Development envrionment: Visual Studio 2022, .NET Framework 4.8 (C# 7.3 / C# 9.0), PowerPoint 2010.
 
 ### Build
@@ -25,3 +25,4 @@ msbuild ppt-arrange-addin.csproj /p:Configuration=Release /p:Platform=x64
 + [Custom UI XML Markup Specification](https://learn.microsoft.com/en-us/openspecs/office_standards/ms-customui/31f152d6-2a5d-4b50-a867-9dbc6d01aa43)
 + [Replace a picture on a slide in PowerPoint using VSTO](https://stackoverflow.com/questions/76696349/replace-a-picture-on-a-slide-in-powerpoint-using-vsto)
 + [Open Specifications - Customui Schema](https://learn.microsoft.com/en-us/openspecs/office_standards/ms-customui/5f3e35d6-70d6-47ee-9e11-f5499559f93a)
++ [Registry entries for VSTO Add-ins](https://learn.microsoft.com/en-us/visualstudio/vsto/registry-entries-for-vsto-add-ins)

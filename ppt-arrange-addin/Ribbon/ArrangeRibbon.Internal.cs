@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using ppt_arrange_addin.Helper;
 using Office = Microsoft.Office.Core;
@@ -8,8 +7,8 @@ using Office = Microsoft.Office.Core;
 
 namespace ppt_arrange_addin.Ribbon {
 
-    using RES = Properties.Resources;
-    using ARES = ArrangeRibbonResources;
+    using R1 = ArrangeRibbonResources;
+    using R2 = Properties.Resources;
 
     [ComVisible(true)]
     public partial class ArrangeRibbon : Office.IRibbonExtensibility {
@@ -25,7 +24,41 @@ namespace ppt_arrange_addin.Ribbon {
             return xml;
         }
 
-        #region Ribbon Element ID
+        public string GetMenuContent(Office.IRibbonControl _) {
+            var xml = XmlResourceHelper.GetResourceText(ArrangeRibbonMenuXmlName);
+            if (xml == null) {
+                return "";
+            }
+
+            xml = XmlResourceHelper.ApplyTemplateForXml(xml);
+            return xml;
+        }
+
+        public void UpdateElementUiAndInvalidateRibbon() {
+            _ribbonElementUis = GenerateNewElementUis();
+            InvalidateRibbon();
+        }
+
+        #region Ribbon UI Callbacks
+
+        public string GetLabel(Office.IRibbonControl ribbonControl) {
+            _ribbonElementUis.TryGetValue(ribbonControl.Id, out var eui);
+            return eui?.Label ?? "<Unknown>";
+        }
+
+        public System.Drawing.Image? GetImage(Office.IRibbonControl ribbonControl) {
+            _ribbonElementUis.TryGetValue(ribbonControl.Id, out var eui);
+            return eui?.Image;
+        }
+
+        public string GetKeytip(Office.IRibbonControl ribbonControl) {
+            _ribbonElementUis.TryGetValue(ribbonControl.Id, out var eui);
+            return eui?.Keytip ?? "";
+        }
+
+        #endregion
+
+        #region Ribbon Element IDs
 
         // ReSharper disable InconsistentNaming
         // grpWordArt
@@ -120,104 +153,108 @@ namespace ppt_arrange_addin.Ribbon {
 
         #endregion
 
-        #region Ribbon ElementUi
+        #region Ribbon Element UIs
 
         private class ElementUi {
-            public string Label { get; init; } = "";
+            public string? Label { get; init; }
             public System.Drawing.Image? Image { get; init; }
-            public string Keytip { get; init; } = "";
+            public string? Keytip { get; init; }
         }
 
-        private readonly Dictionary<string, Func<ElementUi>> _elementLabels = new() {
-            // grpWordArt
-            { grpWordArt, () => new ElementUi { Label = ARES.grpWordArt, Image = RES.TextEffectsMenu } },
-            // grpArrange
-            { grpArrange, () => new ElementUi { Label = ARES.grpArrange, Image = RES.ObjectArrangement } },
-            { btnAlignLeft, () => new ElementUi { Label = ARES.btnAlignLeft, Image = RES.ObjectsAlignLeft, Keytip = "DL" } },
-            { btnAlignCenter, () => new ElementUi { Label = ARES.btnAlignCenter, Image = RES.ObjectsAlignCenterHorizontal, Keytip = "DC" } },
-            { btnAlignRight, () => new ElementUi { Label = ARES.btnAlignRight, Image = RES.ObjectsAlignRight, Keytip = "DR" } },
-            { btnAlignTop, () => new ElementUi { Label = ARES.btnAlignTop, Image = RES.ObjectsAlignTop, Keytip = "DT" } },
-            { btnAlignMiddle, () => new ElementUi { Label = ARES.btnAlignMiddle, Image = RES.ObjectsAlignMiddleVertical, Keytip = "DM" } },
-            { btnAlignBottom, () => new ElementUi { Label = ARES.btnAlignBottom, Image = RES.ObjectsAlignBottom, Keytip = "DB" } },
-            { btnDistributeHorizontal, () => new ElementUi { Label = ARES.btnDistributeHorizontal, Image = RES.AlignDistributeHorizontally, Keytip = "DH" } },
-            { btnDistributeVertical, () => new ElementUi { Label = ARES.btnDistributeVertical, Image = RES.AlignDistributeVertically, Keytip = "DV" } },
-            { btnScaleSameWidth, () => new ElementUi { Label = ARES.btnScaleSameWidth, Image = RES.ScaleSameWidth, Keytip = "PW" } },
-            { btnScaleSameHeight, () => new ElementUi { Label = ARES.btnScaleSameHeight, Image = RES.ScaleSameHeight, Keytip = "PH" } },
-            { btnScaleSameSize, () => new ElementUi { Label = ARES.btnScaleSameSize, Image = RES.ScaleSameSize, Keytip = "PS" } },
-            { btnScaleAnchor, () => new ElementUi { Label = ARES.btnScaleAnchor_TopLeft, Image = RES.ScaleFromTopLeft, Keytip = "PA" } },
-            { btnExtendSameLeft, () => new ElementUi { Label = ARES.btnExtendSameLeft, Image = RES.ExtendSameLeft, Keytip = "PL" } },
-            { btnExtendSameRight, () => new ElementUi { Label = ARES.btnExtendSameRight, Image = RES.ExtendSameRight, Keytip = "PR" } },
-            { btnExtendSameTop, () => new ElementUi { Label = ARES.btnExtendSameTop, Image = RES.ExtendSameTop, Keytip = "PT" } },
-            { btnExtendSameBottom, () => new ElementUi { Label = ARES.btnExtendSameBottom, Image = RES.ExtendSameBottom, Keytip = "PB" } },
-            { btnSnapLeft, () => new ElementUi { Label = ARES.btnSnapLeft, Image = RES.SnapLeftToRight, Keytip = "PE" } },
-            { btnSnapRight, () => new ElementUi { Label = ARES.btnSnapRight, Image = RES.SnapRightToLeft, Keytip = "PI" } },
-            { btnSnapTop, () => new ElementUi { Label = ARES.btnSnapTop, Image = RES.SnapTopToBottom, Keytip = "PO" } },
-            { btnSnapBottom, () => new ElementUi { Label = ARES.btnSnapBottom, Image = RES.SnapBottomToTop, Keytip = "PM" } },
-            { btnMoveForward, () => new ElementUi { Label = ARES.btnMoveForward, Image = RES.ObjectBringForward, Keytip = "HF" } },
-            { btnMoveFront, () => new ElementUi { Label = ARES.btnMoveFront, Image = RES.ObjectBringToFront, Keytip = "HO" } },
-            { btnMoveBackward, () => new ElementUi { Label = ARES.btnMoveBackward, Image = RES.ObjectSendBackward, Keytip = "HB" } },
-            { btnMoveBack, () => new ElementUi { Label = ARES.btnMoveBack, Image = RES.ObjectSendToBack, Keytip = "HK" } },
-            { btnRotateRight90, () => new ElementUi { Label = ARES.btnRotateRight90, Image = RES.ObjectRotateRight90, Keytip = "HR" } },
-            { btnRotateLeft90, () => new ElementUi { Label = ARES.btnRotateLeft90, Image = RES.ObjectRotateLeft90, Keytip = "HL" } },
-            { btnFlipVertical, () => new ElementUi { Label = ARES.btnFlipVertical, Image = RES.ObjectFlipVertical, Keytip = "HV" } },
-            { btnFlipHorizontal, () => new ElementUi { Label = ARES.btnFlipHorizontal, Image = RES.ObjectFlipHorizontal, Keytip = "HH" } },
-            { btnGroup, () => new ElementUi { Label = ARES.btnGroup, Image = RES.ObjectsGroup, Keytip = "HG" } },
-            { btnUngroup, () => new ElementUi { Label = ARES.btnUngroup, Image = RES.ObjectsUngroup, Keytip = "HU" } },
-            { mnuArrangement, () => new ElementUi { Label = ARES.mnuArrangement, Image = RES.ObjectArrangement_32, Keytip = "B" } },
-            { btnAddInSetting, () => new ElementUi { Label = ARES.btnAddInSetting, Image = RES.AddInOptions, Keytip = "HT" } },
-            // grpTextbox
-            { grpTextbox, () => new ElementUi { Label = ARES.grpTextbox, Image = RES.TextboxSetting } },
-            { btnAutofitOff, () => new ElementUi { Label = ARES.btnAutofitOff, Image = RES.TextboxAutofitOff, Keytip = "TF" } },
-            { btnAutoShrinkText, () => new ElementUi { Label = ARES.btnAutoShrinkText, Image = RES.TextboxAutoShrinkText, Keytip = "TS" } },
-            { btnAutoResizeShape, () => new ElementUi { Label = ARES.btnAutoResizeShape, Image = RES.TextboxAutoResizeShape, Keytip = "TR" } },
-            { btnWrapText, () => new ElementUi { Label = ARES.btnWrapText, Image = RES.TextboxWrapText_32, Keytip = "TW" } },
-            { edtMarginLeft, () => new ElementUi { Label = ARES.edtMarginLeft, Keytip = "ML" } },
-            { edtMarginRight, () => new ElementUi { Label = ARES.edtMarginRight, Keytip = "MR" } },
-            { edtMarginTop, () => new ElementUi { Label = ARES.edtMarginTop, Keytip = "MT" } },
-            { edtMarginBottom, () => new ElementUi { Label = ARES.edtMarginBottom, Keytip = "MB" } },
-            { btnResetHorizontalMargin, () => new ElementUi { Label = ARES.btnResetHorizontalMargin, Image = RES.TextboxResetMargin, Keytip = "MH" } },
-            { btnResetVerticalMargin, () => new ElementUi { Label = ARES.btnResetVerticalMargin, Image = RES.TextboxResetMargin, Keytip = "MV" } },
-            // grpShapeSizeAndPosition
-            { grpShapeSizeAndPosition, () => new ElementUi { Label = ARES.grpShapeSizeAndPosition, Image = RES.SizeAndPosition } },
-            { mnuShapeArrangement, () => new ElementUi { Label = ARES.mnuShapeArrangement, Image = RES.ObjectArrangement_32, Keytip = "B" } },
-            { btnLockShapeAspectRatio, () => new ElementUi { Label = ARES.btnLockShapeAspectRatio, Image = RES.ObjectLockAspectRatio, Keytip = "L" } },
-            { btnShapeScaleAnchor, () => new ElementUi { Label = ARES.btnScaleAnchor_TopLeft, Image = RES.ScaleFromTopLeft, Keytip = "PA" } },
-            { btnCopyShapeSize, () => new ElementUi { Label = ARES.btnCopyShapeSize, Image = RES.Copy, Keytip = "SC" } },
-            { btnPasteShapeSize, () => new ElementUi { Label = ARES.btnPasteShapeSize, Image = RES.Paste, Keytip = "SP" } },
-            { edtShapePositionX, () => new ElementUi { Label = ARES.edtShapePositionX, Keytip = "PX" } },
-            { edtShapePositionY, () => new ElementUi { Label = ARES.edtShapePositionY, Keytip = "PY" } },
-            { btnCopyShapePosition, () => new ElementUi { Label = ARES.btnCopyShapePosition, Image = RES.Copy, Keytip = "PC" } },
-            { btnPasteShapePosition, () => new ElementUi { Label = ARES.btnPasteShapePosition, Image = RES.Paste, Keytip = "PP" } },
-            // grpReplacePicture
-            { grpReplacePicture, () => new ElementUi { Label = ARES.grpReplacePicture, Image = RES.PictureChangeFromClipboard } },
-            { btnReplaceWithClipboard, () => new ElementUi { Label = ARES.btnReplaceWithClipboard, Image = RES.PictureChangeFromClipboard_32, Keytip = "TC" } },
-            { btnReplaceWithFile, () => new ElementUi { Label = ARES.btnReplaceWithFile, Image = RES.PictureChange, Keytip = "TF" } },
-            { chkReserveOriginalSize, () => new ElementUi { Label = ARES.chkReserveOriginalSize, Keytip = "TR" } },
-            { chkReplaceToMiddle, () => new ElementUi { Label = ARES.chkReplaceToMiddle, Keytip = "TM" } },
-            // grpPictureSizeAndPosition
-            { grpPictureSizeAndPosition, () => new ElementUi { Label = ARES.grpPictureSizeAndPosition, Image = RES.SizeAndPosition } },
-            { mnuPictureArrangement, () => new ElementUi { Label = ARES.mnuPictureArrangement, Image = RES.ObjectArrangement_32, Keytip = "B" } },
-            { btnResetPictureSize, () => new ElementUi { Label = ARES.btnResetPictureSize, Image = RES.PictureResetSize_32, Keytip = "SR" } },
-            { btnLockPictureAspectRatio, () => new ElementUi { Label = ARES.btnLockPictureAspectRatio, Image = RES.ObjectLockAspectRatio, Keytip = "L" } },
-            { btnPictureScaleAnchor, () => new ElementUi { Label = ARES.btnScaleAnchor_TopLeft, Image = RES.ScaleFromTopLeft, Keytip = "PA" } },
-            { btnCopyPictureSize, () => new ElementUi { Label = ARES.btnCopyPictureSize, Image = RES.Copy, Keytip = "SC" } },
-            { btnPastePictureSize, () => new ElementUi { Label = ARES.btnPastePictureSize, Image = RES.Paste, Keytip = "SP" } },
-            { edtPicturePositionX, () => new ElementUi { Label = ARES.edtPicturePositionX, Keytip = "PX" } },
-            { edtPicturePositionY, () => new ElementUi { Label = ARES.edtPicturePositionY, Keytip = "PY" } },
-            { btnCopyPicturePosition, () => new ElementUi { Label = ARES.btnCopyPicturePosition, Image = RES.Copy, Keytip = "PC" } },
-            { btnPastePicturePosition, () => new ElementUi { Label = ARES.btnPastePicturePosition, Image = RES.Paste, Keytip = "PP" } },
-            // mnuArrangement
-            { mnuArrangement_sepAlignmentAndResizing, () => new ElementUi { Label = ARES.mnuArrangement_sepAlignmentAndResizing } },
-            { mnuArrangement_mnuAlignment, () => new ElementUi { Label = ARES.mnuArrangement_mnuAlignment, Image = RES.ObjectArrangement } },
-            { mnuArrangement_mnuResizing, () => new ElementUi { Label = ARES.mnuArrangement_mnuResizing, Image = RES.ScaleSameWidth } },
-            { mnuArrangement_mnuSnapping, () => new ElementUi { Label = ARES.mnuArrangement_mnuSnapping, Image = RES.SnapLeftToRight } },
-            { mnuArrangement_mnuRotation, () => new ElementUi { Label = ARES.mnuArrangement_mnuRotation, Image = RES.ObjectRotateRight90 } },
-            { mnuArrangement_sepLayerOrderAndGrouping, () => new ElementUi { Label = ARES.mnuArrangement_sepLayerOrderAndGrouping } },
-            { mnuArrangement_mnuLayerOrder, () => new ElementUi { Label = ARES.mnuArrangement_mnuLayerOrder, Image = RES.ObjectSendToBack } },
-            { mnuArrangement_mnuGrouping, () => new ElementUi { Label = ARES.mnuArrangement_mnuGrouping, Image = RES.ObjectsGroup } },
-            { mnuArrangement_sepObjectsInSlide, () => new ElementUi { Label = ARES.mnuArrangement_sepObjectsInSlide } },
-            { mnuArrangement_sepAddInSetting, () => new ElementUi { Label = ARES.mnuArrangement_sepAddInSetting } }
-        };
+        private Dictionary<string, ElementUi> _ribbonElementUis;
+
+        private Dictionary<string, ElementUi> GenerateNewElementUis() {
+            return new Dictionary<string, ElementUi> {
+                // grpWordArt
+                { grpWordArt, new ElementUi { Label = R1.grpWordArt, Image = R2.TextEffectsMenu } },
+                // grpArrange
+                { grpArrange, new ElementUi { Label = R1.grpArrange, Image = R2.ObjectArrangement } },
+                { btnAlignLeft, new ElementUi { Label = R1.btnAlignLeft, Image = R2.ObjectsAlignLeft, Keytip = "DL" } },
+                { btnAlignCenter, new ElementUi { Label = R1.btnAlignCenter, Image = R2.ObjectsAlignCenterHorizontal, Keytip = "DC" } },
+                { btnAlignRight, new ElementUi { Label = R1.btnAlignRight, Image = R2.ObjectsAlignRight, Keytip = "DR" } },
+                { btnAlignTop, new ElementUi { Label = R1.btnAlignTop, Image = R2.ObjectsAlignTop, Keytip = "DT" } },
+                { btnAlignMiddle, new ElementUi { Label = R1.btnAlignMiddle, Image = R2.ObjectsAlignMiddleVertical, Keytip = "DM" } },
+                { btnAlignBottom, new ElementUi { Label = R1.btnAlignBottom, Image = R2.ObjectsAlignBottom, Keytip = "DB" } },
+                { btnDistributeHorizontal, new ElementUi { Label = R1.btnDistributeHorizontal, Image = R2.AlignDistributeHorizontally, Keytip = "DH" } },
+                { btnDistributeVertical, new ElementUi { Label = R1.btnDistributeVertical, Image = R2.AlignDistributeVertically, Keytip = "DV" } },
+                { btnScaleSameWidth, new ElementUi { Label = R1.btnScaleSameWidth, Image = R2.ScaleSameWidth, Keytip = "PW" } },
+                { btnScaleSameHeight, new ElementUi { Label = R1.btnScaleSameHeight, Image = R2.ScaleSameHeight, Keytip = "PH" } },
+                { btnScaleSameSize, new ElementUi { Label = R1.btnScaleSameSize, Image = R2.ScaleSameSize, Keytip = "PS" } },
+                { btnScaleAnchor, new ElementUi { Label = R1.btnScaleAnchor_TopLeft, Image = R2.ScaleFromTopLeft, Keytip = "PA" } },
+                { btnExtendSameLeft, new ElementUi { Label = R1.btnExtendSameLeft, Image = R2.ExtendSameLeft, Keytip = "PL" } },
+                { btnExtendSameRight, new ElementUi { Label = R1.btnExtendSameRight, Image = R2.ExtendSameRight, Keytip = "PR" } },
+                { btnExtendSameTop, new ElementUi { Label = R1.btnExtendSameTop, Image = R2.ExtendSameTop, Keytip = "PT" } },
+                { btnExtendSameBottom, new ElementUi { Label = R1.btnExtendSameBottom, Image = R2.ExtendSameBottom, Keytip = "PB" } },
+                { btnSnapLeft, new ElementUi { Label = R1.btnSnapLeft, Image = R2.SnapLeftToRight, Keytip = "PE" } },
+                { btnSnapRight, new ElementUi { Label = R1.btnSnapRight, Image = R2.SnapRightToLeft, Keytip = "PI" } },
+                { btnSnapTop, new ElementUi { Label = R1.btnSnapTop, Image = R2.SnapTopToBottom, Keytip = "PO" } },
+                { btnSnapBottom, new ElementUi { Label = R1.btnSnapBottom, Image = R2.SnapBottomToTop, Keytip = "PM" } },
+                { btnMoveForward, new ElementUi { Label = R1.btnMoveForward, Image = R2.ObjectBringForward, Keytip = "HF" } },
+                { btnMoveFront, new ElementUi { Label = R1.btnMoveFront, Image = R2.ObjectBringToFront, Keytip = "HO" } },
+                { btnMoveBackward, new ElementUi { Label = R1.btnMoveBackward, Image = R2.ObjectSendBackward, Keytip = "HB" } },
+                { btnMoveBack, new ElementUi { Label = R1.btnMoveBack, Image = R2.ObjectSendToBack, Keytip = "HK" } },
+                { btnRotateRight90, new ElementUi { Label = R1.btnRotateRight90, Image = R2.ObjectRotateRight90, Keytip = "HR" } },
+                { btnRotateLeft90, new ElementUi { Label = R1.btnRotateLeft90, Image = R2.ObjectRotateLeft90, Keytip = "HL" } },
+                { btnFlipVertical, new ElementUi { Label = R1.btnFlipVertical, Image = R2.ObjectFlipVertical, Keytip = "HV" } },
+                { btnFlipHorizontal, new ElementUi { Label = R1.btnFlipHorizontal, Image = R2.ObjectFlipHorizontal, Keytip = "HH" } },
+                { btnGroup, new ElementUi { Label = R1.btnGroup, Image = R2.ObjectsGroup, Keytip = "HG" } },
+                { btnUngroup, new ElementUi { Label = R1.btnUngroup, Image = R2.ObjectsUngroup, Keytip = "HU" } },
+                { mnuArrangement, new ElementUi { Label = R1.mnuArrangement, Image = R2.ObjectArrangement_32, Keytip = "B" } },
+                { btnAddInSetting, new ElementUi { Label = R1.btnAddInSetting, Image = R2.AddInOptions, Keytip = "HT" } },
+                // grpTextbox
+                { grpTextbox, new ElementUi { Label = R1.grpTextbox, Image = R2.TextboxSetting } },
+                { btnAutofitOff, new ElementUi { Label = R1.btnAutofitOff, Image = R2.TextboxAutofitOff, Keytip = "TF" } },
+                { btnAutoShrinkText, new ElementUi { Label = R1.btnAutoShrinkText, Image = R2.TextboxAutoShrinkText, Keytip = "TS" } },
+                { btnAutoResizeShape, new ElementUi { Label = R1.btnAutoResizeShape, Image = R2.TextboxAutoResizeShape, Keytip = "TR" } },
+                { btnWrapText, new ElementUi { Label = R1.btnWrapText, Image = R2.TextboxWrapText_32, Keytip = "TW" } },
+                { edtMarginLeft, new ElementUi { Label = R1.edtMarginLeft, Keytip = "ML" } },
+                { edtMarginRight, new ElementUi { Label = R1.edtMarginRight, Keytip = "MR" } },
+                { edtMarginTop, new ElementUi { Label = R1.edtMarginTop, Keytip = "MT" } },
+                { edtMarginBottom, new ElementUi { Label = R1.edtMarginBottom, Keytip = "MB" } },
+                { btnResetHorizontalMargin, new ElementUi { Label = R1.btnResetHorizontalMargin, Image = R2.TextboxResetMargin, Keytip = "MH" } },
+                { btnResetVerticalMargin, new ElementUi { Label = R1.btnResetVerticalMargin, Image = R2.TextboxResetMargin, Keytip = "MV" } },
+                // grpShapeSizeAndPosition
+                { grpShapeSizeAndPosition, new ElementUi { Label = R1.grpShapeSizeAndPosition, Image = R2.SizeAndPosition } },
+                { mnuShapeArrangement, new ElementUi { Label = R1.mnuShapeArrangement, Image = R2.ObjectArrangement_32, Keytip = "B" } },
+                { btnLockShapeAspectRatio, new ElementUi { Label = R1.btnLockShapeAspectRatio, Image = R2.ObjectLockAspectRatio, Keytip = "L" } },
+                { btnShapeScaleAnchor, new ElementUi { Label = R1.btnScaleAnchor_TopLeft, Image = R2.ScaleFromTopLeft, Keytip = "PA" } },
+                { btnCopyShapeSize, new ElementUi { Label = R1.btnCopyShapeSize, Image = R2.Copy, Keytip = "SC" } },
+                { btnPasteShapeSize, new ElementUi { Label = R1.btnPasteShapeSize, Image = R2.Paste, Keytip = "SP" } },
+                { edtShapePositionX, new ElementUi { Label = R1.edtShapePositionX, Keytip = "PX" } },
+                { edtShapePositionY, new ElementUi { Label = R1.edtShapePositionY, Keytip = "PY" } },
+                { btnCopyShapePosition, new ElementUi { Label = R1.btnCopyShapePosition, Image = R2.Copy, Keytip = "PC" } },
+                { btnPasteShapePosition, new ElementUi { Label = R1.btnPasteShapePosition, Image = R2.Paste, Keytip = "PP" } },
+                // grpReplacePicture
+                { grpReplacePicture, new ElementUi { Label = R1.grpReplacePicture, Image = R2.PictureChangeFromClipboard } },
+                { btnReplaceWithClipboard, new ElementUi { Label = R1.btnReplaceWithClipboard, Image = R2.PictureChangeFromClipboard_32, Keytip = "TC" } },
+                { btnReplaceWithFile, new ElementUi { Label = R1.btnReplaceWithFile, Image = R2.PictureChange, Keytip = "TF" } },
+                { chkReserveOriginalSize, new ElementUi { Label = R1.chkReserveOriginalSize, Keytip = "TR" } },
+                { chkReplaceToMiddle, new ElementUi { Label = R1.chkReplaceToMiddle, Keytip = "TM" } },
+                // grpPictureSizeAndPosition
+                { grpPictureSizeAndPosition, new ElementUi { Label = R1.grpPictureSizeAndPosition, Image = R2.SizeAndPosition } },
+                { mnuPictureArrangement, new ElementUi { Label = R1.mnuPictureArrangement, Image = R2.ObjectArrangement_32, Keytip = "B" } },
+                { btnResetPictureSize, new ElementUi { Label = R1.btnResetPictureSize, Image = R2.PictureResetSize_32, Keytip = "SR" } },
+                { btnLockPictureAspectRatio, new ElementUi { Label = R1.btnLockPictureAspectRatio, Image = R2.ObjectLockAspectRatio, Keytip = "L" } },
+                { btnPictureScaleAnchor, new ElementUi { Label = R1.btnScaleAnchor_TopLeft, Image = R2.ScaleFromTopLeft, Keytip = "PA" } },
+                { btnCopyPictureSize, new ElementUi { Label = R1.btnCopyPictureSize, Image = R2.Copy, Keytip = "SC" } },
+                { btnPastePictureSize, new ElementUi { Label = R1.btnPastePictureSize, Image = R2.Paste, Keytip = "SP" } },
+                { edtPicturePositionX, new ElementUi { Label = R1.edtPicturePositionX, Keytip = "PX" } },
+                { edtPicturePositionY, new ElementUi { Label = R1.edtPicturePositionY, Keytip = "PY" } },
+                { btnCopyPicturePosition, new ElementUi { Label = R1.btnCopyPicturePosition, Image = R2.Copy, Keytip = "PC" } },
+                { btnPastePicturePosition, new ElementUi { Label = R1.btnPastePicturePosition, Image = R2.Paste, Keytip = "PP" } },
+                // mnuArrangement
+                { mnuArrangement_sepAlignmentAndResizing, new ElementUi { Label = R1.mnuArrangement_sepAlignmentAndResizing } },
+                { mnuArrangement_mnuAlignment, new ElementUi { Label = R1.mnuArrangement_mnuAlignment, Image = R2.ObjectArrangement } },
+                { mnuArrangement_mnuResizing, new ElementUi { Label = R1.mnuArrangement_mnuResizing, Image = R2.ScaleSameWidth } },
+                { mnuArrangement_mnuSnapping, new ElementUi { Label = R1.mnuArrangement_mnuSnapping, Image = R2.SnapLeftToRight } },
+                { mnuArrangement_mnuRotation, new ElementUi { Label = R1.mnuArrangement_mnuRotation, Image = R2.ObjectRotateRight90 } },
+                { mnuArrangement_sepLayerOrderAndGrouping, new ElementUi { Label = R1.mnuArrangement_sepLayerOrderAndGrouping } },
+                { mnuArrangement_mnuLayerOrder, new ElementUi { Label = R1.mnuArrangement_mnuLayerOrder, Image = R2.ObjectSendToBack } },
+                { mnuArrangement_mnuGrouping, new ElementUi { Label = R1.mnuArrangement_mnuGrouping, Image = R2.ObjectsGroup } },
+                { mnuArrangement_sepObjectsInSlide, new ElementUi { Label = R1.mnuArrangement_sepObjectsInSlide } },
+                { mnuArrangement_sepAddInSetting, new ElementUi { Label = R1.mnuArrangement_sepAddInSetting } }
+            };
+        }
 
         private readonly Dictionary<string, Dictionary<string, string>> _msoKeytips = new() {
             {
@@ -234,25 +271,6 @@ namespace ppt_arrange_addin.Ribbon {
             { grpShapeSizeAndPosition, new() { { "ObjectSizeAndPositionDialog", "SN" } } },
             { grpPictureSizeAndPosition, new() { { "ObjectSizeAndPositionDialog", "SN" } } }
         };
-
-        #endregion
-
-        #region Ribbon UI Callbacks
-
-        public string GetLabel(Office.IRibbonControl ribbonControl) {
-            _elementLabels.TryGetValue(ribbonControl.Id, out var eui);
-            return eui?.Invoke().Label ?? "<Unknown>";
-        }
-
-        public System.Drawing.Image? GetImage(Office.IRibbonControl ribbonControl) {
-            _elementLabels.TryGetValue(ribbonControl.Id, out var eui);
-            return eui?.Invoke().Image;
-        }
-
-        public string GetKeytip(Office.IRibbonControl ribbonControl) {
-            _elementLabels.TryGetValue(ribbonControl.Id, out var eui);
-            return eui?.Invoke().Keytip ?? "";
-        }
 
         #endregion
 

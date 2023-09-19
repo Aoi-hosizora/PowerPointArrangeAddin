@@ -22,8 +22,8 @@ namespace ppt_arrange_addin.Ribbon {
         private delegate bool AvailabilityRule(PowerPoint.ShapeRange? shapeRange, int shapesCount, bool hasTextFrame);
         private readonly Dictionary<string, AvailabilityRule> _availabilityRules;
 
-        public ArrangeRibbon() {
-            _availabilityRules = new Dictionary<string, AvailabilityRule> {
+        private Dictionary<string, AvailabilityRule> GenerateNewAvailabilityRules() {
+            return new Dictionary<string, AvailabilityRule> {
                 // grpArrange
                 { btnAlignLeft, (_, cnt, _) => cnt >= 1 },
                 { btnAlignCenter, (_, cnt, _) => cnt >= 1 },
@@ -97,22 +97,17 @@ namespace ppt_arrange_addin.Ribbon {
             };
         }
 
+        public ArrangeRibbon() {
+            _ribbonElementUis = GenerateNewElementUis();
+            _availabilityRules = GenerateNewAvailabilityRules();
+        }
+
         public bool GetEnabled(Office.IRibbonControl ribbonControl) {
             var selection = SelectionGetter.GetSelection(onlyShapeRange: false);
             var shapesCount = selection.ShapeRange?.Count ?? 0;
             var hasTextFrame = selection.TextFrame != null;
             _availabilityRules.TryGetValue(ribbonControl.Id, out var checker);
             return checker?.Invoke(selection.ShapeRange, shapesCount, hasTextFrame) ?? true;
-        }
-
-        public void InvalidateRibbon(bool onlyForDrag = false) {
-            if (!onlyForDrag) {
-                _ribbon?.Invalidate();
-            } else {
-                // currently callback that only for dragging to change the position is unavailable
-                _ribbon?.InvalidateControl(edtShapePositionX);
-                _ribbon?.InvalidateControl(edtShapePositionY);
-            }
         }
 
         public bool GetGroupVisible(Office.IRibbonControl ribbonControl) {
@@ -125,6 +120,16 @@ namespace ppt_arrange_addin.Ribbon {
                 grpPictureSizeAndPosition => AddInSetting.Instance.ShowPictureSizeAndPositionGroup,
                 _ => true
             };
+        }
+
+        public void InvalidateRibbon(bool onlyForDrag = false) {
+            if (!onlyForDrag) {
+                _ribbon?.Invalidate();
+            } else {
+                // currently callback that only for dragging to change the position is unavailable
+                _ribbon?.InvalidateControl(edtShapePositionX);
+                _ribbon?.InvalidateControl(edtShapePositionY);
+            }
         }
 
         private PowerPoint.ShapeRange? GetShapeRange(int mustMoreThanOrEqualTo = 1) {
@@ -292,10 +297,6 @@ namespace ppt_arrange_addin.Ribbon {
                 _ => null
             };
             ArrangementHelper.Group(shapeRange, cmd, () => _ribbon?.Invalidate());
-        }
-
-        public string MnuArrangement_GetContent(Office.IRibbonControl _) {
-            return XmlResourceHelper.GetResourceText(ArrangeRibbonMenuXmlName) ?? "";
         }
 
         public void BtnAddInSetting_Click(Office.IRibbonControl _) {

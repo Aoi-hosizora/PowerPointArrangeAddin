@@ -1,73 +1,82 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <menu xmlns="http://schemas.microsoft.com/office/2006/01/customui">
-    <menuSeparator id="mnuArrangement_sepAlignmentAndResizing" getTitle="GetLabel" />
-    <menu id="mnuArrangement_mnuAlignment" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage">
-        <button id="btnAlignLeft" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnAlign_Click" />
-        <button id="btnAlignCenter" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnAlign_Click" />
-        <button id="btnAlignRight" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnAlign_Click" />
+    <__templates>
+        <__template name="T" getTitle="GetLabel" />
+        <__template name="L" getLabel="GetLabel" />
+        <__template name="S" getScreentip="GetLabel" />
+        <__template name="E" getEnabled="GetEnabled" />
+        <__template name="I" getImage="GetImage" />
+        <__template name="LSI_Anchor" getLabel="BtnScaleAnchor_GetLabel" getScreentip="BtnScaleAnchor_GetLabel" getImage="BtnScaleAnchor_GetImage" />
+    </__templates>
+
+    <menuSeparator id="mnuArrangement_sepAlignmentAndResizing" __template="T" />
+    <menu id="mnuArrangement_mnuAlignment" __template="L,S,I">
+        <button id="btnAlignLeft" __template="L,S,E,I" onAction="BtnAlign_Click" />
+        <button id="btnAlignCenter" __template="L,S,E,I" onAction="BtnAlign_Click" />
+        <button id="btnAlignRight" __template="L,S,E,I" onAction="BtnAlign_Click" />
         <menuSeparator id="separator1" />
-        <button id="btnAlignTop" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnAlign_Click" />
-        <button id="btnAlignMiddle" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnAlign_Click" />
-        <button id="btnAlignBottom" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnAlign_Click" />
+        <button id="btnAlignTop" __template="L,S,E,I" onAction="BtnAlign_Click" />
+        <button id="btnAlignMiddle" __template="L,S,E,I" onAction="BtnAlign_Click" />
+        <button id="btnAlignBottom" __template="L,S,E,I" onAction="BtnAlign_Click" />
         <menuSeparator id="separator2" />
-        <button id="btnDistributeHorizontal" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnDistribute_Click" />
-        <button id="btnDistributeVertical" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnDistribute_Click" />
+        <button id="btnDistributeHorizontal" __template="L,S,E,I" onAction="BtnDistribute_Click" />
+        <button id="btnDistributeVertical" __template="L,S,E,I" onAction="BtnDistribute_Click" />
         <menuSeparator id="separator3" />
         <control idMso="ViewGridlinesPowerPoint" />
         <control idMso="GridSettings" />
     </menu>
 
-    <menu id="mnuArrangement_mnuResizing" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage">
-        <button id="btnScaleAnchor" getLabel="BtnScaleAnchor_GetLabel" getScreentip="BtnScaleAnchor_GetLabel" getImage="BtnScaleAnchor_GetImage" onAction="BtnScaleAnchor_Click" />
+    <menu id="mnuArrangement_mnuResizing" __template="L,S,I">
+        <button id="btnScaleAnchor" __template="LSI_Anchor" onAction="BtnScaleAnchor_Click" />
         <menuSeparator id="separator4" />
-        <button id="btnScaleSameWidth" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnScale_Click" />
-        <button id="btnScaleSameHeight" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnScale_Click" />
-        <button id="btnScaleSameSize" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnScale_Click" />
+        <button id="btnScaleSameWidth" __template="L,S,E,I" onAction="BtnScale_Click" />
+        <button id="btnScaleSameHeight" __template="L,S,E,I" onAction="BtnScale_Click" />
+        <button id="btnScaleSameSize" __template="L,S,E,I" onAction="BtnScale_Click" />
         <menuSeparator id="separator5" />
-        <button id="btnExtendSameLeft" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnExtend_Click" />
-        <button id="btnExtendSameRight" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnExtend_Click" />
-        <button id="btnExtendSameTop" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnExtend_Click" />
-        <button id="btnExtendSameBottom" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnExtend_Click" />
+        <button id="btnExtendSameLeft" __template="L,S,E,I" onAction="BtnExtend_Click" />
+        <button id="btnExtendSameRight" __template="L,S,E,I" onAction="BtnExtend_Click" />
+        <button id="btnExtendSameTop" __template="L,S,E,I" onAction="BtnExtend_Click" />
+        <button id="btnExtendSameBottom" __template="L,S,E,I" onAction="BtnExtend_Click" />
     </menu>
 
-    <menu id="mnuArrangement_mnuSnapping" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage">
-        <button id="btnSnapLeft" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnSnap_Click" />
-        <button id="btnSnapRight" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnSnap_Click" />
-        <button id="btnSnapTop" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnSnap_Click" />
-        <button id="btnSnapBottom" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnSnap_Click" />
+    <menu id="mnuArrangement_mnuSnapping" __template="L,S,I">
+        <button id="btnSnapLeft" __template="L,S,E,I" onAction="BtnSnap_Click" />
+        <button id="btnSnapRight" __template="L,S,E,I" onAction="BtnSnap_Click" />
+        <button id="btnSnapTop" __template="L,S,E,I" onAction="BtnSnap_Click" />
+        <button id="btnSnapBottom" __template="L,S,E,I" onAction="BtnSnap_Click" />
         <menuSeparator id="separator6" />
         <checkBox idMso="ViewGridlinesPowerPoint" />
         <button idMso="GridSettings" />
     </menu>
 
-    <menu id="mnuArrangement_mnuRotation" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage">
-        <button id="btnRotateRight90" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnRotate_Click" />
-        <button id="btnRotateLeft90" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnRotate_Click" />
+    <menu id="mnuArrangement_mnuRotation" __template="L,S,I">
+        <button id="btnRotateRight90" __template="L,S,E,I" onAction="BtnRotate_Click" />
+        <button id="btnRotateLeft90" __template="L,S,E,I" onAction="BtnRotate_Click" />
         <menuSeparator id="separator7" />
-        <button id="btnFlipVertical" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnFlip_Click" />
-        <button id="btnFlipHorizontal" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnFlip_Click" />
+        <button id="btnFlipVertical" __template="L,S,E,I" onAction="BtnFlip_Click" />
+        <button id="btnFlipHorizontal" __template="L,S,E,I" onAction="BtnFlip_Click" />
         <menuSeparator id="separator8" />
         <button idMso="ObjectRotationOptionsDialog" />
     </menu>
 
-    <menuSeparator id="mnuArrangement_sepLayerOrderAndGrouping" getTitle="GetLabel" />
-    <menu id="mnuArrangement_mnuLayerOrder" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage">
-        <button id="btnMoveFront" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnMove_Click" />
-        <button id="btnMoveBack" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnMove_Click" />
+    <menuSeparator id="mnuArrangement_sepLayerOrderAndGrouping" __template="T" />
+    <menu id="mnuArrangement_mnuLayerOrder" __template="L,S,I">
+        <button id="btnMoveFront" __template="L,S,E,I" onAction="BtnMove_Click" />
+        <button id="btnMoveBack" __template="L,S,E,I" onAction="BtnMove_Click" />
         <menuSeparator id="separator9" />
-        <button id="btnMoveForward" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnMove_Click" />
-        <button id="btnMoveBackward" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnMove_Click" />
+        <button id="btnMoveForward" __template="L,S,E,I" onAction="BtnMove_Click" />
+        <button id="btnMoveBackward" __template="L,S,E,I" onAction="BtnMove_Click" />
     </menu>
 
-    <menu id="mnuArrangement_mnuGrouping" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage">
-        <button id="btnGroup" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnGroup_Click" />
-        <button id="btnUngroup" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getEnabled="GetEnabled" onAction="BtnGroup_Click" />
+    <menu id="mnuArrangement_mnuGrouping" __template="L,S,I">
+        <button id="btnGroup" __template="L,S,E,I" onAction="BtnGroup_Click" />
+        <button id="btnUngroup" __template="L,S,E,I" onAction="BtnGroup_Click" />
     </menu>
 
-    <menuSeparator id="mnuArrangement_sepObjectsInSlide" getTitle="GetLabel" />
+    <menuSeparator id="mnuArrangement_sepObjectsInSlide" __template="T" />
     <button idMso="ObjectSizeAndPositionDialog" imageMso="ShapeStylesGallery" />
     <toggleButton idMso="SelectionPane" />
 
-    <menuSeparator id="mnuArrangement_sepAddInSetting" getTitle="GetLabel" />
-    <button id="btnAddInSetting" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" onAction="BtnAddInSetting_Click" />
+    <menuSeparator id="mnuArrangement_sepAddInSetting" __template="T" />
+    <button id="btnAddInSetting" __template="L,S,I" onAction="BtnAddInSetting_Click" />
 </menu>

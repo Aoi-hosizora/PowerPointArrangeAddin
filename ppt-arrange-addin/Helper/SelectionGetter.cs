@@ -3,6 +3,8 @@ using System.Runtime.InteropServices;
 using Office = Microsoft.Office.Core;
 using PowerPoint = Microsoft.Office.Interop.PowerPoint;
 
+#nullable enable
+
 namespace ppt_arrange_addin.Helper {
     public static class SelectionGetter {
 
@@ -10,19 +12,20 @@ namespace ppt_arrange_addin.Helper {
         private static extern IntPtr GetForegroundWindow();
 
         public struct Selection {
-            public PowerPoint.ShapeRange ShapeRange { get; init; }
-            public PowerPoint.Shape TextShape { get; init; }
-            public PowerPoint.TextRange TextRange { get; init; }
-            public PowerPoint.TextFrame TextFrame { get; init; }
-            public PowerPoint.TextFrame2 TextFrame2 { get; init; }
+            public PowerPoint.ShapeRange? ShapeRange { get; init; }
+            public PowerPoint.Shape? TextShape { get; init; }
+            public PowerPoint.TextRange? TextRange { get; init; }
+            public PowerPoint.TextFrame? TextFrame { get; init; }
+            public PowerPoint.TextFrame2? TextFrame2 { get; init; }
         }
 
         public static Selection GetSelection(bool onlyShapeRange) {
             // 1. application
-            PowerPoint.Selection selection = null;
+            PowerPoint.Selection? selection = null;
             try {
                 var application = Globals.ThisAddIn.Application;
-                if (application.Windows.Count > 0 /* GetForegroundWindow().ToInt32() == application.HWND */) {
+                if (application.Windows.Count > 0) {
+                    // GetForegroundWindow().ToInt32() == application.HWND
                     selection = application.ActiveWindow.Selection;
                 }
             } catch (Exception) { /* ignored */
@@ -32,7 +35,7 @@ namespace ppt_arrange_addin.Helper {
             }
 
             // 2. shape range
-            PowerPoint.ShapeRange shapeRange = null;
+            PowerPoint.ShapeRange? shapeRange = null;
 
             if (selection.Type == PowerPoint.PpSelectionType.ppSelectionShapes) {
                 shapeRange = selection.ShapeRange;
@@ -47,10 +50,10 @@ namespace ppt_arrange_addin.Helper {
             }
 
             // 3. text range
-            PowerPoint.TextRange textRange = null;
-            PowerPoint.TextFrame textFrame = null;
-            PowerPoint.Shape textShape = null;
-            PowerPoint.TextFrame2 textFrame2 = null;
+            PowerPoint.TextRange? textRange = null;
+            PowerPoint.TextFrame? textFrame = null;
+            PowerPoint.Shape? textShape = null;
+            PowerPoint.TextFrame2? textFrame2 = null;
             if (selection.Type == PowerPoint.PpSelectionType.ppSelectionText) {
                 textRange = selection.TextRange;
                 if (textRange.Parent is PowerPoint.TextFrame frame) {

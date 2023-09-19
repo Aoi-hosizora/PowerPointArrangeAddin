@@ -1,10 +1,12 @@
-﻿namespace ppt_arrange_addin {
+﻿#nullable enable
+
+namespace ppt_arrange_addin {
 
     public class AddInSetting {
 
         private AddInSetting() { }
 
-        private static AddInSetting _instance;
+        private static AddInSetting? _instance;
 
         public static AddInSetting Instance {
             get {

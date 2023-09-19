@@ -1,6 +1,8 @@
 using System;
 using System.Text.RegularExpressions;
 
+#nullable enable
+
 namespace ppt_arrange_addin.Helper {
 
     public static class UnitConverter {

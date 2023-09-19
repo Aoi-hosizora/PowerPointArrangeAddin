@@ -7,7 +7,6 @@ using Office = Microsoft.Office.Core;
 using PowerPoint = Microsoft.Office.Interop.PowerPoint;
 using ppt_arrange_addin.Ribbon;
 
-
 #nullable enable
 
 namespace ppt_arrange_addin.Helper {

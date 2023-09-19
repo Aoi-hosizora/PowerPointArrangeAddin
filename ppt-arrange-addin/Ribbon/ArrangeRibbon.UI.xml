@@ -9,7 +9,7 @@
         <__template name="Z" sizeString="wwwwwww" />
         <__template name="GV" getVisible="GetGroupVisible" />
         <__template name="GROUP" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getVisible="GetGroupVisible" />
-        <__template name="LSKEI_Anchor" getLabel="BtnScaleAnchor_GetLabel" getScreentip="BtnScaleAnchor_GetLabel" getKeytip="GetKeytip" getEnabled="GetEnabled" getImage="BtnScaleAnchor_GetImage" />
+        <__template name="LSKI_Anchor" getLabel="BtnScaleAnchor_GetLabel" getScreentip="BtnScaleAnchor_GetLabel" getKeytip="GetKeytip" getImage="BtnScaleAnchor_GetImage" />
     </__templates>
 
     <ribbon>
@@ -46,7 +46,7 @@
                         <button id="btnScaleSameWidth" showLabel="false" __template="L,S,K,E,I" onAction="BtnScale_Click" />
                         <button id="btnScaleSameHeight" showLabel="false" __template="L,S,K,E,I" onAction="BtnScale_Click" />
                         <button id="btnScaleSameSize" showLabel="false" __template="L,S,K,E,I" onAction="BtnScale_Click" />
-                        <button id="btnScaleAnchor" showLabel="false" __template="LSKEI_Anchor" onAction="BtnScaleAnchor_Click" />
+                        <button id="btnScaleAnchor" showLabel="false" __template="LSKI_Anchor" onAction="BtnScaleAnchor_Click" />
                     </buttonGroup>
                     <buttonGroup id="grpExtendSize">
                         <button id="btnExtendSameLeft" showLabel="false" __template="L,S,K,E,I" onAction="BtnExtend_Click" />
@@ -80,7 +80,7 @@
                         <toggleButton idMso="SelectionPane" showLabel="false" __template="K" />
                     </buttonGroup>
                     <separator id="separator3" />
-                    <dynamicMenu id="mnuArrangement" size="large" __template="L,S,K,E,I" getContent="MnuArrangement_GetContent" />
+                    <dynamicMenu id="mnuArrangement" size="large" __template="L,S,K,E,I" getContent="GetMenuContent" />
                     <dialogBoxLauncher>
                         <button id="btnAddInSetting" __template="L,S,K" onAction="BtnAddInSetting_Click" />
                     </dialogBoxLauncher>
@@ -110,10 +110,10 @@
                     </group> <!-- end of grpTextbox -->
 
                     <group id="grpShapeSizeAndPosition" insertAfterMso="GroupSize" __template="GROUP">
-                        <dynamicMenu id="mnuShapeArrangement" size="large" __template="L,S,K,E,I" getContent="MnuArrangement_GetContent" />
+                        <dynamicMenu id="mnuShapeArrangement" size="large" __template="L,S,K,E,I" getContent="GetMenuContent" />
                         <separator id="separator6" />
                         <toggleButton id="btnLockShapeAspectRatio" __template="L,S,K,E,I" getPressed="BtnLockAspectRatio_GetPressed" onAction="BtnLockAspectRatio_Click" />
-                        <button id="btnShapeScaleAnchor" __template="LSKEI_Anchor" onAction="BtnScaleAnchor_Click" />
+                        <button id="btnShapeScaleAnchor" __template="LSKI_Anchor" onAction="BtnScaleAnchor_Click" />
                         <buttonGroup id="grpCopyAndPasteShapeSize">
                             <button id="btnCopyShapeSize" showLabel="false" __template="L,S,K,E,I" onAction="BtnCopyAndPasteSize_Click" />
                             <button id="btnPasteShapeSize" __template="L,S,K,E,I" onAction="BtnCopyAndPasteSize_Click" />
@@ -142,11 +142,11 @@
                     </group> <!-- end of grpReplacePicture -->
 
                     <group id="grpPictureSizeAndPosition" insertAfterMso="GroupPictureSize" __template="GROUP">
-                        <dynamicMenu id="mnuPictureArrangement" size="large" __template="L,S,K,E,I" getContent="MnuArrangement_GetContent" />
+                        <dynamicMenu id="mnuPictureArrangement" size="large" __template="L,S,K,E,I" getContent="GetMenuContent" />
                         <separator id="separator8" />
                         <button id="btnResetPictureSize" size="large" __template="L,S,K,E,I" onAction="BtnResetPictureSize_Click" />
                         <toggleButton id="btnLockPictureAspectRatio" __template="L,S,K,E,I" getPressed="BtnLockAspectRatio_GetPressed" onAction="BtnLockAspectRatio_Click" />
-                        <button id="btnPictureScaleAnchor" __template="LSKEI_Anchor" onAction="BtnScaleAnchor_Click" />
+                        <button id="btnPictureScaleAnchor" __template="LSKI_Anchor" onAction="BtnScaleAnchor_Click" />
                         <buttonGroup id="grpCopyAndPastePictureSize">
                             <button id="btnCopyPictureSize" showLabel="false" __template="L,S,K,E,I" onAction="BtnCopyAndPasteSize_Click" />
                             <button id="btnPastePictureSize" __template="L,S,K,E,I" onAction="BtnCopyAndPasteSize_Click" />

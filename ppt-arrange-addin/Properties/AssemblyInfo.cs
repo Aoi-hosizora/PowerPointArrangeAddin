@@ -8,7 +8,7 @@ using System.Security;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Arrangement Assistant Add-in")]
-[assembly: AssemblyDescription("A Powerpoint add-in (VSTO) for assisting arrangement operations.")]
+[assembly: AssemblyDescription("A PowerPoint add-in (VSTO) for assisting arrangement operations.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("AoiHosizora")]
 [assembly: AssemblyProduct("Arrangement Assistant Add-in")]

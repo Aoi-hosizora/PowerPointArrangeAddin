@@ -1,6 +1,8 @@
 ﻿using System;
 using Office = Microsoft.Office.Core;
 
+#nullable enable
+
 namespace ppt_arrange_addin {
 
     public partial class ThisAddIn {
@@ -11,16 +13,16 @@ namespace ppt_arrange_addin {
 
             // localize add-in
             var defaultLanguageId = Application.LanguageSettings.LanguageID[Office.MsoAppLanguageID.msoLanguageIDUI];
-            AddInLanguageChanger.RegisterAddIn(defaultLanguageId: defaultLanguageId, uiInvalidator: () => _ribbon.InvalidateRibbon());
+            AddInLanguageChanger.RegisterAddIn(defaultLanguageId: defaultLanguageId, uiInvalidator: () => _ribbon?.UpdateElementUiAndInvalidateRibbon());
             AddInLanguageChanger.ChangeLanguage(AddInSetting.Instance.Language);
 
             // callback for ribbon controls status
-            Application.WindowSelectionChange += _ => _ribbon.InvalidateRibbon();
+            Application.WindowSelectionChange += _ => _ribbon?.InvalidateRibbon();
         }
 
         private void ThisAddIn_Shutdown(object sender, EventArgs e) { }
 
-        private Ribbon.ArrangeRibbon _ribbon;
+        private Ribbon.ArrangeRibbon? _ribbon;
 
         protected override Office.IRibbonExtensibility CreateRibbonExtensibilityObject() {
             _ribbon ??= new Ribbon.ArrangeRibbon();

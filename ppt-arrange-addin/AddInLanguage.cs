@@ -2,6 +2,8 @@
 using System.Globalization;
 using System.Threading;
 
+#nullable enable
+
 namespace ppt_arrange_addin {
 
     public enum AddInLanguage {
@@ -14,8 +16,8 @@ namespace ppt_arrange_addin {
 
     public static class AddInLanguageChanger {
 
-        private static int _defaultLanguageId;
-        private static Action _uiInvalidator;
+        private static int? _defaultLanguageId;
+        private static Action? _uiInvalidator;
 
         public static void RegisterAddIn(int defaultLanguageId, Action uiInvalidator) {
             _defaultLanguageId = defaultLanguageId;
@@ -24,7 +26,9 @@ namespace ppt_arrange_addin {
 
         public static void ChangeLanguage(AddInLanguage language) {
             var cultureInfo = language == AddInLanguage.Default
-                ? new CultureInfo(_defaultLanguageId)
+                ? _defaultLanguageId == null
+                    ? new CultureInfo("en")
+                    : new CultureInfo(_defaultLanguageId.Value)
                 : new CultureInfo(language.ToLanguageString());
             Thread.CurrentThread.CurrentCulture = cultureInfo;
             Thread.CurrentThread.CurrentUICulture = cultureInfo;
