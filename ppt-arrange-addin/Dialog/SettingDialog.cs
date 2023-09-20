@@ -22,6 +22,11 @@ namespace ppt_arrange_addin.Dialog {
             chkShapeSizeAndPosition.Checked = AddInSetting.Instance.ShowShapeSizeAndPositionGroup;
             chkReplacePicture.Checked = AddInSetting.Instance.ShowReplacePictureGroup;
             chkPictureSizeAndPosition.Checked = AddInSetting.Instance.ShowPictureSizeAndPositionGroup;
+            chkVideoSizeAndPosition.Checked = AddInSetting.Instance.ShowVideoSizeAndPositionGroup;
+            chkAudioSizeAndPosition.Checked = AddInSetting.Instance.ShowAudioSizeAndPositionGroup;
+            chkTableSizeAndPosition.Checked = AddInSetting.Instance.ShowTableSizeAndPositionGroup;
+            chkChartSizeAndPosition.Checked = AddInSetting.Instance.ShowChartSizeAndPositionGroup;
+            chkSmartartSizeAndPosition.Checked = AddInSetting.Instance.ShowSmartartSizeAndPositionGroup;
             cboLanguage.SelectedIndex = AddInSetting.Instance.Language.ToLanguageIndex();
         }
 
@@ -32,6 +37,11 @@ namespace ppt_arrange_addin.Dialog {
             AddInSetting.Instance.ShowShapeSizeAndPositionGroup = chkShapeSizeAndPosition.Checked;
             AddInSetting.Instance.ShowReplacePictureGroup = chkReplacePicture.Checked;
             AddInSetting.Instance.ShowPictureSizeAndPositionGroup = chkPictureSizeAndPosition.Checked;
+            AddInSetting.Instance.ShowVideoSizeAndPositionGroup = chkVideoSizeAndPosition.Checked;
+            AddInSetting.Instance.ShowAudioSizeAndPositionGroup = chkAudioSizeAndPosition.Checked;
+            AddInSetting.Instance.ShowTableSizeAndPositionGroup = chkTableSizeAndPosition.Checked;
+            AddInSetting.Instance.ShowChartSizeAndPositionGroup = chkChartSizeAndPosition.Checked;
+            AddInSetting.Instance.ShowSmartartSizeAndPositionGroup = chkSmartartSizeAndPosition.Checked;
             AddInSetting.Instance.Language = cboLanguage.SelectedIndex.ToAddInLanguage();
             AddInSetting.Instance.Save();
 

@@ -20,6 +20,7 @@ namespace ppt_arrange_addin.Ribbon {
             }
 
             xml = XmlResourceHelper.ApplyTemplateForXml(xml);
+            xml = XmlResourceHelper.ApplySubtreeTemplateForXml(xml);
             xml = XmlResourceHelper.ApplyMsoKeytipForXml(xml, _msoKeytips);
             return xml;
         }

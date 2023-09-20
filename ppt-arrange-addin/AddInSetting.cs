@@ -20,6 +20,11 @@ namespace ppt_arrange_addin {
         public bool ShowShapeSizeAndPositionGroup { get; set; }
         public bool ShowReplacePictureGroup { get; set; }
         public bool ShowPictureSizeAndPositionGroup { get; set; }
+        public bool ShowVideoSizeAndPositionGroup { get; set; }
+        public bool ShowAudioSizeAndPositionGroup { get; set; }
+        public bool ShowTableSizeAndPositionGroup { get; set; }
+        public bool ShowChartSizeAndPositionGroup { get; set; }
+        public bool ShowSmartartSizeAndPositionGroup { get; set; }
         public AddInLanguage Language { get; set; }
 
         public void Load() {
@@ -28,6 +33,11 @@ namespace ppt_arrange_addin {
             ShowShapeSizeAndPositionGroup = Properties.Settings.Default.showShapeSizeAndPositionGroup;
             ShowReplacePictureGroup = Properties.Settings.Default.showReplacePictureGroup;
             ShowPictureSizeAndPositionGroup = Properties.Settings.Default.showPictureSizeAndPositionGroup;
+            ShowVideoSizeAndPositionGroup = Properties.Settings.Default.showVideoSizeAndPositionGroup;
+            ShowAudioSizeAndPositionGroup = Properties.Settings.Default.showAudioSizeAndPositionGroup;
+            ShowTableSizeAndPositionGroup = Properties.Settings.Default.showTableSizeAndPositionGroup;
+            ShowChartSizeAndPositionGroup = Properties.Settings.Default.showChartSizeAndPositionGroup;
+            ShowSmartartSizeAndPositionGroup = Properties.Settings.Default.showSmartArtSizeAndPositionGroup;
             Language = Properties.Settings.Default.language.ToAddInLanguage();
         }
 
@@ -37,6 +47,11 @@ namespace ppt_arrange_addin {
             Properties.Settings.Default.showShapeSizeAndPositionGroup = ShowShapeSizeAndPositionGroup;
             Properties.Settings.Default.showReplacePictureGroup = ShowReplacePictureGroup;
             Properties.Settings.Default.showPictureSizeAndPositionGroup = ShowPictureSizeAndPositionGroup;
+            Properties.Settings.Default.showVideoSizeAndPositionGroup = ShowVideoSizeAndPositionGroup;
+            Properties.Settings.Default.showAudioSizeAndPositionGroup = ShowAudioSizeAndPositionGroup;
+            Properties.Settings.Default.showTableSizeAndPositionGroup = ShowTableSizeAndPositionGroup;
+            Properties.Settings.Default.showChartSizeAndPositionGroup = ShowChartSizeAndPositionGroup;
+            Properties.Settings.Default.showSmartArtSizeAndPositionGroup = ShowSmartartSizeAndPositionGroup;
             Properties.Settings.Default.language = Language.ToLanguageString();
             Properties.Settings.Default.Save();
         }

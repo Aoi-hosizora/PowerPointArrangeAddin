@@ -132,16 +132,16 @@
     <value>顯示「常用」索引標簽的｢排列｣群組(&amp;A)</value>
   </data>
   <data name="chkShapeTextbox.Text" xml:space="preserve">
-    <value>顯示「繪圖格式」索引標簽的｢文字方塊｣群組(&amp;T)</value>
+    <value>顯示「繪圖工具 - 格式」索引標簽的｢文字方塊｣群組(&amp;T)</value>
   </data>
   <data name="chkShapeSizeAndPosition.Text" xml:space="preserve">
-    <value>顯示「繪圖格式」索引標簽的｢大小和位置｣群組(&amp;S)</value>
+    <value>顯示「繪圖工具 - 格式」索引標簽的｢大小和位置｣群組(&amp;S)</value>
   </data>
   <data name="chkReplacePicture.Text" xml:space="preserve">
-    <value>顯示「圖片格式」索引標簽的｢置換圖片｣群組(&amp;R)</value>
+    <value>顯示「圖片工具 - 格式」索引標簽的｢置換圖片｣群組(&amp;R)</value>
   </data>
   <data name="chkPictureSizeAndPosition.Text" xml:space="preserve">
-    <value>顯示「圖片格式」索引標簽的｢大小和位置｣群組(&amp;P)</value>
+    <value>顯示「圖片工具 - 格式」索引標簽的｢大小和位置｣群組(&amp;P)</value>
   </data>
   <data name="grpGroupVisibility.Text" xml:space="preserve">
     <value>群組顯示選項</value>
@@ -184,5 +184,20 @@
   </data>
   <data name="_version" xml:space="preserve">
     <value>版本</value>
+  </data>
+  <data name="chkAudioSizeAndPosition.Text" xml:space="preserve">
+    <value>顯示「音訊工具 - 格式」索引標簽的｢大小和位置｣群組(&amp;U)</value>
+  </data>
+  <data name="chkChartSizeAndPosition.Text" xml:space="preserve">
+    <value>顯示「圖表工具 - 格式」索引標簽的｢大小和位置｣群組(&amp;H)</value>
+  </data>
+  <data name="chkSmartartSizeAndPosition.Text" xml:space="preserve">
+    <value>顯示「SmartArt工具 - 格式」索引標簽的｢大小和位置｣群組(&amp;M)</value>
+  </data>
+  <data name="chkTableSizeAndPosition.Text" xml:space="preserve">
+    <value>顯示「表格工具 - 版面」索引標簽的｢大小和位置｣群組(&amp;Y)</value>
+  </data>
+  <data name="chkVideoSizeAndPosition.Text" xml:space="preserve">
+    <value>顯示「視訊工具 - 格式」索引標簽的｢大小和位置｣群組(&amp;V)</value>
   </data>
 </root>

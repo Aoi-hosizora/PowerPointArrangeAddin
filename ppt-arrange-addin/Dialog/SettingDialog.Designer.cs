@@ -42,6 +42,11 @@ namespace ppt_arrange_addin.Dialog {
             this.cboLanguage = new System.Windows.Forms.ComboBox();
             this.tbxDescription = new System.Windows.Forms.TextBox();
             this.tlpButton = new System.Windows.Forms.TableLayoutPanel();
+            this.chkVideoSizeAndPosition = new System.Windows.Forms.CheckBox();
+            this.chkAudioSizeAndPosition = new System.Windows.Forms.CheckBox();
+            this.chkTableSizeAndPosition = new System.Windows.Forms.CheckBox();
+            this.chkChartSizeAndPosition = new System.Windows.Forms.CheckBox();
+            this.chkSmartartSizeAndPosition = new System.Windows.Forms.CheckBox();
             this.tlpMain.SuspendLayout();
             this.grpGroupVisibility.SuspendLayout();
             this.tlpGroupVisibility.SuspendLayout();
@@ -123,6 +128,11 @@ namespace ppt_arrange_addin.Dialog {
             this.tlpGroupVisibility.Controls.Add(this.chkShapeTextbox, 0, 2);
             this.tlpGroupVisibility.Controls.Add(this.chkArrangement, 0, 1);
             this.tlpGroupVisibility.Controls.Add(this.chkWordArt, 0, 0);
+            this.tlpGroupVisibility.Controls.Add(this.chkVideoSizeAndPosition, 0, 6);
+            this.tlpGroupVisibility.Controls.Add(this.chkAudioSizeAndPosition, 0, 7);
+            this.tlpGroupVisibility.Controls.Add(this.chkTableSizeAndPosition, 0, 8);
+            this.tlpGroupVisibility.Controls.Add(this.chkChartSizeAndPosition, 0, 9);
+            this.tlpGroupVisibility.Controls.Add(this.chkSmartartSizeAndPosition, 0, 10);
             this.tlpGroupVisibility.Name = "tlpGroupVisibility";
             // 
             // chkArrangement
@@ -179,6 +189,36 @@ namespace ppt_arrange_addin.Dialog {
             this.tlpButton.Controls.Add(this.btnOK, 0, 0);
             this.tlpButton.Name = "tlpButton";
             // 
+            // chkVideoSizeAndPosition
+            // 
+            resources.ApplyResources(this.chkVideoSizeAndPosition, "chkVideoSizeAndPosition");
+            this.chkVideoSizeAndPosition.Name = "chkVideoSizeAndPosition";
+            this.chkVideoSizeAndPosition.UseVisualStyleBackColor = true;
+            // 
+            // chkAudioSizeAndPosition
+            // 
+            resources.ApplyResources(this.chkAudioSizeAndPosition, "chkAudioSizeAndPosition");
+            this.chkAudioSizeAndPosition.Name = "chkAudioSizeAndPosition";
+            this.chkAudioSizeAndPosition.UseVisualStyleBackColor = true;
+            // 
+            // chkTableSizeAndPosition
+            // 
+            resources.ApplyResources(this.chkTableSizeAndPosition, "chkTableSizeAndPosition");
+            this.chkTableSizeAndPosition.Name = "chkTableSizeAndPosition";
+            this.chkTableSizeAndPosition.UseVisualStyleBackColor = true;
+            // 
+            // chkChartSizeAndPosition
+            // 
+            resources.ApplyResources(this.chkChartSizeAndPosition, "chkChartSizeAndPosition");
+            this.chkChartSizeAndPosition.Name = "chkChartSizeAndPosition";
+            this.chkChartSizeAndPosition.UseVisualStyleBackColor = true;
+            // 
+            // chkSmartartSizeAndPosition
+            // 
+            resources.ApplyResources(this.chkSmartartSizeAndPosition, "chkSmartartSizeAndPosition");
+            this.chkSmartartSizeAndPosition.Name = "chkSmartartSizeAndPosition";
+            this.chkSmartartSizeAndPosition.UseVisualStyleBackColor = true;
+            // 
             // SettingDialog
             // 
             this.AcceptButton = this.btnOK;
@@ -228,5 +268,10 @@ namespace ppt_arrange_addin.Dialog {
         private System.Windows.Forms.TextBox tbxDescription;
         private System.Windows.Forms.TableLayoutPanel tlpButton;
         private System.Windows.Forms.CheckBox chkArrangement;
+        private System.Windows.Forms.CheckBox chkVideoSizeAndPosition;
+        private System.Windows.Forms.CheckBox chkAudioSizeAndPosition;
+        private System.Windows.Forms.CheckBox chkTableSizeAndPosition;
+        private System.Windows.Forms.CheckBox chkChartSizeAndPosition;
+        private System.Windows.Forms.CheckBox chkSmartartSizeAndPosition;
     }
 }

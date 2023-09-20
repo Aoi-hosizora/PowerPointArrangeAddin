@@ -232,7 +232,7 @@
     <value>2</value>
   </data>
   <data name="chkShapeTextbox.Text" xml:space="preserve">
-    <value>Show "&amp;Textbox" group "Shape format" tab</value>
+    <value>Show "&amp;Textbox" group from "Shape tool - Format" tab</value>
   </data>
   <data name="&gt;&gt;chkShapeTextbox.Name" xml:space="preserve">
     <value>chkShapeTextbox</value>
@@ -265,7 +265,7 @@
     <value>3</value>
   </data>
   <data name="chkShapeSizeAndPosition.Text" xml:space="preserve">
-    <value>Show "&amp;Size and position" group from "Shape format" tab</value>
+    <value>Show "&amp;Size and position" group from "Shape tool - Format" tab</value>
   </data>
   <data name="&gt;&gt;chkShapeSizeAndPosition.Name" xml:space="preserve">
     <value>chkShapeSizeAndPosition</value>
@@ -298,7 +298,7 @@
     <value>4</value>
   </data>
   <data name="chkReplacePicture.Text" xml:space="preserve">
-    <value>Show "&amp;Replace picture" group from "Picture format" tab</value>
+    <value>Show "&amp;Replace picture" group from "Picture tool - Format" tab</value>
   </data>
   <data name="&gt;&gt;chkReplacePicture.Name" xml:space="preserve">
     <value>chkReplacePicture</value>
@@ -331,7 +331,7 @@
     <value>5</value>
   </data>
   <data name="chkPictureSizeAndPosition.Text" xml:space="preserve">
-    <value>Show "Size and &amp;position" group from "Picture format" tab</value>
+    <value>Show "Size and &amp;position" group from "Picture tool - Format" tab</value>
   </data>
   <data name="&gt;&gt;chkPictureSizeAndPosition.Name" xml:space="preserve">
     <value>chkPictureSizeAndPosition</value>
@@ -405,6 +405,171 @@
   <data name="&gt;&gt;chkArrangement.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
+  <data name="chkVideoSizeAndPosition.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkVideoSizeAndPosition.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>System</value>
+  </data>
+  <data name="chkVideoSizeAndPosition.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 141</value>
+  </data>
+  <data name="chkVideoSizeAndPosition.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 3</value>
+  </data>
+  <data name="chkVideoSizeAndPosition.Size" type="System.Drawing.Size, System.Drawing">
+    <value>321, 17</value>
+  </data>
+  <data name="chkVideoSizeAndPosition.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="chkVideoSizeAndPosition.Text" xml:space="preserve">
+    <value>Show "Size and position" group from "&amp;Video tool - Format" tab</value>
+  </data>
+  <data name="&gt;&gt;chkVideoSizeAndPosition.Name" xml:space="preserve">
+    <value>chkVideoSizeAndPosition</value>
+  </data>
+  <data name="&gt;&gt;chkVideoSizeAndPosition.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkVideoSizeAndPosition.Parent" xml:space="preserve">
+    <value>tlpGroupVisibility</value>
+  </data>
+  <data name="&gt;&gt;chkVideoSizeAndPosition.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="chkAudioSizeAndPosition.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkAudioSizeAndPosition.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>System</value>
+  </data>
+  <data name="chkAudioSizeAndPosition.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 164</value>
+  </data>
+  <data name="chkAudioSizeAndPosition.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 3</value>
+  </data>
+  <data name="chkAudioSizeAndPosition.Size" type="System.Drawing.Size, System.Drawing">
+    <value>321, 17</value>
+  </data>
+  <data name="chkAudioSizeAndPosition.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="chkAudioSizeAndPosition.Text" xml:space="preserve">
+    <value>Show "Size and position" group from "A&amp;udio tool - Format" tab</value>
+  </data>
+  <data name="&gt;&gt;chkAudioSizeAndPosition.Name" xml:space="preserve">
+    <value>chkAudioSizeAndPosition</value>
+  </data>
+  <data name="&gt;&gt;chkAudioSizeAndPosition.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkAudioSizeAndPosition.Parent" xml:space="preserve">
+    <value>tlpGroupVisibility</value>
+  </data>
+  <data name="&gt;&gt;chkAudioSizeAndPosition.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="chkTableSizeAndPosition.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkTableSizeAndPosition.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>System</value>
+  </data>
+  <data name="chkTableSizeAndPosition.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 187</value>
+  </data>
+  <data name="chkTableSizeAndPosition.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 3</value>
+  </data>
+  <data name="chkTableSizeAndPosition.Size" type="System.Drawing.Size, System.Drawing">
+    <value>320, 17</value>
+  </data>
+  <data name="chkTableSizeAndPosition.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="chkTableSizeAndPosition.Text" xml:space="preserve">
+    <value>Show "Size and position" group from "Table tool - La&amp;yout" tab</value>
+  </data>
+  <data name="&gt;&gt;chkTableSizeAndPosition.Name" xml:space="preserve">
+    <value>chkTableSizeAndPosition</value>
+  </data>
+  <data name="&gt;&gt;chkTableSizeAndPosition.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkTableSizeAndPosition.Parent" xml:space="preserve">
+    <value>tlpGroupVisibility</value>
+  </data>
+  <data name="&gt;&gt;chkTableSizeAndPosition.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="chkChartSizeAndPosition.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkChartSizeAndPosition.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>System</value>
+  </data>
+  <data name="chkChartSizeAndPosition.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 210</value>
+  </data>
+  <data name="chkChartSizeAndPosition.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 3</value>
+  </data>
+  <data name="chkChartSizeAndPosition.Size" type="System.Drawing.Size, System.Drawing">
+    <value>320, 17</value>
+  </data>
+  <data name="chkChartSizeAndPosition.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="chkChartSizeAndPosition.Text" xml:space="preserve">
+    <value>Show "Size and position" group from "C&amp;hart tool - Format" tab</value>
+  </data>
+  <data name="&gt;&gt;chkChartSizeAndPosition.Name" xml:space="preserve">
+    <value>chkChartSizeAndPosition</value>
+  </data>
+  <data name="&gt;&gt;chkChartSizeAndPosition.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkChartSizeAndPosition.Parent" xml:space="preserve">
+    <value>tlpGroupVisibility</value>
+  </data>
+  <data name="&gt;&gt;chkChartSizeAndPosition.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="chkSmartartSizeAndPosition.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkSmartartSizeAndPosition.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>System</value>
+  </data>
+  <data name="chkSmartartSizeAndPosition.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 233</value>
+  </data>
+  <data name="chkSmartartSizeAndPosition.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 3</value>
+  </data>
+  <data name="chkSmartartSizeAndPosition.Size" type="System.Drawing.Size, System.Drawing">
+    <value>338, 17</value>
+  </data>
+  <data name="chkSmartartSizeAndPosition.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="chkSmartartSizeAndPosition.Text" xml:space="preserve">
+    <value>Show "Size and position" group from "S&amp;martArt tool - Format" tab</value>
+  </data>
+  <data name="&gt;&gt;chkSmartartSizeAndPosition.Name" xml:space="preserve">
+    <value>chkSmartartSizeAndPosition</value>
+  </data>
+  <data name="&gt;&gt;chkSmartartSizeAndPosition.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkSmartartSizeAndPosition.Parent" xml:space="preserve">
+    <value>tlpGroupVisibility</value>
+  </data>
+  <data name="&gt;&gt;chkSmartartSizeAndPosition.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
   <data name="tlpGroupVisibility.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -412,10 +577,10 @@
     <value>10, 14</value>
   </data>
   <data name="tlpGroupVisibility.RowCount" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>11</value>
   </data>
   <data name="tlpGroupVisibility.Size" type="System.Drawing.Size, System.Drawing">
-    <value>328, 138</value>
+    <value>338, 253</value>
   </data>
   <data name="tlpGroupVisibility.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -433,7 +598,7 @@
     <value>0</value>
   </data>
   <data name="tlpGroupVisibility.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="chkPictureSizeAndPosition" Row="5" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="chkReplacePicture" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="chkShapeSizeAndPosition" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="chkShapeTextbox" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="chkArrangement" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="chkWordArt" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="chkPictureSizeAndPosition" Row="5" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="chkReplacePicture" Row="4" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="chkShapeSizeAndPosition" Row="3" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="chkShapeTextbox" Row="2" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="chkArrangement" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="chkWordArt" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="chkVideoSizeAndPosition" Row="6" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="chkAudioSizeAndPosition" Row="7" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="chkTableSizeAndPosition" Row="8" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="chkChartSizeAndPosition" Row="9" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="chkSmartartSizeAndPosition" Row="10" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="grpGroupVisibility.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -448,7 +613,7 @@
     <value>10, 2, 10, 5</value>
   </data>
   <data name="grpGroupVisibility.Size" type="System.Drawing.Size, System.Drawing">
-    <value>348, 157</value>
+    <value>358, 272</value>
   </data>
   <data name="grpGroupVisibility.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -547,7 +712,7 @@
     <value>0, 4, 0, 4</value>
   </data>
   <data name="cboLanguage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>269, 20</value>
+    <value>279, 20</value>
   </data>
   <data name="cboLanguage.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -574,7 +739,7 @@
     <value>1</value>
   </data>
   <data name="tlpOtherSetting.Size" type="System.Drawing.Size, System.Drawing">
-    <value>328, 28</value>
+    <value>338, 28</value>
   </data>
   <data name="tlpOtherSetting.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -598,7 +763,7 @@
     <value>Fill</value>
   </data>
   <data name="grpOtherSetting.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 173</value>
+    <value>8, 288</value>
   </data>
   <data name="grpOtherSetting.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>8, 8, 8, 0</value>
@@ -607,7 +772,7 @@
     <value>10, 2, 10, 5</value>
   </data>
   <data name="grpOtherSetting.Size" type="System.Drawing.Size, System.Drawing">
-    <value>348, 47</value>
+    <value>358, 47</value>
   </data>
   <data name="grpOtherSetting.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -631,7 +796,7 @@
     <value>Fill</value>
   </data>
   <data name="tbxDescription.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 228</value>
+    <value>8, 343</value>
   </data>
   <data name="tbxDescription.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>8, 8, 8, 0</value>
@@ -643,7 +808,7 @@
     <value>Both</value>
   </data>
   <data name="tbxDescription.Size" type="System.Drawing.Size, System.Drawing">
-    <value>348, 120</value>
+    <value>358, 120</value>
   </data>
   <data name="tbxDescription.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -676,7 +841,7 @@
     <value>Right</value>
   </data>
   <data name="tlpButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>195, 351</value>
+    <value>205, 466</value>
   </data>
   <data name="tlpButton.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>5, 5, 5, 5</value>
@@ -712,7 +877,7 @@
     <value>4</value>
   </data>
   <data name="tlpMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>364, 386</value>
+    <value>374, 501</value>
   </data>
   <data name="tlpMain.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -745,7 +910,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>376, 418</value>
+    <value>395, 530</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
