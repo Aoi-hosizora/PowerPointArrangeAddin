@@ -144,7 +144,7 @@
                     <group id="grpPictureSizeAndPosition" insertAfterMso="GroupPictureSize" __template="GROUP">
                         <dynamicMenu id="mnuPictureArrangement" size="large" __template="L,S,K,E,I" getContent="GetMenuContent" />
                         <separator id="separator8" />
-                        <button id="btnResetPictureSize" size="large" __template="L,S,K,E,I" onAction="BtnResetPictureSize_Click" />
+                        <button id="btnResetPictureSize" size="large" __template="L,S,K,E,I" onAction="BtnResetMediaSize_Click" />
                         <toggleButton id="btnLockPictureAspectRatio" __template="L,S,K,E,I" getPressed="BtnLockAspectRatio_GetPressed" onAction="BtnLockAspectRatio_Click" />
                         <button id="btnPictureScaleAnchor" __template="LSKI_Anchor" onAction="BtnScaleAnchor_Click" />
                         <buttonGroup id="grpCopyAndPastePictureSize">

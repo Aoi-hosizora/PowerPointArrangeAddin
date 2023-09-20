@@ -240,10 +240,10 @@
     <value>向左旋轉 90 度(&amp;R)</value>
   </data>
   <data name="btnScaleAnchor_Middle" xml:space="preserve">
-    <value>從中心點變形 (&amp;F)</value><comment>將中心點視爲錨點來變形圖案</comment>
+    <value>從中心點變形(&amp;F)</value><comment>將中心點視爲錨點來變形圖案</comment>
   </data>
   <data name="btnScaleAnchor_TopLeft" xml:space="preserve">
-    <value>從左上端變形 (&amp;F)</value><comment>將左上端視爲錨點來變形圖案</comment>
+    <value>從左上端變形(&amp;F)</value><comment>將左上端視爲錨點來變形圖案</comment>
   </data>
   <data name="btnScaleSameHeight" xml:space="preserve">
     <value>變形為與最開始選擇的圖案相同高度(&amp;H)</value>

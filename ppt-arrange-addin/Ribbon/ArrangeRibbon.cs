@@ -177,28 +177,37 @@ namespace ppt_arrange_addin.Ribbon {
         }
 
         // This flag is used by scale and size related callbacks, that is BtnScale_Click,
-        // BtnCopyAndPasteSize_Click and BtnResetPictureSize_Click.
+        // BtnCopyAndPasteSize_Click and BtnResetMediaSize_Click.
         private Office.MsoScaleFrom _scaleFromFlag = Office.MsoScaleFrom.msoScaleFromTopLeft;
 
         public void BtnScaleAnchor_Click(Office.IRibbonControl _) {
-            _scaleFromFlag = _scaleFromFlag == Office.MsoScaleFrom.msoScaleFromMiddle
-                ? Office.MsoScaleFrom.msoScaleFromTopLeft
-                : Office.MsoScaleFrom.msoScaleFromMiddle;
+            _scaleFromFlag = _scaleFromFlag switch {
+                Office.MsoScaleFrom.msoScaleFromTopLeft => Office.MsoScaleFrom.msoScaleFromMiddle,
+                Office.MsoScaleFrom.msoScaleFromMiddle => Office.MsoScaleFrom.msoScaleFromBottomRight,
+                Office.MsoScaleFrom.msoScaleFromBottomRight => Office.MsoScaleFrom.msoScaleFromTopLeft,
+                _ => Office.MsoScaleFrom.msoScaleFromTopLeft
+            };
             _ribbon?.InvalidateControl(btnScaleAnchor);
             _ribbon?.InvalidateControl(btnShapeScaleAnchor);
             _ribbon?.InvalidateControl(btnPictureScaleAnchor);
         }
 
         public string BtnScaleAnchor_GetLabel(Office.IRibbonControl _) {
-            return _scaleFromFlag == Office.MsoScaleFrom.msoScaleFromMiddle
-                ? ArrangeRibbonResources.btnScaleAnchor_Middle
-                : ArrangeRibbonResources.btnScaleAnchor_TopLeft;
+            return _scaleFromFlag switch {
+                Office.MsoScaleFrom.msoScaleFromTopLeft => ArrangeRibbonResources.btnScaleAnchor_TopLeft,
+                Office.MsoScaleFrom.msoScaleFromMiddle => ArrangeRibbonResources.btnScaleAnchor_Middle,
+                Office.MsoScaleFrom.msoScaleFromBottomRight => ArrangeRibbonResources.btnScaleAnchor_BottomRight,
+                _ => ArrangeRibbonResources.btnScaleAnchor_TopLeft
+            };
         }
 
         public System.Drawing.Image BtnScaleAnchor_GetImage(Office.IRibbonControl _) {
-            return _scaleFromFlag == Office.MsoScaleFrom.msoScaleFromMiddle
-                ? Properties.Resources.ScaleFromMiddle
-                : Properties.Resources.ScaleFromTopLeft;
+            return _scaleFromFlag switch {
+                Office.MsoScaleFrom.msoScaleFromTopLeft => Properties.Resources.ScaleFromTopLeft,
+                Office.MsoScaleFrom.msoScaleFromMiddle => Properties.Resources.ScaleFromMiddle,
+                Office.MsoScaleFrom.msoScaleFromBottomRight => Properties.Resources.ScaleFromBottomRight,
+                _ => Properties.Resources.ScaleFromTopLeft
+            };
         }
 
         public void BtnScale_Click(Office.IRibbonControl ribbonControl) {

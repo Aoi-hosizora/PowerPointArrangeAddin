@@ -202,6 +202,9 @@
   <data name="ScaleFromMiddle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ScaleFromMiddle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ScaleFromBottomRight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ScaleFromBottomRight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="TextboxWrapText_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\TextboxWrapText_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

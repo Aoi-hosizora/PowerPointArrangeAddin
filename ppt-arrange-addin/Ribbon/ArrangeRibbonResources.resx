@@ -237,6 +237,9 @@
   <data name="btnRotateRight90" xml:space="preserve">
     <value>Rotate &amp;right with 90 degrees</value>
   </data>
+  <data name="btnScaleAnchor_BottomRight" xml:space="preserve">
+    <value>Scale objects &amp;from bottom right</value>
+  </data>
   <data name="btnScaleAnchor_Middle" xml:space="preserve">
     <value>Scale objects &amp;from middle</value>
   </data>
@@ -328,7 +331,7 @@
     <value>Word art</value>
   </data>
   <data name="mnuArrangement" xml:space="preserve">
-    <value>Arrangement</value>
+    <value>Arrange</value>
   </data>
   <data name="mnuArrangement_mnuAlignment" xml:space="preserve">
     <value>&amp;Alignment</value>
@@ -361,10 +364,10 @@
     <value>Objects in the slide</value>
   </data>
   <data name="mnuPictureArrangement" xml:space="preserve">
-    <value>Arrangement</value>
+    <value>Arrange</value>
   </data>
   <data name="mnuShapeArrangement" xml:space="preserve">
-    <value>Arrangement</value>
+    <value>Arrange</value>
   </data>
   <data name="dlgImageFilesFilter" xml:space="preserve">
     <value>Image files</value>

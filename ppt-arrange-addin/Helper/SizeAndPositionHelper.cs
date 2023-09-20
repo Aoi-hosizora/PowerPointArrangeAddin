@@ -9,6 +9,41 @@ namespace ppt_arrange_addin.Helper {
 
     public static class SizeAndPositionHelper {
 
+        public static void ScaleSizeTo(this PowerPoint.Shape shape, float? width, float? height, Office.MsoScaleFrom? scaleFromFlag) {
+            var oldLockSate = shape.LockAspectRatio;
+            shape.LockAspectRatio = Office.MsoTriState.msoFalse;
+            scaleFromFlag ??= Office.MsoScaleFrom.msoScaleFromTopLeft;
+
+            var (oldLeft, oldTop) = (shape.Left, shape.Top);
+            var (oldWidth, oldHeight) = (shape.Width, shape.Height);
+            if (width != null) shape.Width = width.Value;
+            if (height != null) shape.Height = height.Value;
+            var (newWidth, newHeight) = (shape.Width, shape.Height);
+
+            switch (scaleFromFlag) {
+            case Office.MsoScaleFrom.msoScaleFromTopLeft:
+                break;
+            case Office.MsoScaleFrom.msoScaleFromMiddle:
+                shape.Left = oldLeft - (newWidth - oldWidth) / 2;
+                shape.Top = oldTop - (newHeight - oldHeight) / 2;
+                break;
+            case Office.MsoScaleFrom.msoScaleFromBottomRight:
+                shape.Left = oldLeft - (newWidth - oldWidth);
+                shape.Top = oldTop - (newHeight - oldHeight);
+                break;
+            }
+
+            shape.LockAspectRatio = oldLockSate;
+        }
+
+        public static void ScaleWidthTo(this PowerPoint.Shape shape, float width, Office.MsoScaleFrom scaleFromFlag) {
+            shape.ScaleSizeTo(width, null, scaleFromFlag);
+        }
+
+        public static void ScaleHeightTo(this PowerPoint.Shape shape, float height, Office.MsoScaleFrom scaleFromFlag) {
+            shape.ScaleSizeTo(null, height, scaleFromFlag);
+        }
+
         public enum LockAspectRatioCmd {
             Lock,
             Unlock,
@@ -131,7 +166,6 @@ namespace ppt_arrange_addin.Helper {
             switch (cmd!) {
             case CopyAndPasteCmd.Copy:
                 if (shapeRange.Count == 1) {
-                    Globals.ThisAddIn.Application.StartNewUndoEntry();
                     _copiedSizeWPt = shapeRange.Width;
                     _copiedSizeHPt = shapeRange.Height;
                     uiInvalidator?.Invoke();
@@ -141,13 +175,7 @@ namespace ppt_arrange_addin.Helper {
                 if (IsValidCopiedSizeValue()) {
                     Globals.ThisAddIn.Application.StartNewUndoEntry();
                     foreach (var shape in shapeRange.OfType<PowerPoint.Shape>().ToArray()) {
-                        var oldLockSate = shape.LockAspectRatio;
-                        shape.LockAspectRatio = Office.MsoTriState.msoFalse;
-                        var wRatio = _copiedSizeWPt / shape.Width;
-                        shape.ScaleWidth(wRatio, Office.MsoTriState.msoFalse, scaleFromFlag);
-                        var hRatio = _copiedSizeHPt / shape.Height;
-                        shape.ScaleHeight(hRatio, Office.MsoTriState.msoFalse, scaleFromFlag);
-                        shape.LockAspectRatio = oldLockSate;
+                        shape.ScaleSizeTo(_copiedSizeWPt, _copiedSizeHPt, scaleFromFlag);
                     }
                     uiInvalidator?.Invoke();
                 }
@@ -172,7 +200,6 @@ namespace ppt_arrange_addin.Helper {
             switch (cmd!) {
             case CopyAndPasteCmd.Copy:
                 if (shapeRange.Count == 1) {
-                    Globals.ThisAddIn.Application.StartNewUndoEntry();
                     _copiedPositionXPt = shapeRange.Left;
                     _copiedPositionYPt = shapeRange.Top;
                     uiInvalidator?.Invoke();
@@ -194,13 +221,13 @@ namespace ppt_arrange_addin.Helper {
             }
         }
 
-        public static void ResetPictureSize(PowerPoint.ShapeRange? shapeRange, Office.MsoScaleFrom? scaleFromFlag, Action? uiInvalidator = null) {
+        public static void ResetMediaSize(PowerPoint.ShapeRange? shapeRange, Office.MsoScaleFrom? scaleFromFlag, Action? uiInvalidator = null) {
             if (shapeRange == null || shapeRange.Count <= 0) {
                 return;
             }
 
-            var pictures = shapeRange.OfType<PowerPoint.Shape>().Where((shape) => shape.Type == Office.MsoShapeType.msoPicture).ToArray();
-            if (pictures.Length == 0) {
+            var shapes = shapeRange.OfType<PowerPoint.Shape>().Where(s => s.Type is Office.MsoShapeType.msoPicture or Office.MsoShapeType.msoMedia).ToArray();
+            if (shapes.Length == 0) {
                 return;
             }
 
@@ -208,11 +235,12 @@ namespace ppt_arrange_addin.Helper {
             scaleFromFlag ??= Office.MsoScaleFrom.msoScaleFromTopLeft;
 
             Globals.ThisAddIn.Application.StartNewUndoEntry();
-            foreach (var shape in pictures) {
-                if (shape.Type == Office.MsoShapeType.msoPicture) {
-                    shape.ScaleWidth(1F, relativeToOriginalSize, scaleFromFlag.Value);
-                    shape.ScaleHeight(1F, relativeToOriginalSize, scaleFromFlag.Value);
-                }
+            foreach (var shape in shapes) {
+                var isSound = shape.Type == Office.MsoShapeType.msoMedia && shape.MediaType == PowerPoint.PpMediaType.ppMediaTypeSound;
+                var factor = !isSound ? 1F : 0.25F;
+                shape.ScaleWidth(factor, relativeToOriginalSize, scaleFromFlag.Value);
+                shape.ScaleHeight(factor, relativeToOriginalSize, scaleFromFlag.Value);
+
             }
             uiInvalidator?.Invoke();
         }

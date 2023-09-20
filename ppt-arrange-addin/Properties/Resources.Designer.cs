@@ -403,6 +403,16 @@ namespace ppt_arrange_addin.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ScaleFromBottomRight {
+            get {
+                object obj = ResourceManager.GetObject("ScaleFromBottomRight", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ScaleFromMiddle {
             get {
                 object obj = ResourceManager.GetObject("ScaleFromMiddle", resourceCulture);

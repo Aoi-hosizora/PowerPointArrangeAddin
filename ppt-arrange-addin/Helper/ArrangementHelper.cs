@@ -53,13 +53,15 @@ namespace ppt_arrange_addin.Helper {
             SameSize
         }
 
-        public static void ScaleSize(PowerPoint.ShapeRange? shapeRange, ScaleSizeCmd? cmd, Office.MsoScaleFrom scaleFromFlag) {
+        public static void ScaleSize(PowerPoint.ShapeRange? shapeRange, ScaleSizeCmd? cmd, Office.MsoScaleFrom? scaleFromFlag) {
             if (shapeRange == null || shapeRange.Count < 2) {
                 return;
             }
             if (cmd == null) {
                 return;
             }
+
+            scaleFromFlag ??= Office.MsoScaleFrom.msoScaleFromTopLeft;
 
             var shapes = shapeRange.OfType<PowerPoint.Shape>().ToArray();
             var (firstWidth, firstHeight) = (shapes[0].Width, shapes[0].Height); // select the first shape as final size
@@ -69,24 +71,19 @@ namespace ppt_arrange_addin.Helper {
             case ScaleSizeCmd.SameWidth:
                 for (var i = 1; i < shapes.Length; i++) {
                     var shape = shapes[i];
-                    var ratio = firstWidth / shape.Width;
-                    shape.ScaleWidth(ratio, Office.MsoTriState.msoFalse, scaleFromFlag);
+                    shape.ScaleWidthTo(firstWidth, scaleFromFlag.Value);
                 }
                 break;
             case ScaleSizeCmd.SameHeight:
                 for (var i = 1; i < shapes.Length; i++) {
                     var shape = shapes[i];
-                    var ratio = firstHeight / shape.Height;
-                    shape.ScaleHeight(ratio, Office.MsoTriState.msoFalse, scaleFromFlag);
+                    shape.ScaleHeightTo(firstHeight, scaleFromFlag.Value);
                 }
                 break;
             case ScaleSizeCmd.SameSize:
                 for (var i = 1; i < shapes.Length; i++) {
                     var shape = shapes[i];
-                    var ratio = firstWidth / shape.Width;
-                    shape.ScaleWidth(ratio, Office.MsoTriState.msoFalse, scaleFromFlag);
-                    ratio = firstHeight / shape.Height;
-                    shape.ScaleHeight(ratio, Office.MsoTriState.msoFalse, scaleFromFlag);
+                    shape.ScaleSizeTo(firstWidth, firstHeight, scaleFromFlag.Value);
                 }
                 break;
             }
@@ -122,29 +119,25 @@ namespace ppt_arrange_addin.Helper {
             case ExtendSizeCmd.ExtendToLeft:
                 foreach (var shape in shapes) {
                     var newWidth = shape.Width + shape.Left - minLeft;
-                    var ratio = newWidth / shape.Width;
-                    shape.ScaleWidth(ratio, Office.MsoTriState.msoFalse, Office.MsoScaleFrom.msoScaleFromBottomRight);
+                    shape.ScaleWidthTo(newWidth, Office.MsoScaleFrom.msoScaleFromBottomRight);
                 }
                 break;
             case ExtendSizeCmd.ExtendToRight:
                 foreach (var shape in shapes) {
                     var newWidth = maxLeftWidth - shape.Left;
-                    var ratio = newWidth / shape.Width;
-                    shape.ScaleWidth(ratio, Office.MsoTriState.msoFalse, Office.MsoScaleFrom.msoScaleFromTopLeft);
+                    shape.ScaleWidthTo(newWidth, Office.MsoScaleFrom.msoScaleFromTopLeft);
                 }
                 break;
             case ExtendSizeCmd.ExtendToTop:
                 foreach (var shape in shapes) {
-                    var newTop = shape.Height + shape.Top - minTop;
-                    var ratio = newTop / shape.Height;
-                    shape.ScaleHeight(ratio, Office.MsoTriState.msoFalse, Office.MsoScaleFrom.msoScaleFromBottomRight);
+                    var newHeight = shape.Height + shape.Top - minTop;
+                    shape.ScaleHeightTo(newHeight, Office.MsoScaleFrom.msoScaleFromBottomRight);
                 }
                 break;
             case ExtendSizeCmd.ExtendToBottom:
                 foreach (var shape in shapes) {
                     var newHeight = maxTopHeight - shape.Top;
-                    var ratio = newHeight / shape.Height;
-                    shape.ScaleHeight(ratio, Office.MsoTriState.msoFalse, Office.MsoScaleFrom.msoScaleFromTopLeft);
+                    shape.ScaleHeightTo(newHeight, Office.MsoScaleFrom.msoScaleFromTopLeft);
                 }
                 break;
             }

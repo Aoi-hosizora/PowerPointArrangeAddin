@@ -240,10 +240,10 @@
     <value>右へ 90 度回転(&amp;R)</value>
   </data>
   <data name="btnScaleAnchor_Middle" xml:space="preserve">
-    <value>中央点から変形 (&amp;F)</value><comment>中央点をアンカーとして図形を変形</comment>
+    <value>中央点から変形(&amp;F)</value><comment>中央点をアンカーとして図形を変形</comment>
   </data>
   <data name="btnScaleAnchor_TopLeft" xml:space="preserve">
-    <value>左上端から変形 (&amp;F)</value><comment>左上端をアンカーとして図形を変形</comment>
+    <value>左上端から変形(&amp;F)</value><comment>左上端をアンカーとして図形を変形</comment>
   </data>
   <data name="btnScaleSameHeight" xml:space="preserve">
     <value>最初に選択した図形と同じ高さに変形(&amp;H)</value>
