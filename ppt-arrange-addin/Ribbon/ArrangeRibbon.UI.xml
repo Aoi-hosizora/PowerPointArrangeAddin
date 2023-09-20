@@ -7,6 +7,7 @@
         <__template name="E" getEnabled="GetEnabled" />
         <__template name="I" getImage="GetImage" />
         <__template name="Z" sizeString="wwwwwww" />
+        <__template name="CV" getVisible="GetControlVisible" />
         <__template name="GV" getVisible="GetGroupVisible" />
         <__template name="GROUP" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getVisible="GetGroupVisible" />
         <__template name="LSKI_Anchor" getLabel="BtnScaleAnchor_GetLabel" getScreentip="BtnScaleAnchor_GetLabel" getKeytip="GetKeytip" getImage="BtnScaleAnchor_GetImage" />
@@ -26,61 +27,61 @@
                 </group> <!-- end of grpWordArt -->
 
                 <group id="grpArrange" insertAfterMso="GroupEditing" __template="GROUP">
-                    <buttonGroup id="grpAlignLR">
+                    <buttonGroup id="bgpAlignLR">
                         <button id="btnAlignLeft" showLabel="false" __template="L,S,K,E,I" onAction="BtnAlign_Click" />
                         <button id="btnAlignCenter" showLabel="false" __template="L,S,K,E,I" onAction="BtnAlign_Click" />
                         <button id="btnAlignRight" showLabel="false" __template="L,S,K,E,I" onAction="BtnAlign_Click" />
                     </buttonGroup>
-                    <buttonGroup id="grpAlignTB">
+                    <buttonGroup id="bgpAlignTB">
                         <button id="btnAlignTop" showLabel="false" __template="L,S,K,E,I" onAction="BtnAlign_Click" />
                         <button id="btnAlignMiddle" showLabel="false" __template="L,S,K,E,I" onAction="BtnAlign_Click" />
                         <button id="btnAlignBottom" showLabel="false" __template="L,S,K,E,I" onAction="BtnAlign_Click" />
                     </buttonGroup>
-                    <buttonGroup id="grpDistribute">
+                    <buttonGroup id="bgpDistribute">
                         <button id="btnDistributeHorizontal" showLabel="false" __template="L,S,K,E,I" onAction="BtnDistribute_Click" />
                         <button id="btnDistributeVertical" showLabel="false" __template="L,S,K,E,I" onAction="BtnDistribute_Click" />
                         <button idMso="GridSettings" showLabel="false" __template="K" />
                     </buttonGroup>
                     <separator id="grpArrange_separator1" />
-                    <buttonGroup id="grpScaleSize">
+                    <buttonGroup id="bgpScaleSize">
                         <button id="btnScaleSameWidth" showLabel="false" __template="L,S,K,E,I" onAction="BtnScale_Click" />
                         <button id="btnScaleSameHeight" showLabel="false" __template="L,S,K,E,I" onAction="BtnScale_Click" />
                         <button id="btnScaleSameSize" showLabel="false" __template="L,S,K,E,I" onAction="BtnScale_Click" />
                         <button id="btnScaleAnchor" showLabel="false" __template="LSKI_Anchor" onAction="BtnScaleAnchor_Click" />
                     </buttonGroup>
-                    <buttonGroup id="grpExtendSize">
+                    <buttonGroup id="bgpExtendSize">
                         <button id="btnExtendSameLeft" showLabel="false" __template="L,S,K,E,I" onAction="BtnExtend_Click" />
                         <button id="btnExtendSameRight" showLabel="false" __template="L,S,K,E,I" onAction="BtnExtend_Click" />
                         <button id="btnExtendSameTop" showLabel="false" __template="L,S,K,E,I" onAction="BtnExtend_Click" />
                         <button id="btnExtendSameBottom" showLabel="false" __template="L,S,K,E,I" onAction="BtnExtend_Click" />
                     </buttonGroup>
-                    <buttonGroup id="grpSnapObjects">
+                    <buttonGroup id="bgpSnapObjects">
                         <button id="btnSnapLeft" showLabel="false" __template="L,S,K,E,I" onAction="BtnSnap_Click" />
                         <button id="btnSnapRight" showLabel="false" __template="L,S,K,E,I" onAction="BtnSnap_Click" />
                         <button id="btnSnapTop" showLabel="false" __template="L,S,K,E,I" onAction="BtnSnap_Click" />
                         <button id="btnSnapBottom" showLabel="false" __template="L,S,K,E,I" onAction="BtnSnap_Click" />
                     </buttonGroup>
-                    <separator id="grpArrange_separator2" />
-                    <buttonGroup id="grpMoveLayers">
+                    <separator id="grpArrange_separator2" __template="CV" />
+                    <buttonGroup id="bgpMoveLayers" __template="CV">
                         <button id="btnMoveForward" showLabel="false" __template="L,S,K,E,I" onAction="BtnMove_Click" />
                         <button id="btnMoveFront" showLabel="false" __template="L,S,K,E,I" onAction="BtnMove_Click" />
                         <button id="btnMoveBackward" showLabel="false" __template="L,S,K,E,I" onAction="BtnMove_Click" />
                         <button id="btnMoveBack" showLabel="false" __template="L,S,K,E,I" onAction="BtnMove_Click" />
                     </buttonGroup>
-                    <buttonGroup id="grpRotate">
+                    <buttonGroup id="bgpRotate" __template="CV">
                         <button id="btnRotateRight90" showLabel="false" __template="L,S,K,E,I" onAction="BtnRotate_Click" />
                         <button id="btnRotateLeft90" showLabel="false" __template="L,S,K,E,I" onAction="BtnRotate_Click" />
                         <button id="btnFlipVertical" showLabel="false" __template="L,S,K,E,I" onAction="BtnFlip_Click" />
                         <button id="btnFlipHorizontal" showLabel="false" __template="L,S,K,E,I" onAction="BtnFlip_Click" />
                     </buttonGroup>
-                    <buttonGroup id="grpGroupObjects">
+                    <buttonGroup id="bgpGroupObjects" __template="CV">
                         <button id="btnGroup" showLabel="false" __template="L,S,K,E,I" onAction="BtnGroup_Click" />
                         <button id="btnUngroup" showLabel="false" __template="L,S,K,E,I" onAction="BtnGroup_Click" />
                         <button idMso="ObjectSizeAndPositionDialog" showLabel="false" __template="K" imageMso="ShapeStylesGallery" />
                         <toggleButton idMso="SelectionPane" showLabel="false" __template="K" />
                     </buttonGroup>
-                    <separator id="grpArrange_separator3" />
-                    <dynamicMenu id="mnuArrangement" size="large" __template="L,S,K,E,I" getContent="GetMenuContent" />
+                    <separator id="grpArrange_separator3" __template="CV" />
+                    <dynamicMenu id="mnuArrangement" size="large" __template="L,S,K,E,I,CV" getContent="GetMenuContent" />
                     <dialogBoxLauncher>
                         <button id="btnAddInSetting" __template="L,S,K" onAction="BtnAddInSetting_Click" />
                     </dialogBoxLauncher>
@@ -114,14 +115,14 @@
                         <separator id="grpShapeSizeAndPosition_separator1" />
                         <toggleButton id="btnLockShapeAspectRatio" __template="L,S,K,E,I" getPressed="BtnLockAspectRatio_GetPressed" onAction="BtnLockAspectRatio_Click" />
                         <button id="btnShapeScaleAnchor" __template="LSKI_Anchor" onAction="BtnScaleAnchor_Click" />
-                        <buttonGroup id="grpCopyAndPasteShapeSize">
+                        <buttonGroup id="bgpCopyAndPasteShapeSize">
                             <button id="btnCopyShapeSize" showLabel="false" __template="L,S,K,E,I" onAction="BtnCopyAndPasteSize_Click" />
                             <button id="btnPasteShapeSize" __template="L,S,K,E,I" onAction="BtnCopyAndPasteSize_Click" />
                         </buttonGroup>
                         <separator id="grpShapeSizeAndPosition_separator2" />
                         <editBox id="edtShapePositionX" showImage="false" __template="L,S,K,E,Z" getText="EdtPosition_GetText" onChange="EdtPosition_TextChanged" />
                         <editBox id="edtShapePositionY" showImage="false" __template="L,S,K,E,Z" getText="EdtPosition_GetText" onChange="EdtPosition_TextChanged" />
-                        <buttonGroup id="grpCopyAndPasteShapePosition">
+                        <buttonGroup id="bgpCopyAndPasteShapePosition">
                             <button id="btnCopyShapePosition" showLabel="false" __template="L,S,K,E,I" onAction="BtnCopyAndPastePosition_Click" />
                             <button id="btnPasteShapePosition" __template="L,S,K,E,I" onAction="BtnCopyAndPastePosition_Click" />
                         </buttonGroup>
@@ -147,14 +148,14 @@
                         <button id="btnResetPictureSize" size="large" __template="L,S,K,E,I" onAction="BtnResetMediaSize_Click" />
                         <toggleButton id="btnLockPictureAspectRatio" __template="L,S,K,E,I" getPressed="BtnLockAspectRatio_GetPressed" onAction="BtnLockAspectRatio_Click" />
                         <button id="btnPictureScaleAnchor" __template="LSKI_Anchor" onAction="BtnScaleAnchor_Click" />
-                        <buttonGroup id="grpCopyAndPastePictureSize">
+                        <buttonGroup id="bgpCopyAndPastePictureSize">
                             <button id="btnCopyPictureSize" showLabel="false" __template="L,S,K,E,I" onAction="BtnCopyAndPasteSize_Click" />
                             <button id="btnPastePictureSize" __template="L,S,K,E,I" onAction="BtnCopyAndPasteSize_Click" />
                         </buttonGroup>
                         <separator id="grpPictureSizeAndPosition_separator2" />
                         <editBox id="edtPicturePositionX" showImage="false" __template="L,S,K,E,Z" getText="EdtPosition_GetText" onChange="EdtPosition_TextChanged" />
                         <editBox id="edtPicturePositionY" showImage="false" __template="L,S,K,E,Z" getText="EdtPosition_GetText" onChange="EdtPosition_TextChanged" />
-                        <buttonGroup id="grpCopyAndPastePicturePosition">
+                        <buttonGroup id="bgpCopyAndPastePicturePosition">
                             <button id="btnCopyPicturePosition" showLabel="false" __template="L,S,K,E,I" onAction="BtnCopyAndPastePosition_Click" />
                             <button id="btnPastePicturePosition" __template="L,S,K,E,I" onAction="BtnCopyAndPastePosition_Click" />
                         </buttonGroup>

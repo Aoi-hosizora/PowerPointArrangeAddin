@@ -162,6 +162,19 @@ namespace ppt_arrange_addin.Ribbon {
             return checker?.Invoke(selection.ShapeRange, shapesCount, hasTextFrame) ?? true;
         }
 
+        public bool GetControlVisible(Office.IRibbonControl ribbonControl) {
+            var showLess = AddInSetting.Instance.LessButtonsForArrangementGroup;
+            return ribbonControl.Id switch {
+                grpArrange_separator2 => !showLess,
+                bgpMoveLayers => !showLess,
+                bgpRotate => !showLess,
+                bgpGroupObjects => !showLess,
+                grpArrange_separator3 => !showLess,
+                mnuArrangement => !showLess,
+                _ => true
+            };
+        }
+
         public bool GetGroupVisible(Office.IRibbonControl ribbonControl) {
             return ribbonControl.Id switch {
                 grpWordArt => AddInSetting.Instance.ShowWordArtGroup,

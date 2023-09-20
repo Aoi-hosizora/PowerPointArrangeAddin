@@ -200,4 +200,7 @@
   <data name="chkVideoSizeAndPosition.Text" xml:space="preserve">
     <value>「ビデオ ツール - 書式」タブの「サイズと位置」グループを表示(&amp;V)</value>
   </data>
+  <data name="chkLessButtonsForArrange.Text" xml:space="preserve">
+    <value>「ホーム」タブの「配置」グループにボタンをより少なく表示する(&amp;B)</value>
+  </data>
 </root>

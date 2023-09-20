@@ -36,17 +36,18 @@ namespace ppt_arrange_addin.Dialog {
             this.grpGroupVisibility = new System.Windows.Forms.GroupBox();
             this.tlpGroupVisibility = new System.Windows.Forms.TableLayoutPanel();
             this.chkArrangement = new System.Windows.Forms.CheckBox();
-            this.grpOtherSetting = new System.Windows.Forms.GroupBox();
-            this.tlpOtherSetting = new System.Windows.Forms.TableLayoutPanel();
-            this.lblLanguage = new System.Windows.Forms.Label();
-            this.cboLanguage = new System.Windows.Forms.ComboBox();
-            this.tbxDescription = new System.Windows.Forms.TextBox();
-            this.tlpButton = new System.Windows.Forms.TableLayoutPanel();
             this.chkVideoSizeAndPosition = new System.Windows.Forms.CheckBox();
             this.chkAudioSizeAndPosition = new System.Windows.Forms.CheckBox();
             this.chkTableSizeAndPosition = new System.Windows.Forms.CheckBox();
             this.chkChartSizeAndPosition = new System.Windows.Forms.CheckBox();
             this.chkSmartartSizeAndPosition = new System.Windows.Forms.CheckBox();
+            this.grpOtherSetting = new System.Windows.Forms.GroupBox();
+            this.tlpOtherSetting = new System.Windows.Forms.TableLayoutPanel();
+            this.lblLanguage = new System.Windows.Forms.Label();
+            this.cboLanguage = new System.Windows.Forms.ComboBox();
+            this.chkLessButtonsForArrange = new System.Windows.Forms.CheckBox();
+            this.tbxDescription = new System.Windows.Forms.TextBox();
+            this.tlpButton = new System.Windows.Forms.TableLayoutPanel();
             this.tlpMain.SuspendLayout();
             this.grpGroupVisibility.SuspendLayout();
             this.tlpGroupVisibility.SuspendLayout();
@@ -143,52 +144,6 @@ namespace ppt_arrange_addin.Dialog {
             this.chkArrangement.Name = "chkArrangement";
             this.chkArrangement.UseVisualStyleBackColor = true;
             // 
-            // grpOtherSetting
-            // 
-            resources.ApplyResources(this.grpOtherSetting, "grpOtherSetting");
-            this.grpOtherSetting.Controls.Add(this.tlpOtherSetting);
-            this.grpOtherSetting.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.grpOtherSetting.Name = "grpOtherSetting";
-            this.grpOtherSetting.TabStop = false;
-            // 
-            // tlpOtherSetting
-            // 
-            resources.ApplyResources(this.tlpOtherSetting, "tlpOtherSetting");
-            this.tlpOtherSetting.Controls.Add(this.lblLanguage, 0, 0);
-            this.tlpOtherSetting.Controls.Add(this.cboLanguage, 1, 0);
-            this.tlpOtherSetting.Name = "tlpOtherSetting";
-            // 
-            // lblLanguage
-            // 
-            resources.ApplyResources(this.lblLanguage, "lblLanguage");
-            this.lblLanguage.Name = "lblLanguage";
-            // 
-            // cboLanguage
-            // 
-            resources.ApplyResources(this.cboLanguage, "cboLanguage");
-            this.cboLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboLanguage.FormattingEnabled = true;
-            this.cboLanguage.Items.AddRange(new object[] {
-            resources.GetString("cboLanguage.Items"),
-            resources.GetString("cboLanguage.Items1"),
-            resources.GetString("cboLanguage.Items2"),
-            resources.GetString("cboLanguage.Items3"),
-            resources.GetString("cboLanguage.Items4")});
-            this.cboLanguage.Name = "cboLanguage";
-            // 
-            // tbxDescription
-            // 
-            resources.ApplyResources(this.tbxDescription, "tbxDescription");
-            this.tbxDescription.Name = "tbxDescription";
-            this.tbxDescription.ReadOnly = true;
-            // 
-            // tlpButton
-            // 
-            resources.ApplyResources(this.tlpButton, "tlpButton");
-            this.tlpButton.Controls.Add(this.btnCancel, 1, 0);
-            this.tlpButton.Controls.Add(this.btnOK, 0, 0);
-            this.tlpButton.Name = "tlpButton";
-            // 
             // chkVideoSizeAndPosition
             // 
             resources.ApplyResources(this.chkVideoSizeAndPosition, "chkVideoSizeAndPosition");
@@ -218,6 +173,60 @@ namespace ppt_arrange_addin.Dialog {
             resources.ApplyResources(this.chkSmartartSizeAndPosition, "chkSmartartSizeAndPosition");
             this.chkSmartartSizeAndPosition.Name = "chkSmartartSizeAndPosition";
             this.chkSmartartSizeAndPosition.UseVisualStyleBackColor = true;
+            // 
+            // grpOtherSetting
+            // 
+            resources.ApplyResources(this.grpOtherSetting, "grpOtherSetting");
+            this.grpOtherSetting.Controls.Add(this.tlpOtherSetting);
+            this.grpOtherSetting.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.grpOtherSetting.Name = "grpOtherSetting";
+            this.grpOtherSetting.TabStop = false;
+            // 
+            // tlpOtherSetting
+            // 
+            resources.ApplyResources(this.tlpOtherSetting, "tlpOtherSetting");
+            this.tlpOtherSetting.Controls.Add(this.lblLanguage, 0, 0);
+            this.tlpOtherSetting.Controls.Add(this.cboLanguage, 1, 0);
+            this.tlpOtherSetting.Controls.Add(this.chkLessButtonsForArrange, 0, 1);
+            this.tlpOtherSetting.Name = "tlpOtherSetting";
+            // 
+            // lblLanguage
+            // 
+            resources.ApplyResources(this.lblLanguage, "lblLanguage");
+            this.lblLanguage.Name = "lblLanguage";
+            // 
+            // cboLanguage
+            // 
+            resources.ApplyResources(this.cboLanguage, "cboLanguage");
+            this.cboLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboLanguage.FormattingEnabled = true;
+            this.cboLanguage.Items.AddRange(new object[] {
+            resources.GetString("cboLanguage.Items"),
+            resources.GetString("cboLanguage.Items1"),
+            resources.GetString("cboLanguage.Items2"),
+            resources.GetString("cboLanguage.Items3"),
+            resources.GetString("cboLanguage.Items4")});
+            this.cboLanguage.Name = "cboLanguage";
+            // 
+            // chkLessButtonsForArrange
+            // 
+            resources.ApplyResources(this.chkLessButtonsForArrange, "chkLessButtonsForArrange");
+            this.tlpOtherSetting.SetColumnSpan(this.chkLessButtonsForArrange, 2);
+            this.chkLessButtonsForArrange.Name = "chkLessButtonsForArrange";
+            this.chkLessButtonsForArrange.UseVisualStyleBackColor = true;
+            // 
+            // tbxDescription
+            // 
+            resources.ApplyResources(this.tbxDescription, "tbxDescription");
+            this.tbxDescription.Name = "tbxDescription";
+            this.tbxDescription.ReadOnly = true;
+            // 
+            // tlpButton
+            // 
+            resources.ApplyResources(this.tlpButton, "tlpButton");
+            this.tlpButton.Controls.Add(this.btnCancel, 1, 0);
+            this.tlpButton.Controls.Add(this.btnOK, 0, 0);
+            this.tlpButton.Name = "tlpButton";
             // 
             // SettingDialog
             // 
@@ -273,5 +282,6 @@ namespace ppt_arrange_addin.Dialog {
         private System.Windows.Forms.CheckBox chkTableSizeAndPosition;
         private System.Windows.Forms.CheckBox chkChartSizeAndPosition;
         private System.Windows.Forms.CheckBox chkSmartartSizeAndPosition;
+        private System.Windows.Forms.CheckBox chkLessButtonsForArrange;
     }
 }

@@ -200,4 +200,7 @@
   <data name="chkVideoSizeAndPosition.Text" xml:space="preserve">
     <value>显示「视频工具 - 格式」选项卡的｢大小和位置｣分组(&amp;V)</value>
   </data>
+  <data name="chkLessButtonsForArrange.Text" xml:space="preserve">
+    <value>在「开始」选项卡的「排列」分组中显示更少的按钮(&amp;B)</value>
+  </data>
 </root>

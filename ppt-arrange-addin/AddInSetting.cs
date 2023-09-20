@@ -26,6 +26,7 @@ namespace ppt_arrange_addin {
         public bool ShowChartSizeAndPositionGroup { get; set; }
         public bool ShowSmartartSizeAndPositionGroup { get; set; }
         public AddInLanguage Language { get; set; }
+        public bool LessButtonsForArrangementGroup { get; set; }
 
         public void Load() {
             ShowWordArtGroup = Properties.Settings.Default.showWordArtGroup;
@@ -39,6 +40,7 @@ namespace ppt_arrange_addin {
             ShowChartSizeAndPositionGroup = Properties.Settings.Default.showChartSizeAndPositionGroup;
             ShowSmartartSizeAndPositionGroup = Properties.Settings.Default.showSmartArtSizeAndPositionGroup;
             Language = Properties.Settings.Default.language.ToAddInLanguage();
+            LessButtonsForArrangementGroup = Properties.Settings.Default.lessButtonsForArrangementGroup;
         }
 
         public void Save() {
@@ -53,6 +55,7 @@ namespace ppt_arrange_addin {
             Properties.Settings.Default.showChartSizeAndPositionGroup = ShowChartSizeAndPositionGroup;
             Properties.Settings.Default.showSmartArtSizeAndPositionGroup = ShowSmartartSizeAndPositionGroup;
             Properties.Settings.Default.language = Language.ToLanguageString();
+            Properties.Settings.Default.lessButtonsForArrangementGroup = LessButtonsForArrangementGroup;
             Properties.Settings.Default.Save();
         }
 

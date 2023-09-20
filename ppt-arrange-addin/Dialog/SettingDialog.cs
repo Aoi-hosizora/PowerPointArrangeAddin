@@ -10,8 +10,13 @@ namespace ppt_arrange_addin.Dialog {
         public SettingDialog() {
             InitializeComponent();
 
-            Font = SystemFonts.MessageBoxFont;
+            tlpMain.AutoSize = true;
             tlpMain.Dock = DockStyle.Fill;
+
+            AutoScaleMode = AutoScaleMode.Dpi;
+            AutoSize = true;
+            Font = SystemFonts.MessageBoxFont;
+
             LoadDescription();
         }
 
@@ -28,6 +33,7 @@ namespace ppt_arrange_addin.Dialog {
             chkChartSizeAndPosition.Checked = AddInSetting.Instance.ShowChartSizeAndPositionGroup;
             chkSmartartSizeAndPosition.Checked = AddInSetting.Instance.ShowSmartartSizeAndPositionGroup;
             cboLanguage.SelectedIndex = AddInSetting.Instance.Language.ToLanguageIndex();
+            chkLessButtonsForArrange.Checked = AddInSetting.Instance.LessButtonsForArrangementGroup;
         }
 
         private void BtnOK_Click(object sender, EventArgs e) {
@@ -43,6 +49,7 @@ namespace ppt_arrange_addin.Dialog {
             AddInSetting.Instance.ShowChartSizeAndPositionGroup = chkChartSizeAndPosition.Checked;
             AddInSetting.Instance.ShowSmartartSizeAndPositionGroup = chkSmartartSizeAndPosition.Checked;
             AddInSetting.Instance.Language = cboLanguage.SelectedIndex.ToAddInLanguage();
+            AddInSetting.Instance.LessButtonsForArrangementGroup = chkLessButtonsForArrange.Checked;
             AddInSetting.Instance.Save();
 
             if (AddInSetting.Instance.Language != oldLanguage) {

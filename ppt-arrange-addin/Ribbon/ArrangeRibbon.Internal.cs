@@ -98,6 +98,19 @@ namespace ppt_arrange_addin.Ribbon {
         private const string btnUngroup = "btnUngroup";
         private const string mnuArrangement = "mnuArrangement";
         private const string btnAddInSetting = "btnAddInSetting";
+        // ===
+        private const string bgpAlignLR = "bgpAlignLR";
+        private const string bgpAlignTB = "bgpAlignTB";
+        private const string bgpDistribute = "bgpDistribute";
+        private const string grpArrange_separator1 = "grpArrange_separator1";
+        private const string bgpScaleSize = "bgpScaleSize";
+        private const string bgpExtendSize = "bgpExtendSize";
+        private const string bgpSnapObjects = "bgpSnapObjects";
+        private const string grpArrange_separator2 = "grpArrange_separator2";
+        private const string bgpMoveLayers = "bgpMoveLayers";
+        private const string bgpRotate = "bgpRotate";
+        private const string bgpGroupObjects = "bgpGroupObjects";
+        private const string grpArrange_separator3 = "grpArrange_separator3";
         // grpTextbox
         private const string grpTextbox = "grpTextbox";
         private const string btnAutofitOff = "btnAutofitOff";

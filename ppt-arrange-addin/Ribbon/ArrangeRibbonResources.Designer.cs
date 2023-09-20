@@ -997,7 +997,7 @@ namespace ppt_arrange_addin.Ribbon {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Arrange.
+        ///   Looks up a localized string similar to Arrangement.
         /// </summary>
         public static string grpArrange {
             get {

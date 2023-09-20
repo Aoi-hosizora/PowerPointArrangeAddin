@@ -1,7 +1,9 @@
 # ppt-arrange-addin
 
 + A PowerPoint add-in (VSTO) for assisting arrangement operations, which is inspired by [iSlide Addin](https://www.islide.cc/).
-+ Development envrionment: Visual Studio 2022, .NET Framework 4.8 (C# 7.3 / C# 9.0), PowerPoint 2010.
++ Development envrionment: Visual Studio 2019, .NET Framework 4.8 (C# 7.3 / C# 9.0), PowerPoint 2010.
++ Requirements: Microsoft Office >= 2010.
++ Supported languaged: English, Simplified Chinese, Traditional Chinese, Japanese.
 
 ### Build
 
@@ -10,6 +12,14 @@ cd ppt-arrange-addin
 call vsdevcmd.bat
 msbuild ppt-arrange-addin.csproj /p:Configuration=Release /p:Platform=x64
 ```
+
+### Screenshots
+
+| ![screenshot1](./assets/screenshot1.jpg) | ![screenshot2](./assets/screenshot2.jpg) | ![screenshot3](./assets/screenshot3.jpg) |
+|:--:|:--:|:--:|
+| "Arrangement" group | "Textbox" group | "Replace picture" group |
+| ![screenshot4](./assets/screenshot4.jpg) | ![screenshot5](./assets/screenshot5.jpg) | ![screenshot6](./assets/screenshot6.jpg) |
+| "Size and position" group | "Arrangement" menu | Add-in setting dialog |
 
 ### References
 

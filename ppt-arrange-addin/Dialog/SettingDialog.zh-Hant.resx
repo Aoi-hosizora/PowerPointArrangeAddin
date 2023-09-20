@@ -200,4 +200,7 @@
   <data name="chkVideoSizeAndPosition.Text" xml:space="preserve">
     <value>顯示「視訊工具 - 格式」索引標簽的｢大小和位置｣群組(&amp;V)</value>
   </data>
+  <data name="chkLessButtonsForArrange.Text" xml:space="preserve">
+    <value>在「常用」索引標簽的「排列」群組中顯示更少的按鈕(&amp;B)</value>
+  </data>
 </root>

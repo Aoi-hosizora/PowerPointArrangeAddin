@@ -129,7 +129,7 @@
     <value>0, 0, 3, 0</value>
   </data>
   <data name="btnOK.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 22</value>
+    <value>75, 24</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="btnOK.TabIndex" type="System.Int32, mscorlib">
@@ -160,7 +160,7 @@
     <value>3, 0, 0, 0</value>
   </data>
   <data name="btnCancel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 22</value>
+    <value>75, 24</value>
   </data>
   <data name="btnCancel.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -226,7 +226,7 @@
     <value>0, 3, 0, 3</value>
   </data>
   <data name="chkShapeTextbox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 17</value>
+    <value>313, 17</value>
   </data>
   <data name="chkShapeTextbox.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -259,7 +259,7 @@
     <value>0, 3, 0, 3</value>
   </data>
   <data name="chkShapeSizeAndPosition.Size" type="System.Drawing.Size, System.Drawing">
-    <value>323, 17</value>
+    <value>359, 17</value>
   </data>
   <data name="chkShapeSizeAndPosition.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -292,7 +292,7 @@
     <value>0, 3, 0, 3</value>
   </data>
   <data name="chkReplacePicture.Size" type="System.Drawing.Size, System.Drawing">
-    <value>321, 17</value>
+    <value>357, 17</value>
   </data>
   <data name="chkReplacePicture.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -325,7 +325,7 @@
     <value>0, 3, 0, 3</value>
   </data>
   <data name="chkPictureSizeAndPosition.Size" type="System.Drawing.Size, System.Drawing">
-    <value>328, 17</value>
+    <value>364, 17</value>
   </data>
   <data name="chkPictureSizeAndPosition.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -418,7 +418,7 @@
     <value>0, 3, 0, 3</value>
   </data>
   <data name="chkVideoSizeAndPosition.Size" type="System.Drawing.Size, System.Drawing">
-    <value>321, 17</value>
+    <value>357, 17</value>
   </data>
   <data name="chkVideoSizeAndPosition.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -451,7 +451,7 @@
     <value>0, 3, 0, 3</value>
   </data>
   <data name="chkAudioSizeAndPosition.Size" type="System.Drawing.Size, System.Drawing">
-    <value>321, 17</value>
+    <value>357, 17</value>
   </data>
   <data name="chkAudioSizeAndPosition.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -484,7 +484,7 @@
     <value>0, 3, 0, 3</value>
   </data>
   <data name="chkTableSizeAndPosition.Size" type="System.Drawing.Size, System.Drawing">
-    <value>320, 17</value>
+    <value>354, 17</value>
   </data>
   <data name="chkTableSizeAndPosition.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -517,7 +517,7 @@
     <value>0, 3, 0, 3</value>
   </data>
   <data name="chkChartSizeAndPosition.Size" type="System.Drawing.Size, System.Drawing">
-    <value>320, 17</value>
+    <value>356, 17</value>
   </data>
   <data name="chkChartSizeAndPosition.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -550,7 +550,7 @@
     <value>0, 3, 0, 3</value>
   </data>
   <data name="chkSmartartSizeAndPosition.Size" type="System.Drawing.Size, System.Drawing">
-    <value>338, 17</value>
+    <value>374, 17</value>
   </data>
   <data name="chkSmartartSizeAndPosition.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -580,7 +580,7 @@
     <value>11</value>
   </data>
   <data name="tlpGroupVisibility.Size" type="System.Drawing.Size, System.Drawing">
-    <value>338, 253</value>
+    <value>388, 253</value>
   </data>
   <data name="tlpGroupVisibility.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -613,7 +613,7 @@
     <value>10, 2, 10, 5</value>
   </data>
   <data name="grpGroupVisibility.Size" type="System.Drawing.Size, System.Drawing">
-    <value>358, 272</value>
+    <value>408, 272</value>
   </data>
   <data name="grpGroupVisibility.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -712,7 +712,7 @@
     <value>0, 4, 0, 4</value>
   </data>
   <data name="cboLanguage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>279, 20</value>
+    <value>329, 20</value>
   </data>
   <data name="cboLanguage.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -729,6 +729,39 @@
   <data name="&gt;&gt;cboLanguage.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="chkLessButtonsForArrange.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="chkLessButtonsForArrange.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>System</value>
+  </data>
+  <data name="chkLessButtonsForArrange.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 31</value>
+  </data>
+  <data name="chkLessButtonsForArrange.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 3</value>
+  </data>
+  <data name="chkLessButtonsForArrange.Size" type="System.Drawing.Size, System.Drawing">
+    <value>334, 17</value>
+  </data>
+  <data name="chkLessButtonsForArrange.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="chkLessButtonsForArrange.Text" xml:space="preserve">
+    <value>Show less &amp;buttons for "Arrangement" group of "Home" tab</value>
+  </data>
+  <data name="&gt;&gt;chkLessButtonsForArrange.Name" xml:space="preserve">
+    <value>chkLessButtonsForArrange</value>
+  </data>
+  <data name="&gt;&gt;chkLessButtonsForArrange.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;chkLessButtonsForArrange.Parent" xml:space="preserve">
+    <value>tlpOtherSetting</value>
+  </data>
+  <data name="&gt;&gt;chkLessButtonsForArrange.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="tlpOtherSetting.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -736,10 +769,10 @@
     <value>10, 14</value>
   </data>
   <data name="tlpOtherSetting.RowCount" type="System.Int32, mscorlib">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="tlpOtherSetting.Size" type="System.Drawing.Size, System.Drawing">
-    <value>338, 28</value>
+    <value>388, 51</value>
   </data>
   <data name="tlpOtherSetting.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -757,7 +790,7 @@
     <value>0</value>
   </data>
   <data name="tlpOtherSetting.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="lblLanguage" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="cboLanguage" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,Absolute,28" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="lblLanguage" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="cboLanguage" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="chkLessButtonsForArrange" Row="1" RowSpan="1" Column="0" ColumnSpan="2" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,AutoSize,0" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="grpOtherSetting.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -772,7 +805,7 @@
     <value>10, 2, 10, 5</value>
   </data>
   <data name="grpOtherSetting.Size" type="System.Drawing.Size, System.Drawing">
-    <value>358, 47</value>
+    <value>408, 70</value>
   </data>
   <data name="grpOtherSetting.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -796,7 +829,7 @@
     <value>Fill</value>
   </data>
   <data name="tbxDescription.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 343</value>
+    <value>8, 366</value>
   </data>
   <data name="tbxDescription.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>8, 8, 8, 0</value>
@@ -808,7 +841,7 @@
     <value>Both</value>
   </data>
   <data name="tbxDescription.Size" type="System.Drawing.Size, System.Drawing">
-    <value>358, 120</value>
+    <value>408, 150</value>
   </data>
   <data name="tbxDescription.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -841,7 +874,7 @@
     <value>Right</value>
   </data>
   <data name="tlpButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>205, 466</value>
+    <value>255, 519</value>
   </data>
   <data name="tlpButton.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>5, 5, 5, 5</value>
@@ -850,7 +883,7 @@
     <value>1</value>
   </data>
   <data name="tlpButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>166, 32</value>
+    <value>166, 39</value>
   </data>
   <data name="tlpButton.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -870,14 +903,17 @@
   <data name="tlpButton.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="btnCancel" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="btnOK" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,AutoSize,0" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
+  <data name="tlpMain.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
   <data name="tlpMain.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 12</value>
+    <value>0, 0</value>
   </data>
   <data name="tlpMain.RowCount" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
   <data name="tlpMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>374, 501</value>
+    <value>424, 561</value>
   </data>
   <data name="tlpMain.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -910,7 +946,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>395, 530</value>
+    <value>424, 561</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>
