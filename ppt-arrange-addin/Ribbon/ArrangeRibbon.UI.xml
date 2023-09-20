@@ -164,6 +164,135 @@
                     </group> <!-- end of grpPictureSizeAndPosition -->
                 </tab> <!-- end of TabPictureToolsFormat -->
             </tabSet> <!-- end of TabSetPictureTools -->
+
+            <tabSet idMso="TabSetVideoTools">
+                <tab idMso="TabVideoToolsDesign">
+                    <group id="grpVideoSizeAndPosition" insertAfterMso="GroupVideoSize" __template="GROUP">
+                        <dynamicMenu id="mnuVideoArrangement" size="large" __template="L,S,K,E,I" getContent="GetMenuContent" />
+                        <separator id="separator10" />
+                        <button id="btnResetVideoSize" size="large" __template="L,S,K,E,I" onAction="BtnResetMediaSize_Click" />
+                        <toggleButton id="btnLockVideoAspectRatio" __template="L,S,K,E,I" getPressed="BtnLockAspectRatio_GetPressed" onAction="BtnLockAspectRatio_Click" />
+                        <button id="btnVideoScaleAnchor" __template="LSKI_Anchor" onAction="BtnScaleAnchor_Click" />
+                        <buttonGroup id="grpCopyAndPasteVideoSize">
+                            <button id="btnCopyVideoSize" showLabel="false" __template="L,S,K,E,I" onAction="BtnCopyAndPasteSize_Click" />
+                            <button id="btnPasteVideoSize" __template="L,S,K,E,I" onAction="BtnCopyAndPasteSize_Click" />
+                        </buttonGroup>
+                        <separator id="separator11" />
+                        <editBox id="edtVideoPositionX" showImage="false" __template="L,S,K,E,Z" getText="EdtPosition_GetText" onChange="EdtPosition_TextChanged" />
+                        <editBox id="edtVideoPositionY" showImage="false" __template="L,S,K,E,Z" getText="EdtPosition_GetText" onChange="EdtPosition_TextChanged" />
+                        <buttonGroup id="grpCopyAndPasteVideoPosition">
+                            <button id="btnCopyVideoPosition" showLabel="false" __template="L,S,K,E,I" onAction="BtnCopyAndPastePosition_Click" />
+                            <button id="btnPasteVideoPosition" __template="L,S,K,E,I" onAction="BtnCopyAndPastePosition_Click" />
+                        </buttonGroup>
+                        <dialogBoxLauncher>
+                            <button idMso="ObjectSizeAndPositionDialog" __template="K" />
+                        </dialogBoxLauncher>
+                    </group> <!-- end of grpVideoSizeAndPosition -->
+                </tab> <!-- end of TabVideoToolsDesign -->
+            </tabSet> <!-- end of TabSetVideoTools -->
+
+            <tabSet idMso="TabSetAudioTools">
+                <tab idMso="TabAudioToolsFormat">
+                    <group id="grpAudioSizeAndPosition" insertAfterMso="GroupPictureSize" __template="GROUP">
+                        <dynamicMenu id="mnuAudioArrangement" size="large" __template="L,S,K,E,I" getContent="GetMenuContent" />
+                        <separator id="separator12" />
+                        <button id="btnResetAudioSize" size="large" __template="L,S,K,E,I" onAction="BtnResetMediaSize_Click" />
+                        <toggleButton id="btnLockAudioAspectRatio" __template="L,S,K,E,I" getPressed="BtnLockAspectRatio_GetPressed" onAction="BtnLockAspectRatio_Click" />
+                        <button id="btnAudioScaleAnchor" __template="LSKI_Anchor" onAction="BtnScaleAnchor_Click" />
+                        <buttonGroup id="grpCopyAndPasteAudioSize">
+                            <button id="btnCopyAudioSize" showLabel="false" __template="L,S,K,E,I" onAction="BtnCopyAndPasteSize_Click" />
+                            <button id="btnPasteAudioSize" __template="L,S,K,E,I" onAction="BtnCopyAndPasteSize_Click" />
+                        </buttonGroup>
+                        <separator id="separator13" />
+                        <editBox id="edtAudioPositionX" showImage="false" __template="L,S,K,E,Z" getText="EdtPosition_GetText" onChange="EdtPosition_TextChanged" />
+                        <editBox id="edtAudioPositionY" showImage="false" __template="L,S,K,E,Z" getText="EdtPosition_GetText" onChange="EdtPosition_TextChanged" />
+                        <buttonGroup id="grpCopyAndPasteAudioPosition">
+                            <button id="btnCopyAudioPosition" showLabel="false" __template="L,S,K,E,I" onAction="BtnCopyAndPastePosition_Click" />
+                            <button id="btnPasteAudioPosition" __template="L,S,K,E,I" onAction="BtnCopyAndPastePosition_Click" />
+                        </buttonGroup>
+                        <dialogBoxLauncher>
+                            <button idMso="ObjectSizeAndPositionDialog" __template="K" />
+                        </dialogBoxLauncher>
+                    </group> <!-- end of grpAudioSizeAndPosition -->
+                </tab> <!-- end of TabAudioToolsFormat -->
+            </tabSet> <!-- end of TabSetAudioTools -->
+
+            <tabSet idMso="TabSetTableTools">
+                <tab idMso="TabTableToolsLayout">
+                    <group id="grpTableSizeAndPosition" insertAfterMso="GroupArrange" __template="GROUP">
+                        <dynamicMenu id="mnuTableArrangement" size="large" __template="L,S,K,E,I" getContent="GetMenuContent" />
+                        <separator id="separator14" />
+                        <toggleButton id="btnLockTableAspectRatio" __template="L,S,K,E,I" getPressed="BtnLockAspectRatio_GetPressed" onAction="BtnLockAspectRatio_Click" />
+                        <button id="btnTableScaleAnchor" __template="LSKI_Anchor" onAction="BtnScaleAnchor_Click" />
+                        <buttonGroup id="grpCopyAndPasteTableSize">
+                            <button id="btnCopyTableSize" showLabel="false" __template="L,S,K,E,I" onAction="BtnCopyAndPasteSize_Click" />
+                            <button id="btnPasteTableSize" __template="L,S,K,E,I" onAction="BtnCopyAndPasteSize_Click" />
+                        </buttonGroup>
+                        <separator id="separator15" />
+                        <editBox id="edtTablePositionX" showImage="false" __template="L,S,K,E,Z" getText="EdtPosition_GetText" onChange="EdtPosition_TextChanged" />
+                        <editBox id="edtTablePositionY" showImage="false" __template="L,S,K,E,Z" getText="EdtPosition_GetText" onChange="EdtPosition_TextChanged" />
+                        <buttonGroup id="grpCopyAndPasteTablePosition">
+                            <button id="btnCopyTablePosition" showLabel="false" __template="L,S,K,E,I" onAction="BtnCopyAndPastePosition_Click" />
+                            <button id="btnPasteTablePosition" __template="L,S,K,E,I" onAction="BtnCopyAndPastePosition_Click" />
+                        </buttonGroup>
+                        <dialogBoxLauncher>
+                            <button idMso="ObjectSizeAndPositionDialog" __template="K" />
+                        </dialogBoxLauncher>
+                    </group> <!-- end of grpTableSizeAndPosition -->
+                </tab> <!-- end of TabTableToolsLayout -->
+            </tabSet> <!-- end of TabSetTableTools -->
+
+            <tabSet idMso="TabSetChartTools">
+                <tab idMso="TabChartToolsFormat">
+                    <group id="grpChartSizeAndPosition" insertAfterMso="GroupSize" __template="GROUP">
+                        <dynamicMenu id="mnuChartArrangement" size="large" __template="L,S,K,E,I" getContent="GetMenuContent" />
+                        <separator id="separator16" />
+                        <toggleButton id="btnLockChartAspectRatio" __template="L,S,K,E,I" getPressed="BtnLockAspectRatio_GetPressed" onAction="BtnLockAspectRatio_Click" />
+                        <button id="btnChartScaleAnchor" __template="LSKI_Anchor" onAction="BtnScaleAnchor_Click" />
+                        <buttonGroup id="grpCopyAndPasteChartSize">
+                            <button id="btnCopyChartSize" showLabel="false" __template="L,S,K,E,I" onAction="BtnCopyAndPasteSize_Click" />
+                            <button id="btnPasteChartSize" __template="L,S,K,E,I" onAction="BtnCopyAndPasteSize_Click" />
+                        </buttonGroup>
+                        <separator id="separator17" />
+                        <editBox id="edtChartPositionX" showImage="false" __template="L,S,K,E,Z" getText="EdtPosition_GetText" onChange="EdtPosition_TextChanged" />
+                        <editBox id="edtChartPositionY" showImage="false" __template="L,S,K,E,Z" getText="EdtPosition_GetText" onChange="EdtPosition_TextChanged" />
+                        <buttonGroup id="grpCopyAndPasteChartPosition">
+                            <button id="btnCopyChartPosition" showLabel="false" __template="L,S,K,E,I" onAction="BtnCopyAndPastePosition_Click" />
+                            <button id="btnPasteChartPosition" __template="L,S,K,E,I" onAction="BtnCopyAndPastePosition_Click" />
+                        </buttonGroup>
+                        <dialogBoxLauncher>
+                            <button idMso="ObjectSizeAndPositionDialog" __template="K" />
+                        </dialogBoxLauncher>
+                    </group> <!-- end of grpChartSizeAndPosition -->
+                </tab> <!-- end of TabChartToolsFormat -->
+            </tabSet> <!-- end of TabSetChartTools -->
+
+            <tabSet idMso="TabSetSmartArtTools">
+                <tab idMso="TabSmartArtToolsFormat">
+                    <group id="grpSmartartSizeAndPosition" insertAfterMso="GroupSmartArtSize" __template="GROUP">
+                        <dynamicMenu id="mnuSmartartArrangement" size="large" __template="L,S,K,E,I" getContent="GetMenuContent" />
+                        <separator id="separator18" />
+                        <toggleButton id="btnLockSmartartAspectRatio" __template="L,S,K,E,I" getPressed="BtnLockAspectRatio_GetPressed" onAction="BtnLockAspectRatio_Click" />
+                        <button id="btnSmartartScaleAnchor" __template="LSKI_Anchor" onAction="BtnScaleAnchor_Click" />
+                        <buttonGroup id="grpCopyAndPasteSmartartSize">
+                            <button id="btnCopySmartartSize" showLabel="false" __template="L,S,K,E,I" onAction="BtnCopyAndPasteSize_Click" />
+                            <button id="btnPasteSmartartSize" __template="L,S,K,E,I" onAction="BtnCopyAndPasteSize_Click" />
+                        </buttonGroup>
+                        <separator id="separator19" />
+                        <editBox id="edtSmartartPositionX" showImage="false" __template="L,S,K,E,Z" getText="EdtPosition_GetText" onChange="EdtPosition_TextChanged" />
+                        <editBox id="edtSmartartPositionY" showImage="false" __template="L,S,K,E,Z" getText="EdtPosition_GetText" onChange="EdtPosition_TextChanged" />
+                        <buttonGroup id="grpCopyAndPasteSmartartPosition">
+                            <button id="btnCopySmartartPosition" showLabel="false" __template="L,S,K,E,I" onAction="BtnCopyAndPastePosition_Click" />
+                            <button id="btnPasteSmartartPosition" __template="L,S,K,E,I" onAction="BtnCopyAndPastePosition_Click" />
+                        </buttonGroup>
+                        <dialogBoxLauncher>
+                            <button idMso="ObjectSizeAndPositionDialog" __template="K" />
+                        </dialogBoxLauncher>
+                    </group> <!-- end of grpSmartartSizeAndPosition -->
+                </tab> <!-- end of TabSmartartArtToolsFormat -->
+            </tabSet> <!-- end of TabSetSmartartArtTools -->
+            
+            <!-- Remaining: CDAudio, Drawing, Movie -->
         </contextualTabs>
     </ribbon>
 </customUI>

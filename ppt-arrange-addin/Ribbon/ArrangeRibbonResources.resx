@@ -375,4 +375,145 @@
   <data name="dlgAllFilesFilter" xml:space="preserve">
     <value>All files</value>
   </data>
+  <data name="grpVideoSizeAndPosition" xml:space="preserve">
+    <value>Size and position</value>
+  </data>
+  <data name="mnuVideoArrangement" xml:space="preserve">
+    <value>Arrange</value>
+  </data>
+  <data name="btnResetVideoSize" xml:space="preserve">
+    <value>Reset size</value>
+  </data>
+  <data name="btnLockVideoAspectRatio" xml:space="preserve">
+    <value>Lock aspect ratio</value>
+  </data>
+  <data name="btnCopyVideoSize" xml:space="preserve">
+    <value>Copy size</value>
+  </data>
+  <data name="btnPasteVideoSize" xml:space="preserve">
+    <value>Paste size</value>
+  </data>
+  <data name="edtVideoPositionX" xml:space="preserve">
+    <value>Horizontal:</value>
+  </data>
+  <data name="edtVideoPositionY" xml:space="preserve">
+    <value>Vertical:</value>
+  </data>
+  <data name="btnCopyVideoPosition" xml:space="preserve">
+    <value>Copy position</value>
+  </data>
+  <data name="btnPasteVideoPosition" xml:space="preserve">
+    <value>Paste position</value>
+  </data>
+  <data name="grpTableSizeAndPosition" xml:space="preserve">
+    <value>Size and position</value>
+  </data>
+  <data name="mnuTableArrangement" xml:space="preserve">
+    <value>Arrange</value>
+  </data>
+  <data name="btnLockTableAspectRatio" xml:space="preserve">
+    <value>Lock aspect ratio</value>
+  </data>
+  <data name="btnCopyTableSize" xml:space="preserve">
+    <value>Copy size</value>
+  </data>
+  <data name="btnPasteTableSize" xml:space="preserve">
+    <value>Paste size</value>
+  </data>
+  <data name="edtTablePositionX" xml:space="preserve">
+    <value>Horizontal:</value>
+  </data>
+  <data name="edtTablePositionY" xml:space="preserve">
+    <value>Vertical:</value>
+  </data>
+  <data name="btnCopyTablePosition" xml:space="preserve">
+    <value>Copy position</value>
+  </data>
+  <data name="btnPasteTablePosition" xml:space="preserve">
+    <value>Paste position</value>
+  </data>
+  <data name="grpAudioSizeAndPosition" xml:space="preserve">
+    <value>Size and position</value>
+  </data>
+  <data name="mnuAudioArrangement" xml:space="preserve">
+    <value>Arrange</value>
+  </data>
+  <data name="btnResetAudioSize" xml:space="preserve">
+    <value>Reset size</value>
+  </data>
+  <data name="btnLockAudioAspectRatio" xml:space="preserve">
+    <value>Lock aspect ratio</value>
+  </data>
+  <data name="btnCopyAudioSize" xml:space="preserve">
+    <value>Copy size</value>
+  </data>
+  <data name="btnPasteAudioSize" xml:space="preserve">
+    <value>Paste size</value>
+  </data>
+  <data name="edtAudioPositionX" xml:space="preserve">
+    <value>Horizontal:</value>
+  </data>
+  <data name="edtAudioPositionY" xml:space="preserve">
+    <value>Vertical:</value>
+  </data>
+  <data name="btnCopyAudioPosition" xml:space="preserve">
+    <value>Copy position</value>
+  </data>
+  <data name="btnPasteAudioPosition" xml:space="preserve">
+    <value>Paste position</value>
+  </data>
+  <data name="grpChartSizeAndPosition" xml:space="preserve">
+    <value>Size and position</value>
+  </data>
+  <data name="mnuChartArrangement" xml:space="preserve">
+    <value>Arrange</value>
+  </data>
+  <data name="btnLockChartAspectRatio" xml:space="preserve">
+    <value>Lock aspect ratio</value>
+  </data>
+  <data name="btnCopyChartSize" xml:space="preserve">
+    <value>Copy size</value>
+  </data>
+  <data name="btnPasteChartSize" xml:space="preserve">
+    <value>Paste size</value>
+  </data>
+  <data name="edtChartPositionX" xml:space="preserve">
+    <value>Horizontal:</value>
+  </data>
+  <data name="edtChartPositionY" xml:space="preserve">
+    <value>Vertical:</value>
+  </data>
+  <data name="btnCopyChartPosition" xml:space="preserve">
+    <value>Copy position</value>
+  </data>
+  <data name="btnPasteChartPosition" xml:space="preserve">
+    <value>Paste position</value>
+  </data>
+  <data name="grpSmartartSizeAndPosition" xml:space="preserve">
+    <value>Size and position</value>
+  </data>
+  <data name="mnuSmartartArrangement" xml:space="preserve">
+    <value>Arrange</value>
+  </data>
+  <data name="btnLockSmartartAspectRatio" xml:space="preserve">
+    <value>Lock aspect ratio</value>
+  </data>
+  <data name="btnCopySmartartSize" xml:space="preserve">
+    <value>Copy size</value>
+  </data>
+  <data name="btnPasteSmartartSize" xml:space="preserve">
+    <value>Paste size</value>
+  </data>
+  <data name="edtSmartartPositionX" xml:space="preserve">
+    <value>Horizontal:</value>
+  </data>
+  <data name="edtSmartartPositionY" xml:space="preserve">
+    <value>Vertical:</value>
+  </data>
+  <data name="btnCopySmartartPosition" xml:space="preserve">
+    <value>Copy position</value>
+  </data>
+  <data name="btnPasteSmartartPosition" xml:space="preserve">
+    <value>Paste position</value>
+  </data>
 </root>

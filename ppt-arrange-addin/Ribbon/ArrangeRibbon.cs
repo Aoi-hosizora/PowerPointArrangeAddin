@@ -93,7 +93,59 @@ namespace ppt_arrange_addin.Ribbon {
                 { edtPicturePositionX, (_, cnt, _) => cnt >= 1 },
                 { edtPicturePositionY, (_, cnt, _) => cnt >= 1 },
                 { btnCopyPicturePosition, (_, cnt, _) => cnt == 1 },
-                { btnPastePicturePosition, (_, cnt, _) => cnt >= 1 && SizeAndPositionHelper.IsValidCopiedPositionValue() }
+                { btnPastePicturePosition, (_, cnt, _) => cnt >= 1 && SizeAndPositionHelper.IsValidCopiedPositionValue() },
+                // grpVideoSizeAndPosition
+                { mnuVideoArrangement, (_, _, _) => true },
+                { btnResetVideoSize, (_, cnt, _) => cnt >= 1 },
+                { btnLockVideoAspectRatio, (_, cnt, _) => cnt >= 1 },
+                { btnVideoScaleAnchor, (_, _, _) => true },
+                { btnCopyVideoSize, (_, cnt, _) => cnt == 1 },
+                { btnPasteVideoSize, (_, cnt, _) => cnt >= 1 && SizeAndPositionHelper.IsValidCopiedSizeValue() },
+                { edtVideoPositionX, (_, cnt, _) => cnt >= 1 },
+                { edtVideoPositionY, (_, cnt, _) => cnt >= 1 },
+                { btnCopyVideoPosition, (_, cnt, _) => cnt == 1 },
+                { btnPasteVideoPosition, (_, cnt, _) => cnt >= 1 && SizeAndPositionHelper.IsValidCopiedPositionValue() },
+                // grpAudioSizeAndPosition
+                { mnuAudioArrangement, (_, _, _) => true },
+                { btnResetAudioSize, (_, cnt, _) => cnt >= 1 },
+                { btnLockAudioAspectRatio, (_, cnt, _) => cnt >= 1 },
+                { btnAudioScaleAnchor, (_, _, _) => true },
+                { btnCopyAudioSize, (_, cnt, _) => cnt == 1 },
+                { btnPasteAudioSize, (_, cnt, _) => cnt >= 1 && SizeAndPositionHelper.IsValidCopiedSizeValue() },
+                { edtAudioPositionX, (_, cnt, _) => cnt >= 1 },
+                { edtAudioPositionY, (_, cnt, _) => cnt >= 1 },
+                { btnCopyAudioPosition, (_, cnt, _) => cnt == 1 },
+                { btnPasteAudioPosition, (_, cnt, _) => cnt >= 1 && SizeAndPositionHelper.IsValidCopiedPositionValue() },
+                // grpTableSizeAndPosition
+                { mnuTableArrangement, (_, _, _) => true },
+                { btnLockTableAspectRatio, (_, cnt, _) => cnt >= 1 },
+                { btnTableScaleAnchor, (_, _, _) => true },
+                { btnCopyTableSize, (_, cnt, _) => cnt == 1 },
+                { btnPasteTableSize, (_, cnt, _) => cnt >= 1 && SizeAndPositionHelper.IsValidCopiedSizeValue() },
+                { edtTablePositionX, (_, cnt, _) => cnt >= 1 },
+                { edtTablePositionY, (_, cnt, _) => cnt >= 1 },
+                { btnCopyTablePosition, (_, cnt, _) => cnt == 1 },
+                { btnPasteTablePosition, (_, cnt, _) => cnt >= 1 && SizeAndPositionHelper.IsValidCopiedPositionValue() },
+                // grpChartSizeAndPosition
+                { mnuChartArrangement, (_, _, _) => true },
+                { btnLockChartAspectRatio, (_, cnt, _) => cnt >= 1 },
+                { btnChartScaleAnchor, (_, _, _) => true },
+                { btnCopyChartSize, (_, cnt, _) => cnt == 1 },
+                { btnPasteChartSize, (_, cnt, _) => cnt >= 1 && SizeAndPositionHelper.IsValidCopiedSizeValue() },
+                { edtChartPositionX, (_, cnt, _) => cnt >= 1 },
+                { edtChartPositionY, (_, cnt, _) => cnt >= 1 },
+                { btnCopyChartPosition, (_, cnt, _) => cnt == 1 },
+                { btnPasteChartPosition, (_, cnt, _) => cnt >= 1 && SizeAndPositionHelper.IsValidCopiedPositionValue() },
+                // grpSmartartSizeAndPosition
+                { mnuSmartartArrangement, (_, _, _) => true },
+                { btnLockSmartartAspectRatio, (_, cnt, _) => cnt >= 1 },
+                { btnSmartartScaleAnchor, (_, _, _) => true },
+                { btnCopySmartartSize, (_, cnt, _) => cnt == 1 },
+                { btnPasteSmartartSize, (_, cnt, _) => cnt >= 1 && SizeAndPositionHelper.IsValidCopiedSizeValue() },
+                { edtSmartartPositionX, (_, cnt, _) => cnt >= 1 },
+                { edtSmartartPositionY, (_, cnt, _) => cnt >= 1 },
+                { btnCopySmartartPosition, (_, cnt, _) => cnt == 1 },
+                { btnPasteSmartartPosition, (_, cnt, _) => cnt >= 1 && SizeAndPositionHelper.IsValidCopiedPositionValue() }
             };
         }
 
@@ -118,6 +170,11 @@ namespace ppt_arrange_addin.Ribbon {
                 grpShapeSizeAndPosition => AddInSetting.Instance.ShowShapeSizeAndPositionGroup,
                 grpReplacePicture => AddInSetting.Instance.ShowReplacePictureGroup,
                 grpPictureSizeAndPosition => AddInSetting.Instance.ShowPictureSizeAndPositionGroup,
+                grpVideoSizeAndPosition => AddInSetting.Instance.ShowVideoSizeAndPositionGroup,
+                grpAudioSizeAndPosition => AddInSetting.Instance.ShowAudioSizeAndPositionGroup,
+                grpTableSizeAndPosition => AddInSetting.Instance.ShowTableSizeAndPositionGroup,
+                grpChartSizeAndPosition => AddInSetting.Instance.ShowChartSizeAndPositionGroup,
+                grpSmartartSizeAndPosition => AddInSetting.Instance.ShowSmartartSizeAndPositionGroup,
                 _ => true
             };
         }
@@ -190,6 +247,11 @@ namespace ppt_arrange_addin.Ribbon {
             _ribbon?.InvalidateControl(btnScaleAnchor);
             _ribbon?.InvalidateControl(btnShapeScaleAnchor);
             _ribbon?.InvalidateControl(btnPictureScaleAnchor);
+            _ribbon?.InvalidateControl(btnVideoScaleAnchor);
+            _ribbon?.InvalidateControl(btnAudioScaleAnchor);
+            _ribbon?.InvalidateControl(btnTableScaleAnchor);
+            _ribbon?.InvalidateControl(btnChartScaleAnchor);
+            _ribbon?.InvalidateControl(btnSmartartScaleAnchor);
         }
 
         public string BtnScaleAnchor_GetLabel(Office.IRibbonControl _) {
@@ -443,13 +505,20 @@ namespace ppt_arrange_addin.Ribbon {
                 return;
             }
             SizeAndPositionHelper.CopyAndPasteCmd? cmd = ribbonControl.Id switch {
-                btnCopyShapeSize or btnCopyPictureSize => SizeAndPositionHelper.CopyAndPasteCmd.Copy,
-                btnPasteShapeSize or btnPastePictureSize => SizeAndPositionHelper.CopyAndPasteCmd.Paste,
+                btnCopyShapeSize or btnCopyPictureSize or btnCopyVideoSize or btnCopyAudioSize
+                    or btnCopyTableSize or btnCopyChartSize or btnCopySmartartSize => SizeAndPositionHelper.CopyAndPasteCmd.Copy,
+                btnPasteShapeSize or btnPastePictureSize or btnPasteVideoSize or btnPasteAudioSize
+                    or btnPasteTableSize or btnPasteChartSize or btnPasteSmartartSize => SizeAndPositionHelper.CopyAndPasteCmd.Paste,
                 _ => null
             };
             SizeAndPositionHelper.CopyAndPasteSize(shapeRange, cmd, _scaleFromFlag, () => {
                 _ribbon?.InvalidateControl(btnPasteShapeSize);
                 _ribbon?.InvalidateControl(btnPastePictureSize);
+                _ribbon?.InvalidateControl(btnPasteVideoSize);
+                _ribbon?.InvalidateControl(btnPasteAudioSize);
+                _ribbon?.InvalidateControl(btnPasteTableSize);
+                _ribbon?.InvalidateControl(btnPasteChartSize);
+                _ribbon?.InvalidateControl(btnPasteSmartartSize);
             });
         }
 
@@ -459,8 +528,10 @@ namespace ppt_arrange_addin.Ribbon {
                 return;
             }
             SizeAndPositionHelper.PositionKind? kind = ribbonControl.Id switch {
-                edtShapePositionX or edtPicturePositionX => SizeAndPositionHelper.PositionKind.X,
-                edtShapePositionY or edtPicturePositionY => SizeAndPositionHelper.PositionKind.Y,
+                edtShapePositionX or edtPicturePositionX or edtVideoPositionX or edtAudioPositionX
+                    or edtTablePositionX or edtChartPositionX or edtSmartartPositionX => SizeAndPositionHelper.PositionKind.X,
+                edtShapePositionY or edtPicturePositionY or edtVideoPositionY or edtAudioPositionY
+                    or edtTablePositionY or edtChartPositionY or edtSmartartPositionY => SizeAndPositionHelper.PositionKind.Y,
                 _ => null
             };
             SizeAndPositionHelper.ChangePositionOfString(shapeRange, kind, text, () => {
@@ -474,8 +545,10 @@ namespace ppt_arrange_addin.Ribbon {
                 return "";
             }
             SizeAndPositionHelper.PositionKind? kind = ribbonControl.Id switch {
-                edtShapePositionX or edtPicturePositionX => SizeAndPositionHelper.PositionKind.X,
-                edtShapePositionY or edtPicturePositionY => SizeAndPositionHelper.PositionKind.Y,
+                edtShapePositionX or edtPicturePositionX or edtVideoPositionX or edtAudioPositionX
+                    or edtTablePositionX or edtChartPositionX or edtSmartartPositionX => SizeAndPositionHelper.PositionKind.X,
+                edtShapePositionY or edtPicturePositionY or edtVideoPositionY or edtAudioPositionY
+                    or edtTablePositionY or edtChartPositionY or edtSmartartPositionY => SizeAndPositionHelper.PositionKind.Y,
                 _ => null
             };
             return SizeAndPositionHelper.GetPositionOfString(shapeRange, kind).Item1;
@@ -487,28 +560,40 @@ namespace ppt_arrange_addin.Ribbon {
                 return;
             }
             SizeAndPositionHelper.CopyAndPasteCmd? cmd = ribbonControl.Id switch {
-                btnCopyShapePosition or btnCopyPicturePosition => SizeAndPositionHelper.CopyAndPasteCmd.Copy,
-                btnPasteShapePosition or btnPastePicturePosition => SizeAndPositionHelper.CopyAndPasteCmd.Paste,
+                btnCopyShapePosition or btnCopyPicturePosition or btnCopyVideoPosition or btnCopyAudioPosition
+                    or btnCopyTablePosition or btnCopyChartPosition or btnCopySmartartPosition => SizeAndPositionHelper.CopyAndPasteCmd.Copy,
+                btnPasteShapePosition or btnPastePicturePosition or btnPasteVideoPosition or btnPasteAudioPosition
+                    or btnPasteTablePosition or btnPasteChartPosition or btnPasteSmartartPosition => SizeAndPositionHelper.CopyAndPasteCmd.Paste,
                 _ => null
             };
             SizeAndPositionHelper.CopyAndPastePosition(shapeRange, cmd, () => {
-                _ribbon?.InvalidateControl(btnPasteShapePosition);
-                _ribbon?.InvalidateControl(btnPastePicturePosition);
-                _ribbon?.InvalidateControl(edtShapePositionX);
-                _ribbon?.InvalidateControl(edtShapePositionY);
-                _ribbon?.InvalidateControl(edtPicturePositionX);
-                _ribbon?.InvalidateControl(edtPicturePositionY);
+                var controlIds = new[] {
+                    btnPasteShapePosition, edtShapePositionX, edtShapePositionY,
+                    btnPastePicturePosition, edtPicturePositionX, edtPicturePositionY,
+                    btnPasteVideoPosition, edtVideoPositionX, edtVideoPositionY,
+                    btnPasteAudioPosition, edtAudioPositionX, edtAudioPositionY,
+                    btnPasteTablePosition, edtTablePositionX, edtTablePositionY,
+                    btnPasteChartPosition, edtChartPositionX, edtChartPositionY,
+                    btnPasteSmartartPosition, edtSmartartPositionX, edtSmartartPositionY,
+                };
+                foreach (var controlId in controlIds) {
+                    _ribbon?.InvalidateControl(controlId);
+                }
             });
         }
 
-        public void BtnResetPictureSize_Click(Office.IRibbonControl ribbonControl) {
+        public void BtnResetMediaSize_Click(Office.IRibbonControl ribbonControl) {
             var shapeRange = GetShapeRange();
             if (shapeRange == null) {
                 return;
             }
-            SizeAndPositionHelper.ResetPictureSize(shapeRange, _scaleFromFlag, () => {
+            SizeAndPositionHelper.ResetMediaSize(shapeRange, _scaleFromFlag, () => {
                 _ribbon?.InvalidateControl(edtPicturePositionX);
                 _ribbon?.InvalidateControl(edtPicturePositionY);
+                _ribbon?.InvalidateControl(edtVideoPositionX);
+                _ribbon?.InvalidateControl(edtVideoPositionY);
+                _ribbon?.InvalidateControl(edtAudioPositionX);
+                _ribbon?.InvalidateControl(edtAudioPositionY);
             });
         }
 
