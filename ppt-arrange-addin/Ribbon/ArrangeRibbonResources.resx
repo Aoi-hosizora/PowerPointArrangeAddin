@@ -289,16 +289,16 @@
     <value>Select picture for replacement</value>
   </data>
   <data name="edtMarginBottom" xml:space="preserve">
-    <value>Bottom margin:</value>
+    <value>Bottom:</value>
   </data>
   <data name="edtMarginLeft" xml:space="preserve">
-    <value>Left margin:</value>
+    <value>Left:</value>
   </data>
   <data name="edtMarginRight" xml:space="preserve">
-    <value>Right margin:</value>
+    <value>Right:</value>
   </data>
   <data name="edtMarginTop" xml:space="preserve">
-    <value>Top margin:</value>
+    <value>Top:</value>
   </data>
   <data name="edtPicturePositionX" xml:space="preserve">
     <value>Horizontal:</value>
@@ -515,5 +515,11 @@
   </data>
   <data name="btnPasteSmartartPosition" xml:space="preserve">
     <value>Paste position</value>
+  </data>
+  <data name="lblHorizontalMargin" xml:space="preserve">
+    <value>Horizontal margin:</value>
+  </data>
+  <data name="lblVerticalMargin" xml:space="preserve">
+    <value>Vertical margin:</value>
   </data>
 </root>

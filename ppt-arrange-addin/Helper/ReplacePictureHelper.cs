@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
+using System.Threading;
 using Forms = System.Windows.Forms;
 using Office = Microsoft.Office.Core;
 using PowerPoint = Microsoft.Office.Interop.PowerPoint;
@@ -42,40 +44,29 @@ namespace ppt_arrange_addin.Helper {
                 return;
             }
 
-            var (filepath, needCleanup) = ("", false);
-            switch (cmd!) {
-            case ReplacePictureCmd.WithClipboard:
-                filepath = GetFilepathForReplacingWithClipboard();
-                needCleanup = true;
-                break;
-            case ReplacePictureCmd.WithFile:
-                filepath = GetFilepathForReplacingWithFile();
-                needCleanup = false;
-                break;
-            }
+            var (filepath, needCleanup) = cmd! switch {
+                ReplacePictureCmd.WithClipboard => (GetFilepathForReplacingWithClipboard(), true),
+                ReplacePictureCmd.WithFile => (GetFilepathForReplacingWithFile(), false),
+                _ => (null, false)
+            };
             if (filepath == null) {
                 return;
             }
 
             Globals.ThisAddIn.Application.StartNewUndoEntry();
-            var newShapes = InternalReplacePicture(filepath, pictures, slideShapes, flag);
+            var newShapes = InternalReplacePicture(filepath, pictures, slideShapes, flag); // <<<
             Globals.ThisAddIn.Application.ActiveWindow.Selection.Unselect();
             foreach (var shape in newShapes) {
                 shape.Select(Office.MsoTriState.msoFalse);
             }
 
             if (needCleanup) {
-                try {
-                    File.Delete(filepath);
-                } catch (Exception) {
-                    // ignored
-                }
+                try { File.Delete(filepath); } catch (Exception) { }
             }
-
             uiInvalidator?.Invoke();
         }
 
-        private static List<PowerPoint.Shape> InternalReplacePicture(string filepath, IEnumerable<PowerPoint.Shape> pictures, PowerPoint.Shapes slideShapes, ReplacePictureFlag? flag) {
+        private static List<PowerPoint.Shape> InternalReplacePicture(string filepath, PowerPoint.Shape[] pictures, PowerPoint.Shapes slideShapes, ReplacePictureFlag? flag) {
             var reserveOriginalSize = (flag & ReplacePictureFlag.ReserveOriginalSize) != 0;
             var replaceToMiddle = (flag & ReplacePictureFlag.ReplaceToMiddle) != 0;
 
@@ -83,38 +74,17 @@ namespace ppt_arrange_addin.Helper {
             foreach (var shape in pictures) {
                 try {
                     var (toLink, toSaveWith) = (Office.MsoTriState.msoFalse, Office.MsoTriState.msoTrue);
-                    var newShape = slideShapes.AddPicture(filepath, toLink, toSaveWith, shape.Left, shape.Top);
-                    newShape.LockAspectRatio = shape.LockAspectRatio;
-                    // TODO apply old format
-
-                    var (oldWidth, oldHeight) = (shape.Width, shape.Height);
-                    var (oldLeft, oldTop) = (shape.Left, shape.Top);
-                    var (newWidth, newHeight) = (newShape.Width, newShape.Height);
-
-                    if (reserveOriginalSize) {
-                        var widthHeightRate = newWidth / newHeight;
-                        if (oldHeight * widthHeightRate <= oldWidth) {
-                            newHeight = oldHeight;
-                            newWidth = oldHeight * widthHeightRate;
-                        } else {
-                            newWidth = oldWidth;
-                            newHeight = oldWidth / widthHeightRate;
-                        }
-                        newShape.Width = newWidth;
-                        newShape.Height = newHeight;
-                    }
-
-                    if (replaceToMiddle) {
-                        newShape.Left = oldLeft - (newWidth - oldWidth) / 2;
-                        newShape.Top = oldTop - (newHeight - oldHeight) / 2;
-                    }
-
+                    var newShape = slideShapes.AddPicture(filepath, toLink, toSaveWith, shape.Left, shape.Top); // <<<
+                    ApplySizeAndPositionToNewShape(shape, newShape, reserveOriginalSize, replaceToMiddle);
+                    ApplyFormatAndAnimationToNewShape(shape, newShape);
                     newShapes.Add(newShape);
                     shape.Delete();
+                    Marshal.ReleaseComObject(shape); // must release object to avoid 0x800a01a8 error
                 } catch (Exception) {
                     // ignored
                 }
             }
+
             return newShapes;
         }
 
@@ -163,6 +133,49 @@ namespace ppt_arrange_addin.Helper {
                 return null;
             }
             return path;
+        }
+
+        private static void ApplySizeAndPositionToNewShape(PowerPoint.Shape oldShape, PowerPoint.Shape newShape, bool reserveOriginalSize, bool replaceToMiddle) {
+            var oldLockAspectRatio = newShape.LockAspectRatio;
+            newShape.LockAspectRatio = Office.MsoTriState.msoFalse;
+            var (oldWidth, oldHeight) = (oldShape.Width, oldShape.Height);
+            var (oldLeft, oldTop) = (oldShape.Left, oldShape.Top);
+            var (newWidth, newHeight) = (newShape.Width, newShape.Height);
+            if (reserveOriginalSize) {
+                var widthHeightRate = newWidth / newHeight;
+                if (oldHeight * widthHeightRate <= oldWidth) {
+                    newHeight = oldHeight;
+                    newWidth = oldHeight * widthHeightRate;
+                } else {
+                    newWidth = oldWidth;
+                    newHeight = oldWidth / widthHeightRate;
+                }
+                newShape.Width = newWidth;
+                newShape.Height = newHeight;
+            }
+            if (replaceToMiddle) {
+                newShape.Left = oldLeft - (newWidth - oldWidth) / 2;
+                newShape.Top = oldTop - (newHeight - oldHeight) / 2;
+            }
+            newShape.LockAspectRatio = oldLockAspectRatio;
+        }
+
+        private static void ApplyFormatAndAnimationToNewShape(PowerPoint.Shape oldShape, PowerPoint.Shape newShape) {
+            newShape.LockAspectRatio = oldShape.LockAspectRatio;
+            try {
+                oldShape.PickUp();
+                newShape.Apply();
+            } catch (Exception) {
+                // ignored
+            }
+            try {
+                if (oldShape.AnimationSettings.Animate == Office.MsoTriState.msoTrue) {
+                    oldShape.PickupAnimation();
+                    newShape.ApplyAnimation();
+                }
+            } catch (Exception) {
+                // ignored
+            }
         }
 
     }

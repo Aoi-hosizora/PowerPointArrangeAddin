@@ -871,7 +871,7 @@ namespace ppt_arrange_addin.Ribbon {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Bottom margin:.
+        ///   Looks up a localized string similar to Bottom:.
         /// </summary>
         public static string edtMarginBottom {
             get {
@@ -880,7 +880,7 @@ namespace ppt_arrange_addin.Ribbon {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Left margin:.
+        ///   Looks up a localized string similar to Left:.
         /// </summary>
         public static string edtMarginLeft {
             get {
@@ -889,7 +889,7 @@ namespace ppt_arrange_addin.Ribbon {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Right margin:.
+        ///   Looks up a localized string similar to Right:.
         /// </summary>
         public static string edtMarginRight {
             get {
@@ -898,7 +898,7 @@ namespace ppt_arrange_addin.Ribbon {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Top margin:.
+        ///   Looks up a localized string similar to Top:.
         /// </summary>
         public static string edtMarginTop {
             get {
@@ -1092,6 +1092,24 @@ namespace ppt_arrange_addin.Ribbon {
         public static string grpWordArt {
             get {
                 return ResourceManager.GetString("grpWordArt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Horizontal margin:.
+        /// </summary>
+        public static string lblHorizontalMargin {
+            get {
+                return ResourceManager.GetString("lblHorizontalMargin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vertical margin:.
+        /// </summary>
+        public static string lblVerticalMargin {
+            get {
+                return ResourceManager.GetString("lblVerticalMargin", resourceCulture);
             }
         }
         

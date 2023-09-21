@@ -146,7 +146,7 @@
     <comment>縮小溢出文字</comment>
   </data>
   <data name="btnAutoResizeShape" xml:space="preserve">
-    <value>自動調整圖案</value>
+    <value>調整圖案大小</value>
     <comment>依照文字調整圖案的大小</comment>
   </data>
   <data name="btnCopyPicturePosition" xml:space="preserve">
@@ -517,5 +517,11 @@
   </data>
   <data name="mnuChartArrangement" xml:space="preserve">
     <value>圖表排列</value>
+  </data>
+  <data name="lblHorizontalMargin" xml:space="preserve">
+    <value>橫向邊界:　 </value>
+  </data>
+  <data name="lblVerticalMargin" xml:space="preserve">
+    <value>縱向邊界:　 </value>
   </data>
 </root>

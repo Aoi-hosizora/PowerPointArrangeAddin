@@ -123,11 +123,11 @@ namespace ppt_arrange_addin.Helper {
             var valueInPt = positionKind! switch {
                 PositionKind.X => shapeRange.Left,
                 PositionKind.Y => shapeRange.Top,
-                _ => -1
+                _ => -1e9F // if shapes has different position, the value will be "-2.147484E+09"
             };
 
             var text = "";
-            if (valueInPt >= 0) {
+            if (valueInPt >= -1e9F) {
                 text = UnitConverter.FormatPtValueToString(valueInPt);
             }
             return (text, true);

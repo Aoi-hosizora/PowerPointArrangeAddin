@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Globalization;
 using System.Reflection;
 using System.Windows.Forms;
 
@@ -37,7 +38,6 @@ namespace ppt_arrange_addin.Dialog {
         }
 
         private void BtnOK_Click(object sender, EventArgs e) {
-            var oldLanguage = AddInSetting.Instance.Language;
             AddInSetting.Instance.ShowWordArtGroup = chkWordArt.Checked;
             AddInSetting.Instance.ShowShapeTextboxGroup = chkShapeTextbox.Checked;
             AddInSetting.Instance.ShowShapeSizeAndPositionGroup = chkShapeSizeAndPosition.Checked;
@@ -51,11 +51,6 @@ namespace ppt_arrange_addin.Dialog {
             AddInSetting.Instance.Language = cboLanguage.SelectedIndex.ToAddInLanguage();
             AddInSetting.Instance.LessButtonsForArrangementGroup = chkLessButtonsForArrange.Checked;
             AddInSetting.Instance.Save();
-
-            if (AddInSetting.Instance.Language != oldLanguage) {
-                AddInLanguageChanger.ChangeLanguage(AddInSetting.Instance.Language);
-            }
-
             DialogResult = DialogResult.OK;
             Close();
         }
@@ -65,29 +60,28 @@ namespace ppt_arrange_addin.Dialog {
             Close();
         }
 
-        private readonly string _addInTitle = "\"Arrangement Assistant Add-in\"";
-        private readonly string _addInVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString();
-        private readonly string _addInAuthor = "AoiHosizora (https://github.com/Aoi-hosizora)";
-        private readonly string _addInHomepage = "https://github.com/Aoi-hosizora/ppt-arrange-addin";
-
         private void LoadDescription() {
-            var title = GetResourceString(key: "_title", defaultValue: _addInTitle);
-            var version = $"{GetResourceString(key: "_version", defaultValue: "Version")}: {_addInVersion}";
-            var author = $"{GetResourceString(key: "_author", defaultValue: "Author")}: {_addInAuthor}";
-            var homepage = $"{GetResourceString(key: "_homepage", defaultValue: "Homepage")}: {_addInHomepage}";
+            var title = GetResourceString("_title");
+            var version = $"{GetResourceString("_version")}: {Assembly.GetExecutingAssembly().GetName().Version}";
+            var author = $"{GetResourceString("_author")}: {GetResourceString("_author_value")}";
+            var homepage = $"{GetResourceString("_homepage")}: {GetResourceString("_homepage_value")}";
             var copyright = GetAttributeFromAssembly<AssemblyCopyrightAttribute>()?.Copyright ?? "";
-            var description = $"{title}\r\n\r\n{version}\r\n\r\n{author}\r\n\r\n{homepage}\r\n\r\n{copyright}";
-            tbxDescription.Text = description;
+            tbxDescription.Text = string.Join("\r\n\r\n", new[] { title, version, author, homepage, copyright });
+        }
+
+        private static readonly System.ComponentModel.ComponentResourceManager DlgResources = new(typeof(SettingDialog));
+
+        private static string GetResourceString(string key, bool value = false, string defaultValue = "") {
+            return key.EndsWith("_value")
+                ? DlgResources.GetString(key, new CultureInfo("ja")) ?? defaultValue // "xxx_value" strings are stored in ja resx
+                : CultureInfo.CurrentUICulture.Name == "en"
+                    ? DlgResources.GetString($"{key}_en", new CultureInfo("ja")) ?? defaultValue // just use ja resx to get "xxx_en" string
+                    : DlgResources.GetString(key) ?? defaultValue;
         }
 
         private static T GetAttributeFromAssembly<T>(T defaultValue = default) {
             var attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(T), false);
             return attributes.Length > 0 ? (T) attributes[0] : defaultValue;
-        }
-
-        private static string GetResourceString(string key, string defaultValue) {
-            var resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingDialog));
-            return resources.GetString(key) ?? defaultValue;
         }
 
     }

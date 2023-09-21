@@ -384,10 +384,17 @@ namespace ppt_arrange_addin.Ribbon {
         }
 
         public void BtnAddInSetting_Click(Office.IRibbonControl _) {
+            var oldLanguage = AddInSetting.Instance.Language;
             var dlg = new Dialog.SettingDialog();
             var result = dlg.ShowDialog();
-            if (result == Forms.DialogResult.OK) {
-                _ribbon?.Invalidate();
+            if (result != Forms.DialogResult.OK) {
+                return;
+            }
+            if (AddInSetting.Instance.Language != oldLanguage) {
+                // include updating elements and invalidating ribbon
+                AddInLanguageChanger.ChangeLanguage(AddInSetting.Instance.Language);
+            } else {
+                _ribbon?.Invalidate(); // just invalidate ribbon
             }
         }
 

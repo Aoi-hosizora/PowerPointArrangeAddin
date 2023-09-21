@@ -117,12 +117,14 @@ namespace ppt_arrange_addin.Ribbon {
         private const string btnAutoShrinkText = "btnAutoShrinkText";
         private const string btnAutoResizeShape = "btnAutoResizeShape";
         private const string btnWrapText = "btnWrapText";
+        private const string lblHorizontalMargin = "lblHorizontalMargin";
+        private const string btnResetHorizontalMargin = "btnResetHorizontalMargin";
         private const string edtMarginLeft = "edtMarginLeft";
         private const string edtMarginRight = "edtMarginRight";
+        private const string lblVerticalMargin = "lblVerticalMargin";
+        private const string btnResetVerticalMargin = "btnResetVerticalMargin";
         private const string edtMarginTop = "edtMarginTop";
         private const string edtMarginBottom = "edtMarginBottom";
-        private const string btnResetHorizontalMargin = "btnResetHorizontalMargin";
-        private const string btnResetVerticalMargin = "btnResetVerticalMargin";
         // grpShapeSizeAndPosition
         private const string grpShapeSizeAndPosition = "grpShapeSizeAndPosition";
         private const string mnuShapeArrangement = "mnuShapeArrangement";
@@ -278,12 +280,14 @@ namespace ppt_arrange_addin.Ribbon {
                 { btnAutoShrinkText, new ElementUi { Label = R1.btnAutoShrinkText, Image = R2.TextboxAutoShrinkText, Keytip = "TS" } },
                 { btnAutoResizeShape, new ElementUi { Label = R1.btnAutoResizeShape, Image = R2.TextboxAutoResizeShape, Keytip = "TR" } },
                 { btnWrapText, new ElementUi { Label = R1.btnWrapText, Image = R2.TextboxWrapText_32, Keytip = "TW" } },
+                { lblHorizontalMargin, new ElementUi { Label = R1.lblHorizontalMargin } },
+                { btnResetHorizontalMargin, new ElementUi { Label = R1.btnResetHorizontalMargin, Image = R2.TextboxResetMargin, Keytip = "MH" } },
                 { edtMarginLeft, new ElementUi { Label = R1.edtMarginLeft, Keytip = "ML" } },
                 { edtMarginRight, new ElementUi { Label = R1.edtMarginRight, Keytip = "MR" } },
+                { lblVerticalMargin, new ElementUi { Label = R1.lblVerticalMargin } },
+                { btnResetVerticalMargin, new ElementUi { Label = R1.btnResetVerticalMargin, Image = R2.TextboxResetMargin, Keytip = "MV" } },
                 { edtMarginTop, new ElementUi { Label = R1.edtMarginTop, Keytip = "MT" } },
                 { edtMarginBottom, new ElementUi { Label = R1.edtMarginBottom, Keytip = "MB" } },
-                { btnResetHorizontalMargin, new ElementUi { Label = R1.btnResetHorizontalMargin, Image = R2.TextboxResetMargin, Keytip = "MH" } },
-                { btnResetVerticalMargin, new ElementUi { Label = R1.btnResetVerticalMargin, Image = R2.TextboxResetMargin, Keytip = "MV" } },
                 // grpShapeSizeAndPosition
                 { grpShapeSizeAndPosition, new ElementUi { Label = R1.grpShapeSizeAndPosition, Image = R2.SizeAndPosition } },
                 { mnuShapeArrangement, new ElementUi { Label = R1.mnuShapeArrangement, Image = R2.ObjectArrangement_32, Keytip = "B" } },

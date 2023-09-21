@@ -142,11 +142,11 @@
     <value>自動調整なし</value>
   </data>
   <data name="btnAutoShrinkText" xml:space="preserve">
-    <value>文字を縮小</value>
+    <value>枠外文字を縮小</value>
     <comment>はみ出す場合だけ自動調整</comment>
   </data>
   <data name="btnAutoResizeShape" xml:space="preserve">
-    <value>図形を調整</value>
+    <value>図形サイズを調整</value>
     <comment>テキストに合わせて図形のサイズを調整</comment>
   </data>
   <data name="btnCopyPicturePosition" xml:space="preserve">
@@ -225,10 +225,10 @@
     <value>ファイルに置換</value>
   </data>
   <data name="btnResetHorizontalMargin" xml:space="preserve">
-    <value>横余白をリセット</value>
+    <value>横の余白をリセット</value>
   </data>
   <data name="btnResetVerticalMargin" xml:space="preserve">
-    <value>縦余白をリセット</value>
+    <value>縦の余白をリセット</value>
   </data>
   <data name="btnResetPictureSize" xml:space="preserve">
     <value>サイズをリセット</value>
@@ -517,5 +517,11 @@
   </data>
   <data name="mnuSmartartArrangement" xml:space="preserve">
     <value>図形の配置</value>
+  </data>
+  <data name="lblHorizontalMargin" xml:space="preserve">
+    <value>横の余白:　 </value>
+  </data>
+  <data name="lblVerticalMargin" xml:space="preserve">
+    <value>縦の余白:　 </value>
   </data>
 </root>

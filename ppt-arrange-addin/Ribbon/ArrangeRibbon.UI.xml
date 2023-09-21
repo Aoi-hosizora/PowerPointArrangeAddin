@@ -6,7 +6,8 @@
         <__template name="K" getKeytip="GetKeytip" />
         <__template name="E" getEnabled="GetEnabled" />
         <__template name="I" getImage="GetImage" />
-        <__template name="Z" sizeString="wwwwwww" />
+        <__template name="Z6" sizeString="wwwwww" />
+        <__template name="Z7" sizeString="wwwwwww" />
         <__template name="CV" getVisible="GetControlVisible" />
         <__template name="GV" getVisible="GetGroupVisible" />
         <__template name="GROUP" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getVisible="GetGroupVisible" />
@@ -98,13 +99,19 @@
                         <toggleButton id="btnAutoResizeShape" __template="L,S,K,E,I" getPressed="BtnAutofit_GetPressed" onAction="BtnAutofit_Click" />
                         <toggleButton id="btnWrapText" size="large" __template="L,S,K,E,I" getPressed="BtnWrapText_GetPressed" onAction="BtnWrapText_Click" />
                         <separator id="grpTextbox_separator1" />
-                        <editBox id="edtMarginLeft" showImage="false" __template="L,S,K,E,Z" getText="EdtMargin_GetText" onChange="EdtMargin_TextChanged" />
-                        <editBox id="edtMarginRight" showImage="false" __template="L,S,K,E,Z" getText="EdtMargin_GetText" onChange="EdtMargin_TextChanged" />
-                        <button id="btnResetHorizontalMargin" __template="L,S,K,E,I" onAction="BtnResetMargin_Click" />
+                        <box id="bgpHorizontalMargin">
+                            <labelControl id="lblHorizontalMargin" __template="L,S" />
+                            <button id="btnResetHorizontalMargin" showLabel="false" __template="L,S,K,E,I" onAction="BtnResetMargin_Click" />
+                        </box>
+                        <editBox id="edtMarginLeft" showImage="false" __template="L,S,K,E,Z6" getText="EdtMargin_GetText" onChange="EdtMargin_TextChanged" />
+                        <editBox id="edtMarginRight" showImage="false" __template="L,S,K,E,Z6" getText="EdtMargin_GetText" onChange="EdtMargin_TextChanged" />
                         <separator id="grpTextbox_separator2" />
-                        <editBox id="edtMarginTop" showImage="false" __template="L,S,K,E,Z" getText="EdtMargin_GetText" onChange="EdtMargin_TextChanged" />
-                        <editBox id="edtMarginBottom" showImage="false" __template="L,S,K,E,Z" getText="EdtMargin_GetText" onChange="EdtMargin_TextChanged" />
-                        <button id="btnResetVerticalMargin" __template="L,S,K,E,I" onAction="BtnResetMargin_Click" />
+                        <box id="bgpVerticalMargin">
+                            <labelControl id="lblVerticalMargin" __template="L,S" />
+                            <button id="btnResetVerticalMargin" showLabel="false" __template="L,S,K,E,I" onAction="BtnResetMargin_Click" />
+                        </box>
+                        <editBox id="edtMarginTop" showImage="false" __template="L,S,K,E,Z6" getText="EdtMargin_GetText" onChange="EdtMargin_TextChanged" />
+                        <editBox id="edtMarginBottom" showImage="false" __template="L,S,K,E,Z6" getText="EdtMargin_GetText" onChange="EdtMargin_TextChanged" />
                         <dialogBoxLauncher>
                             <button idMso="WordArtFormatDialog" __template="K" />
                         </dialogBoxLauncher>
@@ -120,8 +127,8 @@
                             <button id="btnPasteShapeSize" __template="L,S,K,E,I" onAction="BtnCopyAndPasteSize_Click" />
                         </buttonGroup>
                         <separator id="grpShapeSizeAndPosition_separator2" />
-                        <editBox id="edtShapePositionX" showImage="false" __template="L,S,K,E,Z" getText="EdtPosition_GetText" onChange="EdtPosition_TextChanged" />
-                        <editBox id="edtShapePositionY" showImage="false" __template="L,S,K,E,Z" getText="EdtPosition_GetText" onChange="EdtPosition_TextChanged" />
+                        <editBox id="edtShapePositionX" showImage="false" __template="L,S,K,E,Z7" getText="EdtPosition_GetText" onChange="EdtPosition_TextChanged" />
+                        <editBox id="edtShapePositionY" showImage="false" __template="L,S,K,E,Z7" getText="EdtPosition_GetText" onChange="EdtPosition_TextChanged" />
                         <buttonGroup id="bgpCopyAndPasteShapePosition">
                             <button id="btnCopyShapePosition" showLabel="false" __template="L,S,K,E,I" onAction="BtnCopyAndPastePosition_Click" />
                             <button id="btnPasteShapePosition" __template="L,S,K,E,I" onAction="BtnCopyAndPastePosition_Click" />
@@ -153,8 +160,8 @@
                             <button id="btnPastePictureSize" __template="L,S,K,E,I" onAction="BtnCopyAndPasteSize_Click" />
                         </buttonGroup>
                         <separator id="grpPictureSizeAndPosition_separator2" />
-                        <editBox id="edtPicturePositionX" showImage="false" __template="L,S,K,E,Z" getText="EdtPosition_GetText" onChange="EdtPosition_TextChanged" />
-                        <editBox id="edtPicturePositionY" showImage="false" __template="L,S,K,E,Z" getText="EdtPosition_GetText" onChange="EdtPosition_TextChanged" />
+                        <editBox id="edtPicturePositionX" showImage="false" __template="L,S,K,E,Z7" getText="EdtPosition_GetText" onChange="EdtPosition_TextChanged" />
+                        <editBox id="edtPicturePositionY" showImage="false" __template="L,S,K,E,Z7" getText="EdtPosition_GetText" onChange="EdtPosition_TextChanged" />
                         <buttonGroup id="bgpCopyAndPastePicturePosition">
                             <button id="btnCopyPicturePosition" showLabel="false" __template="L,S,K,E,I" onAction="BtnCopyAndPastePosition_Click" />
                             <button id="btnPastePicturePosition" __template="L,S,K,E,I" onAction="BtnCopyAndPastePosition_Click" />
