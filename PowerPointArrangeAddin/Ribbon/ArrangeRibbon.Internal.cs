@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using ppt_arrange_addin.Helper;
 using Office = Microsoft.Office.Core;
 
 #nullable enable
 
-namespace ppt_arrange_addin.Ribbon {
+namespace PowerPointArrangeAddin.Ribbon {
 
+    using XmlResourceHelper = Helper.XmlResourceHelper;
     using R1 = ArrangeRibbonResources;
     using R2 = Properties.Resources;
 

@@ -4,7 +4,7 @@ using System.Threading;
 
 #nullable enable
 
-namespace ppt_arrange_addin {
+namespace PowerPointArrangeAddin {
 
     public enum AddInLanguage {
         Default,

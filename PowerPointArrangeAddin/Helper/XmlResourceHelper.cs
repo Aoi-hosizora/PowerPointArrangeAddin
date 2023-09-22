@@ -8,7 +8,7 @@ using Office = Microsoft.Office.Core;
 
 #nullable enable
 
-namespace ppt_arrange_addin.Helper {
+namespace PowerPointArrangeAddin.Helper {
 
     public static class XmlResourceHelper {
 

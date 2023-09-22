@@ -7,11 +7,10 @@ using System.Threading;
 using Forms = System.Windows.Forms;
 using Office = Microsoft.Office.Core;
 using PowerPoint = Microsoft.Office.Interop.PowerPoint;
-using ppt_arrange_addin.Ribbon;
 
 #nullable enable
 
-namespace ppt_arrange_addin.Helper {
+namespace PowerPointArrangeAddin.Helper {
 
     public static class ReplacePictureHelper {
 
@@ -99,7 +98,7 @@ namespace ppt_arrange_addin.Helper {
             var image = Forms.Clipboard.GetImage();
             if (image == null) {
                 Forms.MessageBox.Show(
-                    ArrangeRibbonResources.dlgNoPictureInClipboard, ArrangeRibbonResources.dlgReplacePicture,
+                    Ribbon.ArrangeRibbonResources.dlgNoPictureInClipboard, Ribbon.ArrangeRibbonResources.dlgReplacePicture,
                     Forms.MessageBoxButtons.OK, Forms.MessageBoxIcon.Error);
                 return null;
             }
@@ -115,13 +114,13 @@ namespace ppt_arrange_addin.Helper {
 
         private static string? GetFilepathForReplacingWithFile() {
             var dlg = Globals.ThisAddIn.Application.FileDialog[Office.MsoFileDialogType.msoFileDialogFilePicker];
-            dlg.Title = ArrangeRibbonResources.dlgSelectPictureToReplace;
+            dlg.Title = Ribbon.ArrangeRibbonResources.dlgSelectPictureToReplace;
             dlg.AllowMultiSelect = false;
 
             const string imageFilter = "*.jpg; *.jpeg; *.png; *.bmp; *.gif; *.tif; *.tiff";
             const string allFilesFilter = "*.*";
-            dlg.Filters.Add(ArrangeRibbonResources.dlgImageFilesFilter, imageFilter);
-            dlg.Filters.Add(ArrangeRibbonResources.dlgAllFilesFilter, allFilesFilter);
+            dlg.Filters.Add(Ribbon.ArrangeRibbonResources.dlgImageFilesFilter, imageFilter);
+            dlg.Filters.Add(Ribbon.ArrangeRibbonResources.dlgAllFilesFilter, allFilesFilter);
 
             var result = dlg.Show();
             if (result != -1 || dlg.SelectedItems.Count == 0) {

@@ -1,6 +1,6 @@
 ﻿#nullable enable
 
-namespace ppt_arrange_addin {
+namespace PowerPointArrangeAddin {
 
     public class AddInSetting {
 

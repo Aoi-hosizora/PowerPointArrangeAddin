@@ -5,7 +5,7 @@ using PowerPoint = Microsoft.Office.Interop.PowerPoint;
 
 #nullable enable
 
-namespace ppt_arrange_addin.Helper {
+namespace PowerPointArrangeAddin.Helper {
 
     public static class ArrangementHelper {
 

@@ -24,8 +24,8 @@
     <ProjectGuid>{D0A4931D-7AAD-4CE2-A65E-B90B30FE1CE2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <NoStandardLibraries>false</NoStandardLibraries>
-    <RootNamespace>ppt_arrange_addin</RootNamespace>
-    <AssemblyName>ppt-arrange-addin</AssemblyName>
+    <RootNamespace>PowerPointArrangeAddin</RootNamespace>
+    <AssemblyName>PowerPointArrangeAddin</AssemblyName>
     <LoadBehavior>3</LoadBehavior>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <LangVersion>9.0</LangVersion>
@@ -230,7 +230,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="ppt-arrange-addin_TemporaryKey.pfx" />
+    <None Include="PowerPointArrangeAddin_TemporaryKey.pfx" />
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
@@ -403,10 +403,10 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>ppt-arrange-addin_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>PowerPointArrangeAddin_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>8509DDB50256979412649125DC6E86E12A1DCE06</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>CC5FAFAF6EAA3C2EC52403F1DDCC74224E16F434</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
@@ -433,7 +433,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{BAA0C2D2-18E2-41B9-852F-F413020CAA33}">
         <ProjectProperties HostName="PowerPoint" HostPackage="{29A7B9D7-A7F1-4328-8EF0-6B2D1A56B2C1}" OfficeVersion="14.0" VstxVersion="4.0" ApplicationType="PowerPoint" Language="cs" TemplatesPath="" DebugInfoExeName="#Software\Microsoft\Office\14.0\PowerPoint\InstallRoot\Path#powerpnt.exe" AddItemTemplatesGuid="{51063C3A-E220-4D12-8922-BDA915ACD783}" />
-        <Host Name="PowerPoint" GeneratedCodeNamespace="ppt_arrange_addin" IconIndex="0">
+        <Host Name="PowerPoint" GeneratedCodeNamespace="PowerPointArrangeAddin" IconIndex="0">
           <HostItem Name="ThisAddIn" Code="ThisAddIn.cs" CanonicalName="AddIn" CanActivate="false" IconIndex="1" Blueprint="ThisAddIn.Designer.xml" GeneratedCode="ThisAddIn.Designer.cs" />
         </Host>
       </FlavorProperties>

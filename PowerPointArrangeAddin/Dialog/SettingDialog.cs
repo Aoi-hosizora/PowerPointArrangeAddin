@@ -4,7 +4,7 @@ using System.Globalization;
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace ppt_arrange_addin.Dialog {
+namespace PowerPointArrangeAddin.Dialog {
 
     public sealed partial class SettingDialog : Form {
 

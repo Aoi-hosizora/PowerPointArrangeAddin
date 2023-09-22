@@ -1,5 +1,5 @@
 ﻿
-namespace ppt_arrange_addin.Dialog {
+namespace PowerPointArrangeAddin.Dialog {
     sealed partial class SettingDialog {
         /// <summary>
         /// Required designer variable.

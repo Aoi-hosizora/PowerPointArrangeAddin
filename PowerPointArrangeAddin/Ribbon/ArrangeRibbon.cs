@@ -1,17 +1,17 @@
 ﻿using System.Collections.Generic;
-using ppt_arrange_addin.Helper;
 using Forms = System.Windows.Forms;
 using Office = Microsoft.Office.Core;
 using PowerPoint = Microsoft.Office.Interop.PowerPoint;
+using PowerPointArrangeAddin.Helper;
 
 #nullable enable
 
-namespace ppt_arrange_addin.Ribbon {
+namespace PowerPointArrangeAddin.Ribbon {
 
     public partial class ArrangeRibbon {
 
-        private const string ArrangeRibbonXmlName = "ppt_arrange_addin.Ribbon.ArrangeRibbon.UI.xml";
-        private const string ArrangeRibbonMenuXmlName = "ppt_arrange_addin.Ribbon.ArrangeRibbon.Menu.xml";
+        private const string ArrangeRibbonXmlName = "PowerPointArrangeAddin.Ribbon.ArrangeRibbon.UI.xml";
+        private const string ArrangeRibbonMenuXmlName = "PowerPointArrangeAddin.Ribbon.ArrangeRibbon.Menu.xml";
 
         private Office.IRibbonUI? _ribbon;
 
