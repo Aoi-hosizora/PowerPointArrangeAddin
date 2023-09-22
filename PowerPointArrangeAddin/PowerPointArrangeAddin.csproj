@@ -26,14 +26,37 @@
     <NoStandardLibraries>false</NoStandardLibraries>
     <RootNamespace>PowerPointArrangeAddin</RootNamespace>
     <AssemblyName>PowerPointArrangeAddin</AssemblyName>
-    <LoadBehavior>3</LoadBehavior>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <LangVersion>9.0</LangVersion>
     <DefineConstants>VSTO40</DefineConstants>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
-    <BootstrapperComponentsLocation>HomeSite</BootstrapperComponentsLocation>
+    <IsWebBootstrapper>False</IsWebBootstrapper>
+    <BootstrapperEnabled>False</BootstrapperEnabled>
+    <PublishUrl>./Publish</PublishUrl>
+    <InstallUrl />
+    <TargetCulture>en</TargetCulture>
+    <ApplicationVersion>1.0.0.0</ApplicationVersion>
+    <AutoIncrementApplicationRevision>false</AutoIncrementApplicationRevision>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateInterval>0</UpdateInterval>
+    <UpdateIntervalUnits>days</UpdateIntervalUnits>
+    <ProductName>PowerPointArrangeAddin</ProductName>
+    <PublisherName>AoiHosizora</PublisherName>
+    <SupportUrl>https://github.com/Aoi-hosizora/PowerPointArrangeAddin</SupportUrl>
+    <FriendlyName>Arrangement Assistant Add-in</FriendlyName>
+    <OfficeApplicationDescription>A PowerPoint add-in for assisting arrangement operations.</OfficeApplicationDescription>
+    <LoadBehavior>3</LoadBehavior>
   </PropertyGroup>
   <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.VSTORuntime.4.0">
       <Visible>False</Visible>
       <ProductName>Microsoft Visual Studio 2010 Tools for Office Runtime %28x86 and x64%29</ProductName>
@@ -129,10 +152,10 @@
   </ItemGroup>
   <!--
     This section defines the user source files that are part of the project.
-     
+
     A "Compile" element specifies a source file to compile.
     An "EmbeddedResource" element specifies an .resx file for embedded resources.
-    A "None" element specifies a file that is not to be passed to the compiler (for instance, 
+    A "None" element specifies a file that is not to be passed to the compiler (for instance,
     a text file or XML file).
     The "AppDesigner" element specifies the directory where the application properties files
     can be found.
@@ -406,7 +429,7 @@
     <ManifestKeyFile>PowerPointArrangeAddin_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestCertificateThumbprint>CC5FAFAF6EAA3C2EC52403F1DDCC74224E16F434</ManifestCertificateThumbprint>
+    <ManifestCertificateThumbprint>A4D6A8744DB94CF832321FA3F613FACABE87CC04</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
@@ -424,6 +447,12 @@
     <PlatformTarget>x64</PlatformTarget>
     <LangVersion>9</LangVersion>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>PowerPointArrangeAddin_TemporaryKey.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <!-- Include the build rules for a C# project. -->
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- Include additional build rules for an Office application add-in. -->
@@ -433,8 +462,8 @@
     <VisualStudio>
       <FlavorProperties GUID="{BAA0C2D2-18E2-41B9-852F-F413020CAA33}">
         <ProjectProperties HostName="PowerPoint" HostPackage="{29A7B9D7-A7F1-4328-8EF0-6B2D1A56B2C1}" OfficeVersion="14.0" VstxVersion="4.0" ApplicationType="PowerPoint" Language="cs" TemplatesPath="" DebugInfoExeName="#Software\Microsoft\Office\14.0\PowerPoint\InstallRoot\Path#powerpnt.exe" AddItemTemplatesGuid="{51063C3A-E220-4D12-8922-BDA915ACD783}" />
-        <Host Name="PowerPoint" GeneratedCodeNamespace="PowerPointArrangeAddin" IconIndex="0">
-          <HostItem Name="ThisAddIn" Code="ThisAddIn.cs" CanonicalName="AddIn" CanActivate="false" IconIndex="1" Blueprint="ThisAddIn.Designer.xml" GeneratedCode="ThisAddIn.Designer.cs" />
+        <Host Name="PowerPoint" GeneratedCodeNamespace="PowerPointArrangeAddin" PublishedHash="69C324AB27932AA2FBF2B7EA72250886FF164DE6" IconIndex="0">
+          <HostItem Name="ThisAddIn" Code="ThisAddIn.cs" CanonicalName="AddIn" CanActivate="false" IconIndex="1" Blueprint="ThisAddIn.Designer.xml" GeneratedCode="ThisAddIn.Designer.cs" PublishedHash="CD95ED41E0D4055BAC7E19380FC34A5ECFB92203" />
         </Host>
       </FlavorProperties>
     </VisualStudio>

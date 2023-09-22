@@ -13,6 +13,7 @@
 [Oo]bj/
 [Xx]86/
 [Xx]64/
+[Pp]ublish/
 *.exe
 *.dll
 *.pfx
