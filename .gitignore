@@ -22,3 +22,6 @@
 ### Temp ###
 Office UI Help Files/
 office-ms-customui.xsd
+*.pwd
+*.rar
+*.zip

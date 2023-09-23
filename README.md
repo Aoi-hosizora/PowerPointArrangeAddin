@@ -1,7 +1,10 @@
 # PowerPointArrangeAddin
 
+[![Release](https://img.shields.io/github/v/release/Aoi-hosizora/PowerPointArrangeAddin)](https://github.com/Aoi-hosizora/PowerPointArrangeAddin/releases)
+[![License](https://img.shields.io/badge/license-mit-blue.svg)](./LICENSE)
+
 + A PowerPoint add-in (VSTO) for assisting arrangement operations, which is inspired by [iSlide Addin](https://www.islide.cc/).
-+ Development environment: .NET Framework 4.8 (C# 7.3 / C# 9.0), PowerPoint 2010
++ Development environment: .NET Framework 4.8 (C# 7.3 / C# 9.0), Microsoft Office PowerPoint 2010
 + Supported languages: English, Simplified Chinese, Traditional Chinese, Japanese
 + Prerequisite: Microsoft Office >= 2010
 
@@ -92,7 +95,7 @@ msbuild PowerPointArrangeAddin.csproj /p:Configuration=Release /p:Platform=x64 /
         + `HKCU\SOFTWARE\Microsoft\VSTO`
         + `HKCR\Software\Microsoft\Windows\CurrentVersion\Deployment\SideBySide\2.0\Components`
         + `HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall`
-    4. Remove subfolders and files in `C:\Users\AoiHosizora\AppData\Local\Apps\2.0\*` that are related to "PowerPointArrangeAddin".
+    4. Remove subfolders and files in `C:\Users\<Username>\AppData\Local\Apps\2.0\*` that are related to "PowerPointArrangeAddin".
     5. Move the "Release" or "Publish" folders to a different location and try to install again. (Not Recommended)
     6. Regenerate a temporary key pfx file and try to build again build. (Not Recommended)
 

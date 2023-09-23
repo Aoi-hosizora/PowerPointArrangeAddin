@@ -273,7 +273,7 @@
     <value>テキストを折り返す</value>
   </data>
   <data name="chkReplaceToMiddle" xml:space="preserve">
-    <value>元の中央点に変更</value>
+    <value>元の中央点に置換</value>
   </data>
   <data name="chkReserveOriginalSize" xml:space="preserve">
     <value>図のサイズを保持</value>
