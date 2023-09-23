@@ -71,7 +71,7 @@ namespace PowerPointArrangeAddin.Dialog {
 
         private static readonly System.ComponentModel.ComponentResourceManager DlgResources = new(typeof(SettingDialog));
 
-        private static string GetResourceString(string key, bool value = false, string defaultValue = "") {
+        private static string GetResourceString(string key, string defaultValue = "") {
             return key.EndsWith("_value")
                 ? DlgResources.GetString(key, new CultureInfo("ja")) ?? defaultValue // "xxx_value" strings are stored in ja resx
                 : CultureInfo.CurrentUICulture.Name == "en"

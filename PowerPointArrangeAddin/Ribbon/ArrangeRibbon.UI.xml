@@ -11,7 +11,8 @@
         <__template name="CV" getVisible="GetControlVisible" />
         <__template name="GV" getVisible="GetGroupVisible" />
         <__template name="GROUP" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getVisible="GetGroupVisible" />
-        <__template name="LSKI_Anchor" getLabel="BtnScaleAnchor_GetLabel" getScreentip="BtnScaleAnchor_GetLabel" getKeytip="GetKeytip" getImage="BtnScaleAnchor_GetImage" />
+        <__template name="LSKEI_Relative" getLabel="BtnAlignRelative_GetLabel" getScreentip="BtnAlignRelative_GetLabel" getKeytip="GetKeytip" getEnabled="GetEnabled" getImage="BtnAlignRelative_GetImage" />
+        <__template name="LSKEI_Anchor" getLabel="BtnScaleAnchor_GetLabel" getScreentip="BtnScaleAnchor_GetLabel" getKeytip="GetKeytip" getEnabled="GetEnabled" getImage="BtnScaleAnchor_GetImage" />
     </__templates>
 
     <ribbon>
@@ -41,14 +42,14 @@
                     <buttonGroup id="bgpDistribute">
                         <button id="btnDistributeHorizontal" showLabel="false" __template="L,S,K,E,I" onAction="BtnDistribute_Click" />
                         <button id="btnDistributeVertical" showLabel="false" __template="L,S,K,E,I" onAction="BtnDistribute_Click" />
-                        <button idMso="GridSettings" showLabel="false" __template="K" />
+                        <button id="btnAlignRelative" showLabel="false" __template="LSKEI_Relative" onAction="BtnAlignRelative_Click" />
                     </buttonGroup>
                     <separator id="grpArrange_separator1" />
                     <buttonGroup id="bgpScaleSize">
                         <button id="btnScaleSameWidth" showLabel="false" __template="L,S,K,E,I" onAction="BtnScale_Click" />
                         <button id="btnScaleSameHeight" showLabel="false" __template="L,S,K,E,I" onAction="BtnScale_Click" />
                         <button id="btnScaleSameSize" showLabel="false" __template="L,S,K,E,I" onAction="BtnScale_Click" />
-                        <button id="btnScaleAnchor" showLabel="false" __template="LSKI_Anchor" onAction="BtnScaleAnchor_Click" />
+                        <button id="btnScaleAnchor" showLabel="false" __template="LSKEI_Anchor" onAction="BtnScaleAnchor_Click" />
                     </buttonGroup>
                     <buttonGroup id="bgpExtendSize">
                         <button id="btnExtendSameLeft" showLabel="false" __template="L,S,K,E,I" onAction="BtnExtend_Click" />
@@ -121,7 +122,7 @@
                         <dynamicMenu id="mnuShapeArrangement" size="large" __template="L,S,K,E,I" getContent="GetMenuContent" />
                         <separator id="grpShapeSizeAndPosition_separator1" />
                         <toggleButton id="btnLockShapeAspectRatio" __template="L,S,K,E,I" getPressed="BtnLockAspectRatio_GetPressed" onAction="BtnLockAspectRatio_Click" />
-                        <button id="btnShapeScaleAnchor" __template="LSKI_Anchor" onAction="BtnScaleAnchor_Click" />
+                        <button id="btnShapeScaleAnchor" __template="LSKEI_Anchor" onAction="BtnScaleAnchor_Click" />
                         <buttonGroup id="bgpCopyAndPasteShapeSize">
                             <button id="btnCopyShapeSize" showLabel="false" __template="L,S,K,E,I" onAction="BtnCopyAndPasteSize_Click" />
                             <button id="btnPasteShapeSize" __template="L,S,K,E,I" onAction="BtnCopyAndPasteSize_Click" />
@@ -154,7 +155,7 @@
                         <separator id="grpPictureSizeAndPosition_separator1" />
                         <button id="btnResetPictureSize" size="large" __template="L,S,K,E,I" onAction="BtnResetMediaSize_Click" />
                         <toggleButton id="btnLockPictureAspectRatio" __template="L,S,K,E,I" getPressed="BtnLockAspectRatio_GetPressed" onAction="BtnLockAspectRatio_Click" />
-                        <button id="btnPictureScaleAnchor" __template="LSKI_Anchor" onAction="BtnScaleAnchor_Click" />
+                        <button id="btnPictureScaleAnchor" __template="LSKEI_Anchor" onAction="BtnScaleAnchor_Click" />
                         <buttonGroup id="bgpCopyAndPastePictureSize">
                             <button id="btnCopyPictureSize" showLabel="false" __template="L,S,K,E,I" onAction="BtnCopyAndPasteSize_Click" />
                             <button id="btnPastePictureSize" __template="L,S,K,E,I" onAction="BtnCopyAndPasteSize_Click" />

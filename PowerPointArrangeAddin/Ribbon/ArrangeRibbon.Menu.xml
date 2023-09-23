@@ -6,33 +6,41 @@
         <__template name="S" getScreentip="GetLabel" />
         <__template name="E" getEnabled="GetEnabled" />
         <__template name="I" getImage="GetImage" />
-        <__template name="LSI_Anchor" getLabel="BtnScaleAnchor_GetLabel" getScreentip="BtnScaleAnchor_GetLabel" getImage="BtnScaleAnchor_GetImage" />
+        <__template name="LSEI_Relative" getLabel="BtnAlignRelative_GetLabel" getScreentip="BtnAlignRelative_GetLabel" getEnabled="GetEnabled" getImage="BtnAlignRelative_GetImage" />
+        <__template name="LSEI_Anchor" getLabel="BtnScaleAnchor_GetLabel" getScreentip="BtnScaleAnchor_GetLabel" getEnabled="GetEnabled" getImage="BtnScaleAnchor_GetImage" />
     </__templates>
 
     <menuSeparator id="mnuArrangement_sepAlignmentAndResizing" __template="T" />
+
     <menu id="mnuArrangement_mnuAlignment" __template="L,S,I">
         <button id="btnAlignLeft" __template="L,S,E,I" onAction="BtnAlign_Click" />
         <button id="btnAlignCenter" __template="L,S,E,I" onAction="BtnAlign_Click" />
         <button id="btnAlignRight" __template="L,S,E,I" onAction="BtnAlign_Click" />
-        <menuSeparator id="separator1" />
+        <menuSeparator id="mnuAlignment_separator1" />
         <button id="btnAlignTop" __template="L,S,E,I" onAction="BtnAlign_Click" />
         <button id="btnAlignMiddle" __template="L,S,E,I" onAction="BtnAlign_Click" />
         <button id="btnAlignBottom" __template="L,S,E,I" onAction="BtnAlign_Click" />
-        <menuSeparator id="separator2" />
+        <menuSeparator id="mnuAlignment_separator2" />
         <button id="btnDistributeHorizontal" __template="L,S,E,I" onAction="BtnDistribute_Click" />
         <button id="btnDistributeVertical" __template="L,S,E,I" onAction="BtnDistribute_Click" />
-        <menuSeparator id="separator3" />
+        <menuSeparator id="mnuAlignment_separator3" />
+        <toggleButton id="btnAlignRelative_ToSlide" __template="LSEI_Relative" getPressed="BtnAlignRelative_GetPressed" onAction="BtnAlignRelative_Click" />
+        <toggleButton id="btnAlignRelative_ToObjects" __template="LSEI_Relative" getPressed="BtnAlignRelative_GetPressed" onAction="BtnAlignRelative_Click" />
+        <toggleButton id="btnAlignRelative_ToFirstObject" __template="LSEI_Relative" getPressed="BtnAlignRelative_GetPressed" onAction="BtnAlignRelative_Click" />
+        <menuSeparator id="mnuAlignment_separator4" />
         <control idMso="ViewGridlinesPowerPoint" />
         <control idMso="GridSettings" />
     </menu>
 
     <menu id="mnuArrangement_mnuResizing" __template="L,S,I">
-        <button id="btnScaleAnchor" __template="LSI_Anchor" onAction="BtnScaleAnchor_Click" />
-        <menuSeparator id="separator4" />
+        <toggleButton id="btnScaleAnchor_FromTopLeft" __template="LSEI_Anchor" getPressed="BtnScaleAnchor_GetPressed" onAction="BtnScaleAnchor_Click" />
+        <toggleButton id="btnScaleAnchor_FromMiddle" __template="LSEI_Anchor" getPressed="BtnScaleAnchor_GetPressed" onAction="BtnScaleAnchor_Click" />
+        <toggleButton id="btnScaleAnchor_FromBottomRight" __template="LSEI_Anchor" getPressed="BtnScaleAnchor_GetPressed" onAction="BtnScaleAnchor_Click" />
+        <menuSeparator id="mnuResizing_separator1" />
         <button id="btnScaleSameWidth" __template="L,S,E,I" onAction="BtnScale_Click" />
         <button id="btnScaleSameHeight" __template="L,S,E,I" onAction="BtnScale_Click" />
         <button id="btnScaleSameSize" __template="L,S,E,I" onAction="BtnScale_Click" />
-        <menuSeparator id="separator5" />
+        <menuSeparator id="mnuResizing_separator2" />
         <button id="btnExtendSameLeft" __template="L,S,E,I" onAction="BtnExtend_Click" />
         <button id="btnExtendSameRight" __template="L,S,E,I" onAction="BtnExtend_Click" />
         <button id="btnExtendSameTop" __template="L,S,E,I" onAction="BtnExtend_Click" />
@@ -44,7 +52,7 @@
         <button id="btnSnapRight" __template="L,S,E,I" onAction="BtnSnap_Click" />
         <button id="btnSnapTop" __template="L,S,E,I" onAction="BtnSnap_Click" />
         <button id="btnSnapBottom" __template="L,S,E,I" onAction="BtnSnap_Click" />
-        <menuSeparator id="separator6" />
+        <menuSeparator id="mnuSnapping_separator1" />
         <checkBox idMso="ViewGridlinesPowerPoint" />
         <button idMso="GridSettings" />
     </menu>
@@ -52,18 +60,19 @@
     <menu id="mnuArrangement_mnuRotation" __template="L,S,I">
         <button id="btnRotateRight90" __template="L,S,E,I" onAction="BtnRotate_Click" />
         <button id="btnRotateLeft90" __template="L,S,E,I" onAction="BtnRotate_Click" />
-        <menuSeparator id="separator7" />
+        <menuSeparator id="mnuRotation_separator1" />
         <button id="btnFlipVertical" __template="L,S,E,I" onAction="BtnFlip_Click" />
         <button id="btnFlipHorizontal" __template="L,S,E,I" onAction="BtnFlip_Click" />
-        <menuSeparator id="separator8" />
+        <menuSeparator id="mnuRotation_separator2" />
         <button idMso="ObjectRotationOptionsDialog" />
     </menu>
 
     <menuSeparator id="mnuArrangement_sepLayerOrderAndGrouping" __template="T" />
+
     <menu id="mnuArrangement_mnuLayerOrder" __template="L,S,I">
         <button id="btnMoveFront" __template="L,S,E,I" onAction="BtnMove_Click" />
         <button id="btnMoveBack" __template="L,S,E,I" onAction="BtnMove_Click" />
-        <menuSeparator id="separator9" />
+        <menuSeparator id="mnuLayerOrder_separator1" />
         <button id="btnMoveForward" __template="L,S,E,I" onAction="BtnMove_Click" />
         <button id="btnMoveBackward" __template="L,S,E,I" onAction="BtnMove_Click" />
     </menu>
@@ -74,9 +83,11 @@
     </menu>
 
     <menuSeparator id="mnuArrangement_sepObjectsInSlide" __template="T" />
+
     <button idMso="ObjectSizeAndPositionDialog" imageMso="ShapeStylesGallery" />
     <toggleButton idMso="SelectionPane" />
 
     <menuSeparator id="mnuArrangement_sepAddInSetting" __template="T" />
+
     <button id="btnAddInSetting" __template="L,S,I" onAction="BtnAddInSetting_Click" />
 </menu>

@@ -238,22 +238,22 @@
     <value>Rotate &amp;right with 90 degrees</value>
   </data>
   <data name="btnScaleAnchor_BottomRight" xml:space="preserve">
-    <value>Scale objects &amp;from bottom right</value>
+    <value>Scale objects from botto&amp;m right</value>
   </data>
   <data name="btnScaleAnchor_Middle" xml:space="preserve">
     <value>Scale objects &amp;from middle</value>
   </data>
   <data name="btnScaleAnchor_TopLeft" xml:space="preserve">
-    <value>Scale objects &amp;from top left</value>
+    <value>Scale &amp;objects from top left</value>
   </data>
   <data name="btnScaleSameHeight" xml:space="preserve">
-    <value>Scale to same &amp;height (as the first shape)</value>
+    <value>Scale to same &amp;height as the first shape</value>
   </data>
   <data name="btnScaleSameSize" xml:space="preserve">
-    <value>Scale to same &amp;size (as the first shape)</value>
+    <value>Scale to same &amp;size as the first shape</value>
   </data>
   <data name="btnScaleSameWidth" xml:space="preserve">
-    <value>Scale to same &amp;width (as the first shape)</value>
+    <value>Scale to same &amp;width as the first shape</value>
   </data>
   <data name="btnSnapBottom" xml:space="preserve">
     <value>Snap &amp;bottom to top</value>
@@ -521,5 +521,14 @@
   </data>
   <data name="lblVerticalMargin" xml:space="preserve">
     <value>Vertical margin:</value>
+  </data>
+  <data name="btnAlignRelative_ToSlide" xml:space="preserve">
+    <value>&amp;Align and relative to the slide</value>
+  </data>
+  <data name="btnAlignRelative_ToObjects" xml:space="preserve">
+    <value>Align the selected &amp;objects</value>
+  </data>
+  <data name="btnAlignRelative_ToFirstObject" xml:space="preserve">
+    <value>Align and relative to the &amp;first object</value>
   </data>
 </root>

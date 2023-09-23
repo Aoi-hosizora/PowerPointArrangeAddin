@@ -243,7 +243,7 @@
     <value>從中心點變形(&amp;F)</value><comment>將中心點視爲錨點來變形圖案</comment>
   </data>
   <data name="btnScaleAnchor_TopLeft" xml:space="preserve">
-    <value>從左上端變形(&amp;F)</value><comment>將左上端視爲錨點來變形圖案</comment>
+    <value>從左上端變形(&amp;O)</value><comment>將左上端視爲錨點來變形圖案</comment>
   </data>
   <data name="btnScaleSameHeight" xml:space="preserve">
     <value>變形為與最開始選擇的圖案相同高度(&amp;H)</value>
@@ -375,7 +375,7 @@
     <value>所有檔案</value>
   </data>
   <data name="btnScaleAnchor_BottomRight" xml:space="preserve">
-    <value>從右下端變形(&amp;F)</value>
+    <value>從右下端變形(&amp;M)</value>
   </data>
   <data name="btnCopyVideoPosition" xml:space="preserve">
     <value>複製位置</value>
@@ -523,5 +523,14 @@
   </data>
   <data name="lblVerticalMargin" xml:space="preserve">
     <value>縱向邊界:　 </value>
+  </data>
+  <data name="btnAlignRelative_ToSlide" xml:space="preserve">
+    <value>貼齊到投影片(&amp;A)</value>
+  </data>
+  <data name="btnAlignRelative_ToObjects" xml:space="preserve">
+    <value>對齊選取的圖案(&amp;O)</value>
+  </data>
+  <data name="btnAlignRelative_ToFirstObject" xml:space="preserve">
+    <value>對齊到最開始選擇的圖案(&amp;F)</value>
   </data>
 </root>

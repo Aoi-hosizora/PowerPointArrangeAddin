@@ -78,6 +78,10 @@ msbuild PowerPointArrangeAddin.csproj /p:Configuration=Release /p:Platform=x64 /
 
 ### Tips
 
++ You are required to add the following PATH if you want to build the project by command line:
+    + `C:\Windows\Microsoft.NET\Framework64\v4.x.xxxxx`
+    + `...\Microsoft Visual Studio\xxxx\Enterprise\Common7\Tools`
+    + `...\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools`
 + If you have some problems on installation or building, try one of the following solutions:
     + **ATTENTION**: Before you perform operation, you must know that some operations are quite **DANGEROUS**, so please **MAKE SURE** that items you are about to modify are only related to "PowerPointArrangeAddin".
     1. Clean the solution and rebuild it, if it don't work, just restart your PC.

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Forms = System.Windows.Forms;
 using Office = Microsoft.Office.Core;
 using PowerPoint = Microsoft.Office.Interop.PowerPoint;
@@ -31,8 +32,9 @@ namespace PowerPointArrangeAddin.Ribbon {
                 { btnAlignTop, (_, cnt, _) => cnt >= 1 },
                 { btnAlignMiddle, (_, cnt, _) => cnt >= 1 },
                 { btnAlignBottom, (_, cnt, _) => cnt >= 1 },
-                { btnDistributeHorizontal, (_, cnt, _) => cnt is 1 or >= 3 },
-                { btnDistributeVertical, (_, cnt, _) => cnt is 1 or >= 3 },
+                { btnDistributeHorizontal, (shapeRange, cnt, _) => cnt >= 1 && ArrangementHelper.IsDistributable(shapeRange, _alignRelativeFlag) },
+                { btnDistributeVertical, (shapeRange, cnt, _) => cnt >= 1 && ArrangementHelper.IsDistributable(shapeRange, _alignRelativeFlag) },
+                { btnAlignRelative, (_, cnt, _) => cnt >= 1 },
                 { btnScaleSameWidth, (_, cnt, _) => cnt >= 2 },
                 { btnScaleSameHeight, (_, cnt, _) => cnt >= 2 },
                 { btnScaleSameSize, (_, cnt, _) => cnt >= 2 },
@@ -57,6 +59,13 @@ namespace PowerPointArrangeAddin.Ribbon {
                 { btnUngroup, (shapeRange, cnt, _) => cnt >= 1 && ArrangementHelper.IsUngroupable(shapeRange) },
                 { mnuArrangement, (_, _, _) => true },
                 { btnAddInSetting, (_, _, _) => true },
+                // mnuArrange
+                { mnuArrangement_btnAlignRelative_ToObjects, (_, cnt, _) => cnt >= 2 },
+                { mnuArrangement_btnAlignRelative_ToFirstObject, (_, cnt, _) => cnt >= 2 },
+                { mnuArrangement_btnAlignRelative_ToSlide, (_, cnt, _) => cnt >= 1 },
+                { mnuArrangement_btnScaleAnchor_FromTopLeft, (_, _, _) => true },
+                { mnuArrangement_btnScaleAnchor_FromMiddle, (_, _, _) => true },
+                { mnuArrangement_btnScaleAnchor_FromBottomRight, (_, _, _) => true },
                 // grpTextbox
                 { btnAutofitOff, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame },
                 { btnAutoShrinkText, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame },
@@ -163,16 +172,11 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
 
         public bool GetControlVisible(Office.IRibbonControl ribbonControl) {
-            var showLess = AddInSetting.Instance.LessButtonsForArrangementGroup;
-            return ribbonControl.Id switch {
-                grpArrange_separator2 => !showLess,
-                bgpMoveLayers => !showLess,
-                bgpRotate => !showLess,
-                bgpGroupObjects => !showLess,
-                grpArrange_separator3 => !showLess,
-                mnuArrangement => !showLess,
-                _ => true
-            };
+            var controls = new[] { grpArrange_separator2, bgpMoveLayers, bgpRotate, bgpGroupObjects, grpArrange_separator3, mnuArrangement, };
+            if (controls.Contains(ribbonControl.Id)) {
+                return !AddInSetting.Instance.LessButtonsForArrangementGroup;
+            }
+            return true;
         }
 
         public bool GetGroupVisible(Office.IRibbonControl ribbonControl) {
@@ -230,7 +234,7 @@ namespace PowerPointArrangeAddin.Ribbon {
                 btnAlignBottom => Office.MsoAlignCmd.msoAlignBottoms,
                 _ => null
             };
-            ArrangementHelper.Align(shapeRange, cmd);
+            ArrangementHelper.Align(shapeRange, cmd, _alignRelativeFlag);
         }
 
         public void BtnDistribute_Click(Office.IRibbonControl ribbonControl) {
@@ -243,45 +247,98 @@ namespace PowerPointArrangeAddin.Ribbon {
                 btnDistributeVertical => Office.MsoDistributeCmd.msoDistributeVertically,
                 _ => null
             };
-            ArrangementHelper.Distribute(shapeRange, cmd);
+            ArrangementHelper.Distribute(shapeRange, cmd, _alignRelativeFlag);
         }
 
-        // This flag is used by scale and size related callbacks, that is BtnScale_Click,
-        // BtnCopyAndPasteSize_Click and BtnResetMediaSize_Click.
-        private Office.MsoScaleFrom _scaleFromFlag = Office.MsoScaleFrom.msoScaleFromTopLeft;
+        // This flag is used to adjust alignment relative behavior, is used by BtnAlign_Click and BtnDistribute_Click.
+        private ArrangementHelper.AlignRelativeFlag _alignRelativeFlag = ArrangementHelper.AlignRelativeFlag.RelativeToObjects;
 
-        public void BtnScaleAnchor_Click(Office.IRibbonControl _) {
-            _scaleFromFlag = _scaleFromFlag switch {
-                Office.MsoScaleFrom.msoScaleFromTopLeft => Office.MsoScaleFrom.msoScaleFromMiddle,
-                Office.MsoScaleFrom.msoScaleFromMiddle => Office.MsoScaleFrom.msoScaleFromBottomRight,
-                Office.MsoScaleFrom.msoScaleFromBottomRight => Office.MsoScaleFrom.msoScaleFromTopLeft,
-                _ => Office.MsoScaleFrom.msoScaleFromTopLeft
+        public void BtnAlignRelative_Click(Office.IRibbonControl ribbonControl, bool _ = false) {
+            var shapeRange = GetShapeRange();
+            if (shapeRange == null || shapeRange.Count <= 1) {
+                return; // not change if no more than 1 shape is selected
+            }
+            if (!ribbonControl.Id.Contains("_To")) {
+                _alignRelativeFlag = _alignRelativeFlag switch {
+                    ArrangementHelper.AlignRelativeFlag.RelativeToObjects => ArrangementHelper.AlignRelativeFlag.RelativeToFirstObject,
+                    ArrangementHelper.AlignRelativeFlag.RelativeToFirstObject => ArrangementHelper.AlignRelativeFlag.RelativeToSlide,
+                    ArrangementHelper.AlignRelativeFlag.RelativeToSlide => ArrangementHelper.AlignRelativeFlag.RelativeToObjects,
+                    _ => ArrangementHelper.AlignRelativeFlag.RelativeToFirstObject
+                };
+            } else {
+                _alignRelativeFlag = ribbonControl.Id switch {
+                    mnuArrangement_btnAlignRelative_ToObjects => ArrangementHelper.AlignRelativeFlag.RelativeToObjects,
+                    mnuArrangement_btnAlignRelative_ToFirstObject => ArrangementHelper.AlignRelativeFlag.RelativeToFirstObject,
+                    mnuArrangement_btnAlignRelative_ToSlide => ArrangementHelper.AlignRelativeFlag.RelativeToSlide,
+                    _ => ArrangementHelper.AlignRelativeFlag.RelativeToObjects,
+                };
+            }
+
+            var mso = _alignRelativeFlag == ArrangementHelper.AlignRelativeFlag.RelativeToSlide
+                ? "ObjectsAlignRelativeToContainerSmart"
+                : "ObjectsAlignSelectedSmart";
+            Globals.ThisAddIn.Application.CommandBars.ExecuteMso(mso); // consist with mso
+
+            _ribbon?.InvalidateControl(btnAlignRelative);
+            _ribbon?.InvalidateControl(btnDistributeHorizontal);
+            _ribbon?.InvalidateControl(btnDistributeVertical);
+            _ribbon?.InvalidateControl(mnuArrangement_btnAlignRelative_ToObjects);
+            _ribbon?.InvalidateControl(mnuArrangement_btnAlignRelative_ToFirstObject);
+            _ribbon?.InvalidateControl(mnuArrangement_btnAlignRelative_ToSlide);
+        }
+
+        public bool BtnAlignRelative_GetPressed(Office.IRibbonControl ribbonControl) {
+            var shapeRange = GetShapeRange();
+            if (shapeRange == null || shapeRange.Count <= 1) {
+                return ribbonControl.Id == mnuArrangement_btnAlignRelative_ToSlide; // if no more than 1 shape is selected 
+            }
+            return ribbonControl.Id switch {
+                mnuArrangement_btnAlignRelative_ToObjects => _alignRelativeFlag == ArrangementHelper.AlignRelativeFlag.RelativeToObjects,
+                mnuArrangement_btnAlignRelative_ToFirstObject => _alignRelativeFlag == ArrangementHelper.AlignRelativeFlag.RelativeToFirstObject,
+                mnuArrangement_btnAlignRelative_ToSlide => _alignRelativeFlag == ArrangementHelper.AlignRelativeFlag.RelativeToSlide,
+                _ => false
             };
-            _ribbon?.InvalidateControl(btnScaleAnchor);
-            _ribbon?.InvalidateControl(btnShapeScaleAnchor);
-            _ribbon?.InvalidateControl(btnPictureScaleAnchor);
-            _ribbon?.InvalidateControl(btnVideoScaleAnchor);
-            _ribbon?.InvalidateControl(btnAudioScaleAnchor);
-            _ribbon?.InvalidateControl(btnTableScaleAnchor);
-            _ribbon?.InvalidateControl(btnChartScaleAnchor);
-            _ribbon?.InvalidateControl(btnSmartartScaleAnchor);
         }
 
-        public string BtnScaleAnchor_GetLabel(Office.IRibbonControl _) {
-            return _scaleFromFlag switch {
-                Office.MsoScaleFrom.msoScaleFromTopLeft => ArrangeRibbonResources.btnScaleAnchor_TopLeft,
-                Office.MsoScaleFrom.msoScaleFromMiddle => ArrangeRibbonResources.btnScaleAnchor_Middle,
-                Office.MsoScaleFrom.msoScaleFromBottomRight => ArrangeRibbonResources.btnScaleAnchor_BottomRight,
-                _ => ArrangeRibbonResources.btnScaleAnchor_TopLeft
+        public string BtnAlignRelative_GetLabel(Office.IRibbonControl ribbonControl) {
+            if (!ribbonControl.Id.Contains("_To")) {
+                var shapeRange = GetShapeRange();
+                if (shapeRange?.Count == 1) {
+                    return ArrangeRibbonResources.btnAlignRelative_ToSlide; // when single shape is selected
+                }
+                return _alignRelativeFlag switch {
+                    ArrangementHelper.AlignRelativeFlag.RelativeToObjects => ArrangeRibbonResources.btnAlignRelative_ToObjects,
+                    ArrangementHelper.AlignRelativeFlag.RelativeToFirstObject => ArrangeRibbonResources.btnAlignRelative_ToFirstObject,
+                    ArrangementHelper.AlignRelativeFlag.RelativeToSlide => ArrangeRibbonResources.btnAlignRelative_ToSlide,
+                    _ => ArrangeRibbonResources.btnAlignRelative_ToObjects
+                };
+            }
+            return ribbonControl.Id switch {
+                mnuArrangement_btnAlignRelative_ToObjects => ArrangeRibbonResources.btnAlignRelative_ToObjects,
+                mnuArrangement_btnAlignRelative_ToFirstObject => ArrangeRibbonResources.btnAlignRelative_ToFirstObject,
+                mnuArrangement_btnAlignRelative_ToSlide => ArrangeRibbonResources.btnAlignRelative_ToSlide,
+                _ => ArrangeRibbonResources.btnAlignRelative_ToObjects
             };
         }
 
-        public System.Drawing.Image BtnScaleAnchor_GetImage(Office.IRibbonControl _) {
-            return _scaleFromFlag switch {
-                Office.MsoScaleFrom.msoScaleFromTopLeft => Properties.Resources.ScaleFromTopLeft,
-                Office.MsoScaleFrom.msoScaleFromMiddle => Properties.Resources.ScaleFromMiddle,
-                Office.MsoScaleFrom.msoScaleFromBottomRight => Properties.Resources.ScaleFromBottomRight,
-                _ => Properties.Resources.ScaleFromTopLeft
+        public System.Drawing.Image BtnAlignRelative_GetImage(Office.IRibbonControl ribbonControl) {
+            if (!ribbonControl.Id.Contains("_To")) {
+                var shapeRange = GetShapeRange();
+                if (shapeRange?.Count == 1) {
+                    return Properties.Resources.AlignRelativeToSlide; // when single shape is selected
+                }
+                return _alignRelativeFlag switch {
+                    ArrangementHelper.AlignRelativeFlag.RelativeToObjects => Properties.Resources.AlignRelativeToObjects,
+                    ArrangementHelper.AlignRelativeFlag.RelativeToFirstObject => Properties.Resources.AlignRelativeToFirstObject,
+                    ArrangementHelper.AlignRelativeFlag.RelativeToSlide => Properties.Resources.AlignRelativeToSlide,
+                    _ => Properties.Resources.AlignRelativeToObjects
+                };
+            }
+            return ribbonControl.Id switch {
+                mnuArrangement_btnAlignRelative_ToObjects => Properties.Resources.AlignRelativeToObjects,
+                mnuArrangement_btnAlignRelative_ToFirstObject => Properties.Resources.AlignRelativeToFirstObject,
+                mnuArrangement_btnAlignRelative_ToSlide => Properties.Resources.AlignRelativeToSlide,
+                _ => Properties.Resources.AlignRelativeToObjects
             };
         }
 
@@ -297,6 +354,82 @@ namespace PowerPointArrangeAddin.Ribbon {
                 _ => null
             };
             ArrangementHelper.ScaleSize(shapeRange, cmd, _scaleFromFlag);
+        }
+
+        // This flag is used to control scale and size behavior, is used by BtnScale_Click, BtnCopyAndPasteSize_Click and BtnResetMediaSize_Click.
+        private Office.MsoScaleFrom _scaleFromFlag = Office.MsoScaleFrom.msoScaleFromTopLeft;
+
+        public void BtnScaleAnchor_Click(Office.IRibbonControl ribbonControl, bool _ = false) {
+            if (!ribbonControl.Id.Contains("_From")) {
+                _scaleFromFlag = _scaleFromFlag switch {
+                    Office.MsoScaleFrom.msoScaleFromTopLeft => Office.MsoScaleFrom.msoScaleFromMiddle,
+                    Office.MsoScaleFrom.msoScaleFromMiddle => Office.MsoScaleFrom.msoScaleFromBottomRight,
+                    Office.MsoScaleFrom.msoScaleFromBottomRight => Office.MsoScaleFrom.msoScaleFromTopLeft,
+                    _ => Office.MsoScaleFrom.msoScaleFromTopLeft
+                };
+            } else {
+                _scaleFromFlag = ribbonControl.Id switch {
+                    mnuArrangement_btnScaleAnchor_FromTopLeft => Office.MsoScaleFrom.msoScaleFromTopLeft,
+                    mnuArrangement_btnScaleAnchor_FromMiddle => Office.MsoScaleFrom.msoScaleFromMiddle,
+                    mnuArrangement_btnScaleAnchor_FromBottomRight => Office.MsoScaleFrom.msoScaleFromBottomRight,
+                    _ => _scaleFromFlag
+                };
+            }
+
+            _ribbon?.InvalidateControl(btnScaleAnchor);
+            _ribbon?.InvalidateControl(mnuArrangement_btnScaleAnchor_FromTopLeft);
+            _ribbon?.InvalidateControl(mnuArrangement_btnScaleAnchor_FromMiddle);
+            _ribbon?.InvalidateControl(mnuArrangement_btnScaleAnchor_FromBottomRight);
+            _ribbon?.InvalidateControl(btnShapeScaleAnchor);
+            _ribbon?.InvalidateControl(btnPictureScaleAnchor);
+            _ribbon?.InvalidateControl(btnVideoScaleAnchor);
+            _ribbon?.InvalidateControl(btnAudioScaleAnchor);
+            _ribbon?.InvalidateControl(btnTableScaleAnchor);
+            _ribbon?.InvalidateControl(btnChartScaleAnchor);
+            _ribbon?.InvalidateControl(btnSmartartScaleAnchor);
+        }
+
+        public bool BtnScaleAnchor_GetPressed(Office.IRibbonControl ribbonControl) {
+            return ribbonControl.Id switch {
+                mnuArrangement_btnScaleAnchor_FromTopLeft => _scaleFromFlag == Office.MsoScaleFrom.msoScaleFromTopLeft,
+                mnuArrangement_btnScaleAnchor_FromMiddle => _scaleFromFlag == Office.MsoScaleFrom.msoScaleFromMiddle,
+                mnuArrangement_btnScaleAnchor_FromBottomRight => _scaleFromFlag == Office.MsoScaleFrom.msoScaleFromBottomRight,
+                _ => false
+            };
+        }
+
+        public string BtnScaleAnchor_GetLabel(Office.IRibbonControl ribbonControl) {
+            if (!ribbonControl.Id.Contains("_From")) {
+                return _scaleFromFlag switch {
+                    Office.MsoScaleFrom.msoScaleFromTopLeft => ArrangeRibbonResources.btnScaleAnchor_TopLeft,
+                    Office.MsoScaleFrom.msoScaleFromMiddle => ArrangeRibbonResources.btnScaleAnchor_Middle,
+                    Office.MsoScaleFrom.msoScaleFromBottomRight => ArrangeRibbonResources.btnScaleAnchor_BottomRight,
+                    _ => ArrangeRibbonResources.btnScaleAnchor_TopLeft
+                };
+            }
+            return ribbonControl.Id switch {
+                mnuArrangement_btnScaleAnchor_FromTopLeft => ArrangeRibbonResources.btnScaleAnchor_TopLeft,
+                mnuArrangement_btnScaleAnchor_FromMiddle => ArrangeRibbonResources.btnScaleAnchor_Middle,
+                mnuArrangement_btnScaleAnchor_FromBottomRight => ArrangeRibbonResources.btnScaleAnchor_BottomRight,
+                _ => ArrangeRibbonResources.btnScaleAnchor_TopLeft
+            };
+        }
+
+        public System.Drawing.Image BtnScaleAnchor_GetImage(Office.IRibbonControl ribbonControl) {
+            if (!ribbonControl.Id.Contains("_From")) {
+                return _scaleFromFlag switch {
+                    Office.MsoScaleFrom.msoScaleFromTopLeft => Properties.Resources.ScaleFromTopLeft,
+                    Office.MsoScaleFrom.msoScaleFromMiddle => Properties.Resources.ScaleFromMiddle,
+                    Office.MsoScaleFrom.msoScaleFromBottomRight => Properties.Resources.ScaleFromBottomRight,
+                    _ => Properties.Resources.ScaleFromTopLeft
+                };
+            }
+            return ribbonControl.Id switch {
+                mnuArrangement_btnScaleAnchor_FromTopLeft => Properties.Resources.ScaleFromTopLeft,
+                mnuArrangement_btnScaleAnchor_FromMiddle => Properties.Resources.ScaleFromMiddle,
+                mnuArrangement_btnScaleAnchor_FromBottomRight => Properties.Resources.ScaleFromBottomRight,
+                _ => Properties.Resources.ScaleFromTopLeft
+            };
         }
 
         public void BtnExtend_Click(Office.IRibbonControl ribbonControl) {
@@ -450,6 +583,24 @@ namespace PowerPointArrangeAddin.Ribbon {
             return TextboxHelper.GetAutofitStatus(textFrame, cmd);
         }
 
+        public void BtnResetMargin_Click(Office.IRibbonControl ribbonControl) {
+            var (textFrame, _) = GetTextFrame();
+            if (textFrame == null) {
+                return;
+            }
+            TextboxHelper.ResetMarginCmd? cmd = ribbonControl.Id switch {
+                btnResetHorizontalMargin => TextboxHelper.ResetMarginCmd.Horizontal,
+                btnResetVerticalMargin => TextboxHelper.ResetMarginCmd.Vertical,
+                _ => null
+            };
+            TextboxHelper.ResetMargin(textFrame, cmd, () => {
+                _ribbon?.InvalidateControl(edtMarginLeft);
+                _ribbon?.InvalidateControl(edtMarginRight);
+                _ribbon?.InvalidateControl(edtMarginTop);
+                _ribbon?.InvalidateControl(edtMarginBottom);
+            });
+        }
+
         public void EdtMargin_TextChanged(Office.IRibbonControl ribbonControl, string text) {
             var (textFrame, _) = GetTextFrame();
             if (textFrame == null) {
@@ -480,24 +631,6 @@ namespace PowerPointArrangeAddin.Ribbon {
                 _ => null
             };
             return TextboxHelper.GetMarginOfString(textFrame, kind).Item1;
-        }
-
-        public void BtnResetMargin_Click(Office.IRibbonControl ribbonControl) {
-            var (textFrame, _) = GetTextFrame();
-            if (textFrame == null) {
-                return;
-            }
-            TextboxHelper.ResetMarginCmd? cmd = ribbonControl.Id switch {
-                btnResetHorizontalMargin => TextboxHelper.ResetMarginCmd.Horizontal,
-                btnResetVerticalMargin => TextboxHelper.ResetMarginCmd.Vertical,
-                _ => null
-            };
-            TextboxHelper.ResetMargin(textFrame, cmd, () => {
-                _ribbon?.InvalidateControl(edtMarginLeft);
-                _ribbon?.InvalidateControl(edtMarginRight);
-                _ribbon?.InvalidateControl(edtMarginTop);
-                _ribbon?.InvalidateControl(edtMarginBottom);
-            });
         }
 
         public void BtnLockAspectRatio_Click(Office.IRibbonControl ribbonControl, bool pressed) {

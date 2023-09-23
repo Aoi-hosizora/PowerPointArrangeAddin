@@ -74,6 +74,7 @@ namespace PowerPointArrangeAddin.Ribbon {
         private const string btnAlignBottom = "btnAlignBottom";
         private const string btnDistributeHorizontal = "btnDistributeHorizontal";
         private const string btnDistributeVertical = "btnDistributeVertical";
+        private const string btnAlignRelative = "btnAlignRelative";
         private const string btnScaleSameWidth = "btnScaleSameWidth";
         private const string btnScaleSameHeight = "btnScaleSameHeight";
         private const string btnScaleSameSize = "btnScaleSameSize";
@@ -212,6 +213,13 @@ namespace PowerPointArrangeAddin.Ribbon {
         private const string btnCopySmartartPosition = "btnCopySmartartPosition";
         private const string btnPasteSmartartPosition = "btnPasteSmartartPosition";
         // mnuArrangement
+        private const string mnuArrangement_btnAlignRelative_ToObjects = "btnAlignRelative_ToObjects";
+        private const string mnuArrangement_btnAlignRelative_ToFirstObject = "btnAlignRelative_ToFirstObject";
+        private const string mnuArrangement_btnAlignRelative_ToSlide = "btnAlignRelative_ToSlide";
+        private const string mnuArrangement_btnScaleAnchor_FromTopLeft = "btnScaleAnchor_FromTopLeft";
+        private const string mnuArrangement_btnScaleAnchor_FromMiddle = "btnScaleAnchor_FromMiddle";
+        private const string mnuArrangement_btnScaleAnchor_FromBottomRight = "btnScaleAnchor_FromBottomRight";
+        // ===
         private const string mnuArrangement_sepAlignmentAndResizing = "mnuArrangement_sepAlignmentAndResizing";
         private const string mnuArrangement_mnuAlignment = "mnuArrangement_mnuAlignment";
         private const string mnuArrangement_mnuResizing = "mnuArrangement_mnuResizing";
@@ -250,6 +258,7 @@ namespace PowerPointArrangeAddin.Ribbon {
                 { btnAlignBottom, new ElementUi { Label = R1.btnAlignBottom, Image = R2.ObjectsAlignBottom, Keytip = "DB" } },
                 { btnDistributeHorizontal, new ElementUi { Label = R1.btnDistributeHorizontal, Image = R2.AlignDistributeHorizontally, Keytip = "DH" } },
                 { btnDistributeVertical, new ElementUi { Label = R1.btnDistributeVertical, Image = R2.AlignDistributeVertically, Keytip = "DV" } },
+                { btnAlignRelative, new ElementUi { Label = ArrangeRibbonResources.btnAlignRelative_ToObjects, Image = R2.AlignRelativeToObjects, Keytip = "DA" } },
                 { btnScaleSameWidth, new ElementUi { Label = R1.btnScaleSameWidth, Image = R2.ScaleSameWidth, Keytip = "PW" } },
                 { btnScaleSameHeight, new ElementUi { Label = R1.btnScaleSameHeight, Image = R2.ScaleSameHeight, Keytip = "PH" } },
                 { btnScaleSameSize, new ElementUi { Label = R1.btnScaleSameSize, Image = R2.ScaleSameSize, Keytip = "PS" } },
@@ -398,7 +407,7 @@ namespace PowerPointArrangeAddin.Ribbon {
                     { "WordArtFormatDialog", "AG" }
                 }
             },
-            { grpArrange, new() { { "GridSettings", "DG" }, { "ObjectSizeAndPositionDialog", "HS" }, { "SelectionPane", "HP" } } },
+            { grpArrange, new() { { "ObjectSizeAndPositionDialog", "HS" }, { "SelectionPane", "HP" } } },
             { grpTextbox, new() { { "WordArtFormatDialog", "TG" } } },
             { grpShapeSizeAndPosition, new() { { "ObjectSizeAndPositionDialog", "SN" } } },
             { grpPictureSizeAndPosition, new() { { "ObjectSizeAndPositionDialog", "SN" } } },

@@ -243,7 +243,7 @@
     <value>从中心点变形(&amp;F)</value><comment>将中心点视为锚点来变形图像</comment>
   </data>
   <data name="btnScaleAnchor_TopLeft" xml:space="preserve">
-    <value>从左上角变形(&amp;F)</value><comment>将左上点视为锚点来变形图像</comment>
+    <value>从左上角变形(&amp;O)</value><comment>将左上点视为锚点来变形图像</comment>
   </data>
   <data name="btnScaleSameHeight" xml:space="preserve">
     <value>变形为与最初选择的形状相同高度(&amp;H)</value>
@@ -375,7 +375,7 @@
     <value>所有文件</value>
   </data>
   <data name="btnScaleAnchor_BottomRight" xml:space="preserve">
-    <value>从右下角变形(&amp;F)</value>
+    <value>从右下角变形(&amp;M)</value>
   </data>
   <data name="btnCopyVideoPosition" xml:space="preserve">
     <value>复制位置</value>
@@ -523,5 +523,14 @@
   </data>
   <data name="lblVerticalMargin" xml:space="preserve">
     <value>纵向边距:　 </value>
+  </data>
+  <data name="btnAlignRelative_ToObjects" xml:space="preserve">
+    <value>对齐所选对象(&amp;O)</value>
+  </data>
+  <data name="btnAlignRelative_ToSlide" xml:space="preserve">
+    <value>对齐到幻灯片(&amp;A)</value>
+  </data>
+  <data name="btnAlignRelative_ToFirstObject" xml:space="preserve">
+    <value>对齐到最初选择的对象(&amp;F)</value>
   </data>
 </root>

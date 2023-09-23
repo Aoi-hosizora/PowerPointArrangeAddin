@@ -243,7 +243,7 @@
     <value>中央点から変形(&amp;F)</value><comment>中央点をアンカーとして図形を変形</comment>
   </data>
   <data name="btnScaleAnchor_TopLeft" xml:space="preserve">
-    <value>左上端から変形(&amp;F)</value><comment>左上端をアンカーとして図形を変形</comment>
+    <value>左上端から変形(&amp;O)</value><comment>左上端をアンカーとして図形を変形</comment>
   </data>
   <data name="btnScaleSameHeight" xml:space="preserve">
     <value>最初に選択した図形と同じ高さに変形(&amp;H)</value>
@@ -357,7 +357,7 @@
     <value>オブジェクトの位置とサイズ</value>
   </data>
   <data name="mnuArrangement_sepLayerOrderAndGrouping" xml:space="preserve">
-    <value>オブジェクトの重ね順とグループ</value>
+    <value>オブジェクトの順序とグループ</value>
   </data>
   <data name="mnuArrangement_sepObjectsInSlide" xml:space="preserve">
     <value>スライド上のオブジェクト</value>
@@ -375,7 +375,7 @@
     <value>すべてのファイル</value>
   </data>
   <data name="btnScaleAnchor_BottomRight" xml:space="preserve">
-    <value>右下端から変形(&amp;F)</value>
+    <value>右下端から変形(&amp;M)</value>
   </data>
   <data name="btnCopyVideoPosition" xml:space="preserve">
     <value>位置をコピー</value>
@@ -523,5 +523,14 @@
   </data>
   <data name="lblVerticalMargin" xml:space="preserve">
     <value>縦の余白:　 </value>
+  </data>
+  <data name="btnAlignRelative_ToObjects" xml:space="preserve">
+    <value>選択した図形を揃える(&amp;O)</value>
+  </data>
+  <data name="btnAlignRelative_ToFirstObject" xml:space="preserve">
+    <value>最初に選択した図形に合わせて配置(&amp;F)</value>
+  </data>
+  <data name="btnAlignRelative_ToSlide" xml:space="preserve">
+    <value>スライドに合わせて配置(&amp;A)</value>
   </data>
 </root>

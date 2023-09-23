@@ -9,7 +9,13 @@ namespace PowerPointArrangeAddin.Helper {
 
     public static class ArrangementHelper {
 
-        public static void Align(PowerPoint.ShapeRange? shapeRange, Office.MsoAlignCmd? cmd, Office.MsoTriState? relativeToSlide = null) {
+        public enum AlignRelativeFlag {
+            RelativeToObjects,
+            RelativeToFirstObject,
+            RelativeToSlide
+        }
+
+        public static void Align(PowerPoint.ShapeRange? shapeRange, Office.MsoAlignCmd? cmd, AlignRelativeFlag? relativeFlag = null) {
             if (shapeRange == null || shapeRange.Count <= 0) {
                 return;
             }
@@ -17,34 +23,86 @@ namespace PowerPointArrangeAddin.Helper {
                 return;
             }
 
-            if (relativeToSlide == null) {
-                relativeToSlide = Office.MsoTriState.msoFalse; // defaults to relative to objects
-                if (shapeRange.Count == 1) {
-                    relativeToSlide = Office.MsoTriState.msoTrue; // relative to slide when only single shape is selected
-                }
+            relativeFlag ??= AlignRelativeFlag.RelativeToObjects; // defaults to relative to objects
+            if (shapeRange.Count == 1) {
+                relativeFlag = AlignRelativeFlag.RelativeToSlide; // relative to slide when only single shape is selected
             }
 
-            Globals.ThisAddIn.Application.StartNewUndoEntry();
-            shapeRange.Align(cmd.Value, relativeToSlide.Value);
+            switch (relativeFlag!) {
+            case AlignRelativeFlag.RelativeToObjects:
+                if (shapeRange.Count >= 2) {
+                    Globals.ThisAddIn.Application.StartNewUndoEntry();
+                    shapeRange.Align(cmd.Value, Office.MsoTriState.msoFalse);
+                }
+                break;
+            case AlignRelativeFlag.RelativeToSlide:
+                Globals.ThisAddIn.Application.StartNewUndoEntry();
+                shapeRange.Align(cmd.Value, Office.MsoTriState.msoTrue);
+                break;
+            case AlignRelativeFlag.RelativeToFirstObject:
+                if (shapeRange.Count >= 2) {
+                    Globals.ThisAddIn.Application.StartNewUndoEntry();
+                    var shapes = shapeRange.OfType<PowerPoint.Shape>().ToArray();
+                    var firstShape = shapes[0];
+                    for (var i = 1; i < shapes.Length; i++) {
+                        shapes[i].Left = cmd! switch {
+                            Office.MsoAlignCmd.msoAlignLefts => firstShape.Left,
+                            Office.MsoAlignCmd.msoAlignCenters => firstShape.Left + (firstShape.Width - shapes[i].Width) / 2,
+                            Office.MsoAlignCmd.msoAlignRights => firstShape.Left + firstShape.Width - shapes[i].Width,
+                            _ => shapes[i].Left
+                        };
+                        shapes[i].Top = cmd! switch {
+                            Office.MsoAlignCmd.msoAlignTops => firstShape.Top,
+                            Office.MsoAlignCmd.msoAlignMiddles => firstShape.Top + (firstShape.Height - shapes[i].Height) / 2,
+                            Office.MsoAlignCmd.msoAlignBottoms => firstShape.Top + firstShape.Height - shapes[i].Height,
+                            _ => shapes[i].Top
+                        };
+                    }
+                }
+                break;
+            }
         }
 
-        public static void Distribute(PowerPoint.ShapeRange? shapeRange, Office.MsoDistributeCmd? cmd, Office.MsoTriState? relativeToSlide = null) {
-            if (shapeRange == null || shapeRange.Count <= 0 || shapeRange.Count == 2) {
+        public static bool IsDistributable(PowerPoint.ShapeRange? shapeRange, AlignRelativeFlag? relativeCmd) {
+            if (shapeRange == null || shapeRange.Count <= 0) {
+                return false;
+            }
+            if (relativeCmd == null || relativeCmd == AlignRelativeFlag.RelativeToFirstObject) {
+                return false;
+            }
+            if (shapeRange.Count == 1 || relativeCmd == AlignRelativeFlag.RelativeToSlide) {
+                return true; // ignore relative cmd, which is regarded with relative to slide
+            }
+            return shapeRange.Count >= 3; // both relative to shapes and relative to first shape
+        }
+
+        public static void Distribute(PowerPoint.ShapeRange? shapeRange, Office.MsoDistributeCmd? cmd, AlignRelativeFlag? relativeFlag = null) {
+            if (shapeRange == null || shapeRange.Count <= 0) {
                 return;
             }
             if (cmd == null) {
                 return;
             }
 
-            if (relativeToSlide == null) {
-                relativeToSlide = Office.MsoTriState.msoFalse; // defaults to relative to objects
-                if (shapeRange.Count == 1) {
-                    relativeToSlide = Office.MsoTriState.msoTrue; // relative to slide when only single shape is selected
-                }
+            relativeFlag ??= AlignRelativeFlag.RelativeToObjects; // defaults to relative to objects
+            if (shapeRange.Count == 1) {
+                relativeFlag = AlignRelativeFlag.RelativeToSlide; // relative to slide when only single shape is selected
             }
 
-            Globals.ThisAddIn.Application.StartNewUndoEntry();
-            shapeRange.Distribute(cmd.Value, relativeToSlide.Value);
+            switch (relativeFlag!) {
+            case AlignRelativeFlag.RelativeToObjects:
+                if (shapeRange.Count >= 3) {
+                    Globals.ThisAddIn.Application.StartNewUndoEntry();
+                    shapeRange.Distribute(cmd.Value, Office.MsoTriState.msoFalse);
+                }
+                break;
+            case AlignRelativeFlag.RelativeToSlide:
+                Globals.ThisAddIn.Application.StartNewUndoEntry();
+                shapeRange.Distribute(cmd.Value, Office.MsoTriState.msoTrue);
+                break;
+            case AlignRelativeFlag.RelativeToFirstObject:
+                break;
+            }
         }
 
         public enum ScaleSizeCmd {

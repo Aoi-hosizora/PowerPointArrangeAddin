@@ -106,6 +106,33 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Align and relative to the &amp;first object.
+        /// </summary>
+        public static string btnAlignRelative_ToFirstObject {
+            get {
+                return ResourceManager.GetString("btnAlignRelative_ToFirstObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Align the selected &amp;objects.
+        /// </summary>
+        public static string btnAlignRelative_ToObjects {
+            get {
+                return ResourceManager.GetString("btnAlignRelative_ToObjects", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Align and relative to the slide.
+        /// </summary>
+        public static string btnAlignRelative_ToSlide {
+            get {
+                return ResourceManager.GetString("btnAlignRelative_ToSlide", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Align &amp;right.
         /// </summary>
         public static string btnAlignRight {
@@ -664,7 +691,7 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Scale objects &amp;from bottom right.
+        ///   Looks up a localized string similar to Scale objects from botto&amp;m right.
         /// </summary>
         public static string btnScaleAnchor_BottomRight {
             get {
@@ -682,7 +709,7 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Scale objects &amp;from top left.
+        ///   Looks up a localized string similar to Scale &amp;objects from top left.
         /// </summary>
         public static string btnScaleAnchor_TopLeft {
             get {
@@ -691,7 +718,7 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Scale to same &amp;height (as the first shape).
+        ///   Looks up a localized string similar to Scale to same &amp;height as the first shape.
         /// </summary>
         public static string btnScaleSameHeight {
             get {
@@ -700,7 +727,7 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Scale to same &amp;size (as the first shape).
+        ///   Looks up a localized string similar to Scale to same &amp;size as the first shape.
         /// </summary>
         public static string btnScaleSameSize {
             get {
@@ -709,7 +736,7 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Scale to same &amp;width (as the first shape).
+        ///   Looks up a localized string similar to Scale to same &amp;width as the first shape.
         /// </summary>
         public static string btnScaleSameWidth {
             get {
