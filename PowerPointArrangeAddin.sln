@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.31727.386
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerPointArrangeAddin", "PowerPointArrangeAddin\PowerPointArrangeAddin.csproj", "{D0A4931D-7AAD-4CE2-A65E-B90B30FE1CE2}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "PowerPointArrangeAddinSetup", "PowerPointArrangeAddinSetup\PowerPointArrangeAddinSetup.vdproj", "{DEB2AD2F-488E-41F1-9D73-26893FDE8521}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -15,6 +17,8 @@ Global
 		{D0A4931D-7AAD-4CE2-A65E-B90B30FE1CE2}.Debug|x64.Build.0 = Debug|x64
 		{D0A4931D-7AAD-4CE2-A65E-B90B30FE1CE2}.Release|x64.ActiveCfg = Release|x64
 		{D0A4931D-7AAD-4CE2-A65E-B90B30FE1CE2}.Release|x64.Build.0 = Release|x64
+		{DEB2AD2F-488E-41F1-9D73-26893FDE8521}.Debug|x64.ActiveCfg = Debug
+		{DEB2AD2F-488E-41F1-9D73-26893FDE8521}.Release|x64.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
