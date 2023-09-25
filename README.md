@@ -6,7 +6,7 @@
 + A PowerPoint add-in (VSTO) for assisting arrangement operations, which is inspired by [iSlide Addin](https://www.islide.cc/).
 + Development environment: .NET Framework 4.8 (C# 7.3 / C# 9.0), Microsoft Office PowerPoint 2010
 + Supported languages: English, Simplified Chinese, Traditional Chinese, Japanese
-+ Prerequisite: Microsoft Office >= 2010
++ Prerequisite: Microsoft Office >= 2010, x64
 
 ### Install
 
@@ -120,3 +120,5 @@ msbuild PowerPointArrangeAddin.csproj /p:Configuration=Release /p:Platform=x64 /
 + [<customization> element (Office development in Visual Studio)](https://learn.microsoft.com/en-us/visualstudio/vsto/customization-element-office-development-in-visual-studio?view=vs-2019)
 + [给VSTO 解决方案指定产品名、发布者以及其他属性信息](https://www.cnblogs.com/monster1799/p/1310866.html)
 + [ClickOnceでの再インストールでエラー発生](https://blog.regrex.jp/2016/09/02/post-972/)
++ [Windows Installer Setup With Custom Actions](https://www.c-sharpcorner.com/UploadFile/87ad51/3/)
++ [セットアッププロジェクトにカスタム動作を追加する](https://www.softech.co.jp/mm_230201_tr.htm)
