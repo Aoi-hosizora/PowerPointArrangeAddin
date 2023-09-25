@@ -5,9 +5,9 @@ VisualStudioVersion = 16.0.31727.386
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerPointArrangeAddin", "PowerPointArrangeAddin\PowerPointArrangeAddin.csproj", "{D0A4931D-7AAD-4CE2-A65E-B90B30FE1CE2}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "PowerPointArrangeAddinSetup", "PowerPointArrangeAddinSetup\PowerPointArrangeAddinSetup.vdproj", "{DEB2AD2F-488E-41F1-9D73-26893FDE8521}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "PowerPointArrangeAddinSetup", "PowerPointArrangeAddinSetup\PowerPointArrangeAddinSetup.vdproj", "{BF8FFE34-BFC8-4974-8A0F-842A27A59F8A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerPointArrangeAddinSetupAction", "PowerPointArrangeAddinSetupAction\PowerPointArrangeAddinSetupAction.csproj", "{E173069D-059C-48C3-BF62-DA731F0FD33F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerPointArrangeAddinSetupAction", "PowerPointArrangeAddinSetupAction\PowerPointArrangeAddinSetupAction.csproj", "{CD517063-5C97-49DB-93C2-3E31DCFE0203}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,18 +23,16 @@ Global
 		{D0A4931D-7AAD-4CE2-A65E-B90B30FE1CE2}.Release|Any CPU.ActiveCfg = Release|x64
 		{D0A4931D-7AAD-4CE2-A65E-B90B30FE1CE2}.Release|x64.ActiveCfg = Release|x64
 		{D0A4931D-7AAD-4CE2-A65E-B90B30FE1CE2}.Release|x64.Build.0 = Release|x64
-		{DEB2AD2F-488E-41F1-9D73-26893FDE8521}.Debug|Any CPU.ActiveCfg = Debug
-		{DEB2AD2F-488E-41F1-9D73-26893FDE8521}.Debug|Any CPU.Build.0 = Debug
-		{DEB2AD2F-488E-41F1-9D73-26893FDE8521}.Debug|x64.ActiveCfg = Debug
-		{DEB2AD2F-488E-41F1-9D73-26893FDE8521}.Release|Any CPU.ActiveCfg = Release
-		{DEB2AD2F-488E-41F1-9D73-26893FDE8521}.Release|Any CPU.Build.0 = Release
-		{DEB2AD2F-488E-41F1-9D73-26893FDE8521}.Release|x64.ActiveCfg = Release
-		{DEB2AD2F-488E-41F1-9D73-26893FDE8521}.Release|x64.Build.0 = Release
-		{E173069D-059C-48C3-BF62-DA731F0FD33F}.Debug|Any CPU.ActiveCfg = Debug|x64
-		{E173069D-059C-48C3-BF62-DA731F0FD33F}.Debug|x64.ActiveCfg = Debug|x64
-		{E173069D-059C-48C3-BF62-DA731F0FD33F}.Release|Any CPU.ActiveCfg = Release|x64
-		{E173069D-059C-48C3-BF62-DA731F0FD33F}.Release|x64.ActiveCfg = Release|x64
-		{E173069D-059C-48C3-BF62-DA731F0FD33F}.Release|x64.Build.0 = Release|x64
+		{BF8FFE34-BFC8-4974-8A0F-842A27A59F8A}.Debug|Any CPU.ActiveCfg = Debug
+		{BF8FFE34-BFC8-4974-8A0F-842A27A59F8A}.Debug|x64.ActiveCfg = Debug
+		{BF8FFE34-BFC8-4974-8A0F-842A27A59F8A}.Release|Any CPU.ActiveCfg = Release
+		{BF8FFE34-BFC8-4974-8A0F-842A27A59F8A}.Release|x64.ActiveCfg = Release
+		{BF8FFE34-BFC8-4974-8A0F-842A27A59F8A}.Release|x64.Build.0 = Release
+		{CD517063-5C97-49DB-93C2-3E31DCFE0203}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{CD517063-5C97-49DB-93C2-3E31DCFE0203}.Debug|x64.ActiveCfg = Debug|x64
+		{CD517063-5C97-49DB-93C2-3E31DCFE0203}.Release|Any CPU.ActiveCfg = Release|x64
+		{CD517063-5C97-49DB-93C2-3E31DCFE0203}.Release|x64.ActiveCfg = Release|x64
+		{CD517063-5C97-49DB-93C2-3E31DCFE0203}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
