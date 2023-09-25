@@ -122,3 +122,4 @@ msbuild PowerPointArrangeAddin.csproj /p:Configuration=Release /p:Platform=x64 /
 + [ClickOnceでの再インストールでエラー発生](https://blog.regrex.jp/2016/09/02/post-972/)
 + [Windows Installer Setup With Custom Actions](https://www.c-sharpcorner.com/UploadFile/87ad51/3/)
 + [セットアッププロジェクトにカスタム動作を追加する](https://www.softech.co.jp/mm_230201_tr.htm)
++ [Deploying a VSTO Solution Using Windows Installer](https://learn.microsoft.com/en-us/visualstudio/vsto/deploying-a-vsto-solution-by-using-windows-installer?view=vs-2022)

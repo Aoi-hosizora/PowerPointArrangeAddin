@@ -112,7 +112,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_31C79ABB4A11C9C68B01C4915CAD419A"
+        "OwnerKey" = "8:_17FF9AF639E4420F8FC98F97AC9E6C47"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -125,12 +125,6 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_ABFB255A9AE987E16F7762C9AF02E623"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_17FF9AF639E4420F8FC98F97AC9E6C47"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -163,6 +157,12 @@
         "OwnerKey" = "8:_603F1AA7CB29E93DCDF34B1B519E7882"
         "MsmSig" = "8:_UNDEFINED"
         }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_31C79ABB4A11C9C68B01C4915CAD419A"
+        "MsmSig" = "8:_UNDEFINED"
+        }
     }
     "Configurations"
     {
@@ -181,6 +181,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -197,6 +205,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -218,19 +242,20 @@
             "CustomActionData" = "8:/dir=\"[TARGETDIR]\\\""
             "Run64Bit" = "11:TRUE"
             }
-            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_51F9FCE2CD1E40399FB3E7B52F6227CE"
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_DCF6E0E012F24B2599902DCDBB0F62B4"
             {
             "Name" = "8:Primary output from PowerPointArrangeAddinSetupAction (Active)"
             "Condition" = "8:"
             "Object" = "8:_8C8E05C35C9D40F2BB7CF214B0C8A1CB"
             "FileType" = "3:1"
-            "InstallAction" = "3:2"
+            "InstallAction" = "3:1"
             "Arguments" = "8:"
             "EntryPoint" = "8:"
             "Sequence" = "3:1"
-            "Identifier" = "8:_E3AD3F83_8631_4AEC_B9D4_B8400D07EF19"
+            "Identifier" = "8:_D243766F_2F86_4224_B5B5_5D54CDEE5C4B"
             "InstallerClass" = "11:TRUE"
             "CustomActionData" = "8:/dir=\"[TARGETDIR]\\\""
+            "Run64Bit" = "11:TRUE"
             }
         }
         "DefaultFeature"
@@ -629,7 +654,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:PowerPointArrangeAddin"
         "ProductCode" = "8:{A1C8BCCB-8AB5-4AE9-A634-34F87B7E5709}"
-        "PackageCode" = "8:{1CC022BF-1417-4B08-B00C-887FEC090D2F}"
+        "PackageCode" = "8:{2B306CEC-EDFA-49EF-A92F-A5CA3C53397D}"
         "UpgradeCode" = "8:{7B31E6BC-9AC3-4A54-BEE0-6CF6FB373582}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -1178,7 +1203,7 @@
             }
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_8C8E05C35C9D40F2BB7CF214B0C8A1CB"
             {
-            "SourcePath" = "8:..\\PowerPointArrangeAddinSetupAction\\obj\\x64\\Release\\PowerPointArrangeAddinSetupAction.dll"
+            "SourcePath" = "8:..\\PowerPointArrangeAddinSetupAction\\obj\\x64\\Release\\PowerPointArrangeAddinSetupAction.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_9D4584CDD43B4EE2B93B8976CE8EE841"
