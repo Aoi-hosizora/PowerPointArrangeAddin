@@ -123,3 +123,8 @@ msbuild PowerPointArrangeAddin.csproj /p:Configuration=Release /p:Platform=x64 /
 + [Windows Installer Setup With Custom Actions](https://www.c-sharpcorner.com/UploadFile/87ad51/3/)
 + [セットアッププロジェクトにカスタム動作を追加する](https://www.softech.co.jp/mm_230201_tr.htm)
 + [Deploying a VSTO Solution Using Windows Installer](https://learn.microsoft.com/en-us/visualstudio/vsto/deploying-a-vsto-solution-by-using-windows-installer?view=vs-2022)
++ [インストーラー作成：WiX Toolsetのインストール方法について](https://office54.net/python/app/installer-make-wix)
++ [WiX でセットアッププロジェクト](https://qiita.com/hiro_t/items/2b51ec2d495eb31a07b0)
++ [How to create an MSI installer with WiX](https://www.advancedinstaller.com/versus/wix-toolset/create-msi-installer-with-wix.html)
++ [【Visual Studio2017/2019/2022】コマンドラインからビルドすると「8000000A」エラーが発生する](https://juraku-software.net/visual-studio2017-command-build-8000000a-error/)
++ [Build only the VS Setup project via command line](https://stackoverflow.com/questions/12233780/build-only-the-vs-setup-project-via-command-line)

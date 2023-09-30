@@ -88,18 +88,6 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E31364BB85E49BC65DB6CAA61C6A7B08"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_F0343114E10946039C7B45CF841E0879"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_F24646CFDCFC44D18E3659BC7FAE7DE1"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -133,6 +121,18 @@
         "OwnerKey" = "8:_399993810A648B560DBA9475FB4C3D7B"
         "MsmSig" = "8:_UNDEFINED"
         }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_E31364BB85E49BC65DB6CAA61C6A7B08"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_F0343114E10946039C7B45CF841E0879"
+        "MsmSig" = "8:_UNDEFINED"
+        }
     }
     "Configurations"
     {
@@ -151,6 +151,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
         "Release"
         {
@@ -530,7 +546,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:PowerPointArrangeAddin"
         "ProductCode" = "8:{1C045028-8942-4424-A4A2-F89474F2FE92}"
-        "PackageCode" = "8:{77104E4F-E024-4197-AD67-75EC096321E9}"
+        "PackageCode" = "8:{9AD48ADB-5058-43B8-A34D-134C49B9450D}"
         "UpgradeCode" = "8:{5751F5A2-98C7-4496-94FF-65CF8F761192}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -936,7 +952,7 @@
             "Attributes" = "3:1"
                 "Dialogs"
                 {
-                    "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_3F8833E055CA42BAB7E30122C2AE9BAC"
+                    "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_93CBE8645016428B80BC9BD3E859C802"
                     {
                     "Sequence" = "3:100"
                     "DisplayName" = "8:Welcome"
