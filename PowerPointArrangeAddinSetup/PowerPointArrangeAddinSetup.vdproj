@@ -4,9 +4,9 @@
 "ProjectType" = "8:{978C614F-708E-4E1A-B201-565925725DBA}"
 "IsWebType" = "8:FALSE"
 "ProjectName" = "8:PowerPointArrangeAddinSetup"
-"LanguageId" = "3:0"
-"CodePage" = "3:1252"
-"UILanguageId" = "3:0"
+"LanguageId" = "3:1041"
+"CodePage" = "3:932"
+"UILanguageId" = "3:1041"
 "SccProjectName" = "8:"
 "SccLocalPath" = "8:"
 "SccAuxPath" = "8:"
@@ -15,14 +15,8 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_332DFF68464C43CEB020A40024F77399"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_371C3E0FFFCAF34982CB6B38147A8BBC"
-        "OwnerKey" = "8:_F24646CFDCFC44D18E3659BC7FAE7DE1"
+        "OwnerKey" = "8:_B0456C6341BF4FE7A082E378A8A95974"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -34,24 +28,42 @@
         "Entry"
         {
         "MsmKey" = "8:_399993810A648B560DBA9475FB4C3D7B"
-        "OwnerKey" = "8:_F24646CFDCFC44D18E3659BC7FAE7DE1"
+        "OwnerKey" = "8:_B0456C6341BF4FE7A082E378A8A95974"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_6BE3008108C9A82FD2649BA8923C2D4E"
-        "OwnerKey" = "8:_F24646CFDCFC44D18E3659BC7FAE7DE1"
+        "OwnerKey" = "8:_B0456C6341BF4FE7A082E378A8A95974"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_801A2866F229416E801578E323A47118"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_8F5B2790216B48FDB3032753C0583010"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_A3817F95F562C1A002BCC6F86810745C"
-        "OwnerKey" = "8:_F24646CFDCFC44D18E3659BC7FAE7DE1"
+        "OwnerKey" = "8:_B0456C6341BF4FE7A082E378A8A95974"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_B19B9D721A414A9AAA5D7610A5A5B6C2"
+        "MsmKey" = "8:_B0456C6341BF4FE7A082E378A8A95974"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_B578AB92850F4209A9B9DE9509F0384F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -64,31 +76,31 @@
         "Entry"
         {
         "MsmKey" = "8:_C8028A4D02488F8FE3DA9991B3860F7B"
-        "OwnerKey" = "8:_F24646CFDCFC44D18E3659BC7FAE7DE1"
+        "OwnerKey" = "8:_B0456C6341BF4FE7A082E378A8A95974"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_E31364BB85E49BC65DB6CAA61C6A7B08"
-        "OwnerKey" = "8:_F24646CFDCFC44D18E3659BC7FAE7DE1"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_F0343114E10946039C7B45CF841E0879"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_F24646CFDCFC44D18E3659BC7FAE7DE1"
-        "OwnerKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_B0456C6341BF4FE7A082E378A8A95974"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_F24646CFDCFC44D18E3659BC7FAE7DE1"
+        "OwnerKey" = "8:_E31364BB85E49BC65DB6CAA61C6A7B08"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_801A2866F229416E801578E323A47118"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_B0456C6341BF4FE7A082E378A8A95974"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -119,18 +131,6 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_399993810A648B560DBA9475FB4C3D7B"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E31364BB85E49BC65DB6CAA61C6A7B08"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_F0343114E10946039C7B45CF841E0879"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -210,32 +210,32 @@
     {
         "CustomAction"
         {
-            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_A530DD2802734912A856B4911844D74F"
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_AFDF55804F92455C9781E9183E4144AD"
             {
             "Name" = "8:Primary output from PowerPointArrangeAddinSetupAction (Active)"
             "Condition" = "8:"
-            "Object" = "8:_F0343114E10946039C7B45CF841E0879"
+            "Object" = "8:_801A2866F229416E801578E323A47118"
             "FileType" = "3:1"
             "InstallAction" = "3:1"
             "Arguments" = "8:"
             "EntryPoint" = "8:"
             "Sequence" = "3:1"
-            "Identifier" = "8:_C89EED7F_DA49_4B7C_B10D_B555DF2CF6F0"
+            "Identifier" = "8:_E6F62B44_9575_4993_B297_B126D5D08C7F"
             "InstallerClass" = "11:TRUE"
             "CustomActionData" = "8:/dir=\"[TARGETDIR]\\\""
             "Run64Bit" = "11:TRUE"
             }
-            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_A65FF87D55C941A2B771BD5C93CDB55B"
+            "{4AA51A2D-7D85-4A59-BA75-B0809FC8B380}:_EA685BEE888B4B46B4924FC01C7E2C72"
             {
             "Name" = "8:Primary output from PowerPointArrangeAddinSetupAction (Active)"
             "Condition" = "8:"
-            "Object" = "8:_F0343114E10946039C7B45CF841E0879"
+            "Object" = "8:_801A2866F229416E801578E323A47118"
             "FileType" = "3:1"
             "InstallAction" = "3:4"
             "Arguments" = "8:"
             "EntryPoint" = "8:"
             "Sequence" = "3:1"
-            "Identifier" = "8:_E5ABA114_EBFC_4038_AFF1_C3327473D95B"
+            "Identifier" = "8:_33995BE3_6972_450E_B1B0_6D466B9C7372"
             "InstallerClass" = "11:TRUE"
             "CustomActionData" = "8:/dir=\"[TARGETDIR]\\\""
             "Run64Bit" = "11:TRUE"
@@ -263,26 +263,6 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_332DFF68464C43CEB020A40024F77399"
-            {
-            "SourcePath" = "8:..\\PowerPointArrangeAddin\\bin\\x64\\Release\\PowerPointArrangeAddin.vsto"
-            "TargetName" = "8:PowerPointArrangeAddin.vsto"
-            "Tag" = "8:"
-            "Folder" = "8:_2DD78503B6AC44BA86B75ECCBD050F72"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_371C3E0FFFCAF34982CB6B38147A8BBC"
             {
             "AssemblyRegister" = "3:1"
@@ -376,6 +356,26 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8F5B2790216B48FDB3032753C0583010"
+            {
+            "SourcePath" = "8:..\\PowerPointArrangeAddin\\bin\\x64\\Release\\PowerPointArrangeAddin.vsto"
+            "TargetName" = "8:PowerPointArrangeAddin.vsto"
+            "Tag" = "8:"
+            "Folder" = "8:_2DD78503B6AC44BA86B75ECCBD050F72"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_A3817F95F562C1A002BCC6F86810745C"
             {
             "AssemblyRegister" = "3:1"
@@ -407,7 +407,7 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B19B9D721A414A9AAA5D7610A5A5B6C2"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B578AB92850F4209A9B9DE9509F0384F"
             {
             "SourcePath" = "8:..\\PowerPointArrangeAddin\\bin\\x64\\Release\\PowerPointArrangeAddin.dll.manifest"
             "TargetName" = "8:PowerPointArrangeAddin.dll.manifest"
@@ -538,7 +538,7 @@
         }
         "MsiBootstrapper"
         {
-        "LangId" = "3:0"
+        "LangId" = "3:1041"
         "RequiresElevation" = "11:FALSE"
         }
         "Product"
@@ -546,7 +546,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:PowerPointArrangeAddin"
         "ProductCode" = "8:{1C045028-8942-4424-A4A2-F89474F2FE92}"
-        "PackageCode" = "8:{9AD48ADB-5058-43B8-A34D-134C49B9450D}"
+        "PackageCode" = "8:{4C020C5E-94B8-4809-B6FC-D6D3EA1CD6E7}"
         "UpgradeCode" = "8:{5751F5A2-98C7-4496-94FF-65CF8F761192}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -1065,7 +1065,7 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_830C0C67F0A5429D96AF9D4105BC2BA8"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_5DBA9A018DA042D1A03D81FD42585016"
             {
             "SourcePath" = "8:"
             "TargetName" = "8:"
@@ -1093,9 +1093,9 @@
                 {
                 }
             }
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_F0343114E10946039C7B45CF841E0879"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_801A2866F229416E801578E323A47118"
             {
-            "SourcePath" = "8:..\\PowerPointArrangeAddinSetupAction\\obj\\x64\\Release\\PowerPointArrangeAddinSetupAction.dll"
+            "SourcePath" = "8:obj\\x64\\Release\\PowerPointArrangeAddinSetupAction.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_2DD78503B6AC44BA86B75ECCBD050F72"
@@ -1121,7 +1121,7 @@
                 {
                 }
             }
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_F24646CFDCFC44D18E3659BC7FAE7DE1"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_B0456C6341BF4FE7A082E378A8A95974"
             {
             "SourcePath" = "8:..\\PowerPointArrangeAddin\\obj\\x64\\Release\\PowerPointArrangeAddin.dll"
             "TargetName" = "8:"

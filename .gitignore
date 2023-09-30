@@ -16,8 +16,10 @@
 [Pp]ublish/
 *.exe
 *.dll
+*.msi
 *.pfx
 *.user
+*.bak
 
 ### Temp ###
 Office UI Help Files/
