@@ -128,3 +128,5 @@ msbuild PowerPointArrangeAddin.csproj /p:Configuration=Release /p:Platform=x64 /
 + [How to create an MSI installer with WiX](https://www.advancedinstaller.com/versus/wix-toolset/create-msi-installer-with-wix.html)
 + [【Visual Studio2017/2019/2022】コマンドラインからビルドすると「8000000A」エラーが発生する](https://juraku-software.net/visual-studio2017-command-build-8000000a-error/)
 + [Build only the VS Setup project via command line](https://stackoverflow.com/questions/12233780/build-only-the-vs-setup-project-via-command-line)
++ [Wix 安装部署（一）同MSBuild 自动生成打包文件](https://www.cnblogs.com/stoneniqiu/p/3355086.html)
++ [Wix 安装部署教程(十三) -- 多语言安装包](https://www.cnblogs.com/stoneniqiu/p/4725714.html)

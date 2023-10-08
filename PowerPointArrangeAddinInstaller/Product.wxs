@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+    <?define Addin_TargetDir=$(var.PowerPointArrangeAddin.TargetDir)?>
+
+    <!-- Define package and features -->
+    <Product Id="*" Name="PowerPointArrangeAddin" Language="1033" Version="1.0.0.0" Manufacturer="AoiHosizora" UpgradeCode="d827c61a-646d-4dfa-97c5-44d2da6cbf01">
+        <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+        <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+        <MediaTemplate EmbedCab="yes" />
+
+        <Feature Id="ProductFeature" Title="PowerPointArrangeAddin" Level="1">
+            <ComponentGroupRef Id="ProductComponents" />
+            <ComponentGroupRef Id="ja_files" />
+            <ComponentGroupRef Id="zh_Hant_files" />
+            <ComponentGroupRef Id="zh_Hans_files" />
+            <ComponentRef Id="ProductMenuShortcuts" />
+        </Feature>
+
+        <!-- Define variables -->
+        <WixVariable Id="WixUILicenseRtf" Value="license.rtf" />
+
+        <!-- Define UI elements -->
+        <UI>
+            <Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
+            <Property Id="WIXUI_EXITDIALOGOPTIONALTEXT" Value="Thank you for installing this add-in." />
+            <UIRef Id="WixUI_InstallDir" />
+        </UI>
+    </Product>
+
+    <!-- Define directories -->
+    <Fragment>
+        <Directory Id="TARGETDIR" Name="SourceDir">
+            <!-- Program Files folder -->
+            <Directory Id="ProgramFiles64Folder">
+                <Directory Id="ManufacturerFolder" Name="AoiHosizora">
+                    <Directory Id="INSTALLFOLDER" Name="PowerPointArrangeAddin">
+                        <Directory Id="ja" Name="ja" />
+                        <Directory Id="zh_Hans" Name="zh-Hans" />
+                        <Directory Id="zh_Hant" Name="zh-Hant" />
+                    </Directory>
+                </Directory>
+            </Directory>
+
+            <!-- Program Menu folder -->
+            <Directory Id="ProgramMenuFolder">
+                <Directory Id="ApplicationProgramsFolder" Name="PowerPointArrangeAddin" />
+            </Directory>
+        </Directory>
+    </Fragment>
+
+    <!-- Define files -->
+    <Fragment>
+        <!-- Program File folder -->
+        <ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+            <Component Id="PowerPointArrangeAddin.dll" Guid="4bee4e95-96f1-4df8-8357-4a07b19a44a5">
+                <File Id="PowerPointArrangeAddin.dll" Name="PowerPointArrangeAddin.dll"
+                    Source="$(var.Addin_TargetDir)PowerPointArrangeAddin.dll" />
+            </Component>
+            <Component Id="PowerPointArrangeAddin.dll.config" Guid="e5c78745-c1c3-4656-bc0c-6c5eb610b1f7">
+                <File Id="PowerPointArrangeAddin.dll.config" Name="PowerPointArrangeAddin.dll.config"
+                    Source="$(var.Addin_TargetDir)PowerPointArrangeAddin.dll.config" />
+            </Component>
+            <Component Id="PowerPointArrangeAddin.dll.manifest" Guid="52078cf1-86ec-4fbb-a163-f6da84b59092">
+                <File Id="PowerPointArrangeAddin.dll.manifest" Name="PowerPointArrangeAddin.dll.manifest"
+                    Source="$(var.Addin_TargetDir)PowerPointArrangeAddin.dll.manifest" />
+            </Component>
+            <Component Id="PowerPointArrangeAddin.vsto" Guid="ca3d56b9-906d-4763-a839-ae51e0ed96f6">
+                <File Id="PowerPointArrangeAddin.vsto" Name="PowerPointArrangeAddin.vsto"
+                    Source="$(var.Addin_TargetDir)PowerPointArrangeAddin.vsto" />
+            </Component>
+            <Component Id="Microsoft.Office.Tools.Common.v4.0.Utilities.dll" Guid="4046895d-6882-4def-9d80-190b2bfc9f50">
+                <File Id="Microsoft.Office.Tools.Common.v4.0.Utilities.dll" Name="Microsoft.Office.Tools.Common.v4.0.Utilities.dll"
+                    Source="$(var.Addin_TargetDir)Microsoft.Office.Tools.Common.v4.0.Utilities.dll" />
+            </Component>
+        </ComponentGroup>
+
+        <!-- ja subfolder -->
+        <ComponentGroup Id="ja_files" Directory="ja">
+            <Component Id="ja_PowerPointArrangeAddin.resources.dll" Guid="abc3ee20-25fc-4e03-a1a4-c3e1ac9ec6dc">
+                <File Id="ja_PowerPointArrangeAddin.resources.dll" Name="PowerPointArrangeAddin.resources.dll"
+                    Source="$(var.Addin_TargetDir)ja\PowerPointArrangeAddin.resources.dll" />
+            </Component>
+        </ComponentGroup>
+
+        <!-- zh_Hant subfolder -->
+        <ComponentGroup Id="zh_Hant_files" Directory="zh_Hant">
+            <Component Id="zh_Hant_PowerPointArrangeAddin.resources.dll" Guid="83dfe133-6988-4aac-8797-d2925eece49f">
+                <File Id="zh_Hant_PowerPointArrangeAddin.resources.dll" Name="PowerPointArrangeAddin.resources.dll"
+                    Source="$(var.Addin_TargetDir)zh-Hant\PowerPointArrangeAddin.resources.dll" />
+            </Component>
+        </ComponentGroup>
+
+        <!-- zh_Hans subfolder -->
+        <ComponentGroup Id="zh_Hans_files" Directory="zh_Hans">
+            <Component Id="zh_Hans_PowerPointArrangeAddin.resources.dll" Guid="a4edf42a-ab78-41ec-b5b8-2deef6f76a3d">
+                <File Id="zh_Hans_PowerPointArrangeAddin.resources.dll" Name="PowerPointArrangeAddin.resources.dll"
+                    Source="$(var.Addin_TargetDir)zh-Hans\PowerPointArrangeAddin.resources.dll" />
+            </Component>
+        </ComponentGroup>
+
+        <!-- Program Menu folder -->
+        <DirectoryRef Id="ApplicationProgramsFolder">
+            <Component Id="ProductMenuShortcuts" Guid="aef7248c-7ecd-44ef-823f-e48aeb7585e9">
+                <util:InternetShortcut Id="Homepage_InternetShortcut" Name="Homepage"
+                    Target="https://github.com/Aoi-hosizora/PowerPointArrangeAddin" />
+                <Shortcut Id="UninstallProduct_Shortcut" Name="Uninstall" Description="Uninstall This Add-in"
+                    Target="[SystemFolder]msiexec.exe" Arguments="/x [ProductCode]" />
+                <RemoveFolder Id="ApplicationProgramsFolder" On="uninstall" />
+                <RegistryValue Root="HKCU" Key="Software\AoiHosizora\PowerPointArrangeAddin" Name="installed" Type="integer" Value="1" KeyPath="yes" />
+            </Component>
+        </DirectoryRef>
+    </Fragment>
+
+    <!-- TODO https://www.cnblogs.com/stoneniqiu/p/4788449.html -->
+    <!-- TODO https://github.com/microsoft/Windows-classic-samples/blob/main/Samples/Win7Samples/sysmgmt/msi/scripts/WiLangId.vbs -->
+    <!-- TODO https://github.com/microsoft/msix-packaging/blob/master/MsixCore/MsixMgrWix/WiSubStg.vbs -->
+</Wix>
