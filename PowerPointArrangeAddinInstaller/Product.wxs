@@ -1,21 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
     <?define Addin_TargetDir=$(var.PowerPointArrangeAddin.TargetDir)?>
+    <?define Action_TargetDir=$(var.PowerPointArrangeAddinInstallAction.TargetDir)?>
 
     <!-- Define package and features -->
-    <Product Id="*" Name="PowerPointArrangeAddin" Language="1033" Version="1.0.0.0" Manufacturer="AoiHosizora" UpgradeCode="d827c61a-646d-4dfa-97c5-44d2da6cbf01">
+    <Product Id="*" Name="!(loc.ApplicationName)" Language="1033" Version="1.0.0.0" Manufacturer="AoiHosizora" UpgradeCode="d827c61a-646d-4dfa-97c5-44d2da6cbf01">
         <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
 
         <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
         <MediaTemplate EmbedCab="yes" />
 
-        <Feature Id="ProductFeature" Title="PowerPointArrangeAddin" Level="1">
+        <Feature Id="ProductFeature" Title="!(loc.ApplicationName)" Level="1">
             <ComponentGroupRef Id="ProductComponents" />
             <ComponentGroupRef Id="ja_files" />
             <ComponentGroupRef Id="zh_Hant_files" />
             <ComponentGroupRef Id="zh_Hans_files" />
+            <ComponentRef Id="ProductRegistryItems" />
             <ComponentRef Id="ProductMenuShortcuts" />
         </Feature>
+
+        <!-- Define properties -->
+        <Property Id="ARPHELPLINK" Value="https://github.com/Aoi-hosizora" />
+        <Property Id="ARPURLINFOABOUT" Value="https://github.com/Aoi-hosizora/PowerPointArrangeAddin" />
+        <Property Id="ARPURLUPDATEINFO" Value="https://github.com/Aoi-hosizora/PowerPointArrangeAddin/releases" />
+        <Property Id="ARPCOMMENTS" Value="Arrangement Assistant Add-in" />
 
         <!-- Define variables -->
         <WixVariable Id="WixUILicenseRtf" Value="license.rtf" />
@@ -23,9 +31,24 @@
         <!-- Define UI elements -->
         <UI>
             <Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
-            <Property Id="WIXUI_EXITDIALOGOPTIONALTEXT" Value="Thank you for installing this add-in." />
+            <Property Id="WIXUI_EXITDIALOGOPTIONALTEXT" Value="!(loc.ExitDialogText)" />
             <UIRef Id="WixUI_InstallDir" />
         </UI>
+
+        <!-- Define custom actions -->
+        <Binary Id="PowerPointArrangeAddinInstallActionDll" SourceFile="$(var.Action_TargetDir)PowerPointArrangeAddinInstallAction.CA.dll" />
+        <CustomAction Id="RegisterAddInCustomAction_SetValue" Property="RegisterAddInCustomAction" Value="InstallFolder=[INSTALLFOLDER]" />
+        <CustomAction Id="UnregisterAddInCustomAction_SetValue" Property="UnregisterAddInCustomAction" Value="InstallFolder=[INSTALLFOLDER]" />
+        <CustomAction Id="RegisterAddInCustomAction" BinaryKey="PowerPointArrangeAddinInstallActionDll"
+            DllEntry="RegisterAddIn" Execute="deferred" Impersonate="no" Return="check" />
+        <CustomAction Id="UnregisterAddInCustomAction" BinaryKey="PowerPointArrangeAddinInstallActionDll"
+            DllEntry="UnregisterAddIn" Execute="deferred" Impersonate="no" Return="check" />
+        <InstallExecuteSequence>
+            <Custom Action="RegisterAddInCustomAction_SetValue" Before="RegisterAddInCustomAction" />
+            <Custom Action="UnregisterAddInCustomAction_SetValue" Before="UnregisterAddInCustomAction" />
+            <Custom Action="RegisterAddInCustomAction" Before="InstallFinalize">(NOT Installed) OR REINSTALL</Custom>
+            <Custom Action="UnregisterAddInCustomAction" Before="RemoveRegistryValues">REMOVE = "ALL"</Custom>
+        </InstallExecuteSequence>
     </Product>
 
     <!-- Define directories -->
@@ -98,21 +121,32 @@
                     Source="$(var.Addin_TargetDir)zh-Hans\PowerPointArrangeAddin.resources.dll" />
             </Component>
         </ComponentGroup>
+    </Fragment>
+
+    <!-- Define registry and files -->
+    <Fragment>
+        <!-- Registry items -->
+        <DirectoryRef Id="INSTALLFOLDER">
+            <Component Id="ProductRegistryItems" Guid="8c795e15-228a-4620-b486-4068675f81ad">
+                <RegistryKey Root="HKCU" Key="Software\AoiHosizora\PowerPointArrangeAddin">
+                    <RegistryValue Name="InstallFolder" Type="string" Value="[INSTALLFOLDER]" />
+                    <RegistryValue Name="DllPath" Type="string" Value="[INSTALLFOLDER]PowerPointArrangeAddin.dll" />
+                </RegistryKey>
+            </Component>
+        </DirectoryRef>
 
         <!-- Program Menu folder -->
         <DirectoryRef Id="ApplicationProgramsFolder">
             <Component Id="ProductMenuShortcuts" Guid="aef7248c-7ecd-44ef-823f-e48aeb7585e9">
-                <util:InternetShortcut Id="Homepage_InternetShortcut" Name="Homepage"
+                <util:InternetShortcut Id="Homepage_InternetShortcut" Name="!(loc.HomepageShortcutName)"
                     Target="https://github.com/Aoi-hosizora/PowerPointArrangeAddin" />
-                <Shortcut Id="UninstallProduct_Shortcut" Name="Uninstall" Description="Uninstall This Add-in"
+                <Shortcut Id="RepairProduct_Shortcut" Name="!(loc.RepairShortcutName)" Description="!(loc.RepairShortcutName)"
+                    Target="[SystemFolder]msiexec.exe" Arguments="/i [ProductCode]" />
+                <Shortcut Id="UninstallProduct_Shortcut" Name="!(loc.UninstallShortcutName)" Description="!(loc.UninstallShortcutName)"
                     Target="[SystemFolder]msiexec.exe" Arguments="/x [ProductCode]" />
                 <RemoveFolder Id="ApplicationProgramsFolder" On="uninstall" />
-                <RegistryValue Root="HKCU" Key="Software\AoiHosizora\PowerPointArrangeAddin" Name="installed" Type="integer" Value="1" KeyPath="yes" />
+                <RegistryValue Root="HKCU" Key="Software\AoiHosizora\PowerPointArrangeAddin" Name="Installed" Type="integer" Value="1" KeyPath="yes" />
             </Component>
         </DirectoryRef>
     </Fragment>
-
-    <!-- TODO https://www.cnblogs.com/stoneniqiu/p/4788449.html -->
-    <!-- TODO https://github.com/microsoft/Windows-classic-samples/blob/main/Samples/Win7Samples/sysmgmt/msi/scripts/WiLangId.vbs -->
-    <!-- TODO https://github.com/microsoft/msix-packaging/blob/master/MsixCore/MsixMgrWix/WiSubStg.vbs -->
 </Wix>

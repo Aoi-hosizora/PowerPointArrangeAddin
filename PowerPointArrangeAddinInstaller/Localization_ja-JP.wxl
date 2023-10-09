@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WixLocalization Culture="ja-JP" xmlns="http://schemas.microsoft.com/wix/2006/localization">
+    <String Id="ApplicationName">PowerPointArrangeAddin</String>
+    <String Id="FriendlyName">配置補助アドイン</String>
+    <String Id="HomepageShortcutName">PowerPointArrangeAddin ホームページ</String>
+    <String Id="RepairShortcutName">PowerPointArrangeAddin を修復</String>
+    <String Id="UninstallShortcutName">PowerPointArrangeAddin をアンインストール</String>
+    <String Id="ExitDialogText">このアドインをインストールして、ありがとうございます。このアドインを使用したくない場合、スタートメニューやコントロールパネルからアンインストールしてください。</String>
+</WixLocalization>

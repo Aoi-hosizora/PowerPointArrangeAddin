@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WixLocalization Culture="zh-CN" xmlns="http://schemas.microsoft.com/wix/2006/localization">
+    <String Id="ApplicationName">PowerPointArrangeAddin</String>
+    <String Id="FriendlyName">排列辅助加载项</String>
+    <String Id="HomepageShortcutName">PowerPointArrangeAddin 主页</String>
+    <String Id="RepairShortcutName">修复 PowerPointArrangeAddin</String>
+    <String Id="UninstallShortcutName">卸载 PowerPointArrangeAddin</String>
+    <String Id="ExitDialogText">感谢您安装本加载项，如果您不想再使用该加载项，您可以查看开始菜单或者访问控制面板来卸载。</String>
+</WixLocalization>

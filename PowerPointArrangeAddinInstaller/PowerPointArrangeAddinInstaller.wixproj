@@ -34,9 +34,24 @@
   <ItemGroup>
     <Content Include="license.rtf" />
     <Content Include="PowerPointArrangeAddinInstaller.wax" />
+    <Content Include="transform.bat" />
     <Content Include="update_vsto.bat" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Localization_en-US.wxl" />
+    <EmbeddedResource Include="Localization_ja-JP.wxl" />
+    <EmbeddedResource Include="Localization_zh-CN.wxl" />
+    <EmbeddedResource Include="Localization_zh-TW.wxl" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PowerPointArrangeAddinInstallAction\PowerPointArrangeAddinInstallAction.csproj">
+      <Name>PowerPointArrangeAddinInstallAction</Name>
+      <Project>{ee78335d-c033-4552-b47f-0719c7b343be}</Project>
+      <Private>True</Private>
+      <DoNotHarvest>True</DoNotHarvest>
+      <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
+      <RefTargetDir>INSTALLFOLDER</RefTargetDir>
+    </ProjectReference>
     <ProjectReference Include="..\PowerPointArrangeAddin\PowerPointArrangeAddin.csproj">
       <Name>PowerPointArrangeAddin</Name>
       <Project>{d0a4931d-7aad-4ce2-a65e-b90b30fe1ce2}</Project>
@@ -62,10 +77,10 @@
     <Error Text="The WiX Toolset v3.11 build tools must be installed to build this project. To download the WiX Toolset, see https://wixtoolset.org/releases/v3.11/stable" />
   </Target>
   <PropertyGroup>
-    <PreBuildEvent>call $(ProjectDir)/update_vsto.bat</PreBuildEvent>
+    <PreBuildEvent>call $(ProjectDir)\update_vsto.bat</PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>call $(ProjectDir)/transform.bat</PostBuildEvent>
+    <PostBuildEvent>call $(ProjectDir)\transform.bat</PostBuildEvent>
   </PropertyGroup>
   <!--
 	To modify your build process, add your task inside one of the targets below and uncomment it.
