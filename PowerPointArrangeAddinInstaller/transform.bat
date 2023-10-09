@@ -10,11 +10,11 @@ torch -t language %RELEASE_DIR%/PowerPointArrangeAddinInstaller.msi %RELEASE_DIR
 torch -t language %RELEASE_DIR%/PowerPointArrangeAddinInstaller.msi %RELEASE_DIR%/zh-CN/PowerPointArrangeAddinInstaller.msi -out %RELEASE_DIR%/transforms/zh-CN.mst || goto :err
 torch -t language %RELEASE_DIR%/PowerPointArrangeAddinInstaller.msi %RELEASE_DIR%/zh-TW/PowerPointArrangeAddinInstaller.msi -out %RELEASE_DIR%/transforms/zh-TW.mst || goto :err
 
-WiSubStg.vbs %RELEASE_DIR%/PowerPointArrangeAddinInstaller.msi %RELEASE_DIR%/transforms/ja-JP.mst 1041 || goto :err
-WiSubStg.vbs %RELEASE_DIR%/PowerPointArrangeAddinInstaller.msi %RELEASE_DIR%/transforms/zh-CN.mst 2052 || goto :err
-WiSubStg.vbs %RELEASE_DIR%/PowerPointArrangeAddinInstaller.msi %RELEASE_DIR%/transforms/zh-TW.mst 1028 || goto :err
+3rdparty\WiSubStg.vbs %RELEASE_DIR%/PowerPointArrangeAddinInstaller.msi %RELEASE_DIR%/transforms/ja-JP.mst 1041 || goto :err
+3rdparty\WiSubStg.vbs %RELEASE_DIR%/PowerPointArrangeAddinInstaller.msi %RELEASE_DIR%/transforms/zh-CN.mst 2052 || goto :err
+3rdparty\WiSubStg.vbs %RELEASE_DIR%/PowerPointArrangeAddinInstaller.msi %RELEASE_DIR%/transforms/zh-TW.mst 1028 || goto :err
 
-WiLangId.vbs %RELEASE_DIR%/PowerPointArrangeAddinInstaller.msi Package 1033,1041,2052,1028 || goto :err
+3rdparty\WiLangId.vbs %RELEASE_DIR%/PowerPointArrangeAddinInstaller.msi Package 1033,1041,2052,1028 || goto :err
 
 echo.
 echo Done!
@@ -24,8 +24,3 @@ goto :eof
 echo.
 echo Failed to transform!
 exit /B 1
-
-@REM msiexec /i PowerPointArrangeAddinInstaller.msi ProductLanguage=1033 (en-US)
-@REM msiexec /i PowerPointArrangeAddinInstaller.msi ProductLanguage=1041 (ja-JP)
-@REM msiexec /i PowerPointArrangeAddinInstaller.msi ProductLanguage=2052 (zh-CN)
-@REM msiexec /i PowerPointArrangeAddinInstaller.msi ProductLanguage=1028 (zh-TW)

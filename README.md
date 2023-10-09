@@ -99,6 +99,14 @@ msbuild PowerPointArrangeAddin.csproj /p:Configuration=Release /p:Platform=x64 /
     5. Move the "Release" or "Publish" folders to a different location and try to install again. (Not Recommended)
     6. Regenerate a temporary key pfx file and try to build again build. (Not Recommended)
 
+```sh
+# multi-language
+msiexec /i PowerPointArrangeAddinInstaller.msi ProductLanguage=1033 # en-US
+msiexec /i PowerPointArrangeAddinInstaller.msi ProductLanguage=1041 # ja-JP
+msiexec /i PowerPointArrangeAddinInstaller.msi ProductLanguage=2052 # zh-CN
+msiexec /i PowerPointArrangeAddinInstaller.msi ProductLanguage=1028 # zh-TW
+```
+
 ### References
 
 + [VSTO开发指南](https://blog.csdn.net/fuhanghang/article/details/101533271)
