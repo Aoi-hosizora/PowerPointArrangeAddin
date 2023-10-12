@@ -5,5 +5,6 @@
     <String Id="HomepageShortcutName">PowerPointArrangeAddin 主頁</String>
     <String Id="RepairShortcutName">修復 PowerPointArrangeAddin</String>
     <String Id="UninstallShortcutName">卸載 PowerPointArrangeAddin</String>
+    <String Id="CreateShortcutCheckbox">創建開始菜單快捷方式。</String>
     <String Id="ExitDialogText">感謝您安裝本增益集，如果您不想再使用該增益集，您可以查看開始菜單或者訪問控制台來卸載。</String>
 </WixLocalization>

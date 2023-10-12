@@ -24,6 +24,7 @@
         <Property Id="ARPURLINFOABOUT" Value="https://github.com/Aoi-hosizora/PowerPointArrangeAddin" />
         <Property Id="ARPURLUPDATEINFO" Value="https://github.com/Aoi-hosizora/PowerPointArrangeAddin/releases" />
         <Property Id="ARPCOMMENTS" Value="Arrangement Assistant Add-in" />
+        <Property Id="CREATESHORTCUT" Value="1" Secure="yes" />
 
         <!-- Define variables -->
         <WixVariable Id="WixUILicenseRtf" Value="license.rtf" />
@@ -32,7 +33,7 @@
         <UI>
             <Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
             <Property Id="WIXUI_EXITDIALOGOPTIONALTEXT" Value="!(loc.ExitDialogText)" />
-            <UIRef Id="WixUI_InstallDir" />
+            <UIRef Id="Custom_InstallDir" />
         </UI>
 
         <!-- Define custom actions -->
@@ -129,6 +130,7 @@
         <DirectoryRef Id="INSTALLFOLDER">
             <Component Id="ProductRegistryItems" Guid="8c795e15-228a-4620-b486-4068675f81ad">
                 <RegistryKey Root="HKCU" Key="Software\AoiHosizora\PowerPointArrangeAddin">
+                    <RegistryValue Name="Installed" Type="integer" Value="1" />
                     <RegistryValue Name="InstallFolder" Type="string" Value="[INSTALLFOLDER]" />
                     <RegistryValue Name="DllPath" Type="string" Value="[INSTALLFOLDER]PowerPointArrangeAddin.dll" />
                 </RegistryKey>
@@ -138,6 +140,7 @@
         <!-- Program Menu folder -->
         <DirectoryRef Id="ApplicationProgramsFolder">
             <Component Id="ProductMenuShortcuts" Guid="aef7248c-7ecd-44ef-823f-e48aeb7585e9">
+                <Condition>CREATESHORTCUT</Condition>
                 <util:InternetShortcut Id="Homepage_InternetShortcut" Name="!(loc.HomepageShortcutName)"
                     Target="https://github.com/Aoi-hosizora/PowerPointArrangeAddin" />
                 <Shortcut Id="RepairProduct_Shortcut" Name="!(loc.RepairShortcutName)" Description="!(loc.RepairShortcutName)"
@@ -145,7 +148,7 @@
                 <Shortcut Id="UninstallProduct_Shortcut" Name="!(loc.UninstallShortcutName)" Description="!(loc.UninstallShortcutName)"
                     Target="[SystemFolder]msiexec.exe" Arguments="/x [ProductCode]" />
                 <RemoveFolder Id="ApplicationProgramsFolder" On="uninstall" />
-                <RegistryValue Root="HKCU" Key="Software\AoiHosizora\PowerPointArrangeAddin" Name="Installed" Type="integer" Value="1" KeyPath="yes" />
+                <RegistryValue Root="HKCU" Key="Software\AoiHosizora\PowerPointArrangeAddin" Name="Shortcut" Type="integer" Value="1" KeyPath="yes" />
             </Component>
         </DirectoryRef>
     </Fragment>

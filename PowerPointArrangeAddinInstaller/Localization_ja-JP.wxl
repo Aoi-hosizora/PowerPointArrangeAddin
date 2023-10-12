@@ -5,5 +5,6 @@
     <String Id="HomepageShortcutName">PowerPointArrangeAddin ホームページ</String>
     <String Id="RepairShortcutName">PowerPointArrangeAddin を修復</String>
     <String Id="UninstallShortcutName">PowerPointArrangeAddin をアンインストール</String>
+    <String Id="CreateShortcutCheckbox">スタートメニューにショットカットを追加する。</String>
     <String Id="ExitDialogText">このアドインをインストールして、ありがとうございます。このアドインを使用したくない場合、スタートメニューやコントロールパネルからアンインストールしてください。</String>
 </WixLocalization>

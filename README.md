@@ -140,3 +140,4 @@ msiexec /i PowerPointArrangeAddinInstaller.msi ProductLanguage=1028 # zh-TW
 + [Windows Installer手引書 Part.13 カスタムアクションを実行させるタイミング](https://qiita.com/tohshima/items/8d1d7e702d58dc1429d2)
 + [Windows Installer手引書 Part.14 インストール、アンインストールの区別](https://qiita.com/tohshima/items/72d1e7602a48055c55f5)
 + [How do I specify the Help Link, Support Link and Update Information?](https://stackoverflow.com/questions/7052120/how-do-i-specify-the-help-link-support-link-and-update-information)
++ ["Create Shortcut" Checkbox](https://stackoverflow.com/questions/4658220/create-shortcut-checkbox)

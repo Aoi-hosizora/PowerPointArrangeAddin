@@ -29,6 +29,8 @@
     <Cultures>en-US;ja-JP;zh-CN;zh-TW</Cultures>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CustomInstallDirDlg.wxs" />
+    <Compile Include="CustomInstallDir.wxs" />
     <Compile Include="Product.wxs" />
   </ItemGroup>
   <ItemGroup>

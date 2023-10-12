@@ -3,6 +3,8 @@
 ' Copyright (c) Microsoft Corporation. All rights reserved.
 ' Demonstrates the use of the database _Storages table
 '
+' https://github.com/microsoft/msix-packaging/blob/master/MsixCore/MsixMgrWix/WiSubStg.vbs
+'
 Option Explicit
 
 Const msiOpenDatabaseModeReadOnly     = 0

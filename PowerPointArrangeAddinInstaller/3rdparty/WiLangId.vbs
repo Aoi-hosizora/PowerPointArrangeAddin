@@ -1,7 +1,9 @@
 ' Windows Installer utility to report the language and codepage for a package
 ' For use with Windows Scripting Host, CScript.exe or WScript.exe
 ' Copyright (c) Microsoft Corporation. All rights reserved.
-' Demonstrates the access of language and codepage values                 
+' Demonstrates the access of language and codepage values             
+'
+' https://github.com/microsoft/Windows-classic-samples/blob/main/Samples/Win7Samples/sysmgmt/msi/scripts/WiLangId.vbs    
 '
 Option Explicit
 
