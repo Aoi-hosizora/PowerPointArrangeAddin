@@ -8,6 +8,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <OutputName>PowerPointArrangeAddinInstaller</OutputName>
     <OutputType>Package</OutputType>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <OutputPath>bin\$(Configuration)\</OutputPath>
@@ -32,13 +33,13 @@
   <ItemGroup>
     <Compile Include="CustomInstallDirDlg.wxs" />
     <Compile Include="CustomInstallDir.wxs" />
+    <Compile Include="NetFx48.wxs" />
     <Compile Include="Product.wxs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="license.rtf" />
     <Content Include="PowerPointArrangeAddinInstaller.wax" />
     <Content Include="transform.bat" />
-    <Content Include="update_vsto.bat" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Localization_en-US.wxl" />
@@ -65,6 +66,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <WixExtension Include="WixNetFxExtension">
+      <HintPath>$(WixExtDir)\WixNetFxExtension.dll</HintPath>
+      <Name>WixNetFxExtension</Name>
+    </WixExtension>
     <WixExtension Include="WixUtilExtension">
       <HintPath>$(WixExtDir)\WixUtilExtension.dll</HintPath>
       <Name>WixUtilExtension</Name>
@@ -80,10 +85,10 @@
     <Error Text="The WiX Toolset v3.11 build tools must be installed to build this project. To download the WiX Toolset, see https://wixtoolset.org/releases/v3.11/stable" />
   </Target>
   <PropertyGroup>
-    <PreBuildEvent>call $(ProjectDir)\update_vsto.bat</PreBuildEvent>
+    <PostBuildEvent>call $(ProjectDir)\transform.bat</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>call $(ProjectDir)\transform.bat</PostBuildEvent>
+    <PreBuildEvent />
   </PropertyGroup>
   <!--
 	To modify your build process, add your task inside one of the targets below and uncomment it.

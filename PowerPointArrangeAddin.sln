@@ -10,6 +10,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerPointArrangeAddinInstallAction", "PowerPointArrangeAddinInstallAction\PowerPointArrangeAddinInstallAction.csproj", "{EE78335D-C033-4552-B47F-0719C7B343BE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerPointArrangeAddinInstallerLauncher", "PowerPointArrangeAddinInstallerLauncher\PowerPointArrangeAddinInstallerLauncher.csproj", "{5DAEDA52-E939-4D86-BE81-576EDB3DFEDD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B866F882-9361-4CFA-9CF7-42225DC660A9} = {B866F882-9361-4CFA-9CF7-42225DC660A9}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

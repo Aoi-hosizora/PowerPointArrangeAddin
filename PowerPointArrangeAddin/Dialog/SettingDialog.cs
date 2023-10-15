@@ -15,6 +15,7 @@ namespace PowerPointArrangeAddin.Dialog {
             tlpMain.Dock = DockStyle.Fill;
 
             AutoScaleMode = AutoScaleMode.Dpi;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
             AutoSize = true;
             Font = SystemFonts.MessageBoxFont;
 

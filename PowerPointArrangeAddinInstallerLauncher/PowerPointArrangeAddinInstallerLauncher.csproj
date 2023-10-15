@@ -37,7 +37,16 @@
     <StartupObject>PowerPointArrangeAddinInstallerLauncher.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\launcher.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\InstallerIcon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>PowerPointArrangeAddinInstallerLauncher_TemporaryKey.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -86,6 +95,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="PowerPointArrangeAddinInstallerLauncher_TemporaryKey.pfx" />
     <None Include="pre_build.bat" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -101,10 +111,13 @@
     <None Include="Resources\PowerPointArrangeAddinInstaller.msi" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\launcher.ico" />
+    <None Include="Resources\InstallerIcon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>call $(ProjectDir)\pre_build.bat</PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>call $(ProjectDir)\post_build.bat</PostBuildEvent>
   </PropertyGroup>
 </Project>

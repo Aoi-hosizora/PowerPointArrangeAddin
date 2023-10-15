@@ -1,6 +1,6 @@
 @echo off
 
-cd %~dp0/../PowerPointArrangeAddin || goto :err
+cd %~dp0/ || goto :err
 
 sed -i "s/asmv2:publisher=\"PowerPointArrangeAddin\"/asmv2:publisher=\"AoiHosizora\" asmv2:supportUrl=\"https:\/\/github.com\/Aoi-hosizora\/PowerPointArrangeAddin\"/" ^
     ./bin/x64/Release/PowerPointArrangeAddin.vsto || goto :err

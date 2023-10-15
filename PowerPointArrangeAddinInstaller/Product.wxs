@@ -20,6 +20,12 @@
             <ComponentRef Id="ProductMenuShortcuts" />
         </Feature>
 
+        <!-- Check .NET Framework version -->
+        <PropertyRef Id="WIX_IS_NETFRAMEWORK_48_OR_LATER_INSTALLED"/>
+        <Condition Message="!(loc.NetFrameworkConditionText)">
+            Installed OR WIX_IS_NETFRAMEWORK_48_OR_LATER_INSTALLED
+        </Condition>
+
         <!-- Define properties -->
         <Property Id="ARPHELPLINK" Value="https://github.com/Aoi-hosizora" />
         <Property Id="ARPURLINFOABOUT" Value="https://github.com/Aoi-hosizora/PowerPointArrangeAddin" />
@@ -134,6 +140,8 @@
                     <RegistryValue Name="Installed" Type="integer" Value="1" />
                     <RegistryValue Name="InstallFolder" Type="string" Value="[INSTALLFOLDER]" />
                     <RegistryValue Name="DllPath" Type="string" Value="[INSTALLFOLDER]PowerPointArrangeAddin.dll" />
+                    <RegistryValue Name="Shortcut" Type="integer" Value="0" />
+                    <RegistryValue Name="ProductCode" Type="string" Value="[ProductCode]" />
                 </RegistryKey>
             </Component>
         </DirectoryRef>

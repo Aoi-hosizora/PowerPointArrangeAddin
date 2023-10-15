@@ -8,8 +8,8 @@ namespace PowerPointArrangeAddinInstallerLauncher {
 
     public sealed partial class LauncherForm : Form {
 
-        private readonly string[] _languages = { "English", "简体中文", "正體中文", "日本語" };
-        private readonly int[] _languageCodes = { 1033, 2052, 1028, 1041 };
+        private readonly string[] _languages = { "Default language", "English", "简体中文", "正體中文", "日本語" };
+        private readonly int[] _languageCodes = { 0, 1033, 2052, 1028, 1041 };
 
         public LauncherForm() {
             InitializeComponent();
@@ -18,6 +18,7 @@ namespace PowerPointArrangeAddinInstallerLauncher {
             tlpMain.Dock = DockStyle.Fill;
 
             AutoScaleMode = AutoScaleMode.Dpi;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
             AutoSize = true;
             Font = SystemFonts.MessageBoxFont;
 
@@ -34,7 +35,7 @@ namespace PowerPointArrangeAddinInstallerLauncher {
                 var stream = File.Open(filename, FileMode.CreateNew);
                 File.SetAttributes(filename, File.GetAttributes(filename) | FileAttributes.Hidden);
                 var w = new BinaryWriter(stream);
-                w.Write(Properties.Resources.PowerPointArrangeAddinInstaller);
+                w.Write(Properties.Resources.PowerPointArrangeAddinInstaller); // msi file
                 w.Close();
             } catch (Exception ex) {
                 ErrMsgBox($"Failed to launch installer:\r\n\r\n{ex.Message}");
@@ -71,6 +72,17 @@ namespace PowerPointArrangeAddinInstallerLauncher {
             } catch (Exception) {
                 // ignored
             }
+        }
+
+        private void AdjustRegistry() {
+            // {5CCB2D8E-3BC0-4B35-AB6C-B504CFAE892E}
+            //  E8D2BCC5 0CB3 53B4 BAC6 5B40FCEA98E2
+
+            // コンピューター\HKEY_CURRENT_USER\SOFTWARE\AoiHosizora\PowerPointArrangeAddin
+            // コンピューター\HKEY_CLASSES_ROOT\Installer\Products\E8D2BCC50CB353B4BAC65B40FCEA98E2
+            // コンピューター\HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Installer\Products\E8D2BCC50CB353B4BAC65B40FCEA98E2
+            // コンピューター\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Installer\UserData\S-1-5-18\Products\E8D2BCC50CB353B4BAC65B40FCEA98E2\InstallProperties
+            // コンピューター\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\{5CCB2D8E-3BC0-4B35-AB6C-B504CFAE892E}
         }
 
         private void BtnCancel_Click(object sender, EventArgs e) {

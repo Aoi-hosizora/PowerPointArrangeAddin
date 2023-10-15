@@ -5,6 +5,7 @@
     <String Id="HomepageShortcutName">PowerPointArrangeAddin ホームページ</String>
     <String Id="RepairShortcutName">PowerPointArrangeAddin を修復</String>
     <String Id="UninstallShortcutName">PowerPointArrangeAddin をアンインストール</String>
-    <String Id="CreateShortcutCheckbox">スタートメニューにショットカットを追加する。</String>
+    <String Id="CreateShortcutCheckbox">スタートメニューにショットカットを追加する(&amp;S)</String>
     <String Id="ExitDialogText">このアドインをインストールして、ありがとうございます。このアドインを使用したくない場合、スタートメニューやコントロールパネルからアンインストールしてください。</String>
+    <String Id="NetFrameworkConditionText">このアプリには .NET Framework 4.8 が必要です。指定の .NET Framework をインストールした後、このインストーラーを再度実行してください。</String>
 </WixLocalization>

@@ -229,6 +229,7 @@
     <Compile Include="ThisAddIn.Designer.cs">
       <DependentUpon>ThisAddIn.Designer.xml</DependentUpon>
     </Compile>
+    <None Include="update_vsto.bat" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -291,6 +292,9 @@
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>PowerPointArrangeAddin_TemporaryKey.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
+  <PropertyGroup>
+    <RunPostBuildEvent>OnOutputUpdated</RunPostBuildEvent>
+  </PropertyGroup>
   <!-- Include the build rules for a C# project. -->
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- Include additional build rules for an Office application add-in. -->
@@ -306,4 +310,7 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <PropertyGroup>
+    <PostBuildEvent>call $(ProjectDir)\update_vsto.bat</PostBuildEvent>
+  </PropertyGroup>
 </Project>

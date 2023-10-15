@@ -1,6 +1,6 @@
 @echo off
 
-cd %~dp0/../PowerPointArrangeAddinInstaller || goto :err
+cd %~dp0/ || goto :err
 
 set RELEASE_DIR=./bin/x64/Release
 
