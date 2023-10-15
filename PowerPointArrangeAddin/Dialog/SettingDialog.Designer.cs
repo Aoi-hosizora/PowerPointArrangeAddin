@@ -200,7 +200,12 @@ namespace PowerPointArrangeAddin.Dialog {
             resources.ApplyResources(this.cboLanguage, "cboLanguage");
             this.cboLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboLanguage.FormattingEnabled = true;
-            this.cboLanguage.Items.AddRange(new object[] { resources.GetString("cboLanguage.Items"), resources.GetString("cboLanguage.Items1"), resources.GetString("cboLanguage.Items2"), resources.GetString("cboLanguage.Items3"), resources.GetString("cboLanguage.Items4") });
+            this.cboLanguage.Items.AddRange(new object[] {
+            resources.GetString("cboLanguage.Items"),
+            resources.GetString("cboLanguage.Items1"),
+            resources.GetString("cboLanguage.Items2"),
+            resources.GetString("cboLanguage.Items3"),
+            resources.GetString("cboLanguage.Items4")});
             this.cboLanguage.Name = "cboLanguage";
             // 
             // chkLessButtonsForArrange
@@ -250,6 +255,7 @@ namespace PowerPointArrangeAddin.Dialog {
             this.tlpButton.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion

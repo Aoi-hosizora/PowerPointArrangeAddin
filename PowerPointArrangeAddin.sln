@@ -9,6 +9,8 @@ Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "PowerPointArrangeAddinInsta
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerPointArrangeAddinInstallAction", "PowerPointArrangeAddinInstallAction\PowerPointArrangeAddinInstallAction.csproj", "{EE78335D-C033-4552-B47F-0719C7B343BE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerPointArrangeAddinInstallerLauncher", "PowerPointArrangeAddinInstallerLauncher\PowerPointArrangeAddinInstallerLauncher.csproj", "{5DAEDA52-E939-4D86-BE81-576EDB3DFEDD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -27,6 +29,10 @@ Global
 		{EE78335D-C033-4552-B47F-0719C7B343BE}.Debug|x64.Build.0 = Debug|x64
 		{EE78335D-C033-4552-B47F-0719C7B343BE}.Release|x64.ActiveCfg = Release|x64
 		{EE78335D-C033-4552-B47F-0719C7B343BE}.Release|x64.Build.0 = Release|x64
+		{5DAEDA52-E939-4D86-BE81-576EDB3DFEDD}.Debug|x64.ActiveCfg = Debug|x64
+		{5DAEDA52-E939-4D86-BE81-576EDB3DFEDD}.Debug|x64.Build.0 = Debug|x64
+		{5DAEDA52-E939-4D86-BE81-576EDB3DFEDD}.Release|x64.ActiveCfg = Release|x64
+		{5DAEDA52-E939-4D86-BE81-576EDB3DFEDD}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

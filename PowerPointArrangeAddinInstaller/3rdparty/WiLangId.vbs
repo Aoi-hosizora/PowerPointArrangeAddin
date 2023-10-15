@@ -69,7 +69,7 @@ Dim message:message = "Package language = "         & PackageLanguage(database) 
 					", Database codepage = "        & DatabaseCodepage(database)
 database.Commit : CheckError  ' no effect if opened ReadOnly
 Set database = nothing
-' Wscript.Echo message ' <<<<<<<<<<
+Wscript.Echo message
 Wscript.Quit 0
 
 ' Get language list from summary information

@@ -19,11 +19,12 @@
 *.msi
 *.pfx
 *.user
-*.bak
+*.aps
 
 ### Temp ###
 Office UI Help Files/
 office-ms-customui.xsd
+*.bak
 *.pwd
 *.rar
 *.zip

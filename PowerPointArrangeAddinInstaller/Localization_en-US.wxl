@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<WixLocalization Culture="en-us" xmlns="http://schemas.microsoft.com/wix/2006/localization">
+<WixLocalization Culture="en-US" xmlns="http://schemas.microsoft.com/wix/2006/localization">
     <String Id="ApplicationName">PowerPointArrangeAddin</String>
     <String Id="FriendlyName">Arrangement Assistant Add-in</String>
     <String Id="HomepageShortcutName">PowerPointArrangeAddin Homepage</String>
