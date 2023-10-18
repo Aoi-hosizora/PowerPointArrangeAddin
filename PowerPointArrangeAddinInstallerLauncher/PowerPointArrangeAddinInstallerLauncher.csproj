@@ -62,29 +62,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
-    <Compile Include="LauncherForm.cs">
+    <Compile Include="Dialog\LauncherDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LauncherForm.Designer.cs">
-      <DependentUpon>LauncherForm.cs</DependentUpon>
+    <Compile Include="Dialog\LauncherDialog.Designer.cs">
+      <DependentUpon>LauncherDialog.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="LauncherForm.resx">
-      <DependentUpon>LauncherForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="LauncherForm.ja.resx">
-      <DependentUpon>LauncherForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="LauncherForm.zh-Hans.resx">
-      <DependentUpon>LauncherForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="LauncherForm.zh-Hant.resx">
-      <DependentUpon>LauncherForm.cs</DependentUpon>
-    </EmbeddedResource>
+    <Compile Include="Program.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Dialog\LauncherDialog.ja.resx">
+      <DependentUpon>LauncherDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\LauncherDialog.resx">
+      <DependentUpon>LauncherDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\LauncherDialog.zh-Hans.resx">
+      <DependentUpon>LauncherDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialog\LauncherDialog.zh-Hant.resx">
+      <DependentUpon>LauncherDialog.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -97,6 +97,7 @@
     </Compile>
     <None Include="PowerPointArrangeAddinInstallerLauncher_TemporaryKey.pfx" />
     <None Include="pre_build.bat" />
+    <None Include="post_build.bat" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -112,6 +113,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\InstallerIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\InstallerImage.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

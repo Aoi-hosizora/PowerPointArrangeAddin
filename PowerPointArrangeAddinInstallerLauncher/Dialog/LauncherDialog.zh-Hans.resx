@@ -214,7 +214,7 @@
     <value>3</value>
   </data>
   <data name="lblHint.Text" xml:space="preserve">
-    <value>选择用于显示安装程序的语言(&amp;L):</value>
+    <value>请选择用于显示安装程序的语言(&amp;L):</value>
   </data>
   <data name="tlpMain.Location" type="System.Drawing.Point, System.Drawing">
     <value>29, 34</value>

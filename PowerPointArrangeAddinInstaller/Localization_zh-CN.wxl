@@ -6,6 +6,7 @@
     <String Id="RepairShortcutName">修复 PowerPointArrangeAddin</String>
     <String Id="UninstallShortcutName">卸载 PowerPointArrangeAddin</String>
     <String Id="CreateShortcutCheckbox">创建开始菜单快捷方式(&amp;S)</String>
+    <String Id="CopyInstallerCheckbox">将安装程序复制到安装目录(&amp;I)</String>
     <String Id="ExitDialogText">感谢您安装本加载项，如果您不想再使用该加载项，您可以查看开始菜单或者访问控制面板来卸载。</String>
     <String Id="NetFrameworkConditionText">本应用依赖 .NET Framework 4.8。请您在安装指定版本的 .NET Framework 后，再运行本安装程序。</String>
 </WixLocalization>

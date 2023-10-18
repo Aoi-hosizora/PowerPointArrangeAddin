@@ -5,15 +5,17 @@ using Microsoft.Win32;
 
 #nullable enable
 
-namespace PowerPointArrangeAddinInstallAction {
+namespace PowerPointArrangeAddinInstallAction.Helper {
 
-    class CustomActionHelper {
+    internal class RegisterHelper {
 
-        public CustomActionHelper(string? installFolder) {
+        public RegisterHelper(string? installFolder) {
             _installFolder = installFolder ?? throw new NullReferenceException(nameof(installFolder));
         }
 
         private readonly string _installFolder;
+
+        #region Public Methods
 
         public void RegisterAddIn() {
             AddInRegistryEntry entry;
@@ -44,6 +46,10 @@ namespace PowerPointArrangeAddinInstallAction {
                 throw new Exception($"Failed to update registry:\r\n\r\n{ex.Message}");
             }
         }
+
+        #endregion
+
+        #region Helper Methods For Registering
 
         private string GetVstoFilePath() {
             return Path.Combine(_installFolder, "PowerPointArrangeAddin.vsto");
@@ -150,6 +156,8 @@ namespace PowerPointArrangeAddinInstallAction {
                 addinsKey.Close();
             }
         }
+
+        #endregion
 
     }
 

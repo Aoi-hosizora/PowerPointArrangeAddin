@@ -32,7 +32,8 @@
                 <Control Id="Folder" Type="PathEdit" X="20" Y="100" Width="320" Height="18" Property="WIXUI_INSTALLDIR" Indirect="yes" />
                 <Control Id="ChangeFolder" Type="PushButton" X="20" Y="120" Width="56" Height="17" Text="!(loc.InstallDirDlgChange)" />
 
-                <Control Id="CreateShortcut" Type="CheckBox" X="20" Y="160" Width="250" Height="17" Property="CREATESHORTCUT" CheckBoxValue="1" Text="!(loc.CreateShortcutCheckbox)" />
+                <Control Id="CreateShortcut" Type="CheckBox" X="20" Y="160" Width="250" Height="17" Property="UI_CREATESHORTCUT" CheckBoxValue="1" Text="!(loc.CreateShortcutCheckbox)" />
+                <Control Id="CopyInstaller" Type="CheckBox" X="20" Y="180" Width="250" Height="17" Property="UI_COPYINSTALLER" CheckBoxValue="1" Text="!(loc.CopyInstallerCheckbox)" />
             </Dialog>
         </UI>
     </Fragment>

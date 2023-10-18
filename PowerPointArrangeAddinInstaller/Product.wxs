@@ -31,7 +31,6 @@
         <Property Id="ARPURLINFOABOUT" Value="https://github.com/Aoi-hosizora/PowerPointArrangeAddin" />
         <Property Id="ARPURLUPDATEINFO" Value="https://github.com/Aoi-hosizora/PowerPointArrangeAddin/releases" />
         <Property Id="ARPCOMMENTS" Value="Arrangement Assistant Add-in" />
-        <Property Id="CREATESHORTCUT" Value="1" Secure="yes" />
 
         <!-- Define variables -->
         <WixVariable Id="WixUILicenseRtf" Value="license.rtf" />
@@ -40,22 +39,34 @@
         <UI>
             <Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
             <Property Id="WIXUI_EXITDIALOGOPTIONALTEXT" Value="!(loc.ExitDialogText)" />
+            <Property Id="UI_CREATESHORTCUT" Value="1" Secure="yes" />
+            <Property Id="UI_COPYINSTALLER" Value="1" Secure="yes" />
             <UIRef Id="Custom_InstallDir" />
         </UI>
 
         <!-- Define custom actions -->
         <Binary Id="PowerPointArrangeAddinInstallActionDll" SourceFile="$(var.Action_TargetDir)PowerPointArrangeAddinInstallAction.CA.dll" />
-        <CustomAction Id="RegisterAddInCustomAction_SetValue" Property="RegisterAddInCustomAction" Value="InstallFolder=[INSTALLFOLDER]" />
+        <CustomAction Id="RegisterAddInCustomAction_SetValue" Property="RegisterAddInCustomAction" Value="InstallFolder=[INSTALLFOLDER]" /> <!-- TODO -->
         <CustomAction Id="UnregisterAddInCustomAction_SetValue" Property="UnregisterAddInCustomAction" Value="InstallFolder=[INSTALLFOLDER]" />
+        <CustomAction Id="CopyInstallerCustomAction_SetValue" Property="CopyInstallerCustomAction" Value="InstallFolder=[INSTALLFOLDER];ProductCode=[ProductCode];OriginalDatabase=[OriginalDatabase]" />
+        <CustomAction Id="DeleteInstallerCustomAction_SetValue" Property="DeleteInstallerCustomAction" Value="InstallFolder=[INSTALLFOLDER];ProductCode=[ProductCode];OriginalDatabase=[OriginalDatabase]" />
         <CustomAction Id="RegisterAddInCustomAction" BinaryKey="PowerPointArrangeAddinInstallActionDll"
             DllEntry="RegisterAddIn" Execute="deferred" Impersonate="no" Return="check" />
         <CustomAction Id="UnregisterAddInCustomAction" BinaryKey="PowerPointArrangeAddinInstallActionDll"
             DllEntry="UnregisterAddIn" Execute="deferred" Impersonate="no" Return="check" />
+        <CustomAction Id="CopyInstallerCustomAction" BinaryKey="PowerPointArrangeAddinInstallActionDll"
+            DllEntry="CopyInstaller" Execute="deferred" Impersonate="no" Return="check" />
+        <CustomAction Id="DeleteInstallerCustomAction" BinaryKey="PowerPointArrangeAddinInstallActionDll"
+            DllEntry="DeleteInstaller" Execute="deferred" Impersonate="no" Return="check" />
         <InstallExecuteSequence>
             <Custom Action="RegisterAddInCustomAction_SetValue" Before="RegisterAddInCustomAction" />
             <Custom Action="UnregisterAddInCustomAction_SetValue" Before="UnregisterAddInCustomAction" />
+            <Custom Action="CopyInstallerCustomAction_SetValue" Before="CopyInstallerCustomAction" />
+            <Custom Action="DeleteInstallerCustomAction_SetValue" Before="DeleteInstallerCustomAction" />
             <Custom Action="RegisterAddInCustomAction" Before="InstallFinalize">(NOT Installed) OR REINSTALL</Custom>
             <Custom Action="UnregisterAddInCustomAction" Before="RemoveRegistryValues">REMOVE = "ALL"</Custom>
+            <Custom Action="CopyInstallerCustomAction" After="RegisterAddInCustomAction">UI_COPYINSTALLER AND (NOT Installed)</Custom>
+            <Custom Action="DeleteInstallerCustomAction" Before="UnregisterAddInCustomAction">UI_COPYINSTALLER AND (REMOVE = "ALL")</Custom>
         </InstallExecuteSequence>
     </Product>
 
@@ -140,7 +151,6 @@
                     <RegistryValue Name="Installed" Type="integer" Value="1" />
                     <RegistryValue Name="InstallFolder" Type="string" Value="[INSTALLFOLDER]" />
                     <RegistryValue Name="DllPath" Type="string" Value="[INSTALLFOLDER]PowerPointArrangeAddin.dll" />
-                    <RegistryValue Name="Shortcut" Type="integer" Value="0" />
                     <RegistryValue Name="ProductCode" Type="string" Value="[ProductCode]" />
                 </RegistryKey>
             </Component>
@@ -149,7 +159,7 @@
         <!-- Program Menu folder -->
         <DirectoryRef Id="ApplicationProgramsFolder">
             <Component Id="ProductMenuShortcuts" Guid="aef7248c-7ecd-44ef-823f-e48aeb7585e9">
-                <Condition>CREATESHORTCUT</Condition>
+                <Condition>UI_CREATESHORTCUT</Condition>
                 <util:InternetShortcut Id="Homepage_InternetShortcut" Name="!(loc.HomepageShortcutName)"
                     Target="https://github.com/Aoi-hosizora/PowerPointArrangeAddin" />
                 <Shortcut Id="RepairProduct_Shortcut" Name="!(loc.RepairShortcutName)" Description="!(loc.RepairShortcutName)"
