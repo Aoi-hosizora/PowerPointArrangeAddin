@@ -5,7 +5,7 @@ using Microsoft.Win32;
 
 #nullable enable
 
-namespace PowerPointArrangeAddinInstallAction.Helper {
+namespace PowerPointArrangeAddinInstallerAction.Helper {
 
     internal class RegisterHelper {
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
     <?define Addin_TargetDir=$(var.PowerPointArrangeAddin.TargetDir)?>
-    <?define Action_TargetDir=$(var.PowerPointArrangeAddinInstallAction.TargetDir)?>
+    <?define Action_TargetDir=$(var.PowerPointArrangeAddinInstallerAction.TargetDir)?>
 
     <!-- Define product and package -->
     <Product Id="*" Name="!(loc.ApplicationName)" Language="1033" Version="1.0.0.0" Manufacturer="AoiHosizora" UpgradeCode="d827c61a-646d-4dfa-97c5-44d2da6cbf01">
@@ -45,18 +45,18 @@
         </UI>
 
         <!-- Define custom actions -->
-        <Binary Id="PowerPointArrangeAddinInstallActionDll" SourceFile="$(var.Action_TargetDir)PowerPointArrangeAddinInstallAction.CA.dll" />
-        <CustomAction Id="RegisterAddInCustomAction_SetValue" Property="RegisterAddInCustomAction" Value="InstallFolder=[INSTALLFOLDER]" /> <!-- TODO -->
+        <Binary Id="PowerPointArrangeAddinInstallerActionDll" SourceFile="$(var.Action_TargetDir)PowerPointArrangeAddinInstallerAction.CA.dll" />
+        <CustomAction Id="RegisterAddInCustomAction_SetValue" Property="RegisterAddInCustomAction" Value="InstallFolder=[INSTALLFOLDER]" /> 
         <CustomAction Id="UnregisterAddInCustomAction_SetValue" Property="UnregisterAddInCustomAction" Value="InstallFolder=[INSTALLFOLDER]" />
         <CustomAction Id="CopyInstallerCustomAction_SetValue" Property="CopyInstallerCustomAction" Value="InstallFolder=[INSTALLFOLDER];ProductCode=[ProductCode];OriginalDatabase=[OriginalDatabase]" />
         <CustomAction Id="DeleteInstallerCustomAction_SetValue" Property="DeleteInstallerCustomAction" Value="InstallFolder=[INSTALLFOLDER];ProductCode=[ProductCode];OriginalDatabase=[OriginalDatabase]" />
-        <CustomAction Id="RegisterAddInCustomAction" BinaryKey="PowerPointArrangeAddinInstallActionDll"
+        <CustomAction Id="RegisterAddInCustomAction" BinaryKey="PowerPointArrangeAddinInstallerActionDll"
             DllEntry="RegisterAddIn" Execute="deferred" Impersonate="no" Return="check" />
-        <CustomAction Id="UnregisterAddInCustomAction" BinaryKey="PowerPointArrangeAddinInstallActionDll"
+        <CustomAction Id="UnregisterAddInCustomAction" BinaryKey="PowerPointArrangeAddinInstallerActionDll"
             DllEntry="UnregisterAddIn" Execute="deferred" Impersonate="no" Return="check" />
-        <CustomAction Id="CopyInstallerCustomAction" BinaryKey="PowerPointArrangeAddinInstallActionDll"
+        <CustomAction Id="CopyInstallerCustomAction" BinaryKey="PowerPointArrangeAddinInstallerActionDll"
             DllEntry="CopyInstaller" Execute="deferred" Impersonate="no" Return="check" />
-        <CustomAction Id="DeleteInstallerCustomAction" BinaryKey="PowerPointArrangeAddinInstallActionDll"
+        <CustomAction Id="DeleteInstallerCustomAction" BinaryKey="PowerPointArrangeAddinInstallerActionDll"
             DllEntry="DeleteInstaller" Execute="deferred" Impersonate="no" Return="check" />
         <InstallExecuteSequence>
             <Custom Action="RegisterAddInCustomAction_SetValue" Before="RegisterAddInCustomAction" />

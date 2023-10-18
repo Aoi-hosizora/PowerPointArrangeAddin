@@ -1,14 +1,14 @@
 using System;
 using System.Windows.Forms;
 using Microsoft.Deployment.WindowsInstaller;
-using PowerPointArrangeAddinInstallAction.Helper;
+using PowerPointArrangeAddinInstallerAction.Helper;
 
 // ReSharper disable UnusedType.Global
 // ReSharper disable UnusedMember.Global
 
 #nullable enable
 
-namespace PowerPointArrangeAddinInstallAction {
+namespace PowerPointArrangeAddinInstallerAction {
 
     public class CustomAction {
 

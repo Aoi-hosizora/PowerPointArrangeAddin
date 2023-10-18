@@ -6,11 +6,11 @@ using Microsoft.Win32;
 
 #nullable enable
 
-namespace PowerPointArrangeAddinInstallAction.Helper {
+namespace PowerPointArrangeAddinInstallerAction.Helper {
 
     internal class InstallerHelper {
 
-        public InstallerHelper(string productCode, string originalDatabase, string? installFolder) {
+        public InstallerHelper(string? productCode, string? originalDatabase, string? installFolder) {
             _productCode = productCode ?? throw new NullReferenceException(nameof(productCode));
             _originalDatabase = originalDatabase ?? throw new NullReferenceException(nameof(originalDatabase));
             _installFolder = installFolder ?? throw new NullReferenceException(nameof(installFolder));
@@ -160,6 +160,7 @@ namespace PowerPointArrangeAddinInstallAction.Helper {
                     if (installerPropertiesKey.GetValue("InstallSource") is string) {
                         installerPropertiesKey.SetValue("InstallSource", information.InstallFolder);
                     }
+                    installerPropertiesKey.DeleteValue("NoModify");
                     installerPropertiesKey.Close();
                 }
             } catch (Exception ex) {
@@ -174,6 +175,7 @@ namespace PowerPointArrangeAddinInstallAction.Helper {
                     if (uninstallKey.GetValue("InstallSource") is string) {
                         uninstallKey.SetValue("InstallSource", information.InstallFolder);
                     }
+                    uninstallKey.DeleteValue("NoModify");
                     uninstallKey.Close();
                 }
             } catch (Exception ex) {

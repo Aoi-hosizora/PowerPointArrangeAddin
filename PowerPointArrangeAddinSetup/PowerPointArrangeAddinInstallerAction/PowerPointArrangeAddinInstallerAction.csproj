@@ -8,8 +8,8 @@
     <ProjectGuid>{EE78335D-C033-4552-B47F-0719C7B343BE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PowerPointArrangeAddinInstallAction</RootNamespace>
-    <AssemblyName>PowerPointArrangeAddinInstallAction</AssemblyName>
+    <RootNamespace>PowerPointArrangeAddinInstallerAction</RootNamespace>
+    <AssemblyName>PowerPointArrangeAddinInstallerAction</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

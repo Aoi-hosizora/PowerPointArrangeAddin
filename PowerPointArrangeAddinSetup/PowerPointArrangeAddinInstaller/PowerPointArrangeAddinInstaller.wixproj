@@ -44,19 +44,19 @@
   <ItemGroup>
     <EmbeddedResource Include="Localization_en-US.wxl" />
     <EmbeddedResource Include="Localization_ja-JP.wxl" />
-    <EmbeddedResource Include="Localization_zh-CN.wxl" />
-    <EmbeddedResource Include="Localization_zh-TW.wxl" />
+    <EmbeddedResource Include="Localization_zh-Hans.wxl" />
+    <EmbeddedResource Include="Localization_zh-Hant.wxl" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PowerPointArrangeAddinInstallAction\PowerPointArrangeAddinInstallAction.csproj">
-      <Name>PowerPointArrangeAddinInstallAction</Name>
+    <ProjectReference Include="..\PowerPointArrangeAddinInstallerAction\PowerPointArrangeAddinInstallerAction.csproj">
+      <Name>PowerPointArrangeAddinInstallerAction</Name>
       <Project>{ee78335d-c033-4552-b47f-0719c7b343be}</Project>
       <Private>True</Private>
       <DoNotHarvest>True</DoNotHarvest>
       <RefProjectOutputGroups>Binaries;Content;Satellites</RefProjectOutputGroups>
       <RefTargetDir>INSTALLFOLDER</RefTargetDir>
     </ProjectReference>
-    <ProjectReference Include="..\PowerPointArrangeAddin\PowerPointArrangeAddin.csproj">
+    <ProjectReference Include="..\..\PowerPointArrangeAddin\PowerPointArrangeAddin.csproj">
       <Name>PowerPointArrangeAddin</Name>
       <Project>{d0a4931d-7aad-4ce2-a65e-b90b30fe1ce2}</Project>
       <Private>True</Private>

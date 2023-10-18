@@ -20,6 +20,7 @@
 *.pfx
 *.user
 *.aps
+!**/3rdparty/*.exe
 
 ### Temp ###
 Office UI Help Files/
