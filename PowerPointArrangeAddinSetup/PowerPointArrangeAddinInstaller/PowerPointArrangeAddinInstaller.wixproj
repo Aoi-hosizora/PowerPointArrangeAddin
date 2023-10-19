@@ -33,6 +33,8 @@
   <ItemGroup>
     <Compile Include="CustomInstallDirDlg.wxs" />
     <Compile Include="CustomInstallDir.wxs" />
+    <Compile Include="CustomMaintenanceTypeDlg.wxs" />
+    <Compile Include="CustomWelcomeDlg.wxs" />
     <Compile Include="NetFx48.wxs" />
     <Compile Include="Product.wxs" />
   </ItemGroup>
@@ -42,10 +44,10 @@
     <Content Include="transform.bat" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Localization_en-US.wxl" />
-    <EmbeddedResource Include="Localization_ja-JP.wxl" />
-    <EmbeddedResource Include="Localization_zh-Hans.wxl" />
-    <EmbeddedResource Include="Localization_zh-Hant.wxl" />
+    <EmbeddedResource Include="Localization.en.wxl" />
+    <EmbeddedResource Include="Localization.ja.wxl" />
+    <EmbeddedResource Include="Localization.zh-Hans.wxl" />
+    <EmbeddedResource Include="Localization.zh-Hant.wxl" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PowerPointArrangeAddinInstallerAction\PowerPointArrangeAddinInstallerAction.csproj">

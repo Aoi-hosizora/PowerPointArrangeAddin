@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WixLocalization Culture="en-US" xmlns="http://schemas.microsoft.com/wix/2006/localization">
-    <String Id="ApplicationName">PowerPointArrangeAddin</String>
-    <String Id="FriendlyName">Arrangement Assistant Add-in</String>
-    <String Id="HomepageShortcutName">PowerPointArrangeAddin Homepage</String>
-    <String Id="RepairShortcutName">Repair PowerPointArrangeAddin</String>
-    <String Id="UninstallShortcutName">Uninstall PowerPointArrangeAddin</String>
+    <String Id="ShortName">PowerPointArrangeAddin</String>
+    <String Id="FriendlyName">PowerPoint Arrangement Assistant Add-in</String>
+    <String Id="Manufacturer">AoiHosizora</String>
+
+    <String Id="HomepageShortcutName">Add-in Homepage</String>
+    <String Id="RepairShortcutName">Repair Add-in</String>
+    <String Id="UninstallShortcutName">Uninstall Add-in</String>
     <String Id="CreateShortcutCheckbox">Create a &amp;start menu shortcut</String>
     <String Id="CopyInstallerCheckbox">Copy the &amp;installer to install folder</String>
     <String Id="ExitDialogText">Thank you for installing this add-in, you can go to start menu or control panel to uninstall this add-in if you don't want to use it anymore.</String>

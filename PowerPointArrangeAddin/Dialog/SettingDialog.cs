@@ -63,11 +63,12 @@ namespace PowerPointArrangeAddin.Dialog {
 
         private void LoadDescription() {
             var title = GetResourceString("_title");
-            var version = $"{GetResourceString("_version")}: {Assembly.GetExecutingAssembly().GetName().Version}";
+            var ver = Assembly.GetExecutingAssembly().GetName().Version;
+            var version = $"{GetResourceString("_version")}: {ver.Major}.{ver.Minor}.{ver.Build}";
             var author = $"{GetResourceString("_author")}: {GetResourceString("_author_value")}";
             var homepage = $"{GetResourceString("_homepage")}: {GetResourceString("_homepage_value")}";
             var copyright = GetAttributeFromAssembly<AssemblyCopyrightAttribute>()?.Copyright ?? "";
-            tbxDescription.Text = string.Join("\r\n\r\n", new[] { title, version, author, homepage, copyright });
+            tbxDescription.Text = string.Join("\r\n\r\n", title, version, author, homepage, copyright);
         }
 
         private static readonly System.ComponentModel.ComponentResourceManager DlgResources = new(typeof(SettingDialog));

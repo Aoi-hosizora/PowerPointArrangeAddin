@@ -160,7 +160,6 @@ namespace PowerPointArrangeAddinInstallerAction.Helper {
                     if (installerPropertiesKey.GetValue("InstallSource") is string) {
                         installerPropertiesKey.SetValue("InstallSource", information.InstallFolder);
                     }
-                    installerPropertiesKey.DeleteValue("NoModify");
                     installerPropertiesKey.Close();
                 }
             } catch (Exception ex) {
@@ -175,7 +174,6 @@ namespace PowerPointArrangeAddinInstallerAction.Helper {
                     if (uninstallKey.GetValue("InstallSource") is string) {
                         uninstallKey.SetValue("InstallSource", information.InstallFolder);
                     }
-                    uninstallKey.DeleteValue("NoModify");
                     uninstallKey.Close();
                 }
             } catch (Exception ex) {

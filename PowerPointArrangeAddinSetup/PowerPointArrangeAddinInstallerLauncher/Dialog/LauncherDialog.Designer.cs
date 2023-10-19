@@ -58,7 +58,6 @@ namespace PowerPointArrangeAddinInstallerLauncher.Dialog {
             this.tlpMain.Controls.Add(this.lblHint, 1, 0);
             this.tlpMain.Controls.Add(this.cboLanguage, 1, 1);
             this.tlpMain.Controls.Add(this.tblButton, 1, 2);
-            this.tlpMain.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.AddColumns;
             this.tlpMain.Name = "tlpMain";
             // 
             // picInstaller

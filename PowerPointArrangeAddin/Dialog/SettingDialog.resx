@@ -952,7 +952,7 @@
     <value>CenterParent</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>"Arrangement Assistant Add-in" Setting</value>
+    <value>"PowerPoint Arrangement Assistant Add-in" Setting</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>SettingDialog</value>

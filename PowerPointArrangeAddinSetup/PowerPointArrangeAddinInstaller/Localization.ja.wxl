@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WixLocalization Culture="ja-JP" xmlns="http://schemas.microsoft.com/wix/2006/localization">
-    <String Id="ApplicationName">PowerPointArrangeAddin</String>
-    <String Id="FriendlyName">配置補助アドイン</String>
-    <String Id="HomepageShortcutName">PowerPointArrangeAddin ホームページ</String>
-    <String Id="RepairShortcutName">PowerPointArrangeAddin を修復</String>
-    <String Id="UninstallShortcutName">PowerPointArrangeAddin をアンインストール</String>
+    <String Id="ShortName">PowerPointArrangeAddin</String>
+    <String Id="FriendlyName">PowerPoint 配置補助アドイン</String>
+    <String Id="Manufacturer">AoiHosizora</String>
+
+    <String Id="HomepageShortcutName">アドインのホームページ</String>
+    <String Id="RepairShortcutName">アドインを修復</String>
+    <String Id="UninstallShortcutName">アドインをアンインストール</String>
     <String Id="CreateShortcutCheckbox">スタートメニューにショットカットを追加する(&amp;S)</String>
     <String Id="CopyInstallerCheckbox">インストーラーをインストール先にコピーする(&amp;I)</String>
     <String Id="ExitDialogText">このアドインをインストールして、ありがとうございます。このアドインを使用したくない場合、スタートメニューやコントロールパネルからアンインストールしてください。</String>

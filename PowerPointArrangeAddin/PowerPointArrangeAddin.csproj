@@ -42,7 +42,7 @@
     <ProductName>PowerPointArrangeAddin</ProductName>
     <PublisherName>AoiHosizora</PublisherName>
     <SupportUrl>https://github.com/Aoi-hosizora/PowerPointArrangeAddin</SupportUrl>
-    <FriendlyName>Arrangement Assistant Add-in</FriendlyName>
+    <FriendlyName>PowerPoint Arrangement Assistant Add-in</FriendlyName>
     <OfficeApplicationDescription>A PowerPoint add-in for assisting arrangement operations.</OfficeApplicationDescription>
     <LoadBehavior>3</LoadBehavior>
   </PropertyGroup>

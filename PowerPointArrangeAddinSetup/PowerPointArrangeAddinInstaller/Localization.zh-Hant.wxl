@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WixLocalization Culture="zh-TW" xmlns="http://schemas.microsoft.com/wix/2006/localization">
-    <String Id="ApplicationName">PowerPointArrangeAddin</String>
-    <String Id="FriendlyName">排列輔助增益集</String>
-    <String Id="HomepageShortcutName">PowerPointArrangeAddin 主頁</String>
-    <String Id="RepairShortcutName">修復 PowerPointArrangeAddin</String>
-    <String Id="UninstallShortcutName">卸載 PowerPointArrangeAddin</String>
+    <String Id="ShortName">PowerPointArrangeAddin</String>
+    <String Id="FriendlyName">PowerPoint 排列輔助增益集</String>
+    <String Id="Manufacturer">AoiHosizora</String>
+
+    <String Id="HomepageShortcutName">增益集主頁</String>
+    <String Id="RepairShortcutName">修復增益集</String>
+    <String Id="UninstallShortcutName">卸載增益集</String>
     <String Id="CreateShortcutCheckbox">創建開始菜單快捷方式(&amp;S)</String>
     <String Id="CopyInstallerCheckbox">將安裝程式複製到安裝目錄(&amp;I)</String>
     <String Id="ExitDialogText">感謝您安裝本增益集，如果您不想再使用該增益集，您可以查看開始菜單或者訪問控制台來卸載。</String>

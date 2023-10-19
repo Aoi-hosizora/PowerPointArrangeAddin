@@ -4,14 +4,14 @@
     <?define Action_TargetDir=$(var.PowerPointArrangeAddinInstallerAction.TargetDir)?>
 
     <!-- Define product and package -->
-    <Product Id="*" Name="!(loc.ApplicationName)" Language="1033" Version="1.0.0.0" Manufacturer="AoiHosizora" UpgradeCode="d827c61a-646d-4dfa-97c5-44d2da6cbf01">
+    <Product Id="*" Name="!(loc.FriendlyName) 1.0.0" Language="1033" Version="1.0.0" Manufacturer="!(loc.Manufacturer)" UpgradeCode="d827c61a-646d-4dfa-97c5-44d2da6cbf01">
         <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
 
         <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
         <MediaTemplate EmbedCab="yes" />
 
         <!-- Define package features -->
-        <Feature Id="ProductFeature" Title="!(loc.ApplicationName)" Level="1">
+        <Feature Id="ProductFeature" Title="!(loc.ShortName)" Level="1">
             <ComponentGroupRef Id="ProductComponents" />
             <ComponentGroupRef Id="ja_files" />
             <ComponentGroupRef Id="zh_Hant_files" />
@@ -27,10 +27,10 @@
         </Condition>
 
         <!-- Define properties -->
-        <Property Id="ARPHELPLINK" Value="https://github.com/Aoi-hosizora" />
-        <Property Id="ARPURLINFOABOUT" Value="https://github.com/Aoi-hosizora/PowerPointArrangeAddin" />
+        <Property Id="ARPHELPLINK" Value="https://github.com/Aoi-hosizora/PowerPointArrangeAddin" />
+        <Property Id="ARPURLINFOABOUT" Value="https://github.com/Aoi-hosizora" />
         <Property Id="ARPURLUPDATEINFO" Value="https://github.com/Aoi-hosizora/PowerPointArrangeAddin/releases" />
-        <Property Id="ARPCOMMENTS" Value="Arrangement Assistant Add-in" />
+        <Property Id="ARPCOMMENTS" Value="PowerPoint Arrangement Assistant Add-in (!(loc.ShortName))" />
 
         <!-- Define variables -->
         <WixVariable Id="WixUILicenseRtf" Value="license.rtf" />
@@ -75,8 +75,8 @@
         <Directory Id="TARGETDIR" Name="SourceDir">
             <!-- Program Files folder -->
             <Directory Id="ProgramFiles64Folder">
-                <Directory Id="ManufacturerFolder" Name="AoiHosizora">
-                    <Directory Id="INSTALLFOLDER" Name="PowerPointArrangeAddin">
+                <Directory Id="ManufacturerFolder" Name="!(loc.Manufacturer)">
+                    <Directory Id="INSTALLFOLDER" Name="!(loc.ShortName)">
                         <Directory Id="ja" Name="ja" />
                         <Directory Id="zh_Hans" Name="zh-Hans" />
                         <Directory Id="zh_Hant" Name="zh-Hant" />
@@ -86,7 +86,7 @@
 
             <!-- Program Menu folder -->
             <Directory Id="ProgramMenuFolder">
-                <Directory Id="ApplicationProgramsFolder" Name="PowerPointArrangeAddin" />
+                <Directory Id="ApplicationProgramsFolder" Name="!(loc.FriendlyName)" />
             </Directory>
         </Directory>
     </Fragment>
@@ -152,6 +152,7 @@
                     <RegistryValue Name="InstallFolder" Type="string" Value="[INSTALLFOLDER]" />
                     <RegistryValue Name="DllPath" Type="string" Value="[INSTALLFOLDER]PowerPointArrangeAddin.dll" />
                     <RegistryValue Name="ProductCode" Type="string" Value="[ProductCode]" />
+                    <RegistryValue Name="ProductVersion" Type="string" Value="[ProductVersion]" />
                 </RegistryKey>
             </Component>
         </DirectoryRef>
