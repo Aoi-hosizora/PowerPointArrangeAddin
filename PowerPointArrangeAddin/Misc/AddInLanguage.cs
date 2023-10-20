@@ -4,7 +4,7 @@ using System.Threading;
 
 #nullable enable
 
-namespace PowerPointArrangeAddin {
+namespace PowerPointArrangeAddin.Misc {
 
     public enum AddInLanguage {
         Default,
@@ -16,24 +16,24 @@ namespace PowerPointArrangeAddin {
 
     public static class AddInLanguageChanger {
 
-        private static int? _defaultLanguageId;
-        private static Action? _uiInvalidator;
+        private static AddInLanguage? _defaultLanguage; // will never be `AddInLanguage.Default`
+        private static Action? _uiInvalidator; // used to invalidate ui when language is changed
 
         public static void RegisterAddIn(int defaultLanguageId, Action uiInvalidator) {
-            _defaultLanguageId = defaultLanguageId;
+            _defaultLanguage = new CultureInfo(defaultLanguageId).ToAddInLanguage();
             _uiInvalidator = uiInvalidator;
         }
 
         public static void ChangeLanguage(AddInLanguage language) {
-            var cultureInfo = language == AddInLanguage.Default
-                ? _defaultLanguageId == null
-                    ? new CultureInfo("en")
-                    : new CultureInfo(_defaultLanguageId.Value)
-                : new CultureInfo(language.ToLanguageString());
+            if (language == AddInLanguage.Default) {
+                language = _defaultLanguage ?? AddInLanguage.English;
+            }
+            var cultureInfo = new CultureInfo(language.ToLanguageString());
             Thread.CurrentThread.CurrentCulture = cultureInfo;
             Thread.CurrentThread.CurrentUICulture = cultureInfo;
             Properties.Resources.Culture = cultureInfo;
             Ribbon.ArrangeRibbonResources.Culture = cultureInfo;
+            AddInDescription.Instance.Culture = cultureInfo;
             _uiInvalidator?.Invoke();
         }
 
@@ -58,6 +58,15 @@ namespace PowerPointArrangeAddin {
                 AddInLanguage.TraditionalChinese => "zh-hant",
                 AddInLanguage.Japanese => "ja",
                 _ => "default"
+            };
+        }
+
+        private static AddInLanguage ToAddInLanguage(this CultureInfo culture) {
+            return culture.Name.ToLower() switch {
+                "zh" or "zh-hans" or "zh-chs" or "zh-cn" or "zh-sg" => AddInLanguage.SimplifiedChinese,
+                "zh-hant" or "zh-cht" or "zh-tw" or "zh-hk" or "zh-mo" => AddInLanguage.TraditionalChinese,
+                "ja" or "ja-jp" => AddInLanguage.Japanese,
+                _ => AddInLanguage.English
             };
         }
 

@@ -834,6 +834,9 @@
   <data name="tbxDescription.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>8, 8, 8, 0</value>
   </data>
+  <data name="tbxDescription.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>410, 150</value>
+  </data>
   <data name="tbxDescription.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -883,7 +886,7 @@
     <value>1</value>
   </data>
   <data name="tlpButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>156, 31</value>
+    <value>156, 24</value>
   </data>
   <data name="tlpButton.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -913,7 +916,7 @@
     <value>4</value>
   </data>
   <data name="tlpMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>424, 561</value>
+    <value>424, 554</value>
   </data>
   <data name="tlpMain.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -946,7 +949,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>424, 561</value>
+    <value>424, 554</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterParent</value>

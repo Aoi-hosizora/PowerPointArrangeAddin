@@ -173,18 +173,6 @@
   <data name="tbxDescription.Text" xml:space="preserve">
     <value>介紹 ...</value>
   </data>
-  <data name="_author" xml:space="preserve">
-    <value>作者</value>
-  </data>
-  <data name="_homepage" xml:space="preserve">
-    <value>主頁</value>
-  </data>
-  <data name="_title" xml:space="preserve">
-    <value>【PowerPoint 排列輔助增益集】</value>
-  </data>
-  <data name="_version" xml:space="preserve">
-    <value>版本</value>
-  </data>
   <data name="chkAudioSizeAndPosition.Text" xml:space="preserve">
     <value>顯示「音訊工具 - 格式」索引標簽的｢大小和位置｣群組(&amp;U)</value>
   </data>

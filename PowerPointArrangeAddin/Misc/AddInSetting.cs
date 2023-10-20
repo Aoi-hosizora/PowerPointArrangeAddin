@@ -1,6 +1,6 @@
 ﻿#nullable enable
 
-namespace PowerPointArrangeAddin {
+namespace PowerPointArrangeAddin.Misc {
 
     public class AddInSetting {
 

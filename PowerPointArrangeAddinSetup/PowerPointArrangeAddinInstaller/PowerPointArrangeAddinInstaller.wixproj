@@ -31,12 +31,14 @@
     <SuppressPdbOutput>True</SuppressPdbOutput>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="CustomInstallDirDlg.wxs" />
-    <Compile Include="CustomInstallDir.wxs" />
-    <Compile Include="CustomMaintenanceTypeDlg.wxs" />
-    <Compile Include="CustomWelcomeDlg.wxs" />
     <Compile Include="NetFx48.wxs" />
     <Compile Include="Product.wxs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Dialog\CustomInstallDir.wxs" />
+    <Compile Include="Dialog\CustomInstallDirDlg.wxs" />
+    <Compile Include="Dialog\CustomMaintenanceTypeDlg.wxs" />
+    <Compile Include="Dialog\CustomWelcomeDlg.wxs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="license.rtf" />
@@ -44,10 +46,10 @@
     <Content Include="transform.bat" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Localization.en.wxl" />
-    <EmbeddedResource Include="Localization.ja.wxl" />
-    <EmbeddedResource Include="Localization.zh-Hans.wxl" />
-    <EmbeddedResource Include="Localization.zh-Hant.wxl" />
+    <EmbeddedResource Include="Localization\Localization.en.wxl" />
+    <EmbeddedResource Include="Localization\Localization.ja.wxl" />
+    <EmbeddedResource Include="Localization\Localization.zh-Hans.wxl" />
+    <EmbeddedResource Include="Localization\Localization.zh-Hant.wxl" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PowerPointArrangeAddinInstallerAction\PowerPointArrangeAddinInstallerAction.csproj">

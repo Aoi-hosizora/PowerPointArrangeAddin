@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Drawing;
-using System.Globalization;
-using System.Reflection;
 using System.Windows.Forms;
+using PowerPointArrangeAddin.Misc;
 
 namespace PowerPointArrangeAddin.Dialog {
 
@@ -19,7 +18,7 @@ namespace PowerPointArrangeAddin.Dialog {
             AutoSize = true;
             Font = SystemFonts.MessageBoxFont;
 
-            LoadDescription();
+            tbxDescription.Text = AddInDescription.Instance.ToString();
         }
 
         private void SettingDialog_Load(object sender, EventArgs e) {
@@ -59,31 +58,6 @@ namespace PowerPointArrangeAddin.Dialog {
         private void BtnCancel_Click(object sender, EventArgs e) {
             DialogResult = DialogResult.Cancel;
             Close();
-        }
-
-        private void LoadDescription() {
-            var title = GetResourceString("_title");
-            var ver = Assembly.GetExecutingAssembly().GetName().Version;
-            var version = $"{GetResourceString("_version")}: {ver.Major}.{ver.Minor}.{ver.Build}";
-            var author = $"{GetResourceString("_author")}: {GetResourceString("_author_value")}";
-            var homepage = $"{GetResourceString("_homepage")}: {GetResourceString("_homepage_value")}";
-            var copyright = GetAttributeFromAssembly<AssemblyCopyrightAttribute>()?.Copyright ?? "";
-            tbxDescription.Text = string.Join("\r\n\r\n", title, version, author, homepage, copyright);
-        }
-
-        private static readonly System.ComponentModel.ComponentResourceManager DlgResources = new(typeof(SettingDialog));
-
-        private static string GetResourceString(string key, string defaultValue = "") {
-            return key.EndsWith("_value")
-                ? DlgResources.GetString(key, new CultureInfo("ja")) ?? defaultValue // "xxx_value" strings are stored in ja resx
-                : CultureInfo.CurrentUICulture.Name == "en"
-                    ? DlgResources.GetString($"{key}_en", new CultureInfo("ja")) ?? defaultValue // just use ja resx to get "xxx_en" string
-                    : DlgResources.GetString(key) ?? defaultValue;
-        }
-
-        private static T GetAttributeFromAssembly<T>(T defaultValue = default) {
-            var attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(T), false);
-            return attributes.Length > 0 ? (T) attributes[0] : defaultValue;
         }
 
     }

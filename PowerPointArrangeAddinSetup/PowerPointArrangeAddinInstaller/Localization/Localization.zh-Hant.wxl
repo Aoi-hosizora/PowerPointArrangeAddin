@@ -7,8 +7,11 @@
     <String Id="HomepageShortcutName">增益集主頁</String>
     <String Id="RepairShortcutName">修復增益集</String>
     <String Id="UninstallShortcutName">卸載增益集</String>
+
+    <String Id="NetFrameworkConditionText">本應用依賴 .NET Framework 4.8。請您在安裝指定版本的 .NET Framework 後，再執行本安裝程式。</String>
+    
+    <String Id="WixUIVersion">版本 [ProductVersion]</String>
     <String Id="CreateShortcutCheckbox">創建開始菜單快捷方式(&amp;S)</String>
     <String Id="CopyInstallerCheckbox">將安裝程式複製到安裝目錄(&amp;I)</String>
     <String Id="ExitDialogText">感謝您安裝本增益集，如果您不想再使用該增益集，您可以查看開始菜單或者訪問控制台來卸載。</String>
-    <String Id="NetFrameworkConditionText">本應用以來 .NET Framework 4.8。請您在安裝指定版本的 .NET Framework 後，再執行本安裝程式。</String>
 </WixLocalization>

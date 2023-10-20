@@ -1,5 +1,6 @@
 ﻿using System;
 using Office = Microsoft.Office.Core;
+using PowerPointArrangeAddin.Misc;
 
 #nullable enable
 

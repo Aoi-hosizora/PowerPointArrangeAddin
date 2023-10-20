@@ -173,18 +173,6 @@
   <data name="tbxDescription.Text" xml:space="preserve">
     <value>説明 ...</value>
   </data>
-  <data name="_author" xml:space="preserve">
-    <value>作者</value>
-  </data>
-  <data name="_homepage" xml:space="preserve">
-    <value>ホームページ</value>
-  </data>
-  <data name="_title" xml:space="preserve">
-    <value>【PowerPoint 配置補助アドイン】</value>
-  </data>
-  <data name="_version" xml:space="preserve">
-    <value>バージョン</value>
-  </data>
   <data name="chkAudioSizeAndPosition.Text" xml:space="preserve">
     <value>「オーディオ ツール - 書式」タブの「サイズと位置」グループを表示する(&amp;U)</value>
   </data>
@@ -202,23 +190,5 @@
   </data>
   <data name="chkLessButtonsForArrange.Text" xml:space="preserve">
     <value>「ホーム」タブの「配置」グループにボタンをより少なく表示する(&amp;B)</value>
-  </data>
-  <data name="_version_en" xml:space="preserve">
-    <value>Version</value>
-  </data>
-  <data name="_author_en" xml:space="preserve">
-    <value>Author</value>
-  </data>
-  <data name="_homepage_en" xml:space="preserve">
-    <value>Homepage</value>
-  </data>
-  <data name="_title_en" xml:space="preserve">
-    <value>"PowerPoint Arrangement Assistant Add-in"</value>
-  </data>
-  <data name="_author_value" xml:space="preserve">
-    <value>AoiHosizora (https://github.com/Aoi-hosizora)</value>
-  </data>
-  <data name="_homepage_value" xml:space="preserve">
-    <value>https://github.com/Aoi-hosizora/PowerPointArrangeAddin</value>
   </data>
 </root>

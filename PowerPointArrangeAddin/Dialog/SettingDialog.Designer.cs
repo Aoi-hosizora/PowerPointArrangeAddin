@@ -75,30 +75,40 @@ namespace PowerPointArrangeAddin.Dialog {
             // chkWordArt
             // 
             resources.ApplyResources(this.chkWordArt, "chkWordArt");
+            this.chkWordArt.Checked = true;
+            this.chkWordArt.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkWordArt.Name = "chkWordArt";
             this.chkWordArt.UseVisualStyleBackColor = true;
             // 
             // chkShapeTextbox
             // 
             resources.ApplyResources(this.chkShapeTextbox, "chkShapeTextbox");
+            this.chkShapeTextbox.Checked = true;
+            this.chkShapeTextbox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkShapeTextbox.Name = "chkShapeTextbox";
             this.chkShapeTextbox.UseVisualStyleBackColor = true;
             // 
             // chkShapeSizeAndPosition
             // 
             resources.ApplyResources(this.chkShapeSizeAndPosition, "chkShapeSizeAndPosition");
+            this.chkShapeSizeAndPosition.Checked = true;
+            this.chkShapeSizeAndPosition.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkShapeSizeAndPosition.Name = "chkShapeSizeAndPosition";
             this.chkShapeSizeAndPosition.UseVisualStyleBackColor = true;
             // 
             // chkReplacePicture
             // 
             resources.ApplyResources(this.chkReplacePicture, "chkReplacePicture");
+            this.chkReplacePicture.Checked = true;
+            this.chkReplacePicture.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkReplacePicture.Name = "chkReplacePicture";
             this.chkReplacePicture.UseVisualStyleBackColor = true;
             // 
             // chkPictureSizeAndPosition
             // 
             resources.ApplyResources(this.chkPictureSizeAndPosition, "chkPictureSizeAndPosition");
+            this.chkPictureSizeAndPosition.Checked = true;
+            this.chkPictureSizeAndPosition.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkPictureSizeAndPosition.Name = "chkPictureSizeAndPosition";
             this.chkPictureSizeAndPosition.UseVisualStyleBackColor = true;
             // 
@@ -147,30 +157,40 @@ namespace PowerPointArrangeAddin.Dialog {
             // chkVideoSizeAndPosition
             // 
             resources.ApplyResources(this.chkVideoSizeAndPosition, "chkVideoSizeAndPosition");
+            this.chkVideoSizeAndPosition.Checked = true;
+            this.chkVideoSizeAndPosition.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkVideoSizeAndPosition.Name = "chkVideoSizeAndPosition";
             this.chkVideoSizeAndPosition.UseVisualStyleBackColor = true;
             // 
             // chkAudioSizeAndPosition
             // 
             resources.ApplyResources(this.chkAudioSizeAndPosition, "chkAudioSizeAndPosition");
+            this.chkAudioSizeAndPosition.Checked = true;
+            this.chkAudioSizeAndPosition.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkAudioSizeAndPosition.Name = "chkAudioSizeAndPosition";
             this.chkAudioSizeAndPosition.UseVisualStyleBackColor = true;
             // 
             // chkTableSizeAndPosition
             // 
             resources.ApplyResources(this.chkTableSizeAndPosition, "chkTableSizeAndPosition");
+            this.chkTableSizeAndPosition.Checked = true;
+            this.chkTableSizeAndPosition.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkTableSizeAndPosition.Name = "chkTableSizeAndPosition";
             this.chkTableSizeAndPosition.UseVisualStyleBackColor = true;
             // 
             // chkChartSizeAndPosition
             // 
             resources.ApplyResources(this.chkChartSizeAndPosition, "chkChartSizeAndPosition");
+            this.chkChartSizeAndPosition.Checked = true;
+            this.chkChartSizeAndPosition.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkChartSizeAndPosition.Name = "chkChartSizeAndPosition";
             this.chkChartSizeAndPosition.UseVisualStyleBackColor = true;
             // 
             // chkSmartartSizeAndPosition
             // 
             resources.ApplyResources(this.chkSmartartSizeAndPosition, "chkSmartartSizeAndPosition");
+            this.chkSmartartSizeAndPosition.Checked = true;
+            this.chkSmartartSizeAndPosition.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkSmartartSizeAndPosition.Name = "chkSmartartSizeAndPosition";
             this.chkSmartartSizeAndPosition.UseVisualStyleBackColor = true;
             // 
