@@ -4,7 +4,7 @@
     <?define Action_TargetDir=$(var.PowerPointArrangeAddinInstallerAction.TargetDir)?>
 
     <!-- Define product and package -->
-    <Product Id="*" Name="!(loc.FriendlyName) 1.0.0" Language="1033" Version="1.0.0" Manufacturer="!(loc.Manufacturer)" UpgradeCode="d827c61a-646d-4dfa-97c5-44d2da6cbf01">
+    <Product Id="*" Name="!(loc.FriendlyName) 1.0.1" Language="1033" Version="1.0.1" Manufacturer="!(loc.Manufacturer)" UpgradeCode="d827c61a-646d-4dfa-97c5-44d2da6cbf01">
         <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
 
         <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
@@ -21,7 +21,7 @@
         </Feature>
 
         <!-- Check .NET Framework version -->
-        <PropertyRef Id="WIX_IS_NETFRAMEWORK_48_OR_LATER_INSTALLED"/>
+        <PropertyRef Id="WIX_IS_NETFRAMEWORK_48_OR_LATER_INSTALLED" />
         <Condition Message="!(loc.NetFrameworkConditionText)">
             Installed OR WIX_IS_NETFRAMEWORK_48_OR_LATER_INSTALLED
         </Condition>
@@ -46,7 +46,7 @@
 
         <!-- Define custom actions -->
         <Binary Id="PowerPointArrangeAddinInstallerActionDll" SourceFile="$(var.Action_TargetDir)PowerPointArrangeAddinInstallerAction.CA.dll" />
-        <CustomAction Id="RegisterAddInCustomAction_SetValue" Property="RegisterAddInCustomAction" Value="InstallFolder=[INSTALLFOLDER]" /> 
+        <CustomAction Id="RegisterAddInCustomAction_SetValue" Property="RegisterAddInCustomAction" Value="InstallFolder=[INSTALLFOLDER]" />
         <CustomAction Id="UnregisterAddInCustomAction_SetValue" Property="UnregisterAddInCustomAction" Value="InstallFolder=[INSTALLFOLDER]" />
         <CustomAction Id="CopyInstallerCustomAction_SetValue" Property="CopyInstallerCustomAction" Value="InstallFolder=[INSTALLFOLDER];ProductCode=[ProductCode];OriginalDatabase=[OriginalDatabase]" />
         <CustomAction Id="DeleteInstallerCustomAction_SetValue" Property="DeleteInstallerCustomAction" Value="InstallFolder=[INSTALLFOLDER];ProductCode=[ProductCode];OriginalDatabase=[OriginalDatabase]" />
@@ -66,7 +66,7 @@
             <Custom Action="RegisterAddInCustomAction" Before="InstallFinalize">(NOT Installed) OR REINSTALL</Custom>
             <Custom Action="UnregisterAddInCustomAction" Before="RemoveRegistryValues">REMOVE = "ALL"</Custom>
             <Custom Action="CopyInstallerCustomAction" After="RegisterAddInCustomAction">UI_COPYINSTALLER AND (NOT Installed)</Custom>
-            <Custom Action="DeleteInstallerCustomAction" Before="UnregisterAddInCustomAction">UI_COPYINSTALLER AND (REMOVE = "ALL")</Custom>
+            <Custom Action="DeleteInstallerCustomAction" After="RemoveFiles">UI_COPYINSTALLER AND (REMOVE = "ALL")</Custom>
         </InstallExecuteSequence>
     </Product>
 
@@ -161,9 +161,10 @@
         <DirectoryRef Id="ApplicationProgramsFolder">
             <Component Id="ProductMenuShortcuts" Guid="aef7248c-7ecd-44ef-823f-e48aeb7585e9">
                 <Condition>UI_CREATESHORTCUT</Condition>
-                <!-- TODO https://stackoverflow.com/questions/63581670/wix-msi-uninstall-is-very-slow-log-shows-slowness-is-when-shortcuts-are-being
+                <!--
+                    TODO https://stackoverflow.com/questions/63581670/wix-msi-uninstall-is-very-slow-log-shows-slowness-is-when-shortcuts-are-being
 
-                    msiexec.exe /x {xxx} /L*vx! C:\Users\AoiHosizora\xxx.log
+                    setup.exe /x - /L*vx! xxx.log
 
                     MSI (s) (68:B4) [01:20:34:146]: Executing op: ShortcutRemove(Name=XXX)
                     MSI (s) (68:B4) [01:20:34:150]: Verifying accessibility of file: XXX.lnk

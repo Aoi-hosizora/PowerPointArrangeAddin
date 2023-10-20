@@ -6,7 +6,7 @@
     <ProductVersion>3.10</ProductVersion>
     <ProjectGuid>b866f882-9361-4cfa-9cf7-42225dc660a9</ProjectGuid>
     <SchemaVersion>2.0</SchemaVersion>
-    <OutputName>PowerPointArrangeAddinInstaller</OutputName>
+    <OutputName>setup</OutputName>
     <OutputType>Package</OutputType>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
   </PropertyGroup>
@@ -43,7 +43,7 @@
   <ItemGroup>
     <Content Include="license.rtf" />
     <Content Include="PowerPointArrangeAddinInstaller.wax" />
-    <Content Include="transform.bat" />
+    <Content Include="transform_msi.bat" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Localization\Localization.en.wxl" />
@@ -89,7 +89,7 @@
     <Error Text="The WiX Toolset v3.11 build tools must be installed to build this project. To download the WiX Toolset, see https://wixtoolset.org/releases/v3.11/stable" />
   </Target>
   <PropertyGroup>
-    <PostBuildEvent>call $(ProjectDir)\transform.bat</PostBuildEvent>
+    <PostBuildEvent>call $(ProjectDir)\transform_msi.bat</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent />

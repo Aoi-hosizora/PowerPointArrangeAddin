@@ -8,6 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>PowerPointArrangeAddinInstallerLauncher</RootNamespace>
     <AssemblyName>PowerPointArrangeAddinInstallerLauncher</AssemblyName>
+    <TargetName>setup</TargetName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <LangVersion>9.0</LangVersion>
     <FileAlignment>512</FileAlignment>
@@ -113,7 +114,7 @@
     <None Include="PowerPointArrangeAddinInstallerLauncher_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\PowerPointArrangeAddinInstaller.msi" />
+    <None Include="Resources\setup.msi" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\InstallerIcon.ico" />

@@ -103,8 +103,7 @@ namespace PowerPointArrangeAddinInstallerAction.Helper {
             };
         }
 
-        // private const string OldInstallerFilename = "_$_PowerPointArrangeAddinInstaller.tmp";
-        private const string NewInstallerFilename = "PowerPointArrangeAddinInstaller.msi";
+        private const string NewInstallerFilename = "setup.msi";
 
         private void CopyInstallerToFolder(InstallInformation information) {
             var oldInstallerPath = Path.Combine(information.CurrentFolder, information.CurrentFilename);

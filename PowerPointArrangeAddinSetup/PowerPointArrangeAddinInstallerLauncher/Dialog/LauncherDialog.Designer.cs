@@ -30,11 +30,11 @@ namespace PowerPointArrangeAddinInstallerLauncher.Dialog {
             this.tlpMain = new System.Windows.Forms.TableLayoutPanel();
             this.picInstaller = new System.Windows.Forms.PictureBox();
             this.lblHint = new System.Windows.Forms.Label();
-            this.tblButton = new System.Windows.Forms.TableLayoutPanel();
+            this.tlpButton = new System.Windows.Forms.TableLayoutPanel();
             this.btnCancel = new System.Windows.Forms.Button();
             this.tlpMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picInstaller)).BeginInit();
-            this.tblButton.SuspendLayout();
+            this.tlpButton.SuspendLayout();
             this.SuspendLayout();
             // 
             // cboLanguage
@@ -57,7 +57,7 @@ namespace PowerPointArrangeAddinInstallerLauncher.Dialog {
             this.tlpMain.Controls.Add(this.picInstaller, 0, 0);
             this.tlpMain.Controls.Add(this.lblHint, 1, 0);
             this.tlpMain.Controls.Add(this.cboLanguage, 1, 1);
-            this.tlpMain.Controls.Add(this.tblButton, 1, 2);
+            this.tlpMain.Controls.Add(this.tlpButton, 1, 2);
             this.tlpMain.Name = "tlpMain";
             // 
             // picInstaller
@@ -72,12 +72,12 @@ namespace PowerPointArrangeAddinInstallerLauncher.Dialog {
             resources.ApplyResources(this.lblHint, "lblHint");
             this.lblHint.Name = "lblHint";
             // 
-            // tblButton
+            // tlpButton
             // 
-            resources.ApplyResources(this.tblButton, "tblButton");
-            this.tblButton.Controls.Add(this.btnOK, 0, 0);
-            this.tblButton.Controls.Add(this.btnCancel, 1, 0);
-            this.tblButton.Name = "tblButton";
+            resources.ApplyResources(this.tlpButton, "tlpButton");
+            this.tlpButton.Controls.Add(this.btnOK, 0, 0);
+            this.tlpButton.Controls.Add(this.btnCancel, 1, 0);
+            this.tlpButton.Name = "tlpButton";
             // 
             // btnCancel
             // 
@@ -104,7 +104,7 @@ namespace PowerPointArrangeAddinInstallerLauncher.Dialog {
             this.tlpMain.ResumeLayout(false);
             this.tlpMain.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picInstaller)).EndInit();
-            this.tblButton.ResumeLayout(false);
+            this.tlpButton.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -116,7 +116,7 @@ namespace PowerPointArrangeAddinInstallerLauncher.Dialog {
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.TableLayoutPanel tlpMain;
         private System.Windows.Forms.Label lblHint;
-        private System.Windows.Forms.TableLayoutPanel tblButton;
+        private System.Windows.Forms.TableLayoutPanel tlpButton;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.PictureBox picInstaller;
     }

@@ -32,6 +32,7 @@ namespace PowerPointArrangeAddinInstallerLauncher.Dialog {
             Font = SystemFonts.MessageBoxFont;
 
             if (_args.Length > 0) {
+                // setup.exe /x - /L*vx! C:\xxx.log
                 lblHint.Text += $"\r\n\"msiexec {string.Join(" ", _args)}\"";
             }
 
@@ -42,13 +43,13 @@ namespace PowerPointArrangeAddinInstallerLauncher.Dialog {
         }
 
         private void BtnOK_Click(object sender, EventArgs e) {
-            var filename = "_$_PowerPointArrangeAddinInstaller.tmp";
+            const string filename = "_$_setup.msi.tmp";
 
             try {
                 var stream = File.Open(filename, FileMode.CreateNew);
                 File.SetAttributes(filename, File.GetAttributes(filename) | FileAttributes.Hidden);
                 var w = new BinaryWriter(stream);
-                w.Write(Properties.Resources.PowerPointArrangeAddinInstaller); // msi file
+                w.Write(Properties.Resources.SetupMsiFile); // setup.msi file
                 w.Close();
             } catch (Exception ex) {
                 ErrMsgBox($"Failed to launch installer:\r\n\r\n{ex.Message}", Text);

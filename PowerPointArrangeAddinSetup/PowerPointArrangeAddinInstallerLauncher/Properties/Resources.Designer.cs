@@ -83,9 +83,9 @@ namespace PowerPointArrangeAddinInstallerLauncher.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
-        internal static byte[] PowerPointArrangeAddinInstaller {
+        internal static byte[] SetupMsiFile {
             get {
-                object obj = ResourceManager.GetObject("PowerPointArrangeAddinInstaller", resourceCulture);
+                object obj = ResourceManager.GetObject("SetupMsiFile", resourceCulture);
                 return ((byte[])(obj));
             }
         }

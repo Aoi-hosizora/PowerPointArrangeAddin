@@ -9,7 +9,7 @@
     <String Id="UninstallShortcutName">卸載增益集</String>
 
     <String Id="NetFrameworkConditionText">本應用依賴 .NET Framework 4.8。請您在安裝指定版本的 .NET Framework 後，再執行本安裝程式。</String>
-    
+
     <String Id="WixUIVersion">版本 [ProductVersion]</String>
     <String Id="CreateShortcutCheckbox">創建開始菜單快捷方式(&amp;S)</String>
     <String Id="CopyInstallerCheckbox">將安裝程式複製到安裝目錄(&amp;I)</String>

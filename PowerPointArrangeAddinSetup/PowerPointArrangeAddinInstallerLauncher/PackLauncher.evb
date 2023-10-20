@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="windows-1252"?>
 <>
-  <InputFile>.\bin\x64\Release\PowerPointArrangeAddinInstallerLauncher.exe</InputFile>
-  <OutputFile>.\bin\x64\Release\boxed\PowerPointArrangeAddinInstallerLauncher.exe</OutputFile>
+  <InputFile>.\bin\x64\Release\setup.exe</InputFile>
+  <OutputFile>.\bin\x64\Release\boxed\setup.exe</OutputFile>
   <Files>
     <Enabled>True</Enabled>
     <DeleteExtractedOnExit>False</DeleteExtractedOnExit>
@@ -25,8 +25,8 @@
             <Files>
               <File>
                 <Type>2</Type>
-                <Name>PowerPointArrangeAddinInstallerLauncher.resources.dll</Name>
-                <File>.\bin\x64\Release\ja\PowerPointArrangeAddinInstallerLauncher.resources.dll</File>
+                <Name>setup.resources.dll</Name>
+                <File>.\bin\x64\Release\ja\setup.resources.dll</File>
                 <ActiveX>False</ActiveX>
                 <ActiveXInstall>False</ActiveXInstall>
                 <Action>0</Action>
@@ -47,8 +47,8 @@
             <Files>
               <File>
                 <Type>2</Type>
-                <Name>PowerPointArrangeAddinInstallerLauncher.resources.dll</Name>
-                <File>.\bin\x64\Release\zh-Hans\PowerPointArrangeAddinInstallerLauncher.resources.dll</File>
+                <Name>setup.resources.dll</Name>
+                <File>.\bin\x64\Release\zh-Hans\setup.resources.dll</File>
                 <ActiveX>False</ActiveX>
                 <ActiveXInstall>False</ActiveXInstall>
                 <Action>0</Action>
@@ -69,8 +69,8 @@
             <Files>
               <File>
                 <Type>2</Type>
-                <Name>PowerPointArrangeAddinInstallerLauncher.resources.dll</Name>
-                <File>.\bin\x64\Release\zh-Hant\PowerPointArrangeAddinInstallerLauncher.resources.dll</File>
+                <Name>setup.resources.dll</Name>
+                <File>.\bin\x64\Release\zh-Hant\setup.resources.dll</File>
                 <ActiveX>False</ActiveX>
                 <ActiveXInstall>False</ActiveXInstall>
                 <Action>0</Action>
@@ -80,6 +80,18 @@
                 <HideFromDialogs>0</HideFromDialogs>
               </File>
             </Files>
+          </File>
+          <File>
+            <Type>2</Type>
+            <Name>setup.exe.config</Name>
+            <File>.\bin\x64\Release\setup.exe.config</File>
+            <ActiveX>False</ActiveX>
+            <ActiveXInstall>False</ActiveXInstall>
+            <Action>0</Action>
+            <OverwriteDateTime>False</OverwriteDateTime>
+            <OverwriteAttributes>False</OverwriteAttributes>
+            <PassCommandLine>False</PassCommandLine>
+            <HideFromDialogs>0</HideFromDialogs>
           </File>
         </Files>
       </File>
