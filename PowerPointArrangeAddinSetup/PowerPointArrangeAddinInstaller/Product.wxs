@@ -161,13 +161,22 @@
         <DirectoryRef Id="ApplicationProgramsFolder">
             <Component Id="ProductMenuShortcuts" Guid="aef7248c-7ecd-44ef-823f-e48aeb7585e9">
                 <Condition>UI_CREATESHORTCUT</Condition>
+                <!-- TODO https://stackoverflow.com/questions/63581670/wix-msi-uninstall-is-very-slow-log-shows-slowness-is-when-shortcuts-are-being
+
+                    msiexec.exe /x {xxx} /L*vx! C:\Users\AoiHosizora\xxx.log
+
+                    MSI (s) (68:B4) [01:20:34:146]: Executing op: ShortcutRemove(Name=XXX)
+                    MSI (s) (68:B4) [01:20:34:150]: Verifying accessibility of file: XXX.lnk
+                    MSI (s) (68:B4) [01:20:34:152]: Using source file security for destination.
+                    MSI (s) (68:B4) [01:20:34:154]: Note: 1: 2318 2: C:\Config.Msi\369dd06.rbf 
+                -->
                 <util:InternetShortcut Id="Homepage_InternetShortcut" Name="!(loc.HomepageShortcutName)"
                     Target="https://github.com/Aoi-hosizora/PowerPointArrangeAddin" />
                 <Shortcut Id="RepairProduct_Shortcut" Name="!(loc.RepairShortcutName)" Description="!(loc.RepairShortcutName)"
                     Target="[SystemFolder]msiexec.exe" Arguments="/i [ProductCode]" />
                 <Shortcut Id="UninstallProduct_Shortcut" Name="!(loc.UninstallShortcutName)" Description="!(loc.UninstallShortcutName)"
                     Target="[SystemFolder]msiexec.exe" Arguments="/x [ProductCode]" />
-                <RemoveFolder Id="ApplicationProgramsFolder" On="uninstall" />
+                <RemoveFolder Id="RemoveApplicationProgramsFolder" Directory="ApplicationProgramsFolder" On="uninstall" />
                 <RegistryValue Root="HKCU" Key="Software\AoiHosizora\PowerPointArrangeAddin" Name="Shortcut" Type="integer" Value="1" KeyPath="yes" />
             </Component>
         </DirectoryRef>

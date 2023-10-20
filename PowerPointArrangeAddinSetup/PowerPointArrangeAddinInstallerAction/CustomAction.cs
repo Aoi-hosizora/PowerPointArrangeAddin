@@ -1,7 +1,6 @@
 using System;
 using System.Windows.Forms;
 using Microsoft.Deployment.WindowsInstaller;
-using PowerPointArrangeAddinInstallerAction.Helper;
 
 // ReSharper disable UnusedType.Global
 // ReSharper disable UnusedMember.Global
@@ -17,7 +16,7 @@ namespace PowerPointArrangeAddinInstallerAction {
             session.Message(InstallMessage.Info, new Record { FormatString = "Register add-in" });
             try {
                 var installFolder = session.CustomActionData["InstallFolder"];
-                var helper = new RegisterHelper(installFolder);
+                var helper = new Helper.RegisterHelper(installFolder);
                 helper.RegisterAddIn();
                 return ActionResult.Success;
             } catch (Exception ex) {
@@ -31,11 +30,11 @@ namespace PowerPointArrangeAddinInstallerAction {
             session.Message(InstallMessage.Info, new Record { FormatString = "Unregister add-in" });
             try {
                 var installFolder = session.CustomActionData["InstallFolder"];
-                var helper = new RegisterHelper(installFolder);
+                var helper = new Helper.RegisterHelper(installFolder);
                 helper.UnregisterAddIn();
                 return ActionResult.Success;
             } catch (Exception ex) {
-                MsgBox(session, ex.Message, MessageBoxIcon.Warning);
+                MsgBox(session, $"{ex.Message} (ignored)", MessageBoxIcon.Warning);
                 return ActionResult.Success; // just return success rather than failure
             }
         }
@@ -47,7 +46,7 @@ namespace PowerPointArrangeAddinInstallerAction {
                 var installFolder = session.CustomActionData["InstallFolder"];
                 var productCode = session.CustomActionData["ProductCode"];
                 var originalDatabase = session.CustomActionData["OriginalDatabase"];
-                var helper = new InstallerHelper(productCode, originalDatabase, installFolder);
+                var helper = new Helper.InstallerHelper(productCode, originalDatabase, installFolder);
                 helper.CopyInstaller();
                 return ActionResult.Success;
             } catch (Exception ex) {
@@ -63,11 +62,11 @@ namespace PowerPointArrangeAddinInstallerAction {
                 var installFolder = session.CustomActionData["InstallFolder"];
                 var productCode = session.CustomActionData["ProductCode"];
                 var originalDatabase = session.CustomActionData["OriginalDatabase"];
-                var helper = new InstallerHelper(productCode, originalDatabase, installFolder);
+                var helper = new Helper.InstallerHelper(productCode, originalDatabase, installFolder);
                 helper.DeleteInstaller();
                 return ActionResult.Success;
             } catch (Exception ex) {
-                MsgBox(session, ex.Message, MessageBoxIcon.Warning);
+                MsgBox(session, $"{ex.Message} (ignored)", MessageBoxIcon.Warning);
                 return ActionResult.Success; // just return success rather than failure
             }
         }

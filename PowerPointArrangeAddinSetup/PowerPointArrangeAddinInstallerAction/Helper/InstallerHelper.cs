@@ -66,6 +66,7 @@ namespace PowerPointArrangeAddinInstallerAction.Helper {
             public string ProductCode { get; set; }
             public string RegistryCode { get; set; }
             public string CurrentFolder { get; set; }
+            public string CurrentFilename { get; set; }
             public string InstallFolder { get; set; }
         }
 
@@ -79,6 +80,7 @@ namespace PowerPointArrangeAddinInstallerAction.Helper {
             var registryCode = ReverseString(productCode, // {B83AEC80-3D6D-44D7-8BAA-9C23B6DC2066} => 08CEA38BD6D37D44B8AAC9326BCD0266
                 new[] { (1, 8), (10, 4), (15, 4), (20, 2), (22, 2), (25, 2), (27, 2), (29, 2), (31, 2), (33, 2), (35, 2) });
 
+            var currentFilename = Path.GetFileName(_originalDatabase);
             var currentFolder = Path.GetDirectoryName(_originalDatabase);
             if (currentFolder == null) {
                 throw new Exception("the original installer is not found");
@@ -96,15 +98,16 @@ namespace PowerPointArrangeAddinInstallerAction.Helper {
                 ProductCode = productCode,
                 RegistryCode = registryCode,
                 CurrentFolder = currentFolder,
+                CurrentFilename = currentFilename,
                 InstallFolder = installFolder,
             };
         }
 
-        private const string OldInstallerFilename = "_$_PowerPointArrangeAddinInstaller.tmp"; // <<<
+        // private const string OldInstallerFilename = "_$_PowerPointArrangeAddinInstaller.tmp";
         private const string NewInstallerFilename = "PowerPointArrangeAddinInstaller.msi";
 
         private void CopyInstallerToFolder(InstallInformation information) {
-            var oldInstallerPath = Path.Combine(information.CurrentFolder, OldInstallerFilename);
+            var oldInstallerPath = Path.Combine(information.CurrentFolder, information.CurrentFilename);
             var newInstallerPath = Path.Combine(information.InstallFolder, NewInstallerFilename);
             File.Copy(oldInstallerPath, newInstallerPath, true);
             var installerFileAttribute = File.GetAttributes(newInstallerPath) & ~FileAttributes.Hidden;

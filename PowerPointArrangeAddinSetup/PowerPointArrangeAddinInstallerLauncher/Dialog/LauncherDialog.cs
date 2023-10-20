@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -13,8 +15,12 @@ namespace PowerPointArrangeAddinInstallerLauncher.Dialog {
 
         private readonly string[] _languages = { "English", "简体中文", "正體中文", "日本語" };
         private readonly int[] _languageCodes = { 1033, 2052, 1028, 1041 };
+        private readonly string[] _args;
 
-        public LauncherDialog() {
+        public LauncherDialog(string[]? args) {
+            args ??= new string[] { };
+            _args = args.Length == 0 || args.Contains("-") ? args : args.Append("-").ToArray();
+
             InitializeComponent();
 
             tlpMain.AutoSize = true;
@@ -24,6 +30,10 @@ namespace PowerPointArrangeAddinInstallerLauncher.Dialog {
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             AutoSize = true;
             Font = SystemFonts.MessageBoxFont;
+
+            if (_args.Length > 0) {
+                lblHint.Text += $"\r\n\"msiexec {string.Join(" ", _args)}\"";
+            }
 
             foreach (var language in _languages) {
                 cboLanguage.Items.Add(language);
@@ -48,12 +58,16 @@ namespace PowerPointArrangeAddinInstallerLauncher.Dialog {
             }
 
             var language = _languageCodes[cboLanguage.SelectedIndex];
-            var psi = new ProcessStartInfo {
-                FileName = "msiexec",
-                Arguments = $"/i {filename} ProductLanguage={language}"
-            };
+            var arguments = new List<string>();
+            if (_args.Length == 0) {
+                arguments.Add($"/i {filename}");
+            } else {
+                arguments.AddRange(_args.Select(arg => arg != "-" ? arg : filename));
+            }
+            arguments.Add($"ProductLanguage={language}");
 
             try {
+                var psi = new ProcessStartInfo { FileName = "msiexec", Arguments = string.Join(" ", arguments) };
                 var p = Process.Start(psi);
                 Hide();
                 p?.WaitForExit();
