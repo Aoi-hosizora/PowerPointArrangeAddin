@@ -77,43 +77,6 @@ namespace PowerPointArrangeAddin.Helper {
             return xmlText;
         }
 
-        public static string ApplyIdWithTagAsFallback(string xmlText) {
-            var document = new XmlDocument();
-
-            try {
-                document.LoadXml(xmlText);
-            } catch (Exception) {
-                return "";
-            }
-
-            // find nodes that have tag attribute
-            var nodesWithTag = document.SelectNodes("//*[@tag]");
-            if (nodesWithTag == null || nodesWithTag.Count == 0) {
-                return document.ToXmlText();
-            }
-
-            // set id to tag as fallback value for these nodes
-            foreach (var node in nodesWithTag.OfType<XmlNode>()) {
-                var attributes = node.Attributes;
-                if (attributes == null) {
-                    continue;
-                }
-                var tagValue = attributes["tag"]?.Value;
-                if (string.IsNullOrWhiteSpace(tagValue)) {
-                    continue;
-                }
-                var idValue = attributes["id"]?.Value; // TODO id="~tag"
-                if (!string.IsNullOrWhiteSpace(idValue)) {
-                    continue;
-                }
-                var newAttribute = document.CreateAttribute("id");
-                newAttribute.Value = tagValue!;
-                attributes.Append(newAttribute);
-            }
-
-            return document.ToXmlText();
-        }
-
         private static string ToXmlText(this XmlNode node) {
             return node.OuterXml;
         }

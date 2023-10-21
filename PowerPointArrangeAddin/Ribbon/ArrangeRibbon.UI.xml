@@ -15,11 +15,13 @@
         <__template name="LSKEI_Anchor" getLabel="BtnScaleAnchor_GetLabel" getScreentip="BtnScaleAnchor_GetLabel" getKeytip="GetKeytip" getEnabled="GetEnabled" getImage="BtnScaleAnchor_GetImage" />
     </__templates>
 
-    <!--    <__templates>-->
-    <!--        <__subtree_template name="SIZEPOS_PICTURE">-->
-
-    <!--        </__subtree_template>-->
-    <!--    </__templates>-->
+    <!--
+        <__templates>
+            <__subtree_template name="SIZEPOS_PICTURE">
+                ...
+            </__subtree_template>
+        </__templates> TODO
+    -->
 
     <ribbon>
         <tabs>
@@ -96,7 +98,7 @@
                 </group> <!-- end of grpArrange -->
             </tab> <!-- end of TabHome -->
 
-            <tab id="tabArrangement" label="配置" insertAfterMso="TabInsert">
+            <tab id="tabArrangement" label="配置" keytip="E" insertAfterMso="TabInsert">
                 <group id="grpArrange123" label="配置">
                     <__apply_subtree_template use_template="ARRANGE" />
                 </group>
@@ -193,10 +195,12 @@
                 <tab idMso="TabVideoToolsDesign">
                     <group id="grpVideoSizeAndPosition" insertAfterMso="GroupVideoSize" __template="GROUP">
                         <__apply_subtree_template use_template="SIZEPOS_PICTURE" />
-                        <!-- <__apply_subtree_template use_template="SIZEPOS_PICTURE">
-                            <__template_replace_rule field="id" from="Picture" to="Video" />
-                            <__template_remove_rule field="id" matched="btnReset(.+)Size" />
-                        </__apply_subtree_template> -->
+                        <!-- 
+                             <__apply_subtree_template use_template="SIZEPOS_PICTURE">
+                                <__template_replace_rule field="id" from="Picture" to="Video" />
+                                <__template_remove_rule field="id" matched="btnReset(.+)Size" />
+                            </__apply_subtree_template> TODO
+                         -->
                     </group>
                 </tab>
             </tabSet>

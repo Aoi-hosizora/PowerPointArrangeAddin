@@ -149,16 +149,10 @@
     <value>調整圖案大小</value>
     <comment>依照文字調整圖案的大小</comment>
   </data>
-  <data name="btnCopyPicturePosition" xml:space="preserve">
+  <data name="btnCopyPosition" xml:space="preserve">
     <value>複製位置</value>
   </data>
-  <data name="btnCopyPictureSize" xml:space="preserve">
-    <value>複製大小</value>
-  </data>
-  <data name="btnCopyShapePosition" xml:space="preserve">
-    <value>複製位置</value>
-  </data>
-  <data name="btnCopyShapeSize" xml:space="preserve">
+  <data name="btnCopySize" xml:space="preserve">
     <value>複製大小</value>
   </data>
   <data name="btnDistributeHorizontal" xml:space="preserve">
@@ -188,10 +182,7 @@
   <data name="btnGroup" xml:space="preserve">
     <value>群組圖案(&amp;G)</value>
   </data>
-  <data name="btnLockPictureAspectRatio" xml:space="preserve">
-    <value>鎖定橫寬比</value>
-  </data>
-  <data name="btnLockShapeAspectRatio" xml:space="preserve">
+  <data name="btnLockAspectRatio" xml:space="preserve">
     <value>鎖定橫寬比</value>
   </data>
   <data name="btnMoveBack" xml:space="preserve">
@@ -206,16 +197,10 @@
   <data name="btnMoveFront" xml:space="preserve">
     <value>移到最上層(&amp;R)</value>
   </data>
-  <data name="btnPastePicturePosition" xml:space="preserve">
+  <data name="btnPastePosition" xml:space="preserve">
     <value>貼上位置</value>
   </data>
-  <data name="btnPastePictureSize" xml:space="preserve">
-    <value>貼上大小</value>
-  </data>
-  <data name="btnPasteShapePosition" xml:space="preserve">
-    <value>貼上位置</value>
-  </data>
-  <data name="btnPasteShapeSize" xml:space="preserve">
+  <data name="btnPasteSize" xml:space="preserve">
     <value>貼上大小</value>
   </data>
   <data name="btnReplaceWithClipboard" xml:space="preserve">
@@ -230,7 +215,7 @@
   <data name="btnResetVerticalMargin" xml:space="preserve">
     <value>復原垂直邊界</value>
   </data>
-  <data name="btnResetPictureSize" xml:space="preserve">
+  <data name="btnResetSize" xml:space="preserve">
     <value>復原大小</value>
   </data>
   <data name="btnRotateLeft90" xml:space="preserve">
@@ -240,10 +225,12 @@
     <value>向左旋轉 90 度(&amp;R)</value>
   </data>
   <data name="btnScaleAnchor_Middle" xml:space="preserve">
-    <value>從中心點變形(&amp;F)</value><comment>將中心點視爲錨點來變形圖案</comment>
+    <value>從中心點變形(&amp;F)</value>
+    <comment>將中心點視爲錨點來變形圖案</comment>
   </data>
   <data name="btnScaleAnchor_TopLeft" xml:space="preserve">
-    <value>從左上端變形(&amp;O)</value><comment>將左上端視爲錨點來變形圖案</comment>
+    <value>從左上端變形(&amp;O)</value>
+    <comment>將左上端視爲錨點來變形圖案</comment>
   </data>
   <data name="btnScaleSameHeight" xml:space="preserve">
     <value>變形為與最開始選擇的圖案相同高度(&amp;H)</value>
@@ -299,29 +286,20 @@
   <data name="edtMarginTop" xml:space="preserve">
     <value>上:</value>
   </data>
-  <data name="edtPicturePositionX" xml:space="preserve">
+  <data name="edtPositionX" xml:space="preserve">
     <value>水平:</value>
   </data>
-  <data name="edtPicturePositionY" xml:space="preserve">
-    <value>垂直:</value>
-  </data>
-  <data name="edtShapePositionX" xml:space="preserve">
-    <value>水平:</value>
-  </data>
-  <data name="edtShapePositionY" xml:space="preserve">
+  <data name="edtPositionY" xml:space="preserve">
     <value>垂直:</value>
   </data>
   <data name="grpArrange" xml:space="preserve">
     <value>排列</value>
   </data>
-  <data name="grpPictureSizeAndPosition" xml:space="preserve">
+  <data name="grpSizeAndPosition" xml:space="preserve">
     <value>大小和位置</value>
   </data>
   <data name="grpReplacePicture" xml:space="preserve">
     <value>置換圖片</value>
-  </data>
-  <data name="grpShapeSizeAndPosition" xml:space="preserve">
-    <value>大小和位置</value>
   </data>
   <data name="grpTextbox" xml:space="preserve">
     <value>文字方塊</value>
@@ -362,12 +340,6 @@
   <data name="mnuArrangement_sepObjectsInSlide" xml:space="preserve">
     <value>投影片上的圖案</value>
   </data>
-  <data name="mnuPictureArrangement" xml:space="preserve">
-    <value>圖片排列</value>
-  </data>
-  <data name="mnuShapeArrangement" xml:space="preserve">
-    <value>圖案排列</value>
-  </data>
   <data name="dlgImageFilesFilter" xml:space="preserve">
     <value>所有圖片</value>
   </data>
@@ -376,147 +348,7 @@
   </data>
   <data name="btnScaleAnchor_BottomRight" xml:space="preserve">
     <value>從右下端變形(&amp;M)</value>
-  </data>
-  <data name="btnCopyVideoPosition" xml:space="preserve">
-    <value>複製位置</value>
-  </data>
-  <data name="btnCopyVideoSize" xml:space="preserve">
-    <value>複製大小</value>
-  </data>
-  <data name="btnLockVideoAspectRatio" xml:space="preserve">
-    <value>鎖定橫寬比</value>
-  </data>
-  <data name="btnPasteVideoPosition" xml:space="preserve">
-    <value>貼上位置</value>
-  </data>
-  <data name="btnPasteVideoSize" xml:space="preserve">
-    <value>貼上大小</value>
-  </data>
-  <data name="btnResetVideoSize" xml:space="preserve">
-    <value>復原大小</value>
-  </data>
-  <data name="edtVideoPositionX" xml:space="preserve">
-    <value>水平:</value>
-  </data>
-  <data name="edtVideoPositionY" xml:space="preserve">
-    <value>垂直:</value>
-  </data>
-  <data name="grpVideoSizeAndPosition" xml:space="preserve">
-    <value>大小和位置</value>
-  </data>
-  <data name="mnuVideoArrangement" xml:space="preserve">
-    <value>視訊排列</value>
-  </data>
-  <data name="btnCopyTablePosition" xml:space="preserve">
-    <value>複製位置</value>
-  </data>
-  <data name="btnCopyTableSize" xml:space="preserve">
-    <value>複製大小</value>
-  </data>
-  <data name="btnLockTableAspectRatio" xml:space="preserve">
-    <value>鎖定橫寬比</value>
-  </data>
-  <data name="btnPasteTablePosition" xml:space="preserve">
-    <value>貼上位置</value>
-  </data>
-  <data name="btnPasteTableSize" xml:space="preserve">
-    <value>貼上大小</value>
-  </data>
-  <data name="edtTablePositionX" xml:space="preserve">
-    <value>水平:</value>
-  </data>
-  <data name="edtTablePositionY" xml:space="preserve">
-    <value>垂直:</value>
-  </data>
-  <data name="grpTableSizeAndPosition" xml:space="preserve">
-    <value>大小和位置</value>
-  </data>
-  <data name="mnuTableArrangement" xml:space="preserve">
-    <value>表格排列</value>
-  </data>
-  <data name="btnCopyAudioPosition" xml:space="preserve">
-    <value>複製位置</value>
-  </data>
-  <data name="btnCopyAudioSize" xml:space="preserve">
-    <value>複製大小</value>
-  </data>
-  <data name="btnLockAudioAspectRatio" xml:space="preserve">
-    <value>鎖定橫寬比</value>
-  </data>
-  <data name="btnPasteAudioPosition" xml:space="preserve">
-    <value>貼上位置</value>
-  </data>
-  <data name="btnPasteAudioSize" xml:space="preserve">
-    <value>貼上大小</value>
-  </data>
-  <data name="btnResetAudioSize" xml:space="preserve">
-    <value>復原大小</value>
-  </data>
-  <data name="edtAudioPositionX" xml:space="preserve">
-    <value>水平:</value>
-  </data>
-  <data name="edtAudioPositionY" xml:space="preserve">
-    <value>垂直:</value>
-  </data>
-  <data name="grpAudioSizeAndPosition" xml:space="preserve">
-    <value>大小和位置</value>
-  </data>
-  <data name="mnuAudioArrangement" xml:space="preserve">
-    <value>音訊排列</value>
-  </data>
-  <data name="btnCopySmartartPosition" xml:space="preserve">
-    <value>複製位置</value>
-  </data>
-  <data name="btnCopyChartPosition" xml:space="preserve">
-    <value>複製位置</value>
-  </data>
-  <data name="btnCopyChartSize" xml:space="preserve">
-    <value>複製大小</value>
-  </data>
-  <data name="btnCopySmartartSize" xml:space="preserve">
-    <value>複製大小</value>
-  </data>
-  <data name="btnLockChartAspectRatio" xml:space="preserve">
-    <value>鎖定橫寬比</value>
-  </data>
-  <data name="btnLockSmartartAspectRatio" xml:space="preserve">
-    <value>鎖定橫寬比</value>
-  </data>
-  <data name="btnPasteChartPosition" xml:space="preserve">
-    <value>貼上位置</value>
-  </data>
-  <data name="btnPasteSmartartPosition" xml:space="preserve">
-    <value>貼上位置</value>
-  </data>
-  <data name="btnPasteSmartartSize" xml:space="preserve">
-    <value>貼上大小</value>
-  </data>
-  <data name="btnPasteChartSize" xml:space="preserve">
-    <value>貼上大小</value>
-  </data>
-  <data name="edtSmartartPositionX" xml:space="preserve">
-    <value>水平:</value>
-  </data>
-  <data name="edtChartPositionX" xml:space="preserve">
-    <value>水平:</value>
-  </data>
-  <data name="edtChartPositionY" xml:space="preserve">
-    <value>垂直:</value>
-  </data>
-  <data name="edtSmartartPositionY" xml:space="preserve">
-    <value>垂直:</value>
-  </data>
-  <data name="grpChartSizeAndPosition" xml:space="preserve">
-    <value>大小和位置</value>
-  </data>
-  <data name="grpSmartartSizeAndPosition" xml:space="preserve">
-    <value>大小和位置</value>
-  </data>
-  <data name="mnuSmartartArrangement" xml:space="preserve">
-    <value>圖表排列</value>
-  </data>
-  <data name="mnuChartArrangement" xml:space="preserve">
-    <value>圖表排列</value>
+    <comment>將右下端視爲錨點來變形圖案</comment>
   </data>
   <data name="lblHorizontalMargin" xml:space="preserve">
     <value>橫向邊界:　 </value>

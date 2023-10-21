@@ -180,81 +180,9 @@ namespace PowerPointArrangeAddin.Ribbon {
         /// <summary>
         ///   Looks up a localized string similar to Copy position.
         /// </summary>
-        public static string btnCopyAudioPosition {
-            get {
-                return ResourceManager.GetString("btnCopyAudioPosition", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Copy size.
-        /// </summary>
-        public static string btnCopyAudioSize {
-            get {
-                return ResourceManager.GetString("btnCopyAudioSize", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Copy position.
-        /// </summary>
-        public static string btnCopyChartPosition {
-            get {
-                return ResourceManager.GetString("btnCopyChartPosition", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Copy size.
-        /// </summary>
-        public static string btnCopyChartSize {
-            get {
-                return ResourceManager.GetString("btnCopyChartSize", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Copy position.
-        /// </summary>
-        public static string btnCopyPicturePosition {
-            get {
-                return ResourceManager.GetString("btnCopyPicturePosition", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Copy size.
-        /// </summary>
-        public static string btnCopyPictureSize {
-            get {
-                return ResourceManager.GetString("btnCopyPictureSize", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Copy position.
-        /// </summary>
         public static string btnCopyPosition {
             get {
                 return ResourceManager.GetString("btnCopyPosition", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Copy position.
-        /// </summary>
-        public static string btnCopyShapePosition {
-            get {
-                return ResourceManager.GetString("btnCopyShapePosition", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Copy size.
-        /// </summary>
-        public static string btnCopyShapeSize {
-            get {
-                return ResourceManager.GetString("btnCopyShapeSize", resourceCulture);
             }
         }
         
@@ -264,60 +192,6 @@ namespace PowerPointArrangeAddin.Ribbon {
         public static string btnCopySize {
             get {
                 return ResourceManager.GetString("btnCopySize", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Copy position.
-        /// </summary>
-        public static string btnCopySmartartPosition {
-            get {
-                return ResourceManager.GetString("btnCopySmartartPosition", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Copy size.
-        /// </summary>
-        public static string btnCopySmartartSize {
-            get {
-                return ResourceManager.GetString("btnCopySmartartSize", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Copy position.
-        /// </summary>
-        public static string btnCopyTablePosition {
-            get {
-                return ResourceManager.GetString("btnCopyTablePosition", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Copy size.
-        /// </summary>
-        public static string btnCopyTableSize {
-            get {
-                return ResourceManager.GetString("btnCopyTableSize", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Copy position.
-        /// </summary>
-        public static string btnCopyVideoPosition {
-            get {
-                return ResourceManager.GetString("btnCopyVideoPosition", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Copy size.
-        /// </summary>
-        public static string btnCopyVideoSize {
-            get {
-                return ResourceManager.GetString("btnCopyVideoSize", resourceCulture);
             }
         }
         
@@ -412,69 +286,6 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Lock aspect ratio.
-        /// </summary>
-        public static string btnLockAudioAspectRatio {
-            get {
-                return ResourceManager.GetString("btnLockAudioAspectRatio", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Lock aspect ratio.
-        /// </summary>
-        public static string btnLockChartAspectRatio {
-            get {
-                return ResourceManager.GetString("btnLockChartAspectRatio", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Lock aspect ratio.
-        /// </summary>
-        public static string btnLockPictureAspectRatio {
-            get {
-                return ResourceManager.GetString("btnLockPictureAspectRatio", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Lock aspect ratio.
-        /// </summary>
-        public static string btnLockShapeAspectRatio {
-            get {
-                return ResourceManager.GetString("btnLockShapeAspectRatio", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Lock aspect ratio.
-        /// </summary>
-        public static string btnLockSmartartAspectRatio {
-            get {
-                return ResourceManager.GetString("btnLockSmartartAspectRatio", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Lock aspect ratio.
-        /// </summary>
-        public static string btnLockTableAspectRatio {
-            get {
-                return ResourceManager.GetString("btnLockTableAspectRatio", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Lock aspect ratio.
-        /// </summary>
-        public static string btnLockVideoAspectRatio {
-            get {
-                return ResourceManager.GetString("btnLockVideoAspectRatio", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Move to bac&amp;k.
         /// </summary>
         public static string btnMoveBack {
@@ -513,81 +324,9 @@ namespace PowerPointArrangeAddin.Ribbon {
         /// <summary>
         ///   Looks up a localized string similar to Paste position.
         /// </summary>
-        public static string btnPasteAudioPosition {
-            get {
-                return ResourceManager.GetString("btnPasteAudioPosition", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Paste size.
-        /// </summary>
-        public static string btnPasteAudioSize {
-            get {
-                return ResourceManager.GetString("btnPasteAudioSize", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Paste position.
-        /// </summary>
-        public static string btnPasteChartPosition {
-            get {
-                return ResourceManager.GetString("btnPasteChartPosition", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Paste size.
-        /// </summary>
-        public static string btnPasteChartSize {
-            get {
-                return ResourceManager.GetString("btnPasteChartSize", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Paste position.
-        /// </summary>
-        public static string btnPastePicturePosition {
-            get {
-                return ResourceManager.GetString("btnPastePicturePosition", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Paste size.
-        /// </summary>
-        public static string btnPastePictureSize {
-            get {
-                return ResourceManager.GetString("btnPastePictureSize", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Paste position.
-        /// </summary>
         public static string btnPastePosition {
             get {
                 return ResourceManager.GetString("btnPastePosition", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Paste position.
-        /// </summary>
-        public static string btnPasteShapePosition {
-            get {
-                return ResourceManager.GetString("btnPasteShapePosition", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Paste size.
-        /// </summary>
-        public static string btnPasteShapeSize {
-            get {
-                return ResourceManager.GetString("btnPasteShapeSize", resourceCulture);
             }
         }
         
@@ -597,60 +336,6 @@ namespace PowerPointArrangeAddin.Ribbon {
         public static string btnPasteSize {
             get {
                 return ResourceManager.GetString("btnPasteSize", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Paste position.
-        /// </summary>
-        public static string btnPasteSmartartPosition {
-            get {
-                return ResourceManager.GetString("btnPasteSmartartPosition", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Paste size.
-        /// </summary>
-        public static string btnPasteSmartartSize {
-            get {
-                return ResourceManager.GetString("btnPasteSmartartSize", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Paste position.
-        /// </summary>
-        public static string btnPasteTablePosition {
-            get {
-                return ResourceManager.GetString("btnPasteTablePosition", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Paste size.
-        /// </summary>
-        public static string btnPasteTableSize {
-            get {
-                return ResourceManager.GetString("btnPasteTableSize", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Paste position.
-        /// </summary>
-        public static string btnPasteVideoPosition {
-            get {
-                return ResourceManager.GetString("btnPasteVideoPosition", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Paste size.
-        /// </summary>
-        public static string btnPasteVideoSize {
-            get {
-                return ResourceManager.GetString("btnPasteVideoSize", resourceCulture);
             }
         }
         
@@ -673,29 +358,11 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Reset size.
-        /// </summary>
-        public static string btnResetAudioSize {
-            get {
-                return ResourceManager.GetString("btnResetAudioSize", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Reset horizontal margin.
         /// </summary>
         public static string btnResetHorizontalMargin {
             get {
                 return ResourceManager.GetString("btnResetHorizontalMargin", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Reset size.
-        /// </summary>
-        public static string btnResetPictureSize {
-            get {
-                return ResourceManager.GetString("btnResetPictureSize", resourceCulture);
             }
         }
         
@@ -714,15 +381,6 @@ namespace PowerPointArrangeAddin.Ribbon {
         public static string btnResetVerticalMargin {
             get {
                 return ResourceManager.GetString("btnResetVerticalMargin", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Reset size.
-        /// </summary>
-        public static string btnResetVideoSize {
-            get {
-                return ResourceManager.GetString("btnResetVideoSize", resourceCulture);
             }
         }
         
@@ -916,42 +574,6 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Horizontal:.
-        /// </summary>
-        public static string edtAudioPositionX {
-            get {
-                return ResourceManager.GetString("edtAudioPositionX", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Vertical:.
-        /// </summary>
-        public static string edtAudioPositionY {
-            get {
-                return ResourceManager.GetString("edtAudioPositionY", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Horizontal:.
-        /// </summary>
-        public static string edtChartPositionX {
-            get {
-                return ResourceManager.GetString("edtChartPositionX", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Vertical:.
-        /// </summary>
-        public static string edtChartPositionY {
-            get {
-                return ResourceManager.GetString("edtChartPositionY", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Bottom:.
         /// </summary>
         public static string edtMarginBottom {
@@ -990,24 +612,6 @@ namespace PowerPointArrangeAddin.Ribbon {
         /// <summary>
         ///   Looks up a localized string similar to Horizontal:.
         /// </summary>
-        public static string edtPicturePositionX {
-            get {
-                return ResourceManager.GetString("edtPicturePositionX", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Vertical:.
-        /// </summary>
-        public static string edtPicturePositionY {
-            get {
-                return ResourceManager.GetString("edtPicturePositionY", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Horizontal:.
-        /// </summary>
         public static string edtPositionX {
             get {
                 return ResourceManager.GetString("edtPositionX", resourceCulture);
@@ -1024,110 +628,11 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Horizontal:.
-        /// </summary>
-        public static string edtShapePositionX {
-            get {
-                return ResourceManager.GetString("edtShapePositionX", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Vertical:.
-        /// </summary>
-        public static string edtShapePositionY {
-            get {
-                return ResourceManager.GetString("edtShapePositionY", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Horizontal:.
-        /// </summary>
-        public static string edtSmartartPositionX {
-            get {
-                return ResourceManager.GetString("edtSmartartPositionX", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Vertical:.
-        /// </summary>
-        public static string edtSmartartPositionY {
-            get {
-                return ResourceManager.GetString("edtSmartartPositionY", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Horizontal:.
-        /// </summary>
-        public static string edtTablePositionX {
-            get {
-                return ResourceManager.GetString("edtTablePositionX", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Vertical:.
-        /// </summary>
-        public static string edtTablePositionY {
-            get {
-                return ResourceManager.GetString("edtTablePositionY", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Horizontal:.
-        /// </summary>
-        public static string edtVideoPositionX {
-            get {
-                return ResourceManager.GetString("edtVideoPositionX", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Vertical:.
-        /// </summary>
-        public static string edtVideoPositionY {
-            get {
-                return ResourceManager.GetString("edtVideoPositionY", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Arrangement.
         /// </summary>
         public static string grpArrange {
             get {
                 return ResourceManager.GetString("grpArrange", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Size and position.
-        /// </summary>
-        public static string grpAudioSizeAndPosition {
-            get {
-                return ResourceManager.GetString("grpAudioSizeAndPosition", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Size and position.
-        /// </summary>
-        public static string grpChartSizeAndPosition {
-            get {
-                return ResourceManager.GetString("grpChartSizeAndPosition", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Size and position.
-        /// </summary>
-        public static string grpPictureSizeAndPosition {
-            get {
-                return ResourceManager.GetString("grpPictureSizeAndPosition", resourceCulture);
             }
         }
         
@@ -1143,27 +648,9 @@ namespace PowerPointArrangeAddin.Ribbon {
         /// <summary>
         ///   Looks up a localized string similar to Size and position.
         /// </summary>
-        public static string grpShapeSizeAndPosition {
+        public static string grpSizeAndPosition {
             get {
-                return ResourceManager.GetString("grpShapeSizeAndPosition", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Size and position.
-        /// </summary>
-        public static string grpSmartartSizeAndPosition {
-            get {
-                return ResourceManager.GetString("grpSmartartSizeAndPosition", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Size and position.
-        /// </summary>
-        public static string grpTableSizeAndPosition {
-            get {
-                return ResourceManager.GetString("grpTableSizeAndPosition", resourceCulture);
+                return ResourceManager.GetString("grpSizeAndPosition", resourceCulture);
             }
         }
         
@@ -1173,15 +660,6 @@ namespace PowerPointArrangeAddin.Ribbon {
         public static string grpTextbox {
             get {
                 return ResourceManager.GetString("grpTextbox", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Size and position.
-        /// </summary>
-        public static string grpVideoSizeAndPosition {
-            get {
-                return ResourceManager.GetString("grpVideoSizeAndPosition", resourceCulture);
             }
         }
         
@@ -1308,69 +786,6 @@ namespace PowerPointArrangeAddin.Ribbon {
         public static string mnuArrangement_sepObjectsInSlide {
             get {
                 return ResourceManager.GetString("mnuArrangement_sepObjectsInSlide", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Arrange.
-        /// </summary>
-        public static string mnuAudioArrangement {
-            get {
-                return ResourceManager.GetString("mnuAudioArrangement", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Arrange.
-        /// </summary>
-        public static string mnuChartArrangement {
-            get {
-                return ResourceManager.GetString("mnuChartArrangement", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Arrange.
-        /// </summary>
-        public static string mnuPictureArrangement {
-            get {
-                return ResourceManager.GetString("mnuPictureArrangement", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Arrange.
-        /// </summary>
-        public static string mnuShapeArrangement {
-            get {
-                return ResourceManager.GetString("mnuShapeArrangement", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Arrange.
-        /// </summary>
-        public static string mnuSmartartArrangement {
-            get {
-                return ResourceManager.GetString("mnuSmartartArrangement", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Arrange.
-        /// </summary>
-        public static string mnuTableArrangement {
-            get {
-                return ResourceManager.GetString("mnuTableArrangement", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Arrange.
-        /// </summary>
-        public static string mnuVideoArrangement {
-            get {
-                return ResourceManager.GetString("mnuVideoArrangement", resourceCulture);
             }
         }
     }
