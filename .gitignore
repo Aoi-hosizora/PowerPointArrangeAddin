@@ -25,6 +25,7 @@
 ### Temp ###
 Office UI Help Files/
 office-ms-customui.xsd
+~$*.xlsx
 *.bak
 *.pwd
 *.rar

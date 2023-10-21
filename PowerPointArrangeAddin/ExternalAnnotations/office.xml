@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<assembly name="office">
+    <member name="P:Microsoft.Office.Core.IRibbonControl.Id">
+        <attribute ctor="M:System.ObsoleteAttribute.#ctor(System.String,System.Boolean)">
+            <argument>Use `Id` method and `Group` method instead.</argument>
+            <argument>false</argument>
+        </attribute>
+    </member>
+
+    <member name="M:Microsoft.Office.Core.IRibbonUI.InvalidateControl(System.String)">
+        <attribute ctor="M:System.ObsoleteAttribute.#ctor(System.String,System.Boolean)">
+            <argument>Use other overload methods instead.</argument>
+            <argument>false</argument>
+        </attribute>
+    </member>
+</assembly>

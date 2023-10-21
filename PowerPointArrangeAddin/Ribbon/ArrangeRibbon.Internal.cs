@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using Office = Microsoft.Office.Core;
+using PowerPointArrangeAddin.Helper;
 
 #nullable enable
 
 namespace PowerPointArrangeAddin.Ribbon {
 
-    using XmlResourceHelper = Helper.XmlResourceHelper;
     using R1 = ArrangeRibbonResources;
     using R2 = Properties.Resources;
 
@@ -19,9 +19,11 @@ namespace PowerPointArrangeAddin.Ribbon {
                 return "";
             }
 
-            xml = XmlResourceHelper.ApplyTemplateForXml(xml);
+            xml = XmlResourceHelper.ApplyIdWithTagAsFallback(xml);
+            xml = XmlResourceHelper.ApplyAttributeTemplateForXml(xml);
             xml = XmlResourceHelper.ApplySubtreeTemplateForXml(xml);
             xml = XmlResourceHelper.ApplyMsoKeytipForXml(xml, _msoKeytips);
+            xml = XmlResourceHelper.NormalizeControlIdInGroup(xml);
             return xml;
         }
 
@@ -31,7 +33,9 @@ namespace PowerPointArrangeAddin.Ribbon {
                 return "";
             }
 
-            xml = XmlResourceHelper.ApplyTemplateForXml(xml);
+            xml = XmlResourceHelper.ApplyAttributeTemplateForXml(xml);
+            xml = XmlResourceHelper.ApplySubtreeTemplateForXml(xml);
+            xml = XmlResourceHelper.NormalizeControlIdInMenu(xml);
             return xml;
         }
 
@@ -43,17 +47,17 @@ namespace PowerPointArrangeAddin.Ribbon {
         #region Ribbon UI Callbacks
 
         public string GetLabel(Office.IRibbonControl ribbonControl) {
-            _ribbonElementUis.TryGetValue(ribbonControl.Id, out var eui);
+            _ribbonElementUis.TryGetValue(ribbonControl.Id(), out var eui);
             return eui?.Label ?? "<Unknown>";
         }
 
         public System.Drawing.Image? GetImage(Office.IRibbonControl ribbonControl) {
-            _ribbonElementUis.TryGetValue(ribbonControl.Id, out var eui);
+            _ribbonElementUis.TryGetValue(ribbonControl.Id(), out var eui);
             return eui?.Image;
         }
 
         public string GetKeytip(Office.IRibbonControl ribbonControl) {
-            _ribbonElementUis.TryGetValue(ribbonControl.Id, out var eui);
+            _ribbonElementUis.TryGetValue(ribbonControl.Id(), out var eui);
             return eui?.Keytip ?? "";
         }
 
@@ -103,15 +107,15 @@ namespace PowerPointArrangeAddin.Ribbon {
         private const string bgpAlignLR = "bgpAlignLR";
         private const string bgpAlignTB = "bgpAlignTB";
         private const string bgpDistribute = "bgpDistribute";
-        private const string grpArrange_separator1 = "grpArrange_separator1";
+        private const string grpArrange_separator1 = "separator1";
         private const string bgpScaleSize = "bgpScaleSize";
         private const string bgpExtendSize = "bgpExtendSize";
         private const string bgpSnapObjects = "bgpSnapObjects";
-        private const string grpArrange_separator2 = "grpArrange_separator2";
+        private const string grpArrange_separator2 = "separator2";
         private const string bgpMoveLayers = "bgpMoveLayers";
         private const string bgpRotate = "bgpRotate";
         private const string bgpGroupObjects = "bgpGroupObjects";
-        private const string grpArrange_separator3 = "grpArrange_separator3";
+        private const string grpArrange_separator3 = "separator3";
         // grpTextbox
         private const string grpTextbox = "grpTextbox";
         private const string btnAutofitOff = "btnAutofitOff";
@@ -126,17 +130,22 @@ namespace PowerPointArrangeAddin.Ribbon {
         private const string btnResetVerticalMargin = "btnResetVerticalMargin";
         private const string edtMarginTop = "edtMarginTop";
         private const string edtMarginBottom = "edtMarginBottom";
+        // ===
+        private const string grpTextbox_separator1 = "separator1";
+        private const string bgpHorizontalMargin = "bgpHorizontalMargin";
+        private const string grpTextbox_separator2 = "separator2";
+        private const string bgpVerticalMargin = "bgpVerticalMargin";
         // grpShapeSizeAndPosition
         private const string grpShapeSizeAndPosition = "grpShapeSizeAndPosition";
-        private const string mnuShapeArrangement = "mnuShapeArrangement";
-        private const string btnLockShapeAspectRatio = "btnLockShapeAspectRatio";
-        private const string btnShapeScaleAnchor = "btnShapeScaleAnchor";
-        private const string btnCopyShapeSize = "btnCopyShapeSize";
-        private const string btnPasteShapeSize = "btnPasteShapeSize";
-        private const string edtShapePositionX = "edtShapePositionX";
-        private const string edtShapePositionY = "edtShapePositionY";
-        private const string btnCopyShapePosition = "btnCopyShapePosition";
-        private const string btnPasteShapePosition = "btnPasteShapePosition";
+        // private const string mnuShapeArrangement = "mnuShapeArrangement";
+        // private const string btnLockShapeAspectRatio = "btnLockShapeAspectRatio";
+        // private const string btnShapeScaleAnchor = "btnShapeScaleAnchor";
+        // private const string btnCopyShapeSize = "btnCopyShapeSize";
+        // private const string btnPasteShapeSize = "btnPasteShapeSize";
+        // private const string edtShapePositionX = "edtShapePositionX";
+        // private const string edtShapePositionY = "edtShapePositionY";
+        // private const string btnCopyShapePosition = "btnCopyShapePosition";
+        // private const string btnPasteShapePosition = "btnPasteShapePosition";
         // grpReplacePicture
         private const string grpReplacePicture = "grpReplacePicture";
         private const string btnReplaceWithClipboard = "btnReplaceWithClipboard";
@@ -145,73 +154,95 @@ namespace PowerPointArrangeAddin.Ribbon {
         private const string chkReplaceToMiddle = "chkReplaceToMiddle";
         // grpPictureSizeAndPosition
         private const string grpPictureSizeAndPosition = "grpPictureSizeAndPosition";
-        private const string mnuPictureArrangement = "mnuPictureArrangement";
-        private const string btnResetPictureSize = "btnResetPictureSize";
-        private const string btnLockPictureAspectRatio = "btnLockPictureAspectRatio";
-        private const string btnPictureScaleAnchor = "btnPictureScaleAnchor";
-        private const string btnCopyPictureSize = "btnCopyPictureSize";
-        private const string btnPastePictureSize = "btnPastePictureSize";
-        private const string edtPicturePositionX = "edtPicturePositionX";
-        private const string edtPicturePositionY = "edtPicturePositionY";
-        private const string btnCopyPicturePosition = "btnCopyPicturePosition";
-        private const string btnPastePicturePosition = "btnPastePicturePosition";
+        // private const string mnuPictureArrangement = "mnuPictureArrangement";
+        // private const string btnResetPictureSize = "btnResetPictureSize";
+        // private const string btnLockPictureAspectRatio = "btnLockPictureAspectRatio";
+        // private const string btnPictureScaleAnchor = "btnPictureScaleAnchor";
+        // private const string btnCopyPictureSize = "btnCopyPictureSize";
+        // private const string btnPastePictureSize = "btnPastePictureSize";
+        // private const string edtPicturePositionX = "edtPicturePositionX";
+        // private const string edtPicturePositionY = "edtPicturePositionY";
+        // private const string btnCopyPicturePosition = "btnCopyPicturePosition";
+        // private const string btnPastePicturePosition = "btnPastePicturePosition";
         // grpVideoSizeAndPosition
         private const string grpVideoSizeAndPosition = "grpVideoSizeAndPosition";
-        private const string mnuVideoArrangement = "mnuVideoArrangement";
-        private const string btnResetVideoSize = "btnResetVideoSize";
-        private const string btnLockVideoAspectRatio = "btnLockVideoAspectRatio";
-        private const string btnVideoScaleAnchor = "btnVideoScaleAnchor";
-        private const string btnCopyVideoSize = "btnCopyVideoSize";
-        private const string btnPasteVideoSize = "btnPasteVideoSize";
-        private const string edtVideoPositionX = "edtVideoPositionX";
-        private const string edtVideoPositionY = "edtVideoPositionY";
-        private const string btnCopyVideoPosition = "btnCopyVideoPosition";
-        private const string btnPasteVideoPosition = "btnPasteVideoPosition";
+        // private const string mnuVideoArrangement = "mnuVideoArrangement";
+        // private const string btnResetVideoSize = "btnResetVideoSize";
+        // private const string btnLockVideoAspectRatio = "btnLockVideoAspectRatio";
+        // private const string btnVideoScaleAnchor = "btnVideoScaleAnchor";
+        // private const string btnCopyVideoSize = "btnCopyVideoSize";
+        // private const string btnPasteVideoSize = "btnPasteVideoSize";
+        // private const string edtVideoPositionX = "edtVideoPositionX";
+        // private const string edtVideoPositionY = "edtVideoPositionY";
+        // private const string btnCopyVideoPosition = "btnCopyVideoPosition";
+        // private const string btnPasteVideoPosition = "btnPasteVideoPosition";
         // grpAudioSizeAndPosition
         private const string grpAudioSizeAndPosition = "grpAudioSizeAndPosition";
-        private const string mnuAudioArrangement = "mnuAudioArrangement";
-        private const string btnResetAudioSize = "btnResetAudioSize";
-        private const string btnLockAudioAspectRatio = "btnLockAudioAspectRatio";
-        private const string btnAudioScaleAnchor = "btnAudioScaleAnchor";
-        private const string btnCopyAudioSize = "btnCopyAudioSize";
-        private const string btnPasteAudioSize = "btnPasteAudioSize";
-        private const string edtAudioPositionX = "edtAudioPositionX";
-        private const string edtAudioPositionY = "edtAudioPositionY";
-        private const string btnCopyAudioPosition = "btnCopyAudioPosition";
-        private const string btnPasteAudioPosition = "btnPasteAudioPosition";
+        // private const string mnuAudioArrangement = "mnuAudioArrangement";
+        // private const string btnResetAudioSize = "btnResetAudioSize";
+        // private const string btnLockAudioAspectRatio = "btnLockAudioAspectRatio";
+        // private const string btnAudioScaleAnchor = "btnAudioScaleAnchor";
+        // private const string btnCopyAudioSize = "btnCopyAudioSize";
+        // private const string btnPasteAudioSize = "btnPasteAudioSize";
+        // private const string edtAudioPositionX = "edtAudioPositionX";
+        // private const string edtAudioPositionY = "edtAudioPositionY";
+        // private const string btnCopyAudioPosition = "btnCopyAudioPosition";
+        // private const string btnPasteAudioPosition = "btnPasteAudioPosition";
         // grpTableSizeAndPosition
         private const string grpTableSizeAndPosition = "grpTableSizeAndPosition";
-        private const string mnuTableArrangement = "mnuTableArrangement";
-        private const string btnLockTableAspectRatio = "btnLockTableAspectRatio";
-        private const string btnTableScaleAnchor = "btnTableScaleAnchor";
-        private const string btnCopyTableSize = "btnCopyTableSize";
-        private const string btnPasteTableSize = "btnPasteTableSize";
-        private const string edtTablePositionX = "edtTablePositionX";
-        private const string edtTablePositionY = "edtTablePositionY";
-        private const string btnCopyTablePosition = "btnCopyTablePosition";
-        private const string btnPasteTablePosition = "btnPasteTablePosition";
+        // private const string mnuTableArrangement = "mnuTableArrangement";
+        // private const string btnLockTableAspectRatio = "btnLockTableAspectRatio";
+        // private const string btnTableScaleAnchor = "btnTableScaleAnchor";
+        // private const string btnCopyTableSize = "btnCopyTableSize";
+        // private const string btnPasteTableSize = "btnPasteTableSize";
+        // private const string edtTablePositionX = "edtTablePositionX";
+        // private const string edtTablePositionY = "edtTablePositionY";
+        // private const string btnCopyTablePosition = "btnCopyTablePosition";
+        // private const string btnPasteTablePosition = "btnPasteTablePosition";
         // grpChartSizeAndPosition
         private const string grpChartSizeAndPosition = "grpChartSizeAndPosition";
-        private const string mnuChartArrangement = "mnuChartArrangement";
-        private const string btnLockChartAspectRatio = "btnLockChartAspectRatio";
-        private const string btnChartScaleAnchor = "btnChartScaleAnchor";
-        private const string btnCopyChartSize = "btnCopyChartSize";
-        private const string btnPasteChartSize = "btnPasteChartSize";
-        private const string edtChartPositionX = "edtChartPositionX";
-        private const string edtChartPositionY = "edtChartPositionY";
-        private const string btnCopyChartPosition = "btnCopyChartPosition";
-        private const string btnPasteChartPosition = "btnPasteChartPosition";
+        // private const string mnuChartArrangement = "mnuChartArrangement";
+        // private const string btnLockChartAspectRatio = "btnLockChartAspectRatio";
+        // private const string btnChartScaleAnchor = "btnChartScaleAnchor";
+        // private const string btnCopyChartSize = "btnCopyChartSize";
+        // private const string btnPasteChartSize = "btnPasteChartSize";
+        // private const string edtChartPositionX = "edtChartPositionX";
+        // private const string edtChartPositionY = "edtChartPositionY";
+        // private const string btnCopyChartPosition = "btnCopyChartPosition";
+        // private const string btnPasteChartPosition = "btnPasteChartPosition";
         // grpSmartartSizeAndPosition
         private const string grpSmartartSizeAndPosition = "grpSmartartSizeAndPosition";
-        private const string mnuSmartartArrangement = "mnuSmartartArrangement";
-        private const string btnLockSmartartAspectRatio = "btnLockSmartartAspectRatio";
-        private const string btnSmartartScaleAnchor = "btnSmartartScaleAnchor";
-        private const string btnCopySmartartSize = "btnCopySmartartSize";
-        private const string btnPasteSmartartSize = "btnPasteSmartartSize";
-        private const string edtSmartartPositionX = "edtSmartartPositionX";
-        private const string edtSmartartPositionY = "edtSmartartPositionY";
-        private const string btnCopySmartartPosition = "btnCopySmartartPosition";
-        private const string btnPasteSmartartPosition = "btnPasteSmartartPosition";
+        // private const string mnuSmartartArrangement = "mnuSmartartArrangement";
+        // private const string btnLockSmartartAspectRatio = "btnLockSmartartAspectRatio";
+        // private const string btnSmartartScaleAnchor = "btnSmartartScaleAnchor";
+        // private const string btnCopySmartartSize = "btnCopySmartartSize";
+        // private const string btnPasteSmartartSize = "btnPasteSmartartSize";
+        // private const string edtSmartartPositionX = "edtSmartartPositionX";
+        // private const string edtSmartartPositionY = "edtSmartartPositionY";
+        // private const string btnCopySmartartPosition = "btnCopySmartartPosition";
+        // private const string btnPasteSmartartPosition = "btnPasteSmartartPosition";
+        // ////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // private const string mnuArrangement = "mnuArrangement";
+        private const string btnLockAspectRatio = "btnLockAspectRatio";
+        // private const string btnScaleAnchor = "btnScaleAnchor";
+        private const string btnCopySize = "btnCopySize";
+        private const string btnPasteSize = "btnPasteSize";
+        private const string edtPositionX = "edtPositionX";
+        private const string edtPositionY = "edtPositionY";
+        private const string btnCopyPosition = "btnCopyPosition";
+        private const string btnPastePosition = "btnPastePosition";
+        // ===
+        // private const string mnuArrangement = "mnuPictureArrangement";
+        private const string btnResetSize = "btnResetSize";
+        // private const string btnLockAspectRatio = "btnLockPictureAspectRatio";
+        // private const string btnScaleAnchor = "btnPictureScaleAnchor";
+        // private const string btnCopySize = "btnCopyPictureSize";
+        // private const string btnPasteSize = "btnPastePictureSize";
+        // private const string edtPositionX = "edtPicturePositionX";
+        // private const string edtPositionY = "edtPicturePositionY";
+        // private const string btnCopyPosition = "btnCopyPicturePosition";
+        // private const string btnPastePosition = "btnPastePicturePosition";
+        // ////////////////////////////////////////////////////////////////////////////////////////////////////////
         // mnuArrangement
         private const string mnuArrangement_btnAlignRelative_ToObjects = "btnAlignRelative_ToObjects";
         private const string mnuArrangement_btnAlignRelative_ToFirstObject = "btnAlignRelative_ToFirstObject";
@@ -258,7 +289,7 @@ namespace PowerPointArrangeAddin.Ribbon {
                 { btnAlignBottom, new ElementUi { Label = R1.btnAlignBottom, Image = R2.ObjectsAlignBottom, Keytip = "DB" } },
                 { btnDistributeHorizontal, new ElementUi { Label = R1.btnDistributeHorizontal, Image = R2.AlignDistributeHorizontally, Keytip = "DH" } },
                 { btnDistributeVertical, new ElementUi { Label = R1.btnDistributeVertical, Image = R2.AlignDistributeVertically, Keytip = "DV" } },
-                { btnAlignRelative, new ElementUi { Label = ArrangeRibbonResources.btnAlignRelative_ToObjects, Image = R2.AlignRelativeToObjects, Keytip = "DA" } },
+                { btnAlignRelative, new ElementUi { Label = R1.btnAlignRelative_ToObjects, Image = R2.AlignRelativeToObjects, Keytip = "DA" } },
                 { btnScaleSameWidth, new ElementUi { Label = R1.btnScaleSameWidth, Image = R2.ScaleSameWidth, Keytip = "PW" } },
                 { btnScaleSameHeight, new ElementUi { Label = R1.btnScaleSameHeight, Image = R2.ScaleSameHeight, Keytip = "PH" } },
                 { btnScaleSameSize, new ElementUi { Label = R1.btnScaleSameSize, Image = R2.ScaleSameSize, Keytip = "PS" } },
@@ -299,15 +330,15 @@ namespace PowerPointArrangeAddin.Ribbon {
                 { edtMarginBottom, new ElementUi { Label = R1.edtMarginBottom, Keytip = "MB" } },
                 // grpShapeSizeAndPosition
                 { grpShapeSizeAndPosition, new ElementUi { Label = R1.grpShapeSizeAndPosition, Image = R2.SizeAndPosition } },
-                { mnuShapeArrangement, new ElementUi { Label = R1.mnuShapeArrangement, Image = R2.ObjectArrangement_32, Keytip = "B" } },
-                { btnLockShapeAspectRatio, new ElementUi { Label = R1.btnLockShapeAspectRatio, Image = R2.ObjectLockAspectRatio, Keytip = "L" } },
-                { btnShapeScaleAnchor, new ElementUi { Label = R1.btnScaleAnchor_TopLeft, Image = R2.ScaleFromTopLeft, Keytip = "PA" } },
-                { btnCopyShapeSize, new ElementUi { Label = R1.btnCopyShapeSize, Image = R2.Copy, Keytip = "SC" } },
-                { btnPasteShapeSize, new ElementUi { Label = R1.btnPasteShapeSize, Image = R2.Paste, Keytip = "SP" } },
-                { edtShapePositionX, new ElementUi { Label = R1.edtShapePositionX, Keytip = "PX" } },
-                { edtShapePositionY, new ElementUi { Label = R1.edtShapePositionY, Keytip = "PY" } },
-                { btnCopyShapePosition, new ElementUi { Label = R1.btnCopyShapePosition, Image = R2.Copy, Keytip = "PC" } },
-                { btnPasteShapePosition, new ElementUi { Label = R1.btnPasteShapePosition, Image = R2.Paste, Keytip = "PP" } },
+                // { mnuShapeArrangement, new ElementUi { Label = R1.mnuShapeArrangement, Image = R2.ObjectArrangement_32, Keytip = "B" } },
+                // { btnLockShapeAspectRatio, new ElementUi { Label = R1.btnLockShapeAspectRatio, Image = R2.ObjectLockAspectRatio, Keytip = "L" } },
+                // { btnShapeScaleAnchor, new ElementUi { Label = R1.btnScaleAnchor_TopLeft, Image = R2.ScaleFromTopLeft, Keytip = "PA" } },
+                // { btnCopyShapeSize, new ElementUi { Label = R1.btnCopyShapeSize, Image = R2.Copy, Keytip = "SC" } },
+                // { btnPasteShapeSize, new ElementUi { Label = R1.btnPasteShapeSize, Image = R2.Paste, Keytip = "SP" } },
+                // { edtShapePositionX, new ElementUi { Label = R1.edtShapePositionX, Keytip = "PX" } },
+                // { edtShapePositionY, new ElementUi { Label = R1.edtShapePositionY, Keytip = "PY" } },
+                // { btnCopyShapePosition, new ElementUi { Label = R1.btnCopyShapePosition, Image = R2.Copy, Keytip = "PC" } },
+                // { btnPasteShapePosition, new ElementUi { Label = R1.btnPasteShapePosition, Image = R2.Paste, Keytip = "PP" } },
                 // grpReplacePicture
                 { grpReplacePicture, new ElementUi { Label = R1.grpReplacePicture, Image = R2.PictureChangeFromClipboard } },
                 { btnReplaceWithClipboard, new ElementUi { Label = R1.btnReplaceWithClipboard, Image = R2.PictureChangeFromClipboard_32, Keytip = "TC" } },
@@ -316,73 +347,83 @@ namespace PowerPointArrangeAddin.Ribbon {
                 { chkReplaceToMiddle, new ElementUi { Label = R1.chkReplaceToMiddle, Keytip = "TM" } },
                 // grpPictureSizeAndPosition
                 { grpPictureSizeAndPosition, new ElementUi { Label = R1.grpPictureSizeAndPosition, Image = R2.SizeAndPosition } },
-                { mnuPictureArrangement, new ElementUi { Label = R1.mnuPictureArrangement, Image = R2.ObjectArrangement_32, Keytip = "B" } },
-                { btnResetPictureSize, new ElementUi { Label = R1.btnResetPictureSize, Image = R2.PictureResetSize_32, Keytip = "SR" } },
-                { btnLockPictureAspectRatio, new ElementUi { Label = R1.btnLockPictureAspectRatio, Image = R2.ObjectLockAspectRatio, Keytip = "L" } },
-                { btnPictureScaleAnchor, new ElementUi { Label = R1.btnScaleAnchor_TopLeft, Image = R2.ScaleFromTopLeft, Keytip = "PA" } },
-                { btnCopyPictureSize, new ElementUi { Label = R1.btnCopyPictureSize, Image = R2.Copy, Keytip = "SC" } },
-                { btnPastePictureSize, new ElementUi { Label = R1.btnPastePictureSize, Image = R2.Paste, Keytip = "SP" } },
-                { edtPicturePositionX, new ElementUi { Label = R1.edtPicturePositionX, Keytip = "PX" } },
-                { edtPicturePositionY, new ElementUi { Label = R1.edtPicturePositionY, Keytip = "PY" } },
-                { btnCopyPicturePosition, new ElementUi { Label = R1.btnCopyPicturePosition, Image = R2.Copy, Keytip = "PC" } },
-                { btnPastePicturePosition, new ElementUi { Label = R1.btnPastePicturePosition, Image = R2.Paste, Keytip = "PP" } },
+                // { mnuPictureArrangement, new ElementUi { Label = R1.mnuPictureArrangement, Image = R2.ObjectArrangement_32, Keytip = "B" } },
+                // { btnResetPictureSize, new ElementUi { Label = R1.btnResetPictureSize, Image = R2.PictureResetSize_32, Keytip = "SR" } },
+                // { btnLockPictureAspectRatio, new ElementUi { Label = R1.btnLockPictureAspectRatio, Image = R2.ObjectLockAspectRatio, Keytip = "L" } },
+                // { btnPictureScaleAnchor, new ElementUi { Label = R1.btnScaleAnchor_TopLeft, Image = R2.ScaleFromTopLeft, Keytip = "PA" } },
+                // { btnCopyPictureSize, new ElementUi { Label = R1.btnCopyPictureSize, Image = R2.Copy, Keytip = "SC" } },
+                // { btnPastePictureSize, new ElementUi { Label = R1.btnPastePictureSize, Image = R2.Paste, Keytip = "SP" } },
+                // { edtPicturePositionX, new ElementUi { Label = R1.edtPicturePositionX, Keytip = "PX" } },
+                // { edtPicturePositionY, new ElementUi { Label = R1.edtPicturePositionY, Keytip = "PY" } },
+                // { btnCopyPicturePosition, new ElementUi { Label = R1.btnCopyPicturePosition, Image = R2.Copy, Keytip = "PC" } },
+                // { btnPastePicturePosition, new ElementUi { Label = R1.btnPastePicturePosition, Image = R2.Paste, Keytip = "PP" } },
                 // grpVideoSizeAndPosition
                 { grpVideoSizeAndPosition, new ElementUi { Label = R1.grpVideoSizeAndPosition, Image = R2.SizeAndPosition } },
-                { mnuVideoArrangement, new ElementUi { Label = R1.mnuVideoArrangement, Image = R2.ObjectArrangement_32, Keytip = "B" } },
-                { btnResetVideoSize, new ElementUi { Label = R1.btnResetVideoSize, Image = R2.PictureResetSize_32, Keytip = "SR" } },
-                { btnLockVideoAspectRatio, new ElementUi { Label = R1.btnLockVideoAspectRatio, Image = R2.ObjectLockAspectRatio, Keytip = "SL" } }, // L
-                { btnVideoScaleAnchor, new ElementUi { Label = R1.btnScaleAnchor_TopLeft, Image = R2.ScaleFromTopLeft, Keytip = "SF" } }, // PA
-                { btnCopyVideoSize, new ElementUi { Label = R1.btnCopyVideoSize, Image = R2.Copy, Keytip = "SC" } },
-                { btnPasteVideoSize, new ElementUi { Label = R1.btnPasteVideoSize, Image = R2.Paste, Keytip = "SP" } },
-                { edtVideoPositionX, new ElementUi { Label = R1.edtVideoPositionX, Keytip = "SX" } }, // PX
-                { edtVideoPositionY, new ElementUi { Label = R1.edtVideoPositionY, Keytip = "SY" } }, // PY
-                { btnCopyVideoPosition, new ElementUi { Label = R1.btnCopyVideoPosition, Image = R2.Copy, Keytip = "SS" } }, // PC
-                { btnPasteVideoPosition, new ElementUi { Label = R1.btnPasteVideoPosition, Image = R2.Paste, Keytip = "ST" } }, // PP
+                // { mnuVideoArrangement, new ElementUi { Label = R1.mnuVideoArrangement, Image = R2.ObjectArrangement_32, Keytip = "B" } },
+                // { btnResetVideoSize, new ElementUi { Label = R1.btnResetVideoSize, Image = R2.PictureResetSize_32, Keytip = "SR" } },
+                // { btnLockVideoAspectRatio, new ElementUi { Label = R1.btnLockVideoAspectRatio, Image = R2.ObjectLockAspectRatio, Keytip = "SL" } }, // L // TODO
+                // { btnVideoScaleAnchor, new ElementUi { Label = R1.btnScaleAnchor_TopLeft, Image = R2.ScaleFromTopLeft, Keytip = "SF" } }, // PA // TODO
+                // { btnCopyVideoSize, new ElementUi { Label = R1.btnCopyVideoSize, Image = R2.Copy, Keytip = "SC" } },
+                // { btnPasteVideoSize, new ElementUi { Label = R1.btnPasteVideoSize, Image = R2.Paste, Keytip = "SP" } },
+                // { edtVideoPositionX, new ElementUi { Label = R1.edtVideoPositionX, Keytip = "SX" } }, // PX // TODO
+                // { edtVideoPositionY, new ElementUi { Label = R1.edtVideoPositionY, Keytip = "SY" } }, // PY // TODO
+                // { btnCopyVideoPosition, new ElementUi { Label = R1.btnCopyVideoPosition, Image = R2.Copy, Keytip = "SS" } }, // PC // TODO
+                // { btnPasteVideoPosition, new ElementUi { Label = R1.btnPasteVideoPosition, Image = R2.Paste, Keytip = "ST" } }, // PP // TODO
                 // grpAudioSizeAndPosition
                 { grpAudioSizeAndPosition, new ElementUi { Label = R1.grpAudioSizeAndPosition, Image = R2.SizeAndPosition } },
-                { mnuAudioArrangement, new ElementUi { Label = R1.mnuAudioArrangement, Image = R2.ObjectArrangement_32, Keytip = "B" } },
-                { btnResetAudioSize, new ElementUi { Label = R1.btnResetAudioSize, Image = R2.PictureResetSize_32, Keytip = "SR" } },
-                { btnLockAudioAspectRatio, new ElementUi { Label = R1.btnLockAudioAspectRatio, Image = R2.ObjectLockAspectRatio, Keytip = "L" } },
-                { btnAudioScaleAnchor, new ElementUi { Label = R1.btnScaleAnchor_TopLeft, Image = R2.ScaleFromTopLeft, Keytip = "PA" } },
-                { btnCopyAudioSize, new ElementUi { Label = R1.btnCopyAudioSize, Image = R2.Copy, Keytip = "SC" } },
-                { btnPasteAudioSize, new ElementUi { Label = R1.btnPasteAudioSize, Image = R2.Paste, Keytip = "SP" } },
-                { edtAudioPositionX, new ElementUi { Label = R1.edtAudioPositionX, Keytip = "PX" } },
-                { edtAudioPositionY, new ElementUi { Label = R1.edtAudioPositionY, Keytip = "PY" } },
-                { btnCopyAudioPosition, new ElementUi { Label = R1.btnCopyAudioPosition, Image = R2.Copy, Keytip = "PC" } },
-                { btnPasteAudioPosition, new ElementUi { Label = R1.btnPasteAudioPosition, Image = R2.Paste, Keytip = "PP" } },
+                // { mnuAudioArrangement, new ElementUi { Label = R1.mnuAudioArrangement, Image = R2.ObjectArrangement_32, Keytip = "B" } },
+                // { btnResetAudioSize, new ElementUi { Label = R1.btnResetAudioSize, Image = R2.PictureResetSize_32, Keytip = "SR" } },
+                // { btnLockAudioAspectRatio, new ElementUi { Label = R1.btnLockAudioAspectRatio, Image = R2.ObjectLockAspectRatio, Keytip = "L" } },
+                // { btnAudioScaleAnchor, new ElementUi { Label = R1.btnScaleAnchor_TopLeft, Image = R2.ScaleFromTopLeft, Keytip = "PA" } },
+                // { btnCopyAudioSize, new ElementUi { Label = R1.btnCopyAudioSize, Image = R2.Copy, Keytip = "SC" } },
+                // { btnPasteAudioSize, new ElementUi { Label = R1.btnPasteAudioSize, Image = R2.Paste, Keytip = "SP" } },
+                // { edtAudioPositionX, new ElementUi { Label = R1.edtAudioPositionX, Keytip = "PX" } },
+                // { edtAudioPositionY, new ElementUi { Label = R1.edtAudioPositionY, Keytip = "PY" } },
+                // { btnCopyAudioPosition, new ElementUi { Label = R1.btnCopyAudioPosition, Image = R2.Copy, Keytip = "PC" } },
+                // { btnPasteAudioPosition, new ElementUi { Label = R1.btnPasteAudioPosition, Image = R2.Paste, Keytip = "PP" } },
                 // grpTableSizeAndPosition
                 { grpTableSizeAndPosition, new ElementUi { Label = R1.grpTableSizeAndPosition, Image = R2.SizeAndPosition } },
-                { mnuTableArrangement, new ElementUi { Label = R1.mnuTableArrangement, Image = R2.ObjectArrangement_32, Keytip = "SB" } }, // B
-                { btnLockTableAspectRatio, new ElementUi { Label = R1.btnLockTableAspectRatio, Image = R2.ObjectLockAspectRatio, Keytip = "SL" } }, // L
-                { btnTableScaleAnchor, new ElementUi { Label = R1.btnScaleAnchor_TopLeft, Image = R2.ScaleFromTopLeft, Keytip = "SF" } }, // PA
-                { btnCopyTableSize, new ElementUi { Label = R1.btnCopyTableSize, Image = R2.Copy, Keytip = "SC" } },
-                { btnPasteTableSize, new ElementUi { Label = R1.btnPasteTableSize, Image = R2.Paste, Keytip = "SP" } },
-                { edtTablePositionX, new ElementUi { Label = R1.edtTablePositionX, Keytip = "SX" } }, // PX
-                { edtTablePositionY, new ElementUi { Label = R1.edtTablePositionY, Keytip = "SY" } }, // PY
-                { btnCopyTablePosition, new ElementUi { Label = R1.btnCopyTablePosition, Image = R2.Copy, Keytip = "SS" } }, // PC
-                { btnPasteTablePosition, new ElementUi { Label = R1.btnPasteTablePosition, Image = R2.Paste, Keytip = "ST" } }, // PP
+                // { mnuTableArrangement, new ElementUi { Label = R1.mnuTableArrangement, Image = R2.ObjectArrangement_32, Keytip = "SB" } }, // B // TODO
+                // { btnLockTableAspectRatio, new ElementUi { Label = R1.btnLockTableAspectRatio, Image = R2.ObjectLockAspectRatio, Keytip = "SL" } }, // L // TODO
+                // { btnTableScaleAnchor, new ElementUi { Label = R1.btnScaleAnchor_TopLeft, Image = R2.ScaleFromTopLeft, Keytip = "SF" } }, // PA // TODO
+                // { btnCopyTableSize, new ElementUi { Label = R1.btnCopyTableSize, Image = R2.Copy, Keytip = "SC" } },
+                // { btnPasteTableSize, new ElementUi { Label = R1.btnPasteTableSize, Image = R2.Paste, Keytip = "SP" } },
+                // { edtTablePositionX, new ElementUi { Label = R1.edtTablePositionX, Keytip = "SX" } }, // PX // TODO
+                // { edtTablePositionY, new ElementUi { Label = R1.edtTablePositionY, Keytip = "SY" } }, // PY // TODO
+                // { btnCopyTablePosition, new ElementUi { Label = R1.btnCopyTablePosition, Image = R2.Copy, Keytip = "SS" } }, // PC // TODO
+                // { btnPasteTablePosition, new ElementUi { Label = R1.btnPasteTablePosition, Image = R2.Paste, Keytip = "ST" } }, // PP // TODO
                 // grpChartSizeAndPosition
                 { grpChartSizeAndPosition, new ElementUi { Label = R1.grpChartSizeAndPosition, Image = R2.SizeAndPosition } },
-                { mnuChartArrangement, new ElementUi { Label = R1.mnuChartArrangement, Image = R2.ObjectArrangement_32, Keytip = "B" } },
-                { btnLockChartAspectRatio, new ElementUi { Label = R1.btnLockChartAspectRatio, Image = R2.ObjectLockAspectRatio, Keytip = "L" } },
-                { btnChartScaleAnchor, new ElementUi { Label = R1.btnScaleAnchor_TopLeft, Image = R2.ScaleFromTopLeft, Keytip = "PA" } },
-                { btnCopyChartSize, new ElementUi { Label = R1.btnCopyChartSize, Image = R2.Copy, Keytip = "SC" } },
-                { btnPasteChartSize, new ElementUi { Label = R1.btnPasteChartSize, Image = R2.Paste, Keytip = "SP" } },
-                { edtChartPositionX, new ElementUi { Label = R1.edtChartPositionX, Keytip = "PX" } },
-                { edtChartPositionY, new ElementUi { Label = R1.edtChartPositionY, Keytip = "PY" } },
-                { btnCopyChartPosition, new ElementUi { Label = R1.btnCopyChartPosition, Image = R2.Copy, Keytip = "PC" } },
-                { btnPasteChartPosition, new ElementUi { Label = R1.btnPasteChartPosition, Image = R2.Paste, Keytip = "PP" } },
+                // { mnuChartArrangement, new ElementUi { Label = R1.mnuChartArrangement, Image = R2.ObjectArrangement_32, Keytip = "B" } },
+                // { btnLockChartAspectRatio, new ElementUi { Label = R1.btnLockChartAspectRatio, Image = R2.ObjectLockAspectRatio, Keytip = "L" } },
+                // { btnChartScaleAnchor, new ElementUi { Label = R1.btnScaleAnchor_TopLeft, Image = R2.ScaleFromTopLeft, Keytip = "PA" } },
+                // { btnCopyChartSize, new ElementUi { Label = R1.btnCopyChartSize, Image = R2.Copy, Keytip = "SC" } },
+                // { btnPasteChartSize, new ElementUi { Label = R1.btnPasteChartSize, Image = R2.Paste, Keytip = "SP" } },
+                // { edtChartPositionX, new ElementUi { Label = R1.edtChartPositionX, Keytip = "PX" } },
+                // { edtChartPositionY, new ElementUi { Label = R1.edtChartPositionY, Keytip = "PY" } },
+                // { btnCopyChartPosition, new ElementUi { Label = R1.btnCopyChartPosition, Image = R2.Copy, Keytip = "PC" } },
+                // { btnPasteChartPosition, new ElementUi { Label = R1.btnPasteChartPosition, Image = R2.Paste, Keytip = "PP" } },
                 // grpSmartartSizeAndPosition
                 { grpSmartartSizeAndPosition, new ElementUi { Label = R1.grpSmartartSizeAndPosition, Image = R2.SizeAndPosition } },
-                { mnuSmartartArrangement, new ElementUi { Label = R1.mnuSmartartArrangement, Image = R2.ObjectArrangement_32, Keytip = "B" } },
-                { btnLockSmartartAspectRatio, new ElementUi { Label = R1.btnLockSmartartAspectRatio, Image = R2.ObjectLockAspectRatio, Keytip = "L" } },
-                { btnSmartartScaleAnchor, new ElementUi { Label = R1.btnScaleAnchor_TopLeft, Image = R2.ScaleFromTopLeft, Keytip = "PA" } },
-                { btnCopySmartartSize, new ElementUi { Label = R1.btnCopySmartartSize, Image = R2.Copy, Keytip = "SC" } },
-                { btnPasteSmartartSize, new ElementUi { Label = R1.btnPasteSmartartSize, Image = R2.Paste, Keytip = "SP" } },
-                { edtSmartartPositionX, new ElementUi { Label = R1.edtSmartartPositionX, Keytip = "PX" } },
-                { edtSmartartPositionY, new ElementUi { Label = R1.edtSmartartPositionY, Keytip = "PY" } },
-                { btnCopySmartartPosition, new ElementUi { Label = R1.btnCopySmartartPosition, Image = R2.Copy, Keytip = "PC" } },
-                { btnPasteSmartartPosition, new ElementUi { Label = R1.btnPasteSmartartPosition, Image = R2.Paste, Keytip = "PP" } },
+                // { mnuSmartartArrangement, new ElementUi { Label = R1.mnuSmartartArrangement, Image = R2.ObjectArrangement_32, Keytip = "B" } },
+                // { btnLockSmartartAspectRatio, new ElementUi { Label = R1.btnLockSmartartAspectRatio, Image = R2.ObjectLockAspectRatio, Keytip = "L" } },
+                // { btnSmartartScaleAnchor, new ElementUi { Label = R1.btnScaleAnchor_TopLeft, Image = R2.ScaleFromTopLeft, Keytip = "PA" } },
+                // { btnCopySmartartSize, new ElementUi { Label = R1.btnCopySmartartSize, Image = R2.Copy, Keytip = "SC" } },
+                // { btnPasteSmartartSize, new ElementUi { Label = R1.btnPasteSmartartSize, Image = R2.Paste, Keytip = "SP" } },
+                // { edtSmartartPositionX, new ElementUi { Label = R1.edtSmartartPositionX, Keytip = "PX" } },
+                // { edtSmartartPositionY, new ElementUi { Label = R1.edtSmartartPositionY, Keytip = "PY" } },
+                // { btnCopySmartartPosition, new ElementUi { Label = R1.btnCopySmartartPosition, Image = R2.Copy, Keytip = "PC" } },
+                // { btnPasteSmartartPosition, new ElementUi { Label = R1.btnPasteSmartartPosition, Image = R2.Paste, Keytip = "PP" } },
+                // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                { btnResetSize, new ElementUi { Label = R1.btnResetSize, Image = R2.PictureResetSize_32, Keytip = "SR" } },
+                { btnLockAspectRatio, new ElementUi { Label = R1.btnLockAspectRatio, Image = R2.ObjectLockAspectRatio, Keytip = "L" } },
+                { btnCopySize, new ElementUi { Label = R1.btnCopySize, Image = R2.Copy, Keytip = "SC" } },
+                { btnPasteSize, new ElementUi { Label = R1.btnPasteSize, Image = R2.Paste, Keytip = "SP" } },
+                { edtPositionX, new ElementUi { Label = R1.edtPositionX, Keytip = "PX" } },
+                { edtPositionY, new ElementUi { Label = R1.edtPositionY, Keytip = "PY" } },
+                { btnCopyPosition, new ElementUi { Label = R1.btnCopyPosition, Image = R2.Copy, Keytip = "PC" } },
+                { btnPastePosition, new ElementUi { Label = R1.btnPastePosition, Image = R2.Paste, Keytip = "PP" } },
+                // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 // mnuArrangement
                 { mnuArrangement_sepAlignmentAndResizing, new ElementUi { Label = R1.mnuArrangement_sepAlignmentAndResizing } },
                 { mnuArrangement_mnuAlignment, new ElementUi { Label = R1.mnuArrangement_mnuAlignment, Image = R2.ObjectArrangement } },

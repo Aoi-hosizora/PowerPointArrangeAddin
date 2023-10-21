@@ -27,11 +27,98 @@ namespace PowerPointArrangeAddin.Helper {
             return null;
         }
 
+        private const string Separator = "··";
+
+        public static string NormalizeControlIdInGroup(string xmlText) {
+            var document = new XmlDocument();
+            try {
+                document.LoadXml(xmlText);
+            } catch (Exception) {
+                return "";
+            }
+
+            static void Normalize(XmlNode node, string groupName) {
+                if (node.Name == "group") {
+                    return;
+                }
+
+                var attributes = node.Attributes;
+                if (attributes != null) {
+                    var idAttribute = attributes["id"];
+                    var idValue = idAttribute?.Value;
+                    if (idAttribute != null && !string.IsNullOrWhiteSpace(idValue)) {
+                        idAttribute.Value = $"{idValue!}{Separator}{groupName}";
+                    }
+                }
+
+                if (node.HasChildNodes) {
+                    foreach (var childNode in node.ChildNodes.OfType<XmlNode>()) {
+                        Normalize(childNode, groupName);
+                    }
+                }
+            }
+
+            var groupNodes = document.GetElementsByTagName("group");
+            foreach (var groupNode in groupNodes.OfType<XmlNode>()) {
+                var groupId = groupNode.Attributes?["id"]?.Value;
+                if (string.IsNullOrWhiteSpace(groupId)) {
+                    continue;
+                }
+                foreach (var childNode in groupNode.ChildNodes.OfType<XmlNode>()) {
+                    Normalize(childNode, groupId!);
+                }
+            }
+
+            return document.ToXmlText();
+        }
+
+
+        public static string NormalizeControlIdInMenu(string xmlText) {
+            return xmlText;
+        }
+
+        public static string ApplyIdWithTagAsFallback(string xmlText) {
+            var document = new XmlDocument();
+
+            try {
+                document.LoadXml(xmlText);
+            } catch (Exception) {
+                return "";
+            }
+
+            // find nodes that have tag attribute
+            var nodesWithTag = document.SelectNodes("//*[@tag]");
+            if (nodesWithTag == null || nodesWithTag.Count == 0) {
+                return document.ToXmlText();
+            }
+
+            // set id to tag as fallback value for these nodes
+            foreach (var node in nodesWithTag.OfType<XmlNode>()) {
+                var attributes = node.Attributes;
+                if (attributes == null) {
+                    continue;
+                }
+                var tagValue = attributes["tag"]?.Value;
+                if (string.IsNullOrWhiteSpace(tagValue)) {
+                    continue;
+                }
+                var idValue = attributes["id"]?.Value; // TODO id="~tag"
+                if (!string.IsNullOrWhiteSpace(idValue)) {
+                    continue;
+                }
+                var newAttribute = document.CreateAttribute("id");
+                newAttribute.Value = tagValue!;
+                attributes.Append(newAttribute);
+            }
+
+            return document.ToXmlText();
+        }
+
         private static string ToXmlText(this XmlNode node) {
             return node.OuterXml;
         }
 
-        public static string ApplyTemplateForXml(string xmlText) {
+        public static string ApplyAttributeTemplateForXml(string xmlText) {
             var document = new XmlDocument();
             try {
                 document.LoadXml(xmlText);
@@ -159,7 +246,11 @@ namespace PowerPointArrangeAddin.Helper {
                     var attributes = newNode.Attributes;
                     var fieldValue = attributes?[field]?.Value;
                     if (!string.IsNullOrWhiteSpace(fieldValue)) {
-                        attributes![field]!.Value = attributes[field]!.Value.Replace(from, to);
+                        attributes![field]!.Value = from switch {
+                            "$" => attributes[field]!.Value + to,
+                            "^" => to + attributes[field]!.Value,
+                            _ => attributes[field]!.Value.Replace(from, to)
+                        };
                     }
                     if (!newNode.HasChildNodes) {
                         return;
@@ -172,8 +263,8 @@ namespace PowerPointArrangeAddin.Helper {
                 // enumerate template node list and apply to node 
                 foreach (var templateNode in templateNodeList.OfType<XmlNode>()) {
                     var newNode = templateNode.CloneNode(true); // deep clone template node
-                    if (!string.IsNullOrWhiteSpace(replaceField) && !string.IsNullOrWhiteSpace(replaceFrom) && !string.IsNullOrWhiteSpace(replaceTo)) {
-                        ReplaceFieldValue(newNode, replaceField!, replaceFrom!, replaceTo!);
+                    if (!string.IsNullOrWhiteSpace(replaceField) && !string.IsNullOrWhiteSpace(replaceFrom) && replaceTo != null) {
+                        ReplaceFieldValue(newNode, replaceField!, replaceFrom!, replaceTo);
                     }
                     if (!parentChildrenNode.ContainsKey(newNode.Name)) {
                         parentNode.AppendChild(newNode); // only append node if node name does not exist
@@ -230,7 +321,12 @@ namespace PowerPointArrangeAddin.Helper {
                 }
 
                 // query keytip of specific isMso control
-                var keytipValue = msoKeytips?[groupName!]?[idMsoValue!];
+                if (!msoKeytips.TryGetValue(groupName!, out var msoKeytipsMap)) {
+                    continue;
+                }
+                if (!msoKeytipsMap.TryGetValue(idMsoValue!, out var keytipValue)) {
+                    continue;
+                }
                 if (string.IsNullOrWhiteSpace(keytipValue)) {
                     continue;
                 }

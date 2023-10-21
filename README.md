@@ -134,3 +134,4 @@ msbuild PowerPointArrangeAddin.csproj /p:Configuration=Release /p:Platform=x64 /
 + [How do I specify the Help Link, Support Link and Update Information?](https://stackoverflow.com/questions/7052120/how-do-i-specify-the-help-link-support-link-and-update-information)
 + ["Create Shortcut" Checkbox](https://stackoverflow.com/questions/4658220/create-shortcut-checkbox)
 + [(Wix) MSI uninstall is very slow. Log shows slowness is when shortcuts are being removed](https://stackoverflow.com/questions/63581670/wix-msi-uninstall-is-very-slow-log-shows-slowness-is-when-shortcuts-are-being)
++ [External annotations (JetBrains ReSharper)](https://www.jetbrains.com/help/resharper/Code_Analysis__External_Annotations.html)

@@ -173,6 +173,7 @@
     <Compile Include="Ribbon\ArrangeRibbon.Internal.cs" />
     <EmbeddedResource Include="Ribbon\ArrangeRibbon.UI.xml" />
     <EmbeddedResource Include="Ribbon\ArrangeRibbon.Menu.xml" />
+    <EmbeddedResource Include="Ribbon\ArrangeRibbon.UI.xml.bak" />
     <EmbeddedResource Include="Ribbon\ArrangeRibbonResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ArrangeRibbonResources.Designer.cs</LastGenOutput>
@@ -195,6 +196,7 @@
   <ItemGroup>
     <Compile Include="Helper\ArrangementHelper.cs" />
     <Compile Include="Helper\ReplacePictureHelper.cs" />
+    <Compile Include="Helper\RibbonControlExtension.cs" />
     <Compile Include="Helper\SelectionGetter.cs" />
     <Compile Include="Helper\SizeAndPositionHelper.cs" />
     <Compile Include="Helper\TextboxHelper.cs" />
@@ -222,10 +224,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <Compile Include="ThisAddIn.cs">
       <SubType>Code</SubType>
     </Compile>
-    <None Include="app.config" />
     <None Include="ThisAddIn.Designer.xml">
       <DependentUpon>ThisAddIn.cs</DependentUpon>
     </None>
@@ -259,6 +261,9 @@
     </Compile>
     <None Include="PowerPointArrangeAddin_TemporaryKey.pfx" />
     <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ExternalAnnotations\office.xml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
