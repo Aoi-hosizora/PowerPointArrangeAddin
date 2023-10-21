@@ -173,9 +173,13 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
 
         public bool GetControlVisible(Office.IRibbonControl ribbonControl) {
-            var controls = new[] { grpArrange_separator2, bgpMoveLayers, bgpRotate, bgpGroupObjects, grpArrange_separator3, mnuArrangement, };
-            if (controls.Contains(ribbonControl.Id)) {
+            var arrangementControls = new[] { grpArrange_separator2, bgpMoveLayers, bgpRotate, bgpGroupObjects, grpArrange_separator3, mnuArrangement };
+            if (arrangementControls.Contains(ribbonControl.Id)) {
                 return !AddInSetting.Instance.LessButtonsForArrangementGroup;
+            }
+            var textboxControls = new[] { grpTextbox_separator1, bgpHorizontalMargin, edtMarginLeft, edtMarginRight, grpTextbox_separator2, bgpVerticalMargin, edtMarginTop, edtMarginBottom };
+            if (textboxControls.Contains(ribbonControl.Id)) {
+                return !AddInSetting.Instance.HideMarginSettingForTextboxGroup;
             }
             return true;
         }
@@ -185,14 +189,14 @@ namespace PowerPointArrangeAddin.Ribbon {
                 grpWordArt => AddInSetting.Instance.ShowWordArtGroup,
                 grpArrange => true,
                 grpTextbox => AddInSetting.Instance.ShowShapeTextboxGroup,
-                grpShapeSizeAndPosition => AddInSetting.Instance.ShowShapeSizeAndPositionGroup,
+                grpShapeSizeAndPosition => AddInSetting.Instance.ShowShapeSizeAndPositionGroup2,
                 grpReplacePicture => AddInSetting.Instance.ShowReplacePictureGroup,
-                grpPictureSizeAndPosition => AddInSetting.Instance.ShowPictureSizeAndPositionGroup,
-                grpVideoSizeAndPosition => AddInSetting.Instance.ShowVideoSizeAndPositionGroup,
-                grpAudioSizeAndPosition => AddInSetting.Instance.ShowAudioSizeAndPositionGroup,
-                grpTableSizeAndPosition => AddInSetting.Instance.ShowTableSizeAndPositionGroup,
-                grpChartSizeAndPosition => AddInSetting.Instance.ShowChartSizeAndPositionGroup,
-                grpSmartartSizeAndPosition => AddInSetting.Instance.ShowSmartartSizeAndPositionGroup,
+                grpPictureSizeAndPosition => AddInSetting.Instance.ShowPictureSizeAndPositionGroup2,
+                grpVideoSizeAndPosition => AddInSetting.Instance.ShowVideoSizeAndPositionGroup2,
+                grpAudioSizeAndPosition => AddInSetting.Instance.ShowAudioSizeAndPositionGroup2,
+                grpTableSizeAndPosition => AddInSetting.Instance.ShowTableSizeAndPositionGroup2,
+                grpChartSizeAndPosition => AddInSetting.Instance.ShowChartSizeAndPositionGroup2,
+                grpSmartartSizeAndPosition => AddInSetting.Instance.ShowSmartartSizeAndPositionGroup2,
                 _ => true
             };
         }

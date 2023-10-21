@@ -36,21 +36,25 @@ namespace PowerPointArrangeAddin.Dialog {
             this.grpGroupVisibility = new System.Windows.Forms.GroupBox();
             this.tlpGroupVisibility = new System.Windows.Forms.TableLayoutPanel();
             this.chkArrangement = new System.Windows.Forms.CheckBox();
-            this.chkVideoSizeAndPosition = new System.Windows.Forms.CheckBox();
-            this.chkAudioSizeAndPosition = new System.Windows.Forms.CheckBox();
-            this.chkTableSizeAndPosition = new System.Windows.Forms.CheckBox();
+            this.chkSizeAndPosition = new System.Windows.Forms.CheckBox();
+            this.tlpSizeAndPosition = new System.Windows.Forms.TableLayoutPanel();
             this.chkChartSizeAndPosition = new System.Windows.Forms.CheckBox();
             this.chkSmartartSizeAndPosition = new System.Windows.Forms.CheckBox();
+            this.chkTableSizeAndPosition = new System.Windows.Forms.CheckBox();
+            this.chkAudioSizeAndPosition = new System.Windows.Forms.CheckBox();
+            this.chkVideoSizeAndPosition = new System.Windows.Forms.CheckBox();
             this.grpOtherSetting = new System.Windows.Forms.GroupBox();
             this.tlpOtherSetting = new System.Windows.Forms.TableLayoutPanel();
             this.lblLanguage = new System.Windows.Forms.Label();
             this.cboLanguage = new System.Windows.Forms.ComboBox();
-            this.chkLessButtonsForArrange = new System.Windows.Forms.CheckBox();
+            this.chkHideMarginSettingForTextbox = new System.Windows.Forms.CheckBox();
+            this.chkLessButtonsForArrangement = new System.Windows.Forms.CheckBox();
             this.tbxDescription = new System.Windows.Forms.TextBox();
             this.tlpButton = new System.Windows.Forms.TableLayoutPanel();
             this.tlpMain.SuspendLayout();
             this.grpGroupVisibility.SuspendLayout();
             this.tlpGroupVisibility.SuspendLayout();
+            this.tlpSizeAndPosition.SuspendLayout();
             this.grpOtherSetting.SuspendLayout();
             this.tlpOtherSetting.SuspendLayout();
             this.tlpButton.SuspendLayout();
@@ -133,17 +137,12 @@ namespace PowerPointArrangeAddin.Dialog {
             // 
             resources.ApplyResources(this.tlpGroupVisibility, "tlpGroupVisibility");
             this.tlpGroupVisibility.BackColor = System.Drawing.SystemColors.Control;
-            this.tlpGroupVisibility.Controls.Add(this.chkPictureSizeAndPosition, 0, 5);
-            this.tlpGroupVisibility.Controls.Add(this.chkReplacePicture, 0, 4);
-            this.tlpGroupVisibility.Controls.Add(this.chkShapeSizeAndPosition, 0, 3);
             this.tlpGroupVisibility.Controls.Add(this.chkShapeTextbox, 0, 2);
             this.tlpGroupVisibility.Controls.Add(this.chkArrangement, 0, 1);
             this.tlpGroupVisibility.Controls.Add(this.chkWordArt, 0, 0);
-            this.tlpGroupVisibility.Controls.Add(this.chkVideoSizeAndPosition, 0, 6);
-            this.tlpGroupVisibility.Controls.Add(this.chkAudioSizeAndPosition, 0, 7);
-            this.tlpGroupVisibility.Controls.Add(this.chkTableSizeAndPosition, 0, 8);
-            this.tlpGroupVisibility.Controls.Add(this.chkChartSizeAndPosition, 0, 9);
-            this.tlpGroupVisibility.Controls.Add(this.chkSmartartSizeAndPosition, 0, 10);
+            this.tlpGroupVisibility.Controls.Add(this.chkReplacePicture, 0, 3);
+            this.tlpGroupVisibility.Controls.Add(this.chkSizeAndPosition, 0, 11);
+            this.tlpGroupVisibility.Controls.Add(this.tlpSizeAndPosition, 0, 12);
             this.tlpGroupVisibility.Name = "tlpGroupVisibility";
             // 
             // chkArrangement
@@ -154,29 +153,26 @@ namespace PowerPointArrangeAddin.Dialog {
             this.chkArrangement.Name = "chkArrangement";
             this.chkArrangement.UseVisualStyleBackColor = true;
             // 
-            // chkVideoSizeAndPosition
+            // chkSizeAndPosition
             // 
-            resources.ApplyResources(this.chkVideoSizeAndPosition, "chkVideoSizeAndPosition");
-            this.chkVideoSizeAndPosition.Checked = true;
-            this.chkVideoSizeAndPosition.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkVideoSizeAndPosition.Name = "chkVideoSizeAndPosition";
-            this.chkVideoSizeAndPosition.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.chkSizeAndPosition, "chkSizeAndPosition");
+            this.chkSizeAndPosition.Checked = true;
+            this.chkSizeAndPosition.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkSizeAndPosition.Name = "chkSizeAndPosition";
+            this.chkSizeAndPosition.UseVisualStyleBackColor = true;
+            this.chkSizeAndPosition.CheckedChanged += new System.EventHandler(this.ChkSizeAndPosition_CheckedChanged);
             // 
-            // chkAudioSizeAndPosition
+            // tlpSizeAndPosition
             // 
-            resources.ApplyResources(this.chkAudioSizeAndPosition, "chkAudioSizeAndPosition");
-            this.chkAudioSizeAndPosition.Checked = true;
-            this.chkAudioSizeAndPosition.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkAudioSizeAndPosition.Name = "chkAudioSizeAndPosition";
-            this.chkAudioSizeAndPosition.UseVisualStyleBackColor = true;
-            // 
-            // chkTableSizeAndPosition
-            // 
-            resources.ApplyResources(this.chkTableSizeAndPosition, "chkTableSizeAndPosition");
-            this.chkTableSizeAndPosition.Checked = true;
-            this.chkTableSizeAndPosition.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkTableSizeAndPosition.Name = "chkTableSizeAndPosition";
-            this.chkTableSizeAndPosition.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.tlpSizeAndPosition, "tlpSizeAndPosition");
+            this.tlpSizeAndPosition.Controls.Add(this.chkShapeSizeAndPosition, 0, 0);
+            this.tlpSizeAndPosition.Controls.Add(this.chkPictureSizeAndPosition, 1, 0);
+            this.tlpSizeAndPosition.Controls.Add(this.chkChartSizeAndPosition, 1, 2);
+            this.tlpSizeAndPosition.Controls.Add(this.chkSmartartSizeAndPosition, 0, 3);
+            this.tlpSizeAndPosition.Controls.Add(this.chkTableSizeAndPosition, 0, 2);
+            this.tlpSizeAndPosition.Controls.Add(this.chkAudioSizeAndPosition, 1, 1);
+            this.tlpSizeAndPosition.Controls.Add(this.chkVideoSizeAndPosition, 0, 1);
+            this.tlpSizeAndPosition.Name = "tlpSizeAndPosition";
             // 
             // chkChartSizeAndPosition
             // 
@@ -194,6 +190,30 @@ namespace PowerPointArrangeAddin.Dialog {
             this.chkSmartartSizeAndPosition.Name = "chkSmartartSizeAndPosition";
             this.chkSmartartSizeAndPosition.UseVisualStyleBackColor = true;
             // 
+            // chkTableSizeAndPosition
+            // 
+            resources.ApplyResources(this.chkTableSizeAndPosition, "chkTableSizeAndPosition");
+            this.chkTableSizeAndPosition.Checked = true;
+            this.chkTableSizeAndPosition.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkTableSizeAndPosition.Name = "chkTableSizeAndPosition";
+            this.chkTableSizeAndPosition.UseVisualStyleBackColor = true;
+            // 
+            // chkAudioSizeAndPosition
+            // 
+            resources.ApplyResources(this.chkAudioSizeAndPosition, "chkAudioSizeAndPosition");
+            this.chkAudioSizeAndPosition.Checked = true;
+            this.chkAudioSizeAndPosition.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkAudioSizeAndPosition.Name = "chkAudioSizeAndPosition";
+            this.chkAudioSizeAndPosition.UseVisualStyleBackColor = true;
+            // 
+            // chkVideoSizeAndPosition
+            // 
+            resources.ApplyResources(this.chkVideoSizeAndPosition, "chkVideoSizeAndPosition");
+            this.chkVideoSizeAndPosition.Checked = true;
+            this.chkVideoSizeAndPosition.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkVideoSizeAndPosition.Name = "chkVideoSizeAndPosition";
+            this.chkVideoSizeAndPosition.UseVisualStyleBackColor = true;
+            // 
             // grpOtherSetting
             // 
             resources.ApplyResources(this.grpOtherSetting, "grpOtherSetting");
@@ -207,7 +227,8 @@ namespace PowerPointArrangeAddin.Dialog {
             resources.ApplyResources(this.tlpOtherSetting, "tlpOtherSetting");
             this.tlpOtherSetting.Controls.Add(this.lblLanguage, 0, 0);
             this.tlpOtherSetting.Controls.Add(this.cboLanguage, 1, 0);
-            this.tlpOtherSetting.Controls.Add(this.chkLessButtonsForArrange, 0, 1);
+            this.tlpOtherSetting.Controls.Add(this.chkHideMarginSettingForTextbox, 0, 2);
+            this.tlpOtherSetting.Controls.Add(this.chkLessButtonsForArrangement, 0, 1);
             this.tlpOtherSetting.Name = "tlpOtherSetting";
             // 
             // lblLanguage
@@ -228,12 +249,19 @@ namespace PowerPointArrangeAddin.Dialog {
             resources.GetString("cboLanguage.Items4")});
             this.cboLanguage.Name = "cboLanguage";
             // 
-            // chkLessButtonsForArrange
+            // chkHideMarginSettingForTextbox
             // 
-            resources.ApplyResources(this.chkLessButtonsForArrange, "chkLessButtonsForArrange");
-            this.tlpOtherSetting.SetColumnSpan(this.chkLessButtonsForArrange, 2);
-            this.chkLessButtonsForArrange.Name = "chkLessButtonsForArrange";
-            this.chkLessButtonsForArrange.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.chkHideMarginSettingForTextbox, "chkHideMarginSettingForTextbox");
+            this.tlpOtherSetting.SetColumnSpan(this.chkHideMarginSettingForTextbox, 2);
+            this.chkHideMarginSettingForTextbox.Name = "chkHideMarginSettingForTextbox";
+            this.chkHideMarginSettingForTextbox.UseVisualStyleBackColor = true;
+            // 
+            // chkLessButtonsForArrangement
+            // 
+            resources.ApplyResources(this.chkLessButtonsForArrangement, "chkLessButtonsForArrangement");
+            this.tlpOtherSetting.SetColumnSpan(this.chkLessButtonsForArrangement, 2);
+            this.chkLessButtonsForArrangement.Name = "chkLessButtonsForArrangement";
+            this.chkLessButtonsForArrangement.UseVisualStyleBackColor = true;
             // 
             // tbxDescription
             // 
@@ -268,6 +296,8 @@ namespace PowerPointArrangeAddin.Dialog {
             this.grpGroupVisibility.PerformLayout();
             this.tlpGroupVisibility.ResumeLayout(false);
             this.tlpGroupVisibility.PerformLayout();
+            this.tlpSizeAndPosition.ResumeLayout(false);
+            this.tlpSizeAndPosition.PerformLayout();
             this.grpOtherSetting.ResumeLayout(false);
             this.grpOtherSetting.PerformLayout();
             this.tlpOtherSetting.ResumeLayout(false);
@@ -302,6 +332,9 @@ namespace PowerPointArrangeAddin.Dialog {
         private System.Windows.Forms.CheckBox chkTableSizeAndPosition;
         private System.Windows.Forms.CheckBox chkChartSizeAndPosition;
         private System.Windows.Forms.CheckBox chkSmartartSizeAndPosition;
-        private System.Windows.Forms.CheckBox chkLessButtonsForArrange;
+        private System.Windows.Forms.CheckBox chkLessButtonsForArrangement;
+        private System.Windows.Forms.CheckBox chkHideMarginSettingForTextbox;
+        private System.Windows.Forms.CheckBox chkSizeAndPosition;
+        private System.Windows.Forms.TableLayoutPanel tlpSizeAndPosition;
     }
 }

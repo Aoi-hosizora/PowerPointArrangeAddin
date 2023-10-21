@@ -17,8 +17,9 @@ namespace PowerPointArrangeAddin.Misc {
 
         public bool ShowWordArtGroup { get; set; }
         public bool ShowShapeTextboxGroup { get; set; }
-        public bool ShowShapeSizeAndPositionGroup { get; set; }
         public bool ShowReplacePictureGroup { get; set; }
+        public bool ShowSizeAndPositionGroup { get; set; }
+        public bool ShowShapeSizeAndPositionGroup { get; set; }
         public bool ShowPictureSizeAndPositionGroup { get; set; }
         public bool ShowVideoSizeAndPositionGroup { get; set; }
         public bool ShowAudioSizeAndPositionGroup { get; set; }
@@ -27,12 +28,14 @@ namespace PowerPointArrangeAddin.Misc {
         public bool ShowSmartartSizeAndPositionGroup { get; set; }
         public AddInLanguage Language { get; set; }
         public bool LessButtonsForArrangementGroup { get; set; }
+        public bool HideMarginSettingForTextboxGroup { get; set; }
 
         public void Load() {
             ShowWordArtGroup = Properties.Settings.Default.showWordArtGroup;
             ShowShapeTextboxGroup = Properties.Settings.Default.showShapeTextboxGroup;
-            ShowShapeSizeAndPositionGroup = Properties.Settings.Default.showShapeSizeAndPositionGroup;
             ShowReplacePictureGroup = Properties.Settings.Default.showReplacePictureGroup;
+            ShowSizeAndPositionGroup = Properties.Settings.Default.showSizeAndPositionGroup;
+            ShowShapeSizeAndPositionGroup = Properties.Settings.Default.showShapeSizeAndPositionGroup;
             ShowPictureSizeAndPositionGroup = Properties.Settings.Default.showPictureSizeAndPositionGroup;
             ShowVideoSizeAndPositionGroup = Properties.Settings.Default.showVideoSizeAndPositionGroup;
             ShowAudioSizeAndPositionGroup = Properties.Settings.Default.showAudioSizeAndPositionGroup;
@@ -41,13 +44,15 @@ namespace PowerPointArrangeAddin.Misc {
             ShowSmartartSizeAndPositionGroup = Properties.Settings.Default.showSmartArtSizeAndPositionGroup;
             Language = Properties.Settings.Default.language.ToAddInLanguage();
             LessButtonsForArrangementGroup = Properties.Settings.Default.lessButtonsForArrangementGroup;
+            HideMarginSettingForTextboxGroup = Properties.Settings.Default.hideMarginSettingForTextboxGroup;
         }
 
         public void Save() {
             Properties.Settings.Default.showWordArtGroup = ShowWordArtGroup;
             Properties.Settings.Default.showShapeTextboxGroup = ShowShapeTextboxGroup;
-            Properties.Settings.Default.showShapeSizeAndPositionGroup = ShowShapeSizeAndPositionGroup;
             Properties.Settings.Default.showReplacePictureGroup = ShowReplacePictureGroup;
+            Properties.Settings.Default.showSizeAndPositionGroup = ShowSizeAndPositionGroup;
+            Properties.Settings.Default.showShapeSizeAndPositionGroup = ShowShapeSizeAndPositionGroup;
             Properties.Settings.Default.showPictureSizeAndPositionGroup = ShowPictureSizeAndPositionGroup;
             Properties.Settings.Default.showVideoSizeAndPositionGroup = ShowVideoSizeAndPositionGroup;
             Properties.Settings.Default.showAudioSizeAndPositionGroup = ShowAudioSizeAndPositionGroup;
@@ -56,8 +61,17 @@ namespace PowerPointArrangeAddin.Misc {
             Properties.Settings.Default.showSmartArtSizeAndPositionGroup = ShowSmartartSizeAndPositionGroup;
             Properties.Settings.Default.language = Language.ToLanguageString();
             Properties.Settings.Default.lessButtonsForArrangementGroup = LessButtonsForArrangementGroup;
+            Properties.Settings.Default.hideMarginSettingForTextboxGroup = HideMarginSettingForTextboxGroup;
             Properties.Settings.Default.Save();
         }
+
+        public bool ShowShapeSizeAndPositionGroup2 => ShowSizeAndPositionGroup && ShowShapeSizeAndPositionGroup;
+        public bool ShowPictureSizeAndPositionGroup2 => ShowSizeAndPositionGroup && ShowPictureSizeAndPositionGroup;
+        public bool ShowVideoSizeAndPositionGroup2 => ShowSizeAndPositionGroup && ShowVideoSizeAndPositionGroup;
+        public bool ShowAudioSizeAndPositionGroup2 => ShowSizeAndPositionGroup && ShowAudioSizeAndPositionGroup;
+        public bool ShowTableSizeAndPositionGroup2 => ShowSizeAndPositionGroup && ShowTableSizeAndPositionGroup;
+        public bool ShowChartSizeAndPositionGroup2 => ShowSizeAndPositionGroup && ShowChartSizeAndPositionGroup;
+        public bool ShowSmartartSizeAndPositionGroup2 => ShowSizeAndPositionGroup && ShowSmartartSizeAndPositionGroup;
 
     }
 

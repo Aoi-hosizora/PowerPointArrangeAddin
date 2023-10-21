@@ -87,7 +87,7 @@ namespace PowerPointArrangeAddin.Misc {
 
         public override string ToString() {
             var title = Title;
-            var version = $"{VersionKey}: {Version}";
+            var version = $"{VersionKey}: v{Version}";
             var author = $"{AuthorKey}: {Author}";
             var homepage = $"{HomepageKey}: {Homepage}";
             var copyright = Copyright;

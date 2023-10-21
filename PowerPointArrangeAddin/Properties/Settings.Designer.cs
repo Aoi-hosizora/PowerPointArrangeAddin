@@ -166,5 +166,29 @@ namespace PowerPointArrangeAddin.Properties {
                 this["lessButtonsForArrangementGroup"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool showSizeAndPositionGroup {
+            get {
+                return ((bool)(this["showSizeAndPositionGroup"]));
+            }
+            set {
+                this["showSizeAndPositionGroup"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool hideMarginSettingForTextboxGroup {
+            get {
+                return ((bool)(this["hideMarginSettingForTextboxGroup"]));
+            }
+            set {
+                this["hideMarginSettingForTextboxGroup"] = value;
+            }
+        }
     }
 }

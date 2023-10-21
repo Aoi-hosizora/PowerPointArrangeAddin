@@ -25,8 +25,9 @@ namespace PowerPointArrangeAddin.Dialog {
             chkWordArt.Checked = AddInSetting.Instance.ShowWordArtGroup;
             chkArrangement.Checked = true;
             chkShapeTextbox.Checked = AddInSetting.Instance.ShowShapeTextboxGroup;
-            chkShapeSizeAndPosition.Checked = AddInSetting.Instance.ShowShapeSizeAndPositionGroup;
             chkReplacePicture.Checked = AddInSetting.Instance.ShowReplacePictureGroup;
+            chkSizeAndPosition.Checked = AddInSetting.Instance.ShowSizeAndPositionGroup;
+            chkShapeSizeAndPosition.Checked = AddInSetting.Instance.ShowShapeSizeAndPositionGroup;
             chkPictureSizeAndPosition.Checked = AddInSetting.Instance.ShowPictureSizeAndPositionGroup;
             chkVideoSizeAndPosition.Checked = AddInSetting.Instance.ShowVideoSizeAndPositionGroup;
             chkAudioSizeAndPosition.Checked = AddInSetting.Instance.ShowAudioSizeAndPositionGroup;
@@ -34,14 +35,16 @@ namespace PowerPointArrangeAddin.Dialog {
             chkChartSizeAndPosition.Checked = AddInSetting.Instance.ShowChartSizeAndPositionGroup;
             chkSmartartSizeAndPosition.Checked = AddInSetting.Instance.ShowSmartartSizeAndPositionGroup;
             cboLanguage.SelectedIndex = AddInSetting.Instance.Language.ToLanguageIndex();
-            chkLessButtonsForArrange.Checked = AddInSetting.Instance.LessButtonsForArrangementGroup;
+            chkLessButtonsForArrangement.Checked = AddInSetting.Instance.LessButtonsForArrangementGroup;
+            chkHideMarginSettingForTextbox.Checked = AddInSetting.Instance.HideMarginSettingForTextboxGroup;
         }
 
         private void BtnOK_Click(object sender, EventArgs e) {
             AddInSetting.Instance.ShowWordArtGroup = chkWordArt.Checked;
             AddInSetting.Instance.ShowShapeTextboxGroup = chkShapeTextbox.Checked;
-            AddInSetting.Instance.ShowShapeSizeAndPositionGroup = chkShapeSizeAndPosition.Checked;
             AddInSetting.Instance.ShowReplacePictureGroup = chkReplacePicture.Checked;
+            AddInSetting.Instance.ShowSizeAndPositionGroup = chkSizeAndPosition.Checked;
+            AddInSetting.Instance.ShowShapeSizeAndPositionGroup = chkShapeSizeAndPosition.Checked;
             AddInSetting.Instance.ShowPictureSizeAndPositionGroup = chkPictureSizeAndPosition.Checked;
             AddInSetting.Instance.ShowVideoSizeAndPositionGroup = chkVideoSizeAndPosition.Checked;
             AddInSetting.Instance.ShowAudioSizeAndPositionGroup = chkAudioSizeAndPosition.Checked;
@@ -49,7 +52,8 @@ namespace PowerPointArrangeAddin.Dialog {
             AddInSetting.Instance.ShowChartSizeAndPositionGroup = chkChartSizeAndPosition.Checked;
             AddInSetting.Instance.ShowSmartartSizeAndPositionGroup = chkSmartartSizeAndPosition.Checked;
             AddInSetting.Instance.Language = cboLanguage.SelectedIndex.ToAddInLanguage();
-            AddInSetting.Instance.LessButtonsForArrangementGroup = chkLessButtonsForArrange.Checked;
+            AddInSetting.Instance.LessButtonsForArrangementGroup = chkLessButtonsForArrangement.Checked;
+            AddInSetting.Instance.HideMarginSettingForTextboxGroup = chkHideMarginSettingForTextbox.Checked;
             AddInSetting.Instance.Save();
             DialogResult = DialogResult.OK;
             Close();
@@ -58,6 +62,17 @@ namespace PowerPointArrangeAddin.Dialog {
         private void BtnCancel_Click(object sender, EventArgs e) {
             DialogResult = DialogResult.Cancel;
             Close();
+        }
+
+        private void ChkSizeAndPosition_CheckedChanged(object sender, EventArgs e) {
+            var check = chkSizeAndPosition.Checked;
+            chkShapeSizeAndPosition.Enabled = check;
+            chkPictureSizeAndPosition.Enabled = check;
+            chkVideoSizeAndPosition.Enabled = check;
+            chkAudioSizeAndPosition.Enabled = check;
+            chkTableSizeAndPosition.Enabled = check;
+            chkChartSizeAndPosition.Enabled = check;
+            chkSmartartSizeAndPosition.Enabled = check;
         }
 
     }
