@@ -52,7 +52,7 @@
                         <button id="btnDistributeVertical" showLabel="false" __template="L,S,K,E,I" onAction="BtnDistribute_Click" />
                         <button id="btnAlignRelative" showLabel="false" __template="LSKEI_Relative" onAction="BtnAlignRelative_Click" />
                     </buttonGroup>
-                    <separator id="separator1" />
+                    <separator id="sepScaleSize" />
                     <buttonGroup id="bgpScaleSize">
                         <button id="btnScaleSameWidth" showLabel="false" __template="L,S,K,E,I" onAction="BtnScale_Click" />
                         <button id="btnScaleSameHeight" showLabel="false" __template="L,S,K,E,I" onAction="BtnScale_Click" />
@@ -71,7 +71,7 @@
                         <button id="btnSnapTop" showLabel="false" __template="L,S,K,E,I" onAction="BtnSnap_Click" />
                         <button id="btnSnapBottom" showLabel="false" __template="L,S,K,E,I" onAction="BtnSnap_Click" />
                     </buttonGroup>
-                    <separator id="separator2" __template="CV" />
+                    <separator id="sepMoveLayers" __template="CV" />
                     <buttonGroup id="bgpMoveLayers" __template="CV">
                         <button id="btnMoveForward" showLabel="false" __template="L,S,K,E,I" onAction="BtnMove_Click" />
                         <button id="btnMoveFront" showLabel="false" __template="L,S,K,E,I" onAction="BtnMove_Click" />
@@ -90,7 +90,7 @@
                         <button idMso="ObjectSizeAndPositionDialog" showLabel="false" __template="K" imageMso="ShapeStylesGallery" />
                         <toggleButton idMso="SelectionPane" showLabel="false" __template="K" />
                     </buttonGroup>
-                    <separator id="separator3" __template="CV" />
+                    <separator id="sepArrangement" __template="CV" />
                     <dynamicMenu id="mnuArrangement" size="large" __template="L,S,K,E,I,CV" getContent="GetMenuContent" />
                     <dialogBoxLauncher>
                         <button id="btnAddInSetting" __template="L,S,K" onAction="BtnAddInSetting_Click" />
@@ -116,14 +116,14 @@
                         <toggleButton id="btnAutoShrinkText" __template="L,S,K,E,I" getPressed="BtnAutofit_GetPressed" onAction="BtnAutofit_Click" />
                         <toggleButton id="btnAutoResizeShape" __template="L,S,K,E,I" getPressed="BtnAutofit_GetPressed" onAction="BtnAutofit_Click" />
                         <toggleButton id="btnWrapText" size="large" __template="L,S,K,E,I" getPressed="BtnWrapText_GetPressed" onAction="BtnWrapText_Click" />
-                        <separator id="separator1" __template="CV" />
+                        <separator id="sepHorizontalMargin" __template="CV" />
                         <box id="bgpHorizontalMargin" __template="CV">
                             <labelControl id="lblHorizontalMargin" __template="L,S" />
                             <button id="btnResetHorizontalMargin" showLabel="false" __template="L,S,K,E,I" onAction="BtnResetMargin_Click" />
                         </box>
                         <editBox id="edtMarginLeft" showImage="false" __template="L,S,K,E,CV,Z6" getText="EdtMargin_GetText" onChange="EdtMargin_TextChanged" />
                         <editBox id="edtMarginRight" showImage="false" __template="L,S,K,E,CV,Z6" getText="EdtMargin_GetText" onChange="EdtMargin_TextChanged" />
-                        <separator id="separator2" __template="CV" />
+                        <separator id="sepVerticalMargin" __template="CV" />
                         <box id="bgpVerticalMargin" __template="CV">
                             <labelControl id="lblVerticalMargin" __template="L,S" />
                             <button id="btnResetVerticalMargin" showLabel="false" __template="L,S,K,E,I" onAction="BtnResetMargin_Click" />
@@ -169,7 +169,7 @@
 
                     <group id="grpPictureSizeAndPosition" insertAfterMso="GroupPictureSize" __template="GROUP" __subtree_as_template="SIZEPOS_PICTURE">
                         <dynamicMenu id="mnuArrangement" size="large" __template="L,S,K,E,I" getContent="GetMenuContent" />
-                        <separator id="separator1" />
+                        <separator id="sepResetSize" />
                         <button id="btnResetSize" size="large" __template="L,S,K,E,I" onAction="BtnResetMediaSize_Click" />
                         <toggleButton id="btnLockAspectRatio" __template="L,S,K,E,I" getPressed="BtnLockAspectRatio_GetPressed" onAction="BtnLockAspectRatio_Click" />
                         <button id="btnScaleAnchor" __template="LSKEI_Anchor" onAction="BtnScaleAnchor_Click" />
@@ -177,7 +177,7 @@
                             <button id="btnCopySize" showLabel="false" __template="L,S,K,E,I" onAction="BtnCopyAndPasteSize_Click" />
                             <button id="btnPasteSize" __template="L,S,K,E,I" onAction="BtnCopyAndPasteSize_Click" />
                         </buttonGroup>
-                        <separator id="separator2" />
+                        <separator id="sepPosition" />
                         <editBox id="edtPositionX" showImage="false" __template="L,S,K,E,Z7" getText="EdtPosition_GetText" onChange="EdtPosition_TextChanged" />
                         <editBox id="edtPositionY" showImage="false" __template="L,S,K,E,Z7" getText="EdtPosition_GetText" onChange="EdtPosition_TextChanged" />
                         <buttonGroup id="bgpCopyAndPastePosition">

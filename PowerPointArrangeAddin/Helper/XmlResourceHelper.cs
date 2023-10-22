@@ -27,35 +27,45 @@ namespace PowerPointArrangeAddin.Helper {
             return null;
         }
 
-        private const string Separator = "··";
+        private static string ToXmlText(this XmlNode node) {
+            return node.OuterXml;
+        }
+
+        #region Normalize Related
+
+        private const string Separator = "·";
+
+        private static void NormalizeControlIdWithXmlNode(XmlNode node, string suffix, Func<XmlNode, bool>? toBreak) {
+            if (toBreak != null && toBreak.Invoke(node)) {
+                return;
+            }
+
+            var attributes = node.Attributes;
+            if (attributes != null) {
+                var idAttribute = attributes["id"];
+                var idValue = idAttribute?.Value;
+                if (idAttribute != null && !string.IsNullOrWhiteSpace(idValue)) {
+                    idAttribute.Value = $"{idValue!}{Separator}{suffix}";
+                }
+            }
+
+            if (node.HasChildNodes) {
+                foreach (var childNode in node.ChildNodes.OfType<XmlNode>()) {
+                    NormalizeControlIdWithXmlNode(childNode, suffix, toBreak);
+                }
+            }
+        }
 
         public static string NormalizeControlIdInGroup(string xmlText) {
+            if (xmlText.Contains("·")) {
+                throw new Exception("`·` is not allowed to be contained in resource xml");
+            }
+
             var document = new XmlDocument();
             try {
                 document.LoadXml(xmlText);
             } catch (Exception) {
                 return "";
-            }
-
-            static void Normalize(XmlNode node, string groupName) {
-                if (node.Name == "group") {
-                    return;
-                }
-
-                var attributes = node.Attributes;
-                if (attributes != null) {
-                    var idAttribute = attributes["id"];
-                    var idValue = idAttribute?.Value;
-                    if (idAttribute != null && !string.IsNullOrWhiteSpace(idValue)) {
-                        idAttribute.Value = $"{idValue!}{Separator}{groupName}";
-                    }
-                }
-
-                if (node.HasChildNodes) {
-                    foreach (var childNode in node.ChildNodes.OfType<XmlNode>()) {
-                        Normalize(childNode, groupName);
-                    }
-                }
             }
 
             var groupNodes = document.GetElementsByTagName("group");
@@ -65,21 +75,38 @@ namespace PowerPointArrangeAddin.Helper {
                     continue;
                 }
                 foreach (var childNode in groupNode.ChildNodes.OfType<XmlNode>()) {
-                    Normalize(childNode, groupId!);
+                    NormalizeControlIdWithXmlNode(childNode, groupId!, node => node.Name == "group");
                 }
             }
-
             return document.ToXmlText();
         }
 
+        public static string NormalizeControlIdInMenu(string xmlText, string menuId) {
+            if (xmlText.Contains("·")) {
+                throw new Exception("`·` is not allowed to be contained in resource xml");
+            }
 
-        public static string NormalizeControlIdInMenu(string xmlText) {
-            return xmlText;
+            var document = new XmlDocument();
+            try {
+                document.LoadXml(xmlText);
+            } catch (Exception) {
+                return "";
+            }
+
+            var menuRootNode = document.GetElementsByTagName("menu").OfType<XmlNode>().FirstOrDefault();
+            if (menuRootNode == null) {
+                return xmlText;
+            }
+
+            foreach (var childNode in menuRootNode.ChildNodes.OfType<XmlNode>()) {
+                NormalizeControlIdWithXmlNode(childNode, menuId, null);
+            }
+            return document.ToXmlText();
         }
 
-        private static string ToXmlText(this XmlNode node) {
-            return node.OuterXml;
-        }
+        #endregion
+
+        #region Template Related
 
         public static string ApplyAttributeTemplateForXml(string xmlText) {
             var document = new XmlDocument();
@@ -239,6 +266,10 @@ namespace PowerPointArrangeAddin.Helper {
             return document.ToXmlText();
         }
 
+        #endregion
+
+        #region Misc Methods
+
         public static string ApplyMsoKeytipForXml(string xmlText, Dictionary<string, Dictionary<string, string>> msoKeytips) {
             var document = new XmlDocument();
             try {
@@ -304,6 +335,8 @@ namespace PowerPointArrangeAddin.Helper {
             // returned the applied xml string
             return document.ToXmlText();
         }
+
+        #endregion
 
     }
 

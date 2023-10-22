@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Microsoft.Office.Core;
 
 #pragma warning disable CS0618
@@ -14,7 +15,7 @@ namespace PowerPointArrangeAddin.Helper {
                 : ribbonControl.Id;
         }
 
-        private const string Separator = "··";
+        private const string Separator = "·";
 
         public static string Id(this IRibbonControl ribbonControl) {
             var id = ribbonControl.Id;
@@ -28,8 +29,14 @@ namespace PowerPointArrangeAddin.Helper {
             return parts.Length < 2 ? "" : parts[1];
         }
 
-        public static void InvalidateControl(this IRibbonUI ribbonUi, string controlId, string groupName) {
-            ribbonUi.InvalidateControl($"{controlId}{Separator}{groupName}");
+        public static void InvalidateControl(this IRibbonUI ribbonUi, string controlId, string parentName) {
+            ribbonUi.InvalidateControl($"{controlId}{Separator}{parentName}");
+        }
+
+        public static void InvalidateControl(this IRibbonUI ribbonUi, string controlId, IEnumerable<string> parentNames) {
+            foreach (var parentName in parentNames) {
+                ribbonUi.InvalidateControl(controlId, parentName);
+            }
         }
 
     }

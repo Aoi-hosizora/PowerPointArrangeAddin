@@ -105,6 +105,13 @@ namespace PowerPointArrangeAddin.Helper {
             }
         }
 
+        public static void ExecuteMsoByAlignRelative(AlignRelativeFlag flag) {
+            var mso = flag == AlignRelativeFlag.RelativeToSlide
+                ? "ObjectsAlignRelativeToContainerSmart"
+                : "ObjectsAlignSelectedSmart";
+            Globals.ThisAddIn.Application.CommandBars.ExecuteMso(mso);
+        }
+
         public enum ScaleSizeCmd {
             SameWidth,
             SameHeight,

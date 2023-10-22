@@ -221,6 +221,15 @@ namespace PowerPointArrangeAddin.Helper {
             }
         }
 
+        public static bool IsSizeResettable(PowerPoint.ShapeRange? shapeRange) {
+            if (shapeRange == null || shapeRange.Count <= 0) {
+                return false;
+            }
+
+            var shapes = shapeRange.OfType<PowerPoint.Shape>().Where(s => s.Type is Office.MsoShapeType.msoPicture or Office.MsoShapeType.msoMedia).ToArray();
+            return shapes.Length > 0;
+        }
+
         public static void ResetMediaSize(PowerPoint.ShapeRange? shapeRange, Office.MsoScaleFrom? scaleFromFlag, Action? uiInvalidator = null) {
             if (shapeRange == null || shapeRange.Count <= 0) {
                 return;

@@ -6,13 +6,14 @@
         <__template name="S" getScreentip="GetLabel" />
         <__template name="E" getEnabled="GetEnabled" />
         <__template name="I" getImage="GetImage" />
+        <__template name="MENU" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" />
         <__template name="LSEI_Relative" getLabel="BtnAlignRelative_GetLabel" getScreentip="BtnAlignRelative_GetLabel" getEnabled="GetEnabled" getImage="BtnAlignRelative_GetImage" />
         <__template name="LSEI_Anchor" getLabel="BtnScaleAnchor_GetLabel" getScreentip="BtnScaleAnchor_GetLabel" getEnabled="GetEnabled" getImage="BtnScaleAnchor_GetImage" />
     </__templates>
 
-    <menuSeparator id="mnuArrangement_sepAlignmentAndResizing" __template="T" />
+    <menuSeparator id="sepAlignmentAndResizing" __template="T" />
 
-    <menu id="mnuArrangement_mnuAlignment" __template="L,S,I">
+    <menu id="mnuAlignment" __template="MENU">
         <button id="btnAlignLeft" __template="L,S,E,I" onAction="BtnAlign_Click" />
         <button id="btnAlignCenter" __template="L,S,E,I" onAction="BtnAlign_Click" />
         <button id="btnAlignRight" __template="L,S,E,I" onAction="BtnAlign_Click" />
@@ -32,7 +33,7 @@
         <control idMso="GridSettings" />
     </menu>
 
-    <menu id="mnuArrangement_mnuResizing" __template="L,S,I">
+    <menu id="mnuResizing" __template="MENU">
         <toggleButton id="btnScaleAnchor_FromTopLeft" __template="LSEI_Anchor" getPressed="BtnScaleAnchor_GetPressed" onAction="BtnScaleAnchor_Click" />
         <toggleButton id="btnScaleAnchor_FromMiddle" __template="LSEI_Anchor" getPressed="BtnScaleAnchor_GetPressed" onAction="BtnScaleAnchor_Click" />
         <toggleButton id="btnScaleAnchor_FromBottomRight" __template="LSEI_Anchor" getPressed="BtnScaleAnchor_GetPressed" onAction="BtnScaleAnchor_Click" />
@@ -47,7 +48,7 @@
         <button id="btnExtendSameBottom" __template="L,S,E,I" onAction="BtnExtend_Click" />
     </menu>
 
-    <menu id="mnuArrangement_mnuSnapping" __template="L,S,I">
+    <menu id="mnuSnapping" __template="MENU">
         <button id="btnSnapLeft" __template="L,S,E,I" onAction="BtnSnap_Click" />
         <button id="btnSnapRight" __template="L,S,E,I" onAction="BtnSnap_Click" />
         <button id="btnSnapTop" __template="L,S,E,I" onAction="BtnSnap_Click" />
@@ -57,7 +58,7 @@
         <button idMso="GridSettings" />
     </menu>
 
-    <menu id="mnuArrangement_mnuRotation" __template="L,S,I">
+    <menu id="mnuRotation" __template="MENU">
         <button id="btnRotateRight90" __template="L,S,E,I" onAction="BtnRotate_Click" />
         <button id="btnRotateLeft90" __template="L,S,E,I" onAction="BtnRotate_Click" />
         <menuSeparator id="mnuRotation_separator1" />
@@ -67,9 +68,9 @@
         <button idMso="ObjectRotationOptionsDialog" />
     </menu>
 
-    <menuSeparator id="mnuArrangement_sepLayerOrderAndGrouping" __template="T" />
+    <menuSeparator id="sepLayerOrderAndGrouping" __template="T" />
 
-    <menu id="mnuArrangement_mnuLayerOrder" __template="L,S,I">
+    <menu id="mnuLayerOrder" __template="MENU">
         <button id="btnMoveFront" __template="L,S,E,I" onAction="BtnMove_Click" />
         <button id="btnMoveBack" __template="L,S,E,I" onAction="BtnMove_Click" />
         <menuSeparator id="mnuLayerOrder_separator1" />
@@ -77,17 +78,17 @@
         <button id="btnMoveBackward" __template="L,S,E,I" onAction="BtnMove_Click" />
     </menu>
 
-    <menu id="mnuArrangement_mnuGrouping" __template="L,S,I">
+    <menu id="mnuGrouping" __template="MENU">
         <button id="btnGroup" __template="L,S,E,I" onAction="BtnGroup_Click" />
         <button id="btnUngroup" __template="L,S,E,I" onAction="BtnGroup_Click" />
     </menu>
 
-    <menuSeparator id="mnuArrangement_sepObjectsInSlide" __template="T" />
+    <menuSeparator id="sepObjectsInSlide" __template="T" />
 
     <button idMso="ObjectSizeAndPositionDialog" imageMso="ShapeStylesGallery" />
     <toggleButton idMso="SelectionPane" />
 
-    <menuSeparator id="mnuArrangement_sepAddInSetting" __template="T" />
+    <menuSeparator id="sepAddInSetting" __template="T" />
 
     <button id="btnAddInSetting" __template="L,S,I" onAction="BtnAddInSetting_Click" />
 </menu>
