@@ -45,6 +45,15 @@ namespace PowerPointArrangeAddin.Helper {
             return node.OuterXml;
         }
 
+        private static XmlAttribute CreateAttributeWithValue(this XmlNode node, string key, string value) {
+            if (node is not XmlDocument doc) {
+                doc = node.OwnerDocument!;
+            }
+            var attribute = doc.CreateAttribute(key);
+            attribute.Value = value;
+            return attribute;
+        }
+
         #region Normalize Related
 
         private const string Separator = "·";
@@ -182,8 +191,7 @@ namespace PowerPointArrangeAddin.Helper {
                         if (nodeAttributes[attribute.Key] != null) {
                             continue; // only append attributes that are not defined
                         }
-                        var newAttribute = document.CreateAttribute(attribute.Key);
-                        newAttribute.Value = attribute.Value;
+                        var newAttribute = document.CreateAttributeWithValue(attribute.Key, attribute.Value);
                         nodeAttributes.Append(newAttribute);
                     }
                 }
@@ -237,7 +245,7 @@ namespace PowerPointArrangeAddin.Helper {
             }
 
             // find nodes that are need to be applied template
-            var nodesToBeApplied = document.GetElementsByTagName("__apply_subtree_template").OfType<XmlNode>().ToArray();
+            var nodesToBeApplied = document.GetElementsByTagName("__use_template").OfType<XmlNode>().ToArray();
             if (nodesToBeApplied.Length == 0) {
                 return document.ToXmlText();
             }
@@ -250,13 +258,12 @@ namespace PowerPointArrangeAddin.Helper {
                 }
 
                 // get template name and two rule lists
-                var nodeAttribute = node.Attributes;
-                var templateName = nodeAttribute?["use_template"]?.Value;
+                var templateName = node.Attributes?["name"]?.Value;
                 if (string.IsNullOrWhiteSpace(templateName)) {
                     continue;
                 }
-                var replaceRules = new List<(string, string, string, bool)>(); // field, from, to, re
-                var removeRules = new List<(string, string, bool)>(); // field, match, re
+                var replaceRules = new List<(string field, string from, string to, bool norec, bool re)>();
+                var removeRules = new List<(string field, string match, bool norec, bool re)>();
                 var ruleNodes = node.ChildNodes.OfType<XmlNode>().ToArray();
                 foreach (var ruleNode in ruleNodes) {
                     var nodeAttributes = ruleNode.Attributes;
@@ -265,36 +272,44 @@ namespace PowerPointArrangeAddin.Helper {
                         var fieldValue = nodeAttributes?["field"]?.Value;
                         var fromValue = nodeAttributes?["from"]?.Value;
                         var toValue = nodeAttributes?["to"]?.Value;
+                        var norecValue = nodeAttributes?["norec"]?.Value;
                         var reValue = nodeAttributes?["re"]?.Value;
                         if (!string.IsNullOrWhiteSpace(fieldValue) && !string.IsNullOrWhiteSpace(fromValue) && toValue != null) {
-                            replaceRules.Add((fieldValue!, fromValue!, toValue, reValue == "true"));
+                            replaceRules.Add((fieldValue!, fromValue!, toValue, norecValue == "true", reValue == "true"));
                         }
                         break;
                     }
                     case "__remove_rule": {
                         var fieldValue = nodeAttributes?["field"]?.Value;
                         var matchValue = nodeAttributes?["match"]?.Value;
+                        var norecValue = nodeAttributes?["norec"]?.Value;
                         var reValue = nodeAttributes?["re"]?.Value;
                         if (!string.IsNullOrWhiteSpace(fieldValue) && !string.IsNullOrWhiteSpace(matchValue)) {
-                            removeRules.Add((fieldValue!, matchValue!, reValue == "true"));
+                            removeRules.Add((fieldValue!, matchValue!, norecValue == "true", reValue == "true"));
                         }
                         break;
                     }
                     }
                 }
-                parentNode.RemoveChild(node); // subtree template node must be removed
 
-                // get template subtree, which is node list
+                // get template subtree, which is a node list
                 if (!templateDictionary.TryGetValue(templateName!, out var templateNodeList)) {
                     continue; // specific template is not found
                 }
 
                 // two rule functions
-                static void ReplaceFieldValue(XmlNode node, List<(string, string, string, bool)> replaceRules) {
+                static void ReplaceFieldValue(XmlNode node, List<(string, string, string, bool, bool)> replaceRules, bool firstLayer = true) {
                     var attributes = node.Attributes;
-                    foreach (var (field, from, to, re) in replaceRules) {
+                    foreach (var (field, from, to, norec, re) in replaceRules) {
+                        if (norec && !firstLayer) {
+                            continue;
+                        }
                         var fieldValue = attributes?[field]?.Value;
                         if (string.IsNullOrWhiteSpace(fieldValue)) {
+                            if (attributes != null) { // insert directly
+                                attributes.RemoveNamedItem(field);
+                                attributes.Append(node.CreateAttributeWithValue(field, to));
+                            }
                             continue;
                         }
                         if (!re) {
@@ -307,12 +322,15 @@ namespace PowerPointArrangeAddin.Helper {
                         attributes![field]!.Value = fieldValue;
                     }
                     foreach (var childNode in node.ChildNodes.OfType<XmlNode>()) {
-                        ReplaceFieldValue(childNode, replaceRules);
+                        ReplaceFieldValue(childNode, replaceRules, false);
                     }
                 }
-                static XmlNode? RemoveSpecificNode(XmlNode node, List<(string, string, bool)> removeRules) {
+                static XmlNode? RemoveSpecificNode(XmlNode node, List<(string, string, bool, bool)> removeRules, bool firstLayer = true) {
                     var attributes = node.Attributes;
-                    foreach (var (field, match, re) in removeRules) {
+                    foreach (var (field, match, norec, re) in removeRules) {
+                        if (norec && !firstLayer) {
+                            continue;
+                        }
                         var fieldValue = field == "$" ? node.Name : attributes?[field]?.Value;
                         if (string.IsNullOrWhiteSpace(fieldValue)) {
                             continue;
@@ -326,13 +344,13 @@ namespace PowerPointArrangeAddin.Helper {
                             } catch (Exception) { }
                         }
                         if (matched) {
-                            return null;
+                            return null; // to delete
                         }
                     }
-                    foreach (var childNode in node.ChildNodes.OfType<XmlNode>()) {
-                        var result = RemoveSpecificNode(childNode, removeRules);
+                    foreach (var childNode in node.ChildNodes.OfType<XmlNode>().ToArray()) { // need to copy here, because of `RemoveChild`
+                        var result = RemoveSpecificNode(childNode, removeRules, false);
                         if (result == null) {
-                            childNode.ParentNode?.RemoveChild(childNode);
+                            node.RemoveChild(childNode);
                         }
                     }
                     return node;
@@ -348,9 +366,10 @@ namespace PowerPointArrangeAddin.Helper {
                         clonedNode = RemoveSpecificNode(clonedNode, removeRules);
                     }
                     if (clonedNode != null) {
-                        parentNode.AppendChild(clonedNode);
+                        parentNode.InsertBefore(clonedNode, node);
                     }
                 }
+                parentNode.RemoveChild(node); // subtree template node must be removed
             }
 
             // returned the applied xml string
@@ -360,6 +379,38 @@ namespace PowerPointArrangeAddin.Helper {
         #endregion
 
         #region Misc Methods
+
+        public static string ApplyControlForRefers(string xmlText) {
+            var document = Parse(xmlText);
+            if (document == null) {
+                return "";
+            }
+
+            // find all refer nodes from document 
+            var referNodes = document.GetElementsByTagName("__control_refer").OfType<XmlNode>().ToArray();
+            if (referNodes.Length == 0) {
+                return document.ToXmlText();
+            }
+
+            // apply control for each refer node
+            foreach (var referNode in referNodes) {
+                var nodeAttributes = referNode.Attributes;
+                var idValue = nodeAttributes?["id"]?.Value;
+                if (string.IsNullOrWhiteSpace(idValue)) {
+                    continue;
+                }
+
+                // find referee node and replace xml node
+                var foundNodes = document.SelectNodes($"//*[@id=\"{idValue}\"]");
+                var referee = foundNodes?.OfType<XmlNode>().FirstOrDefault(n => n.Name != "__control_refer");
+                if (referee == null) {
+                    continue;
+                }
+                var clonedNode = referee.CloneNode(true);
+                referNode.ParentNode?.ReplaceChild(clonedNode, referNode);
+            }
+            return document.ToXmlText();
+        }
 
         public static string ApplyMsoKeytipForXml(string xmlText, Dictionary<string, Dictionary<string, string>> msoKeytips) {
             var document = Parse(xmlText);
@@ -415,8 +466,7 @@ namespace PowerPointArrangeAddin.Helper {
                 }
 
                 // append new keytip attribute to node
-                var keytipAttribute = document.CreateAttribute("keytip");
-                keytipAttribute.Value = keytipValue;
+                var keytipAttribute = document.CreateAttributeWithValue("keytip", keytipValue);
                 nodeAttributes.Append(keytipAttribute);
                 nodeAttributes.RemoveNamedItem("getKeytip"); // remove getKeytip attribute manually
             }

@@ -16,14 +16,6 @@
         <__attribute_template name="LSKEI_Anchor" getLabel="BtnScaleAnchor_GetLabel" getScreentip="BtnScaleAnchor_GetLabel" getKeytip="GetKeytip" getEnabled="GetEnabled" getImage="BtnScaleAnchor_GetImage" />
     </__templates>
 
-    <__templates>
-        <!--
-            <__subtree_template name="NAME">
-                <button id="xxx" label="xxx" size="large" />
-            </__subtree_template> 
-        -->
-    </__templates>
-
     <ribbon>
         <tabs>
             <tab idMso="TabHome">
@@ -88,7 +80,7 @@
                     <buttonGroup id="bgpGroupObjects" __template="CV">
                         <button id="btnGroup" showLabel="false" __template="L,S,K,E,I" onAction="BtnGroup_Click" />
                         <button id="btnUngroup" showLabel="false" __template="L,S,K,E,I" onAction="BtnGroup_Click" />
-                        <button idMso="ObjectSizeAndPositionDialog" showLabel="false" __template="K" imageMso="ShapeStylesGallery" />
+                        <button idMso="GridSettings" showLabel="false" __template="K" />
                         <toggleButton idMso="SelectionPane" showLabel="false" __template="K" />
                     </buttonGroup>
                     <separator id="sepArrangement" __template="CV" />
@@ -99,25 +91,76 @@
                 </group> <!-- end of grpArrange -->
             </tab> <!-- end of TabHome -->
 
-            <tab id="tabArrangement" label="配置" keytip="E" insertAfterMso="TabInsert">
+            <tab id="tabArrangement" label="配置" keytip="M" insertAfterMso="TabInsert">
                 <group id="grpAddinSummary" label="アドイン">
-                    <button id="btnAddInSetting" size="large" __template="L,S,K,E,I" onAction="BtnAddInSetting_Click" />
-                    <dynamicMenu id="mnuArrangement" size="large" __template="L,S,K,E,I,CV" getContent="GetMenuContent" />
+                    <button id="btnAddInSetting" size="large" __template="L,S,K,E" imageMso="PageMenu" onAction="BtnAddInSetting_Click" /> <!-- TODO imageMso -->
                 </group> <!-- end of grpAddinSummary -->
 
-                <group id="grpArrange2" label="配置">
-                    <__apply_subtree_template use_template="ARRANGE">
-                        <__remove_rule field="id" match="sepArrangement" />
-                        <__remove_rule field="id" match="mnuArrangement" />
-                    </__apply_subtree_template>
-                </group> <!-- end of grpArrange2 -->
+                <group id="grpAlignment" label="位置合わせ">
+                    <labelControl id="lblAlignmentH" label="横揃え " /> <!-- TODO " " -->
+                    <labelControl id="lblAlignmentV" label="縦揃え" />
+                    <labelControl id="lblDistribute" label="整列" />
+                    <__use_template name="ARRANGE">
+                        <__remove_rule field="id" match="^((?!Align|Distribute).)*$|btnAlignRelative" re="true" />
+                        <__remove_rule field="$" match="dialogBoxLauncher" />
+                    </__use_template>
+                    <separator id="sepAlignRelative" />
+                    <toggleButton id="btnAlignRelative_ToSlide" __template="LSKEI_Relative" getPressed="BtnAlignRelative_GetPressed" onAction="BtnAlignRelative_Click" />
+                    <toggleButton id="btnAlignRelative_ToObjects" __template="LSKEI_Relative" getPressed="BtnAlignRelative_GetPressed" onAction="BtnAlignRelative_Click" />
+                    <toggleButton id="btnAlignRelative_ToFirstObject" __template="LSKEI_Relative" getPressed="BtnAlignRelative_GetPressed" onAction="BtnAlignRelative_Click" />
+                </group> <!-- end of grpAlignment -->
 
-                <group id="grpSizeAndPosition" label="サイズと位置">
-                    <__apply_subtree_template use_template="SIZEPOS">
-                        <__remove_rule field="id" match="mnuArrangement" />
-                        <__remove_rule field="id" match="sepResetSize" />
-                    </__apply_subtree_template>
-                </group> <!-- end of grpSizeAndPosition -->
+                <group id="grpSizeAndSnap" label="変形とスナップ">
+                    <labelControl id="lblScale" label="変形" />
+                    <labelControl id="lblExtend" label="伸ばし" />
+                    <labelControl id="lblSnap" label="スナップ " /> <!-- TODO " " -->
+                    <__use_template name="ARRANGE">
+                        <__remove_rule field="id" match="^((?!Scale|Extend|Snap).)*$|btnScaleAnchor|sepScaleSize" re="true" />
+                        <__remove_rule field="$" match="dialogBoxLauncher" />
+                    </__use_template>
+                    <separator id="sepScaleAnchor" />
+                    <toggleButton id="btnScaleAnchor_FromTopLeft" __template="LSKEI_Anchor" getPressed="BtnScaleAnchor_GetPressed" onAction="BtnScaleAnchor_Click" />
+                    <toggleButton id="btnScaleAnchor_FromMiddle" __template="LSKEI_Anchor" getPressed="BtnScaleAnchor_GetPressed" onAction="BtnScaleAnchor_Click" />
+                    <toggleButton id="btnScaleAnchor_FromBottomRight" __template="LSKEI_Anchor" getPressed="BtnScaleAnchor_GetPressed" onAction="BtnScaleAnchor_Click" />
+                </group> <!-- end of grpSizeAndSnap -->
+
+                <group id="grpObjectArrange" label="オブジェクトの配置">
+                    <labelControl id="lblLayer" label="重ね順" />
+                    <labelControl id="lblRotate" label="回転" />
+                    <labelControl id="lblGroup" label="グループ " /> <!-- TODO " " -->
+                    <__use_template name="ARRANGE">
+                        <__remove_rule field="id" match="^((?!Layer|Rotate|Group).)*$|sepMoveLayers" norec="true" re="true" />
+                        <__remove_rule field="idMso" match="SelectionPane" re="true" />
+                        <__remove_rule field="$" match="dialogBoxLauncher" />
+                    </__use_template>
+                    <separator id="sepSelectionPane" />
+                    <toggleButton idMso="SelectionPane" size="large" __template="K" />
+                    <dynamicMenu id="mnuArrangement" size="large" __template="L,S,K,E,I" getContent="GetMenuContent" />
+                </group> <!-- end of grpObjectArrange -->
+
+                <group id="grpSize" label="サイズ">
+                    <control idMso="PictureCropTools" size="large" __template="K" />  <!-- <<< -->
+                    <button id="btnResetSize" size="large" __template="L,S,K,E,I" onAction="BtnResetMediaSize_Click" /> <!-- icon -->
+                    <separator id="sepLockAspectRatio" />
+                    <toggleButton id="btnLockAspectRatio" size="large" __template="L,S,K,E,I" getPressed="BtnLockAspectRatio_GetPressed" onAction="BtnLockAspectRatio_Click" /> <!-- TODO icon -->
+                    <button idMso="ObjectSizeAndPositionDialog" size="large" __template="K" /> <!-- TODO icon -->
+                    <separator id="sepPosition" />
+                    <!-- TODO add more -->
+                    <editBox id="edtPositionX" showImage="false" label="高さ:" __template="S,K,E,Z7" getText="EdtPosition_GetText" onChange="EdtPosition_TextChanged" /> <!-- TODO to Size -->
+                    <editBox id="edtPositionY" showImage="false" label="幅:" __template="S,K,E,Z7" getText="EdtPosition_GetText" onChange="EdtPosition_TextChanged" />
+                    <buttonGroup id="bgpCopyAndPasteSize">
+                        <__control_refer id="btnCopySize" />
+                        <__control_refer id="btnPasteSize" />
+                    </buttonGroup>
+                </group> <!-- end of grpSize -->
+
+                <group id="grpPosition" label="位置">
+                    <!-- TODO add more -->
+                    <__use_template name="SIZEPOS">
+                        <__remove_rule field="id" match="^((?!edtPosition|PastePosition).)*$" norec="true" re="true" />
+                        <__remove_rule field="$" match="dialogBoxLauncher" />
+                    </__use_template>
+                </group> <!-- end of grpPosition -->
             </tab>
         </tabs> <!-- end of tabArrangement -->
 
@@ -149,9 +192,9 @@
                     </group> <!-- end of grpTextbox -->
 
                     <group id="grpShapeSizeAndPosition" insertAfterMso="GroupSize" __template="GROUP">
-                        <__apply_subtree_template use_template="SIZEPOS">
+                        <__use_template name="SIZEPOS">
                             <__remove_rule field="id" match="btnResetSize" />
-                        </__apply_subtree_template>
+                        </__use_template>
                     </group> <!-- end of grpShapeSizeAndPosition -->
                 </tab> <!-- end of TabDrawingToolsFormat -->
             </tabSet> <!-- end of TabSetDrawingTools -->
@@ -192,7 +235,7 @@
             <tabSet idMso="TabSetVideoTools">
                 <tab idMso="TabVideoToolsDesign">
                     <group id="grpVideoSizeAndPosition" insertAfterMso="GroupVideoSize" __template="GROUP">
-                        <__apply_subtree_template use_template="SIZEPOS" />
+                        <__use_template name="SIZEPOS" />
                     </group>
                 </tab>
             </tabSet>
@@ -200,7 +243,7 @@
             <tabSet idMso="TabSetAudioTools">
                 <tab idMso="TabAudioToolsFormat">
                     <group id="grpAudioSizeAndPosition" insertAfterMso="GroupPictureSize" __template="GROUP">
-                        <__apply_subtree_template use_template="SIZEPOS" />
+                        <__use_template name="SIZEPOS" />
                     </group>
                 </tab>
             </tabSet>
@@ -208,9 +251,9 @@
             <tabSet idMso="TabSetTableTools">
                 <tab idMso="TabTableToolsLayout">
                     <group id="grpTableSizeAndPosition" insertAfterMso="GroupArrange" __template="GROUP">
-                        <__apply_subtree_template use_template="SIZEPOS">
+                        <__use_template name="SIZEPOS">
                             <__remove_rule field="id" match="btnResetSize" />
-                        </__apply_subtree_template>
+                        </__use_template>
                     </group>
                 </tab>
             </tabSet>
@@ -218,9 +261,9 @@
             <tabSet idMso="TabSetChartTools">
                 <tab idMso="TabChartToolsFormat">
                     <group id="grpChartSizeAndPosition" insertAfterMso="GroupSize" __template="GROUP">
-                        <__apply_subtree_template use_template="SIZEPOS">
+                        <__use_template name="SIZEPOS">
                             <__remove_rule field="id" match="btnResetSize" />
-                        </__apply_subtree_template>
+                        </__use_template>
                     </group>
                 </tab>
             </tabSet>
@@ -228,9 +271,9 @@
             <tabSet idMso="TabSetSmartArtTools">
                 <tab idMso="TabSmartArtToolsFormat">
                     <group id="grpSmartartSizeAndPosition" insertAfterMso="GroupSmartArtSize" __template="GROUP">
-                        <__apply_subtree_template use_template="SIZEPOS">
+                        <__use_template name="SIZEPOS">
                             <__remove_rule field="id" match="btnResetSize" />
-                        </__apply_subtree_template>
+                        </__use_template>
                     </group>
                 </tab>
             </tabSet>

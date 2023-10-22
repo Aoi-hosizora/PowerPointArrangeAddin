@@ -20,10 +20,12 @@ namespace PowerPointArrangeAddin.Ribbon {
                 return "";
             }
 
+            xml = XmlResourceHelper.ApplyControlForRefers(xml);
             xml = XmlResourceHelper.ApplyAttributeTemplateForXml(xml);
             xml = XmlResourceHelper.ApplySubtreeTemplateForXml(xml);
             xml = XmlResourceHelper.ApplyMsoKeytipForXml(xml, _msoKeytips);
             xml = XmlResourceHelper.NormalizeControlIdInGroup(xml);
+            System.Windows.Forms.Clipboard.SetText(xml);
             return xml;
         }
 
@@ -33,6 +35,7 @@ namespace PowerPointArrangeAddin.Ribbon {
                 return "";
             }
 
+            xml = XmlResourceHelper.ApplyControlForRefers(xml);
             xml = XmlResourceHelper.ApplyAttributeTemplateForXml(xml);
             xml = XmlResourceHelper.ApplySubtreeTemplateForXml(xml);
             xml = XmlResourceHelper.NormalizeControlIdInMenu(xml, mnuArrangement);
@@ -342,7 +345,7 @@ namespace PowerPointArrangeAddin.Ribbon {
                     { "TextEffectsMenu", "AE" }, { "WordArtFormatDialog", "AG" }
                 }
             },
-            { grpArrange, new() { { "ObjectSizeAndPositionDialog", "HS" }, { "SelectionPane", "HP" } } },
+            { grpArrange, new() { { "GridSettings", "HS" }, { "SelectionPane", "HP" } } },
             { grpTextbox, new() { { "WordArtFormatDialog", "TG" } } },
             { grpShapeSizeAndPosition, new() { { "ObjectSizeAndPositionDialog", "SN" } } },
             { grpPictureSizeAndPosition, new() { { "ObjectSizeAndPositionDialog", "SN" } } },

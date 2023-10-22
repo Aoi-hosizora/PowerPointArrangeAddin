@@ -194,16 +194,17 @@ namespace PowerPointArrangeAddin.Ribbon {
         // This flag is used to adjust alignment relative behavior, is used by BtnAlign_Click and BtnDistribute_Click.
         private ArrangementHelper.AlignRelativeFlag _alignRelativeFlag = ArrangementHelper.AlignRelativeFlag.RelativeToObjects;
 
-        private bool IsOptionButtonInMenu(Office.IRibbonControl ribbonControl) {
-            return ribbonControl.Id().Contains("_To") || ribbonControl.Id().Contains("From"); // just check by id
+        private bool IsOptionRibbonButton(Office.IRibbonControl ribbonControl) {
+            return ribbonControl.Id().Contains("_To") || ribbonControl.Id().Contains("_From"); // just check by id
         }
 
         public void BtnAlignRelative_Click(Office.IRibbonControl ribbonControl, bool _ = false) {
             var shapeRange = GetShapeRange();
             if (shapeRange == null || shapeRange.Count <= 1) {
+                _ribbon?.InvalidateControl(ribbonControl.Id(), ribbonControl.Group());
                 return; // not change if no more than 1 shape is selected
             }
-            if (!IsOptionButtonInMenu(ribbonControl)) {
+            if (!IsOptionRibbonButton(ribbonControl)) {
                 _alignRelativeFlag = _alignRelativeFlag switch {
                     ArrangementHelper.AlignRelativeFlag.RelativeToObjects => ArrangementHelper.AlignRelativeFlag.RelativeToFirstObject,
                     ArrangementHelper.AlignRelativeFlag.RelativeToFirstObject => ArrangementHelper.AlignRelativeFlag.RelativeToSlide,
@@ -225,15 +226,18 @@ namespace PowerPointArrangeAddin.Ribbon {
             _ribbon?.InvalidateControl(btnAlignRelative_ToObjects, mnuArrangement);
             _ribbon?.InvalidateControl(btnAlignRelative_ToFirstObject, mnuArrangement);
             _ribbon?.InvalidateControl(btnAlignRelative_ToSlide, mnuArrangement);
+            _ribbon?.InvalidateControl(btnAlignRelative_ToObjects, "grpAlignment");
+            _ribbon?.InvalidateControl(btnAlignRelative_ToFirstObject, "grpAlignment");
+            _ribbon?.InvalidateControl(btnAlignRelative_ToSlide, "grpAlignment");
         }
 
         public bool BtnAlignRelative_GetPressed(Office.IRibbonControl ribbonControl) {
-            if (!IsOptionButtonInMenu(ribbonControl)) {
+            if (!IsOptionRibbonButton(ribbonControl)) {
                 return false;
             }
             var shapeRange = GetShapeRange();
-            if (shapeRange == null || shapeRange.Count <= 1) {
-                return ribbonControl.Id() == btnAlignRelative_ToSlide; // if no more than 1 shape is selected 
+            if (shapeRange?.Count == 1) {
+                return ribbonControl.Id() == btnAlignRelative_ToSlide; // when single shape is selected
             }
             return ribbonControl.Id() switch {
                 btnAlignRelative_ToObjects => _alignRelativeFlag == ArrangementHelper.AlignRelativeFlag.RelativeToObjects,
@@ -244,7 +248,7 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
 
         public string BtnAlignRelative_GetLabel(Office.IRibbonControl ribbonControl) {
-            if (!IsOptionButtonInMenu(ribbonControl)) {
+            if (!IsOptionRibbonButton(ribbonControl)) {
                 var shapeRange = GetShapeRange();
                 if (shapeRange?.Count == 1) {
                     return ArrangeRibbonResources.btnAlignRelative_ToSlide; // when single shape is selected
@@ -265,7 +269,7 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
 
         public System.Drawing.Image BtnAlignRelative_GetImage(Office.IRibbonControl ribbonControl) {
-            if (!IsOptionButtonInMenu(ribbonControl)) {
+            if (!IsOptionRibbonButton(ribbonControl)) {
                 var shapeRange = GetShapeRange();
                 if (shapeRange?.Count == 1) {
                     return Properties.Resources.AlignRelativeToSlide; // when single shape is selected
@@ -303,7 +307,7 @@ namespace PowerPointArrangeAddin.Ribbon {
         private Office.MsoScaleFrom _scaleFromFlag = Office.MsoScaleFrom.msoScaleFromTopLeft;
 
         public void BtnScaleAnchor_Click(Office.IRibbonControl ribbonControl, bool _ = false) {
-            if (!IsOptionButtonInMenu(ribbonControl)) {
+            if (!IsOptionRibbonButton(ribbonControl)) {
                 _scaleFromFlag = _scaleFromFlag switch {
                     Office.MsoScaleFrom.msoScaleFromTopLeft => Office.MsoScaleFrom.msoScaleFromMiddle,
                     Office.MsoScaleFrom.msoScaleFromMiddle => Office.MsoScaleFrom.msoScaleFromBottomRight,
@@ -319,14 +323,17 @@ namespace PowerPointArrangeAddin.Ribbon {
                 };
             }
             _ribbon?.InvalidateControl(btnScaleAnchor, grpArrange);
+            _ribbon?.InvalidateControl(btnScaleAnchor, _sizeAndPositionGroups);
             _ribbon?.InvalidateControl(btnScaleAnchor_FromTopLeft, mnuArrangement);
             _ribbon?.InvalidateControl(btnScaleAnchor_FromMiddle, mnuArrangement);
             _ribbon?.InvalidateControl(btnScaleAnchor_FromBottomRight, mnuArrangement);
-            _ribbon?.InvalidateControl(btnScaleAnchor, _sizeAndPositionGroups);
+            _ribbon?.InvalidateControl(btnScaleAnchor_FromTopLeft, "grpSizeAndSnap");
+            _ribbon?.InvalidateControl(btnScaleAnchor_FromMiddle, "grpSizeAndSnap");
+            _ribbon?.InvalidateControl(btnScaleAnchor_FromBottomRight, "grpSizeAndSnap");
         }
 
         public bool BtnScaleAnchor_GetPressed(Office.IRibbonControl ribbonControl) {
-            if (!IsOptionButtonInMenu(ribbonControl)) {
+            if (!IsOptionRibbonButton(ribbonControl)) {
                 return false;
             }
             return ribbonControl.Id() switch {
@@ -338,7 +345,7 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
 
         public string BtnScaleAnchor_GetLabel(Office.IRibbonControl ribbonControl) {
-            if (!IsOptionButtonInMenu(ribbonControl)) {
+            if (!IsOptionRibbonButton(ribbonControl)) {
                 return _scaleFromFlag switch {
                     Office.MsoScaleFrom.msoScaleFromTopLeft => ArrangeRibbonResources.btnScaleAnchor_TopLeft,
                     Office.MsoScaleFrom.msoScaleFromMiddle => ArrangeRibbonResources.btnScaleAnchor_Middle,
@@ -355,7 +362,7 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
 
         public System.Drawing.Image BtnScaleAnchor_GetImage(Office.IRibbonControl ribbonControl) {
-            if (!IsOptionButtonInMenu(ribbonControl)) {
+            if (!IsOptionRibbonButton(ribbonControl)) {
                 return _scaleFromFlag switch {
                     Office.MsoScaleFrom.msoScaleFromTopLeft => Properties.Resources.ScaleFromTopLeft,
                     Office.MsoScaleFrom.msoScaleFromMiddle => Properties.Resources.ScaleFromMiddle,

@@ -85,7 +85,9 @@
 
     <menuSeparator id="sepObjectsInSlide" __template="T" />
 
-    <button idMso="ObjectSizeAndPositionDialog" imageMso="ShapeStylesGallery" />
+    <!-- <button idMso="ObjectSizeAndPositionDialog" imageMso="ShapeStylesGallery" /> -->
+    <button idMso="ObjectSizeAndPositionDialog" /> <!-- TODO icon -->
+    <button idMso="GridSettings" />
     <toggleButton idMso="SelectionPane" />
 
     <menuSeparator id="sepAddInSetting" __template="T" />
