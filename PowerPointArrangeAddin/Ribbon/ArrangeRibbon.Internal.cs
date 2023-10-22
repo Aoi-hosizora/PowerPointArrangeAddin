@@ -34,6 +34,7 @@ namespace PowerPointArrangeAddin.Ribbon {
             }
 
             xml = XmlResourceHelper.ApplyAttributeTemplateForXml(xml);
+            xml = XmlResourceHelper.ApplySubtreeTemplateForXml(xml);
             xml = XmlResourceHelper.NormalizeControlIdInMenu(xml, mnuArrangement);
             return xml;
         }
@@ -47,7 +48,7 @@ namespace PowerPointArrangeAddin.Ribbon {
 
         private T? GetElementUiField<T>(Office.IRibbonControl ribbonControl, Func<ElementUi, T> getter) {
             if (_ribbonElementUiSpecials.TryGetValue(ribbonControl.Group(), out var m)) {
-                if (m.TryGetValue(ribbonControl.Id(), out var eui1)) {
+                if (m.TryGetValue(ribbonControl.Id(), out var eui1) && eui1 != null) {
                     var field = getter(eui1);
                     if (field != null) {
                         return field;
@@ -55,7 +56,7 @@ namespace PowerPointArrangeAddin.Ribbon {
                 }
             }
             _ribbonElementUis.TryGetValue(ribbonControl.Id(), out var eui2);
-            return getter(eui2);
+            return eui2 == null ? default : getter(eui2);
         }
 
         public string GetLabel(Office.IRibbonControl ribbonControl) {

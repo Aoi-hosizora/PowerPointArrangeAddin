@@ -249,7 +249,13 @@ namespace PowerPointArrangeAddin.Helper {
                 var factor = !isSound ? 1F : 0.25F;
                 shape.ScaleWidth(factor, relativeToOriginalSize, scaleFromFlag.Value);
                 shape.ScaleHeight(factor, relativeToOriginalSize, scaleFromFlag.Value);
-
+                shape.Rotation = 0;
+                if (shape.HorizontalFlip == Office.MsoTriState.msoTrue) {
+                    shape.Flip(Office.MsoFlipCmd.msoFlipHorizontal);
+                }
+                if (shape.VerticalFlip == Office.MsoTriState.msoTrue) {
+                    shape.Flip(Office.MsoFlipCmd.msoFlipVertical);
+                }
             }
             uiInvalidator?.Invoke();
         }

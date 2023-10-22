@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <menu xmlns="http://schemas.microsoft.com/office/2006/01/customui">
     <__templates>
-        <__template name="T" getTitle="GetLabel" />
-        <__template name="L" getLabel="GetLabel" />
-        <__template name="S" getScreentip="GetLabel" />
-        <__template name="E" getEnabled="GetEnabled" />
-        <__template name="I" getImage="GetImage" />
-        <__template name="MENU" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" />
-        <__template name="LSEI_Relative" getLabel="BtnAlignRelative_GetLabel" getScreentip="BtnAlignRelative_GetLabel" getEnabled="GetEnabled" getImage="BtnAlignRelative_GetImage" />
-        <__template name="LSEI_Anchor" getLabel="BtnScaleAnchor_GetLabel" getScreentip="BtnScaleAnchor_GetLabel" getEnabled="GetEnabled" getImage="BtnScaleAnchor_GetImage" />
+        <__attribute_template name="T" getTitle="GetLabel" />
+        <__attribute_template name="L" getLabel="GetLabel" />
+        <__attribute_template name="S" getScreentip="GetLabel" />
+        <__attribute_template name="E" getEnabled="GetEnabled" />
+        <__attribute_template name="I" getImage="GetImage" />
+        <__attribute_template name="MENU" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" />
+        <__attribute_template name="LSEI_Relative" getLabel="BtnAlignRelative_GetLabel" getScreentip="BtnAlignRelative_GetLabel" getEnabled="GetEnabled" getImage="BtnAlignRelative_GetImage" />
+        <__attribute_template name="LSEI_Anchor" getLabel="BtnScaleAnchor_GetLabel" getScreentip="BtnScaleAnchor_GetLabel" getEnabled="GetEnabled" getImage="BtnScaleAnchor_GetImage" />
     </__templates>
 
     <menuSeparator id="sepAlignmentAndResizing" __template="T" />

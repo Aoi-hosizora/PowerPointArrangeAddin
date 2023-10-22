@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using System.Xml;
 using Office = Microsoft.Office.Core;
 
@@ -25,6 +26,19 @@ namespace PowerPointArrangeAddin.Helper {
                 }
             }
             return null;
+        }
+
+        private static XmlDocument? Parse(string xmlText) {
+            var settings = new XmlReaderSettings { IgnoreComments = true };
+            var document = new XmlDocument();
+            try {
+                var reader = new StringReader(xmlText);
+                var xmlReader = XmlReader.Create(reader, settings);
+                document.Load(xmlReader);
+            } catch (Exception) {
+                return null;
+            }
+            return document;
         }
 
         private static string ToXmlText(this XmlNode node) {
@@ -60,11 +74,8 @@ namespace PowerPointArrangeAddin.Helper {
             if (xmlText.Contains("·")) {
                 throw new Exception("`·` is not allowed to be contained in resource xml");
             }
-
-            var document = new XmlDocument();
-            try {
-                document.LoadXml(xmlText);
-            } catch (Exception) {
+            var document = Parse(xmlText);
+            if (document == null) {
                 return "";
             }
 
@@ -85,17 +96,14 @@ namespace PowerPointArrangeAddin.Helper {
             if (xmlText.Contains("·")) {
                 throw new Exception("`·` is not allowed to be contained in resource xml");
             }
-
-            var document = new XmlDocument();
-            try {
-                document.LoadXml(xmlText);
-            } catch (Exception) {
+            var document = Parse(xmlText);
+            if (document == null) {
                 return "";
             }
 
             var menuRootNode = document.GetElementsByTagName("menu").OfType<XmlNode>().FirstOrDefault();
             if (menuRootNode == null) {
-                return xmlText;
+                return document.ToXmlText();
             }
 
             foreach (var childNode in menuRootNode.ChildNodes.OfType<XmlNode>()) {
@@ -109,53 +117,59 @@ namespace PowerPointArrangeAddin.Helper {
         #region Template Related
 
         public static string ApplyAttributeTemplateForXml(string xmlText) {
-            var document = new XmlDocument();
-            try {
-                document.LoadXml(xmlText);
-            } catch (Exception) {
+            var document = Parse(xmlText);
+            if (document == null) {
                 return "";
             }
 
             // find templates node from document
-            var templatesNodes = document.GetElementsByTagName("__templates");
-            if (templatesNodes.Count == 0) {
+            var templatesNodes = document.GetElementsByTagName("__templates").OfType<XmlNode>().ToArray();
+            if (templatesNodes.Length == 0) {
                 return document.ToXmlText();
             }
-            var templatesNode = templatesNodes[0];
 
-            // extract templates to dictionary (name to key-value pairs)
+            // extract attribute templates to dictionary (template name to key-value pairs)
             var templateDictionary = new Dictionary<string, Dictionary<string, string>>();
-            foreach (var templateNode in templatesNode.ChildNodes.OfType<XmlNode>()) {
-                var nodeAttributes = templateNode.Attributes;
-                var name = nodeAttributes?["name"]?.Value;
-                if (string.IsNullOrWhiteSpace(name)) {
-                    continue;
-                }
-                var attributes = new Dictionary<string, string>();
-                foreach (var attribute in nodeAttributes!.OfType<XmlAttribute>()) {
-                    if (attribute.Name != "name") {
-                        attributes[attribute.Name] = attribute.Value;
+            foreach (var templatesNode in templatesNodes) {
+                var templateNodes = templatesNode.ChildNodes.OfType<XmlNode>().ToArray();
+                foreach (var templateNode in templateNodes) {
+                    if (templateNode.Name != "__attribute_template") {
+                        continue;
                     }
+                    var nodeAttributes = templateNode.Attributes;
+                    var nameValue = nodeAttributes?["name"]?.Value;
+                    if (string.IsNullOrWhiteSpace(nameValue)) {
+                        continue;
+                    }
+                    var attributes = new Dictionary<string, string>();
+                    foreach (var attribute in nodeAttributes!.OfType<XmlAttribute>()) {
+                        if (attribute.Name != "name") {
+                            attributes[attribute.Name] = attribute.Value;
+                        }
+                    }
+                    templateDictionary[nameValue!] = attributes;
+                    templateNode.ParentNode?.RemoveChild(templateNode); // template node must be removed
                 }
-                templateDictionary[name!] = attributes;
+                if (!templatesNode.HasChildNodes) {
+                    templatesNode.ParentNode?.RemoveChild(templatesNode); // templates node must be removed    
+                }
             }
-            templatesNode.ParentNode?.RemoveChild(templatesNode); // templates node must be removed
 
-            // find nodes that need to be applied template
+            // find nodes that are need to be applied template
             var nodesToBeApplied = document.SelectNodes("//*[@__template]");
             if (nodesToBeApplied == null || nodesToBeApplied.Count == 0) {
                 return document.ToXmlText();
             }
 
-            // apply template to each xml node
+            // apply attribute template to each xml node
             foreach (var node in nodesToBeApplied.OfType<XmlNode>()) {
                 var nodeAttributes = node.Attributes;
-                var templateAttributeValue = nodeAttributes?["__template"]?.Value;
-                if (templateAttributeValue == null) {
+                var templateValue = nodeAttributes?["__template"]?.Value;
+                if (templateValue == null) {
                     continue;
                 }
                 nodeAttributes!.RemoveNamedItem("__template"); // template attribute must be removed
-                var templateNames = templateAttributeValue.Split(','); // got template names
+                var templateNames = templateValue.Split(','); // get template name array
                 if (templateNames.Length == 0) {
                     continue;
                 }
@@ -166,7 +180,7 @@ namespace PowerPointArrangeAddin.Helper {
                     }
                     foreach (var attribute in templateAttributes) {
                         if (nodeAttributes[attribute.Key] != null) {
-                            continue; // only append attributes that is not contained previously
+                            continue; // only append attributes that are not defined
                         }
                         var newAttribute = document.CreateAttribute(attribute.Key);
                         newAttribute.Value = attribute.Value;
@@ -180,32 +194,49 @@ namespace PowerPointArrangeAddin.Helper {
         }
 
         public static string ApplySubtreeTemplateForXml(string xmlText) {
-            var document = new XmlDocument();
-            try {
-                document.LoadXml(xmlText);
-            } catch (Exception) {
+            var document = Parse(xmlText);
+            if (document == null) {
                 return "";
             }
 
-            // find nodes that are subtree template
-            var subtreeTemplateNodes = document.SelectNodes("//*[@__subtree_as_template]");
-            if (subtreeTemplateNodes == null || subtreeTemplateNodes.Count == 0) {
+            // find templates node, and nodes that are subtree template
+            var templatesNodes = document.GetElementsByTagName("__templates").OfType<XmlNode>().ToArray();
+            var subtreeTemplateNodes = document.SelectNodes("//*[@__as_subtree_template]")?.OfType<XmlNode>().ToArray() ?? new XmlNode[] { };
+            if (templatesNodes.Length == 0 && subtreeTemplateNodes.Length == 0) {
                 return document.ToXmlText();
             }
 
-            // extract subtree templates to dictionary
+            // extract subtree templates to dictionary (template name to xml node list)
             var templateDictionary = new Dictionary<string, XmlNodeList>();
-            foreach (var templateNode in subtreeTemplateNodes.OfType<XmlNode>()) {
+            foreach (var templatesNode in templatesNodes) {
+                var templateNodes = templatesNode.ChildNodes.OfType<XmlNode>().ToArray();
+                foreach (var templateNode in templateNodes) {
+                    if (templateNode.Name != "__subtree_template") {
+                        continue;
+                    }
+                    var nodeAttributes = templateNode.Attributes;
+                    var nameValue = nodeAttributes?["name"]?.Value;
+                    if (string.IsNullOrWhiteSpace(nameValue)) {
+                        continue;
+                    }
+                    templateDictionary[nameValue!] = templateNode.ChildNodes;
+                    templateNode.ParentNode?.RemoveChild(templateNode); // template node must be removed
+                }
+                if (!templatesNode.HasChildNodes) {
+                    templatesNode.ParentNode?.RemoveChild(templatesNode); // templates node must be removed    
+                }
+            }
+            foreach (var templateNode in subtreeTemplateNodes) {
                 var nodeAttributes = templateNode.Attributes;
-                var templateName = nodeAttributes?["__subtree_as_template"]?.Value;
-                nodeAttributes?.RemoveNamedItem("__subtree_as_template"); // template attribute must be removed 
-                if (string.IsNullOrWhiteSpace(templateName)) {
+                var nameValue = nodeAttributes?["__as_subtree_template"]?.Value;
+                nodeAttributes?.RemoveNamedItem("__as_subtree_template"); // template attribute must be removed 
+                if (string.IsNullOrWhiteSpace(nameValue)) {
                     continue;
                 }
-                templateDictionary[templateName!] = templateNode.ChildNodes;
+                templateDictionary[nameValue!] = templateNode.ChildNodes;
             }
 
-            // find nodes that need to be applied template
+            // find nodes that are need to be applied template
             var nodesToBeApplied = document.GetElementsByTagName("__apply_subtree_template").OfType<XmlNode>().ToArray();
             if (nodesToBeApplied.Length == 0) {
                 return document.ToXmlText();
@@ -217,47 +248,107 @@ namespace PowerPointArrangeAddin.Helper {
                 if (parentNode == null) {
                     continue; // almost unreachable
                 }
+
+                // get template name and two rule lists
                 var nodeAttribute = node.Attributes;
-                var (templateName, replaceField) = (nodeAttribute?["use_template"]?.Value, nodeAttribute?["replace_field"]?.Value);
-                var (replaceFrom, replaceTo) = (nodeAttribute?["replace_from"]?.Value, nodeAttribute?["replace_to"]?.Value);
-                parentNode.RemoveChild(node); // subtree template node must be removed
+                var templateName = nodeAttribute?["use_template"]?.Value;
                 if (string.IsNullOrWhiteSpace(templateName)) {
                     continue;
                 }
+                var replaceRules = new List<(string, string, string, bool)>(); // field, from, to, re
+                var removeRules = new List<(string, string, bool)>(); // field, match, re
+                var ruleNodes = node.ChildNodes.OfType<XmlNode>().ToArray();
+                foreach (var ruleNode in ruleNodes) {
+                    var nodeAttributes = ruleNode.Attributes;
+                    switch (ruleNode.Name) {
+                    case "__replace_rule": {
+                        var fieldValue = nodeAttributes?["field"]?.Value;
+                        var fromValue = nodeAttributes?["from"]?.Value;
+                        var toValue = nodeAttributes?["to"]?.Value;
+                        var reValue = nodeAttributes?["re"]?.Value;
+                        if (!string.IsNullOrWhiteSpace(fieldValue) && !string.IsNullOrWhiteSpace(fromValue) && toValue != null) {
+                            replaceRules.Add((fieldValue!, fromValue!, toValue, reValue == "true"));
+                        }
+                        break;
+                    }
+                    case "__remove_rule": {
+                        var fieldValue = nodeAttributes?["field"]?.Value;
+                        var matchValue = nodeAttributes?["match"]?.Value;
+                        var reValue = nodeAttributes?["re"]?.Value;
+                        if (!string.IsNullOrWhiteSpace(fieldValue) && !string.IsNullOrWhiteSpace(matchValue)) {
+                            removeRules.Add((fieldValue!, matchValue!, reValue == "true"));
+                        }
+                        break;
+                    }
+                    }
+                }
+                parentNode.RemoveChild(node); // subtree template node must be removed
 
-                // get template node list, and construct children node dictionary
+                // get template subtree, which is node list
                 if (!templateDictionary.TryGetValue(templateName!, out var templateNodeList)) {
                     continue; // specific template is not found
                 }
-                var parentChildrenNode = parentNode.ChildNodes.OfType<XmlNode>()
-                    .ToDictionary(n => n.Name, n => n);
 
-                static void ReplaceFieldValue(XmlNode newNode, string field, string from, string to) {
-                    var attributes = newNode.Attributes;
-                    var fieldValue = attributes?[field]?.Value;
-                    if (!string.IsNullOrWhiteSpace(fieldValue)) {
-                        attributes![field]!.Value = from switch {
-                            "$" => attributes[field]!.Value + to,
-                            "^" => to + attributes[field]!.Value,
-                            _ => attributes[field]!.Value.Replace(from, to)
-                        };
+                // two rule functions
+                static void ReplaceFieldValue(XmlNode node, List<(string, string, string, bool)> replaceRules) {
+                    var attributes = node.Attributes;
+                    foreach (var (field, from, to, re) in replaceRules) {
+                        var fieldValue = attributes?[field]?.Value;
+                        if (string.IsNullOrWhiteSpace(fieldValue)) {
+                            continue;
+                        }
+                        if (!re) {
+                            fieldValue = fieldValue!.Replace(from, to);
+                        } else {
+                            try {
+                                fieldValue = new Regex(from).Replace(fieldValue, to);
+                            } catch (Exception) { }
+                        }
+                        attributes![field]!.Value = fieldValue;
                     }
-                    if (!newNode.HasChildNodes) {
-                        return;
+                    foreach (var childNode in node.ChildNodes.OfType<XmlNode>()) {
+                        ReplaceFieldValue(childNode, replaceRules);
                     }
-                    foreach (var childNode in newNode.ChildNodes.OfType<XmlNode>()) {
-                        ReplaceFieldValue(childNode, field, from, to);
+                }
+                static XmlNode? RemoveSpecificNode(XmlNode node, List<(string, string, bool)> removeRules) {
+                    var attributes = node.Attributes;
+                    foreach (var (field, match, re) in removeRules) {
+                        var fieldValue = field == "$" ? node.Name : attributes?[field]?.Value;
+                        if (string.IsNullOrWhiteSpace(fieldValue)) {
+                            continue;
+                        }
+                        var matched = false;
+                        if (!re) {
+                            matched = fieldValue!.Contains(match);
+                        } else {
+                            try {
+                                matched = new Regex(match).IsMatch(fieldValue);
+                            } catch (Exception) { }
+                        }
+                        if (matched) {
+                            return null;
+                        }
                     }
+                    foreach (var childNode in node.ChildNodes.OfType<XmlNode>()) {
+                        var result = RemoveSpecificNode(childNode, removeRules);
+                        if (result == null) {
+                            childNode.ParentNode?.RemoveChild(childNode);
+                        }
+                    }
+                    return node;
                 }
 
                 // enumerate template node list and apply to node 
                 foreach (var templateNode in templateNodeList.OfType<XmlNode>()) {
-                    var newNode = templateNode.CloneNode(true); // deep clone template node
-                    if (!string.IsNullOrWhiteSpace(replaceField) && !string.IsNullOrWhiteSpace(replaceFrom) && replaceTo != null) {
-                        ReplaceFieldValue(newNode, replaceField!, replaceFrom!, replaceTo);
+                    var clonedNode = templateNode.CloneNode(true); // deep clone template node
+                    if (replaceRules.Count > 0) {
+                        ReplaceFieldValue(clonedNode, replaceRules);
                     }
-                    if (!parentChildrenNode.ContainsKey(newNode.Name)) {
-                        parentNode.AppendChild(newNode); // only append node if node name does not exist
+                    if (removeRules.Count > 0) {
+                        clonedNode = RemoveSpecificNode(clonedNode, removeRules);
+                    }
+                    if (clonedNode != null) {
+                        parentNode.AppendChild(clonedNode);
                     }
                 }
             }
@@ -271,10 +362,8 @@ namespace PowerPointArrangeAddin.Helper {
         #region Misc Methods
 
         public static string ApplyMsoKeytipForXml(string xmlText, Dictionary<string, Dictionary<string, string>> msoKeytips) {
-            var document = new XmlDocument();
-            try {
-                document.LoadXml(xmlText);
-            } catch (Exception) {
+            var document = Parse(xmlText);
+            if (document == null) {
                 return "";
             }
 
