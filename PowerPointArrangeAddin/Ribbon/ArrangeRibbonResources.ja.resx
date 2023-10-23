@@ -242,16 +242,16 @@
     <value>最初に選択した図形と同じ幅に変形(&amp;W)</value>
   </data>
   <data name="btnSnapBottom" xml:space="preserve">
-    <value>下端を上にスナップ(&amp;B)</value>
+    <value>下端を上へ吸着(&amp;B)</value>
   </data>
   <data name="btnSnapLeft" xml:space="preserve">
-    <value>左端を右にスナップ(&amp;L)</value>
+    <value>左端を右へ吸着(&amp;L)</value>
   </data>
   <data name="btnSnapRight" xml:space="preserve">
-    <value>右端を左にスナップ(&amp;R)</value>
+    <value>右端を左へ吸着(&amp;R)</value>
   </data>
   <data name="btnSnapTop" xml:space="preserve">
-    <value>上端を下にスナップ(&amp;T)</value>
+    <value>上端を下へ吸着(&amp;T)</value>
   </data>
   <data name="btnUngroup" xml:space="preserve">
     <value>グループ解除(&amp;U)</value>
@@ -326,7 +326,7 @@
     <value>回転(&amp;O)</value>
   </data>
   <data name="mnuArrangement_mnuSnapping" xml:space="preserve">
-    <value>スナップ(&amp;S)</value>
+    <value>吸着(&amp;S)</value>
   </data>
   <data name="mnuArrangement_sepAddInSetting" xml:space="preserve">
     <value>アドインの設定</value>

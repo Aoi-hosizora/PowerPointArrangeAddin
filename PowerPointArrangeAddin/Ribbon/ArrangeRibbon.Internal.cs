@@ -20,7 +20,6 @@ namespace PowerPointArrangeAddin.Ribbon {
                 return "";
             }
 
-            xml = XmlResourceHelper.ApplyControlForRefers(xml);
             xml = XmlResourceHelper.ApplyAttributeTemplateForXml(xml);
             xml = XmlResourceHelper.ApplySubtreeTemplateForXml(xml);
             xml = XmlResourceHelper.ApplyMsoKeytipForXml(xml, _msoKeytips);
@@ -35,7 +34,6 @@ namespace PowerPointArrangeAddin.Ribbon {
                 return "";
             }
 
-            xml = XmlResourceHelper.ApplyControlForRefers(xml);
             xml = XmlResourceHelper.ApplyAttributeTemplateForXml(xml);
             xml = XmlResourceHelper.ApplySubtreeTemplateForXml(xml);
             xml = XmlResourceHelper.NormalizeControlIdInMenu(xml, mnuArrangement);
@@ -67,7 +65,7 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
 
         public System.Drawing.Image? GetImage(Office.IRibbonControl ribbonControl) {
-            return GetElementUiField(ribbonControl, eui => eui.Image);
+            return GetElementUiField(ribbonControl, eui => ribbonControl.Tag != "large" ? eui.Image : eui.LargeImage ?? eui.Image);
         }
 
         public string GetKeytip(Office.IRibbonControl ribbonControl) {
@@ -213,6 +211,7 @@ namespace PowerPointArrangeAddin.Ribbon {
         private class ElementUi {
             public string? Label { get; init; }
             public System.Drawing.Image? Image { get; init; }
+            public System.Drawing.Image? LargeImage { get; init; }
             public string? Keytip { get; init; }
         }
 
@@ -271,7 +270,7 @@ namespace PowerPointArrangeAddin.Ribbon {
             Register1(btnGroup, new ElementUi { Label = R1.btnGroup, Image = R2.ObjectsGroup, Keytip = "HG" });
             Register1(btnUngroup, new ElementUi { Label = R1.btnUngroup, Image = R2.ObjectsUngroup, Keytip = "HU" });
             Register1(mnuArrangement, new ElementUi { Label = R1.mnuArrangement, Image = R2.ObjectArrangement_32, Keytip = "B" });
-            Register1(btnAddInSetting, new ElementUi { Label = R1.btnAddInSetting, Image = R2.AddInOptions, Keytip = "HT" });
+            Register1(btnAddInSetting, new ElementUi { Label = R1.btnAddInSetting, Image = R2.AddInOptions, LargeImage = R2.AddInOptions_32, Keytip = "HT" });
             // grpTextbox
             Register1(grpTextbox, new ElementUi { Label = R1.grpTextbox, Image = R2.TextboxSetting });
             Register1(btnAutofitOff, new ElementUi { Label = R1.btnAutofitOff, Image = R2.TextboxAutofitOff, Keytip = "TF" });
@@ -301,7 +300,7 @@ namespace PowerPointArrangeAddin.Ribbon {
             Register1(grpChartSizeAndPosition, new ElementUi { Label = R1.grpSizeAndPosition, Image = R2.SizeAndPosition });
             Register1(grpSmartartSizeAndPosition, new ElementUi { Label = R1.grpSizeAndPosition, Image = R2.SizeAndPosition });
             Register1(btnResetSize, new ElementUi { Label = R1.btnResetSize, Image = R2.PictureResetSize_32, Keytip = "SR" });
-            Register1(btnLockAspectRatio, new ElementUi { Label = R1.btnLockAspectRatio, Image = R2.ObjectLockAspectRatio, Keytip = "L" });
+            Register1(btnLockAspectRatio, new ElementUi { Label = R1.btnLockAspectRatio, Image = R2.ObjectLockAspectRatio, LargeImage = R2.ObjectLockAspectRatio_32, Keytip = "L" });
             Register1(btnCopySize, new ElementUi { Label = R1.btnCopySize, Image = R2.Copy, Keytip = "SC" });
             Register1(btnPasteSize, new ElementUi { Label = R1.btnPasteSize, Image = R2.Paste, Keytip = "SP" });
             Register1(edtPositionX, new ElementUi { Label = R1.edtPositionX, Keytip = "PX" });

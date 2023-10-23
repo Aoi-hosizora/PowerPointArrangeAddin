@@ -46,6 +46,8 @@
         <button id="btnExtendSameRight" __template="L,S,E,I" onAction="BtnExtend_Click" />
         <button id="btnExtendSameTop" __template="L,S,E,I" onAction="BtnExtend_Click" />
         <button id="btnExtendSameBottom" __template="L,S,E,I" onAction="BtnExtend_Click" />
+        <menuSeparator id="mnuResizing_separator3" />
+        <control idMso="ObjectSizeAndPositionDialog" />
     </menu>
 
     <menu id="mnuSnapping" __template="MENU">

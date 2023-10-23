@@ -173,7 +173,7 @@
     <Compile Include="Ribbon\ArrangeRibbon.Internal.cs" />
     <EmbeddedResource Include="Ribbon\ArrangeRibbon.UI.xml" />
     <EmbeddedResource Include="Ribbon\ArrangeRibbon.Menu.xml" />
-    <EmbeddedResource Include="Ribbon\ArrangeRibbon.UI.xml.bak" />
+    <None Include="Ribbon\ArrangeRibbon.UI.xml.bak" />
     <EmbeddedResource Include="Ribbon\ArrangeRibbonResources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>ArrangeRibbonResources.Designer.cs</LastGenOutput>

@@ -92,17 +92,18 @@
             </tab> <!-- end of TabHome -->
 
             <tab id="tabArrangement" label="配置" keytip="M" insertAfterMso="TabInsert">
-                <group id="grpAddinSummary" label="アドイン">
-                    <button id="btnAddInSetting" size="large" __template="L,S,K,E" imageMso="PageMenu" onAction="BtnAddInSetting_Click" /> <!-- TODO imageMso -->
-                </group> <!-- end of grpAddinSummary -->
+                <group id="grpAddInSetting" label="アドイン">
+                    <!-- TODO icon, use tag to represent size ??? -->
+                    <button id="btnAddInSetting" size="large" tag="large" __template="L,S,K,E" imageMso="PageMenu" onAction="BtnAddInSetting_Click" />
+                </group> <!-- end of grpAddInSetting -->
 
                 <group id="grpAlignment" label="位置合わせ">
-                    <labelControl id="lblAlignmentH" label="横揃え " /> <!-- TODO " " -->
+                    <labelControl id="lblAlignmentH" label="横揃え " />
                     <labelControl id="lblAlignmentV" label="縦揃え" />
                     <labelControl id="lblDistribute" label="整列" />
                     <__use_template name="ARRANGE">
-                        <__remove_rule field="id" match="^((?!Align|Distribute).)*$|btnAlignRelative" re="true" />
-                        <__remove_rule field="$" match="dialogBoxLauncher" />
+                        <__remove_rule field="id" match_re="^((?!Align|Distribute).)*$|btnAlignRelative" />
+                        <__remove_rule field="@" match="dialogBoxLauncher" />
                     </__use_template>
                     <separator id="sepAlignRelative" />
                     <toggleButton id="btnAlignRelative_ToSlide" __template="LSKEI_Relative" getPressed="BtnAlignRelative_GetPressed" onAction="BtnAlignRelative_Click" />
@@ -110,13 +111,13 @@
                     <toggleButton id="btnAlignRelative_ToFirstObject" __template="LSKEI_Relative" getPressed="BtnAlignRelative_GetPressed" onAction="BtnAlignRelative_Click" />
                 </group> <!-- end of grpAlignment -->
 
-                <group id="grpSizeAndSnap" label="変形とスナップ">
+                <group id="grpSizeAndSnap" label="変形と吸着">
                     <labelControl id="lblScale" label="変形" />
-                    <labelControl id="lblExtend" label="伸ばし" />
-                    <labelControl id="lblSnap" label="スナップ " /> <!-- TODO " " -->
+                    <labelControl id="lblExtend" label="伸ばし " />
+                    <labelControl id="lblSnap" label="吸着" />
                     <__use_template name="ARRANGE">
-                        <__remove_rule field="id" match="^((?!Scale|Extend|Snap).)*$|btnScaleAnchor|sepScaleSize" re="true" />
-                        <__remove_rule field="$" match="dialogBoxLauncher" />
+                        <__remove_rule field="id" match_re="^((?!Scale|Extend|Snap).)*$|btnScaleAnchor|sepScaleSize" />
+                        <__remove_rule field="@" match="dialogBoxLauncher" />
                     </__use_template>
                     <separator id="sepScaleAnchor" />
                     <toggleButton id="btnScaleAnchor_FromTopLeft" __template="LSKEI_Anchor" getPressed="BtnScaleAnchor_GetPressed" onAction="BtnScaleAnchor_Click" />
@@ -127,42 +128,75 @@
                 <group id="grpObjectArrange" label="オブジェクトの配置">
                     <labelControl id="lblLayer" label="重ね順" />
                     <labelControl id="lblRotate" label="回転" />
-                    <labelControl id="lblGroup" label="グループ " /> <!-- TODO " " -->
+                    <labelControl id="lblGroup" label="グループ " />
                     <__use_template name="ARRANGE">
-                        <__remove_rule field="id" match="^((?!Layer|Rotate|Group).)*$|sepMoveLayers" norec="true" re="true" />
-                        <__remove_rule field="idMso" match="SelectionPane" re="true" />
-                        <__remove_rule field="$" match="dialogBoxLauncher" />
+                        <__remove_rule field="id" match_re="^((?!Layer|Rotate|Group).)*$|sepMoveLayers" norec="true" />
+                        <__remove_rule field="idMso" match_re="GridSettings|SelectionPane" />
+                        <__remove_rule field="@" match="dialogBoxLauncher" />
                     </__use_template>
-                    <separator id="sepSelectionPane" />
+                    <separator id="sepGridSettings" />
+                    <button idMso="GridSettings" size="large" __template="K" imageMso="GridlinesMenu" /> <!-- TODO icon -->
                     <toggleButton idMso="SelectionPane" size="large" __template="K" />
+                    <separator id="sepArrangement" />
                     <dynamicMenu id="mnuArrangement" size="large" __template="L,S,K,E,I" getContent="GetMenuContent" />
                 </group> <!-- end of grpObjectArrange -->
 
-                <group id="grpSize" label="サイズ">
-                    <control idMso="PictureCropTools" size="large" __template="K" />  <!-- <<< -->
-                    <button id="btnResetSize" size="large" __template="L,S,K,E,I" onAction="BtnResetMediaSize_Click" /> <!-- icon -->
-                    <separator id="sepLockAspectRatio" />
-                    <toggleButton id="btnLockAspectRatio" size="large" __template="L,S,K,E,I" getPressed="BtnLockAspectRatio_GetPressed" onAction="BtnLockAspectRatio_Click" /> <!-- TODO icon -->
-                    <button idMso="ObjectSizeAndPositionDialog" size="large" __template="K" /> <!-- TODO icon -->
+                <group id="grpObjectSize" label="オブジェクトのサイズ">
+                    <button idMso="ObjectSizeAndPositionDialog" size="large" imageMso="GroupSizeAndPosition" __template="K" /> <!-- TODO icon -->
+                    <separator id="sepPictureCropTools" />
+                    <control idMso="PictureCropTools" size="large" __template="K" />  <!-- TODO keytip -->
+                    <button id="btnResetSize" size="large" __template="L,S,K,E,I" onAction="BtnResetMediaSize_Click" />
+                    <toggleButton id="btnLockAspectRatio" size="large" tag="large" __template="L,S,K,E,I" getPressed="BtnLockAspectRatio_GetPressed" onAction="BtnLockAspectRatio_Click" /> <!-- TODO icon -->
                     <separator id="sepPosition" />
-                    <!-- TODO add more -->
                     <editBox id="edtPositionX" showImage="false" label="高さ:" __template="S,K,E,Z7" getText="EdtPosition_GetText" onChange="EdtPosition_TextChanged" /> <!-- TODO to Size -->
                     <editBox id="edtPositionY" showImage="false" label="幅:" __template="S,K,E,Z7" getText="EdtPosition_GetText" onChange="EdtPosition_TextChanged" />
                     <buttonGroup id="bgpCopyAndPasteSize">
-                        <__control_refer id="btnCopySize" />
-                        <__control_refer id="btnPasteSize" />
+                        <button id="btnCopySize" showLabel="false" __template="L,S,K,E,I" onAction="BtnCopyAndPasteSize_Click" />
+                        <button id="btnPasteSize" __template="L,S,K,E,I" onAction="BtnCopyAndPasteSize_Click" />
                     </buttonGroup>
-                </group> <!-- end of grpSize -->
+                </group> <!-- end of grpObjectSize -->
 
-                <group id="grpPosition" label="位置">
-                    <!-- TODO add more -->
-                    <__use_template name="SIZEPOS">
-                        <__remove_rule field="id" match="^((?!edtPosition|PastePosition).)*$" norec="true" re="true" />
-                        <__remove_rule field="$" match="dialogBoxLauncher" />
-                    </__use_template>
-                </group> <!-- end of grpPosition -->
+                <group id="grpObjectPosition" label="オブジェクトの位置">
+                    <button idMso="ObjectSizeAndPositionDialog" size="large" imageMso="GroupSizeAndPosition" __template="K" /> <!-- TODO icon -->
+                    <separator id="sepPosition" />
+                    <editBox id="edtPositionX" showImage="false" __template="L,S,K,E,Z7" getText="EdtPosition_GetText" onChange="EdtPosition_TextChanged" />
+                    <editBox id="edtPositionY" showImage="false" __template="L,S,K,E,Z7" getText="EdtPosition_GetText" onChange="EdtPosition_TextChanged" />
+                    <buttonGroup id="bgpCopyAndPastePosition">
+                        <button id="btnCopyPosition" showLabel="false" __template="L,S,K,E,I" onAction="BtnCopyAndPastePosition_Click" />
+                        <button id="btnPastePosition" __template="L,S,K,E,I" onAction="BtnCopyAndPastePosition_Click" />
+                    </buttonGroup>
+                </group> <!-- end of grpObjectPosition -->
             </tab>
         </tabs> <!-- end of tabArrangement -->
+
+        <__templates>
+            <__subtree_template name="SIZEPOS">
+                <dynamicMenu id="mnuArrangement" size="large" __template="L,S,K,E,I" getContent="GetMenuContent" />
+                <separator id="sepResetSize" />
+                <button id="btnResetSize" size="large" __template="L,S,K,E,I" onAction="BtnResetMediaSize_Click" />
+                <toggleButton id="btnLockAspectRatio" __template="L,S,K,E,I" getPressed="BtnLockAspectRatio_GetPressed" onAction="BtnLockAspectRatio_Click" />
+                <button id="btnScaleAnchor" __template="LSKEI_Anchor" onAction="BtnScaleAnchor_Click" />
+                <buttonGroup id="bgpCopyAndPasteSize">
+                    <button id="btnCopySize" showLabel="false" __template="L,S,K,E,I" onAction="BtnCopyAndPasteSize_Click" />
+                    <button id="btnPasteSize" __template="L,S,K,E,I" onAction="BtnCopyAndPasteSize_Click" />
+                </buttonGroup>
+                <separator id="sepPosition" />
+                <editBox id="edtPositionX" showImage="false" __template="L,S,K,E,Z7" getText="EdtPosition_GetText" onChange="EdtPosition_TextChanged" />
+                <editBox id="edtPositionY" showImage="false" __template="L,S,K,E,Z7" getText="EdtPosition_GetText" onChange="EdtPosition_TextChanged" />
+                <buttonGroup id="bgpCopyAndPastePosition">
+                    <!-- 
+                        TODO nested template
+                        <__use_template name="$id=btnCopyPosition" />
+                        <__use_template name="$id=btnPastePosition" /> 
+                    -->
+                    <button id="btnCopyPosition" showLabel="false" __template="L,S,K,E,I" onAction="BtnCopyAndPastePosition_Click" />
+                    <button id="btnPastePosition" __template="L,S,K,E,I" onAction="BtnCopyAndPastePosition_Click" />
+                </buttonGroup>
+                <dialogBoxLauncher>
+                    <button idMso="ObjectSizeAndPositionDialog" __template="K" />
+                </dialogBoxLauncher>
+            </__subtree_template>
+        </__templates>
 
         <contextualTabs>
             <tabSet idMso="TabSetDrawingTools">
@@ -208,26 +242,8 @@
                         <checkBox id="chkReplaceToMiddle" __template="L,S,K,E" getPressed="ChkReplaceToMiddle_GetPressed" onAction="ChkReplaceToMiddle_Click" />
                     </group> <!-- end of grpReplacePicture -->
 
-                    <group id="grpPictureSizeAndPosition" insertAfterMso="GroupPictureSize" __template="GROUP" __as_subtree_template="SIZEPOS">
-                        <dynamicMenu id="mnuArrangement" size="large" __template="L,S,K,E,I" getContent="GetMenuContent" />
-                        <separator id="sepResetSize" />
-                        <button id="btnResetSize" size="large" __template="L,S,K,E,I" onAction="BtnResetMediaSize_Click" />
-                        <toggleButton id="btnLockAspectRatio" __template="L,S,K,E,I" getPressed="BtnLockAspectRatio_GetPressed" onAction="BtnLockAspectRatio_Click" />
-                        <button id="btnScaleAnchor" __template="LSKEI_Anchor" onAction="BtnScaleAnchor_Click" />
-                        <buttonGroup id="bgpCopyAndPasteSize">
-                            <button id="btnCopySize" showLabel="false" __template="L,S,K,E,I" onAction="BtnCopyAndPasteSize_Click" />
-                            <button id="btnPasteSize" __template="L,S,K,E,I" onAction="BtnCopyAndPasteSize_Click" />
-                        </buttonGroup>
-                        <separator id="sepPosition" />
-                        <editBox id="edtPositionX" showImage="false" __template="L,S,K,E,Z7" getText="EdtPosition_GetText" onChange="EdtPosition_TextChanged" />
-                        <editBox id="edtPositionY" showImage="false" __template="L,S,K,E,Z7" getText="EdtPosition_GetText" onChange="EdtPosition_TextChanged" />
-                        <buttonGroup id="bgpCopyAndPastePosition">
-                            <button id="btnCopyPosition" showLabel="false" __template="L,S,K,E,I" onAction="BtnCopyAndPastePosition_Click" />
-                            <button id="btnPastePosition" __template="L,S,K,E,I" onAction="BtnCopyAndPastePosition_Click" />
-                        </buttonGroup>
-                        <dialogBoxLauncher>
-                            <button idMso="ObjectSizeAndPositionDialog" __template="K" />
-                        </dialogBoxLauncher>
+                    <group id="grpPictureSizeAndPosition" insertAfterMso="GroupPictureSize" __template="GROUP">
+                        <__use_template name="SIZEPOS" />
                     </group> <!-- end of grpPictureSizeAndPosition -->
                 </tab> <!-- end of TabPictureToolsFormat -->
             </tabSet> <!-- end of TabSetPictureTools -->

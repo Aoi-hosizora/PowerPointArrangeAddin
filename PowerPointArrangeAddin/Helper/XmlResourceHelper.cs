@@ -80,8 +80,8 @@ namespace PowerPointArrangeAddin.Helper {
         }
 
         public static string NormalizeControlIdInGroup(string xmlText) {
-            if (xmlText.Contains("·")) {
-                throw new Exception("`·` is not allowed to be contained in resource xml");
+            if (xmlText.Contains(Separator)) {
+                throw new Exception($"`{Separator}` can not be used in resource xml");
             }
             var document = Parse(xmlText);
             if (document == null) {
@@ -102,8 +102,8 @@ namespace PowerPointArrangeAddin.Helper {
         }
 
         public static string NormalizeControlIdInMenu(string xmlText, string menuId) {
-            if (xmlText.Contains("·")) {
-                throw new Exception("`·` is not allowed to be contained in resource xml");
+            if (xmlText.Contains(Separator)) {
+                throw new Exception($"`{Separator}` can not be used in resource xml");
             }
             var document = Parse(xmlText);
             if (document == null) {
@@ -252,11 +252,6 @@ namespace PowerPointArrangeAddin.Helper {
 
             // apply subtree template to each xml node
             foreach (var node in nodesToBeApplied) {
-                var parentNode = node.ParentNode;
-                if (parentNode == null) {
-                    continue; // almost unreachable
-                }
-
                 // get template name and two rule lists
                 var templateName = node.Attributes?["name"]?.Value;
                 if (string.IsNullOrWhiteSpace(templateName)) {
@@ -264,91 +259,112 @@ namespace PowerPointArrangeAddin.Helper {
                 }
                 var replaceRules = new List<(string field, string from, string to, bool norec, bool re)>();
                 var removeRules = new List<(string field, string match, bool norec, bool re)>();
-                var ruleNodes = node.ChildNodes.OfType<XmlNode>().ToArray();
-                foreach (var ruleNode in ruleNodes) {
+                foreach (var ruleNode in node.ChildNodes.OfType<XmlNode>().ToArray()) {
                     var nodeAttributes = ruleNode.Attributes;
+                    var fieldValue = nodeAttributes?["field"]?.Value;
+                    var norecValue = nodeAttributes?["norec"]?.Value == "true";
                     switch (ruleNode.Name) {
-                    case "__replace_rule": {
-                        var fieldValue = nodeAttributes?["field"]?.Value;
-                        var fromValue = nodeAttributes?["from"]?.Value;
-                        var toValue = nodeAttributes?["to"]?.Value;
-                        var norecValue = nodeAttributes?["norec"]?.Value;
-                        var reValue = nodeAttributes?["re"]?.Value;
-                        if (!string.IsNullOrWhiteSpace(fieldValue) && !string.IsNullOrWhiteSpace(fromValue) && toValue != null) {
-                            replaceRules.Add((fieldValue!, fromValue!, toValue, norecValue == "true", reValue == "true"));
+                    case "__replace_rule":
+                        var (fromValue, fromReValue, toValue) = (nodeAttributes?["from"]?.Value, nodeAttributes?["from_re"]?.Value, nodeAttributes?["to"]?.Value);
+                        if (string.IsNullOrWhiteSpace(fieldValue) || string.IsNullOrWhiteSpace(toValue)) {
+                            continue;
                         }
-                        break;
-                    }
-                    case "__remove_rule": {
-                        var fieldValue = nodeAttributes?["field"]?.Value;
-                        var matchValue = nodeAttributes?["match"]?.Value;
-                        var norecValue = nodeAttributes?["norec"]?.Value;
-                        var reValue = nodeAttributes?["re"]?.Value;
-                        if (!string.IsNullOrWhiteSpace(fieldValue) && !string.IsNullOrWhiteSpace(matchValue)) {
-                            removeRules.Add((fieldValue!, matchValue!, norecValue == "true", reValue == "true"));
+                        if (string.IsNullOrWhiteSpace(fromValue) && string.IsNullOrWhiteSpace(fromReValue)) {
+                            continue;
                         }
+                        if (!string.IsNullOrWhiteSpace(fromReValue) is var useReForReplacing && useReForReplacing) {
+                            fromValue = fromReValue!;
+                        }
+                        replaceRules.Add((fieldValue!, fromValue!, toValue!, norecValue, useReForReplacing));
                         break;
-                    }
+                    case "__remove_rule":
+                        var (matchValue, matchReValue) = (nodeAttributes?["match"]?.Value, nodeAttributes?["match_re"]?.Value);
+                        if (string.IsNullOrWhiteSpace(fieldValue)) {
+                            continue;
+                        }
+                        if (string.IsNullOrWhiteSpace(matchValue) && string.IsNullOrWhiteSpace(matchReValue)) {
+                            continue;
+                        }
+                        if (!string.IsNullOrWhiteSpace(matchReValue) is var useReForRemoving && useReForRemoving) {
+                            matchValue = matchReValue!;
+                        }
+                        removeRules.Add((fieldValue!, matchValue!, norecValue, useReForRemoving));
+                        break;
                     }
                 }
 
-                // get template subtree, which is a node list
-                if (!templateDictionary.TryGetValue(templateName!, out var templateNodeList)) {
-                    continue; // specific template is not found
+                // get template subtree (node list) or ref control (single node)
+                List<XmlNode> templateNodeList;
+                var matched = new Regex(@"^\$(\w+?)=(\w+?)(?::(\d+?))?$").Match(templateName!);
+                if (!matched.Success) {
+                    if (!templateDictionary.TryGetValue(templateName!, out var nodeList)) {
+                        continue; // specific template is not found
+                    }
+                    templateNodeList = nodeList.OfType<XmlNode>().ToList();
+                } else {
+                    var (keyValue, valueValue, numValue) = (matched.Groups[1].Value, matched.Groups[2].Value, matched.Groups[3].Value);
+                    if (string.IsNullOrWhiteSpace(keyValue) || string.IsNullOrWhiteSpace(valueValue)) {
+                        continue; // use empty key or value in template
+                    }
+                    if (!int.TryParse(string.IsNullOrWhiteSpace(numValue) ? "1" : numValue!, out var num)) {
+                        continue; // use invalid num string value
+                    }
+                    var foundNodes = document.SelectNodes($"//*[@{keyValue}=\"{valueValue}\"]")?.OfType<XmlNode>().ToArray();
+                    if (foundNodes == null || foundNodes.Length == 0) {
+                        continue; // can not find template referee node
+                    }
+                    num = Math.Min(1, Math.Max(foundNodes.Length, num));
+                    templateNodeList = new List<XmlNode> { foundNodes[num - 1] };
                 }
 
                 // two rule functions
-                static void ReplaceFieldValue(XmlNode node, List<(string, string, string, bool, bool)> replaceRules, bool firstLayer = true) {
+                static void ReplaceFieldValue(XmlNode node, List<(string, string, string, bool, bool)> replaceRules, int layer = 1) {
                     var attributes = node.Attributes;
                     foreach (var (field, from, to, norec, re) in replaceRules) {
-                        if (norec && !firstLayer) {
+                        if (norec && layer > 1) {
                             continue;
                         }
                         var fieldValue = attributes?[field]?.Value;
-                        if (string.IsNullOrWhiteSpace(fieldValue)) {
-                            if (attributes != null) { // insert directly
-                                attributes.RemoveNamedItem(field);
-                                attributes.Append(node.CreateAttributeWithValue(field, to));
+                        if (string.IsNullOrWhiteSpace(fieldValue)) { // insert attribute
+                            attributes?.RemoveNamedItem(field);
+                            attributes?.Append(node.CreateAttributeWithValue(field, to));
+                        } else { // update attribute
+                            if (!re) {
+                                fieldValue = fieldValue!.Replace(from, to);
+                            } else {
+                                try {
+                                    fieldValue = new Regex(from).Replace(fieldValue!, to);
+                                } catch (Exception) { }
                             }
-                            continue;
+                            attributes![field]!.Value = fieldValue;
                         }
-                        if (!re) {
-                            fieldValue = fieldValue!.Replace(from, to);
-                        } else {
-                            try {
-                                fieldValue = new Regex(from).Replace(fieldValue, to);
-                            } catch (Exception) { }
-                        }
-                        attributes![field]!.Value = fieldValue;
                     }
                     foreach (var childNode in node.ChildNodes.OfType<XmlNode>()) {
-                        ReplaceFieldValue(childNode, replaceRules, false);
+                        ReplaceFieldValue(childNode, replaceRules, layer + 1);
                     }
                 }
-                static XmlNode? RemoveSpecificNode(XmlNode node, List<(string, string, bool, bool)> removeRules, bool firstLayer = true) {
+                static XmlNode? RemoveSpecificNode(XmlNode node, List<(string, string, bool, bool)> removeRules, int layer = 1) {
                     var attributes = node.Attributes;
                     foreach (var (field, match, norec, re) in removeRules) {
-                        if (norec && !firstLayer) {
+                        if (norec && layer > 1) {
                             continue;
                         }
-                        var fieldValue = field == "$" ? node.Name : attributes?[field]?.Value;
-                        if (string.IsNullOrWhiteSpace(fieldValue)) {
-                            continue;
-                        }
+                        var fieldValue = field == "@" ? node.Name : attributes?[field]?.Value;
+                        fieldValue ??= ""; // also allow for checking empty
                         var matched = false;
                         if (!re) {
-                            matched = fieldValue!.Contains(match);
+                            matched = fieldValue.Contains(match);
                         } else {
                             try {
                                 matched = new Regex(match).IsMatch(fieldValue);
                             } catch (Exception) { }
                         }
                         if (matched) {
-                            return null; // to delete
+                            return null; // delete this node
                         }
                     }
                     foreach (var childNode in node.ChildNodes.OfType<XmlNode>().ToArray()) { // need to copy here, because of `RemoveChild`
-                        var result = RemoveSpecificNode(childNode, removeRules, false);
+                        var result = RemoveSpecificNode(childNode, removeRules, layer + 1);
                         if (result == null) {
                             node.RemoveChild(childNode);
                         }
@@ -356,7 +372,7 @@ namespace PowerPointArrangeAddin.Helper {
                     return node;
                 }
 
-                // enumerate template node list and apply to node 
+                // ==> enumerate template node list and apply to node 
                 foreach (var templateNode in templateNodeList.OfType<XmlNode>()) {
                     var clonedNode = templateNode.CloneNode(true); // deep clone template node
                     if (replaceRules.Count > 0) {
@@ -366,10 +382,10 @@ namespace PowerPointArrangeAddin.Helper {
                         clonedNode = RemoveSpecificNode(clonedNode, removeRules);
                     }
                     if (clonedNode != null) {
-                        parentNode.InsertBefore(clonedNode, node);
+                        node.ParentNode?.InsertBefore(clonedNode, node);
                     }
                 }
-                parentNode.RemoveChild(node); // subtree template node must be removed
+                node.ParentNode?.RemoveChild(node); // subtree template node must be removed
             }
 
             // returned the applied xml string
@@ -379,38 +395,6 @@ namespace PowerPointArrangeAddin.Helper {
         #endregion
 
         #region Misc Methods
-
-        public static string ApplyControlForRefers(string xmlText) {
-            var document = Parse(xmlText);
-            if (document == null) {
-                return "";
-            }
-
-            // find all refer nodes from document 
-            var referNodes = document.GetElementsByTagName("__control_refer").OfType<XmlNode>().ToArray();
-            if (referNodes.Length == 0) {
-                return document.ToXmlText();
-            }
-
-            // apply control for each refer node
-            foreach (var referNode in referNodes) {
-                var nodeAttributes = referNode.Attributes;
-                var idValue = nodeAttributes?["id"]?.Value;
-                if (string.IsNullOrWhiteSpace(idValue)) {
-                    continue;
-                }
-
-                // find referee node and replace xml node
-                var foundNodes = document.SelectNodes($"//*[@id=\"{idValue}\"]");
-                var referee = foundNodes?.OfType<XmlNode>().FirstOrDefault(n => n.Name != "__control_refer");
-                if (referee == null) {
-                    continue;
-                }
-                var clonedNode = referee.CloneNode(true);
-                referNode.ParentNode?.ReplaceChild(clonedNode, referNode);
-            }
-            return document.ToXmlText();
-        }
 
         public static string ApplyMsoKeytipForXml(string xmlText, Dictionary<string, Dictionary<string, string>> msoKeytips) {
             var document = Parse(xmlText);

@@ -263,6 +263,16 @@ namespace PowerPointArrangeAddin.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ObjectLockAspectRatio_32 {
+            get {
+                object obj = ResourceManager.GetObject("ObjectLockAspectRatio_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ObjectRotateLeft90 {
             get {
                 object obj = ResourceManager.GetObject("ObjectRotateLeft90", resourceCulture);
