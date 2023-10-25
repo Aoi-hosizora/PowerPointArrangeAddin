@@ -193,6 +193,16 @@ namespace PowerPointArrangeAddin.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap GridSettings_32 {
+            get {
+                object obj = ResourceManager.GetObject("GridSettings_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ObjectArrangement {
             get {
                 object obj = ResourceManager.GetObject("ObjectArrangement", resourceCulture);
@@ -536,6 +546,16 @@ namespace PowerPointArrangeAddin.Properties {
         internal static System.Drawing.Bitmap SizeAndPosition {
             get {
                 object obj = ResourceManager.GetObject("SizeAndPosition", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SizeAndPosition_32 {
+            get {
+                object obj = ResourceManager.GetObject("SizeAndPosition_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

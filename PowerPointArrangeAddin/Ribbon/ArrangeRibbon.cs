@@ -97,6 +97,8 @@ namespace PowerPointArrangeAddin.Ribbon {
                 { btnScaleAnchor_FromTopLeft, (_, _, _) => true },
                 { btnScaleAnchor_FromMiddle, (_, _, _) => true },
                 { btnScaleAnchor_FromBottomRight, (_, _, _) => true },
+                // ====================================================================
+                { btnSizeAndPosition, (_, cnt, _) => cnt >= 1 },
             };
         }
 
@@ -475,6 +477,13 @@ namespace PowerPointArrangeAddin.Ribbon {
                 AddInLanguageChanger.ChangeLanguage(AddInSetting.Instance.Language);
             } else {
                 _ribbon?.Invalidate(); // just invalidate ribbon
+            }
+        }
+
+        public void BtnSizeAndPosition_Click(Office.IRibbonControl _) {
+            var mso = "ObjectSizeAndPositionDialog";
+            if (Globals.ThisAddIn.Application.CommandBars.GetEnabledMso(mso)) {
+                Globals.ThisAddIn.Application.CommandBars.ExecuteMso(mso);
             }
         }
 

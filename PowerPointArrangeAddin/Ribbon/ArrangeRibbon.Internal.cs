@@ -20,9 +20,9 @@ namespace PowerPointArrangeAddin.Ribbon {
                 return "";
             }
 
-            xml = XmlResourceHelper.ApplyAttributeTemplateForXml(xml);
-            xml = XmlResourceHelper.ApplySubtreeTemplateForXml(xml);
+            xml = XmlResourceHelper.ApplyTemplateForXml(xml);
             xml = XmlResourceHelper.ApplyMsoKeytipForXml(xml, _msoKeytips);
+            xml = XmlResourceHelper.ApplyControlRandomId(xml);
             xml = XmlResourceHelper.NormalizeControlIdInGroup(xml);
             System.Windows.Forms.Clipboard.SetText(xml);
             return xml;
@@ -34,8 +34,8 @@ namespace PowerPointArrangeAddin.Ribbon {
                 return "";
             }
 
-            xml = XmlResourceHelper.ApplyAttributeTemplateForXml(xml);
-            xml = XmlResourceHelper.ApplySubtreeTemplateForXml(xml);
+            xml = XmlResourceHelper.ApplyTemplateForXml(xml);
+            xml = XmlResourceHelper.ApplyControlRandomId(xml);
             xml = XmlResourceHelper.NormalizeControlIdInMenu(xml, mnuArrangement);
             return xml;
         }
@@ -65,7 +65,7 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
 
         public System.Drawing.Image? GetImage(Office.IRibbonControl ribbonControl) {
-            return GetElementUiField(ribbonControl, eui => ribbonControl.Tag != "large" ? eui.Image : eui.LargeImage ?? eui.Image);
+            return GetElementUiField(ribbonControl, eui => eui.Image);
         }
 
         public string GetKeytip(Office.IRibbonControl ribbonControl) {
@@ -107,10 +107,10 @@ namespace PowerPointArrangeAddin.Ribbon {
         private const string btnSnapRight = "btnSnapRight";
         private const string btnSnapTop = "btnSnapTop";
         private const string btnSnapBottom = "btnSnapBottom";
-        private const string btnMoveForward = "btnMoveForward";
         private const string btnMoveFront = "btnMoveFront";
-        private const string btnMoveBackward = "btnMoveBackward";
         private const string btnMoveBack = "btnMoveBack";
+        private const string btnMoveForward = "btnMoveForward";
+        private const string btnMoveBackward = "btnMoveBackward";
         private const string btnRotateRight90 = "btnRotateRight90";
         private const string btnRotateLeft90 = "btnRotateLeft90";
         private const string btnFlipVertical = "btnFlipVertical";
@@ -132,6 +132,74 @@ namespace PowerPointArrangeAddin.Ribbon {
         private const string bgpRotate = "bgpRotate";
         private const string bgpGroupObjects = "bgpGroupObjects";
         private const string sepArrangement = "sepArrangement";
+        // tabArrangement
+        private const string tabArrangement = "tabArrangement";
+        // grpAddInSetting
+        private const string grpAddInSetting = "grpAddInSetting";
+        // grpAlignment
+        private const string grpAlignment = "grpAlignment";
+        private const string lblAlignmentH = "lblAlignmentH";
+        private const string lblAlignmentV = "lblAlignmentV";
+        private const string lblDistribute = "lblDistribute";
+        private const string btnAlignRelative_ToObjects = "btnAlignRelative_ToObjects";
+        private const string btnAlignRelative_ToFirstObject = "btnAlignRelative_ToFirstObject";
+        private const string btnAlignRelative_ToSlide = "btnAlignRelative_ToSlide";
+        private const string btnSizeAndPosition = "btnSizeAndPosition";
+        // ===
+        private const string sepAlignRelative = "sepAlignRelative";
+        // grpSizeAndSnap
+        private const string grpSizeAndSnap = "grpSizeAndSnap";
+        private const string lblScaleSize = "lblScaleSize";
+        private const string lblExtendSize = "lblExtendSize";
+        private const string lblSnapObjects = "lblSnapObjects";
+        private const string btnScaleAnchor_FromTopLeft = "btnScaleAnchor_FromTopLeft";
+        private const string btnScaleAnchor_FromMiddle = "btnScaleAnchor_FromMiddle";
+        private const string btnScaleAnchor_FromBottomRight = "btnScaleAnchor_FromBottomRight";
+        // ===
+        private const string sepScaleAnchor = "sepScaleAnchor";
+        // grpRotateAndFlap
+        private const string grpRotateAndFlap = "grpRotateAndFlap";
+        private const string lblRotateObject = "lblRotateObject";
+        private const string lblFlapObject = "lblFlapObject";
+        private const string lbl3DRotation = "lbl3DRotation";
+        private const string edtAngle = "edtAngle";
+        private const string btnCopyAngle = "btnCopyAngle";
+        private const string btnPasteAngle = "btnPasteAngle";
+        private const string btnResetAngle = "btnResetAngle";
+        // ===
+        private const string bgpRotateOnly = "bgpRotateOnly";
+        private const string bgpFlipOnly = "bgpFlipOnly";
+        private const string bgp3DRotation = "bgp3DRotation";
+        private const string sepAngle = "sepAngle";
+        private const string bgpCopyAndPasteAngle = "bgpCopyAndPasteAngle";
+        // grpObjectArrange
+        private const string grpObjectArrange = "grpObjectArrange";
+        private const string lblMoveLayers = "lblMoveLayers";
+        private const string lblGroupObjects = "lblGroupObjects";
+        // ===
+        private const string bgpMoveFrontAndBack = "bgpMoveFrontAndBack";
+        private const string bgpMoveForwardAndBackward = "bgpMoveForwardAndBackward";
+        private const string bgpGroupAndUngroup = "bgpGroupAndUngroup";
+        private const string sepGridSettings = "sepGridSettings";
+        // grpObjectSize
+        private const string grpObjectSize = "grpObjectSize";
+        private const string btnResetSize = "btnResetSize";
+        private const string btnLockAspectRatio = "btnLockAspectRatio";
+        private const string edtSizeHeight = "edtSizeHeight";
+        private const string edtSizeWidth = "edtSizeWidth";
+        private const string btnCopySize = "btnCopySize";
+        private const string btnPasteSize = "btnPasteSize";
+        // ===
+        private const string sepSize = "sepSize";
+        private const string bgpCopyAndPasteSize = "bgpCopyAndPasteSize";
+        // grpObjectPosition
+        private const string grpObjectPosition = "grpObjectPosition";
+        private const string edtPositionX = "edtPositionX";
+        private const string edtPositionY = "edtPositionY";
+        private const string btnCopyPosition = "btnCopyPosition";
+        private const string btnPastePosition = "btnPastePosition";
+        // ===
+        private const string bgpCopyAndPastePosition = "bgpCopyAndPastePosition";
         // grpTextbox
         private const string grpTextbox = "grpTextbox";
         private const string btnAutofitOff = "btnAutofitOff";
@@ -165,29 +233,13 @@ namespace PowerPointArrangeAddin.Ribbon {
         private const string grpTableSizeAndPosition = "grpTableSizeAndPosition";
         private const string grpChartSizeAndPosition = "grpChartSizeAndPosition";
         private const string grpSmartartSizeAndPosition = "grpSmartartSizeAndPosition";
-        private const string btnResetSize = "btnResetSize";
-        private const string btnLockAspectRatio = "btnLockAspectRatio";
-        private const string btnCopySize = "btnCopySize";
-        private const string btnPasteSize = "btnPasteSize";
-        private const string edtPositionX = "edtPositionX";
-        private const string edtPositionY = "edtPositionY";
-        private const string btnCopyPosition = "btnCopyPosition";
-        private const string btnPastePosition = "btnPastePosition";
         // ===
         private const string sepResetSize = "sepResetSize";
-        private const string bgpCopyAndPasteSize = "bgpCopyAndPasteSize";
         private const string sepPosition = "sepPosition";
-        private const string bgpCopyAndPastePosition = "bgpCopyAndPastePosition";
         // mnuArrangement
         private const string sepAlignmentAndResizing = "sepAlignmentAndResizing";
         private const string mnuAlignment = "mnuAlignment";
-        private const string btnAlignRelative_ToObjects = "btnAlignRelative_ToObjects";
-        private const string btnAlignRelative_ToFirstObject = "btnAlignRelative_ToFirstObject";
-        private const string btnAlignRelative_ToSlide = "btnAlignRelative_ToSlide";
         private const string mnuResizing = "mnuResizing";
-        private const string btnScaleAnchor_FromTopLeft = "btnScaleAnchor_FromTopLeft";
-        private const string btnScaleAnchor_FromMiddle = "btnScaleAnchor_FromMiddle";
-        private const string btnScaleAnchor_FromBottomRight = "btnScaleAnchor_FromBottomRight";
         private const string mnuSnapping = "mnuSnapping";
         private const string mnuRotation = "mnuRotation";
         private const string sepLayerOrderAndGrouping = "sepLayerOrderAndGrouping";
@@ -211,7 +263,6 @@ namespace PowerPointArrangeAddin.Ribbon {
         private class ElementUi {
             public string? Label { get; init; }
             public System.Drawing.Image? Image { get; init; }
-            public System.Drawing.Image? LargeImage { get; init; }
             public string? Keytip { get; init; }
         }
 
@@ -259,10 +310,10 @@ namespace PowerPointArrangeAddin.Ribbon {
             Register1(btnSnapRight, new ElementUi { Label = R1.btnSnapRight, Image = R2.SnapRightToLeft, Keytip = "PI" });
             Register1(btnSnapTop, new ElementUi { Label = R1.btnSnapTop, Image = R2.SnapTopToBottom, Keytip = "PO" });
             Register1(btnSnapBottom, new ElementUi { Label = R1.btnSnapBottom, Image = R2.SnapBottomToTop, Keytip = "PM" });
-            Register1(btnMoveForward, new ElementUi { Label = R1.btnMoveForward, Image = R2.ObjectBringForward, Keytip = "HF" });
-            Register1(btnMoveFront, new ElementUi { Label = R1.btnMoveFront, Image = R2.ObjectBringToFront, Keytip = "HO" });
-            Register1(btnMoveBackward, new ElementUi { Label = R1.btnMoveBackward, Image = R2.ObjectSendBackward, Keytip = "HB" });
-            Register1(btnMoveBack, new ElementUi { Label = R1.btnMoveBack, Image = R2.ObjectSendToBack, Keytip = "HK" });
+            Register1(btnMoveFront, new ElementUi { Label = R1.btnMoveFront, Image = R2.ObjectBringToFront, Keytip = "HF" });
+            Register1(btnMoveBack, new ElementUi { Label = R1.btnMoveBack, Image = R2.ObjectSendToBack, Keytip = "HB" });
+            Register1(btnMoveForward, new ElementUi { Label = R1.btnMoveForward, Image = R2.ObjectBringForward, Keytip = "HO" });
+            Register1(btnMoveBackward, new ElementUi { Label = R1.btnMoveBackward, Image = R2.ObjectSendBackward, Keytip = "HA" });
             Register1(btnRotateRight90, new ElementUi { Label = R1.btnRotateRight90, Image = R2.ObjectRotateRight90, Keytip = "HR" });
             Register1(btnRotateLeft90, new ElementUi { Label = R1.btnRotateLeft90, Image = R2.ObjectRotateLeft90, Keytip = "HL" });
             Register1(btnFlipVertical, new ElementUi { Label = R1.btnFlipVertical, Image = R2.ObjectFlipVertical, Keytip = "HV" });
@@ -270,7 +321,51 @@ namespace PowerPointArrangeAddin.Ribbon {
             Register1(btnGroup, new ElementUi { Label = R1.btnGroup, Image = R2.ObjectsGroup, Keytip = "HG" });
             Register1(btnUngroup, new ElementUi { Label = R1.btnUngroup, Image = R2.ObjectsUngroup, Keytip = "HU" });
             Register1(mnuArrangement, new ElementUi { Label = R1.mnuArrangement, Image = R2.ObjectArrangement_32, Keytip = "B" });
-            Register1(btnAddInSetting, new ElementUi { Label = R1.btnAddInSetting, Image = R2.AddInOptions, LargeImage = R2.AddInOptions_32, Keytip = "HT" });
+            Register1(btnAddInSetting, new ElementUi { Label = R1.btnAddInSetting, Image = R2.AddInOptions, Keytip = "HT" });
+            // grpAddInSetting
+            Register1(tabArrangement, new ElementUi { Label = "配置", Keytip = "M" });
+            Register1(grpAddInSetting, new ElementUi { Label = "アドイン", Image = R2.AddInOptions });
+            Register2(grpAddInSetting, btnAddInSetting, new ElementUi { Image = R2.AddInOptions_32 });
+            // grpAlignment
+            Register1(grpAlignment, new ElementUi { Label = "位置合わせ" });
+            Register1(lblAlignmentH, new ElementUi { Label = "横揃え" });
+            Register1(lblAlignmentV, new ElementUi { Label = "縦揃え" });
+            Register1(lblDistribute, new ElementUi { Label = "整列" });
+            Register1(btnSizeAndPosition, new ElementUi { Label = "サイズと位置", Image = R2.SizeAndPosition });
+            // grpSizeAndSnap
+            Register1(grpSizeAndSnap, new ElementUi { Label = "サイズ変更と吸着" });
+            Register1(lblScaleSize, new ElementUi { Label = "変形" });
+            Register1(lblExtendSize, new ElementUi { Label = "伸ばし" });
+            Register1(lblSnapObjects, new ElementUi { Label = "吸着" });
+            // grpRotateAndFlap
+            Register1(grpRotateAndFlap, new ElementUi { Label = "回転と反転" });
+            Register1(lblRotateObject, new ElementUi { Label = "回転" });
+            Register1(lblFlapObject, new ElementUi { Label = "反転" });
+            Register1(lbl3DRotation, new ElementUi { Label = "3-D" });
+            Register1(edtAngle, new ElementUi { Label = "角度:" });
+            Register1(btnCopyAngle, new ElementUi { Label = "角度をコピー", Image = R2.Copy });
+            Register1(btnPasteAngle, new ElementUi { Label = "角度を貼付", Image = R2.Paste });
+            Register1(btnResetAngle, new ElementUi { Label = "元の角度にリセット", Image = R2.TextboxResetMargin });
+            // grpObjectArrange
+            Register1(grpObjectArrange, new ElementUi { Label = "オブジェクトの配置" });
+            Register1(lblMoveLayers, new ElementUi { Label = "重ね順" });
+            Register1(lblGroupObjects, new ElementUi { Label = "グループ" });
+            Register2(grpObjectArrange, btnSizeAndPosition, new ElementUi { Image = R2.SizeAndPosition_32 });
+            // grpObjectSize
+            Register1(grpObjectSize, new ElementUi { Label = "オブジェクトのサイズ" });
+            Register1(btnResetSize, new ElementUi { Label = R1.btnResetSize, Image = R2.PictureResetSize_32, Keytip = "SR" });
+            Register1(btnLockAspectRatio, new ElementUi { Label = R1.btnLockAspectRatio, Image = R2.ObjectLockAspectRatio, Keytip = "L" });
+            Register2(grpObjectSize, btnLockAspectRatio, new ElementUi { Image = R2.ObjectLockAspectRatio_32 });
+            Register1(edtSizeHeight, new ElementUi { Label = "高さ:", Keytip = "SH" });
+            Register1(edtSizeWidth, new ElementUi { Label = "幅:", Keytip = "SW" });
+            Register1(btnCopySize, new ElementUi { Label = R1.btnCopySize, Image = R2.Copy, Keytip = "SC" });
+            Register1(btnPasteSize, new ElementUi { Label = R1.btnPasteSize, Image = R2.Paste, Keytip = "SP" });
+            // grpObjectPosition
+            Register1(grpObjectPosition, new ElementUi { Label = "オブジェクトの位置" });
+            Register1(edtPositionX, new ElementUi { Label = R1.edtPositionX, Keytip = "PX" });
+            Register1(edtPositionY, new ElementUi { Label = R1.edtPositionY, Keytip = "PY" });
+            Register1(btnCopyPosition, new ElementUi { Label = R1.btnCopyPosition, Image = R2.Copy, Keytip = "PC" });
+            Register1(btnPastePosition, new ElementUi { Label = R1.btnPastePosition, Image = R2.Paste, Keytip = "PP" });
             // grpTextbox
             Register1(grpTextbox, new ElementUi { Label = R1.grpTextbox, Image = R2.TextboxSetting });
             Register1(btnAutofitOff, new ElementUi { Label = R1.btnAutofitOff, Image = R2.TextboxAutofitOff, Keytip = "TF" });
@@ -299,14 +394,6 @@ namespace PowerPointArrangeAddin.Ribbon {
             Register1(grpTableSizeAndPosition, new ElementUi { Label = R1.grpSizeAndPosition, Image = R2.SizeAndPosition });
             Register1(grpChartSizeAndPosition, new ElementUi { Label = R1.grpSizeAndPosition, Image = R2.SizeAndPosition });
             Register1(grpSmartartSizeAndPosition, new ElementUi { Label = R1.grpSizeAndPosition, Image = R2.SizeAndPosition });
-            Register1(btnResetSize, new ElementUi { Label = R1.btnResetSize, Image = R2.PictureResetSize_32, Keytip = "SR" });
-            Register1(btnLockAspectRatio, new ElementUi { Label = R1.btnLockAspectRatio, Image = R2.ObjectLockAspectRatio, LargeImage = R2.ObjectLockAspectRatio_32, Keytip = "L" });
-            Register1(btnCopySize, new ElementUi { Label = R1.btnCopySize, Image = R2.Copy, Keytip = "SC" });
-            Register1(btnPasteSize, new ElementUi { Label = R1.btnPasteSize, Image = R2.Paste, Keytip = "SP" });
-            Register1(edtPositionX, new ElementUi { Label = R1.edtPositionX, Keytip = "PX" });
-            Register1(edtPositionY, new ElementUi { Label = R1.edtPositionY, Keytip = "PY" });
-            Register1(btnCopyPosition, new ElementUi { Label = R1.btnCopyPosition, Image = R2.Copy, Keytip = "PC" });
-            Register1(btnPastePosition, new ElementUi { Label = R1.btnPastePosition, Image = R2.Paste, Keytip = "PP" });
             // ===
             Register2(grpVideoSizeAndPosition, btnLockAspectRatio, new ElementUi { Keytip = "SL" }); // L
             Register2(grpVideoSizeAndPosition, btnScaleAnchor, new ElementUi { Keytip = "SF" }); // PA
