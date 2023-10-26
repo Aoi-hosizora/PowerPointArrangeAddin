@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Forms = System.Windows.Forms;
 using Office = Microsoft.Office.Core;
@@ -30,76 +31,91 @@ namespace PowerPointArrangeAddin.Ribbon {
         private readonly Dictionary<string, AvailabilityRule> _availabilityRules;
 
         private Dictionary<string, AvailabilityRule> GenerateNewAvailabilityRules() {
-            return new Dictionary<string, AvailabilityRule> {
-                // grpArrange
-                { btnAlignLeft, (_, cnt, _) => cnt >= 1 },
-                { btnAlignCenter, (_, cnt, _) => cnt >= 1 },
-                { btnAlignRight, (_, cnt, _) => cnt >= 1 },
-                { btnAlignTop, (_, cnt, _) => cnt >= 1 },
-                { btnAlignMiddle, (_, cnt, _) => cnt >= 1 },
-                { btnAlignBottom, (_, cnt, _) => cnt >= 1 },
-                { btnDistributeHorizontal, (shapeRange, cnt, _) => cnt >= 1 && ArrangementHelper.IsDistributable(shapeRange, _alignRelativeFlag) },
-                { btnDistributeVertical, (shapeRange, cnt, _) => cnt >= 1 && ArrangementHelper.IsDistributable(shapeRange, _alignRelativeFlag) },
-                { btnAlignRelative, (_, cnt, _) => cnt >= 1 },
-                { btnScaleSameWidth, (_, cnt, _) => cnt >= 2 },
-                { btnScaleSameHeight, (_, cnt, _) => cnt >= 2 },
-                { btnScaleSameSize, (_, cnt, _) => cnt >= 2 },
-                { btnScaleAnchor, (_, _, _) => true },
-                { btnExtendSameLeft, (_, cnt, _) => cnt >= 2 },
-                { btnExtendSameRight, (_, cnt, _) => cnt >= 2 },
-                { btnExtendSameTop, (_, cnt, _) => cnt >= 2 },
-                { btnExtendSameBottom, (_, cnt, _) => cnt >= 2 },
-                { btnSnapLeft, (_, cnt, _) => cnt >= 2 },
-                { btnSnapRight, (_, cnt, _) => cnt >= 2 },
-                { btnSnapTop, (_, cnt, _) => cnt >= 2 },
-                { btnSnapBottom, (_, cnt, _) => cnt >= 2 },
-                { btnMoveForward, (_, cnt, _) => cnt >= 1 },
-                { btnMoveFront, (_, cnt, _) => cnt >= 1 },
-                { btnMoveBackward, (_, cnt, _) => cnt >= 1 },
-                { btnMoveBack, (_, cnt, _) => cnt >= 1 },
-                { btnRotateRight90, (_, cnt, _) => cnt >= 1 },
-                { btnRotateLeft90, (_, cnt, _) => cnt >= 1 },
-                { btnFlipVertical, (_, cnt, _) => cnt >= 1 },
-                { btnFlipHorizontal, (_, cnt, _) => cnt >= 1 },
-                { btnGroup, (_, cnt, _) => cnt >= 2 },
-                { btnUngroup, (shapeRange, cnt, _) => cnt >= 1 && ArrangementHelper.IsUngroupable(shapeRange) },
-                { mnuArrangement, (_, _, _) => true },
-                { btnAddInSetting, (_, _, _) => true },
-                // grpTextbox
-                { btnAutofitOff, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame },
-                { btnAutoShrinkText, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame },
-                { btnAutoResizeShape, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame },
-                { btnWrapText, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame },
-                { btnResetHorizontalMargin, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame },
-                { edtMarginLeft, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame },
-                { edtMarginRight, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame },
-                { btnResetVerticalMargin, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame },
-                { edtMarginTop, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame },
-                { edtMarginBottom, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame },
-                // grpReplacePicture
-                { btnReplaceWithClipboard, (_, cnt, _) => cnt >= 1 },
-                { btnReplaceWithFile, (_, cnt, _) => cnt >= 1 },
-                { chkReserveOriginalSize, (_, _, _) => true },
-                { chkReplaceToMiddle, (_, _, _) => true },
-                // grpSizeAndPosition
-                { btnResetSize, (shapeRange, cnt, _) => cnt >= 1 && SizeAndPositionHelper.IsSizeResettable(shapeRange) },
-                { btnLockAspectRatio, (_, cnt, _) => cnt >= 1 },
-                { btnCopySize, (_, cnt, _) => cnt == 1 },
-                { btnPasteSize, (_, cnt, _) => cnt >= 1 && SizeAndPositionHelper.IsValidCopiedSizeValue() },
-                { edtPositionX, (_, cnt, _) => cnt >= 1 },
-                { edtPositionY, (_, cnt, _) => cnt >= 1 },
-                { btnCopyPosition, (_, cnt, _) => cnt == 1 },
-                { btnPastePosition, (_, cnt, _) => cnt >= 1 && SizeAndPositionHelper.IsValidCopiedPositionValue() },
-                // mnuArrange
-                { btnAlignRelative_ToObjects, (_, cnt, _) => cnt >= 2 },
-                { btnAlignRelative_ToFirstObject, (_, cnt, _) => cnt >= 2 },
-                { btnAlignRelative_ToSlide, (_, cnt, _) => cnt >= 1 },
-                { btnScaleAnchor_FromTopLeft, (_, _, _) => true },
-                { btnScaleAnchor_FromMiddle, (_, _, _) => true },
-                { btnScaleAnchor_FromBottomRight, (_, _, _) => true },
-                // ====================================================================
-                { btnSizeAndPosition, (_, cnt, _) => cnt >= 1 },
-            };
+            var map = new Dictionary<string, AvailabilityRule>();
+
+            void Register(string id, AvailabilityRule rule) {
+                map[id] = rule;
+            }
+
+            // grpArrange
+            Register(btnAlignLeft, (_, cnt, _) => cnt >= 1);
+            Register(btnAlignCenter, (_, cnt, _) => cnt >= 1);
+            Register(btnAlignRight, (_, cnt, _) => cnt >= 1);
+            Register(btnAlignTop, (_, cnt, _) => cnt >= 1);
+            Register(btnAlignMiddle, (_, cnt, _) => cnt >= 1);
+            Register(btnAlignBottom, (_, cnt, _) => cnt >= 1);
+            Register(btnDistributeHorizontal, (shapeRange, cnt, _) => cnt >= 1 && ArrangementHelper.IsDistributable(shapeRange, _alignRelativeFlag));
+            Register(btnDistributeVertical, (shapeRange, cnt, _) => cnt >= 1 && ArrangementHelper.IsDistributable(shapeRange, _alignRelativeFlag));
+            Register(btnAlignRelative, (_, cnt, _) => cnt >= 1);
+            Register(btnScaleSameWidth, (_, cnt, _) => cnt >= 2);
+            Register(btnScaleSameHeight, (_, cnt, _) => cnt >= 2);
+            Register(btnScaleSameSize, (_, cnt, _) => cnt >= 2);
+            Register(btnScaleAnchor, (_, _, _) => true);
+            Register(btnExtendSameLeft, (_, cnt, _) => cnt >= 2);
+            Register(btnExtendSameRight, (_, cnt, _) => cnt >= 2);
+            Register(btnExtendSameTop, (_, cnt, _) => cnt >= 2);
+            Register(btnExtendSameBottom, (_, cnt, _) => cnt >= 2);
+            Register(btnSnapLeft, (_, cnt, _) => cnt >= 2);
+            Register(btnSnapRight, (_, cnt, _) => cnt >= 2);
+            Register(btnSnapTop, (_, cnt, _) => cnt >= 2);
+            Register(btnSnapBottom, (_, cnt, _) => cnt >= 2);
+            Register(btnMoveFront, (_, cnt, _) => cnt >= 1);
+            Register(btnMoveBack, (_, cnt, _) => cnt >= 1);
+            Register(btnMoveForward, (_, cnt, _) => cnt >= 1);
+            Register(btnMoveBackward, (_, cnt, _) => cnt >= 1);
+            Register(btnRotateRight90, (_, cnt, _) => cnt >= 1);
+            Register(btnRotateLeft90, (_, cnt, _) => cnt >= 1);
+            Register(btnFlipVertical, (_, cnt, _) => cnt >= 1);
+            Register(btnFlipHorizontal, (_, cnt, _) => cnt >= 1);
+            Register(btnGroup, (_, cnt, _) => cnt >= 2);
+            Register(btnUngroup, (shapeRange, cnt, _) => cnt >= 1 && ArrangementHelper.IsUngroupable(shapeRange));
+            Register(btnGridSetting, (_, _, _) => true);
+            Register(mnuArrangement, (_, _, _) => true);
+            Register(btnAddInSetting, (_, _, _) => true);
+            // grpAlignment
+            Register(btnAlignRelative_ToObjects, (_, cnt, _) => cnt >= 2);
+            Register(btnAlignRelative_ToFirstObject, (_, cnt, _) => cnt >= 2);
+            Register(btnAlignRelative_ToSlide, (_, cnt, _) => cnt >= 1);
+            Register(btnSizeAndPosition, (_, cnt, _) => cnt >= 1);
+            // grpSizeAndSnap
+            Register(btnScaleAnchor_FromTopLeft, (_, _, _) => true);
+            Register(btnScaleAnchor_FromMiddle, (_, _, _) => true);
+            Register(btnScaleAnchor_FromBottomRight, (_, _, _) => true);
+            // grpRotateAndFlip
+            Register(edtAngle, (_, cnt, _) => cnt >= 1);
+            Register(btnCopyAngle, (_, cnt, _) => cnt == 1);
+            Register(btnPasteAngle, (_, cnt, _) => cnt >= 1 /* && SizeAndPositionHelper.IsValidCopiedAngleValue() */);
+            Register(btnResetAngle, (_, cnt, _) => cnt >= 1);
+            // grpObjectSize
+            Register(btnResetSize, (shapeRange, cnt, _) => cnt >= 1 && SizeAndPositionHelper.IsSizeResettable(shapeRange));
+            Register(btnLockAspectRatio, (_, cnt, _) => cnt >= 1);
+            Register(edtSizeHeight, (_, cnt, _) => cnt >= 1);
+            Register(edtSizeWidth, (_, cnt, _) => cnt >= 1);
+            Register(btnCopySize, (_, cnt, _) => cnt == 1);
+            Register(btnPasteSize, (_, cnt, _) => cnt >= 1 && SizeAndPositionHelper.IsValidCopiedSizeValue());
+            // grpObjectPosition
+            Register(edtPositionX, (_, cnt, _) => cnt >= 1);
+            Register(edtPositionY, (_, cnt, _) => cnt >= 1);
+            Register(btnCopyPosition, (_, cnt, _) => cnt == 1);
+            Register(btnPastePosition, (_, cnt, _) => cnt >= 1 && SizeAndPositionHelper.IsValidCopiedPositionValue());
+            // grpTextbox
+            Register(btnAutofitOff, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame);
+            Register(btnAutoShrinkText, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame);
+            Register(btnAutoResizeShape, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame);
+            Register(btnWrapText, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame);
+            Register(btnResetHorizontalMargin, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame);
+            Register(edtMarginLeft, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame);
+            Register(edtMarginRight, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame);
+            Register(btnResetVerticalMargin, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame);
+            Register(edtMarginTop, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame);
+            Register(edtMarginBottom, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame);
+            // grpReplacePicture
+            Register(btnReplaceWithClipboard, (_, cnt, _) => cnt >= 1);
+            Register(btnReplaceWithFile, (_, cnt, _) => cnt >= 1);
+            Register(chkReserveOriginalSize, (_, _, _) => true);
+            Register(chkReplaceToMiddle, (_, _, _) => true);
+
+            return map;
         }
 
         public bool GetEnabled(Office.IRibbonControl ribbonControl) {
@@ -108,6 +124,7 @@ namespace PowerPointArrangeAddin.Ribbon {
             var hasTextFrame = selection.TextFrame != null;
             _availabilityRules.TryGetValue(ribbonControl.Id(), out var checker);
             return checker?.Invoke(selection.ShapeRange, shapesCount, hasTextFrame) ?? true;
+            return false;
         }
 
         public bool GetControlVisible(Office.IRibbonControl ribbonControl) {
@@ -144,8 +161,8 @@ namespace PowerPointArrangeAddin.Ribbon {
                 _ribbon?.Invalidate();
             } else {
                 // currently callback that only for dragging to change the position is unavailable
-                _ribbon?.InvalidateControl(edtPositionX, _sizeAndPositionGroups);
-                _ribbon?.InvalidateControl(edtPositionY, _sizeAndPositionGroups);
+                _ribbon?.InvalidateControls(edtPositionX, _sizeAndPositionGroups);
+                _ribbon?.InvalidateControls(edtPositionY, _sizeAndPositionGroups);
             }
         }
 
@@ -225,12 +242,12 @@ namespace PowerPointArrangeAddin.Ribbon {
             _ribbon?.InvalidateControl(btnAlignRelative, grpArrange);
             _ribbon?.InvalidateControl(btnDistributeHorizontal, grpArrange);
             _ribbon?.InvalidateControl(btnDistributeVertical, grpArrange);
-            _ribbon?.InvalidateControl(btnAlignRelative_ToObjects, mnuArrangement);
-            _ribbon?.InvalidateControl(btnAlignRelative_ToFirstObject, mnuArrangement);
-            _ribbon?.InvalidateControl(btnAlignRelative_ToSlide, mnuArrangement);
-            _ribbon?.InvalidateControl(btnAlignRelative_ToObjects, "grpAlignment");
-            _ribbon?.InvalidateControl(btnAlignRelative_ToFirstObject, "grpAlignment");
-            _ribbon?.InvalidateControl(btnAlignRelative_ToSlide, "grpAlignment");
+            _ribbon?.InvalidateControl(btnAlignRelative_ToObjects, grpAlignment);
+            _ribbon?.InvalidateControl(btnAlignRelative_ToFirstObject, grpAlignment);
+            _ribbon?.InvalidateControl(btnAlignRelative_ToSlide, grpAlignment);
+            _ribbon?.InvalidateControl(btnAlignRelative_ToObjects, (mnuArrangement, mnuAlignment));
+            _ribbon?.InvalidateControl(btnAlignRelative_ToFirstObject, (mnuArrangement, mnuAlignment));
+            _ribbon?.InvalidateControl(btnAlignRelative_ToSlide, (mnuArrangement, mnuAlignment));
         }
 
         public bool BtnAlignRelative_GetPressed(Office.IRibbonControl ribbonControl) {
@@ -325,13 +342,13 @@ namespace PowerPointArrangeAddin.Ribbon {
                 };
             }
             _ribbon?.InvalidateControl(btnScaleAnchor, grpArrange);
-            _ribbon?.InvalidateControl(btnScaleAnchor, _sizeAndPositionGroups);
-            _ribbon?.InvalidateControl(btnScaleAnchor_FromTopLeft, mnuArrangement);
-            _ribbon?.InvalidateControl(btnScaleAnchor_FromMiddle, mnuArrangement);
-            _ribbon?.InvalidateControl(btnScaleAnchor_FromBottomRight, mnuArrangement);
-            _ribbon?.InvalidateControl(btnScaleAnchor_FromTopLeft, "grpSizeAndSnap");
-            _ribbon?.InvalidateControl(btnScaleAnchor_FromMiddle, "grpSizeAndSnap");
-            _ribbon?.InvalidateControl(btnScaleAnchor_FromBottomRight, "grpSizeAndSnap");
+            _ribbon?.InvalidateControls(btnScaleAnchor, _sizeAndPositionGroups);
+            _ribbon?.InvalidateControl(btnScaleAnchor_FromTopLeft, grpSizeAndSnap);
+            _ribbon?.InvalidateControl(btnScaleAnchor_FromMiddle, grpSizeAndSnap);
+            _ribbon?.InvalidateControl(btnScaleAnchor_FromBottomRight, grpSizeAndSnap);
+            _ribbon?.InvalidateControl(btnScaleAnchor_FromTopLeft, (mnuArrangement, mnuResizing));
+            _ribbon?.InvalidateControl(btnScaleAnchor_FromMiddle, (mnuArrangement, mnuResizing));
+            _ribbon?.InvalidateControl(btnScaleAnchor_FromBottomRight, (mnuArrangement, mnuResizing));
         }
 
         public bool BtnScaleAnchor_GetPressed(Office.IRibbonControl ribbonControl) {
@@ -480,11 +497,46 @@ namespace PowerPointArrangeAddin.Ribbon {
             }
         }
 
+        public void BtnGridSetting_Click(Office.IRibbonControl _) {
+            var mso = "GridSettings";
+            try {
+                if (Globals.ThisAddIn.Application.CommandBars.GetEnabledMso(mso)) {
+                    Globals.ThisAddIn.Application.CommandBars.ExecuteMso(mso);
+                }
+            } catch (Exception) { }
+        }
+
         public void BtnSizeAndPosition_Click(Office.IRibbonControl _) {
             var mso = "ObjectSizeAndPositionDialog";
-            if (Globals.ThisAddIn.Application.CommandBars.GetEnabledMso(mso)) {
-                Globals.ThisAddIn.Application.CommandBars.ExecuteMso(mso);
-            }
+            try {
+                if (Globals.ThisAddIn.Application.CommandBars.GetEnabledMso(mso)) {
+                    Globals.ThisAddIn.Application.CommandBars.ExecuteMso(mso);
+                }
+            } catch (Exception) { }
+        }
+
+        public void EdtAngle_TextChanged(Office.IRibbonControl ribbonControl, string text) {
+            // TODO
+        }
+
+        public string EdtAngle_GetText(Office.IRibbonControl ribbonControl) {
+            return "TODO"; // TODO
+        }
+
+        public void BtnCopyAndPasteAngle_Click(Office.IRibbonControl ribbonControl) {
+            // TODO
+        }
+
+        public void BtnResetAngle_Click(Office.IRibbonControl ribbonControl) {
+            // TODO
+        }
+
+        public void EdtSize_TextChanged(Office.IRibbonControl ribbonControl, string text) {
+            // TODO
+        }
+
+        public string EdtSize_GetText(Office.IRibbonControl ribbonControl) {
+            return "TODO"; // TODO
         }
 
         public void BtnAutofit_Click(Office.IRibbonControl ribbonControl, bool _) {
@@ -619,7 +671,7 @@ namespace PowerPointArrangeAddin.Ribbon {
                 _ => null
             };
             SizeAndPositionHelper.CopyAndPasteSize(shapeRange, cmd, _scaleFromFlag, () => {
-                _ribbon?.InvalidateControl(btnPasteSize, _sizeAndPositionGroups);
+                _ribbon?.InvalidateControls(btnPasteSize, _sizeAndPositionGroups);
             });
         }
 
@@ -662,9 +714,9 @@ namespace PowerPointArrangeAddin.Ribbon {
                 _ => null
             };
             SizeAndPositionHelper.CopyAndPastePosition(shapeRange, cmd, () => {
-                _ribbon?.InvalidateControl(btnPastePosition, _sizeAndPositionGroups);
-                _ribbon?.InvalidateControl(edtPositionX, _sizeAndPositionGroups);
-                _ribbon?.InvalidateControl(edtPositionY, _sizeAndPositionGroups);
+                _ribbon?.InvalidateControls(btnPastePosition, _sizeAndPositionGroups);
+                _ribbon?.InvalidateControls(edtPositionX, _sizeAndPositionGroups);
+                _ribbon?.InvalidateControls(edtPositionY, _sizeAndPositionGroups);
             });
         }
 
@@ -675,8 +727,8 @@ namespace PowerPointArrangeAddin.Ribbon {
             }
             SizeAndPositionHelper.ResetMediaSize(shapeRange, _scaleFromFlag, () => {
                 var groups = new[] { grpPictureSizeAndPosition, grpVideoSizeAndPosition, grpAudioSizeAndPosition };
-                _ribbon?.InvalidateControl(edtPositionX, groups);
-                _ribbon?.InvalidateControl(edtPositionY, groups);
+                _ribbon?.InvalidateControls(edtPositionX, groups);
+                _ribbon?.InvalidateControls(edtPositionY, groups);
             });
         }
 

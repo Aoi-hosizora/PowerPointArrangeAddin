@@ -30,7 +30,7 @@
         <toggleButton id="btnAlignRelative_ToFirstObject" __template="LSEI_Relative" getPressed="BtnAlignRelative_GetPressed" onAction="BtnAlignRelative_Click" />
         <menuSeparator id="mnuAlignment_separator4" />
         <control idMso="ViewGridlinesPowerPoint" />
-        <control idMso="GridSettings" />
+        <button id="btnGridSetting" __template="L,S,E,I" onAction="BtnGridSetting_Click" />
     </menu>
 
     <menu id="mnuResizing" __template="MENU">
@@ -47,7 +47,7 @@
         <button id="btnExtendSameTop" __template="L,S,E,I" onAction="BtnExtend_Click" />
         <button id="btnExtendSameBottom" __template="L,S,E,I" onAction="BtnExtend_Click" />
         <menuSeparator id="mnuResizing_separator3" />
-        <control idMso="ObjectSizeAndPositionDialog" />
+        <button id="btnSizeAndPosition" __template="L,S,E,I" onAction="BtnSizeAndPosition_Click" />
     </menu>
 
     <menu id="mnuSnapping" __template="MENU">
@@ -57,7 +57,7 @@
         <button id="btnSnapBottom" __template="L,S,E,I" onAction="BtnSnap_Click" />
         <menuSeparator id="mnuSnapping_separator1" />
         <checkBox idMso="ViewGridlinesPowerPoint" />
-        <button idMso="GridSettings" />
+        <button id="btnGridSetting" __template="L,S,E,I" onAction="BtnGridSetting_Click" />
     </menu>
 
     <menu id="mnuRotation" __template="MENU">
@@ -87,9 +87,9 @@
 
     <menuSeparator id="sepObjectsInSlide" __template="T" />
 
-    <!-- <button idMso="ObjectSizeAndPositionDialog" imageMso="ShapeStylesGallery" /> -->
-    <button idMso="ObjectSizeAndPositionDialog" /> <!-- TODO icon -->
-    <button idMso="GridSettings" />
+    <control idMso="ViewGridlinesPowerPoint" />
+    <button id="btnGridSetting" __template="L,S,E,I" onAction="BtnGridSetting_Click" />
+    <button id="btnSizeAndPosition" __template="L,S,E,I" onAction="BtnSizeAndPosition_Click" />
     <toggleButton idMso="SelectionPane" />
 
     <menuSeparator id="sepAddInSetting" __template="T" />

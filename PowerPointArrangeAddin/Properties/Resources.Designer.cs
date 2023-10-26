@@ -183,9 +183,9 @@ namespace PowerPointArrangeAddin.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap GridSettings {
+        internal static System.Drawing.Bitmap GridSetting {
             get {
-                object obj = ResourceManager.GetObject("GridSettings", resourceCulture);
+                object obj = ResourceManager.GetObject("GridSetting", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -193,9 +193,9 @@ namespace PowerPointArrangeAddin.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap GridSettings_32 {
+        internal static System.Drawing.Bitmap GridSetting_32 {
             get {
-                object obj = ResourceManager.GetObject("GridSettings_32", resourceCulture);
+                object obj = ResourceManager.GetObject("GridSetting_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -263,6 +263,16 @@ namespace PowerPointArrangeAddin.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ObjectHeight {
+            get {
+                object obj = ResourceManager.GetObject("ObjectHeight", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ObjectLockAspectRatio {
             get {
                 object obj = ResourceManager.GetObject("ObjectLockAspectRatio", resourceCulture);
@@ -276,6 +286,16 @@ namespace PowerPointArrangeAddin.Properties {
         internal static System.Drawing.Bitmap ObjectLockAspectRatio_32 {
             get {
                 object obj = ResourceManager.GetObject("ObjectLockAspectRatio_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ObjectPosition {
+            get {
+                object obj = ResourceManager.GetObject("ObjectPosition", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -396,6 +416,16 @@ namespace PowerPointArrangeAddin.Properties {
         internal static System.Drawing.Bitmap ObjectsUngroup {
             get {
                 object obj = ResourceManager.GetObject("ObjectsUngroup", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ObjectWidth {
+            get {
+                object obj = ResourceManager.GetObject("ObjectWidth", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

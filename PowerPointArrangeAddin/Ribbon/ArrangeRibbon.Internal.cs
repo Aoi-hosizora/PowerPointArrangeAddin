@@ -117,6 +117,7 @@ namespace PowerPointArrangeAddin.Ribbon {
         private const string btnFlipHorizontal = "btnFlipHorizontal";
         private const string btnGroup = "btnGroup";
         private const string btnUngroup = "btnUngroup";
+        private const string btnGridSetting = "btnGridSetting";
         private const string mnuArrangement = "mnuArrangement";
         private const string btnAddInSetting = "btnAddInSetting";
         // ===
@@ -157,10 +158,10 @@ namespace PowerPointArrangeAddin.Ribbon {
         private const string btnScaleAnchor_FromBottomRight = "btnScaleAnchor_FromBottomRight";
         // ===
         private const string sepScaleAnchor = "sepScaleAnchor";
-        // grpRotateAndFlap
-        private const string grpRotateAndFlap = "grpRotateAndFlap";
+        // grpRotateAndFlip
+        private const string grpRotateAndFlip = "grpRotateAndFlip";
         private const string lblRotateObject = "lblRotateObject";
-        private const string lblFlapObject = "lblFlapObject";
+        private const string lblFlipObject = "lblFlipObject";
         private const string lbl3DRotation = "lbl3DRotation";
         private const string edtAngle = "edtAngle";
         private const string btnCopyAngle = "btnCopyAngle";
@@ -320,48 +321,51 @@ namespace PowerPointArrangeAddin.Ribbon {
             Register1(btnFlipHorizontal, new ElementUi { Label = R1.btnFlipHorizontal, Image = R2.ObjectFlipHorizontal, Keytip = "HH" });
             Register1(btnGroup, new ElementUi { Label = R1.btnGroup, Image = R2.ObjectsGroup, Keytip = "HG" });
             Register1(btnUngroup, new ElementUi { Label = R1.btnUngroup, Image = R2.ObjectsUngroup, Keytip = "HU" });
+            Register1(btnGridSetting, new ElementUi { Label = R1.btnGridSetting, Image = R2.GridSetting, Keytip = "HS" });
             Register1(mnuArrangement, new ElementUi { Label = R1.mnuArrangement, Image = R2.ObjectArrangement_32, Keytip = "B" });
             Register1(btnAddInSetting, new ElementUi { Label = R1.btnAddInSetting, Image = R2.AddInOptions, Keytip = "HT" });
+            // tabArrangement
+            Register1(tabArrangement, new ElementUi { Label = R1.tabArrangement, Keytip = "M" });
             // grpAddInSetting
-            Register1(tabArrangement, new ElementUi { Label = "配置", Keytip = "M" });
-            Register1(grpAddInSetting, new ElementUi { Label = "アドイン", Image = R2.AddInOptions });
+            Register1(grpAddInSetting, new ElementUi { Label = R1.grpAddInSetting, Image = R2.AddInOptions });
             Register2(grpAddInSetting, btnAddInSetting, new ElementUi { Image = R2.AddInOptions_32 });
             // grpAlignment
-            Register1(grpAlignment, new ElementUi { Label = "位置合わせ" });
-            Register1(lblAlignmentH, new ElementUi { Label = "横揃え" });
-            Register1(lblAlignmentV, new ElementUi { Label = "縦揃え" });
-            Register1(lblDistribute, new ElementUi { Label = "整列" });
-            Register1(btnSizeAndPosition, new ElementUi { Label = "サイズと位置", Image = R2.SizeAndPosition });
+            Register1(grpAlignment, new ElementUi { Label = R1.grpAlignment, Image = R2.ObjectArrangement });
+            Register1(lblAlignmentH, new ElementUi { Label = R1.lblAlignmentH });
+            Register1(lblAlignmentV, new ElementUi { Label = R1.lblAlignmentV });
+            Register1(lblDistribute, new ElementUi { Label = R1.lblDistribute });
+            Register1(btnSizeAndPosition, new ElementUi { Label = R1.btnSizeAndPosition, Image = R2.SizeAndPosition });
             // grpSizeAndSnap
-            Register1(grpSizeAndSnap, new ElementUi { Label = "サイズ変更と吸着" });
-            Register1(lblScaleSize, new ElementUi { Label = "変形" });
-            Register1(lblExtendSize, new ElementUi { Label = "伸ばし" });
-            Register1(lblSnapObjects, new ElementUi { Label = "吸着" });
-            // grpRotateAndFlap
-            Register1(grpRotateAndFlap, new ElementUi { Label = "回転と反転" });
-            Register1(lblRotateObject, new ElementUi { Label = "回転" });
-            Register1(lblFlapObject, new ElementUi { Label = "反転" });
-            Register1(lbl3DRotation, new ElementUi { Label = "3-D" });
-            Register1(edtAngle, new ElementUi { Label = "角度:" });
-            Register1(btnCopyAngle, new ElementUi { Label = "角度をコピー", Image = R2.Copy });
-            Register1(btnPasteAngle, new ElementUi { Label = "角度を貼付", Image = R2.Paste });
-            Register1(btnResetAngle, new ElementUi { Label = "元の角度にリセット", Image = R2.TextboxResetMargin });
+            Register1(grpSizeAndSnap, new ElementUi { Label = R1.grpSizeAndSnap, Image = R2.ScaleSameWidth });
+            Register1(lblScaleSize, new ElementUi { Label = R1.lblScaleSize });
+            Register1(lblExtendSize, new ElementUi { Label = R1.lblExtendSize });
+            Register1(lblSnapObjects, new ElementUi { Label = R1.lblSnapObjects });
+            // grpRotateAndFlip
+            Register1(grpRotateAndFlip, new ElementUi { Label = R1.grpRotateAndFlip, Image = R2.ObjectRotateRight90 });
+            Register1(lblRotateObject, new ElementUi { Label = R1.lblRotateObject });
+            Register1(lblFlipObject, new ElementUi { Label = R1.lblFlipObject });
+            Register1(lbl3DRotation, new ElementUi { Label = R1.lbl3DRotation });
+            Register1(edtAngle, new ElementUi { Label = R1.edtAngle });
+            Register1(btnCopyAngle, new ElementUi { Label = R1.btnCopyAngle, Image = R2.Copy });
+            Register1(btnPasteAngle, new ElementUi { Label = R1.btnPasteAngle, Image = R2.Paste });
+            Register1(btnResetAngle, new ElementUi { Label = R1.btnResetAngle, Image = R2.TextboxResetMargin });
             // grpObjectArrange
-            Register1(grpObjectArrange, new ElementUi { Label = "オブジェクトの配置" });
-            Register1(lblMoveLayers, new ElementUi { Label = "重ね順" });
-            Register1(lblGroupObjects, new ElementUi { Label = "グループ" });
+            Register1(grpObjectArrange, new ElementUi { Label = R1.grpObjectArrange, Image = R2.ObjectSendToBack });
+            Register1(lblMoveLayers, new ElementUi { Label = R1.lblMoveLayers });
+            Register1(lblGroupObjects, new ElementUi { Label = R1.lblGroupObjects });
+            Register2(grpObjectArrange, btnGridSetting, new ElementUi { Image = R2.GridSetting_32 });
             Register2(grpObjectArrange, btnSizeAndPosition, new ElementUi { Image = R2.SizeAndPosition_32 });
             // grpObjectSize
-            Register1(grpObjectSize, new ElementUi { Label = "オブジェクトのサイズ" });
+            Register1(grpObjectSize, new ElementUi { Label = R1.grpObjectSize, Image = R2.ObjectHeight });
             Register1(btnResetSize, new ElementUi { Label = R1.btnResetSize, Image = R2.PictureResetSize_32, Keytip = "SR" });
             Register1(btnLockAspectRatio, new ElementUi { Label = R1.btnLockAspectRatio, Image = R2.ObjectLockAspectRatio, Keytip = "L" });
             Register2(grpObjectSize, btnLockAspectRatio, new ElementUi { Image = R2.ObjectLockAspectRatio_32 });
-            Register1(edtSizeHeight, new ElementUi { Label = "高さ:", Keytip = "SH" });
-            Register1(edtSizeWidth, new ElementUi { Label = "幅:", Keytip = "SW" });
+            Register1(edtSizeHeight, new ElementUi { Label = R1.edtSizeHeight, Keytip = "SH" });
+            Register1(edtSizeWidth, new ElementUi { Label = R1.edtSizeWidth, Keytip = "SW" });
             Register1(btnCopySize, new ElementUi { Label = R1.btnCopySize, Image = R2.Copy, Keytip = "SC" });
             Register1(btnPasteSize, new ElementUi { Label = R1.btnPasteSize, Image = R2.Paste, Keytip = "SP" });
             // grpObjectPosition
-            Register1(grpObjectPosition, new ElementUi { Label = "オブジェクトの位置" });
+            Register1(grpObjectPosition, new ElementUi { Label = R1.grpObjectPosition, Image = R2.ObjectPosition });
             Register1(edtPositionX, new ElementUi { Label = R1.edtPositionX, Keytip = "PX" });
             Register1(edtPositionY, new ElementUi { Label = R1.edtPositionY, Keytip = "PY" });
             Register1(btnCopyPosition, new ElementUi { Label = R1.btnCopyPosition, Image = R2.Copy, Keytip = "PC" });
@@ -431,7 +435,7 @@ namespace PowerPointArrangeAddin.Ribbon {
                     { "TextEffectsMenu", "AE" }, { "WordArtFormatDialog", "AG" }
                 }
             },
-            { grpArrange, new() { { "GridSettings", "HS" }, { "SelectionPane", "HP" } } },
+            { grpArrange, new() { { "SelectionPane", "HP" } } },
             { grpTextbox, new() { { "WordArtFormatDialog", "TG" } } },
             { grpShapeSizeAndPosition, new() { { "ObjectSizeAndPositionDialog", "SN" } } },
             { grpPictureSizeAndPosition, new() { { "ObjectSizeAndPositionDialog", "SN" } } },

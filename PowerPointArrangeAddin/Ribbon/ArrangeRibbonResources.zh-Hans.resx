@@ -365,4 +365,85 @@
   <data name="btnAlignRelative_ToFirstObject" xml:space="preserve">
     <value>对齐到最初选择的对象(&amp;F)</value>
   </data>
+  <data name="btnGridSetting" xml:space="preserve">
+    <value>网格线设置(&amp;G)...</value>
+  </data>
+  <data name="btnSizeAndPosition" xml:space="preserve">
+    <value>大小和位置(&amp;Z)...</value>
+  </data>
+  <data name="tabArrangement" xml:space="preserve">
+    <value>排列</value>
+  </data>
+  <data name="grpAddInSetting" xml:space="preserve">
+    <value>加载项</value>
+  </data>
+  <data name="grpAlignment" xml:space="preserve">
+    <value>对齐</value>
+  </data>
+  <data name="lblAlignmentH" xml:space="preserve">
+    <value>横向对齐</value>
+  </data>
+  <data name="lblAlignmentV" xml:space="preserve">
+    <value>纵向对齐</value>
+  </data>
+  <data name="lblDistribute" xml:space="preserve">
+    <value>分布</value>
+  </data>
+  <data name="grpSizeAndSnap" xml:space="preserve">
+    <value>大小变更和吸附</value>
+  </data>
+  <data name="lblScaleSize" xml:space="preserve">
+    <value>变形</value>
+  </data>
+  <data name="lblExtendSize" xml:space="preserve">
+    <value>延伸</value>
+  </data>
+  <data name="lblSnapObjects" xml:space="preserve">
+    <value>吸附</value>
+  </data>
+  <data name="grpRotateAndFlip" xml:space="preserve">
+    <value>旋转和翻转</value>
+  </data>
+  <data name="lblRotateObject" xml:space="preserve">
+    <value>旋转</value>
+  </data>
+  <data name="lblFlipObject" xml:space="preserve">
+    <value>翻转</value>
+  </data>
+  <data name="lbl3DRotation" xml:space="preserve">
+    <value>三维</value>
+  </data>
+  <data name="edtAngle" xml:space="preserve">
+    <value>角度:</value>
+  </data>
+  <data name="btnCopyAngle" xml:space="preserve">
+    <value>复制角度</value>
+  </data>
+  <data name="btnPasteAngle" xml:space="preserve">
+    <value>粘贴角度</value>
+  </data>
+  <data name="btnResetAngle" xml:space="preserve">
+    <value>重置为默认角度</value>
+  </data>
+  <data name="grpObjectArrange" xml:space="preserve">
+    <value>对象排列</value>
+  </data>
+  <data name="lblMoveLayers" xml:space="preserve">
+    <value>重叠顺序</value>
+  </data>
+  <data name="lblGroupObjects" xml:space="preserve">
+    <value>组合對象</value>
+  </data>
+  <data name="grpObjectSize" xml:space="preserve">
+    <value>对象大小</value>
+  </data>
+  <data name="edtSizeHeight" xml:space="preserve">
+    <value>高度:</value>
+  </data>
+  <data name="edtSizeWidth" xml:space="preserve">
+    <value>宽度:</value>
+  </data>
+  <data name="grpObjectPosition" xml:space="preserve">
+    <value>对象位置</value>
+  </data>
 </root>

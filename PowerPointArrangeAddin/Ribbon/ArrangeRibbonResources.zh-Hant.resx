@@ -233,13 +233,13 @@
     <comment>將左上端視爲錨點來變形圖案</comment>
   </data>
   <data name="btnScaleSameHeight" xml:space="preserve">
-    <value>變形為與最開始選擇的圖案相同高度(&amp;H)</value>
+    <value>變形為與最初選擇的圖案相同高度(&amp;H)</value>
   </data>
   <data name="btnScaleSameSize" xml:space="preserve">
-    <value>變形為與最開始選擇的圖案相同大小(&amp;S)</value>
+    <value>變形為與最初選擇的圖案相同大小(&amp;S)</value>
   </data>
   <data name="btnScaleSameWidth" xml:space="preserve">
-    <value>變形為與最開始選擇的圖案相同寬度(&amp;W)</value>
+    <value>變形為與最初選擇的圖案相同寬度(&amp;W)</value>
   </data>
   <data name="btnSnapBottom" xml:space="preserve">
     <value>下端向上吸附(&amp;B)</value>
@@ -363,6 +363,87 @@
     <value>對齊選取的圖案(&amp;O)</value>
   </data>
   <data name="btnAlignRelative_ToFirstObject" xml:space="preserve">
-    <value>對齊到最開始選擇的圖案(&amp;F)</value>
+    <value>對齊到最初選擇的圖案(&amp;F)</value>
+  </data>
+  <data name="btnGridSetting" xml:space="preserve">
+    <value>格綫設定(&amp;G)...</value>
+  </data>
+  <data name="btnSizeAndPosition" xml:space="preserve">
+    <value>大小和位置(&amp;Z)...</value>
+  </data>
+  <data name="tabArrangement" xml:space="preserve">
+    <value>排列</value>
+  </data>
+  <data name="grpAddInSetting" xml:space="preserve">
+    <value>增益集</value>
+  </data>
+  <data name="grpAlignment" xml:space="preserve">
+    <value>對齊</value>
+  </data>
+  <data name="lblAlignmentH" xml:space="preserve">
+    <value>橫向對齊</value>
+  </data>
+  <data name="lblAlignmentV" xml:space="preserve">
+    <value>縱向對齊</value>
+  </data>
+  <data name="lblDistribute" xml:space="preserve">
+    <value>均分</value>
+  </data>
+  <data name="grpSizeAndSnap" xml:space="preserve">
+    <value>大小变更和吸附</value>
+  </data>
+  <data name="lblScaleSize" xml:space="preserve">
+    <value>變形</value>
+  </data>
+  <data name="lblExtendSize" xml:space="preserve">
+    <value>延伸</value>
+  </data>
+  <data name="lblSnapObjects" xml:space="preserve">
+    <value>吸附</value>
+  </data>
+  <data name="grpRotateAndFlip" xml:space="preserve">
+    <value>旋轉和翻轉</value>
+  </data>
+  <data name="lblRotateObject" xml:space="preserve">
+    <value>旋轉</value>
+  </data>
+  <data name="lblFlipObject" xml:space="preserve">
+    <value>翻轉</value>
+  </data>
+  <data name="lbl3DRotation" xml:space="preserve">
+    <value>立體</value>
+  </data>
+  <data name="edtAngle" xml:space="preserve">
+    <value>角度:</value>
+  </data>
+  <data name="btnCopyAngle" xml:space="preserve">
+    <value>複製角度</value>
+  </data>
+  <data name="btnPasteAngle" xml:space="preserve">
+    <value>貼上角度</value>
+  </data>
+  <data name="btnResetAngle" xml:space="preserve">
+    <value>復原為預設角度</value>
+  </data>
+  <data name="grpObjectArrange" xml:space="preserve">
+    <value>圖案排列</value>
+  </data>
+  <data name="lblMoveLayers" xml:space="preserve">
+    <value>重叠順序</value>
+  </data>
+  <data name="lblGroupObjects" xml:space="preserve">
+    <value>群組圖案</value>
+  </data>
+  <data name="grpObjectSize" xml:space="preserve">
+    <value>圖案大小</value>
+  </data>
+  <data name="edtSizeHeight" xml:space="preserve">
+    <value>高度:</value>
+  </data>
+  <data name="edtSizeWidth" xml:space="preserve">
+    <value>寬度:</value>
+  </data>
+  <data name="grpObjectPosition" xml:space="preserve">
+    <value>圖案位置</value>
   </data>
 </root>

@@ -365,4 +365,85 @@
   <data name="btnAlignRelative_ToFirstObject" xml:space="preserve">
     <value>Align and relative to the &amp;first object</value>
   </data>
+  <data name="btnGridSetting" xml:space="preserve">
+    <value>&amp;Grid setting...</value>
+  </data>
+  <data name="btnSizeAndPosition" xml:space="preserve">
+    <value>Si&amp;ze and position...</value>
+  </data>
+  <data name="tabArrangement" xml:space="preserve">
+    <value>Arrangement</value>
+  </data>
+  <data name="grpAddInSetting" xml:space="preserve">
+    <value>Add-in</value>
+  </data>
+  <data name="grpAlignment" xml:space="preserve">
+    <value>Alignment</value>
+  </data>
+  <data name="lblAlignmentH" xml:space="preserve">
+    <value>Horizontal align</value>
+  </data>
+  <data name="lblAlignmentV" xml:space="preserve">
+    <value>Vertical align</value>
+  </data>
+  <data name="lblDistribute" xml:space="preserve">
+    <value>Distribute</value>
+  </data>
+  <data name="grpSizeAndSnap" xml:space="preserve">
+    <value>Resize and snap</value>
+  </data>
+  <data name="lblScaleSize" xml:space="preserve">
+    <value>Scale</value>
+  </data>
+  <data name="lblExtendSize" xml:space="preserve">
+    <value>Extend</value>
+  </data>
+  <data name="lblSnapObjects" xml:space="preserve">
+    <value>Snap</value>
+  </data>
+  <data name="grpRotateAndFlip" xml:space="preserve">
+    <value>Rotate and flip</value>
+  </data>
+  <data name="lblRotateObject" xml:space="preserve">
+    <value>Rotate</value>
+  </data>
+  <data name="lblFlipObject" xml:space="preserve">
+    <value>Flip</value>
+  </data>
+  <data name="lbl3DRotation" xml:space="preserve">
+    <value>3-D</value>
+  </data>
+  <data name="edtAngle" xml:space="preserve">
+    <value>Angle:</value>
+  </data>
+  <data name="btnCopyAngle" xml:space="preserve">
+    <value>Copy angle</value>
+  </data>
+  <data name="btnPasteAngle" xml:space="preserve">
+    <value>Paste angle</value>
+  </data>
+  <data name="btnResetAngle" xml:space="preserve">
+    <value>Reset angle</value>
+  </data>
+  <data name="grpObjectArrange" xml:space="preserve">
+    <value>Object arrangement</value>
+  </data>
+  <data name="lblMoveLayers" xml:space="preserve">
+    <value>Layer</value>
+  </data>
+  <data name="lblGroupObjects" xml:space="preserve">
+    <value>Group</value>
+  </data>
+  <data name="grpObjectSize" xml:space="preserve">
+    <value>Object size</value>
+  </data>
+  <data name="edtSizeHeight" xml:space="preserve">
+    <value>Height:</value>
+  </data>
+  <data name="edtSizeWidth" xml:space="preserve">
+    <value>Width:</value>
+  </data>
+  <data name="grpObjectPosition" xml:space="preserve">
+    <value>Object position</value>
+  </data>
 </root>

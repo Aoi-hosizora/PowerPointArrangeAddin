@@ -72,7 +72,7 @@ namespace PowerPointArrangeAddin.Helper {
             return document.ToXmlText();
         }
 
-        public static string NormalizeControlIdInMenu(string xmlText, string menuId) {
+        public static string NormalizeControlIdInMenu(string xmlText, string rootMenuId) {
             if (xmlText.Contains(Separator)) {
                 throw new Exception($"`{Separator}` can not be used in resource xml");
             }
@@ -81,14 +81,22 @@ namespace PowerPointArrangeAddin.Helper {
                 return "";
             }
 
-            // get menu root node, and enumerate it to normalize
-            var menuRootNode = document.GetElementsByTagName("menu").OfType<XmlNode>().FirstOrDefault();
-            if (menuRootNode == null) {
+            // get menu controls, and enumerate it to normalize
+            var menuNodes = document.GetElementsByTagName("menu");
+            if (menuNodes.Count == 0) {
                 return document.ToXmlText();
             }
 
-            foreach (var childNode in menuRootNode.ChildNodes.OfType<XmlNode>()) {
-                NormalizeControlIdWithXmlNode(childNode, menuId, null);
+            foreach (var menuNode in menuNodes.OfType<XmlNode>()) {
+                var menuId = menuNode.Attributes?["id"]?.Value;
+                if (string.IsNullOrWhiteSpace(menuId)) {
+                    menuId = rootMenuId;
+                } else {
+                    menuId = $"{rootMenuId}{Separator}{menuId}";
+                }
+                foreach (var childNode in menuNode.ChildNodes.OfType<XmlNode>()) {
+                    NormalizeControlIdWithXmlNode(childNode, menuId, node => node.Name == "menu");
+                }
             }
             return document.ToXmlText();
         }

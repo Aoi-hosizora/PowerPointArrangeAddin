@@ -29,13 +29,23 @@ namespace PowerPointArrangeAddin.Helper {
             return parts.Length < 2 ? "" : parts[1];
         }
 
-        public static void InvalidateControl(this IRibbonUI ribbonUi, string controlId, string parentName) {
-            ribbonUi.InvalidateControl($"{controlId}{Separator}{parentName}");
+        public static void InvalidateControl(this IRibbonUI ribbonUi, string controlId, string parentId) {
+            ribbonUi.InvalidateControl($"{controlId}{Separator}{parentId}");
         }
 
-        public static void InvalidateControl(this IRibbonUI ribbonUi, string controlId, IEnumerable<string> parentNames) {
-            foreach (var parentName in parentNames) {
-                ribbonUi.InvalidateControl(controlId, parentName);
+        public static void InvalidateControl(this IRibbonUI ribbonUi, string controlId, (string, string) parentIds) {
+            ribbonUi.InvalidateControl($"{controlId}{Separator}{parentIds.Item1}{Separator}{parentIds.Item2}");
+        }
+
+        public static void InvalidateControls(this IRibbonUI ribbonUi, string controlId, IEnumerable<string> parentIds) {
+            foreach (var parentId in parentIds) {
+                ribbonUi.InvalidateControl(controlId, parentId);
+            }
+        }
+
+        public static void InvalidateControls(this IRibbonUI ribbonUi, string controlId, IEnumerable<(string, string)> parentIds) {
+            foreach (var (parentId1, parentId2) in parentIds) {
+                ribbonUi.InvalidateControl(controlId, (parentId1, parentId2));
             }
         }
 

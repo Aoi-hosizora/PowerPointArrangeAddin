@@ -365,4 +365,85 @@
   <data name="btnAlignRelative_ToSlide" xml:space="preserve">
     <value>スライドに合わせて配置(&amp;A)</value>
   </data>
+  <data name="btnGridSetting" xml:space="preserve">
+    <value>グリッドの設定(&amp;G)...</value>
+  </data>
+  <data name="btnSizeAndPosition" xml:space="preserve">
+    <value>サイズと位置(&amp;Z)...</value>
+  </data>
+  <data name="tabArrangement" xml:space="preserve">
+    <value>配置</value>
+  </data>
+  <data name="grpAddInSetting" xml:space="preserve">
+    <value>アドイン</value>
+  </data>
+  <data name="grpAlignment" xml:space="preserve">
+    <value>位置合わせ</value>
+  </data>
+  <data name="lblAlignmentH" xml:space="preserve">
+    <value>横揃え</value>
+  </data>
+  <data name="lblAlignmentV" xml:space="preserve">
+    <value>縦揃え</value>
+  </data>
+  <data name="lblDistribute" xml:space="preserve">
+    <value>整列</value>
+  </data>
+  <data name="grpSizeAndSnap" xml:space="preserve">
+    <value>サイズ変更と吸着</value>
+  </data>
+  <data name="lblScaleSize" xml:space="preserve">
+    <value>変形</value>
+  </data>
+  <data name="lblExtendSize" xml:space="preserve">
+    <value>伸ばし</value>
+  </data>
+  <data name="lblSnapObjects" xml:space="preserve">
+    <value>吸着</value>
+  </data>
+  <data name="grpRotateAndFlip" xml:space="preserve">
+    <value>回転と反転</value>
+  </data>
+  <data name="lblRotateObject" xml:space="preserve">
+    <value>回転</value>
+  </data>
+  <data name="lblFlipObject" xml:space="preserve">
+    <value>反転</value>
+  </data>
+  <data name="lbl3DRotation" xml:space="preserve">
+    <value>3-D</value>
+  </data>
+  <data name="edtAngle" xml:space="preserve">
+    <value>角度:</value>
+  </data>
+  <data name="btnCopyAngle" xml:space="preserve">
+    <value>角度をコピー</value>
+  </data>
+  <data name="btnPasteAngle" xml:space="preserve">
+    <value>角度を貼付</value>
+  </data>
+  <data name="btnResetAngle" xml:space="preserve">
+    <value>元の角度にリセット</value>
+  </data>
+  <data name="grpObjectArrange" xml:space="preserve">
+    <value>オブジェクトの配置</value>
+  </data>
+  <data name="lblMoveLayers" xml:space="preserve">
+    <value>重ね順</value>
+  </data>
+  <data name="lblGroupObjects" xml:space="preserve">
+    <value>グループ</value>
+  </data>
+  <data name="grpObjectSize" xml:space="preserve">
+    <value>オブジェクトのサイズ</value>
+  </data>
+  <data name="edtSizeHeight" xml:space="preserve">
+    <value>高さ:</value>
+  </data>
+  <data name="edtSizeWidth" xml:space="preserve">
+    <value>幅:</value>
+  </data>
+  <data name="grpObjectPosition" xml:space="preserve">
+    <value>オブジェクトの位置</value>
+  </data>
 </root>
