@@ -567,9 +567,6 @@
   <data name="chkArrangement.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="chkArrangement.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
   <data name="chkArrangement.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>System</value>
   </data>

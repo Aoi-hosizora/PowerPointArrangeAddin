@@ -16,6 +16,7 @@ namespace PowerPointArrangeAddin.Misc {
         }
 
         public bool ShowWordArtGroup { get; set; }
+        public bool ShowArrangementGroup { get; set; }
         public bool ShowShapeTextboxGroup { get; set; }
         public bool ShowReplacePictureGroup { get; set; }
         public bool ShowSizeAndPositionGroup { get; set; }
@@ -32,6 +33,7 @@ namespace PowerPointArrangeAddin.Misc {
 
         public void Load() {
             ShowWordArtGroup = Properties.Settings.Default.showWordArtGroup;
+            ShowArrangementGroup = Properties.Settings.Default.showArrangementGroup;
             ShowShapeTextboxGroup = Properties.Settings.Default.showShapeTextboxGroup;
             ShowReplacePictureGroup = Properties.Settings.Default.showReplacePictureGroup;
             ShowSizeAndPositionGroup = Properties.Settings.Default.showSizeAndPositionGroup;
@@ -49,6 +51,7 @@ namespace PowerPointArrangeAddin.Misc {
 
         public void Save() {
             Properties.Settings.Default.showWordArtGroup = ShowWordArtGroup;
+            Properties.Settings.Default.showArrangementGroup = ShowArrangementGroup;
             Properties.Settings.Default.showShapeTextboxGroup = ShowShapeTextboxGroup;
             Properties.Settings.Default.showReplacePictureGroup = ShowReplacePictureGroup;
             Properties.Settings.Default.showSizeAndPositionGroup = ShowSizeAndPositionGroup;

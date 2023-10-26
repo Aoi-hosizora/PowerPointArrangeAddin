@@ -302,7 +302,7 @@ namespace PowerPointArrangeAddin.Ribbon {
             Register1(btnScaleSameWidth, new ElementUi { Label = R1.btnScaleSameWidth, Image = R2.ScaleSameWidth, Keytip = "PW" });
             Register1(btnScaleSameHeight, new ElementUi { Label = R1.btnScaleSameHeight, Image = R2.ScaleSameHeight, Keytip = "PH" });
             Register1(btnScaleSameSize, new ElementUi { Label = R1.btnScaleSameSize, Image = R2.ScaleSameSize, Keytip = "PS" });
-            Register1(btnScaleAnchor, new ElementUi { Label = R1.btnScaleAnchor_TopLeft, Image = R2.ScaleFromTopLeft, Keytip = "PA" });
+            Register1(btnScaleAnchor, new ElementUi { Label = R1.btnScaleAnchor_FromTopLeft, Image = R2.ScaleFromTopLeft, Keytip = "PA" });
             Register1(btnExtendSameLeft, new ElementUi { Label = R1.btnExtendSameLeft, Image = R2.ExtendSameLeft, Keytip = "PL" });
             Register1(btnExtendSameRight, new ElementUi { Label = R1.btnExtendSameRight, Image = R2.ExtendSameRight, Keytip = "PR" });
             Register1(btnExtendSameTop, new ElementUi { Label = R1.btnExtendSameTop, Image = R2.ExtendSameTop, Keytip = "PT" });
@@ -321,40 +321,47 @@ namespace PowerPointArrangeAddin.Ribbon {
             Register1(btnFlipHorizontal, new ElementUi { Label = R1.btnFlipHorizontal, Image = R2.ObjectFlipHorizontal, Keytip = "HH" });
             Register1(btnGroup, new ElementUi { Label = R1.btnGroup, Image = R2.ObjectsGroup, Keytip = "HG" });
             Register1(btnUngroup, new ElementUi { Label = R1.btnUngroup, Image = R2.ObjectsUngroup, Keytip = "HU" });
-            Register1(btnGridSetting, new ElementUi { Label = R1.btnGridSetting, Image = R2.GridSetting, Keytip = "HS" });
+            Register1(btnGridSetting, new ElementUi { Label = R1.btnGridSetting, Image = R2.GridSetting, Keytip = "HD" });
             Register1(mnuArrangement, new ElementUi { Label = R1.mnuArrangement, Image = R2.ObjectArrangement_32, Keytip = "B" });
-            Register1(btnAddInSetting, new ElementUi { Label = R1.btnAddInSetting, Image = R2.AddInOptions, Keytip = "HT" });
+            Register1(btnAddInSetting, new ElementUi { Label = R1.btnAddInSetting, Image = R2.AddInOptions, Keytip = "AS" });
             // tabArrangement
             Register1(tabArrangement, new ElementUi { Label = R1.tabArrangement, Keytip = "M" });
             // grpAddInSetting
             Register1(grpAddInSetting, new ElementUi { Label = R1.grpAddInSetting, Image = R2.AddInOptions });
-            Register2(grpAddInSetting, btnAddInSetting, new ElementUi { Image = R2.AddInOptions_32 });
+            Register2(grpAddInSetting, btnAddInSetting, new ElementUi { Image = R2.AddInOptions_32, Keytip = "T" });
             // grpAlignment
             Register1(grpAlignment, new ElementUi { Label = R1.grpAlignment, Image = R2.ObjectArrangement });
             Register1(lblAlignmentH, new ElementUi { Label = R1.lblAlignmentH });
             Register1(lblAlignmentV, new ElementUi { Label = R1.lblAlignmentV });
             Register1(lblDistribute, new ElementUi { Label = R1.lblDistribute });
-            Register1(btnSizeAndPosition, new ElementUi { Label = R1.btnSizeAndPosition, Image = R2.SizeAndPosition });
+            Register1(btnAlignRelative_ToObjects, new ElementUi { Label = R1.btnAlignRelative_ToObjects, Image = R2.AlignRelativeToObjects, Keytip = "DO" });
+            Register1(btnAlignRelative_ToFirstObject, new ElementUi { Label = R1.btnAlignRelative_ToFirstObject, Image = R2.AlignRelativeToFirstObject, Keytip = "DF" });
+            Register1(btnAlignRelative_ToSlide, new ElementUi { Label = R1.btnAlignRelative_ToSlide, Image = R2.AlignRelativeToSlide, Keytip = "DS" });
+            Register1(btnSizeAndPosition, new ElementUi { Label = R1.btnSizeAndPosition, Image = R2.SizeAndPosition, Keytip = "DN" });
             // grpSizeAndSnap
             Register1(grpSizeAndSnap, new ElementUi { Label = R1.grpSizeAndSnap, Image = R2.ScaleSameWidth });
             Register1(lblScaleSize, new ElementUi { Label = R1.lblScaleSize });
             Register1(lblExtendSize, new ElementUi { Label = R1.lblExtendSize });
             Register1(lblSnapObjects, new ElementUi { Label = R1.lblSnapObjects });
+            Register1(btnScaleAnchor_FromTopLeft, new ElementUi { Label = R1.btnScaleAnchor_FromTopLeft, Image = R2.ScaleFromTopLeft, Keytip = "PA" });
+            Register1(btnScaleAnchor_FromMiddle, new ElementUi { Label = R1.btnScaleAnchor_FromMiddle, Image = R2.ScaleFromMiddle, Keytip = "PD" });
+            Register1(btnScaleAnchor_FromBottomRight, new ElementUi { Label = R1.btnScaleAnchor_FromBottomRight, Image = R2.ScaleFromBottomRight, Keytip = "PG" });
+            Register2(grpSizeAndSnap, btnSizeAndPosition, new ElementUi { Keytip = "PP" });
             // grpRotateAndFlip
             Register1(grpRotateAndFlip, new ElementUi { Label = R1.grpRotateAndFlip, Image = R2.ObjectRotateRight90 });
             Register1(lblRotateObject, new ElementUi { Label = R1.lblRotateObject });
             Register1(lblFlipObject, new ElementUi { Label = R1.lblFlipObject });
             Register1(lbl3DRotation, new ElementUi { Label = R1.lbl3DRotation });
-            Register1(edtAngle, new ElementUi { Label = R1.edtAngle });
-            Register1(btnCopyAngle, new ElementUi { Label = R1.btnCopyAngle, Image = R2.Copy });
-            Register1(btnPasteAngle, new ElementUi { Label = R1.btnPasteAngle, Image = R2.Paste });
-            Register1(btnResetAngle, new ElementUi { Label = R1.btnResetAngle, Image = R2.TextboxResetMargin });
+            Register1(edtAngle, new ElementUi { Label = R1.edtAngle, Keytip = "AE" });
+            Register1(btnCopyAngle, new ElementUi { Label = R1.btnCopyAngle, Image = R2.Copy, Keytip = "AC" });
+            Register1(btnPasteAngle, new ElementUi { Label = R1.btnPasteAngle, Image = R2.Paste, Keytip = "AP" });
+            Register1(btnResetAngle, new ElementUi { Label = R1.btnResetAngle, Image = R2.TextboxResetMargin, Keytip = "AR" });
             // grpObjectArrange
             Register1(grpObjectArrange, new ElementUi { Label = R1.grpObjectArrange, Image = R2.ObjectSendToBack });
             Register1(lblMoveLayers, new ElementUi { Label = R1.lblMoveLayers });
             Register1(lblGroupObjects, new ElementUi { Label = R1.lblGroupObjects });
-            Register2(grpObjectArrange, btnGridSetting, new ElementUi { Image = R2.GridSetting_32 });
-            Register2(grpObjectArrange, btnSizeAndPosition, new ElementUi { Image = R2.SizeAndPosition_32 });
+            Register2(grpObjectArrange, btnGridSetting, new ElementUi { Image = R2.GridSetting_32, Keytip = "G" });
+            Register2(grpObjectArrange, btnSizeAndPosition, new ElementUi { Image = R2.SizeAndPosition_32, Keytip = "N" });
             // grpObjectSize
             Register1(grpObjectSize, new ElementUi { Label = R1.grpObjectSize, Image = R2.ObjectHeight });
             Register1(btnResetSize, new ElementUi { Label = R1.btnResetSize, Image = R2.PictureResetSize_32, Keytip = "SR" });
@@ -363,13 +370,15 @@ namespace PowerPointArrangeAddin.Ribbon {
             Register1(edtSizeHeight, new ElementUi { Label = R1.edtSizeHeight, Keytip = "SH" });
             Register1(edtSizeWidth, new ElementUi { Label = R1.edtSizeWidth, Keytip = "SW" });
             Register1(btnCopySize, new ElementUi { Label = R1.btnCopySize, Image = R2.Copy, Keytip = "SC" });
-            Register1(btnPasteSize, new ElementUi { Label = R1.btnPasteSize, Image = R2.Paste, Keytip = "SP" });
+            Register1(btnPasteSize, new ElementUi { Label = R1.btnPasteSize, Image = R2.Paste, Keytip = "SV" });
+            Register2(grpObjectSize, btnSizeAndPosition, new ElementUi { Keytip = "SN" });
             // grpObjectPosition
             Register1(grpObjectPosition, new ElementUi { Label = R1.grpObjectPosition, Image = R2.ObjectPosition });
             Register1(edtPositionX, new ElementUi { Label = R1.edtPositionX, Keytip = "PX" });
             Register1(edtPositionY, new ElementUi { Label = R1.edtPositionY, Keytip = "PY" });
             Register1(btnCopyPosition, new ElementUi { Label = R1.btnCopyPosition, Image = R2.Copy, Keytip = "PC" });
-            Register1(btnPastePosition, new ElementUi { Label = R1.btnPastePosition, Image = R2.Paste, Keytip = "PP" });
+            Register1(btnPastePosition, new ElementUi { Label = R1.btnPastePosition, Image = R2.Paste, Keytip = "PV" });
+            Register2(grpObjectPosition, btnSizeAndPosition, new ElementUi { Keytip = "PN" });
             // grpTextbox
             Register1(grpTextbox, new ElementUi { Label = R1.grpTextbox, Image = R2.TextboxSetting });
             Register1(btnAutofitOff, new ElementUi { Label = R1.btnAutofitOff, Image = R2.TextboxAutofitOff, Keytip = "TF" });
@@ -398,13 +407,20 @@ namespace PowerPointArrangeAddin.Ribbon {
             Register1(grpTableSizeAndPosition, new ElementUi { Label = R1.grpSizeAndPosition, Image = R2.SizeAndPosition });
             Register1(grpChartSizeAndPosition, new ElementUi { Label = R1.grpSizeAndPosition, Image = R2.SizeAndPosition });
             Register1(grpSmartartSizeAndPosition, new ElementUi { Label = R1.grpSizeAndPosition, Image = R2.SizeAndPosition });
+            Register2(grpShapeSizeAndPosition, btnSizeAndPosition, new ElementUi { Keytip = "SN" });
+            Register2(grpPictureSizeAndPosition, btnSizeAndPosition, new ElementUi { Keytip = "SN" });
+            Register2(grpVideoSizeAndPosition, btnSizeAndPosition, new ElementUi { Keytip = "SN" });
+            Register2(grpAudioSizeAndPosition, btnSizeAndPosition, new ElementUi { Keytip = "SN" });
+            Register2(grpTableSizeAndPosition, btnSizeAndPosition, new ElementUi { Keytip = "SN" });
+            Register2(grpChartSizeAndPosition, btnSizeAndPosition, new ElementUi { Keytip = "SN" });
+            Register2(grpSmartartSizeAndPosition, btnSizeAndPosition, new ElementUi { Keytip = "SN" });
             // ===
             Register2(grpVideoSizeAndPosition, btnLockAspectRatio, new ElementUi { Keytip = "SL" }); // L
             Register2(grpVideoSizeAndPosition, btnScaleAnchor, new ElementUi { Keytip = "SF" }); // PA
             Register2(grpVideoSizeAndPosition, edtPositionX, new ElementUi { Keytip = "SX" }); // PX
             Register2(grpVideoSizeAndPosition, edtPositionY, new ElementUi { Keytip = "SY" }); // PY
             Register2(grpVideoSizeAndPosition, btnCopyPosition, new ElementUi { Keytip = "SS" }); // PC
-            Register2(grpVideoSizeAndPosition, btnPastePosition, new ElementUi { Keytip = "ST" }); // PP
+            Register2(grpVideoSizeAndPosition, btnPastePosition, new ElementUi { Keytip = "ST" }); // PV
             // ===
             Register2(grpTableSizeAndPosition, mnuArrangement, new ElementUi { Keytip = "SB" }); // B
             Register2(grpTableSizeAndPosition, btnLockAspectRatio, new ElementUi { Keytip = "SL" }); // L
@@ -412,7 +428,7 @@ namespace PowerPointArrangeAddin.Ribbon {
             Register2(grpTableSizeAndPosition, edtPositionX, new ElementUi { Keytip = "SX" }); // PX
             Register2(grpTableSizeAndPosition, edtPositionY, new ElementUi { Keytip = "SY" }); // PY
             Register2(grpTableSizeAndPosition, btnCopyPosition, new ElementUi { Keytip = "SS" }); // PC
-            Register2(grpTableSizeAndPosition, btnPastePosition, new ElementUi { Keytip = "ST" }); // PP
+            Register2(grpTableSizeAndPosition, btnPastePosition, new ElementUi { Keytip = "ST" }); // PV
             // mnuArrangement
             Register1(sepAlignmentAndResizing, new ElementUi { Label = R1.mnuArrangement_sepAlignmentAndResizing });
             Register1(mnuAlignment, new ElementUi { Label = R1.mnuArrangement_mnuAlignment, Image = R2.ObjectArrangement });
@@ -435,15 +451,11 @@ namespace PowerPointArrangeAddin.Ribbon {
                     { "TextEffectsMenu", "AE" }, { "WordArtFormatDialog", "AG" }
                 }
             },
-            { grpArrange, new() { { "SelectionPane", "HP" } } },
-            { grpTextbox, new() { { "WordArtFormatDialog", "TG" } } },
-            { grpShapeSizeAndPosition, new() { { "ObjectSizeAndPositionDialog", "SN" } } },
-            { grpPictureSizeAndPosition, new() { { "ObjectSizeAndPositionDialog", "SN" } } },
-            { grpVideoSizeAndPosition, new() { { "ObjectSizeAndPositionDialog", "SN" } } },
-            { grpAudioSizeAndPosition, new() { { "ObjectSizeAndPositionDialog", "SN" } } },
-            { grpTableSizeAndPosition, new() { { "ObjectSizeAndPositionDialog", "SN" } } },
-            { grpChartSizeAndPosition, new() { { "ObjectSizeAndPositionDialog", "SN" } } },
-            { grpSmartartSizeAndPosition, new() { { "ObjectSizeAndPositionDialog", "SN" } } }
+            { grpArrange, new() { { "SelectionPane", "HS" } } },
+            { grpRotateAndFlip, new() { { "_3DRotationGallery", "AD" }, { "ObjectRotationOptionsDialog", "AM" } } },
+            { grpObjectArrange, new() { { "SelectionPane", "HS" } } },
+            { grpObjectSize, new() { { "PictureCropTools", "SP" } } },
+            { grpTextbox, new() { { "WordArtFormatDialog", "TG" } } }
         };
 
         #endregion

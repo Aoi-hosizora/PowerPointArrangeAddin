@@ -23,7 +23,7 @@ namespace PowerPointArrangeAddin.Dialog {
 
         private void SettingDialog_Load(object sender, EventArgs e) {
             chkWordArt.Checked = AddInSetting.Instance.ShowWordArtGroup;
-            chkArrangement.Checked = true;
+            chkArrangement.Checked = AddInSetting.Instance.ShowArrangementGroup;
             chkShapeTextbox.Checked = AddInSetting.Instance.ShowShapeTextboxGroup;
             chkReplacePicture.Checked = AddInSetting.Instance.ShowReplacePictureGroup;
             chkSizeAndPosition.Checked = AddInSetting.Instance.ShowSizeAndPositionGroup;
@@ -37,12 +37,13 @@ namespace PowerPointArrangeAddin.Dialog {
             cboLanguage.SelectedIndex = AddInSetting.Instance.Language.ToLanguageIndex();
             chkLessButtonsForArrangement.Checked = AddInSetting.Instance.LessButtonsForArrangementGroup;
             chkHideMarginSettingForTextbox.Checked = AddInSetting.Instance.HideMarginSettingForTextboxGroup;
+            // TODO addin upgrade, AddInVersion.cs
             // TODO ui icon style setting
-            // TODO button insert after setting
         }
 
         private void BtnOK_Click(object sender, EventArgs e) {
             AddInSetting.Instance.ShowWordArtGroup = chkWordArt.Checked;
+            AddInSetting.Instance.ShowArrangementGroup = chkArrangement.Checked;
             AddInSetting.Instance.ShowShapeTextboxGroup = chkShapeTextbox.Checked;
             AddInSetting.Instance.ShowReplacePictureGroup = chkReplacePicture.Checked;
             AddInSetting.Instance.ShowSizeAndPositionGroup = chkSizeAndPosition.Checked;

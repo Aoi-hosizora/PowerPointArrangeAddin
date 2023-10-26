@@ -209,6 +209,20 @@ namespace PowerPointArrangeAddin.Helper {
         private static float _copiedPositionXPt = InvalidCopiedValue;
         private static float _copiedPositionYPt = InvalidCopiedValue;
 
+        public static bool IsSizeCopyable(PowerPoint.ShapeRange? shapeRange) {
+            if (shapeRange == null || shapeRange.Count <= 0) {
+                return false;
+            }
+            return shapeRange.Width >= -1e9F && shapeRange.Height >= -1e9F;
+        }
+
+        public static bool IsPositionCopyable(PowerPoint.ShapeRange? shapeRange) {
+            if (shapeRange == null || shapeRange.Count <= 0) {
+                return false;
+            }
+            return shapeRange.Left >= -1e9F && shapeRange.Top >= -1e9F;
+        }
+
         public static bool IsValidCopiedSizeValue() {
             return !_copiedSizeWPt.Equals(InvalidCopiedValue) && !_copiedSizeHPt.Equals(InvalidCopiedValue);
         }

@@ -224,11 +224,11 @@
   <data name="btnRotateRight90" xml:space="preserve">
     <value>向右旋转 90 度(&amp;R)</value>
   </data>
-  <data name="btnScaleAnchor_Middle" xml:space="preserve">
+  <data name="btnScaleAnchor_FromMiddle" xml:space="preserve">
     <value>从中心点变形(&amp;F)</value>
     <comment>将中心点视为锚点来变形图像</comment>
   </data>
-  <data name="btnScaleAnchor_TopLeft" xml:space="preserve">
+  <data name="btnScaleAnchor_FromTopLeft" xml:space="preserve">
     <value>从左上角变形(&amp;O)</value>
     <comment>将左上点视为锚点来变形图像</comment>
   </data>
@@ -346,15 +346,15 @@
   <data name="dlgAllFilesFilter" xml:space="preserve">
     <value>所有文件</value>
   </data>
-  <data name="btnScaleAnchor_BottomRight" xml:space="preserve">
+  <data name="btnScaleAnchor_FromBottomRight" xml:space="preserve">
     <value>从右下角变形(&amp;M)</value>
     <comment>将右下点视为锚点来变形图像</comment>
   </data>
   <data name="lblHorizontalMargin" xml:space="preserve">
-    <value>横向边距:　 </value>
+    <value>横向边距: </value>
   </data>
   <data name="lblVerticalMargin" xml:space="preserve">
-    <value>纵向边距:　 </value>
+    <value>纵向边距: </value>
   </data>
   <data name="btnAlignRelative_ToObjects" xml:space="preserve">
     <value>对齐所选对象(&amp;O)</value>
@@ -363,7 +363,7 @@
     <value>对齐到幻灯片(&amp;A)</value>
   </data>
   <data name="btnAlignRelative_ToFirstObject" xml:space="preserve">
-    <value>对齐到最初选择的对象(&amp;F)</value>
+    <value>对齐到最初的对象(&amp;F)</value>
   </data>
   <data name="btnGridSetting" xml:space="preserve">
     <value>网格线设置(&amp;G)...</value>
@@ -432,7 +432,7 @@
     <value>重叠顺序</value>
   </data>
   <data name="lblGroupObjects" xml:space="preserve">
-    <value>组合對象</value>
+    <value>组合对象</value>
   </data>
   <data name="grpObjectSize" xml:space="preserve">
     <value>对象大小</value>

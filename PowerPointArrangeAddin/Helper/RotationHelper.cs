@@ -45,6 +45,13 @@ namespace PowerPointArrangeAddin.Helper {
 
         private static float _copiedAngleDeg = InvalidCopiedValue;
 
+        public static bool IsAngleCopyable(PowerPoint.ShapeRange? shapeRange) {
+            if (shapeRange == null || shapeRange.Count <= 0) {
+                return false;
+            }
+            return shapeRange.Rotation >= -1e9F;
+        }
+
         public static bool IsValidCopiedAngleValue() {
             return !_copiedAngleDeg.Equals(InvalidCopiedValue);
         }

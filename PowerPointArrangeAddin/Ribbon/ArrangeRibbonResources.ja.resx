@@ -224,11 +224,11 @@
   <data name="btnRotateRight90" xml:space="preserve">
     <value>右へ 90 度回転(&amp;R)</value>
   </data>
-  <data name="btnScaleAnchor_Middle" xml:space="preserve">
+  <data name="btnScaleAnchor_FromMiddle" xml:space="preserve">
     <value>中央点から変形(&amp;F)</value>
     <comment>中央点をアンカーとして図形を変形</comment>
   </data>
-  <data name="btnScaleAnchor_TopLeft" xml:space="preserve">
+  <data name="btnScaleAnchor_FromTopLeft" xml:space="preserve">
     <value>左上端から変形(&amp;O)</value>
     <comment>左上端をアンカーとして図形を変形</comment>
   </data>
@@ -346,7 +346,7 @@
   <data name="dlgAllFilesFilter" xml:space="preserve">
     <value>すべてのファイル</value>
   </data>
-  <data name="btnScaleAnchor_BottomRight" xml:space="preserve">
+  <data name="btnScaleAnchor_FromBottomRight" xml:space="preserve">
     <value>右下端から変形(&amp;M)</value>
     <comment>右下点をアンカーとして図形を変形</comment>
   </data>
@@ -360,7 +360,7 @@
     <value>選択した図形を揃える(&amp;O)</value>
   </data>
   <data name="btnAlignRelative_ToFirstObject" xml:space="preserve">
-    <value>最初に選択した図形に合わせて配置(&amp;F)</value>
+    <value>最初の図形に合わせて配置(&amp;F)</value>
   </data>
   <data name="btnAlignRelative_ToSlide" xml:space="preserve">
     <value>スライドに合わせて配置(&amp;A)</value>

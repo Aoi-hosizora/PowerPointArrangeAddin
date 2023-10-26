@@ -269,7 +269,7 @@
                     </group> <!-- end of grpTextbox -->
 
                     <group id="grpShapeSizeAndPosition" insertAfterMso="GroupSize" __template="GROUP">
-                        <__use_template name="SIZEPOS" remove_rule_field="id" match="btnResetSize" /> <!-- TODO -->
+                        <__use_template name="SIZEPOS" remove_rule_field="id" match="btnResetSize" />
                     </group> <!-- end of grpShapeSizeAndPosition -->
                 </tab> <!-- end of TabDrawingToolsFormat -->
             </tabSet> <!-- end of TabSetDrawingTools -->

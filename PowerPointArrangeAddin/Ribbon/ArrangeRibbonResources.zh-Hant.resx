@@ -224,11 +224,11 @@
   <data name="btnRotateRight90" xml:space="preserve">
     <value>向左旋轉 90 度(&amp;R)</value>
   </data>
-  <data name="btnScaleAnchor_Middle" xml:space="preserve">
+  <data name="btnScaleAnchor_FromMiddle" xml:space="preserve">
     <value>從中心點變形(&amp;F)</value>
     <comment>將中心點視爲錨點來變形圖案</comment>
   </data>
-  <data name="btnScaleAnchor_TopLeft" xml:space="preserve">
+  <data name="btnScaleAnchor_FromTopLeft" xml:space="preserve">
     <value>從左上端變形(&amp;O)</value>
     <comment>將左上端視爲錨點來變形圖案</comment>
   </data>
@@ -346,15 +346,15 @@
   <data name="dlgAllFilesFilter" xml:space="preserve">
     <value>所有檔案</value>
   </data>
-  <data name="btnScaleAnchor_BottomRight" xml:space="preserve">
+  <data name="btnScaleAnchor_FromBottomRight" xml:space="preserve">
     <value>從右下端變形(&amp;M)</value>
     <comment>將右下端視爲錨點來變形圖案</comment>
   </data>
   <data name="lblHorizontalMargin" xml:space="preserve">
-    <value>橫向邊界:　 </value>
+    <value>橫向邊界: </value>
   </data>
   <data name="lblVerticalMargin" xml:space="preserve">
-    <value>縱向邊界:　 </value>
+    <value>縱向邊界: </value>
   </data>
   <data name="btnAlignRelative_ToSlide" xml:space="preserve">
     <value>貼齊到投影片(&amp;A)</value>
@@ -363,7 +363,7 @@
     <value>對齊選取的圖案(&amp;O)</value>
   </data>
   <data name="btnAlignRelative_ToFirstObject" xml:space="preserve">
-    <value>對齊到最初選擇的圖案(&amp;F)</value>
+    <value>對齊到最初的圖案(&amp;F)</value>
   </data>
   <data name="btnGridSetting" xml:space="preserve">
     <value>格綫設定(&amp;G)...</value>

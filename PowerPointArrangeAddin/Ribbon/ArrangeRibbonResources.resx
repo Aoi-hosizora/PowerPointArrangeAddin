@@ -224,16 +224,16 @@
   <data name="btnRotateRight90" xml:space="preserve">
     <value>Rotate &amp;right with 90 degrees</value>
   </data>
-  <data name="btnScaleAnchor_BottomRight" xml:space="preserve">
-    <value>Scale objects from botto&amp;m right</value>
+  <data name="btnScaleAnchor_FromBottomRight" xml:space="preserve">
+    <value>Scale from botto&amp;m right</value>
     <comment>...</comment>
   </data>
-  <data name="btnScaleAnchor_Middle" xml:space="preserve">
-    <value>Scale objects &amp;from middle</value>
+  <data name="btnScaleAnchor_FromMiddle" xml:space="preserve">
+    <value>Scale &amp;from middle</value>
     <comment>...</comment>
   </data>
-  <data name="btnScaleAnchor_TopLeft" xml:space="preserve">
-    <value>Scale &amp;objects from top left</value>
+  <data name="btnScaleAnchor_FromTopLeft" xml:space="preserve">
+    <value>Scale from t&amp;op left</value>
     <comment>...</comment>
   </data>
   <data name="btnScaleSameHeight" xml:space="preserve">
@@ -351,10 +351,10 @@
     <value>All files</value>
   </data>
   <data name="lblHorizontalMargin" xml:space="preserve">
-    <value>Horizontal margin:</value>
+    <value>Horiz. margin:</value>
   </data>
   <data name="lblVerticalMargin" xml:space="preserve">
-    <value>Vertical margin:</value>
+    <value>Vert. margin:</value>
   </data>
   <data name="btnAlignRelative_ToSlide" xml:space="preserve">
     <value>&amp;Align and relative to the slide</value>
@@ -381,10 +381,10 @@
     <value>Alignment</value>
   </data>
   <data name="lblAlignmentH" xml:space="preserve">
-    <value>Horizontal align</value>
+    <value>Horiz. align</value>
   </data>
   <data name="lblAlignmentV" xml:space="preserve">
-    <value>Vertical align</value>
+    <value>Vert. align</value>
   </data>
   <data name="lblDistribute" xml:space="preserve">
     <value>Distribute</value>

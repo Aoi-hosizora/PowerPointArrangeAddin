@@ -439,29 +439,29 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Scale objects from botto&amp;m right.
+        ///   Looks up a localized string similar to Scale from botto&amp;m right.
         /// </summary>
-        public static string btnScaleAnchor_BottomRight {
+        public static string btnScaleAnchor_FromBottomRight {
             get {
-                return ResourceManager.GetString("btnScaleAnchor_BottomRight", resourceCulture);
+                return ResourceManager.GetString("btnScaleAnchor_FromBottomRight", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Scale objects &amp;from middle.
+        ///   Looks up a localized string similar to Scale &amp;from middle.
         /// </summary>
-        public static string btnScaleAnchor_Middle {
+        public static string btnScaleAnchor_FromMiddle {
             get {
-                return ResourceManager.GetString("btnScaleAnchor_Middle", resourceCulture);
+                return ResourceManager.GetString("btnScaleAnchor_FromMiddle", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Scale &amp;objects from top left.
+        ///   Looks up a localized string similar to Scale from t&amp;op left.
         /// </summary>
-        public static string btnScaleAnchor_TopLeft {
+        public static string btnScaleAnchor_FromTopLeft {
             get {
-                return ResourceManager.GetString("btnScaleAnchor_TopLeft", resourceCulture);
+                return ResourceManager.GetString("btnScaleAnchor_FromTopLeft", resourceCulture);
             }
         }
         
@@ -817,7 +817,7 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Horizontal align.
+        ///   Looks up a localized string similar to Horiz. align.
         /// </summary>
         public static string lblAlignmentH {
             get {
@@ -826,7 +826,7 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vertical align.
+        ///   Looks up a localized string similar to Vert. align.
         /// </summary>
         public static string lblAlignmentV {
             get {
@@ -871,7 +871,7 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Horizontal margin:.
+        ///   Looks up a localized string similar to Horiz. margin:.
         /// </summary>
         public static string lblHorizontalMargin {
             get {
@@ -916,7 +916,7 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vertical margin:.
+        ///   Looks up a localized string similar to Vert. margin:.
         /// </summary>
         public static string lblVerticalMargin {
             get {

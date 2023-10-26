@@ -67,7 +67,7 @@ namespace PowerPointArrangeAddin.Ribbon {
             Register(btnFlipVertical, (_, cnt, _) => cnt >= 1);
             Register(btnFlipHorizontal, (_, cnt, _) => cnt >= 1);
             Register(btnGroup, (_, cnt, _) => cnt >= 2);
-            Register(btnUngroup, (shapeRange, cnt, _) => cnt >= 1 && ArrangementHelper.IsUngroupable(shapeRange));
+            Register(btnUngroup, (sr, cnt, _) => cnt >= 1 && ArrangementHelper.IsUngroupable(sr));
             Register(btnGridSetting, (_, _, _) => true);
             Register(mnuArrangement, (_, _, _) => true);
             Register(btnAddInSetting, (_, _, _) => true);
@@ -82,32 +82,32 @@ namespace PowerPointArrangeAddin.Ribbon {
             Register(btnScaleAnchor_FromBottomRight, (_, _, _) => true);
             // grpRotateAndFlip
             Register(edtAngle, (_, cnt, _) => cnt >= 1);
-            Register(btnCopyAngle, (_, cnt, _) => cnt == 1);
+            Register(btnCopyAngle, (sr, cnt, _) => cnt >= 1 && RotationHelper.IsAngleCopyable(sr));
             Register(btnPasteAngle, (_, cnt, _) => cnt >= 1 && RotationHelper.IsValidCopiedAngleValue());
             Register(btnResetAngle, (_, cnt, _) => cnt >= 1);
             // grpObjectSize
-            Register(btnResetSize, (shapeRange, cnt, _) => cnt >= 1 && SizeAndPositionHelper.IsSizeResettable(shapeRange));
+            Register(btnResetSize, (sr, cnt, _) => cnt >= 1 && SizeAndPositionHelper.IsSizeResettable(sr));
             Register(btnLockAspectRatio, (_, cnt, _) => cnt >= 1);
             Register(edtSizeHeight, (_, cnt, _) => cnt >= 1);
             Register(edtSizeWidth, (_, cnt, _) => cnt >= 1);
-            Register(btnCopySize, (_, cnt, _) => cnt == 1);
+            Register(btnCopySize, (sr, cnt, _) => cnt >= 1 && SizeAndPositionHelper.IsSizeCopyable(sr));
             Register(btnPasteSize, (_, cnt, _) => cnt >= 1 && SizeAndPositionHelper.IsValidCopiedSizeValue());
             // grpObjectPosition
             Register(edtPositionX, (_, cnt, _) => cnt >= 1);
             Register(edtPositionY, (_, cnt, _) => cnt >= 1);
-            Register(btnCopyPosition, (_, cnt, _) => cnt == 1);
+            Register(btnCopyPosition, (sr, cnt, _) => cnt >= 1 && SizeAndPositionHelper.IsPositionCopyable(sr));
             Register(btnPastePosition, (_, cnt, _) => cnt >= 1 && SizeAndPositionHelper.IsValidCopiedPositionValue());
             // grpTextbox
-            Register(btnAutofitOff, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame);
-            Register(btnAutoShrinkText, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame);
-            Register(btnAutoResizeShape, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame);
-            Register(btnWrapText, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame);
-            Register(btnResetHorizontalMargin, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame);
-            Register(edtMarginLeft, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame);
-            Register(edtMarginRight, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame);
-            Register(btnResetVerticalMargin, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame);
-            Register(edtMarginTop, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame);
-            Register(edtMarginBottom, (_, cnt, hasTextFrame) => cnt >= 1 && hasTextFrame);
+            Register(btnAutofitOff, (_, cnt, tf) => cnt >= 1 && tf);
+            Register(btnAutoShrinkText, (_, cnt, tf) => cnt >= 1 && tf);
+            Register(btnAutoResizeShape, (_, cnt, tf) => cnt >= 1 && tf);
+            Register(btnWrapText, (_, cnt, tf) => cnt >= 1 && tf);
+            Register(btnResetHorizontalMargin, (_, cnt, tf) => cnt >= 1 && tf);
+            Register(edtMarginLeft, (_, cnt, tf) => cnt >= 1 && tf);
+            Register(edtMarginRight, (_, cnt, tf) => cnt >= 1 && tf);
+            Register(btnResetVerticalMargin, (_, cnt, tf) => cnt >= 1 && tf);
+            Register(edtMarginTop, (_, cnt, tf) => cnt >= 1 && tf);
+            Register(edtMarginBottom, (_, cnt, tf) => cnt >= 1 && tf);
             // grpReplacePicture
             Register(btnReplaceWithClipboard, (_, cnt, _) => cnt >= 1);
             Register(btnReplaceWithFile, (_, cnt, _) => cnt >= 1);
@@ -364,17 +364,17 @@ namespace PowerPointArrangeAddin.Ribbon {
         public string BtnScaleAnchor_GetLabel(Office.IRibbonControl ribbonControl) {
             if (!IsOptionRibbonButton(ribbonControl)) {
                 return _scaleFromFlag switch {
-                    Office.MsoScaleFrom.msoScaleFromTopLeft => ArrangeRibbonResources.btnScaleAnchor_TopLeft,
-                    Office.MsoScaleFrom.msoScaleFromMiddle => ArrangeRibbonResources.btnScaleAnchor_Middle,
-                    Office.MsoScaleFrom.msoScaleFromBottomRight => ArrangeRibbonResources.btnScaleAnchor_BottomRight,
-                    _ => ArrangeRibbonResources.btnScaleAnchor_TopLeft
+                    Office.MsoScaleFrom.msoScaleFromTopLeft => ArrangeRibbonResources.btnScaleAnchor_FromTopLeft,
+                    Office.MsoScaleFrom.msoScaleFromMiddle => ArrangeRibbonResources.btnScaleAnchor_FromMiddle,
+                    Office.MsoScaleFrom.msoScaleFromBottomRight => ArrangeRibbonResources.btnScaleAnchor_FromBottomRight,
+                    _ => ArrangeRibbonResources.btnScaleAnchor_FromTopLeft
                 };
             }
             return ribbonControl.Id() switch {
-                btnScaleAnchor_FromTopLeft => ArrangeRibbonResources.btnScaleAnchor_TopLeft,
-                btnScaleAnchor_FromMiddle => ArrangeRibbonResources.btnScaleAnchor_Middle,
-                btnScaleAnchor_FromBottomRight => ArrangeRibbonResources.btnScaleAnchor_BottomRight,
-                _ => ArrangeRibbonResources.btnScaleAnchor_TopLeft
+                btnScaleAnchor_FromTopLeft => ArrangeRibbonResources.btnScaleAnchor_FromTopLeft,
+                btnScaleAnchor_FromMiddle => ArrangeRibbonResources.btnScaleAnchor_FromMiddle,
+                btnScaleAnchor_FromBottomRight => ArrangeRibbonResources.btnScaleAnchor_FromBottomRight,
+                _ => ArrangeRibbonResources.btnScaleAnchor_FromTopLeft
             };
         }
 
@@ -532,6 +532,7 @@ namespace PowerPointArrangeAddin.Ribbon {
                 _ => null
             };
             RotationHelper.CopyAndPasteAngle(shapeRange, cmd, () => {
+                _ribbon?.InvalidateControl(btnCopyAngle, grpRotateAndFlip);
                 _ribbon?.InvalidateControl(btnPasteAngle, grpRotateAndFlip);
                 _ribbon?.InvalidateControl(edtAngle, grpRotateAndFlip);
             });
@@ -617,6 +618,7 @@ namespace PowerPointArrangeAddin.Ribbon {
                 _ => null
             };
             SizeAndPositionHelper.CopyAndPasteSize(shapeRange, cmd, _scaleFromFlag, () => {
+                _ribbon?.InvalidateControls(btnCopySize, grpObjectSize, _sizeAndPositionGroups);
                 _ribbon?.InvalidateControls(btnPasteSize, grpObjectSize, _sizeAndPositionGroups);
                 _ribbon?.InvalidateControl(edtSizeHeight, grpObjectSize);
                 _ribbon?.InvalidateControl(edtSizeWidth, grpObjectSize);
@@ -663,6 +665,7 @@ namespace PowerPointArrangeAddin.Ribbon {
                 _ => null
             };
             SizeAndPositionHelper.CopyAndPastePosition(shapeRange, cmd, () => {
+                _ribbon?.InvalidateControls(btnCopyPosition, grpObjectPosition, _sizeAndPositionGroups);
                 _ribbon?.InvalidateControls(btnPastePosition, grpObjectPosition, _sizeAndPositionGroups);
                 _ribbon?.InvalidateControls(edtPositionX, grpObjectPosition, _sizeAndPositionGroups);
                 _ribbon?.InvalidateControls(edtPositionY, grpObjectPosition, _sizeAndPositionGroups);
