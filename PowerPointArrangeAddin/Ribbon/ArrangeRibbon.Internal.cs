@@ -186,7 +186,6 @@ namespace PowerPointArrangeAddin.Ribbon {
         private const string grpObjectSize = "grpObjectSize";
         private const string btnResetSize = "btnResetSize";
         private const string btnLockAspectRatio = "btnLockAspectRatio";
-        private const string mnuScaleAnchor = "mnuScaleAnchor";
         private const string edtSizeHeight = "edtSizeHeight";
         private const string edtSizeWidth = "edtSizeWidth";
         private const string btnCopySize = "btnCopySize";
@@ -361,7 +360,6 @@ namespace PowerPointArrangeAddin.Ribbon {
             Register1(btnResetSize, new ElementUi { Label = R1.btnResetSize, Image = R2.PictureResetSize_32, Keytip = "SR" });
             Register1(btnLockAspectRatio, new ElementUi { Label = R1.btnLockAspectRatio, Image = R2.ObjectLockAspectRatio, Keytip = "L" });
             Register2(grpObjectSize, btnLockAspectRatio, new ElementUi { Image = R2.ObjectLockAspectRatio_32 });
-            Register1(mnuScaleAnchor, new ElementUi { Label = R1.mnuScaleAnchor, Image = R2.ScaleFromTopLeft });
             Register1(edtSizeHeight, new ElementUi { Label = R1.edtSizeHeight, Keytip = "SH" });
             Register1(edtSizeWidth, new ElementUi { Label = R1.edtSizeWidth, Keytip = "SW" });
             Register1(btnCopySize, new ElementUi { Label = R1.btnCopySize, Image = R2.Copy, Keytip = "SC" });

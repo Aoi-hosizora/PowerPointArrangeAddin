@@ -197,11 +197,6 @@
                     <control idMso="PictureCropTools" size="large" __template="K" />
                     <button id="btnResetSize" size="large" __template="L,S,K,E,I" onAction="BtnResetMediaSize_Click" />
                     <toggleButton id="btnLockAspectRatio" size="large" __template="L,S,K,E,I" getPressed="BtnLockAspectRatio_GetPressed" onAction="BtnLockAspectRatio_Click" />
-                    <menu id="mnuScaleAnchor" size="large" __template="L,S,K,E" getImage="BtnScaleAnchor_GetImage">
-                        <__use_reference name="$id=btnScaleAnchor_FromTopLeft" />
-                        <__use_reference name="$id=btnScaleAnchor_FromMiddle" />
-                        <__use_reference name="$id=btnScaleAnchor_FromBottomRight" />
-                    </menu>
                     <separator id="sepSize" />
                     <editBox id="edtSizeHeight" showImage="false" __template="L,S,K,E,Z7" getText="EdtSize_GetText" onChange="EdtSize_TextChanged" />
                     <editBox id="edtSizeWidth" showImage="false" __template="L,S,K,E,Z7" getText="EdtSize_GetText" onChange="EdtSize_TextChanged" />

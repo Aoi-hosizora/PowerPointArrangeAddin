@@ -88,7 +88,6 @@ namespace PowerPointArrangeAddin.Ribbon {
             // grpObjectSize
             Register(btnResetSize, (shapeRange, cnt, _) => cnt >= 1 && SizeAndPositionHelper.IsSizeResettable(shapeRange));
             Register(btnLockAspectRatio, (_, cnt, _) => cnt >= 1);
-            Register(mnuScaleAnchor, (_, _, _) => true);
             Register(edtSizeHeight, (_, cnt, _) => cnt >= 1);
             Register(edtSizeWidth, (_, cnt, _) => cnt >= 1);
             Register(btnCopySize, (_, cnt, _) => cnt == 1);
@@ -141,7 +140,14 @@ namespace PowerPointArrangeAddin.Ribbon {
         public bool GetGroupVisible(Office.IRibbonControl ribbonControl) {
             return ribbonControl.Id() switch {
                 grpWordArt => AddInSetting.Instance.ShowWordArtGroup,
-                grpArrange => true,
+                grpArrange => AddInSetting.Instance.ShowArrangementGroup,
+                grpAddInSetting => true,
+                grpAlignment => true,
+                grpSizeAndSnap => true,
+                grpRotateAndFlip => true,
+                grpObjectArrange => true,
+                grpObjectSize => true,
+                grpObjectPosition => true,
                 grpTextbox => AddInSetting.Instance.ShowShapeTextboxGroup,
                 grpReplacePicture => AddInSetting.Instance.ShowReplacePictureGroup,
                 grpShapeSizeAndPosition => AddInSetting.Instance.ShowShapeSizeAndPositionGroup2,
@@ -338,10 +344,9 @@ namespace PowerPointArrangeAddin.Ribbon {
                 };
             }
             _ribbon?.InvalidateControls(btnScaleAnchor, grpArrange, _sizeAndPositionGroups);
-            _ribbon?.InvalidateControl(mnuScaleAnchor, grpObjectSize);
-            _ribbon?.InvalidateControls(btnScaleAnchor_FromTopLeft, grpSizeAndSnap, grpObjectSize, (mnuArrangement, mnuResizing));
-            _ribbon?.InvalidateControls(btnScaleAnchor_FromMiddle, grpSizeAndSnap, grpObjectSize, (mnuArrangement, mnuResizing));
-            _ribbon?.InvalidateControls(btnScaleAnchor_FromBottomRight, grpSizeAndSnap, grpObjectSize, (mnuArrangement, mnuResizing));
+            _ribbon?.InvalidateControls(btnScaleAnchor_FromTopLeft, grpSizeAndSnap, (mnuArrangement, mnuResizing));
+            _ribbon?.InvalidateControls(btnScaleAnchor_FromMiddle, grpSizeAndSnap, (mnuArrangement, mnuResizing));
+            _ribbon?.InvalidateControls(btnScaleAnchor_FromBottomRight, grpSizeAndSnap, (mnuArrangement, mnuResizing));
         }
 
         public bool BtnScaleAnchor_GetPressed(Office.IRibbonControl ribbonControl) {
@@ -374,14 +379,6 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
 
         public System.Drawing.Image BtnScaleAnchor_GetImage(Office.IRibbonControl ribbonControl) {
-            if (ribbonControl.Id() == mnuScaleAnchor) {
-                return _scaleFromFlag switch {
-                    Office.MsoScaleFrom.msoScaleFromTopLeft => Properties.Resources.ScaleFromTopLeft_32,
-                    Office.MsoScaleFrom.msoScaleFromMiddle => Properties.Resources.ScaleFromMiddle_32,
-                    Office.MsoScaleFrom.msoScaleFromBottomRight => Properties.Resources.ScaleFromBottomRight_32,
-                    _ => Properties.Resources.ScaleFromTopLeft_32
-                };
-            }  
             if (!IsOptionRibbonButton(ribbonControl)) {
                 return _scaleFromFlag switch {
                     Office.MsoScaleFrom.msoScaleFromTopLeft => Properties.Resources.ScaleFromTopLeft,

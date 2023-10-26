@@ -295,7 +295,8 @@ namespace PowerPointArrangeAddin.Helper {
                         if (parentNode == null) {
                             continue; // almost unreachable
                         }
-                        var nodesToBeHandled = templateNodes[0].ParentNode?.SelectNodes($".//*[@name=\"{freeTemplateName}\"]")?.OfType<XmlNode>();
+                        var xpath = $".//__use_template[@name=\"{freeTemplateName}\"]"; // apply free template to depending template 
+                        var nodesToBeHandled = templateNodes[0].ParentNode?.SelectNodes(xpath)?.OfType<XmlNode>();
                         if (nodesToBeHandled != null) {
                             foreach (var node in nodesToBeHandled) { // pre-handle free template
                                 ApplySubtreeTemplateForSingleNode(document, node, templateDictionary);
@@ -310,25 +311,31 @@ namespace PowerPointArrangeAddin.Helper {
             }
         }
 
-        private static void ApplySubtreeTemplateForNodes(XmlDocument document, Dictionary<string, List<XmlNode>> templateDictionary) {
-            var nodesToBeApplied = document.GetElementsByTagName("__use_template").OfType<XmlNode>().ToList();
-            if (nodesToBeApplied.Count > 0) {
-                foreach (var node in nodesToBeApplied) {
+        private static void ApplySubtreeTemplateForNodes(XmlDocument document, IReadOnlyDictionary<string, List<XmlNode>> templateDictionary) {
+            // 1. apply template to all __use_template and __use_reference nodes
+            var tmplNodesToBeApplied = document.GetElementsByTagName("__use_template").OfType<XmlNode>().ToList();
+            if (tmplNodesToBeApplied.Count > 0) {
+                foreach (var node in tmplNodesToBeApplied) {
+                    ApplySubtreeTemplateForSingleNode(document, node, templateDictionary);
+                }
+            }
+            var refNodesToBeApplied = document.GetElementsByTagName("__use_reference").OfType<XmlNode>().ToList();
+            if (refNodesToBeApplied.Count > 0) {
+                foreach (var node in refNodesToBeApplied) {
                     ApplySubtreeTemplateForSingleNode(document, node, templateDictionary);
                 }
             }
 
-            nodesToBeApplied = document.GetElementsByTagName("__use_reference").OfType<XmlNode>().ToList();
-            if (nodesToBeApplied.Count > 0) {
-                foreach (var node in nodesToBeApplied) {
-                    ApplySubtreeTemplateForSingleNode(document, node, templateDictionary);
-                }
-            }
+            // 2. apply rules which are defined in above nodes
+            ApplySubtreeTemplateRuleForNodes(document);
         }
 
         private static void ApplySubtreeTemplateForSingleNode(XmlDocument document, XmlNode node, IReadOnlyDictionary<string, List<XmlNode>> templateDictionary) {
             var templateName = node.Attributes?["name"]?.Value;
             if (string.IsNullOrWhiteSpace(templateName)) {
+                return;
+            }
+            if (!string.IsNullOrWhiteSpace(node.Attributes?["applied"]?.Value)) {
                 return;
             }
 
@@ -361,53 +368,88 @@ namespace PowerPointArrangeAddin.Helper {
                 return;
             }
 
-            // extract template rules, enumerate template node list, and apply to xml node
-            var rules = SubtreeTemplateRules.ExtractFromXmlNode(node);
+            // preprocess template rule, enumerate template node list, and apply to xml node
+            SubtreeTemplateRules.PreprocessRulesParentNode(document, node);
             foreach (var templateNode in templateNodeList) {
                 var clonedNode = templateNode.CloneNode(true); // deep clone template node
+                node.AppendChild(clonedNode); // insert to __use_template or __use_reference node temporarily
+            }
+            node.Attributes?.Append(node.CreateAttributeWithValue("applied", "1"));
+        }
+
+        private static void ApplySubtreeTemplateRuleForNodes(XmlNode node) {
+            var childNodes = node.ChildNodes.OfType<XmlNode>().ToList(); // need to copy here because of modification
+            foreach (var childNode in childNodes) {
+                ApplySubtreeTemplateRuleForNodes(childNode);
+            }
+
+            if (node.Name is "__use_template" or "__use_reference") {
+                ApplySubtreeTemplateRuleForSingleNode(node);
+            }
+        }
+
+        private static void ApplySubtreeTemplateRuleForSingleNode(XmlNode node) {
+            var rules = SubtreeTemplateRules.ExtractFromXmlNode(node);
+            var childNodes = node.ChildNodes.OfType<XmlNode>().ToList();
+            foreach (var childNode in childNodes) {
+                if (childNode.Name is "__replace_rule" or "__remove_rule") {
+                    continue;
+                }
+                var clonedNode = childNode.CloneNode(true); // also deep clone node here
                 rules.ReplaceFieldValue(clonedNode);
                 clonedNode = rules.RemoveSpecificNode(clonedNode);
                 if (clonedNode != null) {
-                    node.ParentNode?.InsertBefore(clonedNode, node);
+                    node.ParentNode?.InsertBefore(clonedNode, node); // insert to parent
                 }
             }
             node.ParentNode?.RemoveChild(node); // subtree template node must be removed
         }
 
-
         class SubtreeTemplateRules {
             private readonly List<(string field, string from, string to, bool norec, bool re)> _replaceRules = new();
             private readonly List<(string field, string match, bool norec, bool re)> _removeRules = new();
 
+            public static void PreprocessRulesParentNode(XmlDocument document, XmlNode node) {
+                // preprocess, so that both __use_template node and __use_reference node can be considered as rule node
+                var attributes = node.Attributes;
+
+                if (attributes?["replace_rule_field"]?.Value is var replaceRuleField && !string.IsNullOrWhiteSpace(replaceRuleField)) {
+                    var newElement = document.CreateElement("__replace_rule");
+                    newElement.Attributes.Append(document.CreateAttributeWithValue("field", replaceRuleField!));
+                    foreach (var name in new[] { "from", "from_re", "to", "norec" }) {
+                        newElement.Attributes.Append(node.CreateAttributeWithValue(name, attributes?[name]?.Value ?? ""));
+                        attributes?.RemoveNamedItem(name);
+                    }
+                    attributes?.RemoveNamedItem("replace_rule_field");
+                    node.AppendChild(newElement);
+                }
+
+                if (attributes?["remove_rule_field"]?.Value is var removeRuleField && !string.IsNullOrWhiteSpace(removeRuleField)) {
+                    var newElement = document.CreateElement("__remove_rule");
+                    newElement.Attributes.Append(document.CreateAttributeWithValue("field", removeRuleField!));
+                    foreach (var name in new[] { "match", "match_re", "norec" }) {
+                        newElement.Attributes.Append(node.CreateAttributeWithValue(name, attributes?[name]?.Value ?? ""));
+                        attributes?.RemoveNamedItem(name);
+                    }
+                    attributes?.RemoveNamedItem("remove_rule_field");
+                    node.AppendChild(newElement);
+                }
+            }
+
             public static SubtreeTemplateRules ExtractFromXmlNode(XmlNode node) {
                 var rulesObject = new SubtreeTemplateRules();
-
                 var ruleNodes = node.ChildNodes.OfType<XmlNode>().ToList();
-                ruleNodes.Add(node); // also regard the use_template or use_reference node as rule node
 
                 foreach (var ruleNode in ruleNodes) {
-                    var nodeName = ruleNode.Name;
                     var nodeAttributes = ruleNode.Attributes;
 
-                    var fieldValue = nodeAttributes?["field"]?.Value;
-                    var norecValue = nodeAttributes?["norec"]?.Value == "true";
-                    if (nodeName == node.Name) { // allow to define rule on template node directly 
-                        var replaceFieldValue = nodeAttributes?["replace_rule_field"]?.Value;
-                        var removeFieldValue = nodeAttributes?["remove_rule_field"]?.Value;
-                        if (!string.IsNullOrWhiteSpace(replaceFieldValue)) {
-                            (nodeName, fieldValue) = ("__replace_rule", replaceFieldValue);
-                        } else if (!string.IsNullOrWhiteSpace(removeFieldValue)) {
-                            (nodeName, fieldValue) = ("__remove_rule", removeFieldValue);
-                        } else {
-                            continue;
-                        }
-                    }
-
-                    switch (nodeName) {
-                    case "__replace_rule":
+                    switch (ruleNode.Name) {
+                    case "__replace_rule": {
+                        var fieldValue = nodeAttributes?["field"]?.Value;
                         var fromValue = nodeAttributes?["from"]?.Value;
                         var fromReValue = nodeAttributes?["from_re"]?.Value;
                         var toValue = nodeAttributes?["to"]?.Value;
+                        var norecValue = nodeAttributes?["norec"]?.Value == "true";
                         if (string.IsNullOrWhiteSpace(fieldValue) || (string.IsNullOrWhiteSpace(fromValue) && string.IsNullOrWhiteSpace(fromReValue)) || toValue == null) {
                             continue;
                         }
@@ -416,10 +458,13 @@ namespace PowerPointArrangeAddin.Helper {
                         }
                         rulesObject._replaceRules.Add((fieldValue!, fromValue!, toValue, norecValue, useReForReplacing));
                         break;
+                    }
 
-                    case "__remove_rule":
+                    case "__remove_rule": {
+                        var fieldValue = nodeAttributes?["field"]?.Value;
                         var matchValue = nodeAttributes?["match"]?.Value;
                         var matchReValue = nodeAttributes?["match_re"]?.Value;
+                        var norecValue = nodeAttributes?["norec"]?.Value == "true";
                         if (string.IsNullOrWhiteSpace(fieldValue) || (string.IsNullOrWhiteSpace(matchValue) && string.IsNullOrWhiteSpace(matchReValue))) {
                             continue;
                         }
@@ -428,6 +473,7 @@ namespace PowerPointArrangeAddin.Helper {
                         }
                         rulesObject._removeRules.Add((fieldValue!, matchValue!, norecValue, useReForRemoving));
                         break;
+                    }
 
                     default:
                         continue;
