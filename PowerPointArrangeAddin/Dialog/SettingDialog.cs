@@ -37,6 +37,8 @@ namespace PowerPointArrangeAddin.Dialog {
             cboLanguage.SelectedIndex = AddInSetting.Instance.Language.ToLanguageIndex();
             chkLessButtonsForArrangement.Checked = AddInSetting.Instance.LessButtonsForArrangementGroup;
             chkHideMarginSettingForTextbox.Checked = AddInSetting.Instance.HideMarginSettingForTextboxGroup;
+            // TODO ui icon style setting
+            // TODO button insert after setting
         }
 
         private void BtnOK_Click(object sender, EventArgs e) {

@@ -351,10 +351,10 @@
     <comment>右下点をアンカーとして図形を変形</comment>
   </data>
   <data name="lblHorizontalMargin" xml:space="preserve">
-    <value>横の余白:　 </value>
+    <value>横の余白: </value>
   </data>
   <data name="lblVerticalMargin" xml:space="preserve">
-    <value>縦の余白:　 </value>
+    <value>縦の余白: </value>
   </data>
   <data name="btnAlignRelative_ToObjects" xml:space="preserve">
     <value>選択した図形を揃える(&amp;O)</value>
@@ -436,6 +436,9 @@
   </data>
   <data name="grpObjectSize" xml:space="preserve">
     <value>オブジェクトのサイズ</value>
+  </data>
+  <data name="mnuScaleAnchor" xml:space="preserve">
+    <value>変形方向</value>
   </data>
   <data name="edtSizeHeight" xml:space="preserve">
     <value>高さ:</value>

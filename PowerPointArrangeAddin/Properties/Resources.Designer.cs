@@ -503,6 +503,16 @@ namespace PowerPointArrangeAddin.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ScaleFromBottomRight_32 {
+            get {
+                object obj = ResourceManager.GetObject("ScaleFromBottomRight_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ScaleFromMiddle {
             get {
                 object obj = ResourceManager.GetObject("ScaleFromMiddle", resourceCulture);
@@ -513,9 +523,29 @@ namespace PowerPointArrangeAddin.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ScaleFromMiddle_32 {
+            get {
+                object obj = ResourceManager.GetObject("ScaleFromMiddle_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ScaleFromTopLeft {
             get {
                 object obj = ResourceManager.GetObject("ScaleFromTopLeft", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ScaleFromTopLeft_32 {
+            get {
+                object obj = ResourceManager.GetObject("ScaleFromTopLeft_32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

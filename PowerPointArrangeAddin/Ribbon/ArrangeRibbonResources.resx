@@ -437,6 +437,9 @@
   <data name="grpObjectSize" xml:space="preserve">
     <value>Object size</value>
   </data>
+  <data name="mnuScaleAnchor" xml:space="preserve">
+    <value>Scale direction</value>
+  </data>
   <data name="edtSizeHeight" xml:space="preserve">
     <value>Height:</value>
   </data>

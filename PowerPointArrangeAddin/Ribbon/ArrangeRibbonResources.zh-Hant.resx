@@ -437,6 +437,9 @@
   <data name="grpObjectSize" xml:space="preserve">
     <value>圖案大小</value>
   </data>
+  <data name="mnuScaleAnchor" xml:space="preserve">
+    <value>變形方向</value>
+  </data>
   <data name="edtSizeHeight" xml:space="preserve">
     <value>高度:</value>
   </data>

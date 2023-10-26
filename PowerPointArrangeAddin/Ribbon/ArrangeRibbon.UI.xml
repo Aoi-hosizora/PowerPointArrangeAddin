@@ -6,7 +6,7 @@
         <__attribute_template name="K" getKeytip="GetKeytip" />
         <__attribute_template name="E" getEnabled="GetEnabled" />
         <__attribute_template name="I" getImage="GetImage" />
-        <__attribute_template name="Z6" sizeString="wwwwww" />
+        <__attribute_template name="Z5" sizeString="wwwww" />
         <__attribute_template name="Z7" sizeString="wwwwwww" />
         <__attribute_template name="CV" getVisible="GetControlVisible" />
         <__attribute_template name="GV" getVisible="GetGroupVisible" />
@@ -197,6 +197,11 @@
                     <control idMso="PictureCropTools" size="large" __template="K" />
                     <button id="btnResetSize" size="large" __template="L,S,K,E,I" onAction="BtnResetMediaSize_Click" />
                     <toggleButton id="btnLockAspectRatio" size="large" __template="L,S,K,E,I" getPressed="BtnLockAspectRatio_GetPressed" onAction="BtnLockAspectRatio_Click" />
+                    <menu id="mnuScaleAnchor" size="large" __template="L,S,K,E" getImage="BtnScaleAnchor_GetImage">
+                        <__use_reference name="$id=btnScaleAnchor_FromTopLeft" />
+                        <__use_reference name="$id=btnScaleAnchor_FromMiddle" />
+                        <__use_reference name="$id=btnScaleAnchor_FromBottomRight" />
+                    </menu>
                     <separator id="sepSize" />
                     <editBox id="edtSizeHeight" showImage="false" __template="L,S,K,E,Z7" getText="EdtSize_GetText" onChange="EdtSize_TextChanged" />
                     <editBox id="edtSizeWidth" showImage="false" __template="L,S,K,E,Z7" getText="EdtSize_GetText" onChange="EdtSize_TextChanged" />
@@ -254,22 +259,22 @@
                             <labelControl id="lblHorizontalMargin" __template="L,S" />
                             <button id="btnResetHorizontalMargin" showLabel="false" __template="L,S,K,E,I" onAction="BtnResetMargin_Click" />
                         </box>
-                        <editBox id="edtMarginLeft" showImage="false" __template="L,S,K,E,CV,Z6" getText="EdtMargin_GetText" onChange="EdtMargin_TextChanged" />
-                        <editBox id="edtMarginRight" showImage="false" __template="L,S,K,E,CV,Z6" getText="EdtMargin_GetText" onChange="EdtMargin_TextChanged" />
+                        <editBox id="edtMarginLeft" showImage="false" __template="L,S,K,E,CV,Z5" getText="EdtMargin_GetText" onChange="EdtMargin_TextChanged" />
+                        <editBox id="edtMarginRight" showImage="false" __template="L,S,K,E,CV,Z5" getText="EdtMargin_GetText" onChange="EdtMargin_TextChanged" />
                         <separator id="sepVerticalMargin" __template="CV" />
                         <box id="bgpVerticalMargin" __template="CV">
                             <labelControl id="lblVerticalMargin" __template="L,S" />
                             <button id="btnResetVerticalMargin" showLabel="false" __template="L,S,K,E,I" onAction="BtnResetMargin_Click" />
                         </box>
-                        <editBox id="edtMarginTop" showImage="false" __template="L,S,K,E,CV,Z6" getText="EdtMargin_GetText" onChange="EdtMargin_TextChanged" />
-                        <editBox id="edtMarginBottom" showImage="false" __template="L,S,K,E,CV,Z6" getText="EdtMargin_GetText" onChange="EdtMargin_TextChanged" />
+                        <editBox id="edtMarginTop" showImage="false" __template="L,S,K,E,CV,Z5" getText="EdtMargin_GetText" onChange="EdtMargin_TextChanged" />
+                        <editBox id="edtMarginBottom" showImage="false" __template="L,S,K,E,CV,Z5" getText="EdtMargin_GetText" onChange="EdtMargin_TextChanged" />
                         <dialogBoxLauncher>
                             <button idMso="WordArtFormatDialog" __template="K" />
                         </dialogBoxLauncher>
                     </group> <!-- end of grpTextbox -->
 
                     <group id="grpShapeSizeAndPosition" insertAfterMso="GroupSize" __template="GROUP">
-                        <__use_template name="SIZEPOS" remove_rule_field="id" match="btnResetSize" />
+                        <__use_template name="SIZEPOS" remove_rule_field="id" match="btnResetSize" /> <!-- TODO -->
                     </group> <!-- end of grpShapeSizeAndPosition -->
                 </tab> <!-- end of TabDrawingToolsFormat -->
             </tabSet> <!-- end of TabSetDrawingTools -->

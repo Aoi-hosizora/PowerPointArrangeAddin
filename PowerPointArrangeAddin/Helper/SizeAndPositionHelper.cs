@@ -44,6 +44,17 @@ namespace PowerPointArrangeAddin.Helper {
             shape.ScaleSizeTo(null, height, scaleFromFlag);
         }
 
+        public static void SizeAndPositionDialog() {
+            const string mso = "ObjectSizeAndPositionDialog";
+            try {
+                if (Globals.ThisAddIn.Application.CommandBars.GetEnabledMso(mso)) {
+                    Globals.ThisAddIn.Application.CommandBars.ExecuteMso(mso);
+                }
+            } catch (Exception) {
+                // ignored
+            }
+        }
+
         public enum LockAspectRatioCmd {
             Lock,
             Unlock,
@@ -82,6 +93,63 @@ namespace PowerPointArrangeAddin.Helper {
             return shapeRange.LockAspectRatio == Office.MsoTriState.msoTrue;
         }
 
+        public enum SizeKind {
+            Height,
+            Width
+        }
+
+        public static void ChangeSizeOfString(PowerPoint.ShapeRange? shapeRange, SizeKind? sizeKind, Office.MsoScaleFrom? scaleFromFlag, string? input, Action? uiInvalidator = null) {
+            if (shapeRange == null || shapeRange.Count <= 0) {
+                return;
+            }
+            if (sizeKind == null || input == null) {
+                return;
+            }
+            var (valueInPt, ok) = UnitConverter.ParseStringToPtValue(input, canBeMinus: false);
+            if (!ok) {
+                uiInvalidator?.Invoke(); // reset input
+                return;
+            }
+
+            scaleFromFlag ??= Office.MsoScaleFrom.msoScaleFromTopLeft;
+
+            Globals.ThisAddIn.Application.StartNewUndoEntry();
+            switch (sizeKind) {
+            case SizeKind.Height:
+                foreach (var shape in shapeRange.OfType<PowerPoint.Shape>().ToArray()) {
+                    shape.ScaleHeightTo(valueInPt, scaleFromFlag.Value);
+                }
+                break;
+            case SizeKind.Width:
+                foreach (var shape in shapeRange.OfType<PowerPoint.Shape>().ToArray()) {
+                    shape.ScaleWidthTo(valueInPt, scaleFromFlag.Value);
+                }
+                break;
+            }
+            uiInvalidator?.Invoke();
+        }
+
+        public static (string, bool) GetSizeOfString(PowerPoint.ShapeRange? shapeRange, SizeKind? sizeKind) {
+            if (shapeRange == null || shapeRange.Count <= 0) {
+                return ("", false);
+            }
+            if (sizeKind == null) {
+                return ("", false);
+            }
+
+            var valueInPt = sizeKind! switch {
+                SizeKind.Height => shapeRange.Height,
+                SizeKind.Width => shapeRange.Width,
+                _ => -1e9F // if shapes has different size, the value will be "-2.147484E+09"
+            };
+
+            var text = "";
+            if (valueInPt >= -1e9F) {
+                text = UnitConverter.FormatPtValueToString(valueInPt);
+            }
+            return (text, true);
+        }
+
         public enum PositionKind {
             X,
             Y
@@ -94,7 +162,7 @@ namespace PowerPointArrangeAddin.Helper {
             if (positionKind == null || input == null) {
                 return;
             }
-            var (valueInPt, ok) = UnitConverter.ParseStringToPtValue(input);
+            var (valueInPt, ok) = UnitConverter.ParseStringToPtValue(input, canBeMinus: true);
             if (!ok) {
                 uiInvalidator?.Invoke(); // reset input
                 return;
@@ -187,7 +255,6 @@ namespace PowerPointArrangeAddin.Helper {
                 break;
             }
         }
-
 
         public static void CopyAndPastePosition(PowerPoint.ShapeRange? shapeRange, CopyAndPasteCmd? cmd, Action? uiInvalidator = null) {
             if (shapeRange == null || shapeRange.Count <= 0) {

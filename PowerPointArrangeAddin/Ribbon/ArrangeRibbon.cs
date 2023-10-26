@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Forms = System.Windows.Forms;
 using Office = Microsoft.Office.Core;
@@ -84,11 +83,12 @@ namespace PowerPointArrangeAddin.Ribbon {
             // grpRotateAndFlip
             Register(edtAngle, (_, cnt, _) => cnt >= 1);
             Register(btnCopyAngle, (_, cnt, _) => cnt == 1);
-            Register(btnPasteAngle, (_, cnt, _) => cnt >= 1 /* && SizeAndPositionHelper.IsValidCopiedAngleValue() */);
+            Register(btnPasteAngle, (_, cnt, _) => cnt >= 1 && RotationHelper.IsValidCopiedAngleValue());
             Register(btnResetAngle, (_, cnt, _) => cnt >= 1);
             // grpObjectSize
             Register(btnResetSize, (shapeRange, cnt, _) => cnt >= 1 && SizeAndPositionHelper.IsSizeResettable(shapeRange));
             Register(btnLockAspectRatio, (_, cnt, _) => cnt >= 1);
+            Register(mnuScaleAnchor, (_, _, _) => true);
             Register(edtSizeHeight, (_, cnt, _) => cnt >= 1);
             Register(edtSizeWidth, (_, cnt, _) => cnt >= 1);
             Register(btnCopySize, (_, cnt, _) => cnt == 1);
@@ -124,7 +124,6 @@ namespace PowerPointArrangeAddin.Ribbon {
             var hasTextFrame = selection.TextFrame != null;
             _availabilityRules.TryGetValue(ribbonControl.Id(), out var checker);
             return checker?.Invoke(selection.ShapeRange, shapesCount, hasTextFrame) ?? true;
-            return false;
         }
 
         public bool GetControlVisible(Office.IRibbonControl ribbonControl) {
@@ -161,8 +160,8 @@ namespace PowerPointArrangeAddin.Ribbon {
                 _ribbon?.Invalidate();
             } else {
                 // currently callback that only for dragging to change the position is unavailable
-                _ribbon?.InvalidateControls(edtPositionX, _sizeAndPositionGroups);
-                _ribbon?.InvalidateControls(edtPositionY, _sizeAndPositionGroups);
+                _ribbon?.InvalidateControls(edtPositionX, grpObjectPosition, _sizeAndPositionGroups);
+                _ribbon?.InvalidateControls(edtPositionY, grpObjectPosition, _sizeAndPositionGroups);
             }
         }
 
@@ -238,16 +237,13 @@ namespace PowerPointArrangeAddin.Ribbon {
                     _ => ArrangementHelper.AlignRelativeFlag.RelativeToObjects
                 };
             }
-            ArrangementHelper.ExecuteMsoByAlignRelative(_alignRelativeFlag);
+            ArrangementHelper.UpdateAppAlignRelative(_alignRelativeFlag);
             _ribbon?.InvalidateControl(btnAlignRelative, grpArrange);
             _ribbon?.InvalidateControl(btnDistributeHorizontal, grpArrange);
             _ribbon?.InvalidateControl(btnDistributeVertical, grpArrange);
-            _ribbon?.InvalidateControl(btnAlignRelative_ToObjects, grpAlignment);
-            _ribbon?.InvalidateControl(btnAlignRelative_ToFirstObject, grpAlignment);
-            _ribbon?.InvalidateControl(btnAlignRelative_ToSlide, grpAlignment);
-            _ribbon?.InvalidateControl(btnAlignRelative_ToObjects, (mnuArrangement, mnuAlignment));
-            _ribbon?.InvalidateControl(btnAlignRelative_ToFirstObject, (mnuArrangement, mnuAlignment));
-            _ribbon?.InvalidateControl(btnAlignRelative_ToSlide, (mnuArrangement, mnuAlignment));
+            _ribbon?.InvalidateControls(btnAlignRelative_ToObjects, grpAlignment, (mnuArrangement, mnuAlignment));
+            _ribbon?.InvalidateControls(btnAlignRelative_ToFirstObject, grpAlignment, (mnuArrangement, mnuAlignment));
+            _ribbon?.InvalidateControls(btnAlignRelative_ToSlide, grpAlignment, (mnuArrangement, mnuAlignment));
         }
 
         public bool BtnAlignRelative_GetPressed(Office.IRibbonControl ribbonControl) {
@@ -341,14 +337,11 @@ namespace PowerPointArrangeAddin.Ribbon {
                     _ => _scaleFromFlag
                 };
             }
-            _ribbon?.InvalidateControl(btnScaleAnchor, grpArrange);
-            _ribbon?.InvalidateControls(btnScaleAnchor, _sizeAndPositionGroups);
-            _ribbon?.InvalidateControl(btnScaleAnchor_FromTopLeft, grpSizeAndSnap);
-            _ribbon?.InvalidateControl(btnScaleAnchor_FromMiddle, grpSizeAndSnap);
-            _ribbon?.InvalidateControl(btnScaleAnchor_FromBottomRight, grpSizeAndSnap);
-            _ribbon?.InvalidateControl(btnScaleAnchor_FromTopLeft, (mnuArrangement, mnuResizing));
-            _ribbon?.InvalidateControl(btnScaleAnchor_FromMiddle, (mnuArrangement, mnuResizing));
-            _ribbon?.InvalidateControl(btnScaleAnchor_FromBottomRight, (mnuArrangement, mnuResizing));
+            _ribbon?.InvalidateControls(btnScaleAnchor, grpArrange, _sizeAndPositionGroups);
+            _ribbon?.InvalidateControl(mnuScaleAnchor, grpObjectSize);
+            _ribbon?.InvalidateControls(btnScaleAnchor_FromTopLeft, grpSizeAndSnap, grpObjectSize, (mnuArrangement, mnuResizing));
+            _ribbon?.InvalidateControls(btnScaleAnchor_FromMiddle, grpSizeAndSnap, grpObjectSize, (mnuArrangement, mnuResizing));
+            _ribbon?.InvalidateControls(btnScaleAnchor_FromBottomRight, grpSizeAndSnap, grpObjectSize, (mnuArrangement, mnuResizing));
         }
 
         public bool BtnScaleAnchor_GetPressed(Office.IRibbonControl ribbonControl) {
@@ -381,6 +374,14 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
 
         public System.Drawing.Image BtnScaleAnchor_GetImage(Office.IRibbonControl ribbonControl) {
+            if (ribbonControl.Id() == mnuScaleAnchor) {
+                return _scaleFromFlag switch {
+                    Office.MsoScaleFrom.msoScaleFromTopLeft => Properties.Resources.ScaleFromTopLeft_32,
+                    Office.MsoScaleFrom.msoScaleFromMiddle => Properties.Resources.ScaleFromMiddle_32,
+                    Office.MsoScaleFrom.msoScaleFromBottomRight => Properties.Resources.ScaleFromBottomRight_32,
+                    _ => Properties.Resources.ScaleFromTopLeft_32
+                };
+            }  
             if (!IsOptionRibbonButton(ribbonControl)) {
                 return _scaleFromFlag switch {
                     Office.MsoScaleFrom.msoScaleFromTopLeft => Properties.Resources.ScaleFromTopLeft,
@@ -498,45 +499,177 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
 
         public void BtnGridSetting_Click(Office.IRibbonControl _) {
-            var mso = "GridSettings";
-            try {
-                if (Globals.ThisAddIn.Application.CommandBars.GetEnabledMso(mso)) {
-                    Globals.ThisAddIn.Application.CommandBars.ExecuteMso(mso);
-                }
-            } catch (Exception) { }
+            ArrangementHelper.GridSettingDialog();
         }
 
         public void BtnSizeAndPosition_Click(Office.IRibbonControl _) {
-            var mso = "ObjectSizeAndPositionDialog";
-            try {
-                if (Globals.ThisAddIn.Application.CommandBars.GetEnabledMso(mso)) {
-                    Globals.ThisAddIn.Application.CommandBars.ExecuteMso(mso);
-                }
-            } catch (Exception) { }
+            SizeAndPositionHelper.SizeAndPositionDialog();
         }
 
         public void EdtAngle_TextChanged(Office.IRibbonControl ribbonControl, string text) {
-            // TODO
+            var shapeRange = GetShapeRange();
+            if (shapeRange == null) {
+                return;
+            }
+            RotationHelper.ChangeAngleOfString(shapeRange, text, () => {
+                _ribbon?.InvalidateControl(edtAngle, grpRotateAndFlip);
+            });
         }
 
         public string EdtAngle_GetText(Office.IRibbonControl ribbonControl) {
-            return "TODO"; // TODO
+            var shapeRange = GetShapeRange();
+            if (shapeRange == null) {
+                return "";
+            }
+            return RotationHelper.GetAngleOfString(shapeRange).Item1;
         }
 
         public void BtnCopyAndPasteAngle_Click(Office.IRibbonControl ribbonControl) {
-            // TODO
+            var shapeRange = GetShapeRange();
+            if (shapeRange == null) {
+                return;
+            }
+            RotationHelper.CopyAndPasteCmd? cmd = ribbonControl.Id() switch {
+                btnCopyAngle => RotationHelper.CopyAndPasteCmd.Copy,
+                btnPasteAngle => RotationHelper.CopyAndPasteCmd.Paste,
+                _ => null
+            };
+            RotationHelper.CopyAndPasteAngle(shapeRange, cmd, () => {
+                _ribbon?.InvalidateControl(btnPasteAngle, grpRotateAndFlip);
+                _ribbon?.InvalidateControl(edtAngle, grpRotateAndFlip);
+            });
         }
 
         public void BtnResetAngle_Click(Office.IRibbonControl ribbonControl) {
-            // TODO
+            var shapeRange = GetShapeRange();
+            if (shapeRange == null) {
+                return;
+            }
+            RotationHelper.ResetObjectAngle(shapeRange, () => {
+                _ribbon?.InvalidateControl(edtAngle, grpRotateAndFlip);
+            });
+        }
+
+        public void BtnResetMediaSize_Click(Office.IRibbonControl ribbonControl) {
+            var shapeRange = GetShapeRange();
+            if (shapeRange == null) {
+                return;
+            }
+            SizeAndPositionHelper.ResetMediaSize(shapeRange, _scaleFromFlag, () => {
+                _ribbon?.InvalidateControls(edtPositionX, grpObjectSize, _sizeAndPositionGroups);
+                _ribbon?.InvalidateControls(edtPositionY, grpObjectSize, _sizeAndPositionGroups);
+            });
+        }
+
+        public void BtnLockAspectRatio_Click(Office.IRibbonControl ribbonControl, bool pressed) {
+            var shapeRange = GetShapeRange();
+            if (shapeRange == null) {
+                return;
+            }
+            var cmd = SizeAndPositionHelper.LockAspectRatioCmd.Toggle;
+            SizeAndPositionHelper.ToggleLockAspectRatio(shapeRange, cmd, () => {
+                _ribbon?.InvalidateControl(btnLockAspectRatio, grpTextbox);
+            });
+        }
+
+        public bool BtnLockAspectRatio_GetPressed(Office.IRibbonControl _) {
+            var shapeRange = GetShapeRange();
+            if (shapeRange == null) {
+                return false;
+            }
+            return SizeAndPositionHelper.GetAspectRatioIsLocked(shapeRange);
         }
 
         public void EdtSize_TextChanged(Office.IRibbonControl ribbonControl, string text) {
-            // TODO
+            var shapeRange = GetShapeRange();
+            if (shapeRange == null) {
+                return;
+            }
+            SizeAndPositionHelper.SizeKind? kind = ribbonControl.Id() switch {
+                edtSizeHeight => SizeAndPositionHelper.SizeKind.Height,
+                edtSizeWidth => SizeAndPositionHelper.SizeKind.Width,
+                _ => null
+            };
+            SizeAndPositionHelper.ChangeSizeOfString(shapeRange, kind, _scaleFromFlag, text, () => {
+                _ribbon?.InvalidateControl(edtSizeHeight, grpObjectSize);
+                _ribbon?.InvalidateControl(edtSizeWidth, grpObjectSize);
+            });
         }
 
         public string EdtSize_GetText(Office.IRibbonControl ribbonControl) {
-            return "TODO"; // TODO
+            var shapeRange = GetShapeRange();
+            if (shapeRange == null) {
+                return "";
+            }
+            SizeAndPositionHelper.SizeKind? kind = ribbonControl.Id() switch {
+                edtSizeHeight => SizeAndPositionHelper.SizeKind.Height,
+                edtSizeWidth => SizeAndPositionHelper.SizeKind.Width,
+                _ => null
+            };
+            return SizeAndPositionHelper.GetSizeOfString(shapeRange, kind).Item1;
+        }
+
+        public void BtnCopyAndPasteSize_Click(Office.IRibbonControl ribbonControl) {
+            var shapeRange = GetShapeRange();
+            if (shapeRange == null) {
+                return;
+            }
+            SizeAndPositionHelper.CopyAndPasteCmd? cmd = ribbonControl.Id() switch {
+                btnCopySize => SizeAndPositionHelper.CopyAndPasteCmd.Copy,
+                btnPasteSize => SizeAndPositionHelper.CopyAndPasteCmd.Paste,
+                _ => null
+            };
+            SizeAndPositionHelper.CopyAndPasteSize(shapeRange, cmd, _scaleFromFlag, () => {
+                _ribbon?.InvalidateControls(btnPasteSize, grpObjectSize, _sizeAndPositionGroups);
+                _ribbon?.InvalidateControl(edtSizeHeight, grpObjectSize);
+                _ribbon?.InvalidateControl(edtSizeWidth, grpObjectSize);
+            });
+        }
+
+        public void EdtPosition_TextChanged(Office.IRibbonControl ribbonControl, string text) {
+            var shapeRange = GetShapeRange();
+            if (shapeRange == null) {
+                return;
+            }
+            SizeAndPositionHelper.PositionKind? kind = ribbonControl.Id() switch {
+                edtPositionX => SizeAndPositionHelper.PositionKind.X,
+                edtPositionY => SizeAndPositionHelper.PositionKind.Y,
+                _ => null
+            };
+            SizeAndPositionHelper.ChangePositionOfString(shapeRange, kind, text, () => {
+                _ribbon?.InvalidateControls(edtPositionX, grpObjectPosition, _sizeAndPositionGroups);
+                _ribbon?.InvalidateControls(edtPositionY, grpObjectPosition, _sizeAndPositionGroups);
+            });
+        }
+
+        public string EdtPosition_GetText(Office.IRibbonControl ribbonControl) {
+            var shapeRange = GetShapeRange();
+            if (shapeRange == null) {
+                return "";
+            }
+            SizeAndPositionHelper.PositionKind? kind = ribbonControl.Id() switch {
+                edtPositionX => SizeAndPositionHelper.PositionKind.X,
+                edtPositionY => SizeAndPositionHelper.PositionKind.Y,
+                _ => null
+            };
+            return SizeAndPositionHelper.GetPositionOfString(shapeRange, kind).Item1;
+        }
+
+        public void BtnCopyAndPastePosition_Click(Office.IRibbonControl ribbonControl) {
+            var shapeRange = GetShapeRange();
+            if (shapeRange == null) {
+                return;
+            }
+            SizeAndPositionHelper.CopyAndPasteCmd? cmd = ribbonControl.Id() switch {
+                btnCopyPosition => SizeAndPositionHelper.CopyAndPasteCmd.Copy,
+                btnPastePosition => SizeAndPositionHelper.CopyAndPasteCmd.Paste,
+                _ => null
+            };
+            SizeAndPositionHelper.CopyAndPastePosition(shapeRange, cmd, () => {
+                _ribbon?.InvalidateControls(btnPastePosition, grpObjectPosition, _sizeAndPositionGroups);
+                _ribbon?.InvalidateControls(edtPositionX, grpObjectPosition, _sizeAndPositionGroups);
+                _ribbon?.InvalidateControls(edtPositionY, grpObjectPosition, _sizeAndPositionGroups);
+            });
         }
 
         public void BtnAutofit_Click(Office.IRibbonControl ribbonControl, bool _) {
@@ -622,7 +755,10 @@ namespace PowerPointArrangeAddin.Ribbon {
                 _ => null
             };
             TextboxHelper.ChangeMarginOfString(textFrame, kind, text, () => {
-                _ribbon?.InvalidateControl(ribbonControl.Id(), ribbonControl.Group());
+                _ribbon?.InvalidateControl(edtMarginLeft, grpTextbox);
+                _ribbon?.InvalidateControl(edtMarginRight, grpTextbox);
+                _ribbon?.InvalidateControl(edtMarginTop, grpTextbox);
+                _ribbon?.InvalidateControl(edtMarginBottom, grpTextbox);
             });
         }
 
@@ -639,97 +775,6 @@ namespace PowerPointArrangeAddin.Ribbon {
                 _ => null
             };
             return TextboxHelper.GetMarginOfString(textFrame, kind).Item1;
-        }
-
-        public void BtnLockAspectRatio_Click(Office.IRibbonControl ribbonControl, bool pressed) {
-            var shapeRange = GetShapeRange();
-            if (shapeRange == null) {
-                return;
-            }
-            var cmd = SizeAndPositionHelper.LockAspectRatioCmd.Toggle;
-            SizeAndPositionHelper.ToggleLockAspectRatio(shapeRange, cmd, () => {
-                _ribbon?.InvalidateControl(btnLockAspectRatio, grpTextbox);
-            });
-        }
-
-        public bool BtnLockAspectRatio_GetPressed(Office.IRibbonControl _) {
-            var shapeRange = GetShapeRange();
-            if (shapeRange == null) {
-                return false;
-            }
-            return SizeAndPositionHelper.GetAspectRatioIsLocked(shapeRange);
-        }
-
-        public void BtnCopyAndPasteSize_Click(Office.IRibbonControl ribbonControl) {
-            var shapeRange = GetShapeRange();
-            if (shapeRange == null) {
-                return;
-            }
-            SizeAndPositionHelper.CopyAndPasteCmd? cmd = ribbonControl.Id() switch {
-                btnCopySize => SizeAndPositionHelper.CopyAndPasteCmd.Copy,
-                btnPasteSize => SizeAndPositionHelper.CopyAndPasteCmd.Paste,
-                _ => null
-            };
-            SizeAndPositionHelper.CopyAndPasteSize(shapeRange, cmd, _scaleFromFlag, () => {
-                _ribbon?.InvalidateControls(btnPasteSize, _sizeAndPositionGroups);
-            });
-        }
-
-        public void EdtPosition_TextChanged(Office.IRibbonControl ribbonControl, string text) {
-            var shapeRange = GetShapeRange();
-            if (shapeRange == null) {
-                return;
-            }
-            SizeAndPositionHelper.PositionKind? kind = ribbonControl.Id() switch {
-                edtPositionX => SizeAndPositionHelper.PositionKind.X,
-                edtPositionY => SizeAndPositionHelper.PositionKind.Y,
-                _ => null
-            };
-            SizeAndPositionHelper.ChangePositionOfString(shapeRange, kind, text, () => {
-                _ribbon?.InvalidateControl(ribbonControl.Id(), ribbonControl.Group());
-            });
-        }
-
-        public string EdtPosition_GetText(Office.IRibbonControl ribbonControl) {
-            var shapeRange = GetShapeRange();
-            if (shapeRange == null) {
-                return "";
-            }
-            SizeAndPositionHelper.PositionKind? kind = ribbonControl.Id() switch {
-                edtPositionX => SizeAndPositionHelper.PositionKind.X,
-                edtPositionY => SizeAndPositionHelper.PositionKind.Y,
-                _ => null
-            };
-            return SizeAndPositionHelper.GetPositionOfString(shapeRange, kind).Item1;
-        }
-
-        public void BtnCopyAndPastePosition_Click(Office.IRibbonControl ribbonControl) {
-            var shapeRange = GetShapeRange();
-            if (shapeRange == null) {
-                return;
-            }
-            SizeAndPositionHelper.CopyAndPasteCmd? cmd = ribbonControl.Id() switch {
-                btnCopyPosition => SizeAndPositionHelper.CopyAndPasteCmd.Copy,
-                btnPastePosition => SizeAndPositionHelper.CopyAndPasteCmd.Paste,
-                _ => null
-            };
-            SizeAndPositionHelper.CopyAndPastePosition(shapeRange, cmd, () => {
-                _ribbon?.InvalidateControls(btnPastePosition, _sizeAndPositionGroups);
-                _ribbon?.InvalidateControls(edtPositionX, _sizeAndPositionGroups);
-                _ribbon?.InvalidateControls(edtPositionY, _sizeAndPositionGroups);
-            });
-        }
-
-        public void BtnResetMediaSize_Click(Office.IRibbonControl ribbonControl) {
-            var shapeRange = GetShapeRange();
-            if (shapeRange == null) {
-                return;
-            }
-            SizeAndPositionHelper.ResetMediaSize(shapeRange, _scaleFromFlag, () => {
-                var groups = new[] { grpPictureSizeAndPosition, grpVideoSizeAndPosition, grpAudioSizeAndPosition };
-                _ribbon?.InvalidateControls(edtPositionX, groups);
-                _ribbon?.InvalidateControls(edtPositionY, groups);
-            });
         }
 
         // This flag is used for picture replacing related callbacks, that is BtnReplacePicture_Click.

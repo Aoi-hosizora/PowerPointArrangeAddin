@@ -105,11 +105,17 @@ namespace PowerPointArrangeAddin.Helper {
             }
         }
 
-        public static void ExecuteMsoByAlignRelative(AlignRelativeFlag flag) {
+        public static void UpdateAppAlignRelative(AlignRelativeFlag flag) {
             var mso = flag == AlignRelativeFlag.RelativeToSlide
                 ? "ObjectsAlignRelativeToContainerSmart"
                 : "ObjectsAlignSelectedSmart";
-            Globals.ThisAddIn.Application.CommandBars.ExecuteMso(mso);
+            try {
+                if (Globals.ThisAddIn.Application.CommandBars.GetEnabledMso(mso)) {
+                    Globals.ThisAddIn.Application.CommandBars.ExecuteMso(mso);
+                }
+            } catch (Exception) {
+                // ignored
+            }
         }
 
         public enum ScaleSizeCmd {
@@ -346,6 +352,17 @@ namespace PowerPointArrangeAddin.Helper {
                     uiInvalidator?.Invoke();
                 }
                 break;
+            }
+        }
+
+        public static void GridSettingDialog() {
+            const string mso = "GridSettings";
+            try {
+                if (Globals.ThisAddIn.Application.CommandBars.GetEnabledMso(mso)) {
+                    Globals.ThisAddIn.Application.CommandBars.ExecuteMso(mso);
+                }
+            } catch (Exception) {
+                // ignored
             }
         }
 

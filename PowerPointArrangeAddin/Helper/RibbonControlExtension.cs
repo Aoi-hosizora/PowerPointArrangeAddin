@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using Microsoft.Office.Core;
 
 #pragma warning disable CS0618
@@ -37,15 +36,26 @@ namespace PowerPointArrangeAddin.Helper {
             ribbonUi.InvalidateControl($"{controlId}{Separator}{parentIds.Item1}{Separator}{parentIds.Item2}");
         }
 
-        public static void InvalidateControls(this IRibbonUI ribbonUi, string controlId, IEnumerable<string> parentIds) {
+        public static void InvalidateControls(this IRibbonUI ribbonUi, string controlId, params object[] parentIds) {
             foreach (var parentId in parentIds) {
-                ribbonUi.InvalidateControl(controlId, parentId);
-            }
-        }
-
-        public static void InvalidateControls(this IRibbonUI ribbonUi, string controlId, IEnumerable<(string, string)> parentIds) {
-            foreach (var (parentId1, parentId2) in parentIds) {
-                ribbonUi.InvalidateControl(controlId, (parentId1, parentId2));
+                switch (parentId) {
+                case string id:
+                    ribbonUi.InvalidateControl(controlId, id);
+                    break;
+                case (string id1, string id2):
+                    ribbonUi.InvalidateControl(controlId, (id1, id2));
+                    break;
+                case string[] idArray:
+                    foreach (var singleId in idArray) {
+                        ribbonUi.InvalidateControl(controlId, singleId);
+                    }
+                    break;
+                case (string, string)[] idsArray:
+                    foreach (var (singleId1, singleId2) in idsArray) {
+                        ribbonUi.InvalidateControl(controlId, (singleId1, singleId2));
+                    }
+                    break;
+                }
             }
         }
 

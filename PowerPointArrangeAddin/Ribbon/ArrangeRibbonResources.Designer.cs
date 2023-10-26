@@ -1024,6 +1024,15 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Scale direction.
+        /// </summary>
+        public static string mnuScaleAnchor {
+            get {
+                return ResourceManager.GetString("mnuScaleAnchor", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Arrangement.
         /// </summary>
         public static string tabArrangement {

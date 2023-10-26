@@ -65,8 +65,10 @@ namespace PowerPointArrangeAddin.Helper {
                 }
             } else if (shapeRange != null && shapeRange.HasTextFrame != Office.MsoTriState.msoFalse) {
                 textFrame = shapeRange.TextFrame;
-                textRange = textFrame.TextRange;
                 textFrame2 = shapeRange.TextFrame2;
+                try {
+                    textRange = textFrame.TextRange; // may throw when selecting different type objects
+                } catch (Exception) { }
             }
 
             // 4. return selection
