@@ -51,6 +51,7 @@ namespace PowerPointArrangeAddin.Dialog {
             this.chkLessButtonsForArrangement = new System.Windows.Forms.CheckBox();
             this.tbxDescription = new System.Windows.Forms.TextBox();
             this.tlpButton = new System.Windows.Forms.TableLayoutPanel();
+            this.btnCheckUpdate = new System.Windows.Forms.Button();
             this.tlpMain.SuspendLayout();
             this.grpGroupVisibility.SuspendLayout();
             this.tlpGroupVisibility.SuspendLayout();
@@ -241,12 +242,7 @@ namespace PowerPointArrangeAddin.Dialog {
             resources.ApplyResources(this.cboLanguage, "cboLanguage");
             this.cboLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboLanguage.FormattingEnabled = true;
-            this.cboLanguage.Items.AddRange(new object[] {
-            resources.GetString("cboLanguage.Items"),
-            resources.GetString("cboLanguage.Items1"),
-            resources.GetString("cboLanguage.Items2"),
-            resources.GetString("cboLanguage.Items3"),
-            resources.GetString("cboLanguage.Items4")});
+            this.cboLanguage.Items.AddRange(new object[] { resources.GetString("cboLanguage.Items"), resources.GetString("cboLanguage.Items1"), resources.GetString("cboLanguage.Items2"), resources.GetString("cboLanguage.Items3"), resources.GetString("cboLanguage.Items4") });
             this.cboLanguage.Name = "cboLanguage";
             // 
             // chkHideMarginSettingForTextbox
@@ -272,9 +268,17 @@ namespace PowerPointArrangeAddin.Dialog {
             // tlpButton
             // 
             resources.ApplyResources(this.tlpButton, "tlpButton");
-            this.tlpButton.Controls.Add(this.btnCancel, 1, 0);
-            this.tlpButton.Controls.Add(this.btnOK, 0, 0);
+            this.tlpButton.Controls.Add(this.btnCheckUpdate, 0, 0);
+            this.tlpButton.Controls.Add(this.btnOK, 2, 0);
+            this.tlpButton.Controls.Add(this.btnCancel, 3, 0);
             this.tlpButton.Name = "tlpButton";
+            // 
+            // btnCheckUpdate
+            // 
+            resources.ApplyResources(this.btnCheckUpdate, "btnCheckUpdate");
+            this.btnCheckUpdate.Name = "btnCheckUpdate";
+            this.btnCheckUpdate.UseVisualStyleBackColor = true;
+            this.btnCheckUpdate.Click += new System.EventHandler(this.BtnCheckUpdate_Click);
             // 
             // SettingDialog
             // 
@@ -303,10 +307,12 @@ namespace PowerPointArrangeAddin.Dialog {
             this.tlpOtherSetting.ResumeLayout(false);
             this.tlpOtherSetting.PerformLayout();
             this.tlpButton.ResumeLayout(false);
+            this.tlpButton.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
+
+        private System.Windows.Forms.Button btnCheckUpdate;
 
         #endregion
 

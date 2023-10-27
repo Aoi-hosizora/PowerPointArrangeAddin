@@ -197,4 +197,7 @@
   <data name="chkHideMarginSettingForTextbox.Text" xml:space="preserve">
     <value>「描図ツール - 書式」タブの「テキストボックス」グループの余白設定を非表示する(&amp;G)</value>
   </data>
+  <data name="btnCheckUpdate.Text" xml:space="preserve">
+    <value>更新を確認(&amp;F)...</value>
+  </data>
 </root>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using PowerPointArrangeAddin.Misc;
 
@@ -37,8 +38,26 @@ namespace PowerPointArrangeAddin.Dialog {
             cboLanguage.SelectedIndex = AddInSetting.Instance.Language.ToLanguageIndex();
             chkLessButtonsForArrangement.Checked = AddInSetting.Instance.LessButtonsForArrangementGroup;
             chkHideMarginSettingForTextbox.Checked = AddInSetting.Instance.HideMarginSettingForTextboxGroup;
-            // TODO addin upgrade, AddInVersion.cs
             // TODO ui icon style setting
+        }
+
+        private void BtnCheckUpdate_Click(object sender, EventArgs e) {
+            btnCheckUpdate.Enabled = false;
+            Task.Run(async () => {
+                var opt = new AddInVersion.CheckUpdateOptions {
+                    ShowDialogForUpdates = true,
+                    ShowDialogIfNoUpdate = true,
+                    ShowCheckingDialog = true,
+                    ShowDialogWhenException = true,
+                    Owner = Handle
+                };
+                try {
+                    var _ = await AddInVersion.Instance.CheckUpdate(opt);
+                } catch (Exception ex) {
+                    MessageBox.Show($"{ex.Message}\r\n\r\n{ex.StackTrace}");
+                }
+                btnCheckUpdate.Enabled = true;
+            });
         }
 
         private void BtnOK_Click(object sender, EventArgs e) {

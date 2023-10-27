@@ -35,6 +35,7 @@ namespace PowerPointArrangeAddin.Misc {
         }
 
         public string Title { get; private set; } = "";
+        public string TitleWrapper { get; private set; } = "";
         public string VersionKey { get; private set; } = "";
         public string Version { get; private set; } = "";
         public string AuthorKey { get; private set; } = "";
@@ -44,10 +45,17 @@ namespace PowerPointArrangeAddin.Misc {
         public string Copyright { get; private set; } = "";
 
         private static readonly Dictionary<string, string> TitleMap = new() {
-            { AddInLanguage.English.ToLanguageString(), "\"PowerPoint Arrangement Assistant Add-in\"" },
-            { AddInLanguage.SimplifiedChinese.ToLanguageString(), "【PowerPoint 排列辅助加载项】" },
-            { AddInLanguage.TraditionalChinese.ToLanguageString(), "【PowerPoint 排列輔助增益集】" },
-            { AddInLanguage.Japanese.ToLanguageString(), "【PowerPoint 配置補助アドイン】" }
+            { AddInLanguage.English.ToLanguageString(), "PowerPoint Arrangement Assistant Add-in" },
+            { AddInLanguage.SimplifiedChinese.ToLanguageString(), "PowerPoint 排列辅助加载项" },
+            { AddInLanguage.TraditionalChinese.ToLanguageString(), "PowerPoint 排列輔助增益集" },
+            { AddInLanguage.Japanese.ToLanguageString(), "PowerPoint 配置補助アドイン" }
+        };
+
+        private static readonly Dictionary<string, string> TitleWrapperMap = new() {
+            { AddInLanguage.English.ToLanguageString(), "\"\"" },
+            { AddInLanguage.SimplifiedChinese.ToLanguageString(), "【】" },
+            { AddInLanguage.TraditionalChinese.ToLanguageString(), "【】" },
+            { AddInLanguage.Japanese.ToLanguageString(), "【】" }
         };
 
         private static readonly Dictionary<string, string> VersionKeyMap = new() {
@@ -74,9 +82,9 @@ namespace PowerPointArrangeAddin.Misc {
         private void UpdateFields(CultureInfo culture) {
             var name = culture.Name.ToLower();
             Title = TitleMap[name];
+            TitleWrapper = TitleWrapperMap[name];
             VersionKey = VersionKeyMap[name];
-            var ver = Assembly.GetExecutingAssembly().GetName().Version;
-            Version = $"{ver.Major}.{ver.Minor}.{ver.Build}";
+            Version = AddInVersion.Instance.GetAssemblyVersionInString();
             AuthorKey = AuthorKeyMap[name];
             Author = "AoiHosizora (https://github.com/Aoi-hosizora)";
             HomepageKey = HomepageKeyMap[name];
@@ -86,7 +94,7 @@ namespace PowerPointArrangeAddin.Misc {
         }
 
         public override string ToString() {
-            var title = Title;
+            var title = $"{TitleWrapper[0]}{Title}{TitleWrapper[1]}";
             var version = $"{VersionKey}: v{Version}";
             var author = $"{AuthorKey}: {Author}";
             var homepage = $"{HomepageKey}: {Homepage}";

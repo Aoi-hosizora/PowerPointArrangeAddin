@@ -9,6 +9,9 @@ namespace PowerPointArrangeAddin {
     public partial class ThisAddIn {
 
         private void ThisAddIn_Startup(object sender, EventArgs e) {
+            // enable WinForms visual styles
+            System.Windows.Forms.Application.EnableVisualStyles();
+
             // load add-in setting
             AddInSetting.Instance.Load();
 
