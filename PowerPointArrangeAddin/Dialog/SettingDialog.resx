@@ -1051,7 +1051,7 @@
     <value>3</value>
   </data>
   <data name="btnCheckUpdate.Text" xml:space="preserve">
-    <value>Chec&amp;k for updates...</value>
+    <value>Check &amp;for updates...</value>
   </data>
   <data name="&gt;&gt;btnCheckUpdate.Name" xml:space="preserve">
     <value>btnCheckUpdate</value>

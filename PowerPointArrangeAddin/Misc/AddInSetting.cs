@@ -29,7 +29,7 @@ namespace PowerPointArrangeAddin.Misc {
         public bool ShowSmartartSizeAndPositionGroup { get; set; }
         public AddInLanguage Language { get; set; }
         public bool CheckUpdateWhenStartUp { get; set; }
-        public string IgnoreUpdateRecord { get; set; }
+        public string IgnoreUpdateRecord { get; set; } = "";
         public bool LessButtonsForArrangementGroup { get; set; }
         public bool HideMarginSettingForTextboxGroup { get; set; }
 

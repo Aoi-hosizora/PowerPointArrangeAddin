@@ -5,6 +5,11 @@ using System.Security;
 using System.Security.Permissions;
 using System.Windows.Forms;
 
+#nullable enable
+
+// ReSharper disable InconsistentNaming
+// ReSharper disable UseObjectOrCollectionInitializer
+
 // C#: comctl32.dll version 6 in debugger
 // https://stackoverflow.com/questions/1415270/c-comctl32-dll-version-6-in-debugger
 
@@ -15,10 +20,13 @@ namespace PowerPointArrangeAddin.Misc {
 
         // Private data
         private UIntPtr cookie;
+
         private static ACTCTX enableThemingActivationContext;
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Reliability", "CA2006:UseSafeHandleToEncapsulateNativeResources")]
         private static IntPtr hActCtx;
-        private static bool contextCreationSucceeded = false;
+
+        private static bool contextCreationSucceeded;
 
         public EnableThemingInScope(bool enable) {
             cookie = UIntPtr.Zero;
@@ -49,7 +57,7 @@ namespace PowerPointArrangeAddin.Misc {
                         cookie = UIntPtr.Zero;
                     }
                 } catch (SEHException) {
-                    //Hopefully solved this exception
+                    // Hopefully solved this exception
                 }
             }
         }
@@ -61,23 +69,23 @@ namespace PowerPointArrangeAddin.Misc {
                     // Pull manifest from the .NET Framework install
                     // directory
 
-                    string assemblyLoc = null;
+                    string? assemblyLoc;
 
-                    FileIOPermission fiop = new FileIOPermission(PermissionState.None);
+                    var fiop = new FileIOPermission(PermissionState.None);
                     fiop.AllFiles = FileIOPermissionAccess.PathDiscovery;
                     fiop.Assert();
                     try {
-                        assemblyLoc = typeof(Object).Assembly.Location;
+                        assemblyLoc = typeof(object).Assembly.Location;
                     } finally {
                         CodeAccessPermission.RevertAssert();
                     }
 
-                    string manifestLoc = null;
-                    string installDir = null;
+                    string? manifestLoc = null;
+                    string? installDir = null;
                     if (assemblyLoc != null) {
                         installDir = Path.GetDirectoryName(assemblyLoc);
                         const string manifestName = "XPThemes.manifest";
-                        manifestLoc = Path.Combine(installDir, manifestName);
+                        manifestLoc = Path.Combine(installDir!, manifestName);
                     }
 
                     if (manifestLoc != null && installDir != null) {
@@ -108,16 +116,18 @@ namespace PowerPointArrangeAddin.Misc {
 
         // All the pinvoke goo...
         [DllImport("Kernel32.dll")]
-        private extern static IntPtr CreateActCtx(ref ACTCTX actctx);
+        private static extern IntPtr CreateActCtx(ref ACTCTX actctx);
 
         [DllImport("Kernel32.dll")]
-        private extern static bool ActivateActCtx(IntPtr hActCtx, out UIntPtr lpCookie);
+        private static extern bool ActivateActCtx(IntPtr hActCtx, out UIntPtr lpCookie);
 
         [DllImport("Kernel32.dll")]
-        private extern static bool DeactivateActCtx(uint dwFlags, UIntPtr lpCookie);
+        private static extern bool DeactivateActCtx(uint dwFlags, UIntPtr lpCookie);
 
         private const int ACTCTX_FLAG_ASSEMBLY_DIRECTORY_VALID = 0x004;
 
+#pragma warning disable CS0649
+        // ReSharper disable NotAccessedField.Local
         private struct ACTCTX {
             public int cbSize;
             public uint dwFlags;
@@ -128,6 +138,7 @@ namespace PowerPointArrangeAddin.Misc {
             public string lpResourceName;
             public string lpApplicationName;
         }
+        // ReSharper restore NotAccessedField.Local
 
     }
 

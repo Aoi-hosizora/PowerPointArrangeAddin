@@ -45,15 +45,7 @@ namespace PowerPointArrangeAddin.Dialog {
         private void BtnCheckUpdate_Click(object sender, EventArgs e) {
             btnCheckUpdate.Enabled = false;
             Task.Run(async () => {
-                var opt = new AddInVersion.CheckUpdateOptions {
-                    ShowDialogForUpdates = true, ShowDialogIfNoUpdate = true, ShowCheckingDialog = true, ShowDialogWhenException = true,
-                    ShowMoreOptionsForAutoCheck = false, Owner = Handle
-                };
-                try {
-                    var _ = await AddInVersion.Instance.CheckUpdate(opt);
-                } catch (Exception ex) {
-                    MessageBox.Show($"{ex.Message}\r\n\r\n{ex.StackTrace}");
-                }
+                var _ = await AddInVersion.Instance.CheckUpdateManually(Handle);
                 btnCheckUpdate.Enabled = true;
             });
         }

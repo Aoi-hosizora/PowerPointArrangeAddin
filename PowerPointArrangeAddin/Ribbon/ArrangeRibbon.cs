@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Forms = System.Windows.Forms;
@@ -13,9 +14,18 @@ namespace PowerPointArrangeAddin.Ribbon {
 
     public partial class ArrangeRibbon {
 
-        public ArrangeRibbon() {
-            (_ribbonElementUis, _ribbonElementUiSpecials) = GenerateNewElementUis();
+        private ArrangeRibbon() {
+            (_ribbonUiElements, _specialRibbonUiElements) = GenerateNewUiElements();
             _availabilityRules = GenerateNewAvailabilityRules();
+        }
+
+        private static ArrangeRibbon? _instance;
+
+        public static ArrangeRibbon Instance {
+            get {
+                _instance ??= new ArrangeRibbon();
+                return _instance;
+            }
         }
 
         private const string ArrangeRibbonXmlName = "PowerPointArrangeAddin.Ribbon.ArrangeRibbon.UI.xml";
@@ -26,15 +36,12 @@ namespace PowerPointArrangeAddin.Ribbon {
         public void Ribbon_Load(Office.IRibbonUI ribbonUi) {
             _ribbon = ribbonUi;
 
-            // check for updates when starts up
+            // auto check for updates when PowerPoint starts up
             if (AddInSetting.Instance.CheckUpdateWhenStartUp) {
-                var opt = new AddInVersion.CheckUpdateOptions {
-                    ShowDialogForUpdates = true, ShowDialogIfNoUpdate = false, ShowCheckingDialog = false, ShowDialogWhenException = false,
-                    ShowMoreOptionsForAutoCheck = true, Owner = new IntPtr(Globals.ThisAddIn.Application.HWND)
-                };
                 Task.Run(async () => {
                     await Task.Delay(TimeSpan.FromSeconds(5));
-                    await AddInVersion.Instance.CheckUpdate(opt);
+                    var hwnd = new IntPtr(Globals.ThisAddIn.Application.HWND);
+                    var _ = await AddInVersion.Instance.CheckUpdateAutomatically(hwnd);
                 });
             }
         }

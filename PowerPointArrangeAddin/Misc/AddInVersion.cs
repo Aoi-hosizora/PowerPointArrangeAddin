@@ -122,19 +122,45 @@ namespace PowerPointArrangeAddin.Misc {
 
         #region Check Update Related
 
-        public class CheckUpdateOptions {
-            public bool ShowDialogForUpdates { get; init; } = true;
+        private class CheckUpdateOptions {
+            public bool ShowDialogForUpdate { get; init; } = true;
             public bool ShowDialogIfNoUpdate { get; init; }
             public bool ShowCheckingDialog { get; init; }
             public bool ShowDialogWhenException { get; init; }
-            public bool ShowMoreOptionsForAutoCheck { get; init; }
+            public bool ShowOptionsForAutoCheck { get; init; }
             public IntPtr Owner { get; init; } = IntPtr.Zero;
         }
 
-        public async Task<ReleaseInformation?> CheckUpdate(CheckUpdateOptions? options = null) {
+        public async Task<ReleaseInformation?> CheckUpdateManually(IntPtr? owner = null) {
+            var opt = new CheckUpdateOptions {
+                ShowDialogForUpdate = true, ShowDialogIfNoUpdate = true, ShowCheckingDialog = true, ShowDialogWhenException = true,
+                ShowOptionsForAutoCheck = false, Owner = owner ?? IntPtr.Zero
+            };
+            try {
+                return await CheckUpdate(opt);
+            } catch (Exception) {
+                // ignored, almost unreachable
+            }
+            return null;
+        }
+
+        public async Task<ReleaseInformation?> CheckUpdateAutomatically(IntPtr? owner = null) {
+            var opt = new CheckUpdateOptions {
+                ShowDialogForUpdate = true, ShowDialogIfNoUpdate = false, ShowCheckingDialog = false, ShowDialogWhenException = false,
+                ShowOptionsForAutoCheck = true, Owner = owner ?? IntPtr.Zero
+            };
+            try {
+                return await CheckUpdate(opt);
+            } catch (Exception) {
+                // ignored, almost unreachable
+            }
+            return null;
+        }
+
+        private async Task<ReleaseInformation?> CheckUpdate(CheckUpdateOptions? options = null) {
             options ??= new CheckUpdateOptions();
 
-            if (options.ShowMoreOptionsForAutoCheck && CheckIfIgnoreUpdate(null)) {
+            if (options.ShowOptionsForAutoCheck && CheckIfNeedToIgnoreUpdate(null)) {
                 return null; // ignore by date
             }
 
@@ -172,11 +198,11 @@ namespace PowerPointArrangeAddin.Misc {
                 return null;
             }
 
-            if (options.ShowMoreOptionsForAutoCheck && CheckIfIgnoreUpdate(information.Version)) {
+            if (options.ShowOptionsForAutoCheck && CheckIfNeedToIgnoreUpdate(information.Version)) {
                 return null; // ignore by version
             }
 
-            if (options.ShowDialogForUpdates) {
+            if (options.ShowDialogForUpdate) {
                 HasUpdateDialog(information, options);
             }
             return information;
@@ -254,7 +280,7 @@ namespace PowerPointArrangeAddin.Misc {
                 dialog.Controls.Add(lnkAppCenter);
                 dialog.Controls.Add(lnkGitHub);
 
-                if (options.ShowMoreOptionsForAutoCheck) {
+                if (options.ShowOptionsForAutoCheck) {
                     var lnkIgnoreUntil = new TaskDialogCommandLink("Ignore until", MiscResources.Dlg_IgnoreUntilTomorrowText);
                     var lnkIgnoreVersion = new TaskDialogCommandLink("Ignore version", MiscResources.Dlg_IgnoreThisVersion);
                     var lnkDisableAutoCheck = new TaskDialogCommandLink("Disable auto check", MiscResources.Dlg_DisableAutoCheckUpdateText);
@@ -276,18 +302,18 @@ namespace PowerPointArrangeAddin.Misc {
 
         private void IgnoreSpecificUpdate(string? version, Action? postAction = null) {
             AddInSetting.Instance.IgnoreUpdateRecord = version == null
-                ? $"date={DateTime.Today:yyyyMMdd}"
-                : $"version={version}";
+                ? $"date={DateTime.Today:yyyyMMdd}" // by date
+                : $"version={version}"; // by version
             AddInSetting.Instance.Save();
             postAction?.Invoke();
         }
 
-        private bool CheckIfIgnoreUpdate(string? version) {
+        private bool CheckIfNeedToIgnoreUpdate(string? version) {
             var record = AddInSetting.Instance.IgnoreUpdateRecord.Trim();
-            if (record == $"date={DateTime.Today:yyyyMMdd}") {
+            if (record == $"date={DateTime.Today:yyyyMMdd}") { // by date
                 return true;
             }
-            if (version != null && record == $"version={version}") {
+            if (version != null && record == $"version={version}") { // by version
                 return true;
             }
             return false;

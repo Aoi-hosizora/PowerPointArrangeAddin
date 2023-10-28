@@ -1,5 +1,4 @@
-﻿using System;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Threading;
 
 #nullable enable
@@ -16,25 +15,27 @@ namespace PowerPointArrangeAddin.Misc {
 
     public static class AddInLanguageChanger {
 
-        private static AddInLanguage? _defaultLanguage; // will never be `AddInLanguage.Default`
-        private static Action? _uiInvalidator; // used to invalidate ui when language is changed
+        private static AddInLanguage? _defaultLanguage; // will never be `AddInLanguage.Default` 
 
-        public static void RegisterAddIn(int defaultLanguageId, Action uiInvalidator) {
+        public static void RegisterAddIn(int defaultLanguageId) {
             _defaultLanguage = new CultureInfo(defaultLanguageId).ToAddInLanguage();
-            _uiInvalidator = uiInvalidator; // TODO use instance instead
         }
 
         public static void ChangeLanguage(AddInLanguage language) {
             if (language == AddInLanguage.Default) {
                 language = _defaultLanguage ?? AddInLanguage.English;
             }
+
             var cultureInfo = new CultureInfo(language.ToLanguageString());
             Thread.CurrentThread.CurrentCulture = cultureInfo;
             Thread.CurrentThread.CurrentUICulture = cultureInfo;
+
             Properties.Resources.Culture = cultureInfo;
             Ribbon.ArrangeRibbonResources.Culture = cultureInfo;
             MiscResources.Culture = cultureInfo;
-            _uiInvalidator?.Invoke();
+
+            AddInDescription.Instance.UpdateFields();
+            Ribbon.ArrangeRibbon.Instance.UpdateUiElementsAndInvalidate();
         }
 
         #region Extensions
