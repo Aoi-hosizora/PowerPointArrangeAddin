@@ -21,7 +21,7 @@ namespace PowerPointArrangeAddin.Misc {
 
         public static void RegisterAddIn(int defaultLanguageId, Action uiInvalidator) {
             _defaultLanguage = new CultureInfo(defaultLanguageId).ToAddInLanguage();
-            _uiInvalidator = uiInvalidator;
+            _uiInvalidator = uiInvalidator; // TODO use instance instead
         }
 
         public static void ChangeLanguage(AddInLanguage language) {
@@ -33,7 +33,7 @@ namespace PowerPointArrangeAddin.Misc {
             Thread.CurrentThread.CurrentUICulture = cultureInfo;
             Properties.Resources.Culture = cultureInfo;
             Ribbon.ArrangeRibbonResources.Culture = cultureInfo;
-            AddInDescription.Instance.Culture = cultureInfo;
+            MiscResources.Culture = cultureInfo;
             _uiInvalidator?.Invoke();
         }
 

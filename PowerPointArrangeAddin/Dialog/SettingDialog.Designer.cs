@@ -47,6 +47,7 @@ namespace PowerPointArrangeAddin.Dialog {
             this.tlpOtherSetting = new System.Windows.Forms.TableLayoutPanel();
             this.lblLanguage = new System.Windows.Forms.Label();
             this.cboLanguage = new System.Windows.Forms.ComboBox();
+            this.chkCheckUpdateWhenStartUp = new System.Windows.Forms.CheckBox();
             this.chkHideMarginSettingForTextbox = new System.Windows.Forms.CheckBox();
             this.chkLessButtonsForArrangement = new System.Windows.Forms.CheckBox();
             this.tbxDescription = new System.Windows.Forms.TextBox();
@@ -228,8 +229,9 @@ namespace PowerPointArrangeAddin.Dialog {
             resources.ApplyResources(this.tlpOtherSetting, "tlpOtherSetting");
             this.tlpOtherSetting.Controls.Add(this.lblLanguage, 0, 0);
             this.tlpOtherSetting.Controls.Add(this.cboLanguage, 1, 0);
-            this.tlpOtherSetting.Controls.Add(this.chkHideMarginSettingForTextbox, 0, 2);
-            this.tlpOtherSetting.Controls.Add(this.chkLessButtonsForArrangement, 0, 1);
+            this.tlpOtherSetting.Controls.Add(this.chkCheckUpdateWhenStartUp, 0, 1);
+            this.tlpOtherSetting.Controls.Add(this.chkHideMarginSettingForTextbox, 0, 3);
+            this.tlpOtherSetting.Controls.Add(this.chkLessButtonsForArrangement, 0, 2);
             this.tlpOtherSetting.Name = "tlpOtherSetting";
             // 
             // lblLanguage
@@ -244,6 +246,13 @@ namespace PowerPointArrangeAddin.Dialog {
             this.cboLanguage.FormattingEnabled = true;
             this.cboLanguage.Items.AddRange(new object[] { resources.GetString("cboLanguage.Items"), resources.GetString("cboLanguage.Items1"), resources.GetString("cboLanguage.Items2"), resources.GetString("cboLanguage.Items3"), resources.GetString("cboLanguage.Items4") });
             this.cboLanguage.Name = "cboLanguage";
+            // 
+            // chkCheckUpdateWhenStartUp
+            // 
+            resources.ApplyResources(this.chkCheckUpdateWhenStartUp, "chkCheckUpdateWhenStartUp");
+            this.tlpOtherSetting.SetColumnSpan(this.chkCheckUpdateWhenStartUp, 2);
+            this.chkCheckUpdateWhenStartUp.Name = "chkCheckUpdateWhenStartUp";
+            this.chkCheckUpdateWhenStartUp.UseVisualStyleBackColor = true;
             // 
             // chkHideMarginSettingForTextbox
             // 
@@ -312,7 +321,6 @@ namespace PowerPointArrangeAddin.Dialog {
             this.PerformLayout();
         }
 
-        private System.Windows.Forms.Button btnCheckUpdate;
 
         #endregion
 
@@ -342,5 +350,7 @@ namespace PowerPointArrangeAddin.Dialog {
         private System.Windows.Forms.CheckBox chkHideMarginSettingForTextbox;
         private System.Windows.Forms.CheckBox chkSizeAndPosition;
         private System.Windows.Forms.TableLayoutPanel tlpSizeAndPosition;
+        private System.Windows.Forms.CheckBox chkCheckUpdateWhenStartUp;
+        private System.Windows.Forms.Button btnCheckUpdate;
     }
 }

@@ -214,6 +214,24 @@
     <Compile Include="Misc\AddInSetting.cs" />
     <Compile Include="Misc\AddInVersion.cs" />
     <Compile Include="Misc\EnableThemingInScope.cs" />
+    <EmbeddedResource Include="Misc\MiscResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MiscResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Misc\MiscResources.ja.resx">
+      <DependentUpon>MiscResources.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Misc\MiscResources.zh-Hans.resx">
+      <DependentUpon>MiscResources.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Misc\MiscResources.zh-Hant.resx">
+      <DependentUpon>MiscResources.resx</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="Misc\MiscResources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>MiscResources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Ribbon\ArrangeRibbon.cs" />

@@ -198,6 +198,9 @@
     <value>不显示「绘图工具 - 格式」选项卡的「文本框」分组的边距设置(&amp;G)</value>
   </data>
   <data name="btnCheckUpdate.Text" xml:space="preserve">
-    <value>检查更新(&amp;F)...</value>
+    <value>检查更新(&amp;K)...</value>
+  </data>
+  <data name="chkCheckUpdateWhenStartUp.Text" xml:space="preserve">
+    <value>启动 PowerPoint 时自动检查加载项的版本更新(&amp;F)</value>
   </data>
 </root>

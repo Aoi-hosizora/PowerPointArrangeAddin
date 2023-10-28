@@ -202,5 +202,29 @@ namespace PowerPointArrangeAddin.Properties {
                 this["hideMarginSettingForTextboxGroup"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool checkUpdateWhenStartUp {
+            get {
+                return ((bool)(this["checkUpdateWhenStartUp"]));
+            }
+            set {
+                this["checkUpdateWhenStartUp"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ignoreUpdateRecord {
+            get {
+                return ((string)(this["ignoreUpdateRecord"]));
+            }
+            set {
+                this["ignoreUpdateRecord"] = value;
+            }
+        }
     }
 }

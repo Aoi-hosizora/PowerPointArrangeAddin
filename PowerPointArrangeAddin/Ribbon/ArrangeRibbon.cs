@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Forms = System.Windows.Forms;
 using Office = Microsoft.Office.Core;
 using PowerPoint = Microsoft.Office.Interop.PowerPoint;
@@ -24,6 +25,18 @@ namespace PowerPointArrangeAddin.Ribbon {
 
         public void Ribbon_Load(Office.IRibbonUI ribbonUi) {
             _ribbon = ribbonUi;
+
+            // check for updates when starts up
+            if (AddInSetting.Instance.CheckUpdateWhenStartUp) {
+                var opt = new AddInVersion.CheckUpdateOptions {
+                    ShowDialogForUpdates = true, ShowDialogIfNoUpdate = false, ShowCheckingDialog = false, ShowDialogWhenException = false,
+                    ShowMoreOptionsForAutoCheck = true, Owner = new IntPtr(Globals.ThisAddIn.Application.HWND)
+                };
+                Task.Run(async () => {
+                    await Task.Delay(TimeSpan.FromSeconds(5));
+                    await AddInVersion.Instance.CheckUpdate(opt);
+                });
+            }
         }
 
         private delegate bool AvailabilityRule(PowerPoint.ShapeRange? shapeRange, int shapesCount, bool hasTextFrame);

@@ -28,6 +28,8 @@ namespace PowerPointArrangeAddin.Misc {
         public bool ShowChartSizeAndPositionGroup { get; set; }
         public bool ShowSmartartSizeAndPositionGroup { get; set; }
         public AddInLanguage Language { get; set; }
+        public bool CheckUpdateWhenStartUp { get; set; }
+        public string IgnoreUpdateRecord { get; set; }
         public bool LessButtonsForArrangementGroup { get; set; }
         public bool HideMarginSettingForTextboxGroup { get; set; }
 
@@ -45,6 +47,8 @@ namespace PowerPointArrangeAddin.Misc {
             ShowChartSizeAndPositionGroup = Properties.Settings.Default.showChartSizeAndPositionGroup;
             ShowSmartartSizeAndPositionGroup = Properties.Settings.Default.showSmartArtSizeAndPositionGroup;
             Language = Properties.Settings.Default.language.ToAddInLanguage();
+            CheckUpdateWhenStartUp = Properties.Settings.Default.checkUpdateWhenStartUp;
+            IgnoreUpdateRecord = Properties.Settings.Default.ignoreUpdateRecord;
             LessButtonsForArrangementGroup = Properties.Settings.Default.lessButtonsForArrangementGroup;
             HideMarginSettingForTextboxGroup = Properties.Settings.Default.hideMarginSettingForTextboxGroup;
         }
@@ -63,6 +67,8 @@ namespace PowerPointArrangeAddin.Misc {
             Properties.Settings.Default.showChartSizeAndPositionGroup = ShowChartSizeAndPositionGroup;
             Properties.Settings.Default.showSmartArtSizeAndPositionGroup = ShowSmartartSizeAndPositionGroup;
             Properties.Settings.Default.language = Language.ToLanguageString();
+            Properties.Settings.Default.checkUpdateWhenStartUp = CheckUpdateWhenStartUp;
+            Properties.Settings.Default.ignoreUpdateRecord = IgnoreUpdateRecord;
             Properties.Settings.Default.lessButtonsForArrangementGroup = LessButtonsForArrangementGroup;
             Properties.Settings.Default.hideMarginSettingForTextboxGroup = HideMarginSettingForTextboxGroup;
             Properties.Settings.Default.Save();

@@ -29,6 +29,8 @@ namespace PowerPointArrangeAddin.Misc {
             }
         }
 
+        #region Assembly Version and Parsing Related
+
         public (int Major, int Minor, int Build) GetAssemblyVersion() {
             var ver = Assembly.GetExecutingAssembly().GetName().Version;
             return (ver.Major, ver.Minor, ver.Build);
@@ -40,17 +42,34 @@ namespace PowerPointArrangeAddin.Misc {
         }
 
         private (int Major, int Minor, int Build)? ParseVersionString(string version) {
-            var parts = version.TrimStart('v', 'V') // [vV]000.000.000
+            var parts = version.Trim().TrimStart('v', 'V') // [vV]123.456.789
                 .Split('.')
                 .Select(s => (Success: int.TryParse(s, out var number), Number: number))
                 .Where(t => t.Success && t.Number >= 0)
                 .Select(t => t.Number)
                 .ToArray();
             if (parts.Length != 3) {
-                return null; // invalid version string
+                return null;
             }
             return (parts[0], parts[1], parts[2]);
         }
+
+        private bool CompareIfLessThan((int Major, int Minor, int Build) a, (int Major, int Minor, int Build) b) {
+            if (a.Major < b.Major) {
+                return true;
+            }
+            if (a.Major == b.Major && a.Minor < b.Minor) {
+                return true;
+            }
+            if (a.Major == b.Major && a.Minor == b.Minor && a.Build < b.Build) {
+                return true;
+            }
+            return false;
+        }
+
+        #endregion
+
+        #region AppCenter Request Related
 
         private const string AppCenterUrl = "https://install.appcenter.ms/users/aoihosizora/apps/powerpointarrangeaddin/distribution_groups/public";
         private const string GitHubReleaseUrl = "https://github.com/Aoi-hosizora/PowerPointArrangeAddin/releases";
@@ -66,7 +85,7 @@ namespace PowerPointArrangeAddin.Misc {
             public string DownloadUrl { get; set; } = "";
         }
 
-        private async Task<ReleaseInformation> QueryLatestReleaseInformation() {
+        private async Task<ReleaseInformation> GetLatestReleaseInformation() {
             ServicePointManager.SecurityProtocol |=
                 SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12 | SecurityProtocolType.Tls13;
 
@@ -95,126 +114,186 @@ namespace PowerPointArrangeAddin.Misc {
 
                 return information;
             } catch (Exception ex) {
-                throw new Exception($"Failed to get release information: \r\n{ex.Message}");
+                throw new Exception(ex.Message);
             }
         }
 
-        private bool CompareIfLessThan((int Major, int Minor, int Build) a, (int Major, int Minor, int Build) b) {
-            if (a.Major < b.Major) {
-                return true;
-            }
-            if (a.Major == b.Major && a.Minor < b.Minor) {
-                return true;
-            }
-            if (a.Major == b.Major && a.Minor == b.Minor && a.Build < b.Build) {
-                return true;
-            }
-            return false;
-        }
+        #endregion
+
+        #region Check Update Related
 
         public class CheckUpdateOptions {
             public bool ShowDialogForUpdates { get; init; } = true;
             public bool ShowDialogIfNoUpdate { get; init; }
             public bool ShowCheckingDialog { get; init; }
             public bool ShowDialogWhenException { get; init; }
+            public bool ShowMoreOptionsForAutoCheck { get; init; }
             public IntPtr Owner { get; init; } = IntPtr.Zero;
         }
 
         public async Task<ReleaseInformation?> CheckUpdate(CheckUpdateOptions? options = null) {
             options ??= new CheckUpdateOptions();
 
-            TaskDialog? pgDialog = null;
-            var cts = new CancellationTokenSource();
+            if (options.ShowMoreOptionsForAutoCheck && CheckIfIgnoreUpdate(null)) {
+                return null; // ignore by date
+            }
+
+            Action? closeProgress = null;
+            CancellationToken? cancellationToken = null;
             if (options.ShowCheckingDialog) {
-                using (new EnableThemingInScope(true)) {
-                    pgDialog = new TaskDialog {
-                        Caption = AddInDescription.Instance.Title,
-                        InstructionText = "Checking for updates...",
-                        Icon = TaskDialogStandardIcon.Information,
-                        ProgressBar = new TaskDialogProgressBar { State = TaskDialogProgressBarState.Marquee },
-                        Cancelable = false,
-                        OwnerWindowHandle = options.Owner,
-                        StandardButtons = TaskDialogStandardButtons.Cancel,
-                    };
-                    new Thread(() => {
-                        var result = pgDialog.Show();
-                        if (result == TaskDialogResult.Cancel) {
-                            cts.Cancel();
-                        }
-                    }).Start();
-                }
+                (closeProgress, cancellationToken) = ProgressDialog(options.Owner);
             }
 
             ReleaseInformation information;
             try {
-                information = await QueryLatestReleaseInformation();
+                information = await GetLatestReleaseInformation();
             } catch (Exception ex) {
                 if (options.ShowDialogWhenException) {
-                    MessageBox.Show(ex.Message);
+                    MessageBox.Show($"{MiscResources.Dlg_GetReleaseFailedText}\r\n{ex.Message}");
                 }
                 return null;
             } finally {
-                try {
-                    pgDialog?.Close();
-                } catch (Exception) { }
+                closeProgress?.Invoke();
             }
-            if (cts.IsCancellationRequested) {
+            if (cancellationToken?.IsCancellationRequested == true) {
                 return null;
             }
 
             var latestVersion = ParseVersionString(information.Version);
             if (latestVersion == null) {
-                return null; // invalid version string
+                return null;
             }
 
             var currentVersion = GetAssemblyVersion();
             if (!CompareIfLessThan(currentVersion, latestVersion.Value)) {
                 if (options.ShowDialogIfNoUpdate) {
-                    using (new EnableThemingInScope(true)) {
-                        var dialog = new TaskDialog {
-                            Caption = AddInDescription.Instance.Title,
-                            InstructionText = "There are currently no updates available.",
-                            Text = $"Current version (v{GetAssemblyVersionInString()}) is the newest version!",
-                            Icon = TaskDialogStandardIcon.Information,
-                            Cancelable = false,
-                            OwnerWindowHandle = options.Owner,
-                            StandardButtons = TaskDialogStandardButtons.Ok
-                        };
-                        dialog.Show();
-                    }
+                    NoUpdateDialog(options.Owner);
                 }
                 return null;
             }
 
+            if (options.ShowMoreOptionsForAutoCheck && CheckIfIgnoreUpdate(information.Version)) {
+                return null; // ignore by version
+            }
+
             if (options.ShowDialogForUpdates) {
-                using (new EnableThemingInScope(true)) {
-                    var dialog = new TaskDialog();
-
-                    dialog.Caption = AddInDescription.Instance.Title;
-                    dialog.InstructionText = $"v{information.Version} has been released!";
-                    dialog.Text = $"Current version is v{GetAssemblyVersionInString()}.\r\nDo you want to download the new version?";
-                    dialog.Icon = TaskDialogStandardIcon.Information;
-
-                    dialog.DetailsExpandedText = $"\r\n{information.ReleaseNotes}";
-                    dialog.ExpansionMode = TaskDialogExpandedDetailsLocation.ExpandContent;
-                    dialog.DetailsExpanded = false;
-
-                    dialog.Cancelable = false;
-                    dialog.OwnerWindowHandle = options.Owner;
-                    dialog.StandardButtons = TaskDialogStandardButtons.Cancel;
-
-                    var lnkAppCenter = new TaskDialogCommandLink("AppCenter", "Visit &AppCenter to download");
-                    var lnkGitHub = new TaskDialogCommandLink("GitHub", "Visit &GitHub to download");
-                    lnkAppCenter.Click += (_, _) => Process.Start(AppCenterUrl);
-                    lnkGitHub.Click += (_, _) => Process.Start(GitHubReleaseUrl);
-                    dialog.Controls.Add(lnkAppCenter);
-                    dialog.Controls.Add(lnkGitHub);
-
-                    dialog.Show();
-                }
+                HasUpdateDialog(information, options);
             }
             return information;
         }
+
+        #endregion
+
+        #region Check Update Dialog Related
+
+        private (Action CloseDialog, CancellationToken CancellationToken) ProgressDialog(IntPtr owner) {
+            TaskDialog dialog;
+            var cts = new CancellationTokenSource();
+            using (new EnableThemingInScope(true)) {
+                dialog = new TaskDialog {
+                    Caption = AddInDescription.Instance.Title,
+                    Icon = TaskDialogStandardIcon.Information,
+                    InstructionText = MiscResources.Dlg_CheckUpdateProgressText,
+                    ProgressBar = new TaskDialogProgressBar { State = TaskDialogProgressBarState.Marquee },
+                    OwnerWindowHandle = owner,
+                    StandardButtons = TaskDialogStandardButtons.Cancel
+                };
+                new Thread(() => {
+                    var result = dialog.Show();
+                    if (result == TaskDialogResult.Cancel) {
+                        cts.Cancel();
+                    } else if (result == TaskDialogResult.Close) {
+                        // ignored
+                    }
+                }).Start();
+            }
+
+            void Close() {
+                try {
+                    dialog.Close();
+                } catch (Exception) {
+                    // may already closed, ignored
+                }
+            }
+
+            return (CloseDialog: Close, CancellationToken: cts.Token);
+        }
+
+        private void NoUpdateDialog(IntPtr owner) {
+            using (new EnableThemingInScope(true)) {
+                var dialog = new TaskDialog {
+                    Caption = AddInDescription.Instance.Title,
+                    Icon = TaskDialogStandardIcon.Information,
+                    InstructionText = MiscResources.Dlg_NoUpdateText,
+                    Text = string.Format(MiscResources.Dlg_CurrentIsNewestVersionText, $"v{GetAssemblyVersionInString()}"),
+                    OwnerWindowHandle = owner,
+                    StandardButtons = TaskDialogStandardButtons.Ok
+                };
+                dialog.Show();
+            }
+        }
+
+        private void HasUpdateDialog(ReleaseInformation information, CheckUpdateOptions options) {
+            using (new EnableThemingInScope(true)) {
+                var dialog = new TaskDialog {
+                    Caption = AddInDescription.Instance.Title,
+                    Icon = TaskDialogStandardIcon.Information,
+                    InstructionText = string.Format(MiscResources.Dlg_HasNewVersionReleasedText, $"v{information.Version}"),
+                    Text = $"{string.Format(MiscResources.Dlg_CurrentVersionText, $"v{GetAssemblyVersionInString()}")}\r\n\r\n{MiscResources.Dlg_DownloadNewVersionQuestionText}",
+                    DetailsExpandedText = $"{MiscResources.Dlg_ReleaseNoteText}\r\n\r\n{information.ReleaseNotes}",
+                    ExpansionMode = TaskDialogExpandedDetailsLocation.ExpandFooter,
+                    DetailsExpanded = false,
+                    OwnerWindowHandle = options.Owner,
+                    StandardButtons = TaskDialogStandardButtons.Cancel
+                };
+
+                var lnkAppCenter = new TaskDialogCommandLink("AppCenter", MiscResources.Dlg_VisitAppCenterText);
+                var lnkGitHub = new TaskDialogCommandLink("GitHub", MiscResources.Dlg_VisitGitHubText);
+                lnkAppCenter.Click += (_, _) => Process.Start(AppCenterUrl);
+                lnkGitHub.Click += (_, _) => Process.Start(GitHubReleaseUrl);
+                dialog.Controls.Add(lnkAppCenter);
+                dialog.Controls.Add(lnkGitHub);
+
+                if (options.ShowMoreOptionsForAutoCheck) {
+                    var lnkIgnoreUntil = new TaskDialogCommandLink("Ignore until", MiscResources.Dlg_IgnoreUntilTomorrowText);
+                    var lnkIgnoreVersion = new TaskDialogCommandLink("Ignore version", MiscResources.Dlg_IgnoreThisVersion);
+                    var lnkDisableAutoCheck = new TaskDialogCommandLink("Disable auto check", MiscResources.Dlg_DisableAutoCheckUpdateText);
+                    lnkIgnoreUntil.Click += (_, _) => IgnoreSpecificUpdate(null, () => dialog.Close());
+                    lnkIgnoreVersion.Click += (_, _) => IgnoreSpecificUpdate(information.Version, () => dialog.Close());
+                    lnkDisableAutoCheck.Click += (_, _) => {
+                        AddInSetting.Instance.CheckUpdateWhenStartUp = false;
+                        AddInSetting.Instance.Save();
+                        dialog.Close();
+                    };
+                    dialog.Controls.Add(lnkIgnoreUntil);
+                    dialog.Controls.Add(lnkIgnoreVersion);
+                    dialog.Controls.Add(lnkDisableAutoCheck);
+                }
+
+                dialog.Show();
+            }
+        }
+
+        private void IgnoreSpecificUpdate(string? version, Action? postAction = null) {
+            AddInSetting.Instance.IgnoreUpdateRecord = version == null
+                ? $"date={DateTime.Today:yyyyMMdd}"
+                : $"version={version}";
+            AddInSetting.Instance.Save();
+            postAction?.Invoke();
+        }
+
+        private bool CheckIfIgnoreUpdate(string? version) {
+            var record = AddInSetting.Instance.IgnoreUpdateRecord.Trim();
+            if (record == $"date={DateTime.Today:yyyyMMdd}") {
+                return true;
+            }
+            if (version != null && record == $"version={version}") {
+                return true;
+            }
+            return false;
+        }
+
+        #endregion
 
     }
 

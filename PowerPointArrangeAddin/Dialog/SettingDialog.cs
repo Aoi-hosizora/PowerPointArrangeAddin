@@ -36,6 +36,7 @@ namespace PowerPointArrangeAddin.Dialog {
             chkChartSizeAndPosition.Checked = AddInSetting.Instance.ShowChartSizeAndPositionGroup;
             chkSmartartSizeAndPosition.Checked = AddInSetting.Instance.ShowSmartartSizeAndPositionGroup;
             cboLanguage.SelectedIndex = AddInSetting.Instance.Language.ToLanguageIndex();
+            chkCheckUpdateWhenStartUp.Checked = AddInSetting.Instance.CheckUpdateWhenStartUp;
             chkLessButtonsForArrangement.Checked = AddInSetting.Instance.LessButtonsForArrangementGroup;
             chkHideMarginSettingForTextbox.Checked = AddInSetting.Instance.HideMarginSettingForTextboxGroup;
             // TODO ui icon style setting
@@ -45,11 +46,8 @@ namespace PowerPointArrangeAddin.Dialog {
             btnCheckUpdate.Enabled = false;
             Task.Run(async () => {
                 var opt = new AddInVersion.CheckUpdateOptions {
-                    ShowDialogForUpdates = true,
-                    ShowDialogIfNoUpdate = true,
-                    ShowCheckingDialog = true,
-                    ShowDialogWhenException = true,
-                    Owner = Handle
+                    ShowDialogForUpdates = true, ShowDialogIfNoUpdate = true, ShowCheckingDialog = true, ShowDialogWhenException = true,
+                    ShowMoreOptionsForAutoCheck = false, Owner = Handle
                 };
                 try {
                     var _ = await AddInVersion.Instance.CheckUpdate(opt);
@@ -74,6 +72,7 @@ namespace PowerPointArrangeAddin.Dialog {
             AddInSetting.Instance.ShowChartSizeAndPositionGroup = chkChartSizeAndPosition.Checked;
             AddInSetting.Instance.ShowSmartartSizeAndPositionGroup = chkSmartartSizeAndPosition.Checked;
             AddInSetting.Instance.Language = cboLanguage.SelectedIndex.ToAddInLanguage();
+            AddInSetting.Instance.CheckUpdateWhenStartUp = chkCheckUpdateWhenStartUp.Checked;
             AddInSetting.Instance.LessButtonsForArrangementGroup = chkLessButtonsForArrangement.Checked;
             AddInSetting.Instance.HideMarginSettingForTextboxGroup = chkHideMarginSettingForTextbox.Checked;
             AddInSetting.Instance.Save();
