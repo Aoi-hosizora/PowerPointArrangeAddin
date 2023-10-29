@@ -9,7 +9,6 @@
         <__attribute_template name="Z5" sizeString="wwwww" />
         <__attribute_template name="Z7" sizeString="wwwwwww" />
         <__attribute_template name="CV" getVisible="GetControlVisible" />
-        <__attribute_template name="GV" getVisible="GetGroupVisible" />
 
         <__attribute_template name="GROUP" getLabel="GetLabel" getScreentip="GetLabel" getImage="GetImage" getVisible="GetGroupVisible" />
         <__attribute_template name="LSKEI_Relative" getLabel="BtnAlignRelative_GetLabel" getScreentip="BtnAlignRelative_GetLabel" getKeytip="GetKeytip" getEnabled="GetEnabled" getImage="BtnAlignRelative_GetImage" />
@@ -115,9 +114,9 @@
                         <__remove_rule field="@" match="dialogBoxLauncher" />
                     </__use_template>
                     <separator id="sepAlignRelative" />
-                    <toggleButton id="btnAlignRelative_ToSlide" __template="LSKEI_Relative" getPressed="BtnAlignRelative_GetPressed" onAction="BtnAlignRelative_Click" />
-                    <toggleButton id="btnAlignRelative_ToObjects" __template="LSKEI_Relative" getPressed="BtnAlignRelative_GetPressed" onAction="BtnAlignRelative_Click" />
-                    <toggleButton id="btnAlignRelative_ToFirstObject" __template="LSKEI_Relative" getPressed="BtnAlignRelative_GetPressed" onAction="BtnAlignRelative_Click" />
+                    <toggleButton id="btnAlignRelative_ToSlide" __template="L,S,K,E,I" getPressed="BtnAlignRelative_GetPressed" onAction="BtnAlignRelative_Click" />
+                    <toggleButton id="btnAlignRelative_ToObjects" __template="L,S,K,E,I" getPressed="BtnAlignRelative_GetPressed" onAction="BtnAlignRelative_Click" />
+                    <toggleButton id="btnAlignRelative_ToFirstObject" __template="L,S,K,E,I" getPressed="BtnAlignRelative_GetPressed" onAction="BtnAlignRelative_Click" />
                     <dialogBoxLauncher>
                         <button id="btnSizeAndPosition" __template="L,S,K,E" onAction="BtnSizeAndPosition_Click" />
                     </dialogBoxLauncher>
@@ -133,9 +132,9 @@
                         <__remove_rule field="@" match="dialogBoxLauncher" />
                     </__use_template>
                     <separator id="sepScaleAnchor" />
-                    <toggleButton id="btnScaleAnchor_FromTopLeft" __template="LSKEI_Anchor" getPressed="BtnScaleAnchor_GetPressed" onAction="BtnScaleAnchor_Click" />
-                    <toggleButton id="btnScaleAnchor_FromMiddle" __template="LSKEI_Anchor" getPressed="BtnScaleAnchor_GetPressed" onAction="BtnScaleAnchor_Click" />
-                    <toggleButton id="btnScaleAnchor_FromBottomRight" __template="LSKEI_Anchor" getPressed="BtnScaleAnchor_GetPressed" onAction="BtnScaleAnchor_Click" />
+                    <toggleButton id="btnScaleAnchor_FromTopLeft" __template="L,S,K,E,I" getPressed="BtnScaleAnchor_GetPressed" onAction="BtnScaleAnchor_Click" />
+                    <toggleButton id="btnScaleAnchor_FromMiddle" __template="L,S,K,E,I" getPressed="BtnScaleAnchor_GetPressed" onAction="BtnScaleAnchor_Click" />
+                    <toggleButton id="btnScaleAnchor_FromBottomRight" __template="L,S,K,E,I" getPressed="BtnScaleAnchor_GetPressed" onAction="BtnScaleAnchor_Click" />
                     <dialogBoxLauncher>
                         <__use_reference name="$id=btnSizeAndPosition:1" />
                     </dialogBoxLauncher>

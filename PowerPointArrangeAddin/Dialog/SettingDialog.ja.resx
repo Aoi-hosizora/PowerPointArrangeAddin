@@ -150,7 +150,7 @@
     <value>その他の設定</value>
   </data>
   <data name="lblLanguage.Text" xml:space="preserve">
-    <value>言語(&amp;L):</value>
+    <value>表示言語(&amp;L):</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>【PowerPoint 配置補助アドイン】の設定</value>
@@ -202,5 +202,14 @@
   </data>
   <data name="chkCheckUpdateWhenStartUp.Text" xml:space="preserve">
     <value>PowerPoint が起動される時に自動的にアドインの更新を確認(&amp;F)</value>
+  </data>
+  <data name="txtIconStyle.Text" xml:space="preserve">
+    <value>ｱｲｺﾝ ｽﾀｲﾙ(&amp;Y):</value>
+  </data>
+  <data name="cboIconStyle.Items" xml:space="preserve">
+    <value>フラットデザイン (Microsoft Office 2013 と以後)</value>
+  </data>
+  <data name="cboIconStyle.Items1" xml:space="preserve">
+    <value>スキューモーフィズム (Microsoft Office 2010 と以前)</value>
   </data>
 </root>

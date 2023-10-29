@@ -45,6 +45,8 @@ namespace PowerPointArrangeAddin.Dialog {
             this.chkVideoSizeAndPosition = new System.Windows.Forms.CheckBox();
             this.grpOtherSetting = new System.Windows.Forms.GroupBox();
             this.tlpOtherSetting = new System.Windows.Forms.TableLayoutPanel();
+            this.cboIconStyle = new System.Windows.Forms.ComboBox();
+            this.txtIconStyle = new System.Windows.Forms.Label();
             this.lblLanguage = new System.Windows.Forms.Label();
             this.cboLanguage = new System.Windows.Forms.ComboBox();
             this.chkCheckUpdateWhenStartUp = new System.Windows.Forms.CheckBox();
@@ -227,12 +229,27 @@ namespace PowerPointArrangeAddin.Dialog {
             // tlpOtherSetting
             // 
             resources.ApplyResources(this.tlpOtherSetting, "tlpOtherSetting");
+            this.tlpOtherSetting.Controls.Add(this.cboIconStyle, 1, 4);
+            this.tlpOtherSetting.Controls.Add(this.txtIconStyle, 0, 4);
             this.tlpOtherSetting.Controls.Add(this.lblLanguage, 0, 0);
             this.tlpOtherSetting.Controls.Add(this.cboLanguage, 1, 0);
             this.tlpOtherSetting.Controls.Add(this.chkCheckUpdateWhenStartUp, 0, 1);
             this.tlpOtherSetting.Controls.Add(this.chkHideMarginSettingForTextbox, 0, 3);
             this.tlpOtherSetting.Controls.Add(this.chkLessButtonsForArrangement, 0, 2);
             this.tlpOtherSetting.Name = "tlpOtherSetting";
+            // 
+            // cboIconStyle
+            // 
+            resources.ApplyResources(this.cboIconStyle, "cboIconStyle");
+            this.cboIconStyle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboIconStyle.FormattingEnabled = true;
+            this.cboIconStyle.Items.AddRange(new object[] { resources.GetString("cboIconStyle.Items"), resources.GetString("cboIconStyle.Items1") });
+            this.cboIconStyle.Name = "cboIconStyle";
+            // 
+            // txtIconStyle
+            // 
+            resources.ApplyResources(this.txtIconStyle, "txtIconStyle");
+            this.txtIconStyle.Name = "txtIconStyle";
             // 
             // lblLanguage
             // 
@@ -352,5 +369,7 @@ namespace PowerPointArrangeAddin.Dialog {
         private System.Windows.Forms.TableLayoutPanel tlpSizeAndPosition;
         private System.Windows.Forms.CheckBox chkCheckUpdateWhenStartUp;
         private System.Windows.Forms.Button btnCheckUpdate;
+        private System.Windows.Forms.Label txtIconStyle;
+        private System.Windows.Forms.ComboBox cboIconStyle;
     }
 }

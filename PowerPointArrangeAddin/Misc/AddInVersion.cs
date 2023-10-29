@@ -218,7 +218,7 @@ namespace PowerPointArrangeAddin.Misc {
             using (new EnableThemingInScope(true)) {
                 dialog = new TaskDialog {
                     Caption = AddInDescription.Instance.Title,
-                    Icon = TaskDialogStandardIcon.Information,
+                    Icon = TaskDialogStandardIcon.None, // => no icon because of dialog sound
                     InstructionText = MiscResources.Dlg_CheckUpdateProgressText,
                     ProgressBar = new TaskDialogProgressBar { State = TaskDialogProgressBarState.Marquee },
                     OwnerWindowHandle = owner,

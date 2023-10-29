@@ -147,7 +147,7 @@
     <value>分组显示设置</value>
   </data>
   <data name="lblLanguage.Text" xml:space="preserve">
-    <value>语言(&amp;L):</value>
+    <value>显示语言(&amp;L):</value>
   </data>
   <data name="grpOtherSetting.Text" xml:space="preserve">
     <value>其他设置</value>
@@ -202,5 +202,14 @@
   </data>
   <data name="chkCheckUpdateWhenStartUp.Text" xml:space="preserve">
     <value>启动 PowerPoint 时自动检查加载项的版本更新(&amp;F)</value>
+  </data>
+  <data name="txtIconStyle.Text" xml:space="preserve">
+    <value>图标风格(&amp;Y):</value>
+  </data>
+  <data name="cboIconStyle.Items" xml:space="preserve">
+    <value>扁平风格 (Microsoft Office 2013 及以后)</value>
+  </data>
+  <data name="cboIconStyle.Items1" xml:space="preserve">
+    <value>拟物风格 (Microsoft Office 2010 及以前)</value>
   </data>
 </root>

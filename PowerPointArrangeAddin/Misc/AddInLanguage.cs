@@ -71,8 +71,8 @@ namespace PowerPointArrangeAddin.Misc {
             };
         }
 
-        public static AddInLanguage ToAddInLanguage(this int language) {
-            return language switch {
+        public static AddInLanguage ToAddInLanguage(this int index) {
+            return index switch {
                 0 => AddInLanguage.Default,
                 1 => AddInLanguage.English,
                 2 => AddInLanguage.SimplifiedChinese,

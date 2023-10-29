@@ -1,8 +1,8 @@
 namespace PowerPointArrangeAddin.Misc {
 
     public enum AddInIconStyle {
-        Office2013,
-        Office2010
+        Office2013, // flat style
+        Office2010 // material style
     }
 
     public static class AddInIconStyleExtension {

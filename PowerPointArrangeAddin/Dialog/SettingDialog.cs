@@ -39,7 +39,7 @@ namespace PowerPointArrangeAddin.Dialog {
             chkCheckUpdateWhenStartUp.Checked = AddInSetting.Instance.CheckUpdateWhenStartUp;
             chkLessButtonsForArrangement.Checked = AddInSetting.Instance.LessButtonsForArrangementGroup;
             chkHideMarginSettingForTextbox.Checked = AddInSetting.Instance.HideMarginSettingForTextboxGroup;
-            // TODO ui icon style setting
+            cboIconStyle.SelectedIndex = AddInSetting.Instance.IconStyle.ToIconStyleIndex();
         }
 
         private void BtnCheckUpdate_Click(object sender, EventArgs e) {
@@ -67,6 +67,7 @@ namespace PowerPointArrangeAddin.Dialog {
             AddInSetting.Instance.CheckUpdateWhenStartUp = chkCheckUpdateWhenStartUp.Checked;
             AddInSetting.Instance.LessButtonsForArrangementGroup = chkLessButtonsForArrangement.Checked;
             AddInSetting.Instance.HideMarginSettingForTextboxGroup = chkHideMarginSettingForTextbox.Checked;
+            AddInSetting.Instance.IconStyle = cboIconStyle.SelectedIndex.ToAddInIconStyle();
             AddInSetting.Instance.Save();
             DialogResult = DialogResult.OK;
             Close();

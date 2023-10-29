@@ -292,42 +292,32 @@ namespace PowerPointArrangeAddin.Ribbon {
             if (!IsOptionRibbonButton(ribbonControl)) {
                 var shapeRange = GetShapeRange();
                 if (shapeRange?.Count == 1) {
-                    return ArrangeRibbonResources.btnAlignRelative_ToSlide; // when single shape is selected
+                    return GetLabel(btnAlignRelative_ToSlide); // when single shape is selected
                 }
                 return _alignRelativeFlag switch {
-                    ArrangementHelper.AlignRelativeFlag.RelativeToObjects => ArrangeRibbonResources.btnAlignRelative_ToObjects,
-                    ArrangementHelper.AlignRelativeFlag.RelativeToFirstObject => ArrangeRibbonResources.btnAlignRelative_ToFirstObject,
-                    ArrangementHelper.AlignRelativeFlag.RelativeToSlide => ArrangeRibbonResources.btnAlignRelative_ToSlide,
-                    _ => ArrangeRibbonResources.btnAlignRelative_ToObjects
+                    ArrangementHelper.AlignRelativeFlag.RelativeToObjects => GetLabel(btnAlignRelative_ToObjects),
+                    ArrangementHelper.AlignRelativeFlag.RelativeToFirstObject => GetLabel(btnAlignRelative_ToFirstObject),
+                    ArrangementHelper.AlignRelativeFlag.RelativeToSlide => GetLabel(btnAlignRelative_ToSlide),
+                    _ => GetLabel(btnAlignRelative_ToObjects)
                 };
             }
-            return ribbonControl.Id() switch {
-                btnAlignRelative_ToObjects => ArrangeRibbonResources.btnAlignRelative_ToObjects,
-                btnAlignRelative_ToFirstObject => ArrangeRibbonResources.btnAlignRelative_ToFirstObject,
-                btnAlignRelative_ToSlide => ArrangeRibbonResources.btnAlignRelative_ToSlide,
-                _ => ArrangeRibbonResources.btnAlignRelative_ToObjects
-            };
+            return GetLabel(ribbonControl.Id());
         }
 
-        public System.Drawing.Image BtnAlignRelative_GetImage(Office.IRibbonControl ribbonControl) { // TODO
+        public System.Drawing.Image? BtnAlignRelative_GetImage(Office.IRibbonControl ribbonControl) {
             if (!IsOptionRibbonButton(ribbonControl)) {
                 var shapeRange = GetShapeRange();
                 if (shapeRange?.Count == 1) {
-                    return Icon.MaterialIconResources.AlignRelativeToSlide; // when single shape is selected
+                    return GetImage(btnAlignRelative_ToSlide); // when single shape is selected
                 }
                 return _alignRelativeFlag switch {
-                    ArrangementHelper.AlignRelativeFlag.RelativeToObjects => Icon.MaterialIconResources.AlignRelativeToObjects,
-                    ArrangementHelper.AlignRelativeFlag.RelativeToFirstObject => Icon.MaterialIconResources.AlignRelativeToFirstObject,
-                    ArrangementHelper.AlignRelativeFlag.RelativeToSlide => Icon.MaterialIconResources.AlignRelativeToSlide,
-                    _ => Icon.MaterialIconResources.AlignRelativeToObjects
+                    ArrangementHelper.AlignRelativeFlag.RelativeToObjects => GetImage(btnAlignRelative_ToObjects),
+                    ArrangementHelper.AlignRelativeFlag.RelativeToFirstObject => GetImage(btnAlignRelative_ToFirstObject),
+                    ArrangementHelper.AlignRelativeFlag.RelativeToSlide => GetImage(btnAlignRelative_ToSlide),
+                    _ => GetImage(btnAlignRelative_ToObjects)
                 };
             }
-            return ribbonControl.Id() switch {
-                btnAlignRelative_ToObjects => Icon.MaterialIconResources.AlignRelativeToObjects,
-                btnAlignRelative_ToFirstObject => Icon.MaterialIconResources.AlignRelativeToFirstObject,
-                btnAlignRelative_ToSlide => Icon.MaterialIconResources.AlignRelativeToSlide,
-                _ => Icon.MaterialIconResources.AlignRelativeToObjects
-            };
+            return GetImage(ribbonControl.Id());
         }
 
         public void BtnScale_Click(Office.IRibbonControl ribbonControl) {
@@ -384,35 +374,25 @@ namespace PowerPointArrangeAddin.Ribbon {
         public string BtnScaleAnchor_GetLabel(Office.IRibbonControl ribbonControl) {
             if (!IsOptionRibbonButton(ribbonControl)) {
                 return _scaleFromFlag switch {
-                    Office.MsoScaleFrom.msoScaleFromTopLeft => ArrangeRibbonResources.btnScaleAnchor_FromTopLeft,
-                    Office.MsoScaleFrom.msoScaleFromMiddle => ArrangeRibbonResources.btnScaleAnchor_FromMiddle,
-                    Office.MsoScaleFrom.msoScaleFromBottomRight => ArrangeRibbonResources.btnScaleAnchor_FromBottomRight,
-                    _ => ArrangeRibbonResources.btnScaleAnchor_FromTopLeft
+                    Office.MsoScaleFrom.msoScaleFromTopLeft => GetLabel(btnScaleAnchor_FromTopLeft),
+                    Office.MsoScaleFrom.msoScaleFromMiddle => GetLabel(btnScaleAnchor_FromMiddle),
+                    Office.MsoScaleFrom.msoScaleFromBottomRight => GetLabel(btnScaleAnchor_FromBottomRight),
+                    _ => GetLabel(btnScaleAnchor_FromTopLeft)
                 };
             }
-            return ribbonControl.Id() switch {
-                btnScaleAnchor_FromTopLeft => ArrangeRibbonResources.btnScaleAnchor_FromTopLeft,
-                btnScaleAnchor_FromMiddle => ArrangeRibbonResources.btnScaleAnchor_FromMiddle,
-                btnScaleAnchor_FromBottomRight => ArrangeRibbonResources.btnScaleAnchor_FromBottomRight,
-                _ => ArrangeRibbonResources.btnScaleAnchor_FromTopLeft
-            };
+            return GetLabel(ribbonControl.Id());
         }
 
-        public System.Drawing.Image BtnScaleAnchor_GetImage(Office.IRibbonControl ribbonControl) { // TODO
+        public System.Drawing.Image? BtnScaleAnchor_GetImage(Office.IRibbonControl ribbonControl) {
             if (!IsOptionRibbonButton(ribbonControl)) {
                 return _scaleFromFlag switch {
-                    Office.MsoScaleFrom.msoScaleFromTopLeft => Icon.MaterialIconResources.ScaleFromTopLeft,
-                    Office.MsoScaleFrom.msoScaleFromMiddle => Icon.MaterialIconResources.ScaleFromMiddle,
-                    Office.MsoScaleFrom.msoScaleFromBottomRight => Icon.MaterialIconResources.ScaleFromBottomRight,
-                    _ => Icon.MaterialIconResources.ScaleFromTopLeft
+                    Office.MsoScaleFrom.msoScaleFromTopLeft => GetImage(btnScaleAnchor_FromTopLeft),
+                    Office.MsoScaleFrom.msoScaleFromMiddle => GetImage(btnScaleAnchor_FromMiddle),
+                    Office.MsoScaleFrom.msoScaleFromBottomRight => GetImage(btnScaleAnchor_FromBottomRight),
+                    _ => GetImage(btnScaleAnchor_FromTopLeft)
                 };
             }
-            return ribbonControl.Id() switch {
-                btnScaleAnchor_FromTopLeft => Icon.MaterialIconResources.ScaleFromTopLeft,
-                btnScaleAnchor_FromMiddle => Icon.MaterialIconResources.ScaleFromMiddle,
-                btnScaleAnchor_FromBottomRight => Icon.MaterialIconResources.ScaleFromBottomRight,
-                _ => Icon.MaterialIconResources.ScaleFromTopLeft
-            };
+            return GetImage(ribbonControl.Id());
         }
 
         public void BtnExtend_Click(Office.IRibbonControl ribbonControl) {
@@ -501,6 +481,7 @@ namespace PowerPointArrangeAddin.Ribbon {
 
         public void BtnAddInSetting_Click(Office.IRibbonControl _) {
             var oldLanguage = AddInSetting.Instance.Language;
+            var oldIconStyle = AddInSetting.Instance.IconStyle;
             var dlg = new Dialog.SettingDialog();
             var result = dlg.ShowDialog();
             if (result != Forms.DialogResult.OK) {
@@ -510,6 +491,8 @@ namespace PowerPointArrangeAddin.Ribbon {
             if (AddInSetting.Instance.Language != oldLanguage) {
                 // include updating elements and invalidating ribbon
                 AddInLanguageChanger.ChangeLanguage(AddInSetting.Instance.Language);
+            } else if (AddInSetting.Instance.IconStyle != oldIconStyle) {
+                UpdateUiElementsAndInvalidate(); // update elements for icons and invalidating ribbon
             } else {
                 _ribbon?.Invalidate(); // just invalidate ribbon
             }

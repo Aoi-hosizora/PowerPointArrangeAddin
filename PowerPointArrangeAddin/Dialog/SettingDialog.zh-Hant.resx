@@ -147,7 +147,7 @@
     <value>群組顯示選項</value>
   </data>
   <data name="lblLanguage.Text" xml:space="preserve">
-    <value>語言(&amp;L):</value>
+    <value>顯示語言(&amp;L):</value>
   </data>
   <data name="grpOtherSetting.Text" xml:space="preserve">
     <value>其他選項</value>
@@ -202,5 +202,14 @@
   </data>
   <data name="chkCheckUpdateWhenStartUp.Text" xml:space="preserve">
     <value>啓動 PowerPoint 時自動檢查增益集的版本更新(&amp;F)</value>
+  </data>
+  <data name="txtIconStyle.Text" xml:space="preserve">
+    <value>圖示風格(&amp;Y):</value>
+  </data>
+  <data name="cboIconStyle.Items" xml:space="preserve">
+    <value>擬物風格 ( MicrosoftOffice 2010 及以前)</value>
+  </data>
+  <data name="cboIconStyle.Items1" xml:space="preserve">
+    <value>擬物風格 ( MicrosoftOffice 2010 及以前)</value>
   </data>
 </root>
