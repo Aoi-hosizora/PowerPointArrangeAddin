@@ -8,8 +8,9 @@ using PowerPointArrangeAddin.Helper;
 
 namespace PowerPointArrangeAddin.Ribbon {
 
-    using R1 = ArrangeRibbonResources;
-    using R2 = Properties.Resources;
+    using RL = ArrangeRibbonResources;
+    using RIM = Icon.MaterialIconResources;
+    using RIF = Icon.FlatIconResources;
 
     [ComVisible(true)]
     public partial class ArrangeRibbon : Office.IRibbonExtensibility {
@@ -76,6 +77,32 @@ namespace PowerPointArrangeAddin.Ribbon {
         //     - GetEnabled
         //     - GetControlVisible
         //     - GetGroupVisible
+
+        #region Ribbon UI Callbacks (Sugar)
+
+        private class FakeRibbonControl : Office.IRibbonControl {
+            public FakeRibbonControl(string id) {
+                Id = id;
+            }
+
+            public string Id { get; }
+            public object Context => 0;
+            public string Tag => "";
+        }
+
+        public string GetLabel(string ribbonControlId) {
+            return GetLabel(new FakeRibbonControl(ribbonControlId));
+        }
+
+        public System.Drawing.Image? GetImage(string ribbonControlId) {
+            return GetImage(new FakeRibbonControl(ribbonControlId));
+        }
+
+        public string GetKeytip(string ribbonControlId) {
+            return GetKeytip(new FakeRibbonControl(ribbonControlId));
+        }
+
+        #endregion
 
         #endregion
 
@@ -262,9 +289,27 @@ namespace PowerPointArrangeAddin.Ribbon {
         #region Ribbon Element UIs
 
         private class UiElement {
-            public string? Label { get; init; }
-            public System.Drawing.Image? Image { get; init; }
-            public string? Keytip { get; init; }
+            public UiElement(string? label = null, string? imageName = null, string? keytip = null) {
+                Label = label;
+                ImageName = imageName;
+                Keytip = keytip;
+            }
+
+            public string? Label { get; }
+            public string? ImageName { get; }
+            public string? Keytip { get; }
+
+            public System.Drawing.Image? Image { get; private set; }
+
+            public UiElement ApplyNameToImage() {
+                if (ImageName != null) {
+                    var (resourceManager, culture) = Misc.AddInSetting.Instance.IconStyle == Misc.AddInIconStyle.Office2010
+                        ? (RIM.ResourceManager, RIM.Culture) // material
+                        : (RIF.ResourceManager, RIF.Culture); // flat
+                    Image = (System.Drawing.Image?) resourceManager.GetObject(ImageName, culture);
+                }
+                return this;
+            }
         }
 
         private Dictionary<string, UiElement> _ribbonUiElements; // id -> ui
@@ -275,7 +320,7 @@ namespace PowerPointArrangeAddin.Ribbon {
             var specialMap = new Dictionary<string, Dictionary<string, UiElement>>();
 
             void Register(string id, UiElement ui) {
-                map[id] = ui;
+                map[id] = ui.ApplyNameToImage();
             }
 
             void RegisterS(string group, string id, UiElement ui) {
@@ -283,163 +328,163 @@ namespace PowerPointArrangeAddin.Ribbon {
                     specialMap[group] = new Dictionary<string, UiElement>();
                     m = specialMap[group];
                 }
-                m[id] = ui;
+                m[id] = ui.ApplyNameToImage();
             }
 
             // grpWordArt
-            Register(grpWordArt, new UiElement { Label = R1.grpWordArt, Image = R2.TextEffectsMenu });
+            Register(grpWordArt, new UiElement(RL.grpWordArt, nameof(RIM.TextEffectsMenu)));
             // grpArrange
-            Register(grpArrange, new UiElement { Label = R1.grpArrange, Image = R2.ObjectArrangement });
-            Register(btnAlignLeft, new UiElement { Label = R1.btnAlignLeft, Image = R2.ObjectsAlignLeft, Keytip = "DL" });
-            Register(btnAlignCenter, new UiElement { Label = R1.btnAlignCenter, Image = R2.ObjectsAlignCenterHorizontal, Keytip = "DC" });
-            Register(btnAlignRight, new UiElement { Label = R1.btnAlignRight, Image = R2.ObjectsAlignRight, Keytip = "DR" });
-            Register(btnAlignTop, new UiElement { Label = R1.btnAlignTop, Image = R2.ObjectsAlignTop, Keytip = "DT" });
-            Register(btnAlignMiddle, new UiElement { Label = R1.btnAlignMiddle, Image = R2.ObjectsAlignMiddleVertical, Keytip = "DM" });
-            Register(btnAlignBottom, new UiElement { Label = R1.btnAlignBottom, Image = R2.ObjectsAlignBottom, Keytip = "DB" });
-            Register(btnDistributeHorizontal, new UiElement { Label = R1.btnDistributeHorizontal, Image = R2.AlignDistributeHorizontally, Keytip = "DH" });
-            Register(btnDistributeVertical, new UiElement { Label = R1.btnDistributeVertical, Image = R2.AlignDistributeVertically, Keytip = "DV" });
-            Register(btnAlignRelative, new UiElement { Label = R1.btnAlignRelative_ToObjects, Image = R2.AlignRelativeToObjects, Keytip = "DA" });
-            Register(btnScaleSameWidth, new UiElement { Label = R1.btnScaleSameWidth, Image = R2.ScaleSameWidth, Keytip = "PW" });
-            Register(btnScaleSameHeight, new UiElement { Label = R1.btnScaleSameHeight, Image = R2.ScaleSameHeight, Keytip = "PH" });
-            Register(btnScaleSameSize, new UiElement { Label = R1.btnScaleSameSize, Image = R2.ScaleSameSize, Keytip = "PS" });
-            Register(btnScaleAnchor, new UiElement { Label = R1.btnScaleAnchor_FromTopLeft, Image = R2.ScaleFromTopLeft, Keytip = "PA" });
-            Register(btnExtendSameLeft, new UiElement { Label = R1.btnExtendSameLeft, Image = R2.ExtendSameLeft, Keytip = "PL" });
-            Register(btnExtendSameRight, new UiElement { Label = R1.btnExtendSameRight, Image = R2.ExtendSameRight, Keytip = "PR" });
-            Register(btnExtendSameTop, new UiElement { Label = R1.btnExtendSameTop, Image = R2.ExtendSameTop, Keytip = "PT" });
-            Register(btnExtendSameBottom, new UiElement { Label = R1.btnExtendSameBottom, Image = R2.ExtendSameBottom, Keytip = "PB" });
-            Register(btnSnapLeft, new UiElement { Label = R1.btnSnapLeft, Image = R2.SnapLeftToRight, Keytip = "PE" });
-            Register(btnSnapRight, new UiElement { Label = R1.btnSnapRight, Image = R2.SnapRightToLeft, Keytip = "PI" });
-            Register(btnSnapTop, new UiElement { Label = R1.btnSnapTop, Image = R2.SnapTopToBottom, Keytip = "PO" });
-            Register(btnSnapBottom, new UiElement { Label = R1.btnSnapBottom, Image = R2.SnapBottomToTop, Keytip = "PM" });
-            Register(btnMoveFront, new UiElement { Label = R1.btnMoveFront, Image = R2.ObjectBringToFront, Keytip = "HF" });
-            Register(btnMoveBack, new UiElement { Label = R1.btnMoveBack, Image = R2.ObjectSendToBack, Keytip = "HB" });
-            Register(btnMoveForward, new UiElement { Label = R1.btnMoveForward, Image = R2.ObjectBringForward, Keytip = "HO" });
-            Register(btnMoveBackward, new UiElement { Label = R1.btnMoveBackward, Image = R2.ObjectSendBackward, Keytip = "HA" });
-            Register(btnRotateRight90, new UiElement { Label = R1.btnRotateRight90, Image = R2.ObjectRotateRight90, Keytip = "HR" });
-            Register(btnRotateLeft90, new UiElement { Label = R1.btnRotateLeft90, Image = R2.ObjectRotateLeft90, Keytip = "HL" });
-            Register(btnFlipVertical, new UiElement { Label = R1.btnFlipVertical, Image = R2.ObjectFlipVertical, Keytip = "HV" });
-            Register(btnFlipHorizontal, new UiElement { Label = R1.btnFlipHorizontal, Image = R2.ObjectFlipHorizontal, Keytip = "HH" });
-            Register(btnGroup, new UiElement { Label = R1.btnGroup, Image = R2.ObjectsGroup, Keytip = "HG" });
-            Register(btnUngroup, new UiElement { Label = R1.btnUngroup, Image = R2.ObjectsUngroup, Keytip = "HU" });
-            Register(btnGridSetting, new UiElement { Label = R1.btnGridSetting, Image = R2.GridSetting, Keytip = "HD" });
-            Register(mnuArrangement, new UiElement { Label = R1.mnuArrangement, Image = R2.ObjectArrangement_32, Keytip = "B" });
-            Register(btnAddInSetting, new UiElement { Label = R1.btnAddInSetting, Image = R2.AddInOptions, Keytip = "AS" });
+            Register(grpArrange, new UiElement(RL.grpArrange, nameof(RIM.ObjectArrangement)));
+            Register(btnAlignLeft, new UiElement(RL.btnAlignLeft, nameof(RIM.ObjectsAlignLeft), "DL"));
+            Register(btnAlignCenter, new UiElement(RL.btnAlignCenter, nameof(RIM.ObjectsAlignCenterHorizontal), "DC"));
+            Register(btnAlignRight, new UiElement(RL.btnAlignRight, nameof(RIM.ObjectsAlignRight), "DR"));
+            Register(btnAlignTop, new UiElement(RL.btnAlignTop, nameof(RIM.ObjectsAlignTop), "DT"));
+            Register(btnAlignMiddle, new UiElement(RL.btnAlignMiddle, nameof(RIM.ObjectsAlignMiddleVertical), "DM"));
+            Register(btnAlignBottom, new UiElement(RL.btnAlignBottom, nameof(RIM.ObjectsAlignBottom), "DB"));
+            Register(btnDistributeHorizontal, new UiElement(RL.btnDistributeHorizontal, nameof(RIM.AlignDistributeHorizontally), "DH"));
+            Register(btnDistributeVertical, new UiElement(RL.btnDistributeVertical, nameof(RIM.AlignDistributeVertically), "DV"));
+            Register(btnAlignRelative, new UiElement(RL.btnAlignRelative_ToObjects, nameof(RIM.AlignRelativeToObjects), "DA"));
+            Register(btnScaleSameWidth, new UiElement(RL.btnScaleSameWidth, nameof(RIM.ScaleSameWidth), "PW"));
+            Register(btnScaleSameHeight, new UiElement(RL.btnScaleSameHeight, nameof(RIM.ScaleSameHeight), "PH"));
+            Register(btnScaleSameSize, new UiElement(RL.btnScaleSameSize, nameof(RIM.ScaleSameSize), "PS"));
+            Register(btnScaleAnchor, new UiElement(RL.btnScaleAnchor_FromTopLeft, nameof(RIM.ScaleFromTopLeft), "PA"));
+            Register(btnExtendSameLeft, new UiElement(RL.btnExtendSameLeft, nameof(RIM.ExtendSameLeft), "PL"));
+            Register(btnExtendSameRight, new UiElement(RL.btnExtendSameRight, nameof(RIM.ExtendSameRight), "PR"));
+            Register(btnExtendSameTop, new UiElement(RL.btnExtendSameTop, nameof(RIM.ExtendSameTop), "PT"));
+            Register(btnExtendSameBottom, new UiElement(RL.btnExtendSameBottom, nameof(RIM.ExtendSameBottom), "PB"));
+            Register(btnSnapLeft, new UiElement(RL.btnSnapLeft, nameof(RIM.SnapLeftToRight), "PE"));
+            Register(btnSnapRight, new UiElement(RL.btnSnapRight, nameof(RIM.SnapRightToLeft), "PI"));
+            Register(btnSnapTop, new UiElement(RL.btnSnapTop, nameof(RIM.SnapTopToBottom), "PO"));
+            Register(btnSnapBottom, new UiElement(RL.btnSnapBottom, nameof(RIM.SnapBottomToTop), "PM"));
+            Register(btnMoveFront, new UiElement(RL.btnMoveFront, nameof(RIM.ObjectBringToFront), "HF"));
+            Register(btnMoveBack, new UiElement(RL.btnMoveBack, nameof(RIM.ObjectSendToBack), "HB"));
+            Register(btnMoveForward, new UiElement(RL.btnMoveForward, nameof(RIM.ObjectBringForward), "HO"));
+            Register(btnMoveBackward, new UiElement(RL.btnMoveBackward, nameof(RIM.ObjectSendBackward), "HA"));
+            Register(btnRotateRight90, new UiElement(RL.btnRotateRight90, nameof(RIM.ObjectRotateRight90), "HR"));
+            Register(btnRotateLeft90, new UiElement(RL.btnRotateLeft90, nameof(RIM.ObjectRotateLeft90), "HL"));
+            Register(btnFlipVertical, new UiElement(RL.btnFlipVertical, nameof(RIM.ObjectFlipVertical), "HV"));
+            Register(btnFlipHorizontal, new UiElement(RL.btnFlipHorizontal, nameof(RIM.ObjectFlipHorizontal), "HH"));
+            Register(btnGroup, new UiElement(RL.btnGroup, nameof(RIM.ObjectsGroup), "HG"));
+            Register(btnUngroup, new UiElement(RL.btnUngroup, nameof(RIM.ObjectsUngroup), "HU"));
+            Register(btnGridSetting, new UiElement(RL.btnGridSetting, nameof(RIM.GridSetting), "HD"));
+            Register(mnuArrangement, new UiElement(RL.mnuArrangement, nameof(RIM.ObjectArrangement_32), "B"));
+            Register(btnAddInSetting, new UiElement(RL.btnAddInSetting, nameof(RIM.AddInOptions), "AS"));
             // tabArrangement
-            Register(tabArrangement, new UiElement { Label = R1.tabArrangement, Keytip = "M" });
+            Register(tabArrangement, new UiElement(RL.tabArrangement, keytip: "M"));
             // grpAddInSetting
-            Register(grpAddInSetting, new UiElement { Label = R1.grpAddInSetting, Image = R2.AddInOptions });
-            RegisterS(grpAddInSetting, btnAddInSetting, new UiElement { Image = R2.AddInOptions_32, Keytip = "T" });
+            Register(grpAddInSetting, new UiElement(RL.grpAddInSetting, nameof(RIM.AddInOptions)));
+            RegisterS(grpAddInSetting, btnAddInSetting, new UiElement(null, nameof(RIM.AddInOptions_32), "T"));
             // grpAlignment
-            Register(grpAlignment, new UiElement { Label = R1.grpAlignment, Image = R2.ObjectArrangement });
-            Register(lblAlignmentH, new UiElement { Label = R1.lblAlignmentH });
-            Register(lblAlignmentV, new UiElement { Label = R1.lblAlignmentV });
-            Register(lblDistribute, new UiElement { Label = R1.lblDistribute });
-            Register(btnAlignRelative_ToObjects, new UiElement { Label = R1.btnAlignRelative_ToObjects, Image = R2.AlignRelativeToObjects, Keytip = "DO" });
-            Register(btnAlignRelative_ToFirstObject, new UiElement { Label = R1.btnAlignRelative_ToFirstObject, Image = R2.AlignRelativeToFirstObject, Keytip = "DF" });
-            Register(btnAlignRelative_ToSlide, new UiElement { Label = R1.btnAlignRelative_ToSlide, Image = R2.AlignRelativeToSlide, Keytip = "DS" });
-            Register(btnSizeAndPosition, new UiElement { Label = R1.btnSizeAndPosition, Image = R2.SizeAndPosition, Keytip = "DN" });
+            Register(grpAlignment, new UiElement(RL.grpAlignment, nameof(RIM.ObjectArrangement)));
+            Register(lblAlignmentH, new UiElement(RL.lblAlignmentH));
+            Register(lblAlignmentV, new UiElement(RL.lblAlignmentV));
+            Register(lblDistribute, new UiElement(RL.lblDistribute));
+            Register(btnAlignRelative_ToObjects, new UiElement(RL.btnAlignRelative_ToObjects, nameof(RIM.AlignRelativeToObjects), "DO"));
+            Register(btnAlignRelative_ToFirstObject, new UiElement(RL.btnAlignRelative_ToFirstObject, nameof(RIM.AlignRelativeToFirstObject), "DF"));
+            Register(btnAlignRelative_ToSlide, new UiElement(RL.btnAlignRelative_ToSlide, nameof(RIM.AlignRelativeToSlide), "DS"));
+            Register(btnSizeAndPosition, new UiElement(RL.btnSizeAndPosition, nameof(RIM.SizeAndPosition), "DN"));
             // grpSizeAndSnap
-            Register(grpSizeAndSnap, new UiElement { Label = R1.grpSizeAndSnap, Image = R2.ScaleSameWidth });
-            Register(lblScaleSize, new UiElement { Label = R1.lblScaleSize });
-            Register(lblExtendSize, new UiElement { Label = R1.lblExtendSize });
-            Register(lblSnapObjects, new UiElement { Label = R1.lblSnapObjects });
-            Register(btnScaleAnchor_FromTopLeft, new UiElement { Label = R1.btnScaleAnchor_FromTopLeft, Image = R2.ScaleFromTopLeft, Keytip = "PA" });
-            Register(btnScaleAnchor_FromMiddle, new UiElement { Label = R1.btnScaleAnchor_FromMiddle, Image = R2.ScaleFromMiddle, Keytip = "PD" });
-            Register(btnScaleAnchor_FromBottomRight, new UiElement { Label = R1.btnScaleAnchor_FromBottomRight, Image = R2.ScaleFromBottomRight, Keytip = "PG" });
-            RegisterS(grpSizeAndSnap, btnSizeAndPosition, new UiElement { Keytip = "PP" });
+            Register(grpSizeAndSnap, new UiElement(RL.grpSizeAndSnap, nameof(RIM.ScaleSameWidth)));
+            Register(lblScaleSize, new UiElement(RL.lblScaleSize));
+            Register(lblExtendSize, new UiElement(RL.lblExtendSize));
+            Register(lblSnapObjects, new UiElement(RL.lblSnapObjects));
+            Register(btnScaleAnchor_FromTopLeft, new UiElement(RL.btnScaleAnchor_FromTopLeft, nameof(RIM.ScaleFromTopLeft), "PA"));
+            Register(btnScaleAnchor_FromMiddle, new UiElement(RL.btnScaleAnchor_FromMiddle, nameof(RIM.ScaleFromMiddle), "PD"));
+            Register(btnScaleAnchor_FromBottomRight, new UiElement(RL.btnScaleAnchor_FromBottomRight, nameof(RIM.ScaleFromBottomRight), "PG"));
+            RegisterS(grpSizeAndSnap, btnSizeAndPosition, new UiElement(keytip: "PP"));
             // grpRotateAndFlip
-            Register(grpRotateAndFlip, new UiElement { Label = R1.grpRotateAndFlip, Image = R2.ObjectRotateRight90 });
-            Register(lblRotateObject, new UiElement { Label = R1.lblRotateObject });
-            Register(lblFlipObject, new UiElement { Label = R1.lblFlipObject });
-            Register(lbl3DRotation, new UiElement { Label = R1.lbl3DRotation });
-            Register(edtAngle, new UiElement { Label = R1.edtAngle, Keytip = "AE" });
-            Register(btnCopyAngle, new UiElement { Label = R1.btnCopyAngle, Image = R2.Copy, Keytip = "AC" });
-            Register(btnPasteAngle, new UiElement { Label = R1.btnPasteAngle, Image = R2.Paste, Keytip = "AP" });
-            Register(btnResetAngle, new UiElement { Label = R1.btnResetAngle, Image = R2.TextboxResetMargin, Keytip = "AR" });
+            Register(grpRotateAndFlip, new UiElement(RL.grpRotateAndFlip, nameof(RIM.ObjectRotateRight90)));
+            Register(lblRotateObject, new UiElement(RL.lblRotateObject));
+            Register(lblFlipObject, new UiElement(RL.lblFlipObject));
+            Register(lbl3DRotation, new UiElement(RL.lbl3DRotation));
+            Register(edtAngle, new UiElement(RL.edtAngle, keytip: "AE"));
+            Register(btnCopyAngle, new UiElement(RL.btnCopyAngle, nameof(RIM.Copy), "AC"));
+            Register(btnPasteAngle, new UiElement(RL.btnPasteAngle, nameof(RIM.Paste), "AP"));
+            Register(btnResetAngle, new UiElement(RL.btnResetAngle, nameof(RIM.ResetData), "AR"));
             // grpObjectArrange
-            Register(grpObjectArrange, new UiElement { Label = R1.grpObjectArrange, Image = R2.ObjectSendToBack });
-            Register(lblMoveLayers, new UiElement { Label = R1.lblMoveLayers });
-            Register(lblGroupObjects, new UiElement { Label = R1.lblGroupObjects });
-            RegisterS(grpObjectArrange, btnGridSetting, new UiElement { Image = R2.GridSetting_32, Keytip = "G" });
-            RegisterS(grpObjectArrange, btnSizeAndPosition, new UiElement { Image = R2.SizeAndPosition_32, Keytip = "N" });
+            Register(grpObjectArrange, new UiElement(RL.grpObjectArrange, nameof(RIM.ObjectSendToBack)));
+            Register(lblMoveLayers, new UiElement(RL.lblMoveLayers));
+            Register(lblGroupObjects, new UiElement(RL.lblGroupObjects));
+            RegisterS(grpObjectArrange, btnGridSetting, new UiElement(null, nameof(RIM.GridSetting_32), "G"));
+            RegisterS(grpObjectArrange, btnSizeAndPosition, new UiElement(null, nameof(RIM.SizeAndPosition_32), "N"));
             // grpObjectSize
-            Register(grpObjectSize, new UiElement { Label = R1.grpObjectSize, Image = R2.ObjectHeight });
-            Register(btnResetSize, new UiElement { Label = R1.btnResetSize, Image = R2.PictureResetSize_32, Keytip = "SR" });
-            Register(btnLockAspectRatio, new UiElement { Label = R1.btnLockAspectRatio, Image = R2.ObjectLockAspectRatio, Keytip = "L" });
-            RegisterS(grpObjectSize, btnLockAspectRatio, new UiElement { Image = R2.ObjectLockAspectRatio_32 });
-            Register(edtSizeHeight, new UiElement { Label = R1.edtSizeHeight, Keytip = "SH" });
-            Register(edtSizeWidth, new UiElement { Label = R1.edtSizeWidth, Keytip = "SW" });
-            Register(btnCopySize, new UiElement { Label = R1.btnCopySize, Image = R2.Copy, Keytip = "SC" });
-            Register(btnPasteSize, new UiElement { Label = R1.btnPasteSize, Image = R2.Paste, Keytip = "SV" });
-            RegisterS(grpObjectSize, btnSizeAndPosition, new UiElement { Keytip = "SN" });
+            Register(grpObjectSize, new UiElement(RL.grpObjectSize, nameof(RIM.ObjectHeight)));
+            Register(btnResetSize, new UiElement(RL.btnResetSize, nameof(RIM.PictureResetSize_32), "SR"));
+            Register(btnLockAspectRatio, new UiElement(RL.btnLockAspectRatio, nameof(RIM.ObjectLockAspectRatio), "L"));
+            RegisterS(grpObjectSize, btnLockAspectRatio, new UiElement(null, nameof(RIM.ObjectLockAspectRatio_32)));
+            Register(edtSizeHeight, new UiElement(RL.edtSizeHeight, keytip: "SH"));
+            Register(edtSizeWidth, new UiElement(RL.edtSizeWidth, keytip: "SW"));
+            Register(btnCopySize, new UiElement(RL.btnCopySize, nameof(RIM.Copy), "SC"));
+            Register(btnPasteSize, new UiElement(RL.btnPasteSize, nameof(RIM.Paste), "SV"));
+            RegisterS(grpObjectSize, btnSizeAndPosition, new UiElement(keytip: "SN"));
             // grpObjectPosition
-            Register(grpObjectPosition, new UiElement { Label = R1.grpObjectPosition, Image = R2.ObjectPosition });
-            Register(edtPositionX, new UiElement { Label = R1.edtPositionX, Keytip = "PX" });
-            Register(edtPositionY, new UiElement { Label = R1.edtPositionY, Keytip = "PY" });
-            Register(btnCopyPosition, new UiElement { Label = R1.btnCopyPosition, Image = R2.Copy, Keytip = "PC" });
-            Register(btnPastePosition, new UiElement { Label = R1.btnPastePosition, Image = R2.Paste, Keytip = "PV" });
-            RegisterS(grpObjectPosition, btnSizeAndPosition, new UiElement { Keytip = "PN" });
+            Register(grpObjectPosition, new UiElement(RL.grpObjectPosition, nameof(RIM.ObjectPosition)));
+            Register(edtPositionX, new UiElement(RL.edtPositionX, keytip: "PX"));
+            Register(edtPositionY, new UiElement(RL.edtPositionY, keytip: "PY"));
+            Register(btnCopyPosition, new UiElement(RL.btnCopyPosition, nameof(RIM.Copy), "PC"));
+            Register(btnPastePosition, new UiElement(RL.btnPastePosition, nameof(RIM.Paste), "PV"));
+            RegisterS(grpObjectPosition, btnSizeAndPosition, new UiElement(keytip: "PN"));
             // grpTextbox
-            Register(grpTextbox, new UiElement { Label = R1.grpTextbox, Image = R2.TextboxSetting });
-            Register(btnAutofitOff, new UiElement { Label = R1.btnAutofitOff, Image = R2.TextboxAutofitOff, Keytip = "TF" });
-            Register(btnAutoShrinkText, new UiElement { Label = R1.btnAutoShrinkText, Image = R2.TextboxAutoShrinkText, Keytip = "TS" });
-            Register(btnAutoResizeShape, new UiElement { Label = R1.btnAutoResizeShape, Image = R2.TextboxAutoResizeShape, Keytip = "TR" });
-            Register(btnWrapText, new UiElement { Label = R1.btnWrapText, Image = R2.TextboxWrapText_32, Keytip = "TW" });
-            Register(lblHorizontalMargin, new UiElement { Label = R1.lblHorizontalMargin });
-            Register(btnResetHorizontalMargin, new UiElement { Label = R1.btnResetHorizontalMargin, Image = R2.TextboxResetMargin, Keytip = "MH" });
-            Register(edtMarginLeft, new UiElement { Label = R1.edtMarginLeft, Keytip = "ML" });
-            Register(edtMarginRight, new UiElement { Label = R1.edtMarginRight, Keytip = "MR" });
-            Register(lblVerticalMargin, new UiElement { Label = R1.lblVerticalMargin });
-            Register(btnResetVerticalMargin, new UiElement { Label = R1.btnResetVerticalMargin, Image = R2.TextboxResetMargin, Keytip = "MV" });
-            Register(edtMarginTop, new UiElement { Label = R1.edtMarginTop, Keytip = "MT" });
-            Register(edtMarginBottom, new UiElement { Label = R1.edtMarginBottom, Keytip = "MB" });
+            Register(grpTextbox, new UiElement(RL.grpTextbox, nameof(RIM.TextboxSetting)));
+            Register(btnAutofitOff, new UiElement(RL.btnAutofitOff, nameof(RIM.TextboxAutofitOff), "TF"));
+            Register(btnAutoShrinkText, new UiElement(RL.btnAutoShrinkText, nameof(RIM.TextboxAutoShrinkText), "TS"));
+            Register(btnAutoResizeShape, new UiElement(RL.btnAutoResizeShape, nameof(RIM.TextboxAutoResizeShape), "TR"));
+            Register(btnWrapText, new UiElement(RL.btnWrapText, nameof(RIM.TextboxWrapText_32), "TW"));
+            Register(lblHorizontalMargin, new UiElement(RL.lblHorizontalMargin));
+            Register(btnResetHorizontalMargin, new UiElement(RL.btnResetHorizontalMargin, nameof(RIM.ResetData), "MH"));
+            Register(edtMarginLeft, new UiElement(RL.edtMarginLeft, keytip: "ML"));
+            Register(edtMarginRight, new UiElement(RL.edtMarginRight, keytip: "MR"));
+            Register(lblVerticalMargin, new UiElement(RL.lblVerticalMargin));
+            Register(btnResetVerticalMargin, new UiElement(RL.btnResetVerticalMargin, nameof(RIM.ResetData), "MV"));
+            Register(edtMarginTop, new UiElement(RL.edtMarginTop, keytip: "MT"));
+            Register(edtMarginBottom, new UiElement(RL.edtMarginBottom, keytip: "MB"));
             // grpReplacePicture
-            Register(grpReplacePicture, new UiElement { Label = R1.grpReplacePicture, Image = R2.PictureChangeFromClipboard });
-            Register(btnReplaceWithClipboard, new UiElement { Label = R1.btnReplaceWithClipboard, Image = R2.PictureChangeFromClipboard_32, Keytip = "TC" });
-            Register(btnReplaceWithFile, new UiElement { Label = R1.btnReplaceWithFile, Image = R2.PictureChange, Keytip = "TF" });
-            Register(chkReserveOriginalSize, new UiElement { Label = R1.chkReserveOriginalSize, Keytip = "TR" });
-            Register(chkReplaceToMiddle, new UiElement { Label = R1.chkReplaceToMiddle, Keytip = "TM" });
+            Register(grpReplacePicture, new UiElement(RL.grpReplacePicture, nameof(RIM.PictureChangeFromClipboard)));
+            Register(btnReplaceWithClipboard, new UiElement(RL.btnReplaceWithClipboard, nameof(RIM.PictureChangeFromClipboard_32), "TC"));
+            Register(btnReplaceWithFile, new UiElement(RL.btnReplaceWithFile, nameof(RIM.PictureChange), "TF"));
+            Register(chkReserveOriginalSize, new UiElement(RL.chkReserveOriginalSize, keytip: "TR"));
+            Register(chkReplaceToMiddle, new UiElement(RL.chkReplaceToMiddle, keytip: "TM"));
             // grpSizeAndPosition
-            Register(grpShapeSizeAndPosition, new UiElement { Label = R1.grpSizeAndPosition, Image = R2.SizeAndPosition });
-            Register(grpPictureSizeAndPosition, new UiElement { Label = R1.grpSizeAndPosition, Image = R2.SizeAndPosition });
-            Register(grpVideoSizeAndPosition, new UiElement { Label = R1.grpSizeAndPosition, Image = R2.SizeAndPosition });
-            Register(grpAudioSizeAndPosition, new UiElement { Label = R1.grpSizeAndPosition, Image = R2.SizeAndPosition });
-            Register(grpTableSizeAndPosition, new UiElement { Label = R1.grpSizeAndPosition, Image = R2.SizeAndPosition });
-            Register(grpChartSizeAndPosition, new UiElement { Label = R1.grpSizeAndPosition, Image = R2.SizeAndPosition });
-            Register(grpSmartartSizeAndPosition, new UiElement { Label = R1.grpSizeAndPosition, Image = R2.SizeAndPosition });
-            RegisterS(grpShapeSizeAndPosition, btnSizeAndPosition, new UiElement { Keytip = "SN" });
-            RegisterS(grpPictureSizeAndPosition, btnSizeAndPosition, new UiElement { Keytip = "SN" });
-            RegisterS(grpVideoSizeAndPosition, btnSizeAndPosition, new UiElement { Keytip = "SN" });
-            RegisterS(grpAudioSizeAndPosition, btnSizeAndPosition, new UiElement { Keytip = "SN" });
-            RegisterS(grpTableSizeAndPosition, btnSizeAndPosition, new UiElement { Keytip = "SN" });
-            RegisterS(grpChartSizeAndPosition, btnSizeAndPosition, new UiElement { Keytip = "SN" });
-            RegisterS(grpSmartartSizeAndPosition, btnSizeAndPosition, new UiElement { Keytip = "SN" });
+            Register(grpShapeSizeAndPosition, new UiElement(RL.grpSizeAndPosition, nameof(RIM.SizeAndPosition)));
+            Register(grpPictureSizeAndPosition, new UiElement(RL.grpSizeAndPosition, nameof(RIM.SizeAndPosition)));
+            Register(grpVideoSizeAndPosition, new UiElement(RL.grpSizeAndPosition, nameof(RIM.SizeAndPosition)));
+            Register(grpAudioSizeAndPosition, new UiElement(RL.grpSizeAndPosition, nameof(RIM.SizeAndPosition)));
+            Register(grpTableSizeAndPosition, new UiElement(RL.grpSizeAndPosition, nameof(RIM.SizeAndPosition)));
+            Register(grpChartSizeAndPosition, new UiElement(RL.grpSizeAndPosition, nameof(RIM.SizeAndPosition)));
+            Register(grpSmartartSizeAndPosition, new UiElement(RL.grpSizeAndPosition, nameof(RIM.SizeAndPosition)));
+            RegisterS(grpShapeSizeAndPosition, btnSizeAndPosition, new UiElement(keytip: "SN"));
+            RegisterS(grpPictureSizeAndPosition, btnSizeAndPosition, new UiElement(keytip: "SN"));
+            RegisterS(grpVideoSizeAndPosition, btnSizeAndPosition, new UiElement(keytip: "SN"));
+            RegisterS(grpAudioSizeAndPosition, btnSizeAndPosition, new UiElement(keytip: "SN"));
+            RegisterS(grpTableSizeAndPosition, btnSizeAndPosition, new UiElement(keytip: "SN"));
+            RegisterS(grpChartSizeAndPosition, btnSizeAndPosition, new UiElement(keytip: "SN"));
+            RegisterS(grpSmartartSizeAndPosition, btnSizeAndPosition, new UiElement(keytip: "SN"));
             // ===
-            RegisterS(grpVideoSizeAndPosition, btnLockAspectRatio, new UiElement { Keytip = "SL" }); // L
-            RegisterS(grpVideoSizeAndPosition, btnScaleAnchor, new UiElement { Keytip = "SF" }); // PA
-            RegisterS(grpVideoSizeAndPosition, edtPositionX, new UiElement { Keytip = "SX" }); // PX
-            RegisterS(grpVideoSizeAndPosition, edtPositionY, new UiElement { Keytip = "SY" }); // PY
-            RegisterS(grpVideoSizeAndPosition, btnCopyPosition, new UiElement { Keytip = "SS" }); // PC
-            RegisterS(grpVideoSizeAndPosition, btnPastePosition, new UiElement { Keytip = "ST" }); // PV
+            RegisterS(grpVideoSizeAndPosition, btnLockAspectRatio, new UiElement(keytip: "SL")); // L
+            RegisterS(grpVideoSizeAndPosition, btnScaleAnchor, new UiElement(keytip: "SF")); // PA
+            RegisterS(grpVideoSizeAndPosition, edtPositionX, new UiElement(keytip: "SX")); // PX
+            RegisterS(grpVideoSizeAndPosition, edtPositionY, new UiElement(keytip: "SY")); // PY
+            RegisterS(grpVideoSizeAndPosition, btnCopyPosition, new UiElement(keytip: "SS")); // PC
+            RegisterS(grpVideoSizeAndPosition, btnPastePosition, new UiElement(keytip: "ST")); // PV
             // ===
-            RegisterS(grpTableSizeAndPosition, mnuArrangement, new UiElement { Keytip = "SB" }); // B
-            RegisterS(grpTableSizeAndPosition, btnLockAspectRatio, new UiElement { Keytip = "SL" }); // L
-            RegisterS(grpTableSizeAndPosition, btnScaleAnchor, new UiElement { Keytip = "SF" }); // PA
-            RegisterS(grpTableSizeAndPosition, edtPositionX, new UiElement { Keytip = "SX" }); // PX
-            RegisterS(grpTableSizeAndPosition, edtPositionY, new UiElement { Keytip = "SY" }); // PY
-            RegisterS(grpTableSizeAndPosition, btnCopyPosition, new UiElement { Keytip = "SS" }); // PC
-            RegisterS(grpTableSizeAndPosition, btnPastePosition, new UiElement { Keytip = "ST" }); // PV
+            RegisterS(grpTableSizeAndPosition, mnuArrangement, new UiElement(keytip: "SB")); // B
+            RegisterS(grpTableSizeAndPosition, btnLockAspectRatio, new UiElement(keytip: "SL")); // L
+            RegisterS(grpTableSizeAndPosition, btnScaleAnchor, new UiElement(keytip: "SF")); // PA
+            RegisterS(grpTableSizeAndPosition, edtPositionX, new UiElement(keytip: "SX")); // PX
+            RegisterS(grpTableSizeAndPosition, edtPositionY, new UiElement(keytip: "SY")); // PY
+            RegisterS(grpTableSizeAndPosition, btnCopyPosition, new UiElement(keytip: "SS")); // PC
+            RegisterS(grpTableSizeAndPosition, btnPastePosition, new UiElement(keytip: "ST")); // PV
             // mnuArrangement
-            Register(sepAlignmentAndResizing, new UiElement { Label = R1.mnuArrangement_sepAlignmentAndResizing });
-            Register(mnuAlignment, new UiElement { Label = R1.mnuArrangement_mnuAlignment, Image = R2.ObjectArrangement });
-            Register(mnuResizing, new UiElement { Label = R1.mnuArrangement_mnuResizing, Image = R2.ScaleSameWidth });
-            Register(mnuSnapping, new UiElement { Label = R1.mnuArrangement_mnuSnapping, Image = R2.SnapLeftToRight });
-            Register(mnuRotation, new UiElement { Label = R1.mnuArrangement_mnuRotation, Image = R2.ObjectRotateRight90 });
-            Register(sepLayerOrderAndGrouping, new UiElement { Label = R1.mnuArrangement_sepLayerOrderAndGrouping });
-            Register(mnuLayerOrder, new UiElement { Label = R1.mnuArrangement_mnuLayerOrder, Image = R2.ObjectSendToBack });
-            Register(mnuGrouping, new UiElement { Label = R1.mnuArrangement_mnuGrouping, Image = R2.ObjectsGroup });
-            Register(sepObjectsInSlide, new UiElement { Label = R1.mnuArrangement_sepObjectsInSlide });
-            Register(sepAddInSetting, new UiElement { Label = R1.mnuArrangement_sepAddInSetting });
+            Register(sepAlignmentAndResizing, new UiElement(RL.mnuArrangement_sepAlignmentAndResizing));
+            Register(mnuAlignment, new UiElement(RL.mnuArrangement_mnuAlignment, nameof(RIM.ObjectArrangement)));
+            Register(mnuResizing, new UiElement(RL.mnuArrangement_mnuResizing, nameof(RIM.ScaleSameWidth)));
+            Register(mnuSnapping, new UiElement(RL.mnuArrangement_mnuSnapping, nameof(RIM.SnapLeftToRight)));
+            Register(mnuRotation, new UiElement(RL.mnuArrangement_mnuRotation, nameof(RIM.ObjectRotateRight90)));
+            Register(sepLayerOrderAndGrouping, new UiElement(RL.mnuArrangement_sepLayerOrderAndGrouping));
+            Register(mnuLayerOrder, new UiElement(RL.mnuArrangement_mnuLayerOrder, nameof(RIM.ObjectSendToBack)));
+            Register(mnuGrouping, new UiElement(RL.mnuArrangement_mnuGrouping, nameof(RIM.ObjectsGroup)));
+            Register(sepObjectsInSlide, new UiElement(RL.mnuArrangement_sepObjectsInSlide));
+            Register(sepAddInSetting, new UiElement(RL.mnuArrangement_sepAddInSetting));
 
             return (map, specialMap);
         }

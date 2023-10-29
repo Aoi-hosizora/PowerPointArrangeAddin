@@ -309,24 +309,24 @@ namespace PowerPointArrangeAddin.Ribbon {
             };
         }
 
-        public System.Drawing.Image BtnAlignRelative_GetImage(Office.IRibbonControl ribbonControl) {
+        public System.Drawing.Image BtnAlignRelative_GetImage(Office.IRibbonControl ribbonControl) { // TODO
             if (!IsOptionRibbonButton(ribbonControl)) {
                 var shapeRange = GetShapeRange();
                 if (shapeRange?.Count == 1) {
-                    return Properties.Resources.AlignRelativeToSlide; // when single shape is selected
+                    return Icon.MaterialIconResources.AlignRelativeToSlide; // when single shape is selected
                 }
                 return _alignRelativeFlag switch {
-                    ArrangementHelper.AlignRelativeFlag.RelativeToObjects => Properties.Resources.AlignRelativeToObjects,
-                    ArrangementHelper.AlignRelativeFlag.RelativeToFirstObject => Properties.Resources.AlignRelativeToFirstObject,
-                    ArrangementHelper.AlignRelativeFlag.RelativeToSlide => Properties.Resources.AlignRelativeToSlide,
-                    _ => Properties.Resources.AlignRelativeToObjects
+                    ArrangementHelper.AlignRelativeFlag.RelativeToObjects => Icon.MaterialIconResources.AlignRelativeToObjects,
+                    ArrangementHelper.AlignRelativeFlag.RelativeToFirstObject => Icon.MaterialIconResources.AlignRelativeToFirstObject,
+                    ArrangementHelper.AlignRelativeFlag.RelativeToSlide => Icon.MaterialIconResources.AlignRelativeToSlide,
+                    _ => Icon.MaterialIconResources.AlignRelativeToObjects
                 };
             }
             return ribbonControl.Id() switch {
-                btnAlignRelative_ToObjects => Properties.Resources.AlignRelativeToObjects,
-                btnAlignRelative_ToFirstObject => Properties.Resources.AlignRelativeToFirstObject,
-                btnAlignRelative_ToSlide => Properties.Resources.AlignRelativeToSlide,
-                _ => Properties.Resources.AlignRelativeToObjects
+                btnAlignRelative_ToObjects => Icon.MaterialIconResources.AlignRelativeToObjects,
+                btnAlignRelative_ToFirstObject => Icon.MaterialIconResources.AlignRelativeToFirstObject,
+                btnAlignRelative_ToSlide => Icon.MaterialIconResources.AlignRelativeToSlide,
+                _ => Icon.MaterialIconResources.AlignRelativeToObjects
             };
         }
 
@@ -398,20 +398,20 @@ namespace PowerPointArrangeAddin.Ribbon {
             };
         }
 
-        public System.Drawing.Image BtnScaleAnchor_GetImage(Office.IRibbonControl ribbonControl) {
+        public System.Drawing.Image BtnScaleAnchor_GetImage(Office.IRibbonControl ribbonControl) { // TODO
             if (!IsOptionRibbonButton(ribbonControl)) {
                 return _scaleFromFlag switch {
-                    Office.MsoScaleFrom.msoScaleFromTopLeft => Properties.Resources.ScaleFromTopLeft,
-                    Office.MsoScaleFrom.msoScaleFromMiddle => Properties.Resources.ScaleFromMiddle,
-                    Office.MsoScaleFrom.msoScaleFromBottomRight => Properties.Resources.ScaleFromBottomRight,
-                    _ => Properties.Resources.ScaleFromTopLeft
+                    Office.MsoScaleFrom.msoScaleFromTopLeft => Icon.MaterialIconResources.ScaleFromTopLeft,
+                    Office.MsoScaleFrom.msoScaleFromMiddle => Icon.MaterialIconResources.ScaleFromMiddle,
+                    Office.MsoScaleFrom.msoScaleFromBottomRight => Icon.MaterialIconResources.ScaleFromBottomRight,
+                    _ => Icon.MaterialIconResources.ScaleFromTopLeft
                 };
             }
             return ribbonControl.Id() switch {
-                btnScaleAnchor_FromTopLeft => Properties.Resources.ScaleFromTopLeft,
-                btnScaleAnchor_FromMiddle => Properties.Resources.ScaleFromMiddle,
-                btnScaleAnchor_FromBottomRight => Properties.Resources.ScaleFromBottomRight,
-                _ => Properties.Resources.ScaleFromTopLeft
+                btnScaleAnchor_FromTopLeft => Icon.MaterialIconResources.ScaleFromTopLeft,
+                btnScaleAnchor_FromMiddle => Icon.MaterialIconResources.ScaleFromMiddle,
+                btnScaleAnchor_FromBottomRight => Icon.MaterialIconResources.ScaleFromBottomRight,
+                _ => Icon.MaterialIconResources.ScaleFromTopLeft
             };
         }
 

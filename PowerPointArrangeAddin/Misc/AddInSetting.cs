@@ -32,6 +32,7 @@ namespace PowerPointArrangeAddin.Misc {
         public string IgnoreUpdateRecord { get; set; } = "";
         public bool LessButtonsForArrangementGroup { get; set; }
         public bool HideMarginSettingForTextboxGroup { get; set; }
+        public AddInIconStyle IconStyle { get; set; }
 
         public void Load() {
             ShowWordArtGroup = Properties.Settings.Default.showWordArtGroup;
@@ -51,6 +52,7 @@ namespace PowerPointArrangeAddin.Misc {
             IgnoreUpdateRecord = Properties.Settings.Default.ignoreUpdateRecord;
             LessButtonsForArrangementGroup = Properties.Settings.Default.lessButtonsForArrangementGroup;
             HideMarginSettingForTextboxGroup = Properties.Settings.Default.hideMarginSettingForTextboxGroup;
+            IconStyle = Properties.Settings.Default.iconStyle.ToAddInIconStyle();
         }
 
         public void Save() {
@@ -71,6 +73,7 @@ namespace PowerPointArrangeAddin.Misc {
             Properties.Settings.Default.ignoreUpdateRecord = IgnoreUpdateRecord;
             Properties.Settings.Default.lessButtonsForArrangementGroup = LessButtonsForArrangementGroup;
             Properties.Settings.Default.hideMarginSettingForTextboxGroup = HideMarginSettingForTextboxGroup;
+            Properties.Settings.Default.iconStyle = IconStyle.ToIconStyleString();
             Properties.Settings.Default.Save();
         }
 

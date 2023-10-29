@@ -53,6 +53,9 @@
     <Setting Name="ignoreUpdateRecord" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
+    <Setting Name="iconStyle" Type="System.String" Scope="User">
+      <Value Profile="(Default)">2013</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
 

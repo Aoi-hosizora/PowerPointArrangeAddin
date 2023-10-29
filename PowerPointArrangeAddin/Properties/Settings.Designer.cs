@@ -226,5 +226,17 @@ namespace PowerPointArrangeAddin.Properties {
                 this["ignoreUpdateRecord"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2013")]
+        public string iconStyle {
+            get {
+                return ((string)(this["iconStyle"]));
+            }
+            set {
+                this["iconStyle"] = value;
+            }
+        }
     }
 }
