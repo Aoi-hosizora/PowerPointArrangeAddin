@@ -131,3 +131,4 @@ msbuild PowerPointArrangeAddin.csproj /p:Configuration=Release /p:Platform=x64 /
 + [App Center API Documentation](https://learn.microsoft.com/en-us/appcenter/api-docs/#app-center-openapi-specification-swagger)
 + [C# で TaskDialog を使う](http://grabacr.net/archives/105)
 + [C#: comctl32.dll version 6 in debugger](https://stackoverflow.com/questions/1415270/c-comctl32-dll-version-6-in-debugger)
++ [imageMso検索・imageMso一覧](https://ymrt.jp/imagemso/index.html)

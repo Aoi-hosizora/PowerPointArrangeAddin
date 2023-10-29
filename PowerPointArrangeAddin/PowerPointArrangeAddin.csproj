@@ -304,6 +304,28 @@
     <None Include="update_vsto.bat" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Icon\FlatIconResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>FlatIconResources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Icon\FlatIconResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>FlatIconResources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Icon\MaterialIconResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>MaterialIconResources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Icon\MaterialIconResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>MaterialIconResources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
