@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.WindowsAPICodePack.Dialogs;
 using Forms = System.Windows.Forms;
 using Office = Microsoft.Office.Core;
 using PowerPoint = Microsoft.Office.Interop.PowerPoint;
@@ -146,7 +148,7 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
 
         public bool GetControlVisible(Office.IRibbonControl ribbonControl) {
-            var arrangementControls = new[] { sepMoveLayers, bgpMoveLayers, bgpRotate, bgpGroupObjects, sepArrangement, mnuArrangement };
+            var arrangementControls = new[] { sepRotate, bgpMoveLayers, bgpRotate, bgpGroupObjects, sepArrangement, mnuArrangement };
             if (arrangementControls.Contains(ribbonControl.Id()) && ribbonControl.Group() == grpArrange) {
                 return !AddInSetting.Instance.LessButtonsForArrangementGroup;
             }
@@ -425,21 +427,6 @@ namespace PowerPointArrangeAddin.Ribbon {
             ArrangementHelper.Snap(shapeRange, cmd);
         }
 
-        public void BtnMove_Click(Office.IRibbonControl ribbonControl) {
-            var shapeRange = GetShapeRange();
-            if (shapeRange == null) {
-                return;
-            }
-            Office.MsoZOrderCmd? cmd = ribbonControl.Id() switch {
-                btnMoveForward => Office.MsoZOrderCmd.msoBringForward,
-                btnMoveBackward => Office.MsoZOrderCmd.msoSendBackward,
-                btnMoveFront => Office.MsoZOrderCmd.msoBringToFront,
-                btnMoveBack => Office.MsoZOrderCmd.msoSendToBack,
-                _ => null
-            };
-            ArrangementHelper.LayerMove(shapeRange, cmd);
-        }
-
         public void BtnRotate_Click(Office.IRibbonControl ribbonControl) {
             var shapeRange = GetShapeRange();
             if (shapeRange == null) {
@@ -464,6 +451,21 @@ namespace PowerPointArrangeAddin.Ribbon {
                 _ => null
             };
             ArrangementHelper.Flip(shapeRange, cmd);
+        }
+
+        public void BtnMove_Click(Office.IRibbonControl ribbonControl) {
+            var shapeRange = GetShapeRange();
+            if (shapeRange == null) {
+                return;
+            }
+            Office.MsoZOrderCmd? cmd = ribbonControl.Id() switch {
+                btnMoveForward => Office.MsoZOrderCmd.msoBringForward,
+                btnMoveBackward => Office.MsoZOrderCmd.msoSendBackward,
+                btnMoveFront => Office.MsoZOrderCmd.msoBringToFront,
+                btnMoveBack => Office.MsoZOrderCmd.msoSendToBack,
+                _ => null
+            };
+            ArrangementHelper.LayerMove(shapeRange, cmd);
         }
 
         public void BtnGroup_Click(Office.IRibbonControl ribbonControl) {
@@ -496,6 +498,43 @@ namespace PowerPointArrangeAddin.Ribbon {
             } else {
                 _ribbon?.Invalidate(); // just invalidate ribbon
             }
+        }
+
+        public void BtnAddInCheckUpdate_Click(Office.IRibbonControl _) {
+            Task.Run(async () => {
+                var hwnd = new IntPtr(Globals.ThisAddIn.Application.HWND);
+                var __ = await AddInVersion.Instance.CheckUpdateManually(hwnd);
+            });
+        }
+
+        public void BtnAddInHomepage_Click(Office.IRibbonControl _) {
+            using (new EnableThemingInScope(true)) {
+                var dialog = new TaskDialog();
+                dialog.Caption = AddInDescription.Instance.Title;
+                dialog.InstructionText = ArrangeRibbonResources.dlgChooseToVisit;
+                dialog.Icon = TaskDialogStandardIcon.Information;
+                dialog.OwnerWindowHandle = new IntPtr(Globals.ThisAddIn.Application.HWND);
+                dialog.StandardButtons = TaskDialogStandardButtons.Cancel;
+                var lnkGhHomepage = new TaskDialogCommandLink("GitHub Homepage", ArrangeRibbonResources.dlgGitHubHomepage);
+                var lnkGhRelease = new TaskDialogCommandLink("GitHub Release", ArrangeRibbonResources.dlgGitHubRelease);
+                var lnkAcRelease = new TaskDialogCommandLink("AppCenter Release", ArrangeRibbonResources.dlgAppCenterRelease);
+                lnkGhHomepage.Click += (_, _) => AccessAndClose(dialog, AddInDescription.Instance.Homepage);
+                lnkGhRelease.Click += (_, _) => AccessAndClose(dialog, AddInDescription.Instance.GitHubReleaseUrl);
+                lnkAcRelease.Click += (_, _) => AccessAndClose(dialog, AddInDescription.Instance.AppCenterReleaseUrl);
+                dialog.Controls.Add(lnkGhHomepage);
+                dialog.Controls.Add(lnkGhRelease);
+                dialog.Controls.Add(lnkAcRelease);
+                dialog.Show();
+            }
+
+            static void AccessAndClose(TaskDialog dlg, string url) {
+                Process.Start(url);
+                dlg.Close();
+            }
+        }
+
+        public void BtnAddInFeedback_Click(Office.IRibbonControl _) {
+            Process.Start(AddInDescription.Instance.GitHubFeedbackUrl);
         }
 
         public void BtnGridSetting_Click(Office.IRibbonControl _) {

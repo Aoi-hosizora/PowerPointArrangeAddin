@@ -449,4 +449,25 @@
   <data name="grpObjectPosition" xml:space="preserve">
     <value>圖案位置</value>
   </data>
+  <data name="btnAddInCheckUpdate" xml:space="preserve">
+    <value>檢查更新</value>
+  </data>
+  <data name="btnAddInHomepage" xml:space="preserve">
+    <value>訪問主頁</value>
+  </data>
+  <data name="btnAddInFeedback" xml:space="preserve">
+    <value>問題反饋</value>
+  </data>
+  <data name="dlgChooseToVisit" xml:space="preserve">
+    <value>請從下方選擇一個鏈接來訪問。</value>
+  </data>
+  <data name="dlgGitHubHomepage" xml:space="preserve">
+    <value>GitHub 的主頁(&amp;G)</value>
+  </data>
+  <data name="dlgGitHubRelease" xml:space="preserve">
+    <value>GitHub 的發行頁(&amp;R)</value>
+  </data>
+  <data name="dlgAppCenterRelease" xml:space="preserve">
+    <value>AppCenter 的發行頁(&amp;A)</value>
+  </data>
 </root>

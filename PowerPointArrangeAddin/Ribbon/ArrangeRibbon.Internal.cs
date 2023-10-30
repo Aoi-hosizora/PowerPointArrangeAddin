@@ -134,14 +134,14 @@ namespace PowerPointArrangeAddin.Ribbon {
         private const string btnSnapRight = "btnSnapRight";
         private const string btnSnapTop = "btnSnapTop";
         private const string btnSnapBottom = "btnSnapBottom";
-        private const string btnMoveFront = "btnMoveFront";
-        private const string btnMoveBack = "btnMoveBack";
-        private const string btnMoveForward = "btnMoveForward";
-        private const string btnMoveBackward = "btnMoveBackward";
         private const string btnRotateRight90 = "btnRotateRight90";
         private const string btnRotateLeft90 = "btnRotateLeft90";
         private const string btnFlipVertical = "btnFlipVertical";
         private const string btnFlipHorizontal = "btnFlipHorizontal";
+        private const string btnMoveFront = "btnMoveFront";
+        private const string btnMoveBack = "btnMoveBack";
+        private const string btnMoveForward = "btnMoveForward";
+        private const string btnMoveBackward = "btnMoveBackward";
         private const string btnGroup = "btnGroup";
         private const string btnUngroup = "btnUngroup";
         private const string btnGridSetting = "btnGridSetting";
@@ -155,7 +155,7 @@ namespace PowerPointArrangeAddin.Ribbon {
         private const string bgpScaleSize = "bgpScaleSize";
         private const string bgpExtendSize = "bgpExtendSize";
         private const string bgpSnapObjects = "bgpSnapObjects";
-        private const string sepMoveLayers = "sepMoveLayers";
+        private const string sepRotate = "sepRotate";
         private const string bgpMoveLayers = "bgpMoveLayers";
         private const string bgpRotate = "bgpRotate";
         private const string bgpGroupObjects = "bgpGroupObjects";
@@ -164,6 +164,9 @@ namespace PowerPointArrangeAddin.Ribbon {
         private const string tabArrangement = "tabArrangement";
         // grpAddInSetting
         private const string grpAddInSetting = "grpAddInSetting";
+        private const string btnAddInCheckUpdate = "btnAddInCheckUpdate";
+        private const string btnAddInHomepage = "btnAddInHomepage";
+        private const string btnAddInFeedback = "btnAddInFeedback";
         // grpAlignment
         private const string grpAlignment = "grpAlignment";
         private const string lblAlignmentH = "lblAlignmentH";
@@ -356,14 +359,14 @@ namespace PowerPointArrangeAddin.Ribbon {
             Register(btnSnapRight, new UiElement(RL.btnSnapRight, nameof(RIM.SnapRightToLeft), "PI"));
             Register(btnSnapTop, new UiElement(RL.btnSnapTop, nameof(RIM.SnapTopToBottom), "PO"));
             Register(btnSnapBottom, new UiElement(RL.btnSnapBottom, nameof(RIM.SnapBottomToTop), "PM"));
-            Register(btnMoveFront, new UiElement(RL.btnMoveFront, nameof(RIM.ObjectBringToFront), "HF"));
-            Register(btnMoveBack, new UiElement(RL.btnMoveBack, nameof(RIM.ObjectSendToBack), "HB"));
-            Register(btnMoveForward, new UiElement(RL.btnMoveForward, nameof(RIM.ObjectBringForward), "HO"));
-            Register(btnMoveBackward, new UiElement(RL.btnMoveBackward, nameof(RIM.ObjectSendBackward), "HA"));
             Register(btnRotateRight90, new UiElement(RL.btnRotateRight90, nameof(RIM.ObjectRotateRight90), "HR"));
             Register(btnRotateLeft90, new UiElement(RL.btnRotateLeft90, nameof(RIM.ObjectRotateLeft90), "HL"));
             Register(btnFlipVertical, new UiElement(RL.btnFlipVertical, nameof(RIM.ObjectFlipVertical), "HV"));
             Register(btnFlipHorizontal, new UiElement(RL.btnFlipHorizontal, nameof(RIM.ObjectFlipHorizontal), "HH"));
+            Register(btnMoveFront, new UiElement(RL.btnMoveFront, nameof(RIM.ObjectBringToFront), "HF"));
+            Register(btnMoveBack, new UiElement(RL.btnMoveBack, nameof(RIM.ObjectSendToBack), "HB"));
+            Register(btnMoveForward, new UiElement(RL.btnMoveForward, nameof(RIM.ObjectBringForward), "HO"));
+            Register(btnMoveBackward, new UiElement(RL.btnMoveBackward, nameof(RIM.ObjectSendBackward), "HA"));
             Register(btnGroup, new UiElement(RL.btnGroup, nameof(RIM.ObjectsGroup), "HG"));
             Register(btnUngroup, new UiElement(RL.btnUngroup, nameof(RIM.ObjectsUngroup), "HU"));
             Register(btnGridSetting, new UiElement(RL.btnGridSetting, nameof(RIM.GridSetting), "HD"));
@@ -373,6 +376,9 @@ namespace PowerPointArrangeAddin.Ribbon {
             Register(tabArrangement, new UiElement(RL.tabArrangement, keytip: "M"));
             // grpAddInSetting
             Register(grpAddInSetting, new UiElement(RL.grpAddInSetting, nameof(RIM.AddInOptions)));
+            Register(btnAddInCheckUpdate, new UiElement(RL.btnAddInCheckUpdate, nameof(RIM.AddInUpdate), "AU"));
+            Register(btnAddInHomepage, new UiElement(RL.btnAddInHomepage, nameof(RIM.AddInHomepage), "AH"));
+            Register(btnAddInFeedback, new UiElement(RL.btnAddInFeedback, nameof(RIM.AddInFeedback), "AF"));
             RegisterS(grpAddInSetting, btnAddInSetting, new UiElement(null, nameof(RIM.AddInOptions_32), "T"));
             // grpAlignment
             Register(grpAlignment, new UiElement(RL.grpAlignment, nameof(RIM.ObjectArrangement)));

@@ -28,6 +28,10 @@ namespace PowerPointArrangeAddin.Misc {
         public string Homepage { get; private set; } = "";
         public string Copyright { get; private set; } = "";
 
+        public string GitHubReleaseUrl { get; private set; } = "";
+        public string AppCenterReleaseUrl { get; private set; } = "";
+        public string GitHubFeedbackUrl { get; private set; } = "";
+
         public void UpdateFields() {
             Title = MiscResources.Desc_Title;
             TitleWrapper = MiscResources.Desc_TitleWrapper;
@@ -39,6 +43,10 @@ namespace PowerPointArrangeAddin.Misc {
             Homepage = MiscResources.Desc_Homepage;
             var att = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false);
             Copyright = (att.FirstOrDefault() as AssemblyCopyrightAttribute)?.Copyright ?? "";
+
+            GitHubReleaseUrl = "https://github.com/Aoi-hosizora/PowerPointArrangeAddin/releases";
+            AppCenterReleaseUrl = "https://install.appcenter.ms/users/aoihosizora/apps/powerpointarrangeaddin/distribution_groups/public";
+            GitHubFeedbackUrl = "https://github.com/Aoi-hosizora/PowerPointArrangeAddin/issues";
         }
 
         public override string ToString() {

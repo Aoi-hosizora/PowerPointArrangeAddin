@@ -449,4 +449,25 @@
   <data name="grpObjectPosition" xml:space="preserve">
     <value>对象位置</value>
   </data>
+  <data name="btnAddInCheckUpdate" xml:space="preserve">
+    <value>检查更新</value>
+  </data>
+  <data name="btnAddInHomepage" xml:space="preserve">
+    <value>访问主页</value>
+  </data>
+  <data name="btnAddInFeedback" xml:space="preserve">
+    <value>问题反馈</value>
+  </data>
+  <data name="dlgChooseToVisit" xml:space="preserve">
+    <value>请从下方选择一个链接来访问。</value>
+  </data>
+  <data name="dlgGitHubHomepage" xml:space="preserve">
+    <value>GitHub 的主页(&amp;G)</value>
+  </data>
+  <data name="dlgGitHubRelease" xml:space="preserve">
+    <value>GitHub 的发布页(&amp;R)</value>
+  </data>
+  <data name="dlgAppCenterRelease" xml:space="preserve">
+    <value>AppCenter 的发布页(&amp;A)</value>
+  </data>
 </root>

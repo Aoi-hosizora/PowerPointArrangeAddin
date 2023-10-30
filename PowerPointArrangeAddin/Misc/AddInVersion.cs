@@ -71,9 +71,6 @@ namespace PowerPointArrangeAddin.Misc {
 
         #region AppCenter Request Related
 
-        private const string AppCenterUrl = "https://install.appcenter.ms/users/aoihosizora/apps/powerpointarrangeaddin/distribution_groups/public";
-        private const string GitHubReleaseUrl = "https://github.com/Aoi-hosizora/PowerPointArrangeAddin/releases";
-
         private const string AppSecret = "38c9b3db-88af-4d40-a0ac-defcf9d5466e";
         private const string DistributionGroupId = "4f87083d-c9fc-4e49-b5df-92b5235015b5";
 
@@ -260,13 +257,19 @@ namespace PowerPointArrangeAddin.Misc {
         }
 
         private void HasUpdateDialog(ReleaseInformation information, CheckUpdateOptions options) {
+            var version = information.Version;
+            var releaseNote = information.ReleaseNotes.Trim();
+            if (string.IsNullOrWhiteSpace(releaseNote)) {
+                releaseNote = "<empty>";
+            }
+
             using (new EnableThemingInScope(true)) {
                 var dialog = new TaskDialog {
                     Caption = AddInDescription.Instance.Title,
                     Icon = TaskDialogStandardIcon.Information,
-                    InstructionText = string.Format(MiscResources.Dlg_HasNewVersionReleasedText, $"v{information.Version}"),
+                    InstructionText = string.Format(MiscResources.Dlg_HasNewVersionReleasedText, $"v{version}"),
                     Text = $"{string.Format(MiscResources.Dlg_CurrentVersionText, $"v{GetAssemblyVersionInString()}")}\r\n\r\n{MiscResources.Dlg_DownloadNewVersionQuestionText}",
-                    DetailsExpandedText = $"{MiscResources.Dlg_ReleaseNoteText}\r\n\r\n{information.ReleaseNotes}",
+                    DetailsExpandedText = $"{MiscResources.Dlg_ReleaseNoteText}\r\n\r\n{releaseNote}",
                     ExpansionMode = TaskDialogExpandedDetailsLocation.ExpandFooter,
                     DetailsExpanded = false,
                     OwnerWindowHandle = options.Owner,
@@ -275,8 +278,8 @@ namespace PowerPointArrangeAddin.Misc {
 
                 var lnkAppCenter = new TaskDialogCommandLink("AppCenter", MiscResources.Dlg_VisitAppCenterText);
                 var lnkGitHub = new TaskDialogCommandLink("GitHub", MiscResources.Dlg_VisitGitHubText);
-                lnkAppCenter.Click += (_, _) => Process.Start(AppCenterUrl);
-                lnkGitHub.Click += (_, _) => Process.Start(GitHubReleaseUrl);
+                lnkAppCenter.Click += (_, _) => Process.Start(AddInDescription.Instance.AppCenterReleaseUrl);
+                lnkGitHub.Click += (_, _) => Process.Start(AddInDescription.Instance.GitHubReleaseUrl);
                 dialog.Controls.Add(lnkAppCenter);
                 dialog.Controls.Add(lnkGitHub);
 

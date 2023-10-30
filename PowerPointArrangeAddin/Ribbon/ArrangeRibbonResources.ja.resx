@@ -449,4 +449,25 @@
   <data name="grpObjectPosition" xml:space="preserve">
     <value>オブジェクトの位置</value>
   </data>
+  <data name="btnAddInCheckUpdate" xml:space="preserve">
+    <value>更新の確認</value>
+  </data>
+  <data name="btnAddInHomepage" xml:space="preserve">
+    <value>ホームページ</value>
+  </data>
+  <data name="btnAddInFeedback" xml:space="preserve">
+    <value>フィードバック</value>
+  </data>
+  <data name="dlgChooseToVisit" xml:space="preserve">
+    <value>下記のリンクを一つ選択してアクセス。</value>
+  </data>
+  <data name="dlgGitHubHomepage" xml:space="preserve">
+    <value>GitHub でのホームページ(&amp;G)</value>
+  </data>
+  <data name="dlgGitHubRelease" xml:space="preserve">
+    <value>GitHub でのリリースページ(&amp;R)</value>
+  </data>
+  <data name="dlgAppCenterRelease" xml:space="preserve">
+    <value>AppCenter でのリリースページ(&amp;A)</value>
+  </data>
 </root>

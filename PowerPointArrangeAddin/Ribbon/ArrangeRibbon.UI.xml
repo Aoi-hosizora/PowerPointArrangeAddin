@@ -72,18 +72,18 @@
                         <button id="btnSnapTop" showLabel="false" __template="L,S,K,E,I" onAction="BtnSnap_Click" />
                         <button id="btnSnapBottom" showLabel="false" __template="L,S,K,E,I" onAction="BtnSnap_Click" />
                     </buttonGroup>
-                    <separator id="sepMoveLayers" __template="CV" />
-                    <buttonGroup id="bgpMoveLayers" __template="CV">
-                        <button id="btnMoveFront" showLabel="false" __template="L,S,K,E,I" onAction="BtnMove_Click" />
-                        <button id="btnMoveBack" showLabel="false" __template="L,S,K,E,I" onAction="BtnMove_Click" />
-                        <button id="btnMoveForward" showLabel="false" __template="L,S,K,E,I" onAction="BtnMove_Click" />
-                        <button id="btnMoveBackward" showLabel="false" __template="L,S,K,E,I" onAction="BtnMove_Click" />
-                    </buttonGroup>
+                    <separator id="sepRotate" __template="CV" />
                     <buttonGroup id="bgpRotate" __template="CV">
                         <button id="btnRotateRight90" showLabel="false" __template="L,S,K,E,I" onAction="BtnRotate_Click" />
                         <button id="btnRotateLeft90" showLabel="false" __template="L,S,K,E,I" onAction="BtnRotate_Click" />
                         <button id="btnFlipVertical" showLabel="false" __template="L,S,K,E,I" onAction="BtnFlip_Click" />
                         <button id="btnFlipHorizontal" showLabel="false" __template="L,S,K,E,I" onAction="BtnFlip_Click" />
+                    </buttonGroup>
+                    <buttonGroup id="bgpMoveLayers" __template="CV">
+                        <button id="btnMoveFront" showLabel="false" __template="L,S,K,E,I" onAction="BtnMove_Click" />
+                        <button id="btnMoveBack" showLabel="false" __template="L,S,K,E,I" onAction="BtnMove_Click" />
+                        <button id="btnMoveForward" showLabel="false" __template="L,S,K,E,I" onAction="BtnMove_Click" />
+                        <button id="btnMoveBackward" showLabel="false" __template="L,S,K,E,I" onAction="BtnMove_Click" />
                     </buttonGroup>
                     <buttonGroup id="bgpGroupObjects" __template="CV">
                         <button id="btnGroup" showLabel="false" __template="L,S,K,E,I" onAction="BtnGroup_Click" />
@@ -102,6 +102,9 @@
             <tab id="tabArrangement" insertAfterMso="TabInsert" __template="L,K">
                 <group id="grpAddInSetting" __template="GROUP">
                     <button id="btnAddInSetting" size="large" __template="L,S,K,E,I" onAction="BtnAddInSetting_Click" />
+                    <button id="btnAddInCheckUpdate" __template="L,S,K,E,I" onAction="BtnAddInCheckUpdate_Click" />
+                    <button id="btnAddInHomepage" __template="L,S,K,E,I" onAction="BtnAddInHomepage_Click" />
+                    <button id="btnAddInFeedback" __template="L,S,K,E,I" onAction="BtnAddInFeedback_Click" />
                 </group> <!-- end of grpAddInSetting -->
 
                 <group id="grpAlignment" __template="GROUP">

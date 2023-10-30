@@ -310,4 +310,13 @@
   <data name="ObjectPosition" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Material\ObjectPosition.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="AddInUpdate" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Material\AddInUpdate.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AddInHomepage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Material\AddInHomepage.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AddInFeedback" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Material\AddInFeedback.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

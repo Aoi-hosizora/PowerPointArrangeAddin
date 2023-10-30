@@ -357,13 +357,13 @@
     <value>Vert. margin:</value>
   </data>
   <data name="btnAlignRelative_ToSlide" xml:space="preserve">
-    <value>&amp;Align and relative to the slide</value>
+    <value>Rel&amp;ative to the slide</value>
   </data>
   <data name="btnAlignRelative_ToObjects" xml:space="preserve">
     <value>Align the selected &amp;objects</value>
   </data>
   <data name="btnAlignRelative_ToFirstObject" xml:space="preserve">
-    <value>Align and relative to the &amp;first object</value>
+    <value>Relative to the &amp;first object</value>
   </data>
   <data name="btnGridSetting" xml:space="preserve">
     <value>&amp;Grid setting...</value>
@@ -448,5 +448,26 @@
   </data>
   <data name="grpObjectPosition" xml:space="preserve">
     <value>Object position</value>
+  </data>
+  <data name="btnAddInCheckUpdate" xml:space="preserve">
+    <value>Check for updates</value>
+  </data>
+  <data name="btnAddInHomepage" xml:space="preserve">
+    <value>Visit homepage</value>
+  </data>
+  <data name="btnAddInFeedback" xml:space="preserve">
+    <value>Add-in feedback</value>
+  </data>
+  <data name="dlgChooseToVisit" xml:space="preserve">
+    <value>Please choose one to visit.</value>
+  </data>
+  <data name="dlgGitHubHomepage" xml:space="preserve">
+    <value>&amp;GitHub homepage</value>
+  </data>
+  <data name="dlgGitHubRelease" xml:space="preserve">
+    <value>GitHub &amp;release page</value>
+  </data>
+  <data name="dlgAppCenterRelease" xml:space="preserve">
+    <value>&amp;AppCenter release page</value>
   </data>
 </root>

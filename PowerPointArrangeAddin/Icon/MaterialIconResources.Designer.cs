@@ -63,6 +63,26 @@ namespace PowerPointArrangeAddin.Icon {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap AddInFeedback {
+            get {
+                object obj = ResourceManager.GetObject("AddInFeedback", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AddInHomepage {
+            get {
+                object obj = ResourceManager.GetObject("AddInHomepage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap AddInOptions {
             get {
                 object obj = ResourceManager.GetObject("AddInOptions", resourceCulture);
@@ -76,6 +96,16 @@ namespace PowerPointArrangeAddin.Icon {
         internal static System.Drawing.Bitmap AddInOptions_32 {
             get {
                 object obj = ResourceManager.GetObject("AddInOptions_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AddInUpdate {
+            get {
+                object obj = ResourceManager.GetObject("AddInUpdate", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

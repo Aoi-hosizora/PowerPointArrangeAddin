@@ -61,6 +61,33 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Check for updates.
+        /// </summary>
+        public static string btnAddInCheckUpdate {
+            get {
+                return ResourceManager.GetString("btnAddInCheckUpdate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add-in feedback.
+        /// </summary>
+        public static string btnAddInFeedback {
+            get {
+                return ResourceManager.GetString("btnAddInFeedback", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Visit homepage.
+        /// </summary>
+        public static string btnAddInHomepage {
+            get {
+                return ResourceManager.GetString("btnAddInHomepage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add-in se&amp;tting....
         /// </summary>
         public static string btnAddInSetting {
@@ -106,7 +133,7 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Align and relative to the &amp;first object.
+        ///   Looks up a localized string similar to Relative to the &amp;first object.
         /// </summary>
         public static string btnAlignRelative_ToFirstObject {
             get {
@@ -124,7 +151,7 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Align and relative to the slide.
+        ///   Looks up a localized string similar to Rel&amp;ative to the slide.
         /// </summary>
         public static string btnAlignRelative_ToSlide {
             get {
@@ -579,6 +606,42 @@ namespace PowerPointArrangeAddin.Ribbon {
         public static string dlgAllFilesFilter {
             get {
                 return ResourceManager.GetString("dlgAllFilesFilter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;AppCenter release page.
+        /// </summary>
+        public static string dlgAppCenterRelease {
+            get {
+                return ResourceManager.GetString("dlgAppCenterRelease", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please choose one to visit..
+        /// </summary>
+        public static string dlgChooseToVisit {
+            get {
+                return ResourceManager.GetString("dlgChooseToVisit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;GitHub homepage.
+        /// </summary>
+        public static string dlgGitHubHomepage {
+            get {
+                return ResourceManager.GetString("dlgGitHubHomepage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GitHub &amp;release page.
+        /// </summary>
+        public static string dlgGitHubRelease {
+            get {
+                return ResourceManager.GetString("dlgGitHubRelease", resourceCulture);
             }
         }
         
