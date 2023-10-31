@@ -30,7 +30,7 @@
         <Property Id="ARPHELPLINK" Value="https://github.com/Aoi-hosizora/PowerPointArrangeAddin" />
         <Property Id="ARPURLINFOABOUT" Value="https://github.com/Aoi-hosizora" />
         <Property Id="ARPURLUPDATEINFO" Value="https://github.com/Aoi-hosizora/PowerPointArrangeAddin/releases" />
-        <Property Id="ARPCOMMENTS" Value="PowerPoint Arrangement Assistant Add-in (!(loc.ShortName))" />
+        <Property Id="ARPCOMMENTS" Value="!(loc.ShortName)" />
 
         <!-- Define variables -->
         <WixVariable Id="WixUILicenseRtf" Value="license.rtf" />
@@ -114,6 +114,18 @@
             <Component Id="Microsoft.Office.Tools.Common.v4.0.Utilities.dll" Guid="4046895d-6882-4def-9d80-190b2bfc9f50">
                 <File Id="Microsoft.Office.Tools.Common.v4.0.Utilities.dll" Name="Microsoft.Office.Tools.Common.v4.0.Utilities.dll"
                     Source="$(var.Addin_TargetDir)Microsoft.Office.Tools.Common.v4.0.Utilities.dll" />
+            </Component>
+            <Component Id="Newtonsoft.Json.dll" Guid="8ebd29d8-ac61-4ea8-b502-89584f046905">
+                <File Id="MNewtonsoft.Json.dll" Name="Newtonsoft.Json.dll"
+                    Source="$(var.Addin_TargetDir)Newtonsoft.Json.dll" />
+            </Component>
+            <Component Id="Microsoft.WindowsAPICodePack.Core.dll" Guid="7dfe3f01-daca-4ebb-b857-5484d49f9bed">
+                <File Id="Microsoft.WindowsAPICodePack.Core.dll" Name="Microsoft.WindowsAPICodePack.Core.dll"
+                    Source="$(var.Addin_TargetDir)Microsoft.WindowsAPICodePack.Core.dll" />
+            </Component>
+            <Component Id="Microsoft.WindowsAPICodePack.Shell.dll" Guid="2202e29c-d680-41b8-b920-b122c1ace651">
+                <File Id="Microsoft.WindowsAPICodePack.Shell.dll" Name="Microsoft.WindowsAPICodePack.Shell.dll"
+                    Source="$(var.Addin_TargetDir)Microsoft.WindowsAPICodePack.Shell.dll" />
             </Component>
         </ComponentGroup>
 

@@ -314,7 +314,7 @@
     <value>对齐(&amp;A)</value>
   </data>
   <data name="mnuArrangement_mnuGrouping" xml:space="preserve">
-    <value>组合(&amp;G)</value>
+    <value>组合(&amp;U)</value>
   </data>
   <data name="mnuArrangement_mnuLayerOrder" xml:space="preserve">
     <value>重叠顺序(&amp;L)</value>
@@ -326,7 +326,7 @@
     <value>旋转(&amp;O)</value>
   </data>
   <data name="mnuArrangement_mnuSnapping" xml:space="preserve">
-    <value>吸附(&amp;S)</value>
+    <value>吸附(&amp;N)</value>
   </data>
   <data name="mnuArrangement_sepAddInSetting" xml:space="preserve">
     <value>加载项设置</value>

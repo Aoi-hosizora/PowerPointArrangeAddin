@@ -1006,7 +1006,7 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Grouping.
+        ///   Looks up a localized string similar to Gro&amp;uping.
         /// </summary>
         public static string mnuArrangement_mnuGrouping {
             get {
@@ -1015,7 +1015,7 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Layer order.
+        ///   Looks up a localized string similar to &amp;Layer order.
         /// </summary>
         public static string mnuArrangement_mnuLayerOrder {
             get {
@@ -1042,7 +1042,7 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Snapping.
+        ///   Looks up a localized string similar to S&amp;napping.
         /// </summary>
         public static string mnuArrangement_mnuSnapping {
             get {

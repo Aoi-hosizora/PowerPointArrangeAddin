@@ -67,13 +67,13 @@ namespace PowerPointArrangeAddin.Helper {
             if (shapeRange == null || shapeRange.Count <= 0) {
                 return false;
             }
-            if (relativeCmd == null || relativeCmd == AlignRelativeFlag.RelativeToFirstObject) {
-                return false;
-            }
             if (shapeRange.Count == 1 || relativeCmd == AlignRelativeFlag.RelativeToSlide) {
                 return true; // ignore relative cmd, which is regarded with relative to slide
             }
-            return shapeRange.Count >= 3; // both relative to shapes and relative to first shape
+            if (relativeCmd == null || relativeCmd == AlignRelativeFlag.RelativeToFirstObject) {
+                return false; // always disable distribution, when relative to the first object
+            }
+            return shapeRange.Count >= 3; // for "relative to shapes" when select more than 3 objects
         }
 
         public static void Distribute(PowerPoint.ShapeRange? shapeRange, Office.MsoDistributeCmd? cmd, AlignRelativeFlag? relativeFlag = null) {

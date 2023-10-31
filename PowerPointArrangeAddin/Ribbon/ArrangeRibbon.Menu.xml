@@ -28,7 +28,7 @@
         <toggleButton id="btnAlignRelative_ToObjects" __template="L,S,E,I" getPressed="BtnAlignRelative_GetPressed" onAction="BtnAlignRelative_Click" />
         <toggleButton id="btnAlignRelative_ToFirstObject" __template="L,S,E,I" getPressed="BtnAlignRelative_GetPressed" onAction="BtnAlignRelative_Click" />
         <menuSeparator id="mnuAlignment_separator4" />
-        <control idMso="ViewGridlinesPowerPoint" />
+        <checkBox idMso="ViewGridlinesPowerPoint" />
         <button id="btnGridSetting" __template="L,S,E,I" onAction="BtnGridSetting_Click" />
     </menu>
 
@@ -86,7 +86,7 @@
 
     <menuSeparator id="sepObjectsInSlide" __template="SEP" />
 
-    <control idMso="ViewGridlinesPowerPoint" />
+    <checkBox idMso="ViewGridlinesPowerPoint" />
     <button id="btnGridSetting" __template="L,S,E,I" onAction="BtnGridSetting_Click" />
     <button id="btnSizeAndPosition" __template="L,S,E,I" onAction="BtnSizeAndPosition_Click" />
     <toggleButton idMso="SelectionPane" />

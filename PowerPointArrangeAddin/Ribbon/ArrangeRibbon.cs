@@ -438,6 +438,7 @@ namespace PowerPointArrangeAddin.Ribbon {
                 _ => null
             };
             ArrangementHelper.Rotate(shapeRange, cmd);
+            _ribbon?.InvalidateControl(edtAngle, grpRotateAndFlip);
         }
 
         public void BtnFlip_Click(Office.IRibbonControl ribbonControl) {
