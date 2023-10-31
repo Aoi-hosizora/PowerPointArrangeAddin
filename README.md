@@ -1,83 +1,115 @@
-# PowerPointArrangeAddin
+# PowerPoint Arrangement Assistant Add-in
 
 [![Release](https://img.shields.io/github/v/release/Aoi-hosizora/PowerPointArrangeAddin)](https://github.com/Aoi-hosizora/PowerPointArrangeAddin/releases)
 [![License](https://img.shields.io/badge/license-mit-blue.svg)](./LICENSE)
 
 + A PowerPoint add-in (VSTO) for assisting arrangement operations, which is inspired by [iSlide Addin](https://www.islide.cc/).
-+ Development environment: .NET Framework 4.8 (C# 7.3 / C# 9.0), Microsoft Office PowerPoint 2010
-+ Supported languages: English, Simplified Chinese, Traditional Chinese, Japanese
-+ Prerequisite: Microsoft Office >= 2010, x64
++ Development environment: .NET Framework 4.8 (C# 7.3 / C# 9.0).
++ Supported languages: English, Simplified Chinese, Traditional Chinese, Japanese.
++ Prerequisite: Microsoft Office >= 2010 (x64), .NET Framework 4.8 Runtime ([click here to install](https://dotnet.microsoft.com/en-us/download/dotnet-framework/net48)).
 
-### Install
+### Install and uninstall
 
-+ Step 1, download the compressed file that contains pre-built add-in files from [Release](https://github.com/Aoi-hosizora/PowerPointArrangeAddin/releases), and decompress it to a specific location.
-+ Step 2, double click the decompressed `PowerPointArrangeAddin.vsto` file, and click "Install" to install the add-in.
-+ If you want to uninstall the add-in, just open "Programs and Features" in "Control Panel", and uninstall "PowerPointArrangeAddin".
++ Install: download `setup.exe` from [Release](https://github.com/Aoi-hosizora/PowerPointArrangeAddin/releases) or [AppCenter](https://install.appcenter.ms/users/aoihosizora/apps/powerpointarrangeaddin/distribution_groups/public), double click the installer, and install to a specific location, that's done!
++ Uninstall: go to "Start Menu" or "Control Panel > Programs and Features", and choose to uninstall "PowerPoint Arrangement Assistant Add-in".
 
 ### Build manually
 
-+ Build (Before building, you may need to generate your pfx file for signing)
+> Note: Before building, you may need to generate your pfx file for signing.
+
++ Only build the add-in without anything
 
 ```bash
-cd ./PowerPointArrangeAddin/
+call build.bat
 
-# 1. Prepare Visual Studio environment
-call vsdevcmd.bat
+# You can go to "./PowerPointArrangeAddin/bin/x64/Release/" to find the built dll and vsto files.
 
-# 2. (Optional) Clean the built files of the add-in project
-msbuild PowerPointArrangeAddin.csproj /p:Configuration=Release /p:Platform=x64 /t:Clean
-
-# 3. Build the add-in project, and you can get the built files in "./bin/x64/Release/"
-msbuild PowerPointArrangeAddin.csproj /p:Configuration=Release /p:Platform=x64
-
-# Note: Once you build the project, the add-in will be registered automatically. 
-# So you have to clean the project (/t:Clean) if you want to remove it from registry.
+# Note that this will also register the add-in, you can run `clean.bat` to unregister.
 ```
 
-+ Publish manually (Use the built files, update some information, and re-sign the manifest file, which is how files in [Release](https://github.com/Aoi-hosizora/PowerPointArrangeAddin/releases) generated)
++ Build the add-in and the installation
 
 ```bash
-cd ./PowerPointArrangeAddin/
+call build_solution.bat
 
-# 1. Replace the description in built vsto file, such as Publisher and SupportUrl
-sed -i "s/asmv2:publisher=\"PowerPointArrangeAddin\"/asmv2:publisher=\"AoiHosizora\" asmv2:supportUrl=\"https:\/\/github.com\/Aoi-hosizora\/PowerPointArrangeAddin\"/" ./bin/x64/Release/PowerPointArrangeAddin.vsto
+# You can go to "./PowerPointArrangeAddinSetup/PowerPointArrangeAddinInstallerLauncher/bin/x64/Release/box/" to find the built installer.
 
-# 2. Re-sign the modified vsto file using the specific temporary key
-mage -Sign ./bin/x64/Release/PowerPointArrangeAddin.vsto -CertFile PowerPointArrangeAddin_TemporaryKey.pfx -Password xxx
-
-# 3. Just copy the bundle of built files to the solution folder, as a published folder "./Release/"
-cp -r ./bin/x64/Release/ ../Release/
-
-# 4. Clean the built files of the add-in project if you want to use the published vsto file to install
-msbuild PowerPointArrangeAddin.csproj /p:Configuration=Release /p:Platform=x64 /t:Clean
-```
-
-+ Publish using ClickOnce (This method is not very recommended to me, because it generates lots of useless deployment files that have to be deleted manually after uninstalling)
-
-```bash
-cd ./PowerPointArrangeAddin/
-
-# 1. Invoke msbuild using /t:Publish to generate publish files by ClickOnce
-msbuild PowerPointArrangeAddin.csproj /p:Configuration=Release /p:Platform=x64 /p:BootstrapperEnabled=false /t:Publish
-
-# 2.  Just copy bundle of built files to the solution folder, as a published folder "./Publish/"
-cp -r ./bin/x64/Release/app.publish/ ../Publish/
-
-# 3. Clean the built files of the add-in project if you want to use the published vsto file to install
-msbuild PowerPointArrangeAddin.csproj /p:Configuration=Release /p:Platform=x64 /t:Clean
+# Note this will not register the add-in, you have to use the built setup.exe to install.
 ```
 
 ### Screenshots
 
-| ![screenshot1](./assets/screenshot1.jpg) | ![screenshot2](./assets/screenshot2.jpg) |
-|:--:|:--:|
-| "Arrangement" group | "Textbox" group |
-| ![screenshot3](./assets/screenshot3.jpg) | ![screenshot4](./assets/screenshot4.jpg) |
-| "Replace picture" group | "Size and position" group |
+<details open>
+    <summary>Japanese, PowerPoint 2010</summary>
+    <table>
+        <tbody>
+            <tr>
+                <td align="center" colspan="4"><img src="./assets/screenshot1.jpg" alt="screenshot1" /></td>
+            </tr>
+            <tr>
+                <td align="center" colspan="4">Groups in "Arrangement" tab</td>
+            </tr>
+            <tr>
+                <td align="center"><img src="./assets/screenshot2.jpg" alt="screenshot2" /></td>
+                <td align="center"><img src="./assets/screenshot3.jpg" alt="screenshot3" /></td>
+                <td align="center"><img src="./assets/screenshot4.jpg" alt="screenshot4" /></td>
+                <td align="center"><img src="./assets/screenshot5.jpg" alt="screenshot5" /></td>
+            </tr>
+            <tr>
+                <td align="center">"Arrangement" group</td>
+                <td align="center">"Textbox" group</td>
+                <td align="center">"Replace picture" group</td>
+                <td align="center">"Size and position" group</td>
+            </tr>
+            <tr>
+                <td align="center"><img src="./assets/screenshot6.jpg" alt="screenshot6" /></td>
+                <td align="center"><img src="./assets/screenshot7.jpg" alt="screenshot7" /></td>
+                <td align="center" colspan="2"><img src="./assets/screenshot8.jpg" alt="screenshot8" /></td>
+            </tr>
+            <tr>
+                <td align="center">"Arrangement" menu</td>
+                <td align="center">Add-in setting dialog</td>
+                <td align="center" colspan="2">Add-in installation dialog</td>
+            </tr>
+        </tbody>
+    </table>
+</details>
 
-| ![screenshot5](./assets/screenshot5.jpg) | ![screenshot6](./assets/screenshot6.jpg) | ![screenshot7](./assets/screenshot7.jpg) |
-|:--:|:--:|:--:|
-| "Arrangement" menu | Add-in setting dialog | Add-in installation dialog |
+<details open>
+    <summary>Simplified Chinese, PowerPoint 2019</summary>
+    <table>
+        <tbody>
+            <tr>
+                <td align="center" colspan="4"><img src="./assets/screenshot9.jpg" alt="screenshot9" /></td>
+            </tr>
+            <tr>
+                <td align="center" colspan="4">Groups in "Arrangement" tab</td>
+            </tr>
+            <tr>
+                <td align="center"><img src="./assets/screenshot10.jpg" alt="screenshot10" /></td>
+                <td align="center"><img src="./assets/screenshot11.jpg" alt="screenshot11" /></td>
+                <td align="center"><img src="./assets/screenshot12.jpg" alt="screenshot12" /></td>
+                <td align="center"><img src="./assets/screenshot13.jpg" alt="screenshot13" /></td>
+            </tr>
+            <tr>
+                <td align="center">"Arrangement" group</td>
+                <td align="center">"Textbox" group</td>
+                <td align="center">"Replace picture" group</td>
+                <td align="center">"Size and position" group</td>
+            </tr>
+            <tr>
+                <td align="center"><img src="./assets/screenshot14.jpg" alt="screenshot14" /></td>
+                <td align="center"><img src="./assets/screenshot15.jpg" alt="screenshot15" /></td>
+                <td align="center" colspan="2"><img src="./assets/screenshot16.jpg" alt="screenshot16" /></td>
+            </tr>
+            <tr>
+                <td align="center">"Arrangement" menu</td>
+                <td align="center">Add-in setting dialog</td>
+                <td align="center" colspan="2">Add-in installation dialog</td>
+            </tr>
+        </tbody>
+    </table>
+</details>
 
 ### Tips
 
