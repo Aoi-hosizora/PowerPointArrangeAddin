@@ -67,13 +67,13 @@ namespace PowerPointArrangeAddin.Helper {
             if (shapeRange == null || shapeRange.Count <= 0) {
                 return false;
             }
+            if (relativeCmd == null) {
+                return false;
+            }
             if (shapeRange.Count == 1 || relativeCmd == AlignRelativeFlag.RelativeToSlide) {
                 return true; // ignore relative cmd, which is regarded with relative to slide
             }
-            if (relativeCmd == null || relativeCmd == AlignRelativeFlag.RelativeToFirstObject) {
-                return false; // always disable distribution, when relative to the first object
-            }
-            return shapeRange.Count >= 3; // for "relative to shapes" when select more than 3 objects
+            return shapeRange.Count >= 3; // for "relative to shapes" and "relative to the first object", when select more than 3 objects
         }
 
         public static void Distribute(PowerPoint.ShapeRange? shapeRange, Office.MsoDistributeCmd? cmd, AlignRelativeFlag? relativeFlag = null) {
@@ -101,6 +101,84 @@ namespace PowerPointArrangeAddin.Helper {
                 shapeRange.Distribute(cmd.Value, Office.MsoTriState.msoTrue);
                 break;
             case AlignRelativeFlag.RelativeToFirstObject:
+                var shapes = shapeRange.OfType<PowerPoint.Shape>().ToArray();
+                if (shapes.Length >= 3) {
+                    Globals.ThisAddIn.Application.StartNewUndoEntry();
+                    var (firstShape, secondShape) = (shapes[0], shapes[1]);
+                    if (cmd.Value == Office.MsoDistributeCmd.msoDistributeHorizontally) {
+                        var horizontalDistance = secondShape.Left - firstShape.Left;
+                        if (horizontalDistance == 0) {
+                            for (var i = 2; i < shapes.Length; i++) {
+                                shapes[i].Left = firstShape.Left; // same left
+                            }
+                        } else {
+                            var sortedShapes = shapes.Skip(2).ToArray();
+                            Array.Sort(sortedShapes, (a, b) => a.Left.CompareTo(b.Left));
+                            if (horizontalDistance > 0) {
+                                // first -> second -> ...
+                                var separated = false;
+                                if (horizontalDistance >= firstShape.Width) {
+                                    horizontalDistance -= firstShape.Width;
+                                    separated = true; // shapes are seperated // TODO improve
+                                }
+                                var left = secondShape.Left + horizontalDistance + (separated ? secondShape.Width : 0);
+                                foreach (var shape in sortedShapes) {
+                                    shape.Left = left;
+                                    left += horizontalDistance + (separated ? shape.Width : 0);
+                                }
+                            } else if (horizontalDistance < 0) {
+                                // ... <- second <- first
+                                horizontalDistance = -horizontalDistance;
+                                var separated = false;
+                                if (horizontalDistance >= secondShape.Width) {
+                                    horizontalDistance -= secondShape.Width;
+                                    separated = true; // shapes are seperated // TODO improve
+                                }
+                                var left = secondShape.Left - horizontalDistance;
+                                foreach (var shape in sortedShapes) {
+                                    shape.Left = left - (separated ? shape.Width : 0);
+                                    left -= horizontalDistance + (separated ? shape.Width : 0);
+                                }
+                            }
+                        }
+                    } else if (cmd.Value == Office.MsoDistributeCmd.msoDistributeVertically) {
+                        var verticalDistance = secondShape.Top - firstShape.Top;
+                        if (verticalDistance == 0) {
+                            for (var i = 2; i < shapes.Length; i++) {
+                                shapes[i].Top = firstShape.Top; // same top
+                            }
+                        } else {
+                            var sortedShapes = shapes.Skip(2).ToArray();
+                            Array.Sort(sortedShapes, (a, b) => a.Left.CompareTo(b.Top));
+                            if (verticalDistance > 0) {
+                                // first -> second -> ...
+                                var separated = false;
+                                if (verticalDistance >= firstShape.Top) {
+                                    verticalDistance -= firstShape.Top;
+                                    separated = true; // shapes are seperated // TODO improve
+                                }
+                                var top = secondShape.Top + verticalDistance + (separated ? secondShape.Height : 0);
+                                foreach (var shape in sortedShapes) {
+                                    shape.Top = top;
+                                    top += verticalDistance + (separated ? shape.Top : 0);
+                                }
+                            } else if (verticalDistance < 0) {
+                                // ... <- second <- first
+                                verticalDistance = -verticalDistance;
+                                var separated = false;
+                                if (verticalDistance >= secondShape.Top) {
+                                    verticalDistance -= secondShape.Top;
+                                    separated = true; // shapes are seperated // TODO improve
+                                }
+                                var top = secondShape.Top - verticalDistance;
+                                foreach (var shape in sortedShapes) {
+                                    shape.Top = top - (separated ? shape.Height : 0);
+                                    top -= verticalDistance + (separated ? shape.Height : 0);
+                                }
+                            }
+                        }
+                    }
+                }
                 break;
             }
         }
