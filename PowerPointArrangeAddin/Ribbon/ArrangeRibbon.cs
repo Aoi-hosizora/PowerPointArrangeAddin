@@ -412,6 +412,14 @@ namespace PowerPointArrangeAddin.Ribbon {
             ArrangementHelper.ExtendSize(shapeRange, cmd);
         }
 
+        public void ChkExtendToFirstObject_Click(Office.IRibbonControl ribbonControl, bool _) {
+            // TODO
+        }
+
+        public bool ChkExtendToFirstObject_GetPressed(Office.IRibbonControl ribbonControl) {
+            return true; // TODO
+        }
+
         public void BtnSnap_Click(Office.IRibbonControl ribbonControl) {
             var shapeRange = GetShapeRange();
             if (shapeRange == null) {
@@ -540,6 +548,10 @@ namespace PowerPointArrangeAddin.Ribbon {
 
         public void BtnGridSetting_Click(Office.IRibbonControl _) {
             ArrangementHelper.GridSettingDialog();
+        }
+
+        public void BtnGridSwitcher_Click(Office.IRibbonControl _) {
+            ArrangementHelper.GridSettingDialog(); // TODO
         }
 
         public void BtnSizeAndPosition_Click(Office.IRibbonControl _) {

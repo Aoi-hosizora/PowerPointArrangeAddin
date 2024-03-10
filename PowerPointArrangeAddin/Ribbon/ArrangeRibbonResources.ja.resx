@@ -173,6 +173,9 @@
   <data name="btnExtendSameTop" xml:space="preserve">
     <value>同じ上端に伸ばす(&amp;T)</value>
   </data>
+  <data name="chkExtendToFirstObject" xml:space="preserve">
+    <value>最初の図形に伸ばす</value>
+  </data>
   <data name="btnFlipHorizontal" xml:space="preserve">
     <value>左右反転(&amp;H)</value>
   </data>
@@ -362,6 +365,9 @@
   <data name="btnAlignRelative_ToSlide" xml:space="preserve">
     <value>スライドに合わせて配置(&amp;A)</value>
   </data>
+  <data name="btnGridSwitcher" xml:space="preserve">
+    <value>グリッドの表示</value>
+  </data>
   <data name="btnGridSetting" xml:space="preserve">
     <value>グリッドの設定(&amp;G)...</value>
   </data>
@@ -393,10 +399,16 @@
     <value>変形</value>
   </data>
   <data name="lblExtendSize" xml:space="preserve">
-    <value>伸ばし</value>
+    <value>伸長</value>
   </data>
-  <data name="lblSnapObjects" xml:space="preserve">
-    <value>吸着</value>
+  <data name="lblSnapH" xml:space="preserve">
+    <value>横吸着</value>
+  </data>
+  <data name="lblSnapW" xml:space="preserve">
+    <value>縦吸着</value>
+  </data>
+  <data name="lblGrid" xml:space="preserve">
+    <value>グリッド</value>
   </data>
   <data name="grpRotateAndFlip" xml:space="preserve">
     <value>回転と反転</value>

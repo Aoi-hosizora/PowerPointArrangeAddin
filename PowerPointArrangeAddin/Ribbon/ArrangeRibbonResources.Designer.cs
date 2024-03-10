@@ -313,6 +313,15 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Show grid.
+        /// </summary>
+        public static string btnGridSwitcher {
+            get {
+                return ResourceManager.GetString("btnGridSwitcher", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &amp;Group shapes.
         /// </summary>
         public static string btnGroup {
@@ -579,6 +588,15 @@ namespace PowerPointArrangeAddin.Ribbon {
         public static string btnWrapText {
             get {
                 return ResourceManager.GetString("btnWrapText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To the first shape.
+        /// </summary>
+        public static string chkExtendToFirstObject {
+            get {
+                return ResourceManager.GetString("chkExtendToFirstObject", resourceCulture);
             }
         }
         
@@ -880,7 +898,7 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Horiz. align.
+        ///   Looks up a localized string similar to H. align.
         /// </summary>
         public static string lblAlignmentH {
             get {
@@ -889,7 +907,7 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Vert. align.
+        ///   Looks up a localized string similar to V. align.
         /// </summary>
         public static string lblAlignmentV {
             get {
@@ -921,6 +939,15 @@ namespace PowerPointArrangeAddin.Ribbon {
         public static string lblFlipObject {
             get {
                 return ResourceManager.GetString("lblFlipObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Grid.
+        /// </summary>
+        public static string lblGrid {
+            get {
+                return ResourceManager.GetString("lblGrid", resourceCulture);
             }
         }
         
@@ -970,11 +997,20 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Snap.
+        ///   Looks up a localized string similar to H. snap.
         /// </summary>
-        public static string lblSnapObjects {
+        public static string lblSnapH {
             get {
-                return ResourceManager.GetString("lblSnapObjects", resourceCulture);
+                return ResourceManager.GetString("lblSnapH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to V. snap.
+        /// </summary>
+        public static string lblSnapW {
+            get {
+                return ResourceManager.GetString("lblSnapW", resourceCulture);
             }
         }
         

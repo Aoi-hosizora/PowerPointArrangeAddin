@@ -173,6 +173,9 @@
   <data name="btnExtendSameTop" xml:space="preserve">
     <value>延伸至頂端(&amp;T)</value>
   </data>
+  <data name="chkExtendToFirstObject" xml:space="preserve">
+    <value>延伸至最初的圖案</value>
+  </data>
   <data name="btnFlipHorizontal" xml:space="preserve">
     <value>水平翻轉(&amp;H)</value>
   </data>
@@ -384,7 +387,7 @@
     <value>縱向對齊</value>
   </data>
   <data name="lblDistribute" xml:space="preserve">
-    <value>均分</value>
+    <value>圖案均分</value>
   </data>
   <data name="grpResizing" xml:space="preserve">
     <value>大小变更</value>
@@ -395,8 +398,17 @@
   <data name="lblExtendSize" xml:space="preserve">
     <value>延伸</value>
   </data>
-  <data name="lblSnapObjects" xml:space="preserve">
-    <value>吸附</value>
+  <data name="lblSnapH" xml:space="preserve">
+    <value>橫向吸附</value>
+  </data>
+  <data name="lblSnapW" xml:space="preserve">
+    <value>縱向吸附</value>
+  </data>
+  <data name="btnGridSwitcher" xml:space="preserve">
+    <value>顯示格綫</value>
+  </data>
+  <data name="lblGrid" xml:space="preserve">
+    <value>格綫</value>
   </data>
   <data name="grpRotateAndFlip" xml:space="preserve">
     <value>旋轉和翻轉</value>

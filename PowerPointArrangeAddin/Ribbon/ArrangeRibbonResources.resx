@@ -173,6 +173,9 @@
   <data name="btnExtendSameTop" xml:space="preserve">
     <value>Extend to same &amp;top</value>
   </data>
+  <data name="chkExtendToFirstObject" xml:space="preserve">
+    <value>To the first shape</value>
+  </data>
   <data name="btnFlipHorizontal" xml:space="preserve">
     <value>Flip &amp;horizontally</value>
   </data>
@@ -362,6 +365,9 @@
   <data name="btnAlignRelative_ToFirstObject" xml:space="preserve">
     <value>Relative to the &amp;first object</value>
   </data>
+  <data name="btnGridSwitcher" xml:space="preserve">
+    <value>Show grid</value>
+  </data>
   <data name="btnGridSetting" xml:space="preserve">
     <value>&amp;Grid setting...</value>
   </data>
@@ -378,10 +384,10 @@
     <value>Alignment</value>
   </data>
   <data name="lblAlignmentH" xml:space="preserve">
-    <value>Horiz. align</value>
+    <value>H. align</value>
   </data>
   <data name="lblAlignmentV" xml:space="preserve">
-    <value>Vert. align</value>
+    <value>V. align</value>
   </data>
   <data name="lblDistribute" xml:space="preserve">
     <value>Distribute</value>
@@ -395,8 +401,14 @@
   <data name="lblExtendSize" xml:space="preserve">
     <value>Extend</value>
   </data>
-  <data name="lblSnapObjects" xml:space="preserve">
-    <value>Snap</value>
+  <data name="lblSnapH" xml:space="preserve">
+    <value>H. snap</value>
+  </data>
+  <data name="lblSnapW" xml:space="preserve">
+    <value>V. snap</value>
+  </data>
+  <data name="lblGrid" xml:space="preserve">
+    <value>Grid</value>
   </data>
   <data name="grpRotateAndFlip" xml:space="preserve">
     <value>Rotate and flip</value>
