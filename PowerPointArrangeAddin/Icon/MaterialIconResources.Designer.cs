@@ -223,9 +223,9 @@ namespace PowerPointArrangeAddin.Icon {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap GridSetting_32 {
+        internal static System.Drawing.Bitmap GridSwitcher {
             get {
-                object obj = ResourceManager.GetObject("GridSetting_32", resourceCulture);
+                object obj = ResourceManager.GetObject("GridSwitcher", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
