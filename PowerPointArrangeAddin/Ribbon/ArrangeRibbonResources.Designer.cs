@@ -313,7 +313,7 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Show grid.
+        ///   Looks up a localized string similar to &amp;Show grid.
         /// </summary>
         public static string btnGridSwitcher {
             get {
@@ -538,7 +538,7 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Snap &amp;bottom to top.
+        ///   Looks up a localized string similar to S&amp;nap bottom to top.
         /// </summary>
         public static string btnSnapBottom {
             get {
@@ -547,7 +547,7 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Snap &amp;left to right.
+        ///   Looks up a localized string similar to Snap l&amp;eft to right.
         /// </summary>
         public static string btnSnapLeft {
             get {
@@ -556,7 +556,7 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Snap &amp;right to left.
+        ///   Looks up a localized string similar to Snap r&amp;ight to left.
         /// </summary>
         public static string btnSnapRight {
             get {
@@ -565,7 +565,7 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Snap &amp;top to bottom.
+        ///   Looks up a localized string similar to Sna&amp;p top to bottom.
         /// </summary>
         public static string btnSnapTop {
             get {
@@ -592,7 +592,7 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to To the first shape.
+        ///   Looks up a localized string similar to To the f&amp;irst shape.
         /// </summary>
         public static string chkExtendToFirstObject {
             get {

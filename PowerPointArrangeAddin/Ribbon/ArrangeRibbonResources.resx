@@ -174,7 +174,7 @@
     <value>Extend to same &amp;top</value>
   </data>
   <data name="chkExtendToFirstObject" xml:space="preserve">
-    <value>To the first shape</value>
+    <value>To the f&amp;irst shape</value>
   </data>
   <data name="btnFlipHorizontal" xml:space="preserve">
     <value>Flip &amp;horizontally</value>
@@ -249,16 +249,16 @@
     <value>Scale to same &amp;width as the first shape</value>
   </data>
   <data name="btnSnapBottom" xml:space="preserve">
-    <value>Snap &amp;bottom to top</value>
+    <value>S&amp;nap bottom to top</value>
   </data>
   <data name="btnSnapLeft" xml:space="preserve">
-    <value>Snap &amp;left to right</value>
+    <value>Snap l&amp;eft to right</value>
   </data>
   <data name="btnSnapRight" xml:space="preserve">
-    <value>Snap &amp;right to left</value>
+    <value>Snap r&amp;ight to left</value>
   </data>
   <data name="btnSnapTop" xml:space="preserve">
-    <value>Snap &amp;top to bottom</value>
+    <value>Sna&amp;p top to bottom</value>
   </data>
   <data name="btnUngroup" xml:space="preserve">
     <value>&amp;Ungroup shapes</value>
@@ -366,7 +366,7 @@
     <value>Relative to the &amp;first object</value>
   </data>
   <data name="btnGridSwitcher" xml:space="preserve">
-    <value>Show grid</value>
+    <value>&amp;Show grid</value>
   </data>
   <data name="btnGridSetting" xml:space="preserve">
     <value>&amp;Grid setting...</value>

@@ -303,7 +303,10 @@ namespace PowerPointArrangeAddin.Ribbon {
             }
 
             public string? Label { get; }
+
+            // ReSharper disable once MemberCanBePrivate.Local
             public string? ImageName { get; }
+
             public string? Keytip { get; }
 
             public System.Drawing.Image? Image { get; private set; }
@@ -391,7 +394,7 @@ namespace PowerPointArrangeAddin.Ribbon {
             Register(btnExtendSameRight, new UiElement(RL.btnExtendSameRight, nameof(RIM.ExtendSameRight), "PR"));
             Register(btnExtendSameTop, new UiElement(RL.btnExtendSameTop, nameof(RIM.ExtendSameTop), "PT"));
             Register(btnExtendSameBottom, new UiElement(RL.btnExtendSameBottom, nameof(RIM.ExtendSameBottom), "PB"));
-            Register(chkExtendToFirstObject, new UiElement(RL.chkExtendToFirstObject, keytip: "PX"));
+            Register(chkExtendToFirstObject, new UiElement(RL.chkExtendToFirstObject, keytip: "PF"));
             Register(btnScaleAnchor_FromTopLeft, new UiElement(RL.btnScaleAnchor_FromTopLeft, nameof(RIM.ScaleFromTopLeft), "PA"));
             Register(btnScaleAnchor_FromMiddle, new UiElement(RL.btnScaleAnchor_FromMiddle, nameof(RIM.ScaleFromMiddle), "PD"));
             Register(btnScaleAnchor_FromBottomRight, new UiElement(RL.btnScaleAnchor_FromBottomRight, nameof(RIM.ScaleFromBottomRight), "PG"));

@@ -174,7 +174,7 @@
     <value>同じ上端に伸ばす(&amp;T)</value>
   </data>
   <data name="chkExtendToFirstObject" xml:space="preserve">
-    <value>最初の図形に伸ばす</value>
+    <value>最初の図形に伸ばす(&amp;I)</value>
   </data>
   <data name="btnFlipHorizontal" xml:space="preserve">
     <value>左右反転(&amp;H)</value>
@@ -245,16 +245,16 @@
     <value>最初に選択した図形と同じ幅に変形(&amp;W)</value>
   </data>
   <data name="btnSnapBottom" xml:space="preserve">
-    <value>下端を上へ吸着(&amp;B)</value>
+    <value>下端を上へ吸着(&amp;N)</value>
   </data>
   <data name="btnSnapLeft" xml:space="preserve">
-    <value>左端を右へ吸着(&amp;L)</value>
+    <value>左端を右へ吸着(&amp;E)</value>
   </data>
   <data name="btnSnapRight" xml:space="preserve">
-    <value>右端を左へ吸着(&amp;R)</value>
+    <value>右端を左へ吸着(&amp;I)</value>
   </data>
   <data name="btnSnapTop" xml:space="preserve">
-    <value>上端を下へ吸着(&amp;T)</value>
+    <value>上端を下へ吸着(&amp;P)</value>
   </data>
   <data name="btnUngroup" xml:space="preserve">
     <value>グループ解除(&amp;U)</value>
@@ -366,7 +366,7 @@
     <value>スライドに合わせて配置(&amp;A)</value>
   </data>
   <data name="btnGridSwitcher" xml:space="preserve">
-    <value>グリッドの表示</value>
+    <value>グリッドの表示(&amp;S)</value>
   </data>
   <data name="btnGridSetting" xml:space="preserve">
     <value>グリッドの設定(&amp;G)...</value>

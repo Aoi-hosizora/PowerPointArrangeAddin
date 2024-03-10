@@ -140,7 +140,7 @@
                         <button id="btnSnapBottom" showLabel="false" __template="L,S,K,E,I" onAction="BtnSnap_Click" />
                     </buttonGroup>
                     <buttonGroup id="bgpGrid">
-                        <button id="btnGridSwitcher" showLabel="false" __template="L,S,K,E,I" onAction="BtnGridSwitcher_Click" /> 
+                        <toggleButton id="btnGridSwitcher" showLabel="false" __template="L,S,K,E,I" getPressed="BtnGridSwitcher_GetPressed" onAction="BtnGridSwitcher_Click" />
                         <button id="btnGridSetting" showLabel="false" __template="L,S,K,E,I" onAction="BtnGridSetting_Click" />
                     </buttonGroup>
                     <separator id="sepAlignRelative" />
@@ -168,7 +168,7 @@
                         <button id="btnExtendSameTop" showLabel="false" __template="L,S,K,E,I" onAction="BtnExtend_Click" />
                         <button id="btnExtendSameBottom" showLabel="false" __template="L,S,K,E,I" onAction="BtnExtend_Click" />
                     </box>
-                    <checkBox id="chkExtendToFirstObject"  __template="L,S,K,E" getPressed="ChkExtendToFirstObject_GetPressed" onAction="ChkExtendToFirstObject_Click" />
+                    <checkBox id="chkExtendToFirstObject" __template="L,S,K,E" getPressed="ChkExtendToFirstObject_GetPressed" onAction="ChkExtendToFirstObject_Click" />
                     <separator id="sepScaleAnchor" />
                     <toggleButton id="btnScaleAnchor_FromTopLeft" __template="L,S,K,E,I" getPressed="BtnScaleAnchor_GetPressed" onAction="BtnScaleAnchor_Click" />
                     <toggleButton id="btnScaleAnchor_FromMiddle" __template="L,S,K,E,I" getPressed="BtnScaleAnchor_GetPressed" onAction="BtnScaleAnchor_Click" />

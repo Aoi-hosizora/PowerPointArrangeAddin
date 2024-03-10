@@ -174,9 +174,9 @@
     <value>延伸至頂端(&amp;T)</value>
   </data>
   <data name="chkExtendToFirstObject" xml:space="preserve">
-    <value>延伸至最初的圖案</value>
+    <value>延伸至最初的圖案(&amp;I)</value>
   </data>
-  <data name="btnFlipHorizontal" xml:space="preserve">
+  <data name="btnFlipHorizontal" xml:space="preserve">g
     <value>水平翻轉(&amp;H)</value>
   </data>
   <data name="btnFlipVertical" xml:space="preserve">
@@ -245,16 +245,16 @@
     <value>變形為與最初選擇的圖案相同寬度(&amp;W)</value>
   </data>
   <data name="btnSnapBottom" xml:space="preserve">
-    <value>下端向上吸附(&amp;B)</value>
+    <value>下端向上吸附(&amp;N)</value>
   </data>
   <data name="btnSnapLeft" xml:space="preserve">
-    <value>左端向右吸附(&amp;L)</value>
+    <value>左端向右吸附(&amp;E)</value>
   </data>
   <data name="btnSnapRight" xml:space="preserve">
-    <value>右端向左吸附(&amp;R)</value>
+    <value>右端向左吸附(&amp;I)</value>
   </data>
   <data name="btnSnapTop" xml:space="preserve">
-    <value>上端向下吸附(&amp;T)</value>
+    <value>上端向下吸附(&amp;P)</value>
   </data>
   <data name="btnUngroup" xml:space="preserve">
     <value>取消群組圖案(&amp;U)</value>
@@ -365,6 +365,9 @@
   <data name="btnAlignRelative_ToFirstObject" xml:space="preserve">
     <value>對齊到最初的圖案(&amp;F)</value>
   </data>
+  <data name="btnGridSwitcher" xml:space="preserve">
+    <value>顯示格綫(&amp;S)</value>
+  </data>
   <data name="btnGridSetting" xml:space="preserve">
     <value>格綫設定(&amp;G)...</value>
   </data>
@@ -403,9 +406,6 @@
   </data>
   <data name="lblSnapW" xml:space="preserve">
     <value>縱向吸附</value>
-  </data>
-  <data name="btnGridSwitcher" xml:space="preserve">
-    <value>顯示格綫</value>
   </data>
   <data name="lblGrid" xml:space="preserve">
     <value>格綫</value>

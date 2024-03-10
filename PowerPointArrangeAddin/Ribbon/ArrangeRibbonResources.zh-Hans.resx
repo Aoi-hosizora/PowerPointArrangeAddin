@@ -174,7 +174,7 @@
     <value>延伸至顶部(&amp;T)</value>
   </data>
   <data name="chkExtendToFirstObject" xml:space="preserve">
-    <value>延伸至最初的对象</value>
+    <value>延伸至最初的对象(&amp;I)</value>
   </data>
   <data name="btnFlipHorizontal" xml:space="preserve">
     <value>左右翻转(&amp;H)</value>
@@ -245,16 +245,16 @@
     <value>变形为与最初选择的形状相同宽度(&amp;W)</value>
   </data>
   <data name="btnSnapBottom" xml:space="preserve">
-    <value>底端向上吸附(&amp;B)</value>
+    <value>底端向上吸附(&amp;N)</value>
   </data>
   <data name="btnSnapLeft" xml:space="preserve">
-    <value>左端向右吸附(&amp;L)</value>
+    <value>左端向右吸附(&amp;E)</value>
   </data>
   <data name="btnSnapRight" xml:space="preserve">
-    <value>右端向左吸附(&amp;R)</value>
+    <value>右端向左吸附(&amp;I)</value>
   </data>
   <data name="btnSnapTop" xml:space="preserve">
-    <value>顶端向下吸附(&amp;T)</value>
+    <value>顶端向下吸附(&amp;P)</value>
   </data>
   <data name="btnUngroup" xml:space="preserve">
     <value>解除组合形状(&amp;U)</value>
@@ -365,6 +365,9 @@
   <data name="btnAlignRelative_ToFirstObject" xml:space="preserve">
     <value>对齐到最初的对象(&amp;F)</value>
   </data>
+  <data name="btnGridSwitcher" xml:space="preserve">
+    <value>显示网格线(&amp;S)</value>
+  </data>
   <data name="btnGridSetting" xml:space="preserve">
     <value>网格线设置(&amp;G)...</value>
   </data>
@@ -403,9 +406,6 @@
   </data>
   <data name="lblSnapW" xml:space="preserve">
     <value>纵向吸附</value>
-  </data>
-  <data name="btnGridSwitcher" xml:space="preserve">
-    <value>显示网格线</value>
   </data>
   <data name="lblGrid" xml:space="preserve">
     <value>网格线</value>

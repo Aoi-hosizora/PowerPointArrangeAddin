@@ -33,7 +33,7 @@
         <toggleButton id="btnAlignRelative_ToObjects" __template="L,S,E,I" getPressed="BtnAlignRelative_GetPressed" onAction="BtnAlignRelative_Click" />
         <toggleButton id="btnAlignRelative_ToFirstObject" __template="L,S,E,I" getPressed="BtnAlignRelative_GetPressed" onAction="BtnAlignRelative_Click" />
         <menuSeparator id="mnuAlignment_separator5" />
-        <checkBox idMso="ViewGridlinesPowerPoint" />
+        <toggleButton id="btnGridSwitcher" showLabel="false" __template="L,S,E,I" getPressed="BtnGridSwitcher_GetPressed" onAction="BtnGridSwitcher_Click" />
         <button id="btnGridSetting" __template="L,S,E,I" onAction="BtnGridSetting_Click" />
     </menu>
 
@@ -46,11 +46,13 @@
         <button id="btnScaleSameHeight" __template="L,S,E,I" onAction="BtnScale_Click" />
         <button id="btnScaleSameSize" __template="L,S,E,I" onAction="BtnScale_Click" />
         <menuSeparator id="mnuResizing_separator2" />
+        <checkBox id="chkExtendToFirstObject" __template="L,S,E" getPressed="ChkExtendToFirstObject_GetPressed" onAction="ChkExtendToFirstObject_Click" />
+        <menuSeparator id="mnuResizing_separator3" />
         <button id="btnExtendSameLeft" __template="L,S,E,I" onAction="BtnExtend_Click" />
         <button id="btnExtendSameRight" __template="L,S,E,I" onAction="BtnExtend_Click" />
         <button id="btnExtendSameTop" __template="L,S,E,I" onAction="BtnExtend_Click" />
         <button id="btnExtendSameBottom" __template="L,S,E,I" onAction="BtnExtend_Click" />
-        <menuSeparator id="mnuResizing_separator3" />
+        <menuSeparator id="mnuResizing_separator4" />
         <button id="btnSizeAndPosition" __template="L,S,E,I" onAction="BtnSizeAndPosition_Click" />
     </menu>
 
@@ -81,7 +83,7 @@
 
     <menuSeparator id="sepObjectsInSlide" __template="SEP" />
 
-    <checkBox idMso="ViewGridlinesPowerPoint" />
+    <toggleButton id="btnGridSwitcher" showLabel="false" __template="L,S,E,I" getPressed="BtnGridSwitcher_GetPressed" onAction="BtnGridSwitcher_Click" />
     <button id="btnGridSetting" __template="L,S,E,I" onAction="BtnGridSetting_Click" />
     <button id="btnSizeAndPosition" __template="L,S,E,I" onAction="BtnSizeAndPosition_Click" />
     <toggleButton idMso="SelectionPane" />

@@ -412,12 +412,15 @@ namespace PowerPointArrangeAddin.Ribbon {
             ArrangementHelper.ExtendSize(shapeRange, cmd);
         }
 
+        private bool _extendToFirstObject;
+        
         public void ChkExtendToFirstObject_Click(Office.IRibbonControl ribbonControl, bool _) {
-            // TODO
+            _extendToFirstObject = !_extendToFirstObject;
+            _ribbon?.InvalidateControls(chkExtendToFirstObject, grpResizing, (mnuArrangement, mnuResizing));
         }
 
         public bool ChkExtendToFirstObject_GetPressed(Office.IRibbonControl ribbonControl) {
-            return true; // TODO
+            return _extendToFirstObject;
         }
 
         public void BtnSnap_Click(Office.IRibbonControl ribbonControl) {
@@ -550,8 +553,32 @@ namespace PowerPointArrangeAddin.Ribbon {
             ArrangementHelper.GridSettingDialog();
         }
 
-        public void BtnGridSwitcher_Click(Office.IRibbonControl _) {
-            ArrangementHelper.GridSettingDialog(); // TODO
+        public void BtnGridSwitcher_Click(Office.IRibbonControl _, bool __) {
+            const string mso = "ViewGridlinesPowerPoint";
+            try {
+                if (Globals.ThisAddIn.Application.CommandBars.GetEnabledMso(mso)) {
+                    Globals.ThisAddIn.Application.CommandBars.ExecuteMso(mso);
+                }
+            } catch (Exception) {
+                // ignored
+            } finally {
+                Task.Run(async () => {
+                    await Task.Delay(50);
+                    _ribbon?.InvalidateControls(btnGridSwitcher, grpAlignment, mnuArrangement, (mnuArrangement, mnuAlignment));
+                });
+            }
+        }
+
+        public bool BtnGridSwitcher_GetPressed(Office.IRibbonControl _) {
+            const string mso = "ViewGridlinesPowerPoint";
+            try {
+                if (Globals.ThisAddIn.Application.CommandBars.GetEnabledMso(mso)) {
+                    return Globals.ThisAddIn.Application.CommandBars.GetPressedMso(mso);
+                }
+            } catch (Exception) { 
+                // ignored
+            }
+            return false;
         }
 
         public void BtnSizeAndPosition_Click(Office.IRibbonControl _) {
