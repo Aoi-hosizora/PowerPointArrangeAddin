@@ -219,13 +219,18 @@ namespace PowerPointArrangeAddin.Ribbon {
                 return;
             }
 
+            _extendDoublePressable.EnableDoublePress = AddInSetting.Instance.AllowDoublePressExtendButton;
             if (AddInSetting.Instance.Language != oldLanguage) {
                 // include updating elements and invalidating ribbon
                 AddInLanguageChanger.ChangeLanguage(AddInSetting.Instance.Language);
-            } else if (AddInSetting.Instance.IconStyle != oldIconStyle) {
-                UpdateUiElementsAndInvalidate(); // update elements for icons and invalidating ribbon
-            } else {
-                _ribbon?.Invalidate(); // just invalidate ribbon
+            }
+            if (AddInSetting.Instance.IconStyle != oldIconStyle) {
+                // update elements for icons and invalidating ribbon
+                UpdateUiElementsAndInvalidate();
+            }
+            if (AddInSetting.Instance.Language == oldLanguage && AddInSetting.Instance.IconStyle == oldIconStyle) {
+                // just invalidate ribbon
+                _ribbon?.Invalidate();
             }
         }
 
@@ -448,7 +453,9 @@ namespace PowerPointArrangeAddin.Ribbon {
             ArrangementHelper.ScaleSize(shapeRange, cmd, _scaleFromFlag);
         }
 
-        private DoublePressableHandler _extendDoublePressable = new() { EnableDoublePress = true };
+        private DoublePressableHandler _extendDoublePressable = new() {
+            EnableDoublePress = AddInSetting.Instance.AllowDoublePressExtendButton
+        };
 
         public void BtnExtend_Click(Office.IRibbonControl ribbonControl) {
             var shapeRange = GetShapeRange();

@@ -52,6 +52,7 @@ namespace PowerPointArrangeAddin.Dialog {
             this.chkCheckUpdateWhenStartUp = new System.Windows.Forms.CheckBox();
             this.chkHideMarginSettingForTextbox = new System.Windows.Forms.CheckBox();
             this.chkLessButtonsForArrangement = new System.Windows.Forms.CheckBox();
+            this.chkAllowDoublePressExtendButton = new System.Windows.Forms.CheckBox();
             this.tbxDescription = new System.Windows.Forms.TextBox();
             this.tlpButton = new System.Windows.Forms.TableLayoutPanel();
             this.tlpMain.SuspendLayout();
@@ -228,13 +229,14 @@ namespace PowerPointArrangeAddin.Dialog {
             // tlpOtherSetting
             // 
             resources.ApplyResources(this.tlpOtherSetting, "tlpOtherSetting");
-            this.tlpOtherSetting.Controls.Add(this.cboIconStyle, 1, 4);
-            this.tlpOtherSetting.Controls.Add(this.txtIconStyle, 0, 4);
+            this.tlpOtherSetting.Controls.Add(this.cboIconStyle, 1, 5);
+            this.tlpOtherSetting.Controls.Add(this.txtIconStyle, 0, 5);
             this.tlpOtherSetting.Controls.Add(this.lblLanguage, 0, 0);
             this.tlpOtherSetting.Controls.Add(this.cboLanguage, 1, 0);
             this.tlpOtherSetting.Controls.Add(this.chkCheckUpdateWhenStartUp, 0, 1);
             this.tlpOtherSetting.Controls.Add(this.chkHideMarginSettingForTextbox, 0, 3);
             this.tlpOtherSetting.Controls.Add(this.chkLessButtonsForArrangement, 0, 2);
+            this.tlpOtherSetting.Controls.Add(this.chkAllowDoublePressExtendButton, 0, 4);
             this.tlpOtherSetting.Name = "tlpOtherSetting";
             // 
             // cboIconStyle
@@ -290,6 +292,13 @@ namespace PowerPointArrangeAddin.Dialog {
             this.tlpOtherSetting.SetColumnSpan(this.chkLessButtonsForArrangement, 2);
             this.chkLessButtonsForArrangement.Name = "chkLessButtonsForArrangement";
             this.chkLessButtonsForArrangement.UseVisualStyleBackColor = true;
+            // 
+            // chkAllowDoublePressExtendButton
+            // 
+            resources.ApplyResources(this.chkAllowDoublePressExtendButton, "chkAllowDoublePressExtendButton");
+            this.tlpOtherSetting.SetColumnSpan(this.chkAllowDoublePressExtendButton, 2);
+            this.chkAllowDoublePressExtendButton.Name = "chkAllowDoublePressExtendButton";
+            this.chkAllowDoublePressExtendButton.UseVisualStyleBackColor = true;
             // 
             // tbxDescription
             // 
@@ -368,5 +377,6 @@ namespace PowerPointArrangeAddin.Dialog {
         private System.Windows.Forms.CheckBox chkCheckUpdateWhenStartUp;
         private System.Windows.Forms.Label txtIconStyle;
         private System.Windows.Forms.ComboBox cboIconStyle;
+        private System.Windows.Forms.CheckBox chkAllowDoublePressExtendButton;
     }
 }

@@ -32,6 +32,7 @@ namespace PowerPointArrangeAddin.Misc {
         public string IgnoreUpdateRecord { get; set; } = "";
         public bool LessButtonsForArrangementGroup { get; set; }
         public bool HideMarginSettingForTextboxGroup { get; set; }
+        public bool AllowDoublePressExtendButton { get; set; }
         public AddInIconStyle IconStyle { get; set; }
 
         public void Load() {
@@ -52,6 +53,7 @@ namespace PowerPointArrangeAddin.Misc {
             IgnoreUpdateRecord = Properties.Settings.Default.ignoreUpdateRecord;
             LessButtonsForArrangementGroup = Properties.Settings.Default.lessButtonsForArrangementGroup;
             HideMarginSettingForTextboxGroup = Properties.Settings.Default.hideMarginSettingForTextboxGroup;
+            AllowDoublePressExtendButton = Properties.Settings.Default.allowDoublePressExtendButton;
             IconStyle = Properties.Settings.Default.iconStyle.ToAddInIconStyle();
         }
 
@@ -73,6 +75,7 @@ namespace PowerPointArrangeAddin.Misc {
             Properties.Settings.Default.ignoreUpdateRecord = IgnoreUpdateRecord;
             Properties.Settings.Default.lessButtonsForArrangementGroup = LessButtonsForArrangementGroup;
             Properties.Settings.Default.hideMarginSettingForTextboxGroup = HideMarginSettingForTextboxGroup;
+            Properties.Settings.Default.allowDoublePressExtendButton = AllowDoublePressExtendButton;
             Properties.Settings.Default.iconStyle = IconStyle.ToIconStyleString();
             Properties.Settings.Default.Save();
         }

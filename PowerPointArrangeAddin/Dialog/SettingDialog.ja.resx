@@ -197,9 +197,6 @@
   <data name="chkHideMarginSettingForTextbox.Text" xml:space="preserve">
     <value>「描図ツール - 書式」タブの「テキストボックス」グループの余白設定を非表示する(&amp;G)</value>
   </data>
-  <data name="btnCheckUpdate.Text" xml:space="preserve">
-    <value>更新を確認(&amp;K)...</value>
-  </data>
   <data name="chkCheckUpdateWhenStartUp.Text" xml:space="preserve">
     <value>PowerPoint が起動される時に自動的にアドインの更新を確認(&amp;F)</value>
   </data>
@@ -211,5 +208,8 @@
   </data>
   <data name="cboIconStyle.Items1" xml:space="preserve">
     <value>スキューモーフィズム (Microsoft Office 2010 と以前)</value>
+  </data>
+  <data name="chkAllowDoublePressExtendButton.Text" xml:space="preserve">
+    <value>「サイズ変更 - オブジェクト伸長」ボタンのダブルクリックを許可する(&amp;E)</value>
   </data>
 </root>

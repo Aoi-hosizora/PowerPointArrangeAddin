@@ -197,9 +197,6 @@
   <data name="chkHideMarginSettingForTextbox.Text" xml:space="preserve">
     <value>不顯示「繪圖工具 - 格式」索引標簽的「文字方塊」群組的邊界設置(&amp;G)</value>
   </data>
-  <data name="btnCheckUpdate.Text" xml:space="preserve">
-    <value>檢查更新(&amp;K)...</value>
-  </data>
   <data name="chkCheckUpdateWhenStartUp.Text" xml:space="preserve">
     <value>啓動 PowerPoint 時自動檢查增益集的版本更新(&amp;F)</value>
   </data>
@@ -211,5 +208,8 @@
   </data>
   <data name="cboIconStyle.Items1" xml:space="preserve">
     <value>擬物風格 ( MicrosoftOffice 2010 及以前)</value>
+  </data>
+  <data name="chkAllowDoublePressExtendButton.Text" xml:space="preserve">
+    <value>允許快按兩次「大小變更 - 延伸圖案」按鈕(&amp;e)</value>
   </data>
 </root>
