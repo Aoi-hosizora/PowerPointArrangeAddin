@@ -375,8 +375,8 @@ namespace PowerPointArrangeAddin.Ribbon {
             }
             ArrangementHelper.UpdateAppAlignRelative(_alignRelativeFlag);
             _ribbon?.InvalidateControl(btnAlignRelative, grpArrange);
-            _ribbon?.InvalidateControl(btnDistributeHorizontal, grpArrange);
-            _ribbon?.InvalidateControl(btnDistributeVertical, grpArrange);
+            _ribbon?.InvalidateControls(btnDistributeHorizontal, grpArrange, grpAlignment);
+            _ribbon?.InvalidateControls(btnDistributeVertical, grpArrange, grpAlignment);
             _ribbon?.InvalidateControls(btnAlignRelative_ToObjects, grpAlignment, (mnuArrangement, mnuAlignment));
             _ribbon?.InvalidateControls(btnAlignRelative_ToFirstObject, grpAlignment, (mnuArrangement, mnuAlignment));
             _ribbon?.InvalidateControls(btnAlignRelative_ToSlide, grpAlignment, (mnuArrangement, mnuAlignment));
@@ -448,7 +448,17 @@ namespace PowerPointArrangeAddin.Ribbon {
             ArrangementHelper.ScaleSize(shapeRange, cmd, _scaleFromFlag);
         }
 
+        private DoublePressableHandler _extendDoublePressable = new() { EnableDoublePress = true };
+
         public void BtnExtend_Click(Office.IRibbonControl ribbonControl) {
+            var shapeRange = GetShapeRange();
+            if (shapeRange == null) {
+                return;
+            }
+            _extendDoublePressable.CheckPress(() => BtnExtend_SinglePress(ribbonControl), () => BtnExtend_DoublePress(ribbonControl));
+        }
+
+        public void BtnExtend_SinglePress(Office.IRibbonControl ribbonControl) {
             var shapeRange = GetShapeRange();
             if (shapeRange == null) {
                 return;
@@ -460,7 +470,22 @@ namespace PowerPointArrangeAddin.Ribbon {
                 btnExtendSameBottom => ArrangementHelper.ExtendSizeCmd.ExtendToBottom,
                 _ => null
             };
-            ArrangementHelper.ExtendSize(shapeRange, cmd);
+            ArrangementHelper.ExtendSize(shapeRange, cmd, _extendToFirstObject);
+        }
+
+        public void BtnExtend_DoublePress(Office.IRibbonControl ribbonControl) {
+            var shapeRange = GetShapeRange();
+            if (shapeRange == null) {
+                return;
+            }
+            ArrangementHelper.ExtendSizeCmd? cmd = ribbonControl.Id() switch {
+                btnExtendSameLeft => ArrangementHelper.ExtendSizeCmd.ExtendToLeft,
+                btnExtendSameRight => ArrangementHelper.ExtendSizeCmd.ExtendToRight,
+                btnExtendSameTop => ArrangementHelper.ExtendSizeCmd.ExtendToTop,
+                btnExtendSameBottom => ArrangementHelper.ExtendSizeCmd.ExtendToBottom,
+                _ => null
+            };
+            ArrangementHelper.ExtendSize(shapeRange, cmd, !_extendToFirstObject);
         }
 
         private bool _extendToFirstObject;

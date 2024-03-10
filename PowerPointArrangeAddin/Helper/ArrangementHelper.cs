@@ -183,6 +183,58 @@ namespace PowerPointArrangeAddin.Helper {
             }
         }
 
+        public enum SnapCmd {
+            SnapLeftToRight,
+            SnapRightToLeft,
+            SnapTopToBottom,
+            SnapBottomToTop
+        }
+
+        public static void Snap(PowerPoint.ShapeRange? shapeRange, SnapCmd? cmd) {
+            if (shapeRange == null || shapeRange.Count < 2) {
+                return;
+            }
+            if (cmd == null) {
+                return;
+            }
+
+            var shapes = shapeRange.OfType<PowerPoint.Shape>().ToArray();
+            var (previousLeft, previousTop) = (shapes[0].Left, shapes[0].Top);
+            var (previousWidth, previousHeight) = (shapes[0].Width, shapes[0].Height);
+
+            Globals.ThisAddIn.Application.StartNewUndoEntry();
+            switch (cmd!) {
+            case SnapCmd.SnapLeftToRight:
+                for (var i = 1; i < shapes.Length; i++) {
+                    shapes[i].Left = previousLeft + previousWidth;
+                    previousLeft = shapes[i].Left;
+                    previousWidth = shapes[i].Width;
+                }
+                break;
+            case SnapCmd.SnapRightToLeft:
+                for (var i = 1; i < shapes.Length; i++) {
+                    previousWidth = shapes[i].Width;
+                    shapes[i].Left = previousLeft - previousWidth;
+                    previousLeft = shapes[i].Left;
+                }
+                break;
+            case SnapCmd.SnapTopToBottom:
+                for (var i = 1; i < shapes.Length; i++) {
+                    shapes[i].Top = previousTop + previousHeight;
+                    previousTop = shapes[i].Top;
+                    previousHeight = shapes[i].Height;
+                }
+                break;
+            case SnapCmd.SnapBottomToTop:
+                for (var i = 1; i < shapes.Length; i++) {
+                    previousHeight = shapes[i].Height;
+                    shapes[i].Top = previousTop - previousHeight;
+                    previousTop = shapes[i].Top;
+                }
+                break;
+            }
+        }
+
         public static void UpdateAppAlignRelative(AlignRelativeFlag flag) {
             var mso = flag == AlignRelativeFlag.RelativeToSlide
                 ? "ObjectsAlignRelativeToContainerSmart"
@@ -246,7 +298,7 @@ namespace PowerPointArrangeAddin.Helper {
             ExtendToBottom
         }
 
-        public static void ExtendSize(PowerPoint.ShapeRange? shapeRange, ExtendSizeCmd? cmd) {
+        public static void ExtendSize(PowerPoint.ShapeRange? shapeRange, ExtendSizeCmd? cmd, bool extendToFirstObject) {
             if (shapeRange == null || shapeRange.Count < 2) {
                 return;
             }
@@ -256,11 +308,18 @@ namespace PowerPointArrangeAddin.Helper {
 
             var shapes = shapeRange.OfType<PowerPoint.Shape>().ToArray();
             float minLeft = 0x7fffffff, minTop = 0x7fffffff, maxLeftWidth = -1, maxTopHeight = -1;
-            foreach (var shape in shapes) {
-                minLeft = Math.Min(minLeft, shape.Left);
-                minTop = Math.Min(minTop, shape.Top);
-                maxLeftWidth = Math.Max(maxLeftWidth, shape.Left + shape.Width);
-                maxTopHeight = Math.Max(maxTopHeight, shape.Top + shape.Height);
+            if (!extendToFirstObject) {
+                foreach (var shape in shapes) {
+                    minLeft = Math.Min(minLeft, shape.Left);
+                    minTop = Math.Min(minTop, shape.Top);
+                    maxLeftWidth = Math.Max(maxLeftWidth, shape.Left + shape.Width);
+                    maxTopHeight = Math.Max(maxTopHeight, shape.Top + shape.Height);
+                }
+            } else {
+                minLeft = shapes[0].Left;
+                minTop = shapes[0].Top;
+                maxLeftWidth = shapes[0].Left + shapes[0].Width;
+                maxTopHeight = shapes[0].Top + shapes[0].Height;
             }
 
             Globals.ThisAddIn.Application.StartNewUndoEntry();
@@ -287,58 +346,6 @@ namespace PowerPointArrangeAddin.Helper {
                 foreach (var shape in shapes) {
                     var newHeight = maxTopHeight - shape.Top;
                     shape.ScaleHeightTo(newHeight, Office.MsoScaleFrom.msoScaleFromTopLeft);
-                }
-                break;
-            }
-        }
-
-        public enum SnapCmd {
-            SnapLeftToRight,
-            SnapRightToLeft,
-            SnapTopToBottom,
-            SnapBottomToTop
-        }
-
-        public static void Snap(PowerPoint.ShapeRange? shapeRange, SnapCmd? cmd) {
-            if (shapeRange == null || shapeRange.Count < 2) {
-                return;
-            }
-            if (cmd == null) {
-                return;
-            }
-
-            var shapes = shapeRange.OfType<PowerPoint.Shape>().ToArray();
-            var (previousLeft, previousTop) = (shapes[0].Left, shapes[0].Top);
-            var (previousWidth, previousHeight) = (shapes[0].Width, shapes[0].Height);
-
-            Globals.ThisAddIn.Application.StartNewUndoEntry();
-            switch (cmd!) {
-            case SnapCmd.SnapLeftToRight:
-                for (var i = 1; i < shapes.Length; i++) {
-                    shapes[i].Left = previousLeft + previousWidth;
-                    previousLeft = shapes[i].Left;
-                    previousWidth = shapes[i].Width;
-                }
-                break;
-            case SnapCmd.SnapRightToLeft:
-                for (var i = 1; i < shapes.Length; i++) {
-                    previousWidth = shapes[i].Width;
-                    shapes[i].Left = previousLeft - previousWidth;
-                    previousLeft = shapes[i].Left;
-                }
-                break;
-            case SnapCmd.SnapTopToBottom:
-                for (var i = 1; i < shapes.Length; i++) {
-                    shapes[i].Top = previousTop + previousHeight;
-                    previousTop = shapes[i].Top;
-                    previousHeight = shapes[i].Height;
-                }
-                break;
-            case SnapCmd.SnapBottomToTop:
-                for (var i = 1; i < shapes.Length; i++) {
-                    previousHeight = shapes[i].Height;
-                    shapes[i].Top = previousTop - previousHeight;
-                    previousTop = shapes[i].Top;
                 }
                 break;
             }

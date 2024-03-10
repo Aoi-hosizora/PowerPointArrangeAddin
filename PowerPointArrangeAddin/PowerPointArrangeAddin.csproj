@@ -260,6 +260,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helper\ArrangementHelper.cs" />
+    <Compile Include="Helper\DoublePressableHandler.cs" />
     <Compile Include="Helper\ReplacePictureHelper.cs" />
     <Compile Include="Helper\RibbonControlExtension.cs" />
     <Compile Include="Helper\RotationHelper.cs" />
