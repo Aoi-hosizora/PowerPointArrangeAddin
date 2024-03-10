@@ -204,12 +204,12 @@
     <value>圖示風格(&amp;Y):</value>
   </data>
   <data name="cboIconStyle.Items" xml:space="preserve">
-    <value>擬物風格 ( MicrosoftOffice 2010 及以前)</value>
+    <value>扁平風格 (MicrosoftOffice 2010 及以前)</value>
   </data>
   <data name="cboIconStyle.Items1" xml:space="preserve">
-    <value>擬物風格 ( MicrosoftOffice 2010 及以前)</value>
+    <value>擬物風格 (MicrosoftOffice 2010 及以前)</value>
   </data>
   <data name="chkAllowDoublePressExtendButton.Text" xml:space="preserve">
-    <value>允許快按兩次「大小變更 - 延伸圖案」按鈕(&amp;e)</value>
+    <value>允許快按兩次「大小變更 - 延伸圖案」按鈕(&amp;E)</value>
   </data>
 </root>

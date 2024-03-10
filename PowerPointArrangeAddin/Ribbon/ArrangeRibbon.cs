@@ -46,6 +46,9 @@ namespace PowerPointArrangeAddin.Ribbon {
                     var _ = await AddInVersion.Instance.CheckUpdateAutomatically(hwnd);
                 });
             }
+
+            // apply long pressable flag from setting
+            _extendDoublePressable.EnableDoublePress = AddInSetting.Instance.AllowDoublePressExtendButton;
         }
 
         private delegate bool AvailabilityRule(PowerPoint.ShapeRange? shapeRange, int shapesCount, bool hasTextFrame);
@@ -453,9 +456,7 @@ namespace PowerPointArrangeAddin.Ribbon {
             ArrangementHelper.ScaleSize(shapeRange, cmd, _scaleFromFlag);
         }
 
-        private DoublePressableHandler _extendDoublePressable = new() {
-            EnableDoublePress = AddInSetting.Instance.AllowDoublePressExtendButton
-        };
+        private DoublePressableHandler _extendDoublePressable = new() { EnableDoublePress = true };
 
         public void BtnExtend_Click(Office.IRibbonControl ribbonControl) {
             var shapeRange = GetShapeRange();
