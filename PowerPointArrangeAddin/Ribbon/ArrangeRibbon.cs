@@ -139,7 +139,8 @@ namespace PowerPointArrangeAddin.Ribbon {
             // grpReplacePicture
             Register(btnReplaceWithClipboard, (_, cnt, _) => cnt >= 1);
             Register(btnReplaceWithFile, (_, cnt, _) => cnt >= 1);
-            Register(chkReserveOriginalSize, (_, _, _) => true);
+            Register(chkReplaceToFill, (_, _, _) => true);
+            Register(chkReplaceToContain, (_, _, _) => true);
             Register(chkReplaceToMiddle, (_, _, _) => true);
 
             return map;
@@ -901,32 +902,46 @@ namespace PowerPointArrangeAddin.Ribbon {
 
         // This flag is used for picture replacing related callbacks, that is BtnReplacePicture_Click.
         private ReplacePictureHelper.ReplacePictureFlag _replacePictureFlag =
-            ReplacePictureHelper.ReplacePictureFlag.ReplaceToMiddle | ReplacePictureHelper.ReplacePictureFlag.ReserveOriginalSize;
+            ReplacePictureHelper.ReplacePictureFlag.ReplaceToContain | ReplacePictureHelper.ReplacePictureFlag.ReplaceToMiddle;
 
-        public void ChkReserveOriginalSize_Click(Office.IRibbonControl ribbonControl, bool _) {
-            if (!ChkReserveOriginalSize_GetPressed(ribbonControl)) {
-                _replacePictureFlag |= ReplacePictureHelper.ReplacePictureFlag.ReserveOriginalSize;
-            } else {
-                _replacePictureFlag &= ~ReplacePictureHelper.ReplacePictureFlag.ReserveOriginalSize;
+        public void ChkReplaceMode_Click(Office.IRibbonControl ribbonControl, bool _) {
+            switch (ribbonControl.Id()) {
+            case chkReplaceToFill:
+                if (!ChkReplaceMode_GetPressed(ribbonControl)) {
+                    _replacePictureFlag |= ReplacePictureHelper.ReplacePictureFlag.ReplaceToFill;
+                    _replacePictureFlag &= ~ReplacePictureHelper.ReplacePictureFlag.ReplaceToContain;
+                } else {
+                    _replacePictureFlag &= ~ReplacePictureHelper.ReplacePictureFlag.ReplaceToFill;
+                }
+                break;
+            case chkReplaceToContain:
+                if (!ChkReplaceMode_GetPressed(ribbonControl)) {
+                    _replacePictureFlag |= ReplacePictureHelper.ReplacePictureFlag.ReplaceToContain;
+                    _replacePictureFlag &= ~ReplacePictureHelper.ReplacePictureFlag.ReplaceToFill;
+                } else {
+                    _replacePictureFlag &= ~ReplacePictureHelper.ReplacePictureFlag.ReplaceToContain;
+                }
+                break;
+            case chkReplaceToMiddle:
+                if (!ChkReplaceMode_GetPressed(ribbonControl)) {
+                    _replacePictureFlag |= ReplacePictureHelper.ReplacePictureFlag.ReplaceToMiddle;
+                } else {
+                    _replacePictureFlag &= ~ReplacePictureHelper.ReplacePictureFlag.ReplaceToMiddle;
+                }
+                break;
             }
-            _ribbon?.InvalidateControl(chkReserveOriginalSize, grpReplacePicture);
-        }
-
-        public bool ChkReserveOriginalSize_GetPressed(Office.IRibbonControl _) {
-            return (_replacePictureFlag & ReplacePictureHelper.ReplacePictureFlag.ReserveOriginalSize) != 0;
-        }
-
-        public void ChkReplaceToMiddle_Click(Office.IRibbonControl ribbonControl, bool _) {
-            if (!ChkReplaceToMiddle_GetPressed(ribbonControl)) {
-                _replacePictureFlag |= ReplacePictureHelper.ReplacePictureFlag.ReplaceToMiddle;
-            } else {
-                _replacePictureFlag &= ~ReplacePictureHelper.ReplacePictureFlag.ReplaceToMiddle;
-            }
+            _ribbon?.InvalidateControl(chkReplaceToFill, grpReplacePicture);
+            _ribbon?.InvalidateControl(chkReplaceToContain, grpReplacePicture);
             _ribbon?.InvalidateControl(chkReplaceToMiddle, grpReplacePicture);
         }
 
-        public bool ChkReplaceToMiddle_GetPressed(Office.IRibbonControl _) {
-            return (_replacePictureFlag & ReplacePictureHelper.ReplacePictureFlag.ReplaceToMiddle) != 0;
+        public bool ChkReplaceMode_GetPressed(Office.IRibbonControl ribbonControl) {
+            return ribbonControl.Id() switch {
+                chkReplaceToFill => (_replacePictureFlag & ReplacePictureHelper.ReplacePictureFlag.ReplaceToFill) != 0,
+                chkReplaceToContain => (_replacePictureFlag & ReplacePictureHelper.ReplacePictureFlag.ReplaceToContain) != 0,
+                chkReplaceToMiddle => (_replacePictureFlag & ReplacePictureHelper.ReplacePictureFlag.ReplaceToMiddle) != 0,
+                _ => false
+            };
         }
 
         public void BtnReplacePicture_Click(Office.IRibbonControl ribbonControl) {

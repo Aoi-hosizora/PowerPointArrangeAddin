@@ -268,8 +268,11 @@
   <data name="chkReplaceToMiddle" xml:space="preserve">
     <value>替换到中心点</value>
   </data>
-  <data name="chkReserveOriginalSize" xml:space="preserve">
-    <value>保持图片的大小</value>
+  <data name="chkReplaceToFill" xml:space="preserve">
+    <value>填充替換</value>
+  </data>
+  <data name="chkReplaceToContain" xml:space="preserve">
+    <value>保持比例替換</value>
   </data>
   <data name="dlgNoPictureInClipboard" xml:space="preserve">
     <value>剪贴板里不存在图片，所以无法替换图片。</value>

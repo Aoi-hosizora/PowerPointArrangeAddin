@@ -268,8 +268,11 @@
   <data name="chkReplaceToMiddle" xml:space="preserve">
     <value>元の中央点に置換</value>
   </data>
-  <data name="chkReserveOriginalSize" xml:space="preserve">
-    <value>図のサイズを保持</value>
+  <data name="chkReplaceToFill" xml:space="preserve">
+    <value>拡大して置換</value>
+  </data>
+  <data name="chkReplaceToContain" xml:space="preserve">
+    <value>元に合わせて置換</value>
   </data>
   <data name="dlgNoPictureInClipboard" xml:space="preserve">
     <value>クリップボードに図がありませんので、置換できません。</value>

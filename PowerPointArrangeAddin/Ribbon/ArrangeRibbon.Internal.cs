@@ -260,7 +260,8 @@ namespace PowerPointArrangeAddin.Ribbon {
         private const string grpReplacePicture = "grpReplacePicture";
         private const string btnReplaceWithClipboard = "btnReplaceWithClipboard";
         private const string btnReplaceWithFile = "btnReplaceWithFile";
-        private const string chkReserveOriginalSize = "chkReserveOriginalSize";
+        private const string chkReplaceToFill = "chkReplaceToFill";
+        private const string chkReplaceToContain = "chkReplaceToContain";
         private const string chkReplaceToMiddle = "chkReplaceToMiddle";
         // grpSizeAndPosition
         private const string grpShapeSizeAndPosition = "grpShapeSizeAndPosition";
@@ -469,8 +470,9 @@ namespace PowerPointArrangeAddin.Ribbon {
             // grpReplacePicture
             Register(grpReplacePicture, new UiElement(RL.grpReplacePicture, nameof(RIM.PictureChangeFromClipboard)));
             Register(btnReplaceWithClipboard, new UiElement(RL.btnReplaceWithClipboard, nameof(RIM.PictureChangeFromClipboard_32), "TC"));
-            Register(btnReplaceWithFile, new UiElement(RL.btnReplaceWithFile, nameof(RIM.PictureChange), "TF"));
-            Register(chkReserveOriginalSize, new UiElement(RL.chkReserveOriginalSize, keytip: "TR"));
+            Register(btnReplaceWithFile, new UiElement(RL.btnReplaceWithFile, nameof(RIM.PictureChange_32), "TF"));
+            Register(chkReplaceToFill, new UiElement(RL.chkReplaceToFill, keytip: "TL"));
+            Register(chkReplaceToContain, new UiElement(RL.chkReplaceToContain, keytip: "TR"));
             Register(chkReplaceToMiddle, new UiElement(RL.chkReplaceToMiddle, keytip: "TM"));
             // grpSizeAndPosition
             Register(grpShapeSizeAndPosition, new UiElement(RL.grpSizeAndPosition, nameof(RIM.SizeAndPosition)));

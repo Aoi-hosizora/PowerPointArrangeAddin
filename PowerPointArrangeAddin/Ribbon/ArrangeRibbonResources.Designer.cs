@@ -610,20 +610,29 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Replace and contain.
+        /// </summary>
+        public static string chkReplaceToContain {
+            get {
+                return ResourceManager.GetString("chkReplaceToContain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Replace and fill.
+        /// </summary>
+        public static string chkReplaceToFill {
+            get {
+                return ResourceManager.GetString("chkReplaceToFill", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Replace to middle.
         /// </summary>
         public static string chkReplaceToMiddle {
             get {
                 return ResourceManager.GetString("chkReplaceToMiddle", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Reserve original size.
-        /// </summary>
-        public static string chkReserveOriginalSize {
-            get {
-                return ResourceManager.GetString("chkReserveOriginalSize", resourceCulture);
             }
         }
         

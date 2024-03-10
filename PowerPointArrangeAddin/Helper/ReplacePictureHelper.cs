@@ -20,9 +20,10 @@ namespace PowerPointArrangeAddin.Helper {
 
         [Flags]
         public enum ReplacePictureFlag : ushort {
-            Default = 0,
-            ReserveOriginalSize = 1 << 0,
-            ReplaceToMiddle = 1 << 1
+            None = 0,
+            ReplaceToFill = 1 << 0,
+            ReplaceToContain = 1 << 1,
+            ReplaceToMiddle = 1 << 2
         }
 
         public static void ReplacePicture(PowerPoint.ShapeRange? shapeRange, ReplacePictureCmd? cmd, ReplacePictureFlag? flag, Action? uiInvalidator = null) {
@@ -65,7 +66,8 @@ namespace PowerPointArrangeAddin.Helper {
         }
 
         private static List<PowerPoint.Shape> InternalReplacePicture(string filepath, PowerPoint.Shape[] pictures, PowerPoint.Shapes slideShapes, ReplacePictureFlag? flag) {
-            var reserveOriginalSize = (flag & ReplacePictureFlag.ReserveOriginalSize) != 0;
+            var replaceToFill = (flag & ReplacePictureFlag.ReplaceToFill) != 0;
+            var replaceToContain = (flag & ReplacePictureFlag.ReplaceToContain) != 0;
             var replaceToMiddle = (flag & ReplacePictureFlag.ReplaceToMiddle) != 0;
 
             var newShapes = new List<PowerPoint.Shape>();
@@ -73,7 +75,7 @@ namespace PowerPointArrangeAddin.Helper {
                 try {
                     var (toLink, toSaveWith) = (Office.MsoTriState.msoFalse, Office.MsoTriState.msoTrue);
                     var newShape = slideShapes.AddPicture(filepath, toLink, toSaveWith, shape.Left, shape.Top); // <<<
-                    ApplySizeAndPositionToNewShape(shape, newShape, reserveOriginalSize, replaceToMiddle);
+                    ApplySizeAndPositionToNewShape(shape, newShape, replaceToFill, replaceToContain, replaceToMiddle);
                     ApplyFormatAndAnimationToNewShape(shape, newShape);
                     newShapes.Add(newShape);
                     shape.Delete();
@@ -133,13 +135,16 @@ namespace PowerPointArrangeAddin.Helper {
             return path;
         }
 
-        private static void ApplySizeAndPositionToNewShape(PowerPoint.Shape oldShape, PowerPoint.Shape newShape, bool reserveOriginalSize, bool replaceToMiddle) {
+        private static void ApplySizeAndPositionToNewShape(PowerPoint.Shape oldShape, PowerPoint.Shape newShape, bool replaceToFill, bool replaceToContain, bool replaceToMiddle) {
             var oldLockAspectRatio = newShape.LockAspectRatio;
             newShape.LockAspectRatio = Office.MsoTriState.msoFalse;
             var (oldWidth, oldHeight) = (oldShape.Width, oldShape.Height);
             var (oldLeft, oldTop) = (oldShape.Left, oldShape.Top);
             var (newWidth, newHeight) = (newShape.Width, newShape.Height);
-            if (reserveOriginalSize) {
+            if (replaceToFill) {
+                newHeight = oldHeight;
+                newWidth = oldWidth;
+            } else if (replaceToContain) {
                 var widthHeightRate = newWidth / newHeight;
                 if (oldHeight * widthHeightRate <= oldWidth) {
                     newHeight = oldHeight;
@@ -148,9 +153,9 @@ namespace PowerPointArrangeAddin.Helper {
                     newWidth = oldWidth;
                     newHeight = oldWidth / widthHeightRate;
                 }
-                newShape.Width = newWidth;
-                newShape.Height = newHeight;
             }
+            newShape.Width = newWidth;
+            newShape.Height = newHeight;
             if (replaceToMiddle) {
                 newShape.Left = oldLeft - (newWidth - oldWidth) / 2;
                 newShape.Top = oldTop - (newHeight - oldHeight) / 2;

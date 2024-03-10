@@ -272,8 +272,11 @@
   <data name="chkReplaceToMiddle" xml:space="preserve">
     <value>Replace to middle</value>
   </data>
-  <data name="chkReserveOriginalSize" xml:space="preserve">
-    <value>Reserve original size</value>
+  <data name="chkReplaceToFill" xml:space="preserve">
+    <value>Replace and fill</value>
+  </data>
+  <data name="chkReplaceToContain" xml:space="preserve">
+    <value>Replace and contain</value>
   </data>
   <data name="dlgNoPictureInClipboard" xml:space="preserve">
     <value>There is no picture in clipboard.</value>
