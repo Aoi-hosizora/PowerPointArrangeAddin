@@ -174,7 +174,10 @@
     <value>延伸至頂端(&amp;T)</value>
   </data>
   <data name="chkExtendToFirstObject" xml:space="preserve">
-    <value>延伸至最初的圖案(&amp;I)</value>
+    <value>延伸到最初的圖案(&amp;I)</value>
+  </data>
+  <data name="chkExtendToFirstObjectFull" xml:space="preserve">
+    <value>延伸到最初選擇的圖案邊界(&amp;I)</value>
   </data>
   <data name="btnFlipHorizontal" xml:space="preserve">g
     <value>水平翻轉(&amp;H)</value>

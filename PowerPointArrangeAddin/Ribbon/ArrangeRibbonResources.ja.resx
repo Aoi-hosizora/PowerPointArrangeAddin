@@ -176,6 +176,9 @@
   <data name="chkExtendToFirstObject" xml:space="preserve">
     <value>最初の図形に伸ばす(&amp;I)</value>
   </data>
+  <data name="chkExtendToFirstObjectFull" xml:space="preserve">
+    <value>最初に選択した図形の外枠に伸ばす(&amp;I)</value>
+  </data>
   <data name="btnFlipHorizontal" xml:space="preserve">
     <value>左右反転(&amp;H)</value>
   </data>

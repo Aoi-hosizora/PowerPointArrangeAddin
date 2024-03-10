@@ -28,6 +28,10 @@ namespace PowerPointArrangeAddin.Helper {
             return parts.Length < 2 ? "" : parts[1];
         }
 
+        public static string CombineParentId(this IRibbonExtensibility _, string a, string b) {
+            return $"{a}{Separator}{b}";
+        }
+
         public static void InvalidateControl(this IRibbonUI ribbonUi, string controlId, string parentId) {
             ribbonUi.InvalidateControl($"{controlId}{Separator}{parentId}");
         }

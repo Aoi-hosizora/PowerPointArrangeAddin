@@ -59,6 +59,11 @@ namespace PowerPointArrangeAddin.Ribbon {
             }
 
             // grpArrange
+            Register(btnAlignRelative, (_, cnt, _) => cnt >= 1);
+            Register(btnScaleAnchor, (_, _, _) => true);
+            Register(mnuArrangement, (_, _, _) => true);
+            Register(btnAddInSetting, (_, _, _) => true);
+            // grpAlignment
             Register(btnAlignLeft, (_, cnt, _) => cnt >= 1);
             Register(btnAlignCenter, (_, cnt, _) => cnt >= 1);
             Register(btnAlignRight, (_, cnt, _) => cnt >= 1);
@@ -67,46 +72,44 @@ namespace PowerPointArrangeAddin.Ribbon {
             Register(btnAlignBottom, (_, cnt, _) => cnt >= 1);
             Register(btnDistributeHorizontal, (shapeRange, cnt, _) => cnt >= 1 && ArrangementHelper.IsDistributable(shapeRange, _alignRelativeFlag));
             Register(btnDistributeVertical, (shapeRange, cnt, _) => cnt >= 1 && ArrangementHelper.IsDistributable(shapeRange, _alignRelativeFlag));
-            Register(btnAlignRelative, (_, cnt, _) => cnt >= 1);
-            Register(btnScaleSameWidth, (_, cnt, _) => cnt >= 2);
-            Register(btnScaleSameHeight, (_, cnt, _) => cnt >= 2);
-            Register(btnScaleSameSize, (_, cnt, _) => cnt >= 2);
-            Register(btnScaleAnchor, (_, _, _) => true);
-            Register(btnExtendSameLeft, (_, cnt, _) => cnt >= 2);
-            Register(btnExtendSameRight, (_, cnt, _) => cnt >= 2);
-            Register(btnExtendSameTop, (_, cnt, _) => cnt >= 2);
-            Register(btnExtendSameBottom, (_, cnt, _) => cnt >= 2);
             Register(btnSnapLeft, (_, cnt, _) => cnt >= 2);
             Register(btnSnapRight, (_, cnt, _) => cnt >= 2);
             Register(btnSnapTop, (_, cnt, _) => cnt >= 2);
             Register(btnSnapBottom, (_, cnt, _) => cnt >= 2);
-            Register(btnMoveFront, (_, cnt, _) => cnt >= 1);
-            Register(btnMoveBack, (_, cnt, _) => cnt >= 1);
-            Register(btnMoveForward, (_, cnt, _) => cnt >= 1);
-            Register(btnMoveBackward, (_, cnt, _) => cnt >= 1);
-            Register(btnRotateRight90, (_, cnt, _) => cnt >= 1);
-            Register(btnRotateLeft90, (_, cnt, _) => cnt >= 1);
-            Register(btnFlipVertical, (_, cnt, _) => cnt >= 1);
-            Register(btnFlipHorizontal, (_, cnt, _) => cnt >= 1);
-            Register(btnGroup, (_, cnt, _) => cnt >= 2);
-            Register(btnUngroup, (sr, cnt, _) => cnt >= 1 && ArrangementHelper.IsUngroupable(sr));
+            Register(btnGridSwitcher, (_, _, _) => true);
             Register(btnGridSetting, (_, _, _) => true);
-            Register(mnuArrangement, (_, _, _) => true);
-            Register(btnAddInSetting, (_, _, _) => true);
-            // grpAlignment
             Register(btnAlignRelative_ToObjects, (_, cnt, _) => cnt >= 2);
             Register(btnAlignRelative_ToFirstObject, (_, cnt, _) => cnt >= 2);
             Register(btnAlignRelative_ToSlide, (_, cnt, _) => cnt >= 1);
             Register(btnSizeAndPosition, (_, cnt, _) => cnt >= 1);
             // grpResizing
+            Register(btnScaleSameWidth, (_, cnt, _) => cnt >= 2);
+            Register(btnScaleSameHeight, (_, cnt, _) => cnt >= 2);
+            Register(btnScaleSameSize, (_, cnt, _) => cnt >= 2);
+            Register(btnExtendSameLeft, (_, cnt, _) => cnt >= 2);
+            Register(btnExtendSameRight, (_, cnt, _) => cnt >= 2);
+            Register(btnExtendSameTop, (_, cnt, _) => cnt >= 2);
+            Register(btnExtendSameBottom, (_, cnt, _) => cnt >= 2);
+            Register(chkExtendToFirstObject, (_, _, _) => true);
             Register(btnScaleAnchor_FromTopLeft, (_, _, _) => true);
             Register(btnScaleAnchor_FromMiddle, (_, _, _) => true);
             Register(btnScaleAnchor_FromBottomRight, (_, _, _) => true);
             // grpRotateAndFlip
+            Register(btnRotateRight90, (_, cnt, _) => cnt >= 1);
+            Register(btnRotateLeft90, (_, cnt, _) => cnt >= 1);
+            Register(btnFlipVertical, (_, cnt, _) => cnt >= 1);
+            Register(btnFlipHorizontal, (_, cnt, _) => cnt >= 1);
             Register(edtAngle, (_, cnt, _) => cnt >= 1);
             Register(btnCopyAngle, (sr, cnt, _) => cnt >= 1 && RotationHelper.IsAngleCopyable(sr));
             Register(btnPasteAngle, (_, cnt, _) => cnt >= 1 && RotationHelper.IsValidCopiedAngleValue());
             Register(btnResetAngle, (_, cnt, _) => cnt >= 1);
+            // grpObjectArrange
+            Register(btnMoveFront, (_, cnt, _) => cnt >= 1);
+            Register(btnMoveBack, (_, cnt, _) => cnt >= 1);
+            Register(btnMoveForward, (_, cnt, _) => cnt >= 1);
+            Register(btnMoveBackward, (_, cnt, _) => cnt >= 1);
+            Register(btnGroup, (_, cnt, _) => cnt >= 2);
+            Register(btnUngroup, (sr, cnt, _) => cnt >= 1 && ArrangementHelper.IsUngroupable(sr));
             // grpObjectSize
             Register(btnResetSize, (sr, cnt, _) => cnt >= 1 && SizeAndPositionHelper.IsSizeResettable(sr));
             Register(btnLockAspectRatio, (_, cnt, _) => cnt >= 1);
@@ -207,6 +210,62 @@ namespace PowerPointArrangeAddin.Ribbon {
             return (selection.TextFrame, selection.TextFrame2);
         }
 
+        public void BtnAddInSetting_Click(Office.IRibbonControl _) {
+            var oldLanguage = AddInSetting.Instance.Language;
+            var oldIconStyle = AddInSetting.Instance.IconStyle;
+            var dlg = new Dialog.SettingDialog();
+            var result = dlg.ShowDialog();
+            if (result != Forms.DialogResult.OK) {
+                return;
+            }
+
+            if (AddInSetting.Instance.Language != oldLanguage) {
+                // include updating elements and invalidating ribbon
+                AddInLanguageChanger.ChangeLanguage(AddInSetting.Instance.Language);
+            } else if (AddInSetting.Instance.IconStyle != oldIconStyle) {
+                UpdateUiElementsAndInvalidate(); // update elements for icons and invalidating ribbon
+            } else {
+                _ribbon?.Invalidate(); // just invalidate ribbon
+            }
+        }
+
+        public void BtnAddInCheckUpdate_Click(Office.IRibbonControl _) {
+            Task.Run(async () => {
+                var hwnd = new IntPtr(Globals.ThisAddIn.Application.HWND);
+                var __ = await AddInVersion.Instance.CheckUpdateManually(hwnd);
+            });
+        }
+
+        public void BtnAddInHomepage_Click(Office.IRibbonControl _) {
+            using (new EnableThemingInScope(true)) {
+                var dialog = new TaskDialog();
+                dialog.Caption = AddInDescription.Instance.Title;
+                dialog.InstructionText = ArrangeRibbonResources.dlgChooseToVisit;
+                dialog.Icon = TaskDialogStandardIcon.Information;
+                dialog.OwnerWindowHandle = new IntPtr(Globals.ThisAddIn.Application.HWND);
+                dialog.StandardButtons = TaskDialogStandardButtons.Cancel;
+                var lnkGhHomepage = new TaskDialogCommandLink("GitHub Homepage", ArrangeRibbonResources.dlgGitHubHomepage);
+                var lnkGhRelease = new TaskDialogCommandLink("GitHub Release", ArrangeRibbonResources.dlgGitHubRelease);
+                var lnkAcRelease = new TaskDialogCommandLink("AppCenter Release", ArrangeRibbonResources.dlgAppCenterRelease);
+                lnkGhHomepage.Click += (_, _) => AccessAndClose(dialog, AddInDescription.Instance.Homepage);
+                lnkGhRelease.Click += (_, _) => AccessAndClose(dialog, AddInDescription.Instance.GitHubReleaseUrl);
+                lnkAcRelease.Click += (_, _) => AccessAndClose(dialog, AddInDescription.Instance.AppCenterReleaseUrl);
+                dialog.Controls.Add(lnkGhHomepage);
+                dialog.Controls.Add(lnkGhRelease);
+                dialog.Controls.Add(lnkAcRelease);
+                dialog.Show();
+            }
+
+            static void AccessAndClose(TaskDialog dlg, string url) {
+                Process.Start(url);
+                dlg.Close();
+            }
+        }
+
+        public void BtnAddInFeedback_Click(Office.IRibbonControl _) {
+            Process.Start(AddInDescription.Instance.GitHubFeedbackUrl);
+        }
+
         public void BtnAlign_Click(Office.IRibbonControl ribbonControl) {
             var shapeRange = GetShapeRange();
             if (shapeRange == null) {
@@ -237,9 +296,58 @@ namespace PowerPointArrangeAddin.Ribbon {
             ArrangementHelper.Distribute(shapeRange, cmd, _alignRelativeFlag);
         }
 
+        public void BtnSnap_Click(Office.IRibbonControl ribbonControl) {
+            var shapeRange = GetShapeRange();
+            if (shapeRange == null) {
+                return;
+            }
+            ArrangementHelper.SnapCmd? cmd = ribbonControl.Id() switch {
+                btnSnapLeft => ArrangementHelper.SnapCmd.SnapLeftToRight,
+                btnSnapRight => ArrangementHelper.SnapCmd.SnapRightToLeft,
+                btnSnapTop => ArrangementHelper.SnapCmd.SnapTopToBottom,
+                btnSnapBottom => ArrangementHelper.SnapCmd.SnapBottomToTop,
+                _ => null
+            };
+            ArrangementHelper.Snap(shapeRange, cmd);
+        }
+
+
+        public void BtnGridSwitcher_Click(Office.IRibbonControl _, bool __) {
+            const string mso = "ViewGridlinesPowerPoint";
+            try {
+                if (Globals.ThisAddIn.Application.CommandBars.GetEnabledMso(mso)) {
+                    Globals.ThisAddIn.Application.CommandBars.ExecuteMso(mso);
+                }
+            } catch (Exception) {
+                // ignored
+            } finally {
+                Task.Run(async () => {
+                    await Task.Delay(50);
+                    _ribbon?.InvalidateControls(btnGridSwitcher, grpAlignment, mnuArrangement, (mnuArrangement, mnuAlignment));
+                });
+            }
+        }
+
+        public bool BtnGridSwitcher_GetPressed(Office.IRibbonControl _) {
+            const string mso = "ViewGridlinesPowerPoint";
+            try {
+                if (Globals.ThisAddIn.Application.CommandBars.GetEnabledMso(mso)) {
+                    return Globals.ThisAddIn.Application.CommandBars.GetPressedMso(mso);
+                }
+            } catch (Exception) {
+                // ignored
+            }
+            return false;
+        }
+
+        public void BtnGridSetting_Click(Office.IRibbonControl _) {
+            ArrangementHelper.GridSettingDialog();
+        }
+
         // This flag is used to adjust alignment relative behavior, is used by BtnAlign_Click and BtnDistribute_Click.
         private ArrangementHelper.AlignRelativeFlag _alignRelativeFlag = ArrangementHelper.AlignRelativeFlag.RelativeToObjects;
 
+        // Only for btnAlignRelative* and btnScaleAnchor*.
         private bool IsOptionRibbonButton(Office.IRibbonControl ribbonControl) {
             return ribbonControl.Id().Contains("_To") || ribbonControl.Id().Contains("_From"); // just check by id
         }
@@ -322,6 +430,10 @@ namespace PowerPointArrangeAddin.Ribbon {
             return GetImage(ribbonControl.Id());
         }
 
+        public void BtnSizeAndPosition_Click(Office.IRibbonControl _) {
+            SizeAndPositionHelper.SizeAndPositionDialog();
+        }
+
         public void BtnScale_Click(Office.IRibbonControl ribbonControl) {
             var shapeRange = GetShapeRange();
             if (shapeRange == null) {
@@ -336,7 +448,33 @@ namespace PowerPointArrangeAddin.Ribbon {
             ArrangementHelper.ScaleSize(shapeRange, cmd, _scaleFromFlag);
         }
 
-        // This flag is used to control scale and size behavior, is used by BtnScale_Click, BtnCopyAndPasteSize_Click and BtnResetMediaSize_Click.
+        public void BtnExtend_Click(Office.IRibbonControl ribbonControl) {
+            var shapeRange = GetShapeRange();
+            if (shapeRange == null) {
+                return;
+            }
+            ArrangementHelper.ExtendSizeCmd? cmd = ribbonControl.Id() switch {
+                btnExtendSameLeft => ArrangementHelper.ExtendSizeCmd.ExtendToLeft,
+                btnExtendSameRight => ArrangementHelper.ExtendSizeCmd.ExtendToRight,
+                btnExtendSameTop => ArrangementHelper.ExtendSizeCmd.ExtendToTop,
+                btnExtendSameBottom => ArrangementHelper.ExtendSizeCmd.ExtendToBottom,
+                _ => null
+            };
+            ArrangementHelper.ExtendSize(shapeRange, cmd);
+        }
+
+        private bool _extendToFirstObject;
+
+        public void ChkExtendToFirstObject_Click(Office.IRibbonControl ribbonControl, bool _) {
+            _extendToFirstObject = !_extendToFirstObject;
+            _ribbon?.InvalidateControls(chkExtendToFirstObject, grpResizing, (mnuArrangement, mnuResizing));
+        }
+
+        public bool ChkExtendToFirstObject_GetPressed(Office.IRibbonControl ribbonControl) {
+            return _extendToFirstObject;
+        }
+
+        // This flag is used to control scale and size behavior, is used by BtnScale_Click, EdtSize_TextChanged, BtnCopyAndPasteSize_Click and BtnResetMediaSize_Click.
         private Office.MsoScaleFrom _scaleFromFlag = Office.MsoScaleFrom.msoScaleFromTopLeft;
 
         public void BtnScaleAnchor_Click(Office.IRibbonControl ribbonControl, bool _ = false) {
@@ -397,46 +535,6 @@ namespace PowerPointArrangeAddin.Ribbon {
             return GetImage(ribbonControl.Id());
         }
 
-        public void BtnExtend_Click(Office.IRibbonControl ribbonControl) {
-            var shapeRange = GetShapeRange();
-            if (shapeRange == null) {
-                return;
-            }
-            ArrangementHelper.ExtendSizeCmd? cmd = ribbonControl.Id() switch {
-                btnExtendSameLeft => ArrangementHelper.ExtendSizeCmd.ExtendToLeft,
-                btnExtendSameRight => ArrangementHelper.ExtendSizeCmd.ExtendToRight,
-                btnExtendSameTop => ArrangementHelper.ExtendSizeCmd.ExtendToTop,
-                btnExtendSameBottom => ArrangementHelper.ExtendSizeCmd.ExtendToBottom,
-                _ => null
-            };
-            ArrangementHelper.ExtendSize(shapeRange, cmd);
-        }
-
-        private bool _extendToFirstObject;
-        
-        public void ChkExtendToFirstObject_Click(Office.IRibbonControl ribbonControl, bool _) {
-            _extendToFirstObject = !_extendToFirstObject;
-            _ribbon?.InvalidateControls(chkExtendToFirstObject, grpResizing, (mnuArrangement, mnuResizing));
-        }
-
-        public bool ChkExtendToFirstObject_GetPressed(Office.IRibbonControl ribbonControl) {
-            return _extendToFirstObject;
-        }
-
-        public void BtnSnap_Click(Office.IRibbonControl ribbonControl) {
-            var shapeRange = GetShapeRange();
-            if (shapeRange == null) {
-                return;
-            }
-            ArrangementHelper.SnapCmd? cmd = ribbonControl.Id() switch {
-                btnSnapLeft => ArrangementHelper.SnapCmd.SnapLeftToRight,
-                btnSnapRight => ArrangementHelper.SnapCmd.SnapRightToLeft,
-                btnSnapTop => ArrangementHelper.SnapCmd.SnapTopToBottom,
-                btnSnapBottom => ArrangementHelper.SnapCmd.SnapBottomToTop,
-                _ => null
-            };
-            ArrangementHelper.Snap(shapeRange, cmd);
-        }
 
         public void BtnRotate_Click(Office.IRibbonControl ribbonControl) {
             var shapeRange = GetShapeRange();
@@ -463,126 +561,6 @@ namespace PowerPointArrangeAddin.Ribbon {
                 _ => null
             };
             ArrangementHelper.Flip(shapeRange, cmd);
-        }
-
-        public void BtnMove_Click(Office.IRibbonControl ribbonControl) {
-            var shapeRange = GetShapeRange();
-            if (shapeRange == null) {
-                return;
-            }
-            Office.MsoZOrderCmd? cmd = ribbonControl.Id() switch {
-                btnMoveForward => Office.MsoZOrderCmd.msoBringForward,
-                btnMoveBackward => Office.MsoZOrderCmd.msoSendBackward,
-                btnMoveFront => Office.MsoZOrderCmd.msoBringToFront,
-                btnMoveBack => Office.MsoZOrderCmd.msoSendToBack,
-                _ => null
-            };
-            ArrangementHelper.LayerMove(shapeRange, cmd);
-        }
-
-        public void BtnGroup_Click(Office.IRibbonControl ribbonControl) {
-            var shapeRange = GetShapeRange();
-            if (shapeRange == null) {
-                return;
-            }
-            ArrangementHelper.GroupCmd? cmd = ribbonControl.Id() switch {
-                btnGroup => ArrangementHelper.GroupCmd.Group,
-                btnUngroup => ArrangementHelper.GroupCmd.Ungroup,
-                _ => null
-            };
-            ArrangementHelper.Group(shapeRange, cmd, () => _ribbon?.Invalidate());
-        }
-
-        public void BtnAddInSetting_Click(Office.IRibbonControl _) {
-            var oldLanguage = AddInSetting.Instance.Language;
-            var oldIconStyle = AddInSetting.Instance.IconStyle;
-            var dlg = new Dialog.SettingDialog();
-            var result = dlg.ShowDialog();
-            if (result != Forms.DialogResult.OK) {
-                return;
-            }
-
-            if (AddInSetting.Instance.Language != oldLanguage) {
-                // include updating elements and invalidating ribbon
-                AddInLanguageChanger.ChangeLanguage(AddInSetting.Instance.Language);
-            } else if (AddInSetting.Instance.IconStyle != oldIconStyle) {
-                UpdateUiElementsAndInvalidate(); // update elements for icons and invalidating ribbon
-            } else {
-                _ribbon?.Invalidate(); // just invalidate ribbon
-            }
-        }
-
-        public void BtnAddInCheckUpdate_Click(Office.IRibbonControl _) {
-            Task.Run(async () => {
-                var hwnd = new IntPtr(Globals.ThisAddIn.Application.HWND);
-                var __ = await AddInVersion.Instance.CheckUpdateManually(hwnd);
-            });
-        }
-
-        public void BtnAddInHomepage_Click(Office.IRibbonControl _) {
-            using (new EnableThemingInScope(true)) {
-                var dialog = new TaskDialog();
-                dialog.Caption = AddInDescription.Instance.Title;
-                dialog.InstructionText = ArrangeRibbonResources.dlgChooseToVisit;
-                dialog.Icon = TaskDialogStandardIcon.Information;
-                dialog.OwnerWindowHandle = new IntPtr(Globals.ThisAddIn.Application.HWND);
-                dialog.StandardButtons = TaskDialogStandardButtons.Cancel;
-                var lnkGhHomepage = new TaskDialogCommandLink("GitHub Homepage", ArrangeRibbonResources.dlgGitHubHomepage);
-                var lnkGhRelease = new TaskDialogCommandLink("GitHub Release", ArrangeRibbonResources.dlgGitHubRelease);
-                var lnkAcRelease = new TaskDialogCommandLink("AppCenter Release", ArrangeRibbonResources.dlgAppCenterRelease);
-                lnkGhHomepage.Click += (_, _) => AccessAndClose(dialog, AddInDescription.Instance.Homepage);
-                lnkGhRelease.Click += (_, _) => AccessAndClose(dialog, AddInDescription.Instance.GitHubReleaseUrl);
-                lnkAcRelease.Click += (_, _) => AccessAndClose(dialog, AddInDescription.Instance.AppCenterReleaseUrl);
-                dialog.Controls.Add(lnkGhHomepage);
-                dialog.Controls.Add(lnkGhRelease);
-                dialog.Controls.Add(lnkAcRelease);
-                dialog.Show();
-            }
-
-            static void AccessAndClose(TaskDialog dlg, string url) {
-                Process.Start(url);
-                dlg.Close();
-            }
-        }
-
-        public void BtnAddInFeedback_Click(Office.IRibbonControl _) {
-            Process.Start(AddInDescription.Instance.GitHubFeedbackUrl);
-        }
-
-        public void BtnGridSetting_Click(Office.IRibbonControl _) {
-            ArrangementHelper.GridSettingDialog();
-        }
-
-        public void BtnGridSwitcher_Click(Office.IRibbonControl _, bool __) {
-            const string mso = "ViewGridlinesPowerPoint";
-            try {
-                if (Globals.ThisAddIn.Application.CommandBars.GetEnabledMso(mso)) {
-                    Globals.ThisAddIn.Application.CommandBars.ExecuteMso(mso);
-                }
-            } catch (Exception) {
-                // ignored
-            } finally {
-                Task.Run(async () => {
-                    await Task.Delay(50);
-                    _ribbon?.InvalidateControls(btnGridSwitcher, grpAlignment, mnuArrangement, (mnuArrangement, mnuAlignment));
-                });
-            }
-        }
-
-        public bool BtnGridSwitcher_GetPressed(Office.IRibbonControl _) {
-            const string mso = "ViewGridlinesPowerPoint";
-            try {
-                if (Globals.ThisAddIn.Application.CommandBars.GetEnabledMso(mso)) {
-                    return Globals.ThisAddIn.Application.CommandBars.GetPressedMso(mso);
-                }
-            } catch (Exception) { 
-                // ignored
-            }
-            return false;
-        }
-
-        public void BtnSizeAndPosition_Click(Office.IRibbonControl _) {
-            SizeAndPositionHelper.SizeAndPositionDialog();
         }
 
         public void EdtAngle_TextChanged(Office.IRibbonControl ribbonControl, string text) {
@@ -629,6 +607,35 @@ namespace PowerPointArrangeAddin.Ribbon {
                 _ribbon?.InvalidateControl(edtAngle, grpRotateAndFlip);
             });
         }
+
+        public void BtnMove_Click(Office.IRibbonControl ribbonControl) {
+            var shapeRange = GetShapeRange();
+            if (shapeRange == null) {
+                return;
+            }
+            Office.MsoZOrderCmd? cmd = ribbonControl.Id() switch {
+                btnMoveForward => Office.MsoZOrderCmd.msoBringForward,
+                btnMoveBackward => Office.MsoZOrderCmd.msoSendBackward,
+                btnMoveFront => Office.MsoZOrderCmd.msoBringToFront,
+                btnMoveBack => Office.MsoZOrderCmd.msoSendToBack,
+                _ => null
+            };
+            ArrangementHelper.LayerMove(shapeRange, cmd);
+        }
+
+        public void BtnGroup_Click(Office.IRibbonControl ribbonControl) {
+            var shapeRange = GetShapeRange();
+            if (shapeRange == null) {
+                return;
+            }
+            ArrangementHelper.GroupCmd? cmd = ribbonControl.Id() switch {
+                btnGroup => ArrangementHelper.GroupCmd.Group,
+                btnUngroup => ArrangementHelper.GroupCmd.Ungroup,
+                _ => null
+            };
+            ArrangementHelper.Group(shapeRange, cmd, () => _ribbon?.Invalidate());
+        }
+
 
         public void BtnResetMediaSize_Click(Office.IRibbonControl ribbonControl) {
             var shapeRange = GetShapeRange();

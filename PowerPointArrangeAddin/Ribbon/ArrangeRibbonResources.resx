@@ -176,6 +176,9 @@
   <data name="chkExtendToFirstObject" xml:space="preserve">
     <value>To the f&amp;irst shape</value>
   </data>
+  <data name="chkExtendToFirstObjectFull" xml:space="preserve">
+    <value>Extend to the f&amp;irst shape</value>
+  </data>
   <data name="btnFlipHorizontal" xml:space="preserve">
     <value>Flip &amp;horizontally</value>
   </data>

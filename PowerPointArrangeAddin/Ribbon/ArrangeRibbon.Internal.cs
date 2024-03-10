@@ -38,6 +38,7 @@ namespace PowerPointArrangeAddin.Ribbon {
             xml = XmlResourceHelper.ApplyTemplateForXml(xml);
             xml = XmlResourceHelper.ApplyControlRandomId(xml);
             xml = XmlResourceHelper.NormalizeControlIdInMenu(xml, mnuArrangement);
+            // System.Windows.Forms.Clipboard.SetText(xml);
             return xml;
         }
 
@@ -333,10 +334,18 @@ namespace PowerPointArrangeAddin.Ribbon {
                 map[id] = ui.ApplyNameToImage();
             }
 
-            void RegisterS(string group, string id, UiElement ui) {
-                if (!specialMap.TryGetValue(group, out var m)) {
-                    specialMap[group] = new Dictionary<string, UiElement>();
-                    m = specialMap[group];
+            void RegisterS(object group, string id, UiElement ui) {
+                string groupId;
+                if (group is string s) {
+                    groupId = s;
+                } else if (group is (string item1, string item2)) {
+                    groupId = this.CombineParentId(item1, item2);
+                } else {
+                    return;
+                }
+                if (!specialMap.TryGetValue(groupId, out var m)) {
+                    specialMap[groupId] = new Dictionary<string, UiElement>();
+                    m = specialMap[groupId];
                 }
                 m[id] = ui.ApplyNameToImage();
             }
@@ -395,6 +404,7 @@ namespace PowerPointArrangeAddin.Ribbon {
             Register(btnExtendSameTop, new UiElement(RL.btnExtendSameTop, nameof(RIM.ExtendSameTop), "PT"));
             Register(btnExtendSameBottom, new UiElement(RL.btnExtendSameBottom, nameof(RIM.ExtendSameBottom), "PB"));
             Register(chkExtendToFirstObject, new UiElement(RL.chkExtendToFirstObject, keytip: "PF"));
+            RegisterS((mnuArrangement, mnuResizing), chkExtendToFirstObject, new UiElement(RL.chkExtendToFirstObjectFull, keytip: "PF"));
             Register(btnScaleAnchor_FromTopLeft, new UiElement(RL.btnScaleAnchor_FromTopLeft, nameof(RIM.ScaleFromTopLeft), "PA"));
             Register(btnScaleAnchor_FromMiddle, new UiElement(RL.btnScaleAnchor_FromMiddle, nameof(RIM.ScaleFromMiddle), "PD"));
             Register(btnScaleAnchor_FromBottomRight, new UiElement(RL.btnScaleAnchor_FromBottomRight, nameof(RIM.ScaleFromBottomRight), "PG"));

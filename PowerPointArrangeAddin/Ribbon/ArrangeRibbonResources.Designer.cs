@@ -601,6 +601,15 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Extend to the f&amp;irst shape.
+        /// </summary>
+        public static string chkExtendToFirstObjectFull {
+            get {
+                return ResourceManager.GetString("chkExtendToFirstObjectFull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Replace to middle.
         /// </summary>
         public static string chkReplaceToMiddle {
