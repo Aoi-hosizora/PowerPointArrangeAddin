@@ -24,10 +24,15 @@
         <button id="btnDistributeHorizontal" __template="L,S,E,I" onAction="BtnDistribute_Click" />
         <button id="btnDistributeVertical" __template="L,S,E,I" onAction="BtnDistribute_Click" />
         <menuSeparator id="mnuAlignment_separator3" />
+        <button id="btnSnapLeft" __template="L,S,E,I" onAction="BtnSnap_Click" />
+        <button id="btnSnapRight" __template="L,S,E,I" onAction="BtnSnap_Click" />
+        <button id="btnSnapTop" __template="L,S,E,I" onAction="BtnSnap_Click" />
+        <button id="btnSnapBottom" __template="L,S,E,I" onAction="BtnSnap_Click" />
+        <menuSeparator id="mnuAlignment_separator4" />
         <toggleButton id="btnAlignRelative_ToSlide" __template="L,S,E,I" getPressed="BtnAlignRelative_GetPressed" onAction="BtnAlignRelative_Click" />
         <toggleButton id="btnAlignRelative_ToObjects" __template="L,S,E,I" getPressed="BtnAlignRelative_GetPressed" onAction="BtnAlignRelative_Click" />
         <toggleButton id="btnAlignRelative_ToFirstObject" __template="L,S,E,I" getPressed="BtnAlignRelative_GetPressed" onAction="BtnAlignRelative_Click" />
-        <menuSeparator id="mnuAlignment_separator4" />
+        <menuSeparator id="mnuAlignment_separator5" />
         <checkBox idMso="ViewGridlinesPowerPoint" />
         <button id="btnGridSetting" __template="L,S,E,I" onAction="BtnGridSetting_Click" />
     </menu>
@@ -47,16 +52,6 @@
         <button id="btnExtendSameBottom" __template="L,S,E,I" onAction="BtnExtend_Click" />
         <menuSeparator id="mnuResizing_separator3" />
         <button id="btnSizeAndPosition" __template="L,S,E,I" onAction="BtnSizeAndPosition_Click" />
-    </menu>
-
-    <menu id="mnuSnapping" __template="MENU">
-        <button id="btnSnapLeft" __template="L,S,E,I" onAction="BtnSnap_Click" />
-        <button id="btnSnapRight" __template="L,S,E,I" onAction="BtnSnap_Click" />
-        <button id="btnSnapTop" __template="L,S,E,I" onAction="BtnSnap_Click" />
-        <button id="btnSnapBottom" __template="L,S,E,I" onAction="BtnSnap_Click" />
-        <menuSeparator id="mnuSnapping_separator1" />
-        <checkBox idMso="ViewGridlinesPowerPoint" />
-        <button id="btnGridSetting" __template="L,S,E,I" onAction="BtnGridSetting_Click" />
     </menu>
 
     <menu id="mnuRotation" __template="MENU">

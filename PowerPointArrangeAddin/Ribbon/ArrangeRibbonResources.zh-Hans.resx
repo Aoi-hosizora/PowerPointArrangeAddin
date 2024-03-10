@@ -325,9 +325,6 @@
   <data name="mnuArrangement_mnuRotation" xml:space="preserve">
     <value>旋转(&amp;O)</value>
   </data>
-  <data name="mnuArrangement_mnuSnapping" xml:space="preserve">
-    <value>吸附(&amp;N)</value>
-  </data>
   <data name="mnuArrangement_sepAddInSetting" xml:space="preserve">
     <value>加载项设置</value>
   </data>
@@ -389,8 +386,8 @@
   <data name="lblDistribute" xml:space="preserve">
     <value>分布</value>
   </data>
-  <data name="grpSizeAndSnap" xml:space="preserve">
-    <value>大小变更和吸附</value>
+  <data name="grpResizing" xml:space="preserve">
+    <value>大小变更</value>
   </data>
   <data name="lblScaleSize" xml:space="preserve">
     <value>变形</value>

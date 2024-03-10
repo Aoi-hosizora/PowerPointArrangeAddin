@@ -329,9 +329,6 @@
   <data name="mnuArrangement_mnuRotation" xml:space="preserve">
     <value>R&amp;otation</value>
   </data>
-  <data name="mnuArrangement_mnuSnapping" xml:space="preserve">
-    <value>S&amp;napping</value>
-  </data>
   <data name="mnuArrangement_sepAddInSetting" xml:space="preserve">
     <value>Add-in setting</value>
   </data>
@@ -389,8 +386,8 @@
   <data name="lblDistribute" xml:space="preserve">
     <value>Distribute</value>
   </data>
-  <data name="grpSizeAndSnap" xml:space="preserve">
-    <value>Resize and snap</value>
+  <data name="grpResizing" xml:space="preserve">
+    <value>Resizing</value>
   </data>
   <data name="lblScaleSize" xml:space="preserve">
     <value>Scale</value>

@@ -826,6 +826,15 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Resizing.
+        /// </summary>
+        public static string grpResizing {
+            get {
+                return ResourceManager.GetString("grpResizing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Rotate and flip.
         /// </summary>
         public static string grpRotateAndFlip {
@@ -840,15 +849,6 @@ namespace PowerPointArrangeAddin.Ribbon {
         public static string grpSizeAndPosition {
             get {
                 return ResourceManager.GetString("grpSizeAndPosition", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Resize and snap.
-        /// </summary>
-        public static string grpSizeAndSnap {
-            get {
-                return ResourceManager.GetString("grpSizeAndSnap", resourceCulture);
             }
         }
         
@@ -1038,15 +1038,6 @@ namespace PowerPointArrangeAddin.Ribbon {
         public static string mnuArrangement_mnuRotation {
             get {
                 return ResourceManager.GetString("mnuArrangement_mnuRotation", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to S&amp;napping.
-        /// </summary>
-        public static string mnuArrangement_mnuSnapping {
-            get {
-                return ResourceManager.GetString("mnuArrangement_mnuSnapping", resourceCulture);
             }
         }
         

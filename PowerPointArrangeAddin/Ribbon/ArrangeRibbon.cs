@@ -98,7 +98,7 @@ namespace PowerPointArrangeAddin.Ribbon {
             Register(btnAlignRelative_ToFirstObject, (_, cnt, _) => cnt >= 2);
             Register(btnAlignRelative_ToSlide, (_, cnt, _) => cnt >= 1);
             Register(btnSizeAndPosition, (_, cnt, _) => cnt >= 1);
-            // grpSizeAndSnap
+            // grpResizing
             Register(btnScaleAnchor_FromTopLeft, (_, _, _) => true);
             Register(btnScaleAnchor_FromMiddle, (_, _, _) => true);
             Register(btnScaleAnchor_FromBottomRight, (_, _, _) => true);
@@ -165,7 +165,7 @@ namespace PowerPointArrangeAddin.Ribbon {
                 grpArrange => AddInSetting.Instance.ShowArrangementGroup,
                 grpAddInSetting => true,
                 grpAlignment => true,
-                grpSizeAndSnap => true,
+                grpResizing => true,
                 grpRotateAndFlip => true,
                 grpObjectArrange => true,
                 grpObjectSize => true,
@@ -356,9 +356,9 @@ namespace PowerPointArrangeAddin.Ribbon {
                 };
             }
             _ribbon?.InvalidateControls(btnScaleAnchor, grpArrange, _sizeAndPositionGroups);
-            _ribbon?.InvalidateControls(btnScaleAnchor_FromTopLeft, grpSizeAndSnap, (mnuArrangement, mnuResizing));
-            _ribbon?.InvalidateControls(btnScaleAnchor_FromMiddle, grpSizeAndSnap, (mnuArrangement, mnuResizing));
-            _ribbon?.InvalidateControls(btnScaleAnchor_FromBottomRight, grpSizeAndSnap, (mnuArrangement, mnuResizing));
+            _ribbon?.InvalidateControls(btnScaleAnchor_FromTopLeft, grpResizing, (mnuArrangement, mnuResizing));
+            _ribbon?.InvalidateControls(btnScaleAnchor_FromMiddle, grpResizing, (mnuArrangement, mnuResizing));
+            _ribbon?.InvalidateControls(btnScaleAnchor_FromBottomRight, grpResizing, (mnuArrangement, mnuResizing));
         }
 
         public bool BtnScaleAnchor_GetPressed(Office.IRibbonControl ribbonControl) {

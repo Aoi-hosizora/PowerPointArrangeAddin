@@ -178,8 +178,8 @@ namespace PowerPointArrangeAddin.Ribbon {
         private const string btnSizeAndPosition = "btnSizeAndPosition";
         // ===
         private const string sepAlignRelative = "sepAlignRelative";
-        // grpSizeAndSnap
-        private const string grpSizeAndSnap = "grpSizeAndSnap";
+        // grpResizing
+        private const string grpResizing = "grpResizing";
         private const string lblScaleSize = "lblScaleSize";
         private const string lblExtendSize = "lblExtendSize";
         private const string lblSnapObjects = "lblSnapObjects";
@@ -271,7 +271,6 @@ namespace PowerPointArrangeAddin.Ribbon {
         private const string sepAlignmentAndResizing = "sepAlignmentAndResizing";
         private const string mnuAlignment = "mnuAlignment";
         private const string mnuResizing = "mnuResizing";
-        private const string mnuSnapping = "mnuSnapping";
         private const string mnuRotation = "mnuRotation";
         private const string sepLayerOrderAndGrouping = "sepLayerOrderAndGrouping";
         private const string mnuLayerOrder = "mnuLayerOrder";
@@ -389,15 +388,15 @@ namespace PowerPointArrangeAddin.Ribbon {
             Register(btnAlignRelative_ToFirstObject, new UiElement(RL.btnAlignRelative_ToFirstObject, nameof(RIM.AlignRelativeToFirstObject), "DF"));
             Register(btnAlignRelative_ToSlide, new UiElement(RL.btnAlignRelative_ToSlide, nameof(RIM.AlignRelativeToSlide), "DS"));
             Register(btnSizeAndPosition, new UiElement(RL.btnSizeAndPosition, nameof(RIM.SizeAndPosition), "DN"));
-            // grpSizeAndSnap
-            Register(grpSizeAndSnap, new UiElement(RL.grpSizeAndSnap, nameof(RIM.ScaleSameWidth)));
+            // grpResizing
+            Register(grpResizing, new UiElement(RL.grpResizing, nameof(RIM.ScaleSameWidth)));
             Register(lblScaleSize, new UiElement(RL.lblScaleSize));
             Register(lblExtendSize, new UiElement(RL.lblExtendSize));
             Register(lblSnapObjects, new UiElement(RL.lblSnapObjects));
             Register(btnScaleAnchor_FromTopLeft, new UiElement(RL.btnScaleAnchor_FromTopLeft, nameof(RIM.ScaleFromTopLeft), "PA"));
             Register(btnScaleAnchor_FromMiddle, new UiElement(RL.btnScaleAnchor_FromMiddle, nameof(RIM.ScaleFromMiddle), "PD"));
             Register(btnScaleAnchor_FromBottomRight, new UiElement(RL.btnScaleAnchor_FromBottomRight, nameof(RIM.ScaleFromBottomRight), "PG"));
-            RegisterS(grpSizeAndSnap, btnSizeAndPosition, new UiElement(keytip: "PP"));
+            RegisterS(grpResizing, btnSizeAndPosition, new UiElement(keytip: "PP"));
             // grpRotateAndFlip
             Register(grpRotateAndFlip, new UiElement(RL.grpRotateAndFlip, nameof(RIM.ObjectRotateRight90)));
             Register(lblRotateObject, new UiElement(RL.lblRotateObject));
@@ -484,7 +483,6 @@ namespace PowerPointArrangeAddin.Ribbon {
             Register(sepAlignmentAndResizing, new UiElement(RL.mnuArrangement_sepAlignmentAndResizing));
             Register(mnuAlignment, new UiElement(RL.mnuArrangement_mnuAlignment, nameof(RIM.ObjectArrangement)));
             Register(mnuResizing, new UiElement(RL.mnuArrangement_mnuResizing, nameof(RIM.ScaleSameWidth)));
-            Register(mnuSnapping, new UiElement(RL.mnuArrangement_mnuSnapping, nameof(RIM.SnapLeftToRight)));
             Register(mnuRotation, new UiElement(RL.mnuArrangement_mnuRotation, nameof(RIM.ObjectRotateRight90)));
             Register(sepLayerOrderAndGrouping, new UiElement(RL.mnuArrangement_sepLayerOrderAndGrouping));
             Register(mnuLayerOrder, new UiElement(RL.mnuArrangement_mnuLayerOrder, nameof(RIM.ObjectSendToBack)));

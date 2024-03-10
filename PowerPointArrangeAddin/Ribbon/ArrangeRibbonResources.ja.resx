@@ -325,9 +325,6 @@
   <data name="mnuArrangement_mnuRotation" xml:space="preserve">
     <value>回転(&amp;O)</value>
   </data>
-  <data name="mnuArrangement_mnuSnapping" xml:space="preserve">
-    <value>吸着(&amp;N)</value>
-  </data>
   <data name="mnuArrangement_sepAddInSetting" xml:space="preserve">
     <value>アドインの設定</value>
   </data>
@@ -389,8 +386,8 @@
   <data name="lblDistribute" xml:space="preserve">
     <value>整列</value>
   </data>
-  <data name="grpSizeAndSnap" xml:space="preserve">
-    <value>サイズ変更と吸着</value>
+  <data name="grpResizing" xml:space="preserve">
+    <value>サイズ変更</value>
   </data>
   <data name="lblScaleSize" xml:space="preserve">
     <value>変形</value>

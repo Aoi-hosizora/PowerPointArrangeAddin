@@ -125,7 +125,7 @@
                     </dialogBoxLauncher>
                 </group> <!-- end of grpAlignment -->
 
-                <group id="grpSizeAndSnap" __template="GROUP">
+                <group id="grpResizing" __template="GROUP">
                     <labelControl id="lblScaleSize" __template="L,S" />
                     <labelControl id="lblExtendSize" __template="L,S" />
                     <labelControl id="lblSnapObjects" __template="L,S" />
@@ -141,7 +141,7 @@
                     <dialogBoxLauncher>
                         <__use_reference name="$id=btnSizeAndPosition:1" />
                     </dialogBoxLauncher>
-                </group> <!-- end of grpSizeAndSnap -->
+                </group> <!-- end of grpResizing -->
 
                 <group id="grpRotateAndFlip" __template="GROUP">
                     <labelControl id="lblRotateObject" __template="L,S" />
