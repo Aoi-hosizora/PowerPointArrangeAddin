@@ -38,20 +38,20 @@
     </menu>
 
     <menu id="mnuResizing" __template="MENU">
-        <toggleButton id="btnScaleAnchor_FromTopLeft" __template="L,S,E,I" getPressed="BtnScaleAnchor_GetPressed" onAction="BtnScaleAnchor_Click" />
-        <toggleButton id="btnScaleAnchor_FromMiddle" __template="L,S,E,I" getPressed="BtnScaleAnchor_GetPressed" onAction="BtnScaleAnchor_Click" />
-        <toggleButton id="btnScaleAnchor_FromBottomRight" __template="L,S,E,I" getPressed="BtnScaleAnchor_GetPressed" onAction="BtnScaleAnchor_Click" />
-        <menuSeparator id="mnuResizing_separator1" />
         <button id="btnScaleSameWidth" __template="L,S,E,I" onAction="BtnScale_Click" />
         <button id="btnScaleSameHeight" __template="L,S,E,I" onAction="BtnScale_Click" />
         <button id="btnScaleSameSize" __template="L,S,E,I" onAction="BtnScale_Click" />
+        <menuSeparator id="mnuResizing_separator1" />
+        <toggleButton id="btnScaleAnchor_FromTopLeft" __template="L,S,E,I" getPressed="BtnScaleAnchor_GetPressed" onAction="BtnScaleAnchor_Click" />
+        <toggleButton id="btnScaleAnchor_FromMiddle" __template="L,S,E,I" getPressed="BtnScaleAnchor_GetPressed" onAction="BtnScaleAnchor_Click" />
+        <toggleButton id="btnScaleAnchor_FromBottomRight" __template="L,S,E,I" getPressed="BtnScaleAnchor_GetPressed" onAction="BtnScaleAnchor_Click" />
         <menuSeparator id="mnuResizing_separator2" />
-        <checkBox id="chkExtendToFirstObject" __template="L,S,E" getPressed="ChkExtendToFirstObject_GetPressed" onAction="ChkExtendToFirstObject_Click" />
-        <menuSeparator id="mnuResizing_separator3" />
         <button id="btnExtendSameLeft" __template="L,S,E,I" onAction="BtnExtend_Click" />
         <button id="btnExtendSameRight" __template="L,S,E,I" onAction="BtnExtend_Click" />
         <button id="btnExtendSameTop" __template="L,S,E,I" onAction="BtnExtend_Click" />
         <button id="btnExtendSameBottom" __template="L,S,E,I" onAction="BtnExtend_Click" />
+        <menuSeparator id="mnuResizing_separator3" />
+        <checkBox id="chkExtendToFirstObject" __template="L,S,E" getPressed="ChkExtendToFirstObject_GetPressed" onAction="ChkExtendToFirstObject_Click" />
         <menuSeparator id="mnuResizing_separator4" />
         <button id="btnSizeAndPosition" __template="L,S,E,I" onAction="BtnSizeAndPosition_Click" />
     </menu>
@@ -63,6 +63,8 @@
         <button id="btnFlipVertical" __template="L,S,E,I" onAction="BtnFlip_Click" />
         <button id="btnFlipHorizontal" __template="L,S,E,I" onAction="BtnFlip_Click" />
         <menuSeparator id="mnuRotation_separator2" />
+        <control idMso="_3DRotationGallery" showLabel="false" __template="K" />
+        <menuSeparator id="mnuRotation_separator3" />
         <button idMso="ObjectRotationOptionsDialog" />
     </menu>
 
@@ -74,11 +76,15 @@
         <menuSeparator id="mnuLayerOrder_separator1" />
         <button id="btnMoveForward" __template="L,S,E,I" onAction="BtnMove_Click" />
         <button id="btnMoveBackward" __template="L,S,E,I" onAction="BtnMove_Click" />
+        <menuSeparator id="mnuLayerOrder_separator2" />
+        <toggleButton idMso="SelectionPane" />
     </menu>
 
     <menu id="mnuGrouping" __template="MENU">
         <button id="btnGroup" __template="L,S,E,I" onAction="BtnGroup_Click" />
         <button id="btnUngroup" __template="L,S,E,I" onAction="BtnGroup_Click" />
+        <menuSeparator id="mnuGrouping_separator2" />
+        <toggleButton idMso="SelectionPane" />
     </menu>
 
     <menuSeparator id="sepObjectsInSlide" __template="SEP" />
