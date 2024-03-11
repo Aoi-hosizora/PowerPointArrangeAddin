@@ -340,19 +340,22 @@ namespace PowerPointArrangeAddin.Helper {
                 var (width1, width2) = (shape1.Width, shape2.Width);
                 var (top1, top2) = (shape1.Top, shape2.Top);
                 var (height1, height2) = (shape1.Height, shape2.Height);
-                bool seperated12, seperated21, contained12, contained21;
+                bool seperated12, seperated21, intersected12, intersected21, contained12, contained21;
                 if (isHOrV) {
-                    seperated12 = left1 + width1 <= left2;
-                    seperated21 = left2 + width2 <= left1;
+                    seperated12 = left1 <= left2 && left1 + width1 <= left2;
+                    seperated21 = left2 <= left1 && left2 + width2 <= left1;
+                    intersected12 = left1 <= left2 && left1 + width1 >= left2 && left1 + width1 <= left2 + width2;
+                    intersected21 = left2 <= left1 && left2 + width2 >= left1 && left2 + width2 <= left1 + width1;
                     contained12 = left1 <= left2 && left1 + width1 >= left2 + width2;
                     contained21 = left2 <= left1 && left2 + width2 >= left1 + width1;
                 } else {
-                    seperated12 = top1 + height1 <= top2;
-                    seperated21 = top2 + height2 <= top1;
+                    seperated12 = top1 <= top2 && top1 + height1 <= top2;
+                    seperated21 = top2 <= top1 && top2 + height2 <= top1;
+                    intersected12 = top1 <= top2 && top1 + height1 >= top2 && top1 + height1 <= top2 + height2;
+                    intersected21 = top2 <= top1 && top2 + height2 >= top1 && top2 + height2 <= top1 + height1;
                     contained12 = top1 <= top2 && top1 + height1 >= top2 + height2;
                     contained21 = top2 <= top1 && top2 + height2 >= top1 + height1;
                 }
-
                 float distanceH = InvalidCopiedValue, distanceV = InvalidCopiedValue;
                 switch (type!) {
                 case DistanceType.LeftLeft:
@@ -380,49 +383,33 @@ namespace PowerPointArrangeAddin.Helper {
                     }
                     break;
                 case DistanceType.RightLeft:
-                    if (isHOrV) {
-                        if (left1 + width1 <= left2) {
-                            distanceH = left2 - (left1 + width1); // seperated 
-                        } else if (left2 + width2 <= left1) {
-                            distanceH = left1 - (left2 + width2); // seperated 
-                        } else if (left1 <= left2) {
-                            distanceH = left2 - (left1 + width1); // intersected or contained
-                        } else if (left1 >= left2) {
-                            distanceH = left1 - (left2 + width2); // intersected or contained
-                        }
-                    } else {
-                        if (top1 + height1 <= top2) {
-                            distanceV = top2 - (top1 + height1); // seperated 
-                        } else if (top2 + height2 <= top1) {
-                            distanceV = top1 - (top2 + height2); // seperated 
-                        } else if (top1 <= top2) {
-                            distanceV = top2 - (top1 + height1); // intersected or contained
-                        } else if (top1 >= top2) {
-                            distanceV = top1 - (top2 + height2); // intersected or contained
-                        }
+                    if (seperated12) {
+                        distanceH = left2 - (left1 + width1);
+                        distanceV = top2 - (top1 + height1);
+                    } else if (seperated21) {
+                        distanceH = left1 - (left2 + width2);
+                        distanceV = top1 - (top2 + height2);
+                    } else if (intersected12 || contained12) {
+                        distanceH = left2 - (left1 + width1);
+                        distanceV = top2 - (top1 + height1);
+                    } else if (intersected21 || contained21) {
+                        distanceH = left1 - (left2 + width2);
+                        distanceV = top1 - (top2 + height2);
                     }
                     break;
                 case DistanceType.LeftRight:
-                    if (isHOrV) {
-                        if (left1 <= left2 && left1 + width1 <= left2 + width2) {
-                            distanceH = left2 + width2 - left1; // seperated or intersected
-                        } else if (left1 >= left2 && left1 + width1 >= left2 + width2) {
-                            distanceH = left1 + width1 - left2; // seperated or intersected
-                        } else if (left1 <= left2) {
-                            distanceH = left2 + width2 - left1; // contained
-                        } else if (left1 >= left2) {
-                            distanceH = left1 + width1 - left2; // contained
-                        }
-                    } else {
-                        if (top1 <= top2 && top1 + height1 <= top2 + height2) {
-                            distanceV = top2 + height2 - top1; // seperated or intersected
-                        } else if (top1 >= top2 && top1 + height1 >= top2 + height2) {
-                            distanceV = top1 + height1 - top2; // seperated or intersected
-                        } else if (top1 <= top2) {
-                            distanceV = top2 + height2 - top1; // contained
-                        } else if (top1 >= top2) {
-                            distanceV = top1 + height1 - top2; // contained
-                        }
+                    if (seperated12 || intersected12) {
+                        distanceH = (left2 + width2) - left1;
+                        distanceV = (top2 + height2) - top1;
+                    } else if (seperated21 || intersected21) {
+                        distanceH = (left1 + width1) - left2;
+                        distanceV = (top1 + height1) - top2;
+                    } else if (contained12) {
+                        distanceH = (left2 + width2) - left1;
+                        distanceV = (top2 + height2) - top1;
+                    } else if (contained21) {
+                        distanceH = (left1 + width1) - left2;
+                        distanceV = (top1 + height1) - top2;
                     }
                     break;
                 }
