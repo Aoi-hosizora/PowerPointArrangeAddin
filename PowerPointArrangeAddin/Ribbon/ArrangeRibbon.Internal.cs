@@ -152,7 +152,7 @@ namespace PowerPointArrangeAddin.Ribbon {
         private const string btnDistributeHorizontal = "btnDistributeHorizontal";
         private const string btnDistributeVertical = "btnDistributeVertical";
         private const string lblSnapH = "lblSnapH";
-        private const string lblSnapW = "lblSnapW";
+        private const string lblSnapV = "lblSnapV";
         private const string lblGrid = "lblGrid";
         private const string btnSnapLeft = "btnSnapLeft";
         private const string btnSnapRight = "btnSnapRight";
@@ -383,7 +383,7 @@ namespace PowerPointArrangeAddin.Ribbon {
             Register(btnDistributeHorizontal, new UiElement(RL.btnDistributeHorizontal, nameof(RIM.AlignDistributeHorizontally), "DH"));
             Register(btnDistributeVertical, new UiElement(RL.btnDistributeVertical, nameof(RIM.AlignDistributeVertically), "DV"));
             Register(lblSnapH, new UiElement(RL.lblSnapH));
-            Register(lblSnapW, new UiElement(RL.lblSnapW));
+            Register(lblSnapV, new UiElement(RL.lblSnapV));
             Register(lblGrid, new UiElement(RL.lblGrid));
             Register(btnSnapLeft, new UiElement(RL.btnSnapLeft, nameof(RIM.SnapLeftToRight), "PE"));
             Register(btnSnapRight, new UiElement(RL.btnSnapRight, nameof(RIM.SnapRightToLeft), "PI"));

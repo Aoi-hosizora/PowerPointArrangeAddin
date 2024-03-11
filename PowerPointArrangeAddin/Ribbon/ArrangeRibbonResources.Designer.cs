@@ -1026,9 +1026,9 @@ namespace PowerPointArrangeAddin.Ribbon {
         /// <summary>
         ///   Looks up a localized string similar to V. snap.
         /// </summary>
-        public static string lblSnapW {
+        public static string lblSnapV {
             get {
-                return ResourceManager.GetString("lblSnapW", resourceCulture);
+                return ResourceManager.GetString("lblSnapV", resourceCulture);
             }
         }
         

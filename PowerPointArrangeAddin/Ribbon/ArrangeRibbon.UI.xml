@@ -128,7 +128,7 @@
                     </buttonGroup>
                     <separator id="sepAlignSnap" />
                     <labelControl id="lblSnapH" __template="L,S" />
-                    <labelControl id="lblSnapW" __template="L,S" />
+                    <labelControl id="lblSnapV" __template="L,S" />
                     <labelControl id="lblGrid" __template="L,S" />
                     <__use_template name="VSPACER" />
                     <buttonGroup id="bgpSnapLR">

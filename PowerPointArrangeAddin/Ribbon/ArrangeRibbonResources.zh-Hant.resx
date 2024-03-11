@@ -410,7 +410,7 @@
   <data name="lblSnapH" xml:space="preserve">
     <value>橫向吸附</value>
   </data>
-  <data name="lblSnapW" xml:space="preserve">
+  <data name="lblSnapV" xml:space="preserve">
     <value>縱向吸附</value>
   </data>
   <data name="lblGrid" xml:space="preserve">
