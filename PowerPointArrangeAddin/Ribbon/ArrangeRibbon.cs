@@ -837,7 +837,30 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
 
         public void BtnCopyAndPasteDistance_Click(Office.IRibbonControl ribbonControl) {
-            // TODO
+            var shapeRange = GetShapeRange();
+            if (shapeRange == null) {
+                return;
+            }
+            SizeAndPositionHelper.CopyAndPasteCmd? cmd = ribbonControl.Id() switch {
+                btnCopyDistanceH or btnCopyDistanceV => SizeAndPositionHelper.CopyAndPasteCmd.Copy,
+                btnPasteDistanceH or btnPasteDistanceV => SizeAndPositionHelper.CopyAndPasteCmd.Paste,
+                _ => null
+            };
+            if (ribbonControl.Id() == btnCopyDistanceH || ribbonControl.Id() == btnPasteDistanceH) {
+                SizeAndPositionHelper.CopyAndPasteDistance(shapeRange, cmd, _distanceType, true, () => {
+                    _ribbon?.InvalidateControls(btnCopyDistanceH, grpObjectPosition);
+                    _ribbon?.InvalidateControls(btnPasteDistanceH, grpObjectPosition);
+                    _ribbon?.InvalidateControls(edtPositionX, grpObjectPosition, _sizeAndPositionGroups);
+                    _ribbon?.InvalidateControls(edtPositionY, grpObjectPosition, _sizeAndPositionGroups);
+                });
+            } else if (ribbonControl.Id() == btnCopyDistanceV || ribbonControl.Id() == btnPasteDistanceV) {
+                SizeAndPositionHelper.CopyAndPasteDistance(shapeRange, cmd, _distanceType, false, () => {
+                    _ribbon?.InvalidateControls(btnCopyDistanceV, grpObjectPosition);
+                    _ribbon?.InvalidateControls(btnPasteDistanceV, grpObjectPosition);
+                    _ribbon?.InvalidateControls(edtPositionX, grpObjectPosition, _sizeAndPositionGroups);
+                    _ribbon?.InvalidateControls(edtPositionY, grpObjectPosition, _sizeAndPositionGroups);
+                });
+            }
         }
 
         public void BtnAutofit_Click(Office.IRibbonControl ribbonControl, bool _) {

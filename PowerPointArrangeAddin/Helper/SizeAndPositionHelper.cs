@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Windows.Forms;
 using Office = Microsoft.Office.Core;
 using PowerPoint = Microsoft.Office.Interop.PowerPoint;
 
@@ -209,6 +210,9 @@ namespace PowerPointArrangeAddin.Helper {
         private static float _copiedPositionXPt = InvalidCopiedValue;
         private static float _copiedPositionYPt = InvalidCopiedValue;
 
+        private static float _copiedDistanceHPt = InvalidCopiedValue;
+        private static float _copiedDistanceVPt = InvalidCopiedValue;
+
         public static bool IsSizeCopyable(PowerPoint.ShapeRange? shapeRange) {
             if (shapeRange == null || shapeRange.Count <= 0) {
                 return false;
@@ -229,6 +233,14 @@ namespace PowerPointArrangeAddin.Helper {
 
         public static bool IsValidCopiedPositionValue() {
             return !_copiedPositionXPt.Equals(InvalidCopiedValue) && !_copiedPositionYPt.Equals(InvalidCopiedValue);
+        }
+
+        public static bool IsValidCopiedDistanceHValue() {
+            return _copiedDistanceHPt >= 0 && !_copiedDistanceHPt.Equals(InvalidCopiedValue);
+        }
+
+        public static bool IsValidCopiedDistanceVValue() {
+            return _copiedDistanceVPt >= 0 && !_copiedDistanceVPt.Equals(InvalidCopiedValue);
         }
 
         public enum CopyAndPasteCmd {
@@ -297,6 +309,135 @@ namespace PowerPointArrangeAddin.Helper {
             case CopyAndPasteCmd.Reset:
                 _copiedPositionXPt = InvalidCopiedValue;
                 _copiedPositionYPt = InvalidCopiedValue;
+                uiInvalidator?.Invoke();
+                break;
+            }
+        }
+
+        public enum DistanceType {
+            OutOut,
+            InOut,
+            OutIn,
+            InIn
+        }
+
+        public static void CopyAndPasteDistance(PowerPoint.ShapeRange? shapeRange, CopyAndPasteCmd? cmd, DistanceType? type, bool isHOrV, Action? uiInvalidator = null) {
+            if (shapeRange == null) {
+                return;
+            }
+            if (cmd == null) {
+                return;
+            }
+            type ??= DistanceType.OutOut;
+
+            switch (cmd!) {
+            case CopyAndPasteCmd.Copy: {
+                var shapes = shapeRange.OfType<PowerPoint.Shape>().ToArray();
+                if (shapes.Length != 2) {
+                    return;
+                }
+                var (shape1, shape2) = (shapes[0], shapes[1]);
+                var (left1, left2) = (shape1.Left, shape2.Left);
+                var (width1, width2) = (shape1.Width, shape2.Width);
+                var (top1, top2) = (shape1.Top, shape2.Top);
+                var (height1, height2) = (shape1.Height, shape2.Height);
+                float distanceH = -1, distanceV = -1;
+                switch (type!) {
+                case DistanceType.InOut:
+                    distanceH = Math.Abs(left1 - left2);
+                    distanceV = Math.Abs(top1 - top2);
+                    break;
+                case DistanceType.OutIn:
+                    distanceH = Math.Abs((left1 + width1) - (left2 + width2));
+                    distanceV = Math.Abs((top1 + height1) - (top2 + height2));
+                    break;
+                case DistanceType.OutOut:
+                    // two shapes must be separated
+                    if (isHOrV) {
+                        if (left1 + width1 <= left2) {
+                            distanceH = left2 - (left1 + width1);
+                        } else if (left2 + width2 <= left1) {
+                            distanceH = left1 - (left2 + width2);
+                        } else {
+                            var message = "Count not copy distance while one shape contains or intersects with the other shape.";
+                            MessageBox.Show(message, "Copy distance", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    } else {
+                        if (top1 + height1 <= top2) {
+                            distanceV = top2 - (top1 + height1);
+                        } else if (top2 + height2 <= top1) {
+                            distanceV = top1 - (top2 + height2);
+                        } else {
+                            var message = "Count not copy distance while one shape contains or intersects with the other shape.";
+                            MessageBox.Show(message, "Copy distance", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    break;
+                case DistanceType.InIn:
+                    // two shapes must be separated or intersecting
+                    if (isHOrV) {
+                        if (left1 <= left2 && left1 + width1 <= left2 + width2) {
+                            distanceH = left2 + width2 - left1;
+                        } else if (left1 >= left2 && left1 + width1 >= left2 + width2) {
+                            distanceH = left1 + width1 - left2;
+                        } else {
+                            var message = "Count not copy distance while one shape contains the other shape.";
+                            MessageBox.Show(message, "Copy distance", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    } else {
+                        if (top1 <= top2 && top1 + height1 <= top2 + height2) {
+                            distanceV = top2 + height2 - top1;
+                        } else if (top1 >= top2 && top1 + height1 >= top2 + height2) {
+                            distanceV = top1 + height1 - top2;
+                        } else {
+                            var message = "Count not copy distance while one shape contains the other shape.";
+                            MessageBox.Show(message, "Copy distance", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    break;
+                }
+                if (isHOrV && distanceH >= 0) {
+                    _copiedDistanceHPt = distanceH;
+                } else if (!isHOrV && distanceV >= 0) {
+                    _copiedDistanceVPt = distanceV;
+                }
+                uiInvalidator?.Invoke();
+                break;
+            }
+            case CopyAndPasteCmd.Paste: {
+                var shapes = shapeRange.OfType<PowerPoint.Shape>().ToArray();
+                if (shapes.Length != 2) {
+                    return;
+                }
+                var (shape1, shape2) = (shapes[0], shapes[1]);
+                if (isHOrV && IsValidCopiedDistanceHValue()) {
+                    Globals.ThisAddIn.Application.StartNewUndoEntry();
+                    // => move the second shape
+                    shape2.Left = type! switch {
+                        DistanceType.OutOut => shape1.Left + shape1.Width + _copiedDistanceHPt,
+                        DistanceType.InOut => shape1.Left + _copiedDistanceHPt,
+                        DistanceType.OutIn => shape1.Left + shape1.Width + _copiedDistanceHPt - shape2.Width,
+                        DistanceType.InIn => shape1.Left + _copiedDistanceHPt - shape2.Width,
+                        _ => shape2.Left
+                    };
+                    uiInvalidator?.Invoke();
+                } else if (!isHOrV && IsValidCopiedDistanceVValue()) {
+                    Globals.ThisAddIn.Application.StartNewUndoEntry();
+                    // => move the second shape
+                    shape2.Top = type! switch {
+                        DistanceType.OutOut => shape1.Top + shape1.Height + _copiedDistanceVPt,
+                        DistanceType.InOut => shape1.Top + _copiedDistanceVPt,
+                        DistanceType.OutIn => shape1.Top + shape1.Height + _copiedDistanceVPt - shape2.Height,
+                        DistanceType.InIn => shape1.Top + _copiedDistanceVPt - shape2.Height,
+                        _ => shape2.Top
+                    };
+                    uiInvalidator?.Invoke();
+                }
+                break;
+            }
+            case CopyAndPasteCmd.Reset:
+                _copiedDistanceHPt = InvalidCopiedValue;
+                _copiedDistanceVPt = InvalidCopiedValue;
                 uiInvalidator?.Invoke();
                 break;
             }
