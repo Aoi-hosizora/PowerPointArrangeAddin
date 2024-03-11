@@ -235,8 +235,23 @@ namespace PowerPointArrangeAddin.Ribbon {
         private const string edtPositionY = "edtPositionY";
         private const string btnCopyPosition = "btnCopyPosition";
         private const string btnPastePosition = "btnPastePosition";
+        private const string lblDistanceType = "lblDistanceType";
+        private const string btnDistanceType_OutOut = "btnDistanceType_OutOut";
+        private const string btnDistanceType_InOut = "btnDistanceType_InOut";
+        private const string btnDistanceType_OutIn = "btnDistanceType_OutIn";
+        private const string btnDistanceType_InIn = "btnDistanceType_InIn";
+        private const string lblDistanceH = "lblDistanceH";
+        private const string btnCopyDistanceH = "btnCopyDistanceH";
+        private const string btnPasteDistanceH = "btnPasteDistanceH";
+        private const string lblDistanceV = "lblDistanceV";
+        private const string btnCopyDistanceV = "btnCopyDistanceV";
+        private const string btnPasteDistanceV = "btnPasteDistanceV";
         // ===
         private const string bgpCopyAndPastePosition = "bgpCopyAndPastePosition";
+        private const string sepCopyAndPasteDistance = "sepCopyAndPasteDistance";
+        private const string bgpDistanceType = "bgpDistanceType";
+        private const string bgpDistanceH = "bgpDistanceH";
+        private const string bgpDistanceV = "bgpDistanceV";
         // grpTextbox
         private const string grpTextbox = "grpTextbox";
         private const string btnAutofitOff = "btnAutofitOff";
@@ -452,6 +467,17 @@ namespace PowerPointArrangeAddin.Ribbon {
             Register(edtPositionY, new UiElement(RL.edtPositionY, keytip: "PY"));
             Register(btnCopyPosition, new UiElement(RL.btnCopyPosition, nameof(RIM.Copy), "PC"));
             Register(btnPastePosition, new UiElement(RL.btnPastePosition, nameof(RIM.Paste), "PV"));
+            Register(lblDistanceType, new UiElement("距離の種類"));
+            Register(btnDistanceType_OutOut, new UiElement("外部余白間の距離", nameof(RIM.ShapeDistanceType_OutOut), "PV")); // TODO
+            Register(btnDistanceType_InOut, new UiElement("内部余白と外部余白の間の距離", nameof(RIM.ShapeDistanceType_InOut), "PV"));
+            Register(btnDistanceType_OutIn, new UiElement("外部余白と内部余白の間の距離", nameof(RIM.ShapeDistanceType_OutIn), "PV"));
+            Register(btnDistanceType_InIn, new UiElement("内部余白間の距離", nameof(RIM.ShapeDistanceType_InIn), "PV"));
+            Register(lblDistanceH, new UiElement("横方向"));
+            Register(btnCopyDistanceH, new UiElement("横距離をコピー", nameof(RIM.Copy), "PV")); // TODO
+            Register(btnPasteDistanceH, new UiElement("横距離を貼付", nameof(RIM.Paste), "PV"));
+            Register(lblDistanceV, new UiElement("縦方向"));
+            Register(btnCopyDistanceV, new UiElement("縦距離をコピー", nameof(RIM.Copy), "PV")); // TODO
+            Register(btnPasteDistanceV, new UiElement("縦距離を貼付", nameof(RIM.Paste), "PV"));
             Segister(grpObjectPosition, btnSizeAndPosition, new UiElement(keytip: "PN"));
             // grpTextbox
             Register(grpTextbox, new UiElement(RL.grpTextbox, nameof(RIM.TextboxSetting)));

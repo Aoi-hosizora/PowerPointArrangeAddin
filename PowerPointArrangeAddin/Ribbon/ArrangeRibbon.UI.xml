@@ -252,6 +252,27 @@
                         <button id="btnCopyPosition" showLabel="false" __template="L,S,K,E,I" onAction="BtnCopyAndPastePosition_Click" />
                         <button id="btnPastePosition" __template="L,S,K,E,I" onAction="BtnCopyAndPastePosition_Click" />
                     </buttonGroup>
+                    <separator id="sepCopyAndPasteDistance" />
+                    <box id="bgpDistanceType" boxStyle="horizontal">
+                        <labelControl id="lblDistanceType" __template="L,S" />
+                        <__use_template name="HSPACER" />
+                        <toggleButton id="btnDistanceType_OutOut" showLabel="false" __template="L,S,K,E,I" getPressed="BtnDistanceType_GetPressed" onAction="BtnDistanceType_Click" />
+                        <toggleButton id="btnDistanceType_InOut" showLabel="false" __template="L,S,K,E,I" getPressed="BtnDistanceType_GetPressed" onAction="BtnDistanceType_Click" />
+                        <toggleButton id="btnDistanceType_OutIn" showLabel="false" __template="L,S,K,E,I" getPressed="BtnDistanceType_GetPressed" onAction="BtnDistanceType_Click" />
+                        <toggleButton id="btnDistanceType_InIn" showLabel="false" __template="L,S,K,E,I" getPressed="BtnDistanceType_GetPressed" onAction="BtnDistanceType_Click" />
+                    </box>
+                    <box id="bgpDistanceH" boxStyle="horizontal">
+                        <labelControl id="lblDistanceH" __template="L,S" />
+                        <__use_template name="HSPACER" />
+                        <button id="btnCopyDistanceH" showLabel="false" __template="L,S,K,E,I" onAction="BtnCopyAndPasteDistance_Click" />
+                        <button id="btnPasteDistanceH" __template="L,S,K,E,I" onAction="BtnCopyAndPasteDistance_Click" />
+                    </box>
+                    <box id="bgpDistanceV" boxStyle="horizontal">
+                        <labelControl id="lblDistanceV" __template="L,S" />
+                        <__use_template name="HSPACER" />
+                        <button id="btnCopyDistanceV" showLabel="false" __template="L,S,K,E,I" onAction="BtnCopyAndPasteDistance_Click" />
+                        <button id="btnPasteDistanceV" __template="L,S,K,E,I" onAction="BtnCopyAndPasteDistance_Click" />
+                    </box>
                     <dialogBoxLauncher>
                         <__use_reference name="$id=btnSizeAndPosition:1" />
                     </dialogBoxLauncher>
