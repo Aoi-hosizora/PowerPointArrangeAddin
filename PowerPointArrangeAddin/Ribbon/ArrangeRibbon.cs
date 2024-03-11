@@ -803,21 +803,21 @@ namespace PowerPointArrangeAddin.Ribbon {
             });
         }
 
-        private SizeAndPositionHelper.DistanceType _distanceType = SizeAndPositionHelper.DistanceType.OutOut;
+        private SizeAndPositionHelper.DistanceType _distanceType = SizeAndPositionHelper.DistanceType.RightLeft;
 
         public void BtnDistanceType_Click(Office.IRibbonControl ribbonControl, bool _) {
             switch (ribbonControl.Id()) {
             case btnDistanceType_OutOut:
-                _distanceType = SizeAndPositionHelper.DistanceType.OutOut;
+                _distanceType = SizeAndPositionHelper.DistanceType.RightLeft;
                 break;
             case btnDistanceType_InOut:
-                _distanceType = SizeAndPositionHelper.DistanceType.InOut;
+                _distanceType = SizeAndPositionHelper.DistanceType.LeftLeft;
                 break;
             case btnDistanceType_OutIn:
-                _distanceType = SizeAndPositionHelper.DistanceType.OutIn;
+                _distanceType = SizeAndPositionHelper.DistanceType.RightRight;
                 break;
             case btnDistanceType_InIn:
-                _distanceType = SizeAndPositionHelper.DistanceType.InIn;
+                _distanceType = SizeAndPositionHelper.DistanceType.LeftRight;
                 break;
             }
             _ribbon?.InvalidateControl(btnDistanceType_OutOut, grpObjectPosition);
@@ -828,10 +828,10 @@ namespace PowerPointArrangeAddin.Ribbon {
 
         public bool BtnDistanceType_GetPressed(Office.IRibbonControl ribbonControl) {
             return ribbonControl.Id() switch {
-                btnDistanceType_OutOut => _distanceType == SizeAndPositionHelper.DistanceType.OutOut,
-                btnDistanceType_InOut => _distanceType == SizeAndPositionHelper.DistanceType.InOut,
-                btnDistanceType_OutIn => _distanceType == SizeAndPositionHelper.DistanceType.OutIn,
-                btnDistanceType_InIn => _distanceType == SizeAndPositionHelper.DistanceType.InIn,
+                btnDistanceType_OutOut => _distanceType == SizeAndPositionHelper.DistanceType.RightLeft,
+                btnDistanceType_InOut => _distanceType == SizeAndPositionHelper.DistanceType.LeftLeft,
+                btnDistanceType_OutIn => _distanceType == SizeAndPositionHelper.DistanceType.RightRight,
+                btnDistanceType_InIn => _distanceType == SizeAndPositionHelper.DistanceType.LeftRight,
                 _ => false
             };
         }

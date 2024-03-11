@@ -468,10 +468,10 @@ namespace PowerPointArrangeAddin.Ribbon {
             Register(btnCopyPosition, new UiElement(RL.btnCopyPosition, nameof(RIM.Copy), "PC"));
             Register(btnPastePosition, new UiElement(RL.btnPastePosition, nameof(RIM.Paste), "PV"));
             Register(lblDistanceType, new UiElement("距離の種類"));
-            Register(btnDistanceType_OutOut, new UiElement("外部余白間の距離", nameof(RIM.ShapeDistanceType_OutOut), "PV")); // TODO
-            Register(btnDistanceType_InOut, new UiElement("内部余白と外部余白の間の距離", nameof(RIM.ShapeDistanceType_InOut), "PV"));
-            Register(btnDistanceType_OutIn, new UiElement("外部余白と内部余白の間の距離", nameof(RIM.ShapeDistanceType_OutIn), "PV"));
-            Register(btnDistanceType_InIn, new UiElement("内部余白間の距離", nameof(RIM.ShapeDistanceType_InIn), "PV"));
+            Register(btnDistanceType_OutOut, new UiElement("右端と左端・下端と上端の間の距離", nameof(RIM.ShapeDistanceType_OutOut), "PV")); // TODO
+            Register(btnDistanceType_InOut, new UiElement("左端と左端・上端と上端の間の距離", nameof(RIM.ShapeDistanceType_InOut), "PV"));
+            Register(btnDistanceType_OutIn, new UiElement("右端と右端・下端と下端の間の距離", nameof(RIM.ShapeDistanceType_OutIn), "PV"));
+            Register(btnDistanceType_InIn, new UiElement("左端と右端・上端と下端の間の距離", nameof(RIM.ShapeDistanceType_InIn), "PV"));
             Register(lblDistanceH, new UiElement("横方向"));
             Register(btnCopyDistanceH, new UiElement("横距離をコピー", nameof(RIM.Copy), "PV")); // TODO
             Register(btnPasteDistanceH, new UiElement("横距離を貼付", nameof(RIM.Paste), "PV"));
