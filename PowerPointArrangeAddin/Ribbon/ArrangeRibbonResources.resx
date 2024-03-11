@@ -464,6 +464,39 @@
   <data name="grpObjectPosition" xml:space="preserve">
     <value>Object position</value>
   </data>
+  <data name="lblDistanceType" xml:space="preserve">
+    <value>Distance</value>
+  </data>
+  <data name="btnDistanceType_RightLeft" xml:space="preserve">
+    <value>Distance between right and left, bottom and top</value>
+  </data>
+  <data name="btnDistanceType_LeftLeft" xml:space="preserve">
+    <value>Distance between left and left, top and top</value>
+  </data>
+  <data name="btnDistanceType_RightRight" xml:space="preserve">
+    <value>Distance between right and right, bottom and bottom</value>
+  </data>
+  <data name="btnDistanceType_LeftRight" xml:space="preserve">
+    <value>Distance between left and right, top and bottom</value>
+  </data>
+  <data name="lblDistanceH" xml:space="preserve">
+    <value>Horiz.</value>
+  </data>
+  <data name="btnCopyDistanceH" xml:space="preserve">
+    <value>Copy distance</value>
+  </data>
+  <data name="btnPasteDistanceH" xml:space="preserve">
+    <value>Paste distance</value>
+  </data>
+  <data name="lblDistanceV" xml:space="preserve">
+    <value>Vert.</value>
+  </data>
+  <data name="btnCopyDistanceV" xml:space="preserve">
+    <value>Copy distance</value>
+  </data>
+  <data name="btnPasteDistanceV" xml:space="preserve">
+    <value>Paste distance</value>
+  </data>
   <data name="btnAddInCheckUpdate" xml:space="preserve">
     <value>Check for updates</value>
   </data>

@@ -313,17 +313,17 @@
   <data name="ObjectPosition" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Material\ObjectPosition.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ShapeDistanceType_OutOut" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Material\ShapeDistanceType_OutOut.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ShapeDistanceType_RightLeft" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Material\ShapeDistanceType_RightLeft.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ShapeDistanceType_InOut" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Material\ShapeDistanceType_InOut.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ShapeDistanceType_LeftLeft" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Material\ShapeDistanceType_LeftLeft.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ShapeDistanceType_OutIn" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Material\ShapeDistanceType_OutIn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ShapeDistanceType_RightRight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Material\ShapeDistanceType_RightRight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ShapeDistanceType_InIn" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>Material\ShapeDistanceType_InIn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ShapeDistanceType_LeftRight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Material\ShapeDistanceType_LeftRight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="AddInUpdate" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Material\AddInUpdate.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

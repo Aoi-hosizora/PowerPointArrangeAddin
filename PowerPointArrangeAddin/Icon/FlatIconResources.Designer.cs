@@ -613,6 +613,46 @@ namespace PowerPointArrangeAddin.Icon {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ShapeDistanceType_LeftLeft {
+            get {
+                object obj = ResourceManager.GetObject("ShapeDistanceType_LeftLeft", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ShapeDistanceType_LeftRight {
+            get {
+                object obj = ResourceManager.GetObject("ShapeDistanceType_LeftRight", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ShapeDistanceType_RightLeft {
+            get {
+                object obj = ResourceManager.GetObject("ShapeDistanceType_RightLeft", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ShapeDistanceType_RightRight {
+            get {
+                object obj = ResourceManager.GetObject("ShapeDistanceType_RightRight", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap SizeAndPosition {
             get {
                 object obj = ResourceManager.GetObject("SizeAndPosition", resourceCulture);

@@ -125,10 +125,10 @@ namespace PowerPointArrangeAddin.Ribbon {
             Register(edtPositionY, (_, cnt, _) => cnt >= 1);
             Register(btnCopyPosition, (sr, cnt, _) => cnt >= 1 && SizeAndPositionHelper.IsPositionCopyable(sr));
             Register(btnPastePosition, (_, cnt, _) => cnt >= 1 && SizeAndPositionHelper.IsValidCopiedPositionValue());
-            Register(btnDistanceType_OutOut, (_, _, _) => true);
-            Register(btnDistanceType_InOut, (_, _, _) => true);
-            Register(btnDistanceType_OutIn, (_, _, _) => true);
-            Register(btnDistanceType_InIn, (_, _, _) => true);
+            Register(btnDistanceType_RightLeft, (_, _, _) => true);
+            Register(btnDistanceType_LeftLeft, (_, _, _) => true);
+            Register(btnDistanceType_RightRight, (_, _, _) => true);
+            Register(btnDistanceType_LeftRight, (_, _, _) => true);
             Register(btnCopyDistanceH, (_, cnt, _) => cnt == 2);
             Register(btnPasteDistanceH, (_, cnt, _) => cnt == 2 && SizeAndPositionHelper.IsValidCopiedDistanceHValue());
             Register(btnCopyDistanceV, (_, cnt, _) => cnt == 2);
@@ -807,31 +807,31 @@ namespace PowerPointArrangeAddin.Ribbon {
 
         public void BtnDistanceType_Click(Office.IRibbonControl ribbonControl, bool _) {
             switch (ribbonControl.Id()) {
-            case btnDistanceType_OutOut:
+            case btnDistanceType_RightLeft:
                 _distanceType = SizeAndPositionHelper.DistanceType.RightLeft;
                 break;
-            case btnDistanceType_InOut:
+            case btnDistanceType_LeftLeft:
                 _distanceType = SizeAndPositionHelper.DistanceType.LeftLeft;
                 break;
-            case btnDistanceType_OutIn:
+            case btnDistanceType_RightRight:
                 _distanceType = SizeAndPositionHelper.DistanceType.RightRight;
                 break;
-            case btnDistanceType_InIn:
+            case btnDistanceType_LeftRight:
                 _distanceType = SizeAndPositionHelper.DistanceType.LeftRight;
                 break;
             }
-            _ribbon?.InvalidateControl(btnDistanceType_OutOut, grpObjectPosition);
-            _ribbon?.InvalidateControl(btnDistanceType_InOut, grpObjectPosition);
-            _ribbon?.InvalidateControl(btnDistanceType_OutIn, grpObjectPosition);
-            _ribbon?.InvalidateControl(btnDistanceType_InIn, grpObjectPosition);
+            _ribbon?.InvalidateControl(btnDistanceType_RightLeft, grpObjectPosition);
+            _ribbon?.InvalidateControl(btnDistanceType_LeftLeft, grpObjectPosition);
+            _ribbon?.InvalidateControl(btnDistanceType_RightRight, grpObjectPosition);
+            _ribbon?.InvalidateControl(btnDistanceType_LeftRight, grpObjectPosition);
         }
 
         public bool BtnDistanceType_GetPressed(Office.IRibbonControl ribbonControl) {
             return ribbonControl.Id() switch {
-                btnDistanceType_OutOut => _distanceType == SizeAndPositionHelper.DistanceType.RightLeft,
-                btnDistanceType_InOut => _distanceType == SizeAndPositionHelper.DistanceType.LeftLeft,
-                btnDistanceType_OutIn => _distanceType == SizeAndPositionHelper.DistanceType.RightRight,
-                btnDistanceType_InIn => _distanceType == SizeAndPositionHelper.DistanceType.LeftRight,
+                btnDistanceType_RightLeft => _distanceType == SizeAndPositionHelper.DistanceType.RightLeft,
+                btnDistanceType_LeftLeft => _distanceType == SizeAndPositionHelper.DistanceType.LeftLeft,
+                btnDistanceType_RightRight => _distanceType == SizeAndPositionHelper.DistanceType.RightRight,
+                btnDistanceType_LeftRight => _distanceType == SizeAndPositionHelper.DistanceType.LeftRight,
                 _ => false
             };
         }

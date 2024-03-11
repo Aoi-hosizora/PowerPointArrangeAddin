@@ -613,9 +613,9 @@ namespace PowerPointArrangeAddin.Icon {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ShapeDistanceType_InIn {
+        internal static System.Drawing.Bitmap ShapeDistanceType_LeftRight {
             get {
-                object obj = ResourceManager.GetObject("ShapeDistanceType_InIn", resourceCulture);
+                object obj = ResourceManager.GetObject("ShapeDistanceType_LeftRight", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -623,9 +623,9 @@ namespace PowerPointArrangeAddin.Icon {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ShapeDistanceType_InOut {
+        internal static System.Drawing.Bitmap ShapeDistanceType_LeftLeft {
             get {
-                object obj = ResourceManager.GetObject("ShapeDistanceType_InOut", resourceCulture);
+                object obj = ResourceManager.GetObject("ShapeDistanceType_LeftLeft", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -633,9 +633,9 @@ namespace PowerPointArrangeAddin.Icon {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ShapeDistanceType_OutIn {
+        internal static System.Drawing.Bitmap ShapeDistanceType_RightRight {
             get {
-                object obj = ResourceManager.GetObject("ShapeDistanceType_OutIn", resourceCulture);
+                object obj = ResourceManager.GetObject("ShapeDistanceType_RightRight", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -643,9 +643,9 @@ namespace PowerPointArrangeAddin.Icon {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ShapeDistanceType_OutOut {
+        internal static System.Drawing.Bitmap ShapeDistanceType_RightLeft {
             get {
-                object obj = ResourceManager.GetObject("ShapeDistanceType_OutOut", resourceCulture);
+                object obj = ResourceManager.GetObject("ShapeDistanceType_RightLeft", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

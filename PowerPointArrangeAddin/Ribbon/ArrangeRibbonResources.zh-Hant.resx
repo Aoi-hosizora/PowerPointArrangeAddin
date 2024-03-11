@@ -464,6 +464,39 @@
   <data name="grpObjectPosition" xml:space="preserve">
     <value>圖案位置</value>
   </data>
+  <data name="lblDistanceType" xml:space="preserve">
+    <value>距離類型</value>
+  </data>
+  <data name="btnDistanceType_RightLeft" xml:space="preserve">
+    <value>右邊和左邊/下邊和上邊之間的距離</value>
+  </data>
+  <data name="btnDistanceType_LeftLeft" xml:space="preserve">
+    <value>左邊和左邊/上邊和上邊之間的距離</value>
+  </data>
+  <data name="btnDistanceType_RightRight" xml:space="preserve">
+    <value>右邊和右邊/下邊和下邊之間的距離</value>
+  </data>
+  <data name="btnDistanceType_LeftRight" xml:space="preserve">
+    <value>左邊和右邊/上邊和下邊之間的距離</value>
+  </data>
+  <data name="lblDistanceH" xml:space="preserve">
+    <value>水平</value>
+  </data>
+  <data name="btnCopyDistanceH" xml:space="preserve">
+    <value>複製橫向距離</value>
+  </data>
+  <data name="btnPasteDistanceH" xml:space="preserve">
+    <value>貼上橫向距離</value>
+  </data>
+  <data name="lblDistanceV" xml:space="preserve">
+    <value>垂直</value>
+  </data>
+  <data name="btnCopyDistanceV" xml:space="preserve">
+    <value>複製縱向距離</value>
+  </data>
+  <data name="btnPasteDistanceV" xml:space="preserve">
+    <value>貼上縱向距離</value>
+  </data>
   <data name="btnAddInCheckUpdate" xml:space="preserve">
     <value>檢查更新</value>
   </data>

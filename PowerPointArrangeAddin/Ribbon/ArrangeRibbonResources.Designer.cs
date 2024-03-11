@@ -214,6 +214,24 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Copy distance.
+        /// </summary>
+        public static string btnCopyDistanceH {
+            get {
+                return ResourceManager.GetString("btnCopyDistanceH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Copy distance.
+        /// </summary>
+        public static string btnCopyDistanceV {
+            get {
+                return ResourceManager.GetString("btnCopyDistanceV", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Copy position.
         /// </summary>
         public static string btnCopyPosition {
@@ -228,6 +246,42 @@ namespace PowerPointArrangeAddin.Ribbon {
         public static string btnCopySize {
             get {
                 return ResourceManager.GetString("btnCopySize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Distance between left and left, top and top.
+        /// </summary>
+        public static string btnDistanceType_LeftLeft {
+            get {
+                return ResourceManager.GetString("btnDistanceType_LeftLeft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Distance between left and right, top and bottom.
+        /// </summary>
+        public static string btnDistanceType_LeftRight {
+            get {
+                return ResourceManager.GetString("btnDistanceType_LeftRight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Distance between right and left, bottom and top.
+        /// </summary>
+        public static string btnDistanceType_RightLeft {
+            get {
+                return ResourceManager.GetString("btnDistanceType_RightLeft", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Distance between right and right, bottom and bottom.
+        /// </summary>
+        public static string btnDistanceType_RightRight {
+            get {
+                return ResourceManager.GetString("btnDistanceType_RightRight", resourceCulture);
             }
         }
         
@@ -381,6 +435,24 @@ namespace PowerPointArrangeAddin.Ribbon {
         public static string btnPasteAngle {
             get {
                 return ResourceManager.GetString("btnPasteAngle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Paste distance.
+        /// </summary>
+        public static string btnPasteDistanceH {
+            get {
+                return ResourceManager.GetString("btnPasteDistanceH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Paste distance.
+        /// </summary>
+        public static string btnPasteDistanceV {
+            get {
+                return ResourceManager.GetString("btnPasteDistanceV", resourceCulture);
             }
         }
         
@@ -930,6 +1002,33 @@ namespace PowerPointArrangeAddin.Ribbon {
         public static string lblAlignmentV {
             get {
                 return ResourceManager.GetString("lblAlignmentV", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Horiz..
+        /// </summary>
+        public static string lblDistanceH {
+            get {
+                return ResourceManager.GetString("lblDistanceH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Distance.
+        /// </summary>
+        public static string lblDistanceType {
+            get {
+                return ResourceManager.GetString("lblDistanceType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vert..
+        /// </summary>
+        public static string lblDistanceV {
+            get {
+                return ResourceManager.GetString("lblDistanceV", resourceCulture);
             }
         }
         

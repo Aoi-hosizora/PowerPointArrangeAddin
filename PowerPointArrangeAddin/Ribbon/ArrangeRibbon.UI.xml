@@ -256,10 +256,10 @@
                     <box id="bgpDistanceType" boxStyle="horizontal">
                         <labelControl id="lblDistanceType" __template="L,S" />
                         <__use_template name="HSPACER" />
-                        <toggleButton id="btnDistanceType_OutOut" showLabel="false" __template="L,S,K,E,I" getPressed="BtnDistanceType_GetPressed" onAction="BtnDistanceType_Click" />
-                        <toggleButton id="btnDistanceType_InOut" showLabel="false" __template="L,S,K,E,I" getPressed="BtnDistanceType_GetPressed" onAction="BtnDistanceType_Click" />
-                        <toggleButton id="btnDistanceType_OutIn" showLabel="false" __template="L,S,K,E,I" getPressed="BtnDistanceType_GetPressed" onAction="BtnDistanceType_Click" />
-                        <toggleButton id="btnDistanceType_InIn" showLabel="false" __template="L,S,K,E,I" getPressed="BtnDistanceType_GetPressed" onAction="BtnDistanceType_Click" />
+                        <toggleButton id="btnDistanceType_RightLeft" showLabel="false" __template="L,S,K,E,I" getPressed="BtnDistanceType_GetPressed" onAction="BtnDistanceType_Click" />
+                        <toggleButton id="btnDistanceType_LeftLeft" showLabel="false" __template="L,S,K,E,I" getPressed="BtnDistanceType_GetPressed" onAction="BtnDistanceType_Click" />
+                        <toggleButton id="btnDistanceType_RightRight" showLabel="false" __template="L,S,K,E,I" getPressed="BtnDistanceType_GetPressed" onAction="BtnDistanceType_Click" />
+                        <toggleButton id="btnDistanceType_LeftRight" showLabel="false" __template="L,S,K,E,I" getPressed="BtnDistanceType_GetPressed" onAction="BtnDistanceType_Click" />
                     </box>
                     <box id="bgpDistanceH" boxStyle="horizontal">
                         <labelControl id="lblDistanceH" __template="L,S" />
