@@ -180,7 +180,13 @@ namespace PowerPointArrangeAddin.Ribbon {
         private const string btnExtendSameBottom = "btnExtendSameBottom";
         private const string chkExtendToFirstObject = "chkExtendToFirstObject";
         private const string btnScaleAnchor_FromTopLeft = "btnScaleAnchor_FromTopLeft";
-        private const string btnScaleAnchor_FromMiddle = "btnScaleAnchor_FromMiddle";
+        private const string btnScaleAnchor_FromTop = "btnScaleAnchor_FromTop";
+        private const string btnScaleAnchor_FromTopRight = "btnScaleAnchor_FromTopRight";
+        private const string btnScaleAnchor_FromLeft = "btnScaleAnchor_FromLeft";
+        private const string btnScaleAnchor_FromCenter = "btnScaleAnchor_FromCenter";
+        private const string btnScaleAnchor_FromRight = "btnScaleAnchor_FromRight";
+        private const string btnScaleAnchor_FromBottomLeft = "btnScaleAnchor_FromBottomLeft";
+        private const string btnScaleAnchor_FromBottom = "btnScaleAnchor_FromBottom";
         private const string btnScaleAnchor_FromBottomRight = "btnScaleAnchor_FromBottomRight";
         // ===
         private const string sepScaleAnchor = "sepScaleAnchor";
@@ -423,9 +429,15 @@ namespace PowerPointArrangeAddin.Ribbon {
             Register(btnExtendSameBottom, new UiElement(RL.btnExtendSameBottom, nameof(RIM.ExtendSameBottom), "PB"));
             Register(chkExtendToFirstObject, new UiElement(RL.chkExtendToFirstObject, keytip: "PF"));
             Segister((mnuArrangement, mnuResizing), chkExtendToFirstObject, new UiElement(RL.chkExtendToFirstObjectFull, keytip: "PF"));
-            Register(btnScaleAnchor_FromTopLeft, new UiElement(RL.btnScaleAnchor_FromTopLeft, nameof(RIM.ScaleFromTopLeft), "PA"));
-            Register(btnScaleAnchor_FromMiddle, new UiElement(RL.btnScaleAnchor_FromMiddle, nameof(RIM.ScaleFromMiddle), "PD"));
-            Register(btnScaleAnchor_FromBottomRight, new UiElement(RL.btnScaleAnchor_FromBottomRight, nameof(RIM.ScaleFromBottomRight), "PG"));
+            Register(btnScaleAnchor_FromTopLeft, new UiElement(RL.btnScaleAnchor_FromTopLeft, nameof(RIM.ScaleFromTopLeft), "S1"));
+            Register(btnScaleAnchor_FromTop, new UiElement(RL.btnScaleAnchor_FromCenter, nameof(RIM.ScaleFromTop), "S2"));
+            Register(btnScaleAnchor_FromTopRight, new UiElement(RL.btnScaleAnchor_FromBottomRight, nameof(RIM.ScaleFromTopRight), "S3"));
+            Register(btnScaleAnchor_FromLeft, new UiElement(RL.btnScaleAnchor_FromTopLeft, nameof(RIM.ScaleFromLeft), "S4"));
+            Register(btnScaleAnchor_FromCenter, new UiElement(RL.btnScaleAnchor_FromCenter, nameof(RIM.ScaleFromCenter), "S5"));
+            Register(btnScaleAnchor_FromRight, new UiElement(RL.btnScaleAnchor_FromBottomRight, nameof(RIM.ScaleFromRight), "S6"));
+            Register(btnScaleAnchor_FromBottomLeft, new UiElement(RL.btnScaleAnchor_FromTopLeft, nameof(RIM.ScaleFromBottomLeft), "S7"));
+            Register(btnScaleAnchor_FromBottom, new UiElement(RL.btnScaleAnchor_FromCenter, nameof(RIM.ScaleFromBottom), "S8"));
+            Register(btnScaleAnchor_FromBottomRight, new UiElement(RL.btnScaleAnchor_FromBottomRight, nameof(RIM.ScaleFromBottomRight), "S9"));
             Segister(grpResizing, btnSizeAndPosition, new UiElement(keytip: "PP"));
             // grpRotateAndFlip
             Register(grpRotateAndFlip, new UiElement(RL.grpRotateAndFlip, nameof(RIM.ObjectRotateRight90)));

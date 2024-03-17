@@ -43,7 +43,7 @@
         <button id="btnScaleSameSize" __template="L,S,E,I" onAction="BtnScale_Click" />
         <menuSeparator id="mnuResizing_separator1" />
         <toggleButton id="btnScaleAnchor_FromTopLeft" __template="L,S,E,I" getPressed="BtnScaleAnchor_GetPressed" onAction="BtnScaleAnchor_Click" />
-        <toggleButton id="btnScaleAnchor_FromMiddle" __template="L,S,E,I" getPressed="BtnScaleAnchor_GetPressed" onAction="BtnScaleAnchor_Click" />
+        <toggleButton id="btnScaleAnchor_FromCenter" __template="L,S,E,I" getPressed="BtnScaleAnchor_GetPressed" onAction="BtnScaleAnchor_Click" />
         <toggleButton id="btnScaleAnchor_FromBottomRight" __template="L,S,E,I" getPressed="BtnScaleAnchor_GetPressed" onAction="BtnScaleAnchor_Click" />
         <menuSeparator id="mnuResizing_separator2" />
         <button id="btnExtendSameLeft" __template="L,S,E,I" onAction="BtnExtend_Click" />

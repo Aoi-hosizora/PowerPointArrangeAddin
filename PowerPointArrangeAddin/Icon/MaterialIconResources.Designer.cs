@@ -543,6 +543,26 @@ namespace PowerPointArrangeAddin.Icon {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ScaleFromBottom {
+            get {
+                object obj = ResourceManager.GetObject("ScaleFromBottom", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ScaleFromBottomLeft {
+            get {
+                object obj = ResourceManager.GetObject("ScaleFromBottomLeft", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ScaleFromBottomRight {
             get {
                 object obj = ResourceManager.GetObject("ScaleFromBottomRight", resourceCulture);
@@ -553,9 +573,39 @@ namespace PowerPointArrangeAddin.Icon {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ScaleFromMiddle {
+        internal static System.Drawing.Bitmap ScaleFromCenter {
             get {
-                object obj = ResourceManager.GetObject("ScaleFromMiddle", resourceCulture);
+                object obj = ResourceManager.GetObject("ScaleFromCenter", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ScaleFromLeft {
+            get {
+                object obj = ResourceManager.GetObject("ScaleFromLeft", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ScaleFromRight {
+            get {
+                object obj = ResourceManager.GetObject("ScaleFromRight", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ScaleFromTop {
+            get {
+                object obj = ResourceManager.GetObject("ScaleFromTop", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -566,6 +616,16 @@ namespace PowerPointArrangeAddin.Icon {
         internal static System.Drawing.Bitmap ScaleFromTopLeft {
             get {
                 object obj = ResourceManager.GetObject("ScaleFromTopLeft", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ScaleFromTopRight {
+            get {
+                object obj = ResourceManager.GetObject("ScaleFromTopRight", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -613,16 +673,6 @@ namespace PowerPointArrangeAddin.Icon {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ShapeDistanceType_LeftRight {
-            get {
-                object obj = ResourceManager.GetObject("ShapeDistanceType_LeftRight", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap ShapeDistanceType_LeftLeft {
             get {
                 object obj = ResourceManager.GetObject("ShapeDistanceType_LeftLeft", resourceCulture);
@@ -633,9 +683,9 @@ namespace PowerPointArrangeAddin.Icon {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ShapeDistanceType_RightRight {
+        internal static System.Drawing.Bitmap ShapeDistanceType_LeftRight {
             get {
-                object obj = ResourceManager.GetObject("ShapeDistanceType_RightRight", resourceCulture);
+                object obj = ResourceManager.GetObject("ShapeDistanceType_LeftRight", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -646,6 +696,16 @@ namespace PowerPointArrangeAddin.Icon {
         internal static System.Drawing.Bitmap ShapeDistanceType_RightLeft {
             get {
                 object obj = ResourceManager.GetObject("ShapeDistanceType_RightLeft", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ShapeDistanceType_RightRight {
+            get {
+                object obj = ResourceManager.GetObject("ShapeDistanceType_RightRight", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -553,9 +553,9 @@ namespace PowerPointArrangeAddin.Icon {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ScaleFromMiddle {
+        internal static System.Drawing.Bitmap ScaleFromCenter {
             get {
-                object obj = ResourceManager.GetObject("ScaleFromMiddle", resourceCulture);
+                object obj = ResourceManager.GetObject("ScaleFromCenter", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

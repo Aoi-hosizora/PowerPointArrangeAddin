@@ -556,11 +556,11 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Scale &amp;from middle.
+        ///   Looks up a localized string similar to Scale &amp;from center.
         /// </summary>
-        public static string btnScaleAnchor_FromMiddle {
+        public static string btnScaleAnchor_FromCenter {
             get {
-                return ResourceManager.GetString("btnScaleAnchor_FromMiddle", resourceCulture);
+                return ResourceManager.GetString("btnScaleAnchor_FromCenter", resourceCulture);
             }
         }
         

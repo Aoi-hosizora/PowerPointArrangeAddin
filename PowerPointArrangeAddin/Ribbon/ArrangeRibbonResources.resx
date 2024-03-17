@@ -234,8 +234,8 @@
     <value>Scale from botto&amp;m right</value>
     <comment>...</comment>
   </data>
-  <data name="btnScaleAnchor_FromMiddle" xml:space="preserve">
-    <value>Scale &amp;from middle</value>
+  <data name="btnScaleAnchor_FromCenter" xml:space="preserve">
+    <value>Scale &amp;from center</value>
     <comment>...</comment>
   </data>
   <data name="btnScaleAnchor_FromTopLeft" xml:space="preserve">

@@ -95,7 +95,7 @@ namespace PowerPointArrangeAddin.Ribbon {
             Register(btnExtendSameBottom, (_, cnt, _) => cnt >= 2);
             Register(chkExtendToFirstObject, (_, _, _) => true);
             Register(btnScaleAnchor_FromTopLeft, (_, _, _) => true);
-            Register(btnScaleAnchor_FromMiddle, (_, _, _) => true);
+            Register(btnScaleAnchor_FromCenter, (_, _, _) => true);
             Register(btnScaleAnchor_FromBottomRight, (_, _, _) => true);
             // grpRotateAndFlip
             Register(btnRotateRight90, (_, cnt, _) => cnt >= 1);
@@ -517,28 +517,42 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
 
         // This flag is used to control scale and size behavior, is used by BtnScale_Click, EdtSize_TextChanged, BtnCopyAndPasteSize_Click and BtnResetMediaSize_Click.
-        private Office.MsoScaleFrom _scaleFromFlag = Office.MsoScaleFrom.msoScaleFromTopLeft;
+        private SizeAndPositionHelper.ScaleFromFlag _scaleFromFlag = SizeAndPositionHelper.ScaleFromFlag.FromTopLeft;
 
         public void BtnScaleAnchor_Click(Office.IRibbonControl ribbonControl, bool _ = false) {
             if (!IsOptionRibbonButton(ribbonControl)) {
                 _scaleFromFlag = _scaleFromFlag switch {
-                    Office.MsoScaleFrom.msoScaleFromTopLeft => Office.MsoScaleFrom.msoScaleFromMiddle,
-                    Office.MsoScaleFrom.msoScaleFromMiddle => Office.MsoScaleFrom.msoScaleFromBottomRight,
-                    Office.MsoScaleFrom.msoScaleFromBottomRight => Office.MsoScaleFrom.msoScaleFromTopLeft,
-                    _ => Office.MsoScaleFrom.msoScaleFromTopLeft
+                    SizeAndPositionHelper.ScaleFromFlag.FromTopLeft => SizeAndPositionHelper.ScaleFromFlag.FromCenter,
+                    SizeAndPositionHelper.ScaleFromFlag.FromCenter => SizeAndPositionHelper.ScaleFromFlag.FromTopRight,
+                    SizeAndPositionHelper.ScaleFromFlag.FromTopRight => SizeAndPositionHelper.ScaleFromFlag.FromBottomLeft,
+                    SizeAndPositionHelper.ScaleFromFlag.FromBottomLeft => SizeAndPositionHelper.ScaleFromFlag.FromBottomRight,
+                    SizeAndPositionHelper.ScaleFromFlag.FromBottomRight => SizeAndPositionHelper.ScaleFromFlag.FromTopLeft,
+                    _ => SizeAndPositionHelper.ScaleFromFlag.FromTopLeft
                 };
             } else {
                 _scaleFromFlag = ribbonControl.Id() switch {
-                    btnScaleAnchor_FromTopLeft => Office.MsoScaleFrom.msoScaleFromTopLeft,
-                    btnScaleAnchor_FromMiddle => Office.MsoScaleFrom.msoScaleFromMiddle,
-                    btnScaleAnchor_FromBottomRight => Office.MsoScaleFrom.msoScaleFromBottomRight,
+                    btnScaleAnchor_FromTopLeft => SizeAndPositionHelper.ScaleFromFlag.FromTopLeft,
+                    btnScaleAnchor_FromTopRight => SizeAndPositionHelper.ScaleFromFlag.FromTopRight,
+                    btnScaleAnchor_FromBottomLeft => SizeAndPositionHelper.ScaleFromFlag.FromBottomLeft,
+                    btnScaleAnchor_FromBottomRight => SizeAndPositionHelper.ScaleFromFlag.FromBottomRight,
+                    btnScaleAnchor_FromLeft => SizeAndPositionHelper.ScaleFromFlag.FromLeft,
+                    btnScaleAnchor_FromRight => SizeAndPositionHelper.ScaleFromFlag.FromRight,
+                    btnScaleAnchor_FromTop => SizeAndPositionHelper.ScaleFromFlag.FromTop,
+                    btnScaleAnchor_FromBottom => SizeAndPositionHelper.ScaleFromFlag.FromBottom,
+                    btnScaleAnchor_FromCenter => SizeAndPositionHelper.ScaleFromFlag.FromCenter,
                     _ => _scaleFromFlag
                 };
             }
             _ribbon?.InvalidateControls(btnScaleAnchor, grpArrange, _sizeAndPositionGroups);
             _ribbon?.InvalidateControls(btnScaleAnchor_FromTopLeft, grpResizing, (mnuArrangement, mnuResizing));
-            _ribbon?.InvalidateControls(btnScaleAnchor_FromMiddle, grpResizing, (mnuArrangement, mnuResizing));
+            _ribbon?.InvalidateControls(btnScaleAnchor_FromTopRight, grpResizing, (mnuArrangement, mnuResizing));
+            _ribbon?.InvalidateControls(btnScaleAnchor_FromBottomLeft, grpResizing, (mnuArrangement, mnuResizing));
             _ribbon?.InvalidateControls(btnScaleAnchor_FromBottomRight, grpResizing, (mnuArrangement, mnuResizing));
+            _ribbon?.InvalidateControls(btnScaleAnchor_FromLeft, grpResizing, (mnuArrangement, mnuResizing));
+            _ribbon?.InvalidateControls(btnScaleAnchor_FromRight, grpResizing, (mnuArrangement, mnuResizing));
+            _ribbon?.InvalidateControls(btnScaleAnchor_FromTop, grpResizing, (mnuArrangement, mnuResizing));
+            _ribbon?.InvalidateControls(btnScaleAnchor_FromBottom, grpResizing, (mnuArrangement, mnuResizing));
+            _ribbon?.InvalidateControls(btnScaleAnchor_FromCenter, grpResizing, (mnuArrangement, mnuResizing));
         }
 
         public bool BtnScaleAnchor_GetPressed(Office.IRibbonControl ribbonControl) {
@@ -546,9 +560,15 @@ namespace PowerPointArrangeAddin.Ribbon {
                 return false;
             }
             return ribbonControl.Id() switch {
-                btnScaleAnchor_FromTopLeft => _scaleFromFlag == Office.MsoScaleFrom.msoScaleFromTopLeft,
-                btnScaleAnchor_FromMiddle => _scaleFromFlag == Office.MsoScaleFrom.msoScaleFromMiddle,
-                btnScaleAnchor_FromBottomRight => _scaleFromFlag == Office.MsoScaleFrom.msoScaleFromBottomRight,
+                btnScaleAnchor_FromTopLeft => _scaleFromFlag == SizeAndPositionHelper.ScaleFromFlag.FromTopLeft,
+                btnScaleAnchor_FromTopRight => _scaleFromFlag == SizeAndPositionHelper.ScaleFromFlag.FromTopRight,
+                btnScaleAnchor_FromBottomLeft => _scaleFromFlag == SizeAndPositionHelper.ScaleFromFlag.FromBottomLeft,
+                btnScaleAnchor_FromBottomRight => _scaleFromFlag == SizeAndPositionHelper.ScaleFromFlag.FromBottomRight,
+                btnScaleAnchor_FromLeft => _scaleFromFlag == SizeAndPositionHelper.ScaleFromFlag.FromLeft,
+                btnScaleAnchor_FromRight => _scaleFromFlag == SizeAndPositionHelper.ScaleFromFlag.FromRight,
+                btnScaleAnchor_FromTop => _scaleFromFlag == SizeAndPositionHelper.ScaleFromFlag.FromTop,
+                btnScaleAnchor_FromBottom => _scaleFromFlag == SizeAndPositionHelper.ScaleFromFlag.FromBottom,
+                btnScaleAnchor_FromCenter => _scaleFromFlag == SizeAndPositionHelper.ScaleFromFlag.FromCenter,
                 _ => false
             };
         }
@@ -556,9 +576,15 @@ namespace PowerPointArrangeAddin.Ribbon {
         public string BtnScaleAnchor_GetLabel(Office.IRibbonControl ribbonControl) {
             if (!IsOptionRibbonButton(ribbonControl)) {
                 return _scaleFromFlag switch {
-                    Office.MsoScaleFrom.msoScaleFromTopLeft => GetLabel(btnScaleAnchor_FromTopLeft),
-                    Office.MsoScaleFrom.msoScaleFromMiddle => GetLabel(btnScaleAnchor_FromMiddle),
-                    Office.MsoScaleFrom.msoScaleFromBottomRight => GetLabel(btnScaleAnchor_FromBottomRight),
+                    SizeAndPositionHelper.ScaleFromFlag.FromTopLeft => GetLabel(btnScaleAnchor_FromTopLeft),
+                    SizeAndPositionHelper.ScaleFromFlag.FromTopRight => GetLabel(btnScaleAnchor_FromTopRight),
+                    SizeAndPositionHelper.ScaleFromFlag.FromBottomLeft => GetLabel(btnScaleAnchor_FromBottomLeft),
+                    SizeAndPositionHelper.ScaleFromFlag.FromBottomRight => GetLabel(btnScaleAnchor_FromBottomRight),
+                    SizeAndPositionHelper.ScaleFromFlag.FromLeft => GetLabel(btnScaleAnchor_FromLeft),
+                    SizeAndPositionHelper.ScaleFromFlag.FromRight => GetLabel(btnScaleAnchor_FromRight),
+                    SizeAndPositionHelper.ScaleFromFlag.FromTop => GetLabel(btnScaleAnchor_FromTop),
+                    SizeAndPositionHelper.ScaleFromFlag.FromBottom => GetLabel(btnScaleAnchor_FromBottom),
+                    SizeAndPositionHelper.ScaleFromFlag.FromCenter => GetLabel(btnScaleAnchor_FromCenter),
                     _ => GetLabel(btnScaleAnchor_FromTopLeft)
                 };
             }
@@ -568,9 +594,15 @@ namespace PowerPointArrangeAddin.Ribbon {
         public System.Drawing.Image? BtnScaleAnchor_GetImage(Office.IRibbonControl ribbonControl) {
             if (!IsOptionRibbonButton(ribbonControl)) {
                 return _scaleFromFlag switch {
-                    Office.MsoScaleFrom.msoScaleFromTopLeft => GetImage(btnScaleAnchor_FromTopLeft),
-                    Office.MsoScaleFrom.msoScaleFromMiddle => GetImage(btnScaleAnchor_FromMiddle),
-                    Office.MsoScaleFrom.msoScaleFromBottomRight => GetImage(btnScaleAnchor_FromBottomRight),
+                    SizeAndPositionHelper.ScaleFromFlag.FromTopLeft => GetImage(btnScaleAnchor_FromTopLeft),
+                    SizeAndPositionHelper.ScaleFromFlag.FromTopRight => GetImage(btnScaleAnchor_FromTopRight),
+                    SizeAndPositionHelper.ScaleFromFlag.FromBottomLeft => GetImage(btnScaleAnchor_FromBottomLeft),
+                    SizeAndPositionHelper.ScaleFromFlag.FromBottomRight => GetImage(btnScaleAnchor_FromBottomRight),
+                    SizeAndPositionHelper.ScaleFromFlag.FromLeft => GetImage(btnScaleAnchor_FromLeft),
+                    SizeAndPositionHelper.ScaleFromFlag.FromRight => GetImage(btnScaleAnchor_FromRight),
+                    SizeAndPositionHelper.ScaleFromFlag.FromTop => GetImage(btnScaleAnchor_FromTop),
+                    SizeAndPositionHelper.ScaleFromFlag.FromBottom => GetImage(btnScaleAnchor_FromBottom),
+                    SizeAndPositionHelper.ScaleFromFlag.FromCenter => GetImage(btnScaleAnchor_FromCenter),
                     _ => GetImage(btnScaleAnchor_FromTopLeft)
                 };
             }

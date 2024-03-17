@@ -230,7 +230,7 @@
   <data name="btnRotateRight90" xml:space="preserve">
     <value>向左旋轉 90 度(&amp;R)</value>
   </data>
-  <data name="btnScaleAnchor_FromMiddle" xml:space="preserve">
+  <data name="btnScaleAnchor_FromCenter" xml:space="preserve">
     <value>從中心點變形(&amp;F)</value>
     <comment>將中心點視爲錨點來變形圖案</comment>
   </data>
