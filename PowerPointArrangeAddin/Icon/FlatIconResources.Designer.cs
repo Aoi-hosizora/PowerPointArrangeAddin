@@ -543,6 +543,26 @@ namespace PowerPointArrangeAddin.Icon {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ScaleFromBottom {
+            get {
+                object obj = ResourceManager.GetObject("ScaleFromBottom", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ScaleFromBottomLeft {
+            get {
+                object obj = ResourceManager.GetObject("ScaleFromBottomLeft", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ScaleFromBottomRight {
             get {
                 object obj = ResourceManager.GetObject("ScaleFromBottomRight", resourceCulture);
@@ -563,9 +583,49 @@ namespace PowerPointArrangeAddin.Icon {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ScaleFromLeft {
+            get {
+                object obj = ResourceManager.GetObject("ScaleFromLeft", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ScaleFromRight {
+            get {
+                object obj = ResourceManager.GetObject("ScaleFromRight", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ScaleFromTop {
+            get {
+                object obj = ResourceManager.GetObject("ScaleFromTop", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ScaleFromTopLeft {
             get {
                 object obj = ResourceManager.GetObject("ScaleFromTopLeft", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ScaleFromTopRight {
+            get {
+                object obj = ResourceManager.GetObject("ScaleFromTopRight", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

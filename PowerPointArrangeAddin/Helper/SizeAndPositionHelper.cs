@@ -21,15 +21,21 @@ namespace PowerPointArrangeAddin.Helper {
             FromCenter
         }
 
-        public static void ScaleSizeTo(this PowerPoint.Shape shape, float? width, float? height, ScaleFromFlag? scaleFromFlag) {
+        public static void ScaleSizeTo(this PowerPoint.Shape shape, float? width, float? height, ScaleFromFlag? scaleFromFlag, float? relativeToOriginSize = null) {
             var oldLockSate = shape.LockAspectRatio;
             shape.LockAspectRatio = Office.MsoTriState.msoFalse;
             scaleFromFlag ??= ScaleFromFlag.FromTopLeft;
 
             var (oldLeft, oldTop) = (shape.Left, shape.Top);
             var (oldWidth, oldHeight) = (shape.Width, shape.Height);
-            if (width != null) shape.Width = width.Value;
-            if (height != null) shape.Height = height.Value;
+            if (relativeToOriginSize == null || relativeToOriginSize <= 0) {
+                if (width != null) shape.Width = width.Value;
+                if (height != null) shape.Height = height.Value;
+            } else {
+                var factor = relativeToOriginSize.Value;
+                shape.ScaleHeight(factor, Office.MsoTriState.msoTrue); // Office.MsoScaleFrom.msoScaleFromTopLeft
+                shape.ScaleWidth(factor, Office.MsoTriState.msoTrue);
+            }
             var (newWidth, newHeight) = (shape.Width, shape.Height);
 
             switch (scaleFromFlag) {
@@ -517,10 +523,7 @@ namespace PowerPointArrangeAddin.Helper {
             foreach (var shape in shapes) {
                 var isSound = shape.Type == Office.MsoShapeType.msoMedia && shape.MediaType == PowerPoint.PpMediaType.ppMediaTypeSound;
                 var factor = !isSound ? 1F : 0.25F;
-                shape.ScaleWidth(factor, Office.MsoTriState.msoTrue);
-                shape.ScaleHeight(factor, Office.MsoTriState.msoTrue);
-                shape.ScaleWidthTo(shape.Width, scaleFromFlag.Value);
-                shape.ScaleHeightTo(shape.Height, scaleFromFlag.Value);
+                shape.ScaleSizeTo(null, null, scaleFromFlag, factor);
                 shape.Rotation = 0;
                 if (shape.HorizontalFlip == Office.MsoTriState.msoTrue) {
                     shape.Flip(Office.MsoFlipCmd.msoFlipHorizontal);

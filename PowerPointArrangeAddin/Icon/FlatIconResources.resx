@@ -205,6 +205,24 @@
   <data name="ScaleFromBottomRight" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Flat\ScaleFromBottomRight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="ScaleFromLeft" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Flat\ScaleFromLeft.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ScaleFromTop" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Flat\ScaleFromTop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ScaleFromRight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Flat\ScaleFromRight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ScaleFromBottom" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Flat\ScaleFromBottom.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ScaleFromTopRight" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Flat\ScaleFromTopRight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ScaleFromBottomLeft" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Flat\ScaleFromBottomLeft.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="TextboxWrapText_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Flat\TextboxWrapText_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

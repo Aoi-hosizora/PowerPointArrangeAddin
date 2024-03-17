@@ -522,11 +522,11 @@ namespace PowerPointArrangeAddin.Ribbon {
         public void BtnScaleAnchor_Click(Office.IRibbonControl ribbonControl, bool _ = false) {
             if (!IsOptionRibbonButton(ribbonControl)) {
                 _scaleFromFlag = _scaleFromFlag switch {
-                    SizeAndPositionHelper.ScaleFromFlag.FromTopLeft => SizeAndPositionHelper.ScaleFromFlag.FromCenter,
-                    SizeAndPositionHelper.ScaleFromFlag.FromCenter => SizeAndPositionHelper.ScaleFromFlag.FromTopRight,
+                    SizeAndPositionHelper.ScaleFromFlag.FromTopLeft => SizeAndPositionHelper.ScaleFromFlag.FromTopRight,
                     SizeAndPositionHelper.ScaleFromFlag.FromTopRight => SizeAndPositionHelper.ScaleFromFlag.FromBottomLeft,
                     SizeAndPositionHelper.ScaleFromFlag.FromBottomLeft => SizeAndPositionHelper.ScaleFromFlag.FromBottomRight,
-                    SizeAndPositionHelper.ScaleFromFlag.FromBottomRight => SizeAndPositionHelper.ScaleFromFlag.FromTopLeft,
+                    SizeAndPositionHelper.ScaleFromFlag.FromBottomRight => SizeAndPositionHelper.ScaleFromFlag.FromCenter,
+                    SizeAndPositionHelper.ScaleFromFlag.FromCenter => SizeAndPositionHelper.ScaleFromFlag.FromTopLeft,
                     _ => SizeAndPositionHelper.ScaleFromFlag.FromTopLeft
                 };
             } else {

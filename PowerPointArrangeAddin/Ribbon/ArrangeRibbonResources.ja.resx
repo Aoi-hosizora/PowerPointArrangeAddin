@@ -174,7 +174,7 @@
     <value>同じ上端に伸ばす(&amp;T)</value>
   </data>
   <data name="chkExtendToFirstObject" xml:space="preserve">
-    <value>最初の図形に伸ばす(&amp;I)</value>
+    <value>最初の図形に伸ばす</value>
   </data>
   <data name="chkExtendToFirstObjectFull" xml:space="preserve">
     <value>最初に選択した図形の外枠に伸ばす(&amp;I)</value>
@@ -230,13 +230,41 @@
   <data name="btnRotateRight90" xml:space="preserve">
     <value>右へ 90 度回転(&amp;R)</value>
   </data>
-  <data name="btnScaleAnchor_FromCenter" xml:space="preserve">
-    <value>中央点から変形(&amp;F)</value>
-    <comment>中央点をアンカーとして図形を変形</comment>
+  <data name="lblScaleAnchor_FromTop" xml:space="preserve">
+    <value>頂部から変形</value>
+  </data>
+  <data name="lblScaleAnchor_FromCenter" xml:space="preserve">
+    <value>中央から変形</value>
+  </data>
+  <data name="lblScaleAnchor_FromBottom" xml:space="preserve">
+    <value>底部から変形</value>
   </data>
   <data name="btnScaleAnchor_FromTopLeft" xml:space="preserve">
-    <value>左上端から変形(&amp;O)</value>
-    <comment>左上端をアンカーとして図形を変形</comment>
+    <value>元の左上端から図形を変形(&amp;O)</value>
+  </data>
+  <data name="btnScaleAnchor_FromBottomLeft" xml:space="preserve">
+    <value>元の左下端から図形を変形(&amp;P)</value>
+  </data>
+  <data name="btnScaleAnchor_FromTopRight" xml:space="preserve">
+    <value>元の右上端から図形を変形(&amp;M)</value>
+  </data>
+  <data name="btnScaleAnchor_FromBottomRight" xml:space="preserve">
+    <value>元の右下端から図形を変形(&amp;G)</value>
+  </data>
+  <data name="btnScaleAnchor_FromLeft" xml:space="preserve">
+    <value>元の左端から図形を変形(&amp;F)</value>
+  </data>
+  <data name="btnScaleAnchor_FromRight" xml:space="preserve">
+    <value>元の右端から図形を変形(&amp;C)</value>
+  </data>
+  <data name="btnScaleAnchor_FromTop" xml:space="preserve">
+    <value>元の上端から図形を変形(&amp;A)</value>
+  </data>
+  <data name="btnScaleAnchor_FromBottom" xml:space="preserve">
+    <value>元の下端から図形を変形(&amp;E)</value>
+  </data>
+  <data name="btnScaleAnchor_FromCenter" xml:space="preserve">
+    <value>元の中央点から図形を変形(&amp;N)</value>
   </data>
   <data name="btnScaleSameHeight" xml:space="preserve">
     <value>最初に選択した図形と同じ高さに変形(&amp;H)</value>
@@ -351,10 +379,6 @@
   </data>
   <data name="dlgAllFilesFilter" xml:space="preserve">
     <value>すべてのファイル</value>
-  </data>
-  <data name="btnScaleAnchor_FromBottomRight" xml:space="preserve">
-    <value>右下端から変形(&amp;M)</value>
-    <comment>右下点をアンカーとして図形を変形</comment>
   </data>
   <data name="lblHorizontalMargin" xml:space="preserve">
     <value>横の余白: </value>

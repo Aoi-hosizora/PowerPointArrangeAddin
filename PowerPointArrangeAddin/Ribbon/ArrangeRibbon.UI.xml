@@ -170,9 +170,9 @@
                     </box>
                     <checkBox id="chkExtendToFirstObject" __template="L,S,K,E" getPressed="ChkExtendToFirstObject_GetPressed" onAction="ChkExtendToFirstObject_Click" />
                     <separator id="sepScaleAnchor" />
-                    <labelControl id="lblScaleAnchor_FromTop" label="頂部から変形" />
-                    <labelControl id="lblScaleAnchor_FromCenter" label="中央から変形" />
-                    <labelControl id="lblScaleAnchor_FromBottom" label="底部から変形" />
+                    <labelControl id="lblScaleAnchor_FromTop" __template="L,S" />
+                    <labelControl id="lblScaleAnchor_FromCenter" __template="L,S" />
+                    <labelControl id="lblScaleAnchor_FromBottom" __template="L,S" />
                     <__use_template name="VSPACER" />
                     <toggleButton id="btnScaleAnchor_FromTopLeft" showLabel="false" __template="L,S,K,E,I" getPressed="BtnScaleAnchor_GetPressed" onAction="BtnScaleAnchor_Click" />
                     <toggleButton id="btnScaleAnchor_FromLeft" showLabel="false" __template="L,S,K,E,I" getPressed="BtnScaleAnchor_GetPressed" onAction="BtnScaleAnchor_Click" />
