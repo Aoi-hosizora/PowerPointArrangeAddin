@@ -239,32 +239,59 @@
   <data name="lblScaleAnchor_FromBottom" xml:space="preserve">
     <value>底部から変形</value>
   </data>
-  <data name="btnScaleAnchor_FromTopLeft" xml:space="preserve">
+  <data name="btnScaleAnchor_FromTopLeft_Full" xml:space="preserve">
     <value>元の左上端から図形を変形(&amp;O)</value>
   </data>
-  <data name="btnScaleAnchor_FromBottomLeft" xml:space="preserve">
+  <data name="btnScaleAnchor_FromBottomLeft_Full" xml:space="preserve">
     <value>元の左下端から図形を変形(&amp;P)</value>
   </data>
-  <data name="btnScaleAnchor_FromTopRight" xml:space="preserve">
+  <data name="btnScaleAnchor_FromTopRight_Full" xml:space="preserve">
     <value>元の右上端から図形を変形(&amp;M)</value>
   </data>
-  <data name="btnScaleAnchor_FromBottomRight" xml:space="preserve">
+  <data name="btnScaleAnchor_FromBottomRight_Full" xml:space="preserve">
     <value>元の右下端から図形を変形(&amp;G)</value>
   </data>
-  <data name="btnScaleAnchor_FromLeft" xml:space="preserve">
+  <data name="btnScaleAnchor_FromLeft_Full" xml:space="preserve">
     <value>元の左端から図形を変形(&amp;F)</value>
   </data>
-  <data name="btnScaleAnchor_FromRight" xml:space="preserve">
+  <data name="btnScaleAnchor_FromRight_Full" xml:space="preserve">
     <value>元の右端から図形を変形(&amp;C)</value>
   </data>
-  <data name="btnScaleAnchor_FromTop" xml:space="preserve">
+  <data name="btnScaleAnchor_FromTop_Full" xml:space="preserve">
     <value>元の上端から図形を変形(&amp;A)</value>
   </data>
-  <data name="btnScaleAnchor_FromBottom" xml:space="preserve">
+  <data name="btnScaleAnchor_FromBottom_Full" xml:space="preserve">
     <value>元の下端から図形を変形(&amp;E)</value>
   </data>
-  <data name="btnScaleAnchor_FromCenter" xml:space="preserve">
+  <data name="btnScaleAnchor_FromCenter_Full" xml:space="preserve">
     <value>元の中央点から図形を変形(&amp;N)</value>
+  </data>
+  <data name="btnScaleAnchor_FromTopLeft" xml:space="preserve">
+    <value>左上端から変形</value>
+  </data>
+  <data name="btnScaleAnchor_FromBottomLeft" xml:space="preserve">
+    <value>左下端から変形</value>
+  </data>
+  <data name="btnScaleAnchor_FromTopRight" xml:space="preserve">
+    <value>右上端から変形</value>
+  </data>
+  <data name="btnScaleAnchor_FromBottomRight" xml:space="preserve">
+    <value>右下端から変形</value>
+  </data>
+  <data name="btnScaleAnchor_FromLeft" xml:space="preserve">
+    <value>左端から変形</value>
+  </data>
+  <data name="btnScaleAnchor_FromRight" xml:space="preserve">
+    <value>右端から変形</value>
+  </data>
+  <data name="btnScaleAnchor_FromTop" xml:space="preserve">
+    <value>上端から変形</value>
+  </data>
+  <data name="btnScaleAnchor_FromBottom" xml:space="preserve">
+    <value>下端から変形</value>
+  </data>
+  <data name="btnScaleAnchor_FromCenter" xml:space="preserve">
+    <value>中央点から変形</value>
   </data>
   <data name="btnScaleSameHeight" xml:space="preserve">
     <value>最初に選択した図形と同じ高さに変形(&amp;H)</value>

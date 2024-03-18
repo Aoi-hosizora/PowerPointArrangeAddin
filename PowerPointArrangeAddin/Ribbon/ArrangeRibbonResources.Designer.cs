@@ -547,7 +547,7 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Scal&amp;e shape from bottom.
+        ///   Looks up a localized string similar to Scale from bottom.
         /// </summary>
         public static string btnScaleAnchor_FromBottom {
             get {
@@ -556,7 +556,16 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Scale shape from botto&amp;m left.
+        ///   Looks up a localized string similar to Scal&amp;e shape from bottom.
+        /// </summary>
+        public static string btnScaleAnchor_FromBottom_Full {
+            get {
+                return ResourceManager.GetString("btnScaleAnchor_FromBottom_Full", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scale from bottom left.
         /// </summary>
         public static string btnScaleAnchor_FromBottomLeft {
             get {
@@ -565,7 +574,16 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Scale shape from bottom ri&amp;ght.
+        ///   Looks up a localized string similar to Scale shape from botto&amp;m left.
+        /// </summary>
+        public static string btnScaleAnchor_FromBottomLeft_Full {
+            get {
+                return ResourceManager.GetString("btnScaleAnchor_FromBottomLeft_Full", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scale from bottom right.
         /// </summary>
         public static string btnScaleAnchor_FromBottomRight {
             get {
@@ -574,7 +592,16 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Scale shape from ce&amp;nter.
+        ///   Looks up a localized string similar to Scale shape from bottom ri&amp;ght.
+        /// </summary>
+        public static string btnScaleAnchor_FromBottomRight_Full {
+            get {
+                return ResourceManager.GetString("btnScaleAnchor_FromBottomRight_Full", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scale from center.
         /// </summary>
         public static string btnScaleAnchor_FromCenter {
             get {
@@ -583,7 +610,16 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Scale shape from le&amp;ft.
+        ///   Looks up a localized string similar to Scale shape from ce&amp;nter.
+        /// </summary>
+        public static string btnScaleAnchor_FromCenter_Full {
+            get {
+                return ResourceManager.GetString("btnScaleAnchor_FromCenter_Full", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scale from left.
         /// </summary>
         public static string btnScaleAnchor_FromLeft {
             get {
@@ -592,7 +628,16 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to S&amp;cale shape from right.
+        ///   Looks up a localized string similar to Scale shape from le&amp;ft.
+        /// </summary>
+        public static string btnScaleAnchor_FromLeft_Full {
+            get {
+                return ResourceManager.GetString("btnScaleAnchor_FromLeft_Full", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scale from right.
         /// </summary>
         public static string btnScaleAnchor_FromRight {
             get {
@@ -601,7 +646,16 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Sc&amp;ale shape from top.
+        ///   Looks up a localized string similar to S&amp;cale shape from right.
+        /// </summary>
+        public static string btnScaleAnchor_FromRight_Full {
+            get {
+                return ResourceManager.GetString("btnScaleAnchor_FromRight_Full", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scale from top.
         /// </summary>
         public static string btnScaleAnchor_FromTop {
             get {
@@ -610,7 +664,16 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Scale shape from t&amp;op left.
+        ///   Looks up a localized string similar to Sc&amp;ale shape from top.
+        /// </summary>
+        public static string btnScaleAnchor_FromTop_Full {
+            get {
+                return ResourceManager.GetString("btnScaleAnchor_FromTop_Full", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scale from top left.
         /// </summary>
         public static string btnScaleAnchor_FromTopLeft {
             get {
@@ -619,11 +682,29 @@ namespace PowerPointArrangeAddin.Ribbon {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Scale shape from to&amp;p right.
+        ///   Looks up a localized string similar to Scale shape from t&amp;op left.
+        /// </summary>
+        public static string btnScaleAnchor_FromTopLeft_Full {
+            get {
+                return ResourceManager.GetString("btnScaleAnchor_FromTopLeft_Full", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scale from top right.
         /// </summary>
         public static string btnScaleAnchor_FromTopRight {
             get {
                 return ResourceManager.GetString("btnScaleAnchor_FromTopRight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scale shape from to&amp;p right.
+        /// </summary>
+        public static string btnScaleAnchor_FromTopRight_Full {
+            get {
+                return ResourceManager.GetString("btnScaleAnchor_FromTopRight_Full", resourceCulture);
             }
         }
         

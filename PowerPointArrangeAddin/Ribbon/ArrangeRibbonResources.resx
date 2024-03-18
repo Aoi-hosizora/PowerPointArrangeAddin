@@ -227,11 +227,11 @@
   <data name="btnRotateLeft90" xml:space="preserve">
     <value>Rotate &amp;left with 90 degrees</value>
   </data>
-  <data name="lblScaleAnchor_FromTop" xml:space="preserve">
-    <value>Scale from top</value>
-  </data>
   <data name="btnRotateRight90" xml:space="preserve">
     <value>Rotate &amp;right with 90 degrees</value>
+  </data>
+  <data name="lblScaleAnchor_FromTop" xml:space="preserve">
+    <value>Scale from top</value>
   </data>
   <data name="lblScaleAnchor_FromCenter" xml:space="preserve">
     <value>Scale from center</value>
@@ -239,32 +239,59 @@
   <data name="lblScaleAnchor_FromBottom" xml:space="preserve">
     <value>Scale from bottom</value>
   </data>
-  <data name="btnScaleAnchor_FromTopLeft" xml:space="preserve">
+  <data name="btnScaleAnchor_FromTopLeft_Full" xml:space="preserve">
     <value>Scale shape from t&amp;op left</value>
   </data>
-  <data name="btnScaleAnchor_FromTopRight" xml:space="preserve">
+  <data name="btnScaleAnchor_FromTopRight_Full" xml:space="preserve">
     <value>Scale shape from to&amp;p right</value>
   </data>
-  <data name="btnScaleAnchor_FromBottomLeft" xml:space="preserve">
+  <data name="btnScaleAnchor_FromBottomLeft_Full" xml:space="preserve">
     <value>Scale shape from botto&amp;m left</value>
   </data>
-  <data name="btnScaleAnchor_FromBottomRight" xml:space="preserve">
+  <data name="btnScaleAnchor_FromBottomRight_Full" xml:space="preserve">
     <value>Scale shape from bottom ri&amp;ght</value>
   </data>
-  <data name="btnScaleAnchor_FromLeft" xml:space="preserve">
+  <data name="btnScaleAnchor_FromLeft_Full" xml:space="preserve">
     <value>Scale shape from le&amp;ft</value>
   </data>
-  <data name="btnScaleAnchor_FromRight" xml:space="preserve">
+  <data name="btnScaleAnchor_FromRight_Full" xml:space="preserve">
     <value>S&amp;cale shape from right</value>
   </data>
-  <data name="btnScaleAnchor_FromTop" xml:space="preserve">
+  <data name="btnScaleAnchor_FromTop_Full" xml:space="preserve">
     <value>Sc&amp;ale shape from top</value>
   </data>
-  <data name="btnScaleAnchor_FromBottom" xml:space="preserve">
+  <data name="btnScaleAnchor_FromBottom_Full" xml:space="preserve">
     <value>Scal&amp;e shape from bottom</value>
   </data>
-  <data name="btnScaleAnchor_FromCenter" xml:space="preserve">
+  <data name="btnScaleAnchor_FromCenter_Full" xml:space="preserve">
     <value>Scale shape from ce&amp;nter</value>
+  </data>
+  <data name="btnScaleAnchor_FromTopLeft" xml:space="preserve">
+    <value>Scale from top left</value>
+  </data>
+  <data name="btnScaleAnchor_FromTopRight" xml:space="preserve">
+    <value>Scale from top right</value>
+  </data>
+  <data name="btnScaleAnchor_FromBottomLeft" xml:space="preserve">
+    <value>Scale from bottom left</value>
+  </data>
+  <data name="btnScaleAnchor_FromBottomRight" xml:space="preserve">
+    <value>Scale from bottom right</value>
+  </data>
+  <data name="btnScaleAnchor_FromLeft" xml:space="preserve">
+    <value>Scale from left</value>
+  </data>
+  <data name="btnScaleAnchor_FromRight" xml:space="preserve">
+    <value>Scale from right</value>
+  </data>
+  <data name="btnScaleAnchor_FromTop" xml:space="preserve">
+    <value>Scale from top</value>
+  </data>
+  <data name="btnScaleAnchor_FromBottom" xml:space="preserve">
+    <value>Scale from bottom</value>
+  </data>
+  <data name="btnScaleAnchor_FromCenter" xml:space="preserve">
+    <value>Scale from center</value>
   </data>
   <data name="btnScaleSameHeight" xml:space="preserve">
     <value>Scale to same &amp;height as the first shape</value>

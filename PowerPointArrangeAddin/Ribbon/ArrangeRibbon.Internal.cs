@@ -367,6 +367,11 @@ namespace PowerPointArrangeAddin.Ribbon {
                     groupId = s;
                 } else if (group is (string item1, string item2)) {
                     groupId = this.CombineParentId(item1, item2);
+                } else if (group is object[] arr) {
+                    foreach (var obj in arr) {
+                        Segister(obj, id, ui);
+                    }
+                    return;
                 } else {
                     return;
                 }
@@ -444,6 +449,15 @@ namespace PowerPointArrangeAddin.Ribbon {
             Register(btnScaleAnchor_FromBottomLeft, new UiElement(RL.btnScaleAnchor_FromBottomLeft, nameof(RIM.ScaleFromBottomLeft), "S7"));
             Register(btnScaleAnchor_FromBottom, new UiElement(RL.btnScaleAnchor_FromBottom, nameof(RIM.ScaleFromBottom), "S8"));
             Register(btnScaleAnchor_FromBottomRight, new UiElement(RL.btnScaleAnchor_FromBottomRight, nameof(RIM.ScaleFromBottomRight), "S9"));
+            Segister(new object[] { grpResizing, (mnuArrangement, mnuResizing) }, btnScaleAnchor_FromTopLeft, new UiElement(RL.btnScaleAnchor_FromTopLeft_Full));
+            Segister(new object[] { grpResizing, (mnuArrangement, mnuResizing) }, btnScaleAnchor_FromTop, new UiElement(RL.btnScaleAnchor_FromTop_Full));
+            Segister(new object[] { grpResizing, (mnuArrangement, mnuResizing) }, btnScaleAnchor_FromTopRight, new UiElement(RL.btnScaleAnchor_FromTopRight_Full));
+            Segister(new object[] { grpResizing, (mnuArrangement, mnuResizing) }, btnScaleAnchor_FromLeft, new UiElement(RL.btnScaleAnchor_FromLeft_Full));
+            Segister(new object[] { grpResizing, (mnuArrangement, mnuResizing) }, btnScaleAnchor_FromCenter, new UiElement(RL.btnScaleAnchor_FromCenter_Full));
+            Segister(new object[] { grpResizing, (mnuArrangement, mnuResizing) }, btnScaleAnchor_FromRight, new UiElement(RL.btnScaleAnchor_FromRight_Full));
+            Segister(new object[] { grpResizing, (mnuArrangement, mnuResizing) }, btnScaleAnchor_FromBottomLeft, new UiElement(RL.btnScaleAnchor_FromBottomLeft_Full));
+            Segister(new object[] { grpResizing, (mnuArrangement, mnuResizing) }, btnScaleAnchor_FromBottom, new UiElement(RL.btnScaleAnchor_FromBottom_Full));
+            Segister(new object[] { grpResizing, (mnuArrangement, mnuResizing) }, btnScaleAnchor_FromBottomRight, new UiElement(RL.btnScaleAnchor_FromBottomRight_Full));
             Segister(grpResizing, btnSizeAndPosition, new UiElement(keytip: "PP"));
             // grpRotateAndFlip
             Register(grpRotateAndFlip, new UiElement(RL.grpRotateAndFlip, nameof(RIM.ObjectRotateRight90)));

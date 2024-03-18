@@ -239,32 +239,59 @@
   <data name="lblScaleAnchor_FromBottom" xml:space="preserve">
     <value>從底端變形</value>
   </data>
-  <data name="btnScaleAnchor_FromTopLeft" xml:space="preserve">
+  <data name="btnScaleAnchor_FromTopLeft_Full" xml:space="preserve">
     <value>從原左上端開始變形圖案(&amp;O)</value>
   </data>
-  <data name="btnScaleAnchor_FromBottomLeft" xml:space="preserve">
+  <data name="btnScaleAnchor_FromBottomLeft_Full" xml:space="preserve">
     <value>從原左下端開始變形圖案(&amp;P)</value>
   </data>
-  <data name="btnScaleAnchor_FromTopRight" xml:space="preserve">
+  <data name="btnScaleAnchor_FromTopRight_Full" xml:space="preserve">
     <value>從原右上端開始變形圖案(&amp;M)</value>
   </data>
-  <data name="btnScaleAnchor_FromBottomRight" xml:space="preserve">
+  <data name="btnScaleAnchor_FromBottomRight_Full" xml:space="preserve">
     <value>從原右下端開始變形圖案(&amp;G)</value>
   </data>
-  <data name="btnScaleAnchor_FromLeft" xml:space="preserve">
+  <data name="btnScaleAnchor_FromLeft_Full" xml:space="preserve">
     <value>從原左端開始變形圖案(&amp;F)</value>
   </data>
-  <data name="btnScaleAnchor_FromRight" xml:space="preserve">
+  <data name="btnScaleAnchor_FromRight_Full" xml:space="preserve">
     <value>從原右端開始變形圖案(&amp;C)</value>
   </data>
-  <data name="btnScaleAnchor_FromTop" xml:space="preserve">
+  <data name="btnScaleAnchor_FromTop_Full" xml:space="preserve">
     <value>從原上端開始變形圖案(&amp;A)</value>
   </data>
-  <data name="btnScaleAnchor_FromBottom" xml:space="preserve">
+  <data name="btnScaleAnchor_FromBottom_Full" xml:space="preserve">
     <value>從原下端開始變形圖案(&amp;E)</value>
   </data>
-  <data name="btnScaleAnchor_FromCenter" xml:space="preserve">
+  <data name="btnScaleAnchor_FromCenter_Full" xml:space="preserve">
     <value>從原中心點開始變形圖案(&amp;N)</value>
+  </data>
+  <data name="btnScaleAnchor_FromTopLeft" xml:space="preserve">
+    <value>從左上端變形</value>
+  </data>
+  <data name="btnScaleAnchor_FromBottomLeft" xml:space="preserve">
+    <value>從左下端變形</value>
+  </data>
+  <data name="btnScaleAnchor_FromTopRight" xml:space="preserve">
+    <value>從右上端變形</value>
+  </data>
+  <data name="btnScaleAnchor_FromBottomRight" xml:space="preserve">
+    <value>從右下端變形</value>
+  </data>
+  <data name="btnScaleAnchor_FromLeft" xml:space="preserve">
+    <value>從左端變形</value>
+  </data>
+  <data name="btnScaleAnchor_FromRight" xml:space="preserve">
+    <value>從右端變形</value>
+  </data>
+  <data name="btnScaleAnchor_FromTop" xml:space="preserve">
+    <value>從上端變形</value>
+  </data>
+  <data name="btnScaleAnchor_FromBottom" xml:space="preserve">
+    <value>從下端變形</value>
+  </data>
+  <data name="btnScaleAnchor_FromCenter" xml:space="preserve">
+    <value>從中心點變形</value>
   </data>
   <data name="btnScaleSameHeight" xml:space="preserve">
     <value>變形為與最初選擇的圖案相同高度(&amp;H)</value>
