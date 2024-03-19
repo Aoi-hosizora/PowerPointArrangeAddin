@@ -173,6 +173,12 @@
   <data name="btnExtendSameTop" xml:space="preserve">
     <value>Extend to same &amp;top</value>
   </data>
+  <data name="chkExtendToFirstObject" xml:space="preserve">
+    <value>To the first shape</value>
+  </data>
+  <data name="chkExtendToFirstObjectFull" xml:space="preserve">
+    <value>Extend to outline of the f&amp;irst shape</value>
+  </data>
   <data name="btnFlipHorizontal" xml:space="preserve">
     <value>Flip &amp;horizontally</value>
   </data>
@@ -224,17 +230,68 @@
   <data name="btnRotateRight90" xml:space="preserve">
     <value>Rotate &amp;right with 90 degrees</value>
   </data>
-  <data name="btnScaleAnchor_FromBottomRight" xml:space="preserve">
-    <value>Scale from botto&amp;m right</value>
-    <comment>...</comment>
+  <data name="lblScaleAnchor_FromTop" xml:space="preserve">
+    <value>Scale from top</value>
   </data>
-  <data name="btnScaleAnchor_FromMiddle" xml:space="preserve">
-    <value>Scale &amp;from middle</value>
-    <comment>...</comment>
+  <data name="lblScaleAnchor_FromCenter" xml:space="preserve">
+    <value>Scale from center</value>
+  </data>
+  <data name="lblScaleAnchor_FromBottom" xml:space="preserve">
+    <value>Scale from bottom</value>
+  </data>
+  <data name="btnScaleAnchor_FromTopLeft_Full" xml:space="preserve">
+    <value>Scale shape from t&amp;op left</value>
+  </data>
+  <data name="btnScaleAnchor_FromTopRight_Full" xml:space="preserve">
+    <value>Scale shape from to&amp;p right</value>
+  </data>
+  <data name="btnScaleAnchor_FromBottomLeft_Full" xml:space="preserve">
+    <value>Scale shape from botto&amp;m left</value>
+  </data>
+  <data name="btnScaleAnchor_FromBottomRight_Full" xml:space="preserve">
+    <value>Scale shape from bottom ri&amp;ght</value>
+  </data>
+  <data name="btnScaleAnchor_FromLeft_Full" xml:space="preserve">
+    <value>Scale shape from le&amp;ft</value>
+  </data>
+  <data name="btnScaleAnchor_FromRight_Full" xml:space="preserve">
+    <value>S&amp;cale shape from right</value>
+  </data>
+  <data name="btnScaleAnchor_FromTop_Full" xml:space="preserve">
+    <value>Sc&amp;ale shape from top</value>
+  </data>
+  <data name="btnScaleAnchor_FromBottom_Full" xml:space="preserve">
+    <value>Scal&amp;e shape from bottom</value>
+  </data>
+  <data name="btnScaleAnchor_FromCenter_Full" xml:space="preserve">
+    <value>Scale shape from ce&amp;nter</value>
   </data>
   <data name="btnScaleAnchor_FromTopLeft" xml:space="preserve">
-    <value>Scale from t&amp;op left</value>
-    <comment>...</comment>
+    <value>Scale from top left</value>
+  </data>
+  <data name="btnScaleAnchor_FromTopRight" xml:space="preserve">
+    <value>Scale from top right</value>
+  </data>
+  <data name="btnScaleAnchor_FromBottomLeft" xml:space="preserve">
+    <value>Scale from bottom left</value>
+  </data>
+  <data name="btnScaleAnchor_FromBottomRight" xml:space="preserve">
+    <value>Scale from bottom right</value>
+  </data>
+  <data name="btnScaleAnchor_FromLeft" xml:space="preserve">
+    <value>Scale from left</value>
+  </data>
+  <data name="btnScaleAnchor_FromRight" xml:space="preserve">
+    <value>Scale from right</value>
+  </data>
+  <data name="btnScaleAnchor_FromTop" xml:space="preserve">
+    <value>Scale from top</value>
+  </data>
+  <data name="btnScaleAnchor_FromBottom" xml:space="preserve">
+    <value>Scale from bottom</value>
+  </data>
+  <data name="btnScaleAnchor_FromCenter" xml:space="preserve">
+    <value>Scale from center</value>
   </data>
   <data name="btnScaleSameHeight" xml:space="preserve">
     <value>Scale to same &amp;height as the first shape</value>
@@ -246,16 +303,16 @@
     <value>Scale to same &amp;width as the first shape</value>
   </data>
   <data name="btnSnapBottom" xml:space="preserve">
-    <value>Snap &amp;bottom to top</value>
+    <value>S&amp;nap bottom to top</value>
   </data>
   <data name="btnSnapLeft" xml:space="preserve">
-    <value>Snap &amp;left to right</value>
+    <value>Snap l&amp;eft to right</value>
   </data>
   <data name="btnSnapRight" xml:space="preserve">
-    <value>Snap &amp;right to left</value>
+    <value>Snap r&amp;ight to left</value>
   </data>
   <data name="btnSnapTop" xml:space="preserve">
-    <value>Snap &amp;top to bottom</value>
+    <value>Sna&amp;p top to bottom</value>
   </data>
   <data name="btnUngroup" xml:space="preserve">
     <value>&amp;Ungroup shapes</value>
@@ -266,8 +323,11 @@
   <data name="chkReplaceToMiddle" xml:space="preserve">
     <value>Replace to middle</value>
   </data>
-  <data name="chkReserveOriginalSize" xml:space="preserve">
-    <value>Reserve original size</value>
+  <data name="chkReplaceToFill" xml:space="preserve">
+    <value>Replace and fill</value>
+  </data>
+  <data name="chkReplaceToContain" xml:space="preserve">
+    <value>Replace and contain</value>
   </data>
   <data name="dlgNoPictureInClipboard" xml:space="preserve">
     <value>There is no picture in clipboard.</value>
@@ -329,9 +389,6 @@
   <data name="mnuArrangement_mnuRotation" xml:space="preserve">
     <value>R&amp;otation</value>
   </data>
-  <data name="mnuArrangement_mnuSnapping" xml:space="preserve">
-    <value>S&amp;napping</value>
-  </data>
   <data name="mnuArrangement_sepAddInSetting" xml:space="preserve">
     <value>Add-in setting</value>
   </data>
@@ -365,6 +422,9 @@
   <data name="btnAlignRelative_ToFirstObject" xml:space="preserve">
     <value>Relative to the &amp;first object</value>
   </data>
+  <data name="btnGridSwitcher" xml:space="preserve">
+    <value>&amp;Show grid</value>
+  </data>
   <data name="btnGridSetting" xml:space="preserve">
     <value>&amp;Grid setting...</value>
   </data>
@@ -381,16 +441,16 @@
     <value>Alignment</value>
   </data>
   <data name="lblAlignmentH" xml:space="preserve">
-    <value>Horiz. align</value>
+    <value>H. align</value>
   </data>
   <data name="lblAlignmentV" xml:space="preserve">
-    <value>Vert. align</value>
+    <value>V. align</value>
   </data>
   <data name="lblDistribute" xml:space="preserve">
     <value>Distribute</value>
   </data>
-  <data name="grpSizeAndSnap" xml:space="preserve">
-    <value>Resize and snap</value>
+  <data name="grpResizing" xml:space="preserve">
+    <value>Resizing</value>
   </data>
   <data name="lblScaleSize" xml:space="preserve">
     <value>Scale</value>
@@ -398,8 +458,14 @@
   <data name="lblExtendSize" xml:space="preserve">
     <value>Extend</value>
   </data>
-  <data name="lblSnapObjects" xml:space="preserve">
-    <value>Snap</value>
+  <data name="lblSnapH" xml:space="preserve">
+    <value>H. snap</value>
+  </data>
+  <data name="lblSnapV" xml:space="preserve">
+    <value>V. snap</value>
+  </data>
+  <data name="lblGrid" xml:space="preserve">
+    <value>Grid</value>
   </data>
   <data name="grpRotateAndFlip" xml:space="preserve">
     <value>Rotate and flip</value>
@@ -448,6 +514,39 @@
   </data>
   <data name="grpObjectPosition" xml:space="preserve">
     <value>Object position</value>
+  </data>
+  <data name="lblDistanceType" xml:space="preserve">
+    <value>Distance</value>
+  </data>
+  <data name="btnDistanceType_RightLeft" xml:space="preserve">
+    <value>Distance between right and left, bottom and top</value>
+  </data>
+  <data name="btnDistanceType_LeftLeft" xml:space="preserve">
+    <value>Distance between left and left, top and top</value>
+  </data>
+  <data name="btnDistanceType_RightRight" xml:space="preserve">
+    <value>Distance between right and right, bottom and bottom</value>
+  </data>
+  <data name="btnDistanceType_LeftRight" xml:space="preserve">
+    <value>Distance between left and right, top and bottom</value>
+  </data>
+  <data name="lblDistanceH" xml:space="preserve">
+    <value>Horiz.</value>
+  </data>
+  <data name="btnCopyDistanceH" xml:space="preserve">
+    <value>Copy distance</value>
+  </data>
+  <data name="btnPasteDistanceH" xml:space="preserve">
+    <value>Paste distance</value>
+  </data>
+  <data name="lblDistanceV" xml:space="preserve">
+    <value>Vert.</value>
+  </data>
+  <data name="btnCopyDistanceV" xml:space="preserve">
+    <value>Copy distance</value>
+  </data>
+  <data name="btnPasteDistanceV" xml:space="preserve">
+    <value>Paste distance</value>
   </data>
   <data name="btnAddInCheckUpdate" xml:space="preserve">
     <value>Check for updates</value>

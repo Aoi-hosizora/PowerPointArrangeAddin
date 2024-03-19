@@ -38,6 +38,7 @@ namespace PowerPointArrangeAddin.Ribbon {
             xml = XmlResourceHelper.ApplyTemplateForXml(xml);
             xml = XmlResourceHelper.ApplyControlRandomId(xml);
             xml = XmlResourceHelper.NormalizeControlIdInMenu(xml, mnuArrangement);
+            // System.Windows.Forms.Clipboard.SetText(xml);
             return xml;
         }
 
@@ -113,38 +114,8 @@ namespace PowerPointArrangeAddin.Ribbon {
         private const string grpWordArt = "grpWordArt";
         // grpArrange
         private const string grpArrange = "grpArrange";
-        private const string btnAlignLeft = "btnAlignLeft";
-        private const string btnAlignCenter = "btnAlignCenter";
-        private const string btnAlignRight = "btnAlignRight";
-        private const string btnAlignTop = "btnAlignTop";
-        private const string btnAlignMiddle = "btnAlignMiddle";
-        private const string btnAlignBottom = "btnAlignBottom";
-        private const string btnDistributeHorizontal = "btnDistributeHorizontal";
-        private const string btnDistributeVertical = "btnDistributeVertical";
         private const string btnAlignRelative = "btnAlignRelative";
-        private const string btnScaleSameWidth = "btnScaleSameWidth";
-        private const string btnScaleSameHeight = "btnScaleSameHeight";
-        private const string btnScaleSameSize = "btnScaleSameSize";
         private const string btnScaleAnchor = "btnScaleAnchor";
-        private const string btnExtendSameLeft = "btnExtendSameLeft";
-        private const string btnExtendSameRight = "btnExtendSameRight";
-        private const string btnExtendSameTop = "btnExtendSameTop";
-        private const string btnExtendSameBottom = "btnExtendSameBottom";
-        private const string btnSnapLeft = "btnSnapLeft";
-        private const string btnSnapRight = "btnSnapRight";
-        private const string btnSnapTop = "btnSnapTop";
-        private const string btnSnapBottom = "btnSnapBottom";
-        private const string btnRotateRight90 = "btnRotateRight90";
-        private const string btnRotateLeft90 = "btnRotateLeft90";
-        private const string btnFlipVertical = "btnFlipVertical";
-        private const string btnFlipHorizontal = "btnFlipHorizontal";
-        private const string btnMoveFront = "btnMoveFront";
-        private const string btnMoveBack = "btnMoveBack";
-        private const string btnMoveForward = "btnMoveForward";
-        private const string btnMoveBackward = "btnMoveBackward";
-        private const string btnGroup = "btnGroup";
-        private const string btnUngroup = "btnUngroup";
-        private const string btnGridSetting = "btnGridSetting";
         private const string mnuArrangement = "mnuArrangement";
         private const string btnAddInSetting = "btnAddInSetting";
         // ===
@@ -154,10 +125,10 @@ namespace PowerPointArrangeAddin.Ribbon {
         private const string sepScaleSize = "sepScaleSize";
         private const string bgpScaleSize = "bgpScaleSize";
         private const string bgpExtendSize = "bgpExtendSize";
-        private const string bgpSnapObjects = "bgpSnapObjects";
+        private const string bgpSnap = "bgpSnap";
         private const string sepRotate = "sepRotate";
-        private const string bgpMoveLayers = "bgpMoveLayers";
         private const string bgpRotate = "bgpRotate";
+        private const string bgpMoveLayers = "bgpMoveLayers";
         private const string bgpGroupObjects = "bgpGroupObjects";
         private const string sepArrangement = "sepArrangement";
         // tabArrangement
@@ -172,19 +143,53 @@ namespace PowerPointArrangeAddin.Ribbon {
         private const string lblAlignmentH = "lblAlignmentH";
         private const string lblAlignmentV = "lblAlignmentV";
         private const string lblDistribute = "lblDistribute";
+        private const string btnAlignLeft = "btnAlignLeft";
+        private const string btnAlignCenter = "btnAlignCenter";
+        private const string btnAlignRight = "btnAlignRight";
+        private const string btnAlignTop = "btnAlignTop";
+        private const string btnAlignMiddle = "btnAlignMiddle";
+        private const string btnAlignBottom = "btnAlignBottom";
+        private const string btnDistributeHorizontal = "btnDistributeHorizontal";
+        private const string btnDistributeVertical = "btnDistributeVertical";
+        private const string lblSnapH = "lblSnapH";
+        private const string lblSnapV = "lblSnapV";
+        private const string lblGrid = "lblGrid";
+        private const string btnSnapLeft = "btnSnapLeft";
+        private const string btnSnapRight = "btnSnapRight";
+        private const string btnSnapTop = "btnSnapTop";
+        private const string btnSnapBottom = "btnSnapBottom";
+        private const string btnGridSwitcher = "btnGridSwitcher";
+        private const string btnGridSetting = "btnGridSetting";
         private const string btnAlignRelative_ToObjects = "btnAlignRelative_ToObjects";
         private const string btnAlignRelative_ToFirstObject = "btnAlignRelative_ToFirstObject";
         private const string btnAlignRelative_ToSlide = "btnAlignRelative_ToSlide";
         private const string btnSizeAndPosition = "btnSizeAndPosition";
         // ===
+        private const string sepAlignSnap = "sepAlignSnap";
         private const string sepAlignRelative = "sepAlignRelative";
-        // grpSizeAndSnap
-        private const string grpSizeAndSnap = "grpSizeAndSnap";
+        // grpResizing
+        private const string grpResizing = "grpResizing";
         private const string lblScaleSize = "lblScaleSize";
         private const string lblExtendSize = "lblExtendSize";
-        private const string lblSnapObjects = "lblSnapObjects";
+        private const string btnScaleSameWidth = "btnScaleSameWidth";
+        private const string btnScaleSameHeight = "btnScaleSameHeight";
+        private const string btnScaleSameSize = "btnScaleSameSize";
+        private const string btnExtendSameLeft = "btnExtendSameLeft";
+        private const string btnExtendSameRight = "btnExtendSameRight";
+        private const string btnExtendSameTop = "btnExtendSameTop";
+        private const string btnExtendSameBottom = "btnExtendSameBottom";
+        private const string chkExtendToFirstObject = "chkExtendToFirstObject";
+        private const string lblScaleAnchor_FromTop = "lblScaleAnchor_FromTop";
+        private const string lblScaleAnchor_FromCenter = "lblScaleAnchor_FromCenter";
+        private const string lblScaleAnchor_FromBottom = "lblScaleAnchor_FromBottom";
         private const string btnScaleAnchor_FromTopLeft = "btnScaleAnchor_FromTopLeft";
-        private const string btnScaleAnchor_FromMiddle = "btnScaleAnchor_FromMiddle";
+        private const string btnScaleAnchor_FromTop = "btnScaleAnchor_FromTop";
+        private const string btnScaleAnchor_FromTopRight = "btnScaleAnchor_FromTopRight";
+        private const string btnScaleAnchor_FromLeft = "btnScaleAnchor_FromLeft";
+        private const string btnScaleAnchor_FromCenter = "btnScaleAnchor_FromCenter";
+        private const string btnScaleAnchor_FromRight = "btnScaleAnchor_FromRight";
+        private const string btnScaleAnchor_FromBottomLeft = "btnScaleAnchor_FromBottomLeft";
+        private const string btnScaleAnchor_FromBottom = "btnScaleAnchor_FromBottom";
         private const string btnScaleAnchor_FromBottomRight = "btnScaleAnchor_FromBottomRight";
         // ===
         private const string sepScaleAnchor = "sepScaleAnchor";
@@ -193,6 +198,10 @@ namespace PowerPointArrangeAddin.Ribbon {
         private const string lblRotateObject = "lblRotateObject";
         private const string lblFlipObject = "lblFlipObject";
         private const string lbl3DRotation = "lbl3DRotation";
+        private const string btnRotateRight90 = "btnRotateRight90";
+        private const string btnRotateLeft90 = "btnRotateLeft90";
+        private const string btnFlipVertical = "btnFlipVertical";
+        private const string btnFlipHorizontal = "btnFlipHorizontal";
         private const string edtAngle = "edtAngle";
         private const string btnCopyAngle = "btnCopyAngle";
         private const string btnPasteAngle = "btnPasteAngle";
@@ -207,11 +216,17 @@ namespace PowerPointArrangeAddin.Ribbon {
         private const string grpObjectArrange = "grpObjectArrange";
         private const string lblMoveLayers = "lblMoveLayers";
         private const string lblGroupObjects = "lblGroupObjects";
+        private const string btnMoveFront = "btnMoveFront";
+        private const string btnMoveBack = "btnMoveBack";
+        private const string btnMoveForward = "btnMoveForward";
+        private const string btnMoveBackward = "btnMoveBackward";
+        private const string btnGroup = "btnGroup";
+        private const string btnUngroup = "btnUngroup";
         // ===
         private const string bgpMoveFrontAndBack = "bgpMoveFrontAndBack";
         private const string bgpMoveForwardAndBackward = "bgpMoveForwardAndBackward";
         private const string bgpGroupAndUngroup = "bgpGroupAndUngroup";
-        private const string sepGridSettings = "sepGridSettings";
+        private const string sepSizeAndPosition = "sepSizeAndPosition";
         // grpObjectSize
         private const string grpObjectSize = "grpObjectSize";
         private const string btnResetSize = "btnResetSize";
@@ -229,8 +244,23 @@ namespace PowerPointArrangeAddin.Ribbon {
         private const string edtPositionY = "edtPositionY";
         private const string btnCopyPosition = "btnCopyPosition";
         private const string btnPastePosition = "btnPastePosition";
+        private const string lblDistanceType = "lblDistanceType";
+        private const string btnDistanceType_RightLeft = "btnDistanceType_RightLeft";
+        private const string btnDistanceType_LeftLeft = "btnDistanceType_LeftLeft";
+        private const string btnDistanceType_RightRight = "btnDistanceType_RightRight";
+        private const string btnDistanceType_LeftRight = "btnDistanceType_LeftRight";
+        private const string lblDistanceH = "lblDistanceH";
+        private const string btnCopyDistanceH = "btnCopyDistanceH";
+        private const string btnPasteDistanceH = "btnPasteDistanceH";
+        private const string lblDistanceV = "lblDistanceV";
+        private const string btnCopyDistanceV = "btnCopyDistanceV";
+        private const string btnPasteDistanceV = "btnPasteDistanceV";
         // ===
         private const string bgpCopyAndPastePosition = "bgpCopyAndPastePosition";
+        private const string sepCopyAndPasteDistance = "sepCopyAndPasteDistance";
+        private const string bgpDistanceType = "bgpDistanceType";
+        private const string bgpDistanceH = "bgpDistanceH";
+        private const string bgpDistanceV = "bgpDistanceV";
         // grpTextbox
         private const string grpTextbox = "grpTextbox";
         private const string btnAutofitOff = "btnAutofitOff";
@@ -254,7 +284,8 @@ namespace PowerPointArrangeAddin.Ribbon {
         private const string grpReplacePicture = "grpReplacePicture";
         private const string btnReplaceWithClipboard = "btnReplaceWithClipboard";
         private const string btnReplaceWithFile = "btnReplaceWithFile";
-        private const string chkReserveOriginalSize = "chkReserveOriginalSize";
+        private const string chkReplaceToFill = "chkReplaceToFill";
+        private const string chkReplaceToContain = "chkReplaceToContain";
         private const string chkReplaceToMiddle = "chkReplaceToMiddle";
         // grpSizeAndPosition
         private const string grpShapeSizeAndPosition = "grpShapeSizeAndPosition";
@@ -271,7 +302,6 @@ namespace PowerPointArrangeAddin.Ribbon {
         private const string sepAlignmentAndResizing = "sepAlignmentAndResizing";
         private const string mnuAlignment = "mnuAlignment";
         private const string mnuResizing = "mnuResizing";
-        private const string mnuSnapping = "mnuSnapping";
         private const string mnuRotation = "mnuRotation";
         private const string sepLayerOrderAndGrouping = "sepLayerOrderAndGrouping";
         private const string mnuLayerOrder = "mnuLayerOrder";
@@ -299,7 +329,10 @@ namespace PowerPointArrangeAddin.Ribbon {
             }
 
             public string? Label { get; }
+
+            // ReSharper disable once MemberCanBePrivate.Local
             public string? ImageName { get; }
+
             public string? Keytip { get; }
 
             public System.Drawing.Image? Image { get; private set; }
@@ -322,14 +355,29 @@ namespace PowerPointArrangeAddin.Ribbon {
             var map = new Dictionary<string, UiElement>();
             var specialMap = new Dictionary<string, Dictionary<string, UiElement>>();
 
+            // register ui element normally
             void Register(string id, UiElement ui) {
                 map[id] = ui.ApplyNameToImage();
             }
 
-            void RegisterS(string group, string id, UiElement ui) {
-                if (!specialMap.TryGetValue(group, out var m)) {
-                    specialMap[group] = new Dictionary<string, UiElement>();
-                    m = specialMap[group];
+            // register ui element in special rule (for specific group)
+            void Segister(object group, string id, UiElement ui) {
+                string groupId;
+                if (group is string s) {
+                    groupId = s;
+                } else if (group is (string item1, string item2)) {
+                    groupId = this.CombineParentId(item1, item2);
+                } else if (group is object[] arr) {
+                    foreach (var obj in arr) {
+                        Segister(obj, id, ui);
+                    }
+                    return;
+                } else {
+                    return;
+                }
+                if (!specialMap.TryGetValue(groupId, out var m)) {
+                    specialMap[groupId] = new Dictionary<string, UiElement>();
+                    m = specialMap[groupId];
                 }
                 m[id] = ui.ApplyNameToImage();
             }
@@ -338,38 +386,8 @@ namespace PowerPointArrangeAddin.Ribbon {
             Register(grpWordArt, new UiElement(RL.grpWordArt, nameof(RIM.TextEffectsMenu)));
             // grpArrange
             Register(grpArrange, new UiElement(RL.grpArrange, nameof(RIM.ObjectArrangement)));
-            Register(btnAlignLeft, new UiElement(RL.btnAlignLeft, nameof(RIM.ObjectsAlignLeft), "DL"));
-            Register(btnAlignCenter, new UiElement(RL.btnAlignCenter, nameof(RIM.ObjectsAlignCenterHorizontal), "DC"));
-            Register(btnAlignRight, new UiElement(RL.btnAlignRight, nameof(RIM.ObjectsAlignRight), "DR"));
-            Register(btnAlignTop, new UiElement(RL.btnAlignTop, nameof(RIM.ObjectsAlignTop), "DT"));
-            Register(btnAlignMiddle, new UiElement(RL.btnAlignMiddle, nameof(RIM.ObjectsAlignMiddleVertical), "DM"));
-            Register(btnAlignBottom, new UiElement(RL.btnAlignBottom, nameof(RIM.ObjectsAlignBottom), "DB"));
-            Register(btnDistributeHorizontal, new UiElement(RL.btnDistributeHorizontal, nameof(RIM.AlignDistributeHorizontally), "DH"));
-            Register(btnDistributeVertical, new UiElement(RL.btnDistributeVertical, nameof(RIM.AlignDistributeVertically), "DV"));
             Register(btnAlignRelative, new UiElement(RL.btnAlignRelative_ToObjects, nameof(RIM.AlignRelativeToObjects), "DA"));
-            Register(btnScaleSameWidth, new UiElement(RL.btnScaleSameWidth, nameof(RIM.ScaleSameWidth), "PW"));
-            Register(btnScaleSameHeight, new UiElement(RL.btnScaleSameHeight, nameof(RIM.ScaleSameHeight), "PH"));
-            Register(btnScaleSameSize, new UiElement(RL.btnScaleSameSize, nameof(RIM.ScaleSameSize), "PS"));
             Register(btnScaleAnchor, new UiElement(RL.btnScaleAnchor_FromTopLeft, nameof(RIM.ScaleFromTopLeft), "PA"));
-            Register(btnExtendSameLeft, new UiElement(RL.btnExtendSameLeft, nameof(RIM.ExtendSameLeft), "PL"));
-            Register(btnExtendSameRight, new UiElement(RL.btnExtendSameRight, nameof(RIM.ExtendSameRight), "PR"));
-            Register(btnExtendSameTop, new UiElement(RL.btnExtendSameTop, nameof(RIM.ExtendSameTop), "PT"));
-            Register(btnExtendSameBottom, new UiElement(RL.btnExtendSameBottom, nameof(RIM.ExtendSameBottom), "PB"));
-            Register(btnSnapLeft, new UiElement(RL.btnSnapLeft, nameof(RIM.SnapLeftToRight), "PE"));
-            Register(btnSnapRight, new UiElement(RL.btnSnapRight, nameof(RIM.SnapRightToLeft), "PI"));
-            Register(btnSnapTop, new UiElement(RL.btnSnapTop, nameof(RIM.SnapTopToBottom), "PO"));
-            Register(btnSnapBottom, new UiElement(RL.btnSnapBottom, nameof(RIM.SnapBottomToTop), "PM"));
-            Register(btnRotateRight90, new UiElement(RL.btnRotateRight90, nameof(RIM.ObjectRotateRight90), "HR"));
-            Register(btnRotateLeft90, new UiElement(RL.btnRotateLeft90, nameof(RIM.ObjectRotateLeft90), "HL"));
-            Register(btnFlipVertical, new UiElement(RL.btnFlipVertical, nameof(RIM.ObjectFlipVertical), "HV"));
-            Register(btnFlipHorizontal, new UiElement(RL.btnFlipHorizontal, nameof(RIM.ObjectFlipHorizontal), "HH"));
-            Register(btnMoveFront, new UiElement(RL.btnMoveFront, nameof(RIM.ObjectBringToFront), "HF"));
-            Register(btnMoveBack, new UiElement(RL.btnMoveBack, nameof(RIM.ObjectSendToBack), "HB"));
-            Register(btnMoveForward, new UiElement(RL.btnMoveForward, nameof(RIM.ObjectBringForward), "HO"));
-            Register(btnMoveBackward, new UiElement(RL.btnMoveBackward, nameof(RIM.ObjectSendBackward), "HA"));
-            Register(btnGroup, new UiElement(RL.btnGroup, nameof(RIM.ObjectsGroup), "HG"));
-            Register(btnUngroup, new UiElement(RL.btnUngroup, nameof(RIM.ObjectsUngroup), "HU"));
-            Register(btnGridSetting, new UiElement(RL.btnGridSetting, nameof(RIM.GridSetting), "HD"));
             Register(mnuArrangement, new UiElement(RL.mnuArrangement, nameof(RIM.ObjectArrangement_32), "B"));
             Register(btnAddInSetting, new UiElement(RL.btnAddInSetting, nameof(RIM.AddInOptions), "AS"));
             // tabArrangement
@@ -379,30 +397,77 @@ namespace PowerPointArrangeAddin.Ribbon {
             Register(btnAddInCheckUpdate, new UiElement(RL.btnAddInCheckUpdate, nameof(RIM.AddInUpdate), "AU"));
             Register(btnAddInHomepage, new UiElement(RL.btnAddInHomepage, nameof(RIM.AddInHomepage), "AH"));
             Register(btnAddInFeedback, new UiElement(RL.btnAddInFeedback, nameof(RIM.AddInFeedback), "AF"));
-            RegisterS(grpAddInSetting, btnAddInSetting, new UiElement(null, nameof(RIM.AddInOptions_32), "T"));
+            Segister(grpAddInSetting, btnAddInSetting, new UiElement(null, nameof(RIM.AddInOptions_32), "T"));
             // grpAlignment
             Register(grpAlignment, new UiElement(RL.grpAlignment, nameof(RIM.ObjectArrangement)));
             Register(lblAlignmentH, new UiElement(RL.lblAlignmentH));
             Register(lblAlignmentV, new UiElement(RL.lblAlignmentV));
             Register(lblDistribute, new UiElement(RL.lblDistribute));
+            Register(btnAlignLeft, new UiElement(RL.btnAlignLeft, nameof(RIM.ObjectsAlignLeft), "DL"));
+            Register(btnAlignCenter, new UiElement(RL.btnAlignCenter, nameof(RIM.ObjectsAlignCenterHorizontal), "DC"));
+            Register(btnAlignRight, new UiElement(RL.btnAlignRight, nameof(RIM.ObjectsAlignRight), "DR"));
+            Register(btnAlignTop, new UiElement(RL.btnAlignTop, nameof(RIM.ObjectsAlignTop), "DT"));
+            Register(btnAlignMiddle, new UiElement(RL.btnAlignMiddle, nameof(RIM.ObjectsAlignMiddleVertical), "DM"));
+            Register(btnAlignBottom, new UiElement(RL.btnAlignBottom, nameof(RIM.ObjectsAlignBottom), "DB"));
+            Register(btnDistributeHorizontal, new UiElement(RL.btnDistributeHorizontal, nameof(RIM.AlignDistributeHorizontally), "DH"));
+            Register(btnDistributeVertical, new UiElement(RL.btnDistributeVertical, nameof(RIM.AlignDistributeVertically), "DV"));
+            Register(lblSnapH, new UiElement(RL.lblSnapH));
+            Register(lblSnapV, new UiElement(RL.lblSnapV));
+            Register(lblGrid, new UiElement(RL.lblGrid));
+            Register(btnSnapLeft, new UiElement(RL.btnSnapLeft, nameof(RIM.SnapLeftToRight), "PE"));
+            Register(btnSnapRight, new UiElement(RL.btnSnapRight, nameof(RIM.SnapRightToLeft), "PI"));
+            Register(btnSnapTop, new UiElement(RL.btnSnapTop, nameof(RIM.SnapTopToBottom), "PO"));
+            Register(btnSnapBottom, new UiElement(RL.btnSnapBottom, nameof(RIM.SnapBottomToTop), "PM"));
+            Register(btnGridSwitcher, new UiElement(RL.btnGridSwitcher, nameof(RIM.GridSwitcher), "HW"));
+            Register(btnGridSetting, new UiElement(RL.btnGridSetting, nameof(RIM.GridSetting), "HD"));
             Register(btnAlignRelative_ToObjects, new UiElement(RL.btnAlignRelative_ToObjects, nameof(RIM.AlignRelativeToObjects), "DO"));
             Register(btnAlignRelative_ToFirstObject, new UiElement(RL.btnAlignRelative_ToFirstObject, nameof(RIM.AlignRelativeToFirstObject), "DF"));
             Register(btnAlignRelative_ToSlide, new UiElement(RL.btnAlignRelative_ToSlide, nameof(RIM.AlignRelativeToSlide), "DS"));
             Register(btnSizeAndPosition, new UiElement(RL.btnSizeAndPosition, nameof(RIM.SizeAndPosition), "DN"));
-            // grpSizeAndSnap
-            Register(grpSizeAndSnap, new UiElement(RL.grpSizeAndSnap, nameof(RIM.ScaleSameWidth)));
+            // grpResizing
+            Register(grpResizing, new UiElement(RL.grpResizing, nameof(RIM.ScaleSameWidth)));
             Register(lblScaleSize, new UiElement(RL.lblScaleSize));
             Register(lblExtendSize, new UiElement(RL.lblExtendSize));
-            Register(lblSnapObjects, new UiElement(RL.lblSnapObjects));
-            Register(btnScaleAnchor_FromTopLeft, new UiElement(RL.btnScaleAnchor_FromTopLeft, nameof(RIM.ScaleFromTopLeft), "PA"));
-            Register(btnScaleAnchor_FromMiddle, new UiElement(RL.btnScaleAnchor_FromMiddle, nameof(RIM.ScaleFromMiddle), "PD"));
-            Register(btnScaleAnchor_FromBottomRight, new UiElement(RL.btnScaleAnchor_FromBottomRight, nameof(RIM.ScaleFromBottomRight), "PG"));
-            RegisterS(grpSizeAndSnap, btnSizeAndPosition, new UiElement(keytip: "PP"));
+            Register(btnScaleSameWidth, new UiElement(RL.btnScaleSameWidth, nameof(RIM.ScaleSameWidth), "PW"));
+            Register(btnScaleSameHeight, new UiElement(RL.btnScaleSameHeight, nameof(RIM.ScaleSameHeight), "PH"));
+            Register(btnScaleSameSize, new UiElement(RL.btnScaleSameSize, nameof(RIM.ScaleSameSize), "PS"));
+            Register(btnExtendSameLeft, new UiElement(RL.btnExtendSameLeft, nameof(RIM.ExtendSameLeft), "PL"));
+            Register(btnExtendSameRight, new UiElement(RL.btnExtendSameRight, nameof(RIM.ExtendSameRight), "PR"));
+            Register(btnExtendSameTop, new UiElement(RL.btnExtendSameTop, nameof(RIM.ExtendSameTop), "PT"));
+            Register(btnExtendSameBottom, new UiElement(RL.btnExtendSameBottom, nameof(RIM.ExtendSameBottom), "PB"));
+            Register(chkExtendToFirstObject, new UiElement(RL.chkExtendToFirstObject, keytip: "PF"));
+            Segister((mnuArrangement, mnuResizing), chkExtendToFirstObject, new UiElement(RL.chkExtendToFirstObjectFull, keytip: "PF"));
+            Register(lblScaleAnchor_FromTop, new UiElement(RL.lblScaleAnchor_FromTop));
+            Register(lblScaleAnchor_FromCenter, new UiElement(RL.lblScaleAnchor_FromCenter));
+            Register(lblScaleAnchor_FromBottom, new UiElement(RL.lblScaleAnchor_FromBottom));
+            Register(btnScaleAnchor_FromTopLeft, new UiElement(RL.btnScaleAnchor_FromTopLeft, nameof(RIM.ScaleFromTopLeft), "S1"));
+            Register(btnScaleAnchor_FromTop, new UiElement(RL.btnScaleAnchor_FromTop, nameof(RIM.ScaleFromTop), "S2"));
+            Register(btnScaleAnchor_FromTopRight, new UiElement(RL.btnScaleAnchor_FromTopRight, nameof(RIM.ScaleFromTopRight), "S3"));
+            Register(btnScaleAnchor_FromLeft, new UiElement(RL.btnScaleAnchor_FromLeft, nameof(RIM.ScaleFromLeft), "S4"));
+            Register(btnScaleAnchor_FromCenter, new UiElement(RL.btnScaleAnchor_FromCenter, nameof(RIM.ScaleFromCenter), "S5"));
+            Register(btnScaleAnchor_FromRight, new UiElement(RL.btnScaleAnchor_FromRight, nameof(RIM.ScaleFromRight), "S6"));
+            Register(btnScaleAnchor_FromBottomLeft, new UiElement(RL.btnScaleAnchor_FromBottomLeft, nameof(RIM.ScaleFromBottomLeft), "S7"));
+            Register(btnScaleAnchor_FromBottom, new UiElement(RL.btnScaleAnchor_FromBottom, nameof(RIM.ScaleFromBottom), "S8"));
+            Register(btnScaleAnchor_FromBottomRight, new UiElement(RL.btnScaleAnchor_FromBottomRight, nameof(RIM.ScaleFromBottomRight), "S9"));
+            Segister(new object[] { grpResizing, (mnuArrangement, mnuResizing) }, btnScaleAnchor_FromTopLeft, new UiElement(RL.btnScaleAnchor_FromTopLeft_Full));
+            Segister(new object[] { grpResizing, (mnuArrangement, mnuResizing) }, btnScaleAnchor_FromTop, new UiElement(RL.btnScaleAnchor_FromTop_Full));
+            Segister(new object[] { grpResizing, (mnuArrangement, mnuResizing) }, btnScaleAnchor_FromTopRight, new UiElement(RL.btnScaleAnchor_FromTopRight_Full));
+            Segister(new object[] { grpResizing, (mnuArrangement, mnuResizing) }, btnScaleAnchor_FromLeft, new UiElement(RL.btnScaleAnchor_FromLeft_Full));
+            Segister(new object[] { grpResizing, (mnuArrangement, mnuResizing) }, btnScaleAnchor_FromCenter, new UiElement(RL.btnScaleAnchor_FromCenter_Full));
+            Segister(new object[] { grpResizing, (mnuArrangement, mnuResizing) }, btnScaleAnchor_FromRight, new UiElement(RL.btnScaleAnchor_FromRight_Full));
+            Segister(new object[] { grpResizing, (mnuArrangement, mnuResizing) }, btnScaleAnchor_FromBottomLeft, new UiElement(RL.btnScaleAnchor_FromBottomLeft_Full));
+            Segister(new object[] { grpResizing, (mnuArrangement, mnuResizing) }, btnScaleAnchor_FromBottom, new UiElement(RL.btnScaleAnchor_FromBottom_Full));
+            Segister(new object[] { grpResizing, (mnuArrangement, mnuResizing) }, btnScaleAnchor_FromBottomRight, new UiElement(RL.btnScaleAnchor_FromBottomRight_Full));
+            Segister(grpResizing, btnSizeAndPosition, new UiElement(keytip: "PP"));
             // grpRotateAndFlip
             Register(grpRotateAndFlip, new UiElement(RL.grpRotateAndFlip, nameof(RIM.ObjectRotateRight90)));
             Register(lblRotateObject, new UiElement(RL.lblRotateObject));
             Register(lblFlipObject, new UiElement(RL.lblFlipObject));
             Register(lbl3DRotation, new UiElement(RL.lbl3DRotation));
+            Register(btnRotateRight90, new UiElement(RL.btnRotateRight90, nameof(RIM.ObjectRotateRight90), "HR"));
+            Register(btnRotateLeft90, new UiElement(RL.btnRotateLeft90, nameof(RIM.ObjectRotateLeft90), "HL"));
+            Register(btnFlipVertical, new UiElement(RL.btnFlipVertical, nameof(RIM.ObjectFlipVertical), "HV"));
+            Register(btnFlipHorizontal, new UiElement(RL.btnFlipHorizontal, nameof(RIM.ObjectFlipHorizontal), "HH"));
             Register(edtAngle, new UiElement(RL.edtAngle, keytip: "AE"));
             Register(btnCopyAngle, new UiElement(RL.btnCopyAngle, nameof(RIM.Copy), "AC"));
             Register(btnPasteAngle, new UiElement(RL.btnPasteAngle, nameof(RIM.Paste), "AP"));
@@ -411,25 +476,41 @@ namespace PowerPointArrangeAddin.Ribbon {
             Register(grpObjectArrange, new UiElement(RL.grpObjectArrange, nameof(RIM.ObjectSendToBack)));
             Register(lblMoveLayers, new UiElement(RL.lblMoveLayers));
             Register(lblGroupObjects, new UiElement(RL.lblGroupObjects));
-            RegisterS(grpObjectArrange, btnGridSetting, new UiElement(null, nameof(RIM.GridSetting_32), "G"));
-            RegisterS(grpObjectArrange, btnSizeAndPosition, new UiElement(null, nameof(RIM.SizeAndPosition_32), "N"));
+            Register(btnMoveFront, new UiElement(RL.btnMoveFront, nameof(RIM.ObjectBringToFront), "HF"));
+            Register(btnMoveBack, new UiElement(RL.btnMoveBack, nameof(RIM.ObjectSendToBack), "HB"));
+            Register(btnMoveForward, new UiElement(RL.btnMoveForward, nameof(RIM.ObjectBringForward), "HO"));
+            Register(btnMoveBackward, new UiElement(RL.btnMoveBackward, nameof(RIM.ObjectSendBackward), "HA"));
+            Register(btnGroup, new UiElement(RL.btnGroup, nameof(RIM.ObjectsGroup), "HG"));
+            Register(btnUngroup, new UiElement(RL.btnUngroup, nameof(RIM.ObjectsUngroup), "HU"));
+            Segister(grpObjectArrange, btnSizeAndPosition, new UiElement(null, nameof(RIM.SizeAndPosition_32), "N"));
             // grpObjectSize
             Register(grpObjectSize, new UiElement(RL.grpObjectSize, nameof(RIM.ObjectHeight)));
             Register(btnResetSize, new UiElement(RL.btnResetSize, nameof(RIM.PictureResetSize_32), "SR"));
             Register(btnLockAspectRatio, new UiElement(RL.btnLockAspectRatio, nameof(RIM.ObjectLockAspectRatio), "L"));
-            RegisterS(grpObjectSize, btnLockAspectRatio, new UiElement(null, nameof(RIM.ObjectLockAspectRatio_32)));
+            Segister(grpObjectSize, btnLockAspectRatio, new UiElement(null, nameof(RIM.ObjectLockAspectRatio_32)));
             Register(edtSizeHeight, new UiElement(RL.edtSizeHeight, keytip: "SH"));
             Register(edtSizeWidth, new UiElement(RL.edtSizeWidth, keytip: "SW"));
             Register(btnCopySize, new UiElement(RL.btnCopySize, nameof(RIM.Copy), "SC"));
             Register(btnPasteSize, new UiElement(RL.btnPasteSize, nameof(RIM.Paste), "SV"));
-            RegisterS(grpObjectSize, btnSizeAndPosition, new UiElement(keytip: "SN"));
+            Segister(grpObjectSize, btnSizeAndPosition, new UiElement(keytip: "SN"));
             // grpObjectPosition
             Register(grpObjectPosition, new UiElement(RL.grpObjectPosition, nameof(RIM.ObjectPosition)));
             Register(edtPositionX, new UiElement(RL.edtPositionX, keytip: "PX"));
             Register(edtPositionY, new UiElement(RL.edtPositionY, keytip: "PY"));
             Register(btnCopyPosition, new UiElement(RL.btnCopyPosition, nameof(RIM.Copy), "PC"));
             Register(btnPastePosition, new UiElement(RL.btnPastePosition, nameof(RIM.Paste), "PV"));
-            RegisterS(grpObjectPosition, btnSizeAndPosition, new UiElement(keytip: "PN"));
+            Register(lblDistanceType, new UiElement(RL.lblDistanceType));
+            Register(btnDistanceType_RightLeft, new UiElement(RL.btnDistanceType_RightLeft, nameof(RIM.ShapeDistanceType_RightLeft), "D1"));
+            Register(btnDistanceType_LeftLeft, new UiElement(RL.btnDistanceType_LeftLeft, nameof(RIM.ShapeDistanceType_LeftLeft), "D2"));
+            Register(btnDistanceType_RightRight, new UiElement(RL.btnDistanceType_RightRight, nameof(RIM.ShapeDistanceType_RightRight), "D3"));
+            Register(btnDistanceType_LeftRight, new UiElement(RL.btnDistanceType_LeftRight, nameof(RIM.ShapeDistanceType_LeftRight), "D4"));
+            Register(lblDistanceH, new UiElement(RL.lblDistanceH));
+            Register(btnCopyDistanceH, new UiElement(RL.btnCopyDistanceH, nameof(RIM.Copy), "RC"));
+            Register(btnPasteDistanceH, new UiElement(RL.btnPasteDistanceH, nameof(RIM.Paste), "RV"));
+            Register(lblDistanceV, new UiElement(RL.lblDistanceV));
+            Register(btnCopyDistanceV, new UiElement(RL.btnCopyDistanceV, nameof(RIM.Copy), "VC"));
+            Register(btnPasteDistanceV, new UiElement(RL.btnPasteDistanceV, nameof(RIM.Paste), "VV"));
+            Segister(grpObjectPosition, btnSizeAndPosition, new UiElement(keytip: "PN"));
             // grpTextbox
             Register(grpTextbox, new UiElement(RL.grpTextbox, nameof(RIM.TextboxSetting)));
             Register(btnAutofitOff, new UiElement(RL.btnAutofitOff, nameof(RIM.TextboxAutofitOff), "TF"));
@@ -447,8 +528,9 @@ namespace PowerPointArrangeAddin.Ribbon {
             // grpReplacePicture
             Register(grpReplacePicture, new UiElement(RL.grpReplacePicture, nameof(RIM.PictureChangeFromClipboard)));
             Register(btnReplaceWithClipboard, new UiElement(RL.btnReplaceWithClipboard, nameof(RIM.PictureChangeFromClipboard_32), "TC"));
-            Register(btnReplaceWithFile, new UiElement(RL.btnReplaceWithFile, nameof(RIM.PictureChange), "TF"));
-            Register(chkReserveOriginalSize, new UiElement(RL.chkReserveOriginalSize, keytip: "TR"));
+            Register(btnReplaceWithFile, new UiElement(RL.btnReplaceWithFile, nameof(RIM.PictureChange_32), "TF"));
+            Register(chkReplaceToFill, new UiElement(RL.chkReplaceToFill, keytip: "TL"));
+            Register(chkReplaceToContain, new UiElement(RL.chkReplaceToContain, keytip: "TR"));
             Register(chkReplaceToMiddle, new UiElement(RL.chkReplaceToMiddle, keytip: "TM"));
             // grpSizeAndPosition
             Register(grpShapeSizeAndPosition, new UiElement(RL.grpSizeAndPosition, nameof(RIM.SizeAndPosition)));
@@ -458,33 +540,32 @@ namespace PowerPointArrangeAddin.Ribbon {
             Register(grpTableSizeAndPosition, new UiElement(RL.grpSizeAndPosition, nameof(RIM.SizeAndPosition)));
             Register(grpChartSizeAndPosition, new UiElement(RL.grpSizeAndPosition, nameof(RIM.SizeAndPosition)));
             Register(grpSmartartSizeAndPosition, new UiElement(RL.grpSizeAndPosition, nameof(RIM.SizeAndPosition)));
-            RegisterS(grpShapeSizeAndPosition, btnSizeAndPosition, new UiElement(keytip: "SN"));
-            RegisterS(grpPictureSizeAndPosition, btnSizeAndPosition, new UiElement(keytip: "SN"));
-            RegisterS(grpVideoSizeAndPosition, btnSizeAndPosition, new UiElement(keytip: "SN"));
-            RegisterS(grpAudioSizeAndPosition, btnSizeAndPosition, new UiElement(keytip: "SN"));
-            RegisterS(grpTableSizeAndPosition, btnSizeAndPosition, new UiElement(keytip: "SN"));
-            RegisterS(grpChartSizeAndPosition, btnSizeAndPosition, new UiElement(keytip: "SN"));
-            RegisterS(grpSmartartSizeAndPosition, btnSizeAndPosition, new UiElement(keytip: "SN"));
+            Segister(grpShapeSizeAndPosition, btnSizeAndPosition, new UiElement(keytip: "SN"));
+            Segister(grpPictureSizeAndPosition, btnSizeAndPosition, new UiElement(keytip: "SN"));
+            Segister(grpVideoSizeAndPosition, btnSizeAndPosition, new UiElement(keytip: "SN"));
+            Segister(grpAudioSizeAndPosition, btnSizeAndPosition, new UiElement(keytip: "SN"));
+            Segister(grpTableSizeAndPosition, btnSizeAndPosition, new UiElement(keytip: "SN"));
+            Segister(grpChartSizeAndPosition, btnSizeAndPosition, new UiElement(keytip: "SN"));
+            Segister(grpSmartartSizeAndPosition, btnSizeAndPosition, new UiElement(keytip: "SN"));
             // ===
-            RegisterS(grpVideoSizeAndPosition, btnLockAspectRatio, new UiElement(keytip: "SL")); // L
-            RegisterS(grpVideoSizeAndPosition, btnScaleAnchor, new UiElement(keytip: "SF")); // PA
-            RegisterS(grpVideoSizeAndPosition, edtPositionX, new UiElement(keytip: "SX")); // PX
-            RegisterS(grpVideoSizeAndPosition, edtPositionY, new UiElement(keytip: "SY")); // PY
-            RegisterS(grpVideoSizeAndPosition, btnCopyPosition, new UiElement(keytip: "SS")); // PC
-            RegisterS(grpVideoSizeAndPosition, btnPastePosition, new UiElement(keytip: "ST")); // PV
+            Segister(grpVideoSizeAndPosition, btnLockAspectRatio, new UiElement(keytip: "SL")); // L
+            Segister(grpVideoSizeAndPosition, btnScaleAnchor, new UiElement(keytip: "SF")); // PA
+            Segister(grpVideoSizeAndPosition, edtPositionX, new UiElement(keytip: "SX")); // PX
+            Segister(grpVideoSizeAndPosition, edtPositionY, new UiElement(keytip: "SY")); // PY
+            Segister(grpVideoSizeAndPosition, btnCopyPosition, new UiElement(keytip: "SS")); // PC
+            Segister(grpVideoSizeAndPosition, btnPastePosition, new UiElement(keytip: "ST")); // PV
             // ===
-            RegisterS(grpTableSizeAndPosition, mnuArrangement, new UiElement(keytip: "SB")); // B
-            RegisterS(grpTableSizeAndPosition, btnLockAspectRatio, new UiElement(keytip: "SL")); // L
-            RegisterS(grpTableSizeAndPosition, btnScaleAnchor, new UiElement(keytip: "SF")); // PA
-            RegisterS(grpTableSizeAndPosition, edtPositionX, new UiElement(keytip: "SX")); // PX
-            RegisterS(grpTableSizeAndPosition, edtPositionY, new UiElement(keytip: "SY")); // PY
-            RegisterS(grpTableSizeAndPosition, btnCopyPosition, new UiElement(keytip: "SS")); // PC
-            RegisterS(grpTableSizeAndPosition, btnPastePosition, new UiElement(keytip: "ST")); // PV
+            Segister(grpTableSizeAndPosition, mnuArrangement, new UiElement(keytip: "SB")); // B
+            Segister(grpTableSizeAndPosition, btnLockAspectRatio, new UiElement(keytip: "SL")); // L
+            Segister(grpTableSizeAndPosition, btnScaleAnchor, new UiElement(keytip: "SF")); // PA
+            Segister(grpTableSizeAndPosition, edtPositionX, new UiElement(keytip: "SX")); // PX
+            Segister(grpTableSizeAndPosition, edtPositionY, new UiElement(keytip: "SY")); // PY
+            Segister(grpTableSizeAndPosition, btnCopyPosition, new UiElement(keytip: "SS")); // PC
+            Segister(grpTableSizeAndPosition, btnPastePosition, new UiElement(keytip: "ST")); // PV
             // mnuArrangement
             Register(sepAlignmentAndResizing, new UiElement(RL.mnuArrangement_sepAlignmentAndResizing));
             Register(mnuAlignment, new UiElement(RL.mnuArrangement_mnuAlignment, nameof(RIM.ObjectArrangement)));
             Register(mnuResizing, new UiElement(RL.mnuArrangement_mnuResizing, nameof(RIM.ScaleSameWidth)));
-            Register(mnuSnapping, new UiElement(RL.mnuArrangement_mnuSnapping, nameof(RIM.SnapLeftToRight)));
             Register(mnuRotation, new UiElement(RL.mnuArrangement_mnuRotation, nameof(RIM.ObjectRotateRight90)));
             Register(sepLayerOrderAndGrouping, new UiElement(RL.mnuArrangement_sepLayerOrderAndGrouping));
             Register(mnuLayerOrder, new UiElement(RL.mnuArrangement_mnuLayerOrder, nameof(RIM.ObjectSendToBack)));

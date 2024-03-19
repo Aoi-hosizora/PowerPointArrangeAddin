@@ -206,6 +206,18 @@ namespace PowerPointArrangeAddin.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool allowDoublePressExtendButton {
+            get {
+                return ((bool)(this["allowDoublePressExtendButton"]));
+            }
+            set {
+                this["allowDoublePressExtendButton"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool checkUpdateWhenStartUp {
             get {
                 return ((bool)(this["checkUpdateWhenStartUp"]));

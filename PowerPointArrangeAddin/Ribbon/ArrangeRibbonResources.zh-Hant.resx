@@ -173,7 +173,13 @@
   <data name="btnExtendSameTop" xml:space="preserve">
     <value>延伸至頂端(&amp;T)</value>
   </data>
-  <data name="btnFlipHorizontal" xml:space="preserve">
+  <data name="chkExtendToFirstObject" xml:space="preserve">
+    <value>延伸到最初的圖案</value>
+  </data>
+  <data name="chkExtendToFirstObjectFull" xml:space="preserve">
+    <value>延伸到最初選擇的圖案邊界(&amp;I)</value>
+  </data>
+  <data name="btnFlipHorizontal" xml:space="preserve">g
     <value>水平翻轉(&amp;H)</value>
   </data>
   <data name="btnFlipVertical" xml:space="preserve">
@@ -224,13 +230,68 @@
   <data name="btnRotateRight90" xml:space="preserve">
     <value>向左旋轉 90 度(&amp;R)</value>
   </data>
-  <data name="btnScaleAnchor_FromMiddle" xml:space="preserve">
-    <value>從中心點變形(&amp;F)</value>
-    <comment>將中心點視爲錨點來變形圖案</comment>
+  <data name="lblScaleAnchor_FromTop" xml:space="preserve">
+    <value>從頂端變形</value>
+  </data>
+  <data name="lblScaleAnchor_FromCenter" xml:space="preserve">
+    <value>從中間變形</value>
+  </data>
+  <data name="lblScaleAnchor_FromBottom" xml:space="preserve">
+    <value>從底端變形</value>
+  </data>
+  <data name="btnScaleAnchor_FromTopLeft_Full" xml:space="preserve">
+    <value>從原左上端開始變形圖案(&amp;O)</value>
+  </data>
+  <data name="btnScaleAnchor_FromBottomLeft_Full" xml:space="preserve">
+    <value>從原左下端開始變形圖案(&amp;P)</value>
+  </data>
+  <data name="btnScaleAnchor_FromTopRight_Full" xml:space="preserve">
+    <value>從原右上端開始變形圖案(&amp;M)</value>
+  </data>
+  <data name="btnScaleAnchor_FromBottomRight_Full" xml:space="preserve">
+    <value>從原右下端開始變形圖案(&amp;G)</value>
+  </data>
+  <data name="btnScaleAnchor_FromLeft_Full" xml:space="preserve">
+    <value>從原左端開始變形圖案(&amp;F)</value>
+  </data>
+  <data name="btnScaleAnchor_FromRight_Full" xml:space="preserve">
+    <value>從原右端開始變形圖案(&amp;C)</value>
+  </data>
+  <data name="btnScaleAnchor_FromTop_Full" xml:space="preserve">
+    <value>從原上端開始變形圖案(&amp;A)</value>
+  </data>
+  <data name="btnScaleAnchor_FromBottom_Full" xml:space="preserve">
+    <value>從原下端開始變形圖案(&amp;E)</value>
+  </data>
+  <data name="btnScaleAnchor_FromCenter_Full" xml:space="preserve">
+    <value>從原中心點開始變形圖案(&amp;N)</value>
   </data>
   <data name="btnScaleAnchor_FromTopLeft" xml:space="preserve">
-    <value>從左上端變形(&amp;O)</value>
-    <comment>將左上端視爲錨點來變形圖案</comment>
+    <value>從左上端變形</value>
+  </data>
+  <data name="btnScaleAnchor_FromBottomLeft" xml:space="preserve">
+    <value>從左下端變形</value>
+  </data>
+  <data name="btnScaleAnchor_FromTopRight" xml:space="preserve">
+    <value>從右上端變形</value>
+  </data>
+  <data name="btnScaleAnchor_FromBottomRight" xml:space="preserve">
+    <value>從右下端變形</value>
+  </data>
+  <data name="btnScaleAnchor_FromLeft" xml:space="preserve">
+    <value>從左端變形</value>
+  </data>
+  <data name="btnScaleAnchor_FromRight" xml:space="preserve">
+    <value>從右端變形</value>
+  </data>
+  <data name="btnScaleAnchor_FromTop" xml:space="preserve">
+    <value>從上端變形</value>
+  </data>
+  <data name="btnScaleAnchor_FromBottom" xml:space="preserve">
+    <value>從下端變形</value>
+  </data>
+  <data name="btnScaleAnchor_FromCenter" xml:space="preserve">
+    <value>從中心點變形</value>
   </data>
   <data name="btnScaleSameHeight" xml:space="preserve">
     <value>變形為與最初選擇的圖案相同高度(&amp;H)</value>
@@ -242,16 +303,16 @@
     <value>變形為與最初選擇的圖案相同寬度(&amp;W)</value>
   </data>
   <data name="btnSnapBottom" xml:space="preserve">
-    <value>下端向上吸附(&amp;B)</value>
+    <value>下端向上吸附(&amp;N)</value>
   </data>
   <data name="btnSnapLeft" xml:space="preserve">
-    <value>左端向右吸附(&amp;L)</value>
+    <value>左端向右吸附(&amp;E)</value>
   </data>
   <data name="btnSnapRight" xml:space="preserve">
-    <value>右端向左吸附(&amp;R)</value>
+    <value>右端向左吸附(&amp;I)</value>
   </data>
   <data name="btnSnapTop" xml:space="preserve">
-    <value>上端向下吸附(&amp;T)</value>
+    <value>上端向下吸附(&amp;P)</value>
   </data>
   <data name="btnUngroup" xml:space="preserve">
     <value>取消群組圖案(&amp;U)</value>
@@ -262,8 +323,11 @@
   <data name="chkReplaceToMiddle" xml:space="preserve">
     <value>置換到中心點</value>
   </data>
-  <data name="chkReserveOriginalSize" xml:space="preserve">
-    <value>保持圖片的大小</value>
+  <data name="chkReplaceToFill" xml:space="preserve">
+    <value>填充置換</value>
+  </data>
+  <data name="chkReplaceToContain" xml:space="preserve">
+    <value>保持比率置換</value>
   </data>
   <data name="dlgNoPictureInClipboard" xml:space="preserve">
     <value>剪貼簿内不存在圖片，所以無法置換圖片。</value>
@@ -325,9 +389,6 @@
   <data name="mnuArrangement_mnuRotation" xml:space="preserve">
     <value>旋轉(&amp;O)</value>
   </data>
-  <data name="mnuArrangement_mnuSnapping" xml:space="preserve">
-    <value>吸附(&amp;N)</value>
-  </data>
   <data name="mnuArrangement_sepAddInSetting" xml:space="preserve">
     <value>增益集選項</value>
   </data>
@@ -346,10 +407,6 @@
   <data name="dlgAllFilesFilter" xml:space="preserve">
     <value>所有檔案</value>
   </data>
-  <data name="btnScaleAnchor_FromBottomRight" xml:space="preserve">
-    <value>從右下端變形(&amp;M)</value>
-    <comment>將右下端視爲錨點來變形圖案</comment>
-  </data>
   <data name="lblHorizontalMargin" xml:space="preserve">
     <value>橫向邊界: </value>
   </data>
@@ -364,6 +421,9 @@
   </data>
   <data name="btnAlignRelative_ToFirstObject" xml:space="preserve">
     <value>對齊到最初的圖案(&amp;F)</value>
+  </data>
+  <data name="btnGridSwitcher" xml:space="preserve">
+    <value>顯示格綫(&amp;S)</value>
   </data>
   <data name="btnGridSetting" xml:space="preserve">
     <value>格綫設定(&amp;G)...</value>
@@ -387,10 +447,10 @@
     <value>縱向對齊</value>
   </data>
   <data name="lblDistribute" xml:space="preserve">
-    <value>均分</value>
+    <value>圖案均分</value>
   </data>
-  <data name="grpSizeAndSnap" xml:space="preserve">
-    <value>大小变更和吸附</value>
+  <data name="grpResizing" xml:space="preserve">
+    <value>大小变更</value>
   </data>
   <data name="lblScaleSize" xml:space="preserve">
     <value>變形</value>
@@ -398,8 +458,14 @@
   <data name="lblExtendSize" xml:space="preserve">
     <value>延伸</value>
   </data>
-  <data name="lblSnapObjects" xml:space="preserve">
-    <value>吸附</value>
+  <data name="lblSnapH" xml:space="preserve">
+    <value>橫向吸附</value>
+  </data>
+  <data name="lblSnapV" xml:space="preserve">
+    <value>縱向吸附</value>
+  </data>
+  <data name="lblGrid" xml:space="preserve">
+    <value>格綫</value>
   </data>
   <data name="grpRotateAndFlip" xml:space="preserve">
     <value>旋轉和翻轉</value>
@@ -448,6 +514,39 @@
   </data>
   <data name="grpObjectPosition" xml:space="preserve">
     <value>圖案位置</value>
+  </data>
+  <data name="lblDistanceType" xml:space="preserve">
+    <value>距離類型</value>
+  </data>
+  <data name="btnDistanceType_RightLeft" xml:space="preserve">
+    <value>右邊和左邊/下邊和上邊之間的距離</value>
+  </data>
+  <data name="btnDistanceType_LeftLeft" xml:space="preserve">
+    <value>左邊和左邊/上邊和上邊之間的距離</value>
+  </data>
+  <data name="btnDistanceType_RightRight" xml:space="preserve">
+    <value>右邊和右邊/下邊和下邊之間的距離</value>
+  </data>
+  <data name="btnDistanceType_LeftRight" xml:space="preserve">
+    <value>左邊和右邊/上邊和下邊之間的距離</value>
+  </data>
+  <data name="lblDistanceH" xml:space="preserve">
+    <value>水平</value>
+  </data>
+  <data name="btnCopyDistanceH" xml:space="preserve">
+    <value>複製橫向距離</value>
+  </data>
+  <data name="btnPasteDistanceH" xml:space="preserve">
+    <value>貼上橫向距離</value>
+  </data>
+  <data name="lblDistanceV" xml:space="preserve">
+    <value>垂直</value>
+  </data>
+  <data name="btnCopyDistanceV" xml:space="preserve">
+    <value>複製縱向距離</value>
+  </data>
+  <data name="btnPasteDistanceV" xml:space="preserve">
+    <value>貼上縱向距離</value>
   </data>
   <data name="btnAddInCheckUpdate" xml:space="preserve">
     <value>檢查更新</value>

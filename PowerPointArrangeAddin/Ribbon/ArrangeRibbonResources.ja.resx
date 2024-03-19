@@ -173,6 +173,12 @@
   <data name="btnExtendSameTop" xml:space="preserve">
     <value>同じ上端に伸ばす(&amp;T)</value>
   </data>
+  <data name="chkExtendToFirstObject" xml:space="preserve">
+    <value>最初の図形に伸ばす</value>
+  </data>
+  <data name="chkExtendToFirstObjectFull" xml:space="preserve">
+    <value>最初に選択した図形の外枠に伸ばす(&amp;I)</value>
+  </data>
   <data name="btnFlipHorizontal" xml:space="preserve">
     <value>左右反転(&amp;H)</value>
   </data>
@@ -224,13 +230,68 @@
   <data name="btnRotateRight90" xml:space="preserve">
     <value>右へ 90 度回転(&amp;R)</value>
   </data>
-  <data name="btnScaleAnchor_FromMiddle" xml:space="preserve">
-    <value>中央点から変形(&amp;F)</value>
-    <comment>中央点をアンカーとして図形を変形</comment>
+  <data name="lblScaleAnchor_FromTop" xml:space="preserve">
+    <value>頂部から変形</value>
+  </data>
+  <data name="lblScaleAnchor_FromCenter" xml:space="preserve">
+    <value>中央から変形</value>
+  </data>
+  <data name="lblScaleAnchor_FromBottom" xml:space="preserve">
+    <value>底部から変形</value>
+  </data>
+  <data name="btnScaleAnchor_FromTopLeft_Full" xml:space="preserve">
+    <value>元の左上端から図形を変形(&amp;O)</value>
+  </data>
+  <data name="btnScaleAnchor_FromBottomLeft_Full" xml:space="preserve">
+    <value>元の左下端から図形を変形(&amp;P)</value>
+  </data>
+  <data name="btnScaleAnchor_FromTopRight_Full" xml:space="preserve">
+    <value>元の右上端から図形を変形(&amp;M)</value>
+  </data>
+  <data name="btnScaleAnchor_FromBottomRight_Full" xml:space="preserve">
+    <value>元の右下端から図形を変形(&amp;G)</value>
+  </data>
+  <data name="btnScaleAnchor_FromLeft_Full" xml:space="preserve">
+    <value>元の左端から図形を変形(&amp;F)</value>
+  </data>
+  <data name="btnScaleAnchor_FromRight_Full" xml:space="preserve">
+    <value>元の右端から図形を変形(&amp;C)</value>
+  </data>
+  <data name="btnScaleAnchor_FromTop_Full" xml:space="preserve">
+    <value>元の上端から図形を変形(&amp;A)</value>
+  </data>
+  <data name="btnScaleAnchor_FromBottom_Full" xml:space="preserve">
+    <value>元の下端から図形を変形(&amp;E)</value>
+  </data>
+  <data name="btnScaleAnchor_FromCenter_Full" xml:space="preserve">
+    <value>元の中央点から図形を変形(&amp;N)</value>
   </data>
   <data name="btnScaleAnchor_FromTopLeft" xml:space="preserve">
-    <value>左上端から変形(&amp;O)</value>
-    <comment>左上端をアンカーとして図形を変形</comment>
+    <value>左上端から変形</value>
+  </data>
+  <data name="btnScaleAnchor_FromBottomLeft" xml:space="preserve">
+    <value>左下端から変形</value>
+  </data>
+  <data name="btnScaleAnchor_FromTopRight" xml:space="preserve">
+    <value>右上端から変形</value>
+  </data>
+  <data name="btnScaleAnchor_FromBottomRight" xml:space="preserve">
+    <value>右下端から変形</value>
+  </data>
+  <data name="btnScaleAnchor_FromLeft" xml:space="preserve">
+    <value>左端から変形</value>
+  </data>
+  <data name="btnScaleAnchor_FromRight" xml:space="preserve">
+    <value>右端から変形</value>
+  </data>
+  <data name="btnScaleAnchor_FromTop" xml:space="preserve">
+    <value>上端から変形</value>
+  </data>
+  <data name="btnScaleAnchor_FromBottom" xml:space="preserve">
+    <value>下端から変形</value>
+  </data>
+  <data name="btnScaleAnchor_FromCenter" xml:space="preserve">
+    <value>中央点から変形</value>
   </data>
   <data name="btnScaleSameHeight" xml:space="preserve">
     <value>最初に選択した図形と同じ高さに変形(&amp;H)</value>
@@ -242,16 +303,16 @@
     <value>最初に選択した図形と同じ幅に変形(&amp;W)</value>
   </data>
   <data name="btnSnapBottom" xml:space="preserve">
-    <value>下端を上へ吸着(&amp;B)</value>
+    <value>下端を上へ吸着(&amp;N)</value>
   </data>
   <data name="btnSnapLeft" xml:space="preserve">
-    <value>左端を右へ吸着(&amp;L)</value>
+    <value>左端を右へ吸着(&amp;E)</value>
   </data>
   <data name="btnSnapRight" xml:space="preserve">
-    <value>右端を左へ吸着(&amp;R)</value>
+    <value>右端を左へ吸着(&amp;I)</value>
   </data>
   <data name="btnSnapTop" xml:space="preserve">
-    <value>上端を下へ吸着(&amp;T)</value>
+    <value>上端を下へ吸着(&amp;P)</value>
   </data>
   <data name="btnUngroup" xml:space="preserve">
     <value>グループ解除(&amp;U)</value>
@@ -262,8 +323,11 @@
   <data name="chkReplaceToMiddle" xml:space="preserve">
     <value>元の中央点に置換</value>
   </data>
-  <data name="chkReserveOriginalSize" xml:space="preserve">
-    <value>図のサイズを保持</value>
+  <data name="chkReplaceToFill" xml:space="preserve">
+    <value>拡大して置換</value>
+  </data>
+  <data name="chkReplaceToContain" xml:space="preserve">
+    <value>元に合わせて置換</value>
   </data>
   <data name="dlgNoPictureInClipboard" xml:space="preserve">
     <value>クリップボードに図がありませんので、置換できません。</value>
@@ -325,9 +389,6 @@
   <data name="mnuArrangement_mnuRotation" xml:space="preserve">
     <value>回転(&amp;O)</value>
   </data>
-  <data name="mnuArrangement_mnuSnapping" xml:space="preserve">
-    <value>吸着(&amp;N)</value>
-  </data>
   <data name="mnuArrangement_sepAddInSetting" xml:space="preserve">
     <value>アドインの設定</value>
   </data>
@@ -346,10 +407,6 @@
   <data name="dlgAllFilesFilter" xml:space="preserve">
     <value>すべてのファイル</value>
   </data>
-  <data name="btnScaleAnchor_FromBottomRight" xml:space="preserve">
-    <value>右下端から変形(&amp;M)</value>
-    <comment>右下点をアンカーとして図形を変形</comment>
-  </data>
   <data name="lblHorizontalMargin" xml:space="preserve">
     <value>横の余白: </value>
   </data>
@@ -364,6 +421,9 @@
   </data>
   <data name="btnAlignRelative_ToSlide" xml:space="preserve">
     <value>スライドに合わせて配置(&amp;A)</value>
+  </data>
+  <data name="btnGridSwitcher" xml:space="preserve">
+    <value>グリッドの表示(&amp;S)</value>
   </data>
   <data name="btnGridSetting" xml:space="preserve">
     <value>グリッドの設定(&amp;G)...</value>
@@ -389,17 +449,23 @@
   <data name="lblDistribute" xml:space="preserve">
     <value>整列</value>
   </data>
-  <data name="grpSizeAndSnap" xml:space="preserve">
-    <value>サイズ変更と吸着</value>
+  <data name="grpResizing" xml:space="preserve">
+    <value>サイズ変更</value>
   </data>
   <data name="lblScaleSize" xml:space="preserve">
     <value>変形</value>
   </data>
   <data name="lblExtendSize" xml:space="preserve">
-    <value>伸ばし</value>
+    <value>伸長</value>
   </data>
-  <data name="lblSnapObjects" xml:space="preserve">
-    <value>吸着</value>
+  <data name="lblSnapH" xml:space="preserve">
+    <value>横吸着</value>
+  </data>
+  <data name="lblSnapV" xml:space="preserve">
+    <value>縦吸着</value>
+  </data>
+  <data name="lblGrid" xml:space="preserve">
+    <value>グリッド</value>
   </data>
   <data name="grpRotateAndFlip" xml:space="preserve">
     <value>回転と反転</value>
@@ -448,6 +514,39 @@
   </data>
   <data name="grpObjectPosition" xml:space="preserve">
     <value>オブジェクトの位置</value>
+  </data>
+  <data name="lblDistanceType" xml:space="preserve">
+    <value>距離の種類</value>
+  </data>
+  <data name="btnDistanceType_RightLeft" xml:space="preserve">
+    <value>右端と左端・下端と上端の間の距離</value>
+  </data>
+  <data name="btnDistanceType_LeftLeft" xml:space="preserve">
+    <value>左端と左端・上端と上端の間の距離</value>
+  </data>
+  <data name="btnDistanceType_RightRight" xml:space="preserve">
+    <value>右端と右端・下端と下端の間の距離</value>
+  </data>
+  <data name="btnDistanceType_LeftRight" xml:space="preserve">
+    <value>左端と右端・上端と下端の間の距離</value>
+  </data>
+  <data name="lblDistanceH" xml:space="preserve">
+    <value>横方向</value>
+  </data>
+  <data name="btnCopyDistanceH" xml:space="preserve">
+    <value>横距離をコピー</value>
+  </data>
+  <data name="btnPasteDistanceH" xml:space="preserve">
+    <value>横距離を貼付</value>
+  </data>
+  <data name="lblDistanceV" xml:space="preserve">
+    <value>縦方向</value>
+  </data>
+  <data name="btnCopyDistanceV" xml:space="preserve">
+    <value>縦距離をコピー</value>
+  </data>
+  <data name="btnPasteDistanceV" xml:space="preserve">
+    <value>縦距離を貼付</value>
   </data>
   <data name="btnAddInCheckUpdate" xml:space="preserve">
     <value>更新の確認</value>

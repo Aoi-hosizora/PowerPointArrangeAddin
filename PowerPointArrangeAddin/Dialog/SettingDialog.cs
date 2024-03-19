@@ -38,6 +38,7 @@ namespace PowerPointArrangeAddin.Dialog {
             chkCheckUpdateWhenStartUp.Checked = AddInSetting.Instance.CheckUpdateWhenStartUp;
             chkLessButtonsForArrangement.Checked = AddInSetting.Instance.LessButtonsForArrangementGroup;
             chkHideMarginSettingForTextbox.Checked = AddInSetting.Instance.HideMarginSettingForTextboxGroup;
+            chkAllowDoublePressExtendButton.Checked = AddInSetting.Instance.AllowDoublePressExtendButton;
             cboIconStyle.SelectedIndex = AddInSetting.Instance.IconStyle.ToIconStyleIndex();
         }
 
@@ -58,6 +59,7 @@ namespace PowerPointArrangeAddin.Dialog {
             AddInSetting.Instance.CheckUpdateWhenStartUp = chkCheckUpdateWhenStartUp.Checked;
             AddInSetting.Instance.LessButtonsForArrangementGroup = chkLessButtonsForArrangement.Checked;
             AddInSetting.Instance.HideMarginSettingForTextboxGroup = chkHideMarginSettingForTextbox.Checked;
+            AddInSetting.Instance.AllowDoublePressExtendButton = chkAllowDoublePressExtendButton.Checked;
             AddInSetting.Instance.IconStyle = cboIconStyle.SelectedIndex.ToAddInIconStyle();
             AddInSetting.Instance.Save();
             DialogResult = DialogResult.OK;

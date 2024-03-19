@@ -39,56 +39,56 @@
 
                 <group id="grpArrange" insertAfterMso="GroupDrawing" __template="GROUP" __as_subtree_template="ARRANGE">
                     <buttonGroup id="bgpAlignLR">
-                        <button id="btnAlignLeft" showLabel="false" __template="L,S,K,E,I" onAction="BtnAlign_Click" />
-                        <button id="btnAlignCenter" showLabel="false" __template="L,S,K,E,I" onAction="BtnAlign_Click" />
-                        <button id="btnAlignRight" showLabel="false" __template="L,S,K,E,I" onAction="BtnAlign_Click" />
+                        <__use_reference name="$id=btnAlignLeft" />
+                        <__use_reference name="$id=btnAlignCenter" />
+                        <__use_reference name="$id=btnAlignRight" />
                     </buttonGroup>
                     <buttonGroup id="bgpAlignTB">
-                        <button id="btnAlignTop" showLabel="false" __template="L,S,K,E,I" onAction="BtnAlign_Click" />
-                        <button id="btnAlignMiddle" showLabel="false" __template="L,S,K,E,I" onAction="BtnAlign_Click" />
-                        <button id="btnAlignBottom" showLabel="false" __template="L,S,K,E,I" onAction="BtnAlign_Click" />
+                        <__use_reference name="$id=btnAlignTop" />
+                        <__use_reference name="$id=btnAlignMiddle" />
+                        <__use_reference name="$id=btnAlignBottom" />
                     </buttonGroup>
                     <buttonGroup id="bgpDistribute">
-                        <button id="btnDistributeHorizontal" showLabel="false" __template="L,S,K,E,I" onAction="BtnDistribute_Click" />
-                        <button id="btnDistributeVertical" showLabel="false" __template="L,S,K,E,I" onAction="BtnDistribute_Click" />
+                        <__use_reference name="$id=btnDistributeHorizontal" />
+                        <__use_reference name="$id=btnDistributeVertical" />
                         <button id="btnAlignRelative" showLabel="false" __template="LSKEI_Relative" onAction="BtnAlignRelative_Click" />
                     </buttonGroup>
                     <separator id="sepScaleSize" />
                     <buttonGroup id="bgpScaleSize">
-                        <button id="btnScaleSameWidth" showLabel="false" __template="L,S,K,E,I" onAction="BtnScale_Click" />
-                        <button id="btnScaleSameHeight" showLabel="false" __template="L,S,K,E,I" onAction="BtnScale_Click" />
-                        <button id="btnScaleSameSize" showLabel="false" __template="L,S,K,E,I" onAction="BtnScale_Click" />
+                        <__use_reference name="$id=btnScaleSameWidth" />
+                        <__use_reference name="$id=btnScaleSameHeight" />
+                        <__use_reference name="$id=btnScaleSameSize" />
                         <button id="btnScaleAnchor" showLabel="false" __template="LSKEI_Anchor" onAction="BtnScaleAnchor_Click" />
                     </buttonGroup>
                     <buttonGroup id="bgpExtendSize">
-                        <button id="btnExtendSameLeft" showLabel="false" __template="L,S,K,E,I" onAction="BtnExtend_Click" />
-                        <button id="btnExtendSameRight" showLabel="false" __template="L,S,K,E,I" onAction="BtnExtend_Click" />
-                        <button id="btnExtendSameTop" showLabel="false" __template="L,S,K,E,I" onAction="BtnExtend_Click" />
-                        <button id="btnExtendSameBottom" showLabel="false" __template="L,S,K,E,I" onAction="BtnExtend_Click" />
+                        <__use_reference name="$id=btnExtendSameLeft" />
+                        <__use_reference name="$id=btnExtendSameRight" />
+                        <__use_reference name="$id=btnExtendSameTop" />
+                        <__use_reference name="$id=btnExtendSameBottom" />
                     </buttonGroup>
-                    <buttonGroup id="bgpSnapObjects">
-                        <button id="btnSnapLeft" showLabel="false" __template="L,S,K,E,I" onAction="BtnSnap_Click" />
-                        <button id="btnSnapRight" showLabel="false" __template="L,S,K,E,I" onAction="BtnSnap_Click" />
-                        <button id="btnSnapTop" showLabel="false" __template="L,S,K,E,I" onAction="BtnSnap_Click" />
-                        <button id="btnSnapBottom" showLabel="false" __template="L,S,K,E,I" onAction="BtnSnap_Click" />
+                    <buttonGroup id="bgpSnap">
+                        <__use_reference name="$id=btnSnapLeft" />
+                        <__use_reference name="$id=btnSnapRight" />
+                        <__use_reference name="$id=btnSnapTop" />
+                        <__use_reference name="$id=btnSnapBottom" />
                     </buttonGroup>
                     <separator id="sepRotate" __template="CV" />
                     <buttonGroup id="bgpRotate" __template="CV">
-                        <button id="btnRotateRight90" showLabel="false" __template="L,S,K,E,I" onAction="BtnRotate_Click" />
-                        <button id="btnRotateLeft90" showLabel="false" __template="L,S,K,E,I" onAction="BtnRotate_Click" />
-                        <button id="btnFlipVertical" showLabel="false" __template="L,S,K,E,I" onAction="BtnFlip_Click" />
-                        <button id="btnFlipHorizontal" showLabel="false" __template="L,S,K,E,I" onAction="BtnFlip_Click" />
+                        <__use_reference name="$id=btnRotateRight90" />
+                        <__use_reference name="$id=btnRotateLeft90" />
+                        <__use_reference name="$id=btnFlipVertical" />
+                        <__use_reference name="$id=btnFlipHorizontal" />
                     </buttonGroup>
                     <buttonGroup id="bgpMoveLayers" __template="CV">
-                        <button id="btnMoveFront" showLabel="false" __template="L,S,K,E,I" onAction="BtnMove_Click" />
-                        <button id="btnMoveBack" showLabel="false" __template="L,S,K,E,I" onAction="BtnMove_Click" />
-                        <button id="btnMoveForward" showLabel="false" __template="L,S,K,E,I" onAction="BtnMove_Click" />
-                        <button id="btnMoveBackward" showLabel="false" __template="L,S,K,E,I" onAction="BtnMove_Click" />
+                        <__use_reference name="$id=btnMoveFront" />
+                        <__use_reference name="$id=btnMoveBack" />
+                        <__use_reference name="$id=btnMoveForward" />
+                        <__use_reference name="$id=btnMoveBackward" />
                     </buttonGroup>
                     <buttonGroup id="bgpGroupObjects" __template="CV">
-                        <button id="btnGroup" showLabel="false" __template="L,S,K,E,I" onAction="BtnGroup_Click" />
-                        <button id="btnUngroup" showLabel="false" __template="L,S,K,E,I" onAction="BtnGroup_Click" />
-                        <button id="btnGridSetting" showLabel="false" __template="L,S,K,E,I" onAction="BtnGridSetting_Click" />
+                        <__use_reference name="$id=btnGroup" />
+                        <__use_reference name="$id=btnUngroup" />
+                        <__use_reference name="$id=btnGridSetting" />
                         <toggleButton idMso="SelectionPane" showLabel="false" __template="K" />
                     </buttonGroup>
                     <separator id="sepArrangement" __template="CV" />
@@ -112,10 +112,37 @@
                     <labelControl id="lblAlignmentV" __template="L,S" />
                     <labelControl id="lblDistribute" __template="L,S" />
                     <__use_template name="VSPACER" />
-                    <__use_template name="ARRANGE">
-                        <__remove_rule field="id" match_re="^((?!Align|Distribute).)*$|btnAlignRelative" />
-                        <__remove_rule field="@" match="dialogBoxLauncher" />
-                    </__use_template>
+                    <buttonGroup id="bgpAlignLR">
+                        <button id="btnAlignLeft" showLabel="false" __template="L,S,K,E,I" onAction="BtnAlign_Click" />
+                        <button id="btnAlignCenter" showLabel="false" __template="L,S,K,E,I" onAction="BtnAlign_Click" />
+                        <button id="btnAlignRight" showLabel="false" __template="L,S,K,E,I" onAction="BtnAlign_Click" />
+                    </buttonGroup>
+                    <buttonGroup id="bgpAlignTB">
+                        <button id="btnAlignTop" showLabel="false" __template="L,S,K,E,I" onAction="BtnAlign_Click" />
+                        <button id="btnAlignMiddle" showLabel="false" __template="L,S,K,E,I" onAction="BtnAlign_Click" />
+                        <button id="btnAlignBottom" showLabel="false" __template="L,S,K,E,I" onAction="BtnAlign_Click" />
+                    </buttonGroup>
+                    <buttonGroup id="bgpDistribute">
+                        <button id="btnDistributeHorizontal" showLabel="false" __template="L,S,K,E,I" onAction="BtnDistribute_Click" />
+                        <button id="btnDistributeVertical" showLabel="false" __template="L,S,K,E,I" onAction="BtnDistribute_Click" />
+                    </buttonGroup>
+                    <separator id="sepAlignSnap" />
+                    <labelControl id="lblSnapH" __template="L,S" />
+                    <labelControl id="lblSnapV" __template="L,S" />
+                    <labelControl id="lblGrid" __template="L,S" />
+                    <__use_template name="VSPACER" />
+                    <buttonGroup id="bgpSnapLR">
+                        <button id="btnSnapLeft" showLabel="false" __template="L,S,K,E,I" onAction="BtnSnap_Click" />
+                        <button id="btnSnapRight" showLabel="false" __template="L,S,K,E,I" onAction="BtnSnap_Click" />
+                    </buttonGroup>
+                    <buttonGroup id="bgpSnapTB">
+                        <button id="btnSnapTop" showLabel="false" __template="L,S,K,E,I" onAction="BtnSnap_Click" />
+                        <button id="btnSnapBottom" showLabel="false" __template="L,S,K,E,I" onAction="BtnSnap_Click" />
+                    </buttonGroup>
+                    <buttonGroup id="bgpGrid">
+                        <toggleButton id="btnGridSwitcher" showLabel="false" __template="L,S,K,E,I" getPressed="BtnGridSwitcher_GetPressed" onAction="BtnGridSwitcher_Click" />
+                        <button id="btnGridSetting" showLabel="false" __template="L,S,K,E,I" onAction="BtnGridSetting_Click" />
+                    </buttonGroup>
                     <separator id="sepAlignRelative" />
                     <toggleButton id="btnAlignRelative_ToSlide" __template="L,S,K,E,I" getPressed="BtnAlignRelative_GetPressed" onAction="BtnAlignRelative_Click" />
                     <toggleButton id="btnAlignRelative_ToObjects" __template="L,S,K,E,I" getPressed="BtnAlignRelative_GetPressed" onAction="BtnAlignRelative_Click" />
@@ -125,23 +152,41 @@
                     </dialogBoxLauncher>
                 </group> <!-- end of grpAlignment -->
 
-                <group id="grpSizeAndSnap" __template="GROUP">
-                    <labelControl id="lblScaleSize" __template="L,S" />
-                    <labelControl id="lblExtendSize" __template="L,S" />
-                    <labelControl id="lblSnapObjects" __template="L,S" />
-                    <__use_template name="VSPACER" />
-                    <__use_template name="ARRANGE">
-                        <__remove_rule field="id" match_re="^((?!Scale|Extend|Snap).)*$|btnScaleAnchor|sepScaleSize" />
-                        <__remove_rule field="@" match="dialogBoxLauncher" />
-                    </__use_template>
+                <group id="grpResizing" __template="GROUP">
+                    <box id="bgpScaleSize" boxStyle="horizontal">
+                        <labelControl id="lblScaleSize" __template="L,S" />
+                        <__use_template name="HSPACER" />
+                        <button id="btnScaleSameWidth" showLabel="false" __template="L,S,K,E,I" onAction="BtnScale_Click" />
+                        <button id="btnScaleSameHeight" showLabel="false" __template="L,S,K,E,I" onAction="BtnScale_Click" />
+                        <button id="btnScaleSameSize" showLabel="false" __template="L,S,K,E,I" onAction="BtnScale_Click" />
+                    </box>
+                    <box id="bgpExtendSize" boxStyle="horizontal">
+                        <labelControl id="lblExtendSize" __template="L,S" />
+                        <__use_template name="HSPACER" />
+                        <button id="btnExtendSameLeft" showLabel="false" __template="L,S,K,E,I" onAction="BtnExtend_Click" />
+                        <button id="btnExtendSameRight" showLabel="false" __template="L,S,K,E,I" onAction="BtnExtend_Click" />
+                        <button id="btnExtendSameTop" showLabel="false" __template="L,S,K,E,I" onAction="BtnExtend_Click" />
+                        <button id="btnExtendSameBottom" showLabel="false" __template="L,S,K,E,I" onAction="BtnExtend_Click" />
+                    </box>
+                    <checkBox id="chkExtendToFirstObject" __template="L,S,K,E" getPressed="ChkExtendToFirstObject_GetPressed" onAction="ChkExtendToFirstObject_Click" />
                     <separator id="sepScaleAnchor" />
-                    <toggleButton id="btnScaleAnchor_FromTopLeft" __template="L,S,K,E,I" getPressed="BtnScaleAnchor_GetPressed" onAction="BtnScaleAnchor_Click" />
-                    <toggleButton id="btnScaleAnchor_FromMiddle" __template="L,S,K,E,I" getPressed="BtnScaleAnchor_GetPressed" onAction="BtnScaleAnchor_Click" />
-                    <toggleButton id="btnScaleAnchor_FromBottomRight" __template="L,S,K,E,I" getPressed="BtnScaleAnchor_GetPressed" onAction="BtnScaleAnchor_Click" />
+                    <labelControl id="lblScaleAnchor_FromTop" __template="L,S" />
+                    <labelControl id="lblScaleAnchor_FromCenter" __template="L,S" />
+                    <labelControl id="lblScaleAnchor_FromBottom" __template="L,S" />
+                    <__use_template name="VSPACER" />
+                    <toggleButton id="btnScaleAnchor_FromTopLeft" showLabel="false" __template="L,S,K,E,I" getPressed="BtnScaleAnchor_GetPressed" onAction="BtnScaleAnchor_Click" />
+                    <toggleButton id="btnScaleAnchor_FromLeft" showLabel="false" __template="L,S,K,E,I" getPressed="BtnScaleAnchor_GetPressed" onAction="BtnScaleAnchor_Click" />
+                    <toggleButton id="btnScaleAnchor_FromBottomLeft" showLabel="false" __template="L,S,K,E,I" getPressed="BtnScaleAnchor_GetPressed" onAction="BtnScaleAnchor_Click" />
+                    <toggleButton id="btnScaleAnchor_FromTop" showLabel="false" __template="L,S,K,E,I" getPressed="BtnScaleAnchor_GetPressed" onAction="BtnScaleAnchor_Click" />
+                    <toggleButton id="btnScaleAnchor_FromCenter" showLabel="false" __template="L,S,K,E,I" getPressed="BtnScaleAnchor_GetPressed" onAction="BtnScaleAnchor_Click" />
+                    <toggleButton id="btnScaleAnchor_FromBottom" showLabel="false" __template="L,S,K,E,I" getPressed="BtnScaleAnchor_GetPressed" onAction="BtnScaleAnchor_Click" />
+                    <toggleButton id="btnScaleAnchor_FromTopRight" showLabel="false" __template="L,S,K,E,I" getPressed="BtnScaleAnchor_GetPressed" onAction="BtnScaleAnchor_Click" />
+                    <toggleButton id="btnScaleAnchor_FromRight" showLabel="false" __template="L,S,K,E,I" getPressed="BtnScaleAnchor_GetPressed" onAction="BtnScaleAnchor_Click" />
+                    <toggleButton id="btnScaleAnchor_FromBottomRight" showLabel="false" __template="L,S,K,E,I" getPressed="BtnScaleAnchor_GetPressed" onAction="BtnScaleAnchor_Click" />
                     <dialogBoxLauncher>
                         <__use_reference name="$id=btnSizeAndPosition:1" />
                     </dialogBoxLauncher>
-                </group> <!-- end of grpSizeAndSnap -->
+                </group> <!-- end of grpResizing -->
 
                 <group id="grpRotateAndFlip" __template="GROUP">
                     <labelControl id="lblRotateObject" __template="L,S" />
@@ -149,12 +194,12 @@
                     <labelControl id="lbl3DRotation" __template="L,S" />
                     <__use_template name="VSPACER" />
                     <buttonGroup id="bgpRotateOnly">
-                        <__use_reference name="$id=btnRotateRight90" />
-                        <__use_reference name="$id=btnRotateLeft90" />
+                        <button id="btnRotateRight90" showLabel="false" __template="L,S,K,E,I" onAction="BtnRotate_Click" />
+                        <button id="btnRotateLeft90" showLabel="false" __template="L,S,K,E,I" onAction="BtnRotate_Click" />
                     </buttonGroup>
                     <buttonGroup id="bgpFlipOnly">
-                        <__use_reference name="$id=btnFlipVertical" />
-                        <__use_reference name="$id=btnFlipHorizontal" />
+                        <button id="btnFlipVertical" showLabel="false" __template="L,S,K,E,I" onAction="BtnFlip_Click" />
+                        <button id="btnFlipHorizontal" showLabel="false" __template="L,S,K,E,I" onAction="BtnFlip_Click" />
                     </buttonGroup>
                     <buttonGroup id="bgp3DRotation">
                         <control idMso="_3DRotationGallery" showLabel="false" __template="K" />
@@ -177,19 +222,18 @@
                     <labelControl id="lblGroupObjects" __template="L,S" />
                     <__use_template name="VSPACER" />
                     <buttonGroup id="bgpMoveFrontAndBack">
-                        <__use_reference name="$id=btnMoveFront" />
-                        <__use_reference name="$id=btnMoveBack" />
+                        <button id="btnMoveFront" showLabel="false" __template="L,S,K,E,I" onAction="BtnMove_Click" />
+                        <button id="btnMoveBack" showLabel="false" __template="L,S,K,E,I" onAction="BtnMove_Click" />
                     </buttonGroup>
                     <buttonGroup id="bgpMoveForwardAndBackward">
-                        <__use_reference name="$id=btnMoveForward" />
-                        <__use_reference name="$id=btnMoveBackward" />
+                        <button id="btnMoveForward" showLabel="false" __template="L,S,K,E,I" onAction="BtnMove_Click" />
+                        <button id="btnMoveBackward" showLabel="false" __template="L,S,K,E,I" onAction="BtnMove_Click" />
                     </buttonGroup>
                     <buttonGroup id="bgpGroupAndUngroup">
-                        <__use_reference name="$id=btnGroup" />
-                        <__use_reference name="$id=btnUngroup" />
+                        <button id="btnGroup" showLabel="false" __template="L,S,K,E,I" onAction="BtnGroup_Click" />
+                        <button id="btnUngroup" showLabel="false" __template="L,S,K,E,I" onAction="BtnGroup_Click" />
                     </buttonGroup>
-                    <separator id="sepGridSettings" />
-                    <button id="btnGridSetting" size="large" __template="L,S,K,E,I" onAction="BtnGridSetting_Click" />
+                    <separator id="sepSizeAndPosition" />
                     <button id="btnSizeAndPosition" size="large" __template="L,S,K,E,I" onAction="BtnSizeAndPosition_Click" />
                     <toggleButton idMso="SelectionPane" size="large" __template="K" />
                     <dynamicMenu id="mnuArrangement" size="large" __template="L,S,K,E,I" getContent="GetMenuContent" />
@@ -218,6 +262,27 @@
                         <button id="btnCopyPosition" showLabel="false" __template="L,S,K,E,I" onAction="BtnCopyAndPastePosition_Click" />
                         <button id="btnPastePosition" __template="L,S,K,E,I" onAction="BtnCopyAndPastePosition_Click" />
                     </buttonGroup>
+                    <separator id="sepCopyAndPasteDistance" />
+                    <box id="bgpDistanceType" boxStyle="horizontal">
+                        <labelControl id="lblDistanceType" __template="L,S" />
+                        <__use_template name="HSPACER" />
+                        <toggleButton id="btnDistanceType_RightLeft" showLabel="false" __template="L,S,K,E,I" getPressed="BtnDistanceType_GetPressed" onAction="BtnDistanceType_Click" />
+                        <toggleButton id="btnDistanceType_LeftLeft" showLabel="false" __template="L,S,K,E,I" getPressed="BtnDistanceType_GetPressed" onAction="BtnDistanceType_Click" />
+                        <toggleButton id="btnDistanceType_RightRight" showLabel="false" __template="L,S,K,E,I" getPressed="BtnDistanceType_GetPressed" onAction="BtnDistanceType_Click" />
+                        <toggleButton id="btnDistanceType_LeftRight" showLabel="false" __template="L,S,K,E,I" getPressed="BtnDistanceType_GetPressed" onAction="BtnDistanceType_Click" />
+                    </box>
+                    <box id="bgpDistanceH" boxStyle="horizontal">
+                        <labelControl id="lblDistanceH" __template="L,S" />
+                        <__use_template name="HSPACER" />
+                        <button id="btnCopyDistanceH" showLabel="false" __template="L,S,K,E,I" onAction="BtnCopyAndPasteDistance_Click" />
+                        <button id="btnPasteDistanceH" __template="L,S,K,E,I" onAction="BtnCopyAndPasteDistance_Click" />
+                    </box>
+                    <box id="bgpDistanceV" boxStyle="horizontal">
+                        <labelControl id="lblDistanceV" __template="L,S" />
+                        <__use_template name="HSPACER" />
+                        <button id="btnCopyDistanceV" showLabel="false" __template="L,S,K,E,I" onAction="BtnCopyAndPasteDistance_Click" />
+                        <button id="btnPasteDistanceV" __template="L,S,K,E,I" onAction="BtnCopyAndPasteDistance_Click" />
+                    </box>
                     <dialogBoxLauncher>
                         <__use_reference name="$id=btnSizeAndPosition:1" />
                     </dialogBoxLauncher>
@@ -280,9 +345,10 @@
                 <tab idMso="TabPictureToolsFormat">
                     <group id="grpReplacePicture" insertAfterMso="GroupPictureTools" __template="GROUP">
                         <button id="btnReplaceWithClipboard" size="large" __template="L,S,K,E,I" onAction="BtnReplacePicture_Click" />
-                        <button id="btnReplaceWithFile" __template="L,S,K,E,I" onAction="BtnReplacePicture_Click" />
-                        <checkBox id="chkReserveOriginalSize" __template="L,S,K,E" getPressed="ChkReserveOriginalSize_GetPressed" onAction="ChkReserveOriginalSize_Click" />
-                        <checkBox id="chkReplaceToMiddle" __template="L,S,K,E" getPressed="ChkReplaceToMiddle_GetPressed" onAction="ChkReplaceToMiddle_Click" />
+                        <button id="btnReplaceWithFile" size="large" __template="L,S,K,E,I" onAction="BtnReplacePicture_Click" />
+                        <checkBox id="chkReplaceToFill" __template="L,S,K,E" getPressed="ChkReplaceMode_GetPressed" onAction="ChkReplaceMode_Click" />
+                        <checkBox id="chkReplaceToContain" __template="L,S,K,E" getPressed="ChkReplaceMode_GetPressed" onAction="ChkReplaceMode_Click" />
+                        <checkBox id="chkReplaceToMiddle" __template="L,S,K,E" getPressed="ChkReplaceMode_GetPressed" onAction="ChkReplaceMode_Click" />
                     </group> <!-- end of grpReplacePicture -->
 
                     <group id="grpPictureSizeAndPosition" insertAfterMso="GroupPictureSize" __template="GROUP">

@@ -34,7 +34,7 @@
     <PublishUrl>./Publish</PublishUrl>
     <InstallUrl />
     <TargetCulture>en</TargetCulture>
-    <ApplicationVersion>1.1.0.0</ApplicationVersion>
+    <ApplicationVersion>1.2.0.0</ApplicationVersion>
     <AutoIncrementApplicationRevision>false</AutoIncrementApplicationRevision>
     <UpdateEnabled>false</UpdateEnabled>
     <UpdateInterval>0</UpdateInterval>
@@ -260,6 +260,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helper\ArrangementHelper.cs" />
+    <Compile Include="Helper\DoublePressableHandler.cs" />
     <Compile Include="Helper\ReplacePictureHelper.cs" />
     <Compile Include="Helper\RibbonControlExtension.cs" />
     <Compile Include="Helper\RotationHelper.cs" />

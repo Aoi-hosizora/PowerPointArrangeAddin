@@ -9,38 +9,76 @@ namespace PowerPointArrangeAddin.Helper {
 
     public static class SizeAndPositionHelper {
 
-        public static void ScaleSizeTo(this PowerPoint.Shape shape, float? width, float? height, Office.MsoScaleFrom? scaleFromFlag) {
+        public enum ScaleFromFlag {
+            FromTopLeft,
+            FromTopRight,
+            FromBottomLeft,
+            FromBottomRight,
+            FromLeft,
+            FromRight,
+            FromTop,
+            FromBottom,
+            FromCenter
+        }
+
+        public static void ScaleSizeTo(this PowerPoint.Shape shape, float? width, float? height, ScaleFromFlag? scaleFromFlag, float? relativeToOriginSize = null) {
             var oldLockSate = shape.LockAspectRatio;
             shape.LockAspectRatio = Office.MsoTriState.msoFalse;
-            scaleFromFlag ??= Office.MsoScaleFrom.msoScaleFromTopLeft;
+            scaleFromFlag ??= ScaleFromFlag.FromTopLeft;
 
             var (oldLeft, oldTop) = (shape.Left, shape.Top);
             var (oldWidth, oldHeight) = (shape.Width, shape.Height);
-            if (width != null) shape.Width = width.Value;
-            if (height != null) shape.Height = height.Value;
+            if (relativeToOriginSize == null || relativeToOriginSize <= 0) {
+                if (width != null) shape.Width = width.Value;
+                if (height != null) shape.Height = height.Value;
+            } else {
+                var factor = relativeToOriginSize.Value;
+                shape.ScaleHeight(factor, Office.MsoTriState.msoTrue); // Office.MsoScaleFrom.msoScaleFromTopLeft
+                shape.ScaleWidth(factor, Office.MsoTriState.msoTrue);
+            }
             var (newWidth, newHeight) = (shape.Width, shape.Height);
 
             switch (scaleFromFlag) {
-            case Office.MsoScaleFrom.msoScaleFromTopLeft:
+            case ScaleFromFlag.FromTopLeft:
                 break;
-            case Office.MsoScaleFrom.msoScaleFromMiddle:
-                shape.Left = oldLeft - (newWidth - oldWidth) / 2;
-                shape.Top = oldTop - (newHeight - oldHeight) / 2;
+            case ScaleFromFlag.FromTopRight:
+                shape.Left = oldLeft - (newWidth - oldWidth);
                 break;
-            case Office.MsoScaleFrom.msoScaleFromBottomRight:
+            case ScaleFromFlag.FromBottomLeft:
+                shape.Top = oldTop - (newHeight - oldHeight);
+                break;
+            case ScaleFromFlag.FromBottomRight:
                 shape.Left = oldLeft - (newWidth - oldWidth);
                 shape.Top = oldTop - (newHeight - oldHeight);
+                break;
+            case ScaleFromFlag.FromLeft:
+                shape.Top = oldTop - (newHeight - oldHeight) / 2;
+                break;
+            case ScaleFromFlag.FromRight:
+                shape.Left = oldLeft - (newWidth - oldWidth);
+                shape.Top = oldTop - (newHeight - oldHeight) / 2;
+                break;
+            case ScaleFromFlag.FromTop:
+                shape.Left = oldLeft - (newWidth - oldWidth) / 2;
+                break;
+            case ScaleFromFlag.FromBottom:
+                shape.Left = oldLeft - (newWidth - oldWidth) / 2;
+                shape.Top = oldTop - (newHeight - oldHeight);
+                break;
+            case ScaleFromFlag.FromCenter:
+                shape.Left = oldLeft - (newWidth - oldWidth) / 2;
+                shape.Top = oldTop - (newHeight - oldHeight) / 2;
                 break;
             }
 
             shape.LockAspectRatio = oldLockSate;
         }
 
-        public static void ScaleWidthTo(this PowerPoint.Shape shape, float width, Office.MsoScaleFrom scaleFromFlag) {
+        public static void ScaleWidthTo(this PowerPoint.Shape shape, float width, ScaleFromFlag scaleFromFlag) {
             shape.ScaleSizeTo(width, null, scaleFromFlag);
         }
 
-        public static void ScaleHeightTo(this PowerPoint.Shape shape, float height, Office.MsoScaleFrom scaleFromFlag) {
+        public static void ScaleHeightTo(this PowerPoint.Shape shape, float height, ScaleFromFlag scaleFromFlag) {
             shape.ScaleSizeTo(null, height, scaleFromFlag);
         }
 
@@ -98,7 +136,7 @@ namespace PowerPointArrangeAddin.Helper {
             Width
         }
 
-        public static void ChangeSizeOfString(PowerPoint.ShapeRange? shapeRange, SizeKind? sizeKind, Office.MsoScaleFrom? scaleFromFlag, string? input, Action? uiInvalidator = null) {
+        public static void ChangeSizeOfString(PowerPoint.ShapeRange? shapeRange, SizeKind? sizeKind, ScaleFromFlag? scaleFromFlag, string? input, Action? uiInvalidator = null) {
             if (shapeRange == null || shapeRange.Count <= 0) {
                 return;
             }
@@ -111,7 +149,7 @@ namespace PowerPointArrangeAddin.Helper {
                 return;
             }
 
-            scaleFromFlag ??= Office.MsoScaleFrom.msoScaleFromTopLeft;
+            scaleFromFlag ??= ScaleFromFlag.FromTopLeft;
 
             Globals.ThisAddIn.Application.StartNewUndoEntry();
             switch (sizeKind) {
@@ -209,6 +247,9 @@ namespace PowerPointArrangeAddin.Helper {
         private static float _copiedPositionXPt = InvalidCopiedValue;
         private static float _copiedPositionYPt = InvalidCopiedValue;
 
+        private static float _copiedDistanceHPt = InvalidCopiedValue;
+        private static float _copiedDistanceVPt = InvalidCopiedValue;
+
         public static bool IsSizeCopyable(PowerPoint.ShapeRange? shapeRange) {
             if (shapeRange == null || shapeRange.Count <= 0) {
                 return false;
@@ -231,13 +272,21 @@ namespace PowerPointArrangeAddin.Helper {
             return !_copiedPositionXPt.Equals(InvalidCopiedValue) && !_copiedPositionYPt.Equals(InvalidCopiedValue);
         }
 
+        public static bool IsValidCopiedDistanceHValue() {
+            return !_copiedDistanceHPt.Equals(InvalidCopiedValue);
+        }
+
+        public static bool IsValidCopiedDistanceVValue() {
+            return !_copiedDistanceVPt.Equals(InvalidCopiedValue);
+        }
+
         public enum CopyAndPasteCmd {
             Copy,
             Paste,
             Reset
         }
 
-        public static void CopyAndPasteSize(PowerPoint.ShapeRange? shapeRange, CopyAndPasteCmd? cmd, Office.MsoScaleFrom scaleFromFlag, Action? uiInvalidator = null) {
+        public static void CopyAndPasteSize(PowerPoint.ShapeRange? shapeRange, CopyAndPasteCmd? cmd, ScaleFromFlag? scaleFromFlag, Action? uiInvalidator = null) {
             if (shapeRange == null || shapeRange.Count <= 0) {
                 return;
             }
@@ -256,6 +305,7 @@ namespace PowerPointArrangeAddin.Helper {
             case CopyAndPasteCmd.Paste:
                 if (IsValidCopiedSizeValue()) {
                     Globals.ThisAddIn.Application.StartNewUndoEntry();
+                    scaleFromFlag ??= ScaleFromFlag.FromTopLeft;
                     foreach (var shape in shapeRange.OfType<PowerPoint.Shape>().ToArray()) {
                         shape.ScaleSizeTo(_copiedSizeWPt, _copiedSizeHPt, scaleFromFlag);
                     }
@@ -302,6 +352,153 @@ namespace PowerPointArrangeAddin.Helper {
             }
         }
 
+        public enum DistanceType {
+            RightLeft,
+            LeftLeft,
+            RightRight,
+            LeftRight
+        }
+
+        public static void CopyAndPasteDistance(PowerPoint.ShapeRange? shapeRange, CopyAndPasteCmd? cmd, DistanceType? type, bool isHOrV, Action? uiInvalidator = null) {
+            if (shapeRange == null) {
+                return;
+            }
+            if (cmd == null) {
+                return;
+            }
+            type ??= DistanceType.RightLeft;
+
+            switch (cmd!) {
+            case CopyAndPasteCmd.Copy: {
+                var shapes = shapeRange.OfType<PowerPoint.Shape>().ToArray();
+                if (shapes.Length != 2) {
+                    return;
+                }
+                var (shape1, shape2) = (shapes[0], shapes[1]);
+                var (left1, left2) = (shape1.Left, shape2.Left);
+                var (width1, width2) = (shape1.Width, shape2.Width);
+                var (top1, top2) = (shape1.Top, shape2.Top);
+                var (height1, height2) = (shape1.Height, shape2.Height);
+                bool seperated12, seperated21, intersected12, intersected21, contained12, contained21;
+                if (isHOrV) {
+                    seperated12 = left1 <= left2 && left1 + width1 <= left2;
+                    seperated21 = left2 <= left1 && left2 + width2 <= left1;
+                    intersected12 = left1 <= left2 && left1 + width1 >= left2 && left1 + width1 <= left2 + width2;
+                    intersected21 = left2 <= left1 && left2 + width2 >= left1 && left2 + width2 <= left1 + width1;
+                    contained12 = left1 <= left2 && left1 + width1 >= left2 + width2;
+                    contained21 = left2 <= left1 && left2 + width2 >= left1 + width1;
+                } else {
+                    seperated12 = top1 <= top2 && top1 + height1 <= top2;
+                    seperated21 = top2 <= top1 && top2 + height2 <= top1;
+                    intersected12 = top1 <= top2 && top1 + height1 >= top2 && top1 + height1 <= top2 + height2;
+                    intersected21 = top2 <= top1 && top2 + height2 >= top1 && top2 + height2 <= top1 + height1;
+                    contained12 = top1 <= top2 && top1 + height1 >= top2 + height2;
+                    contained21 = top2 <= top1 && top2 + height2 >= top1 + height1;
+                }
+                float distanceH = InvalidCopiedValue, distanceV = InvalidCopiedValue;
+                switch (type!) {
+                case DistanceType.LeftLeft:
+                    if (!contained12 && !contained21) {
+                        distanceH = Math.Abs(left1 - left2);
+                        distanceV = Math.Abs(top1 - top2);
+                    } else if (contained12) {
+                        distanceH = left2 - left1;
+                        distanceV = top2 - top1;
+                    } else if (contained21) {
+                        distanceH = left1 - left2;
+                        distanceV = top1 - top2;
+                    }
+                    break;
+                case DistanceType.RightRight:
+                    if (!contained12 && !contained21) {
+                        distanceH = Math.Abs((left1 + width1) - (left2 + width2));
+                        distanceV = Math.Abs((top1 + height1) - (top2 + height2));
+                    } else if (contained12) {
+                        distanceH = (left2 + width2) - (left1 + width1);
+                        distanceV = (top2 + height2) - (top1 + height1);
+                    } else if (contained21) {
+                        distanceH = (left1 + width1) - (left2 + width2);
+                        distanceV = (top1 + height1) - (top2 + height2);
+                    }
+                    break;
+                case DistanceType.RightLeft:
+                    if (seperated12) {
+                        distanceH = left2 - (left1 + width1);
+                        distanceV = top2 - (top1 + height1);
+                    } else if (seperated21) {
+                        distanceH = left1 - (left2 + width2);
+                        distanceV = top1 - (top2 + height2);
+                    } else if (intersected12 || contained12) {
+                        distanceH = left2 - (left1 + width1);
+                        distanceV = top2 - (top1 + height1);
+                    } else if (intersected21 || contained21) {
+                        distanceH = left1 - (left2 + width2);
+                        distanceV = top1 - (top2 + height2);
+                    }
+                    break;
+                case DistanceType.LeftRight:
+                    if (seperated12 || intersected12) {
+                        distanceH = (left2 + width2) - left1;
+                        distanceV = (top2 + height2) - top1;
+                    } else if (seperated21 || intersected21) {
+                        distanceH = (left1 + width1) - left2;
+                        distanceV = (top1 + height1) - top2;
+                    } else if (contained12) {
+                        distanceH = (left2 + width2) - left1;
+                        distanceV = (top2 + height2) - top1;
+                    } else if (contained21) {
+                        distanceH = (left1 + width1) - left2;
+                        distanceV = (top1 + height1) - top2;
+                    }
+                    break;
+                }
+                if (isHOrV && !distanceH.Equals(InvalidCopiedValue)) {
+                    _copiedDistanceHPt = distanceH;
+                } else if (!isHOrV && !distanceV.Equals(InvalidCopiedValue)) {
+                    _copiedDistanceVPt = distanceV;
+                }
+                uiInvalidator?.Invoke();
+                break;
+            }
+            case CopyAndPasteCmd.Paste: {
+                var shapes = shapeRange.OfType<PowerPoint.Shape>().ToArray();
+                if (shapes.Length != 2) {
+                    return;
+                }
+                var (shape1, shape2) = (shapes[0], shapes[1]);
+                if (isHOrV && IsValidCopiedDistanceHValue()) {
+                    Globals.ThisAddIn.Application.StartNewUndoEntry();
+                    // => move the second shape
+                    shape2.Left = type! switch {
+                        DistanceType.RightLeft => shape1.Left + shape1.Width + _copiedDistanceHPt,
+                        DistanceType.LeftLeft => shape1.Left + _copiedDistanceHPt,
+                        DistanceType.RightRight => shape1.Left + shape1.Width + _copiedDistanceHPt - shape2.Width,
+                        DistanceType.LeftRight => shape1.Left + _copiedDistanceHPt - shape2.Width,
+                        _ => shape2.Left
+                    };
+                    uiInvalidator?.Invoke();
+                } else if (!isHOrV && IsValidCopiedDistanceVValue()) {
+                    Globals.ThisAddIn.Application.StartNewUndoEntry();
+                    // => move the second shape
+                    shape2.Top = type! switch {
+                        DistanceType.RightLeft => shape1.Top + shape1.Height + _copiedDistanceVPt,
+                        DistanceType.LeftLeft => shape1.Top + _copiedDistanceVPt,
+                        DistanceType.RightRight => shape1.Top + shape1.Height + _copiedDistanceVPt - shape2.Height,
+                        DistanceType.LeftRight => shape1.Top + _copiedDistanceVPt - shape2.Height,
+                        _ => shape2.Top
+                    };
+                    uiInvalidator?.Invoke();
+                }
+                break;
+            }
+            case CopyAndPasteCmd.Reset:
+                _copiedDistanceHPt = InvalidCopiedValue;
+                _copiedDistanceVPt = InvalidCopiedValue;
+                uiInvalidator?.Invoke();
+                break;
+            }
+        }
+
         public static bool IsSizeResettable(PowerPoint.ShapeRange? shapeRange) {
             if (shapeRange == null || shapeRange.Count <= 0) {
                 return false;
@@ -311,7 +508,7 @@ namespace PowerPointArrangeAddin.Helper {
             return shapes.Length > 0;
         }
 
-        public static void ResetMediaSize(PowerPoint.ShapeRange? shapeRange, Office.MsoScaleFrom? scaleFromFlag, Action? uiInvalidator = null) {
+        public static void ResetMediaSize(PowerPoint.ShapeRange? shapeRange, ScaleFromFlag? scaleFromFlag, Action? uiInvalidator = null) {
             if (shapeRange == null || shapeRange.Count <= 0) {
                 return;
             }
@@ -321,15 +518,12 @@ namespace PowerPointArrangeAddin.Helper {
                 return;
             }
 
-            const Office.MsoTriState relativeToOriginalSize = Office.MsoTriState.msoTrue;
-            scaleFromFlag ??= Office.MsoScaleFrom.msoScaleFromTopLeft;
-
+            scaleFromFlag ??= ScaleFromFlag.FromTopLeft;
             Globals.ThisAddIn.Application.StartNewUndoEntry();
             foreach (var shape in shapes) {
                 var isSound = shape.Type == Office.MsoShapeType.msoMedia && shape.MediaType == PowerPoint.PpMediaType.ppMediaTypeSound;
                 var factor = !isSound ? 1F : 0.25F;
-                shape.ScaleWidth(factor, relativeToOriginalSize, scaleFromFlag.Value);
-                shape.ScaleHeight(factor, relativeToOriginalSize, scaleFromFlag.Value);
+                shape.ScaleSizeTo(null, null, scaleFromFlag, factor);
                 shape.Rotation = 0;
                 if (shape.HorizontalFlip == Office.MsoTriState.msoTrue) {
                     shape.Flip(Office.MsoFlipCmd.msoFlipHorizontal);

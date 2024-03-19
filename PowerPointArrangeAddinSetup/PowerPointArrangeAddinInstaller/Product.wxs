@@ -4,7 +4,7 @@
     <?define Action_TargetDir=$(var.PowerPointArrangeAddinInstallerAction.TargetDir)?>
 
     <!-- Define product and package -->
-    <Product Id="*" Name="!(loc.FriendlyName) v1.1.0" Language="1033" Version="1.1.0" Manufacturer="!(loc.Manufacturer)" UpgradeCode="d827c61a-646d-4dfa-97c5-44d2da6cbf01">
+    <Product Id="*" Name="!(loc.FriendlyName) v1.2.0" Language="1033" Version="1.2.0" Manufacturer="!(loc.Manufacturer)" UpgradeCode="d827c61a-646d-4dfa-97c5-44d2da6cbf01">
         <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
 
         <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
