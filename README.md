@@ -63,7 +63,7 @@ call build_solution.bat
             </tr>
             <tr>
                 <td align="center"><img src="./assets/screenshot6.jpg" alt="screenshot6" /></td>
-                <td align="center"><img src="./assets/screenshot7.jpg" height="70%" width="70%" alt="screenshot7" /></td>
+                <td align="center"><img src="./assets/screenshot7.jpg" alt="screenshot7" /></td>
                 <td align="center" colspan="2"><img src="./assets/screenshot8.jpg" alt="screenshot8" /></td>
             </tr>
             <tr>
@@ -99,7 +99,7 @@ call build_solution.bat
             </tr>
             <tr>
                 <td align="center"><img src="./assets/screenshot14.jpg" alt="screenshot14" /></td>
-                <td align="center"><img src="./assets/screenshot15.jpg" height="70%" width="70%" alt="screenshot15" /></td>
+                <td align="center"><img src="./assets/screenshot15.jpg" alt="screenshot15" /></td>
                 <td align="center" colspan="2"><img src="./assets/screenshot16.jpg" alt="screenshot16" /></td>
             </tr>
             <tr>
